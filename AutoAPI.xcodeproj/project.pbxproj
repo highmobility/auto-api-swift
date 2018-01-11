@@ -1,0 +1,1529 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		20B8A8CD1FF388A8000F9C40 /* AutoAPI iOS Universal */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 20B8A8CE1FF388A8000F9C40 /* Build configuration list for PBXAggregateTarget "AutoAPI iOS Universal" */;
+			buildPhases = (
+				20B8A8D11FF388C6000F9C40 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "AutoAPI iOS Universal";
+			productName = "AutoAPI iOS Universal";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		20098FB71FC6F0EF00A2BA98 /* AutoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20098FB61FC6F0EF00A2BA98 /* AutoAPI.swift */; };
+		20098FC01FC705AA00A2BA98 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20098FBF1FC705AA00A2BA98 /* Property.swift */; };
+		20098FC21FC7073900A2BA98 /* UInt8Collection+Binary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20098FC11FC7073900A2BA98 /* UInt8Collection+Binary.swift */; };
+		200BBB9C1FD6CA3000CCBA30 /* WipersState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200BBB9B1FD6CA3000CCBA30 /* WipersState.swift */; };
+		200BBB9E1FD6CB3500CCBA30 /* WindscreenDamage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200BBB9D1FD6CB3500CCBA30 /* WindscreenDamage.swift */; };
+		200BBBA01FD6CC9100CCBA30 /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200BBB9F1FD6CC9100CCBA30 /* Zone.swift */; };
+		200BBBA21FD6D13500CCBA30 /* NeedsReplacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200BBBA11FD6D13500CCBA30 /* NeedsReplacement.swift */; };
+		200BBBA41FD6D28C00CCBA30 /* YearTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200BBBA31FD6D28C00CCBA30 /* YearTime.swift */; };
+		200BBBA61FD6D83C00CCBA30 /* WindscreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200BBBA51FD6D83B00CCBA30 /* WindscreenTests.swift */; };
+		200BBBA81FD6DA2100CCBA30 /* WipersLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200BBBA71FD6DA2100CCBA30 /* WipersLevel.swift */; };
+		200F70422007C42600A03FBB /* UInt8Collection+Binary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200F70412007C42600A03FBB /* UInt8Collection+Binary.swift */; };
+		201628251FD5896100C895B5 /* VehicleLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201628241FD5896100C895B5 /* VehicleLocation.swift */; };
+		201628271FD58C1B00C895B5 /* VehicleLocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201628261FD58C1B00C895B5 /* VehicleLocationTests.swift */; };
+		202BDB201FDFD4EA005A4063 /* KeyfobPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB1F1FDFD4EA005A4063 /* KeyfobPosition.swift */; };
+		202BDB221FDFD591005A4063 /* KeyfobRelativePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB211FDFD591005A4063 /* KeyfobRelativePosition.swift */; };
+		202BDB241FDFD651005A4063 /* CapabilitiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE22821FCC4F420032CCC2 /* CapabilitiesTests.swift */; };
+		202BDB261FDFD6BB005A4063 /* KeyfobPositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB251FDFD6BB005A4063 /* KeyfobPositionTests.swift */; };
+		202BDB281FDFE2CC005A4063 /* HonkHornFlashLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB271FDFE2CC005A4063 /* HonkHornFlashLights.swift */; };
+		202BDB2C1FDFE3FD005A4063 /* FlasherState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB2B1FDFE3FD005A4063 /* FlasherState.swift */; };
+		202BDB2E1FDFE58A005A4063 /* HonkHornFlashLightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB2D1FDFE58A005A4063 /* HonkHornFlashLightsTests.swift */; };
+		202BDB301FDFFEE0005A4063 /* RemoteControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB2F1FDFFEE0005A4063 /* RemoteControl.swift */; };
+		202BDB321FDFFF3E005A4063 /* ControlMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB311FDFFF3E005A4063 /* ControlMode.swift */; };
+		202BDB341FE00008005A4063 /* Int16+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB331FE00008005A4063 /* Int16+Extensions.swift */; };
+		202BDB361FE000F4005A4063 /* Int8+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB351FE000F4005A4063 /* Int8+Extensions.swift */; };
+		202BDB381FE0021C005A4063 /* RemoteControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB371FE0021C005A4063 /* RemoteControlTests.swift */; };
+		202BDB3A1FE00448005A4063 /* ValetMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB391FE00448005A4063 /* ValetMode.swift */; };
+		202BDB3C1FE006E5005A4063 /* ValetModeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB3B1FE006E5005A4063 /* ValetModeTests.swift */; };
+		202BDB3F1FE007AC005A4063 /* HeartRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB3E1FE007AC005A4063 /* HeartRate.swift */; };
+		202BDB411FE009B2005A4063 /* DriverFatigue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB401FE009B2005A4063 /* DriverFatigue.swift */; };
+		202BDB431FE00AC2005A4063 /* FatigueLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB421FE00AC2005A4063 /* FatigueLevel.swift */; };
+		202BDB451FE00BAD005A4063 /* DriverFatigueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB441FE00BAD005A4063 /* DriverFatigueTests.swift */; };
+		202BDB471FE00CD4005A4063 /* HeartRateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB461FE00CD4005A4063 /* HeartRateTests.swift */; };
+		202BDB491FE011EC005A4063 /* VehicleTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB481FE011EC005A4063 /* VehicleTime.swift */; };
+		202BDB4B1FE0135E005A4063 /* NaviDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB4A1FE0135E005A4063 /* NaviDestination.swift */; };
+		202BDB4D1FE0141E005A4063 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB4C1FE0141E005A4063 /* String+Extensions.swift */; };
+		202BDB4F1FE016B3005A4063 /* NaviDestinationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB4E1FE016B3005A4063 /* NaviDestinationTests.swift */; };
+		202BDB511FE018A9005A4063 /* VehicleTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB501FE018A9005A4063 /* VehicleTimeTests.swift */; };
+		202BDB531FE02DEE005A4063 /* ParkingTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB521FE02DEE005A4063 /* ParkingTicket.swift */; };
+		202BDB551FE02EAF005A4063 /* ParkingTicketState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB541FE02EAF005A4063 /* ParkingTicketState.swift */; };
+		202BDB571FE033E2005A4063 /* ParkingTicketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB561FE033E2005A4063 /* ParkingTicketTests.swift */; };
+		202BDB591FE039C1005A4063 /* Fueling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB581FE039C1005A4063 /* Fueling.swift */; };
+		202BDB5B1FE03A30005A4063 /* FuelingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB5A1FE03A30005A4063 /* FuelingTests.swift */; };
+		2031AA9A1FEA4529006F6C78 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2031AA991FEA4529006F6C78 /* Coordinates.swift */; };
+		2031AA9E1FEA8BBB006F6C78 /* PropertiesInitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2031AA9D1FEA8BBB006F6C78 /* PropertiesInitable.swift */; };
+		2031AAA01FEA9358006F6C78 /* Capability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2031AA9F1FEA9358006F6C78 /* Capability.swift */; };
+		2041EA1F2003C46D00B4BF80 /* RawRepresentable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041EA1E2003C46D00B4BF80 /* RawRepresentable+Extensions.swift */; };
+		204C0E631FEBB34D002E319C /* GearMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204C0E621FEBB34D002E319C /* GearMode.swift */; };
+		204C0E6D1FEBEC8A002E319C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204C0E6C1FEBEC8A002E319C /* main.swift */; };
+		204C0E771FEBEF8A002E319C /* AutoAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A6D6F31FC3139B00438F4F /* AutoAPI.framework */; };
+		204D0B271FD052A900C6118A /* Lights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204D0B261FD052A900C6118A /* Lights.swift */; };
+		204D0B291FD0531000C6118A /* LightState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204D0B281FD0531000C6118A /* LightState.swift */; };
+		204D0B2D1FD14A5100C6118A /* Windows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204D0B2C1FD14A5100C6118A /* Windows.swift */; };
+		204D0B2F1FD14B7C00C6118A /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204D0B2E1FD14B7C00C6118A /* Window.swift */; };
+		204D0B361FD1510300C6118A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204D0B351FD1510300C6118A /* Item.swift */; };
+		204D0B3A1FD1560900C6118A /* PropertyConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204D0B391FD1560900C6118A /* PropertyConvertable.swift */; };
+		204D0B3C1FD18FD500C6118A /* WindowsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204D0B3B1FD18FD500C6118A /* WindowsTests.swift */; };
+		204D0B3E1FD19A2200C6118A /* RooftopControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204D0B3D1FD19A2200C6118A /* RooftopControl.swift */; };
+		204E2AE01FD01CF400DE2DD5 /* Charging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2ADF1FD01CF400DE2DD5 /* Charging.swift */; };
+		204E2AE41FD01DDC00DE2DD5 /* ChargingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AE31FD01DDC00DE2DD5 /* ChargingState.swift */; };
+		204E2AE61FD0206000DE2DD5 /* ChargePortState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AE51FD0206000DE2DD5 /* ChargePortState.swift */; };
+		204E2AE81FD022BA00DE2DD5 /* StartStopCharging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AE71FD022BA00DE2DD5 /* StartStopCharging.swift */; };
+		204E2AEA1FD022EF00DE2DD5 /* ChargingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AE91FD022EF00DE2DD5 /* ChargingTests.swift */; };
+		204E2AEC1FD02F6B00DE2DD5 /* Climate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AEB1FD02F6B00DE2DD5 /* Climate.swift */; };
+		204E2AEE1FD030CC00DE2DD5 /* ActiveState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AED1FD030CC00DE2DD5 /* ActiveState.swift */; };
+		204E2AF21FD0353500DE2DD5 /* DayTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AF11FD0353500DE2DD5 /* DayTime.swift */; };
+		204E2AF41FD0372700DE2DD5 /* WeekdaysTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AF31FD0372700DE2DD5 /* WeekdaysTimes.swift */; };
+		204E2AF71FD03A9700DE2DD5 /* ActivatedDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AF61FD03A9700DE2DD5 /* ActivatedDays.swift */; };
+		204E2AF91FD03D3700DE2DD5 /* ClimateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AF81FD03D3700DE2DD5 /* ClimateTests.swift */; };
+		204E2AFD1FD04A8100DE2DD5 /* ClimateProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AFC1FD04A8100DE2DD5 /* ClimateProfile.swift */; };
+		204E2AFF1FD04BF500DE2DD5 /* Float+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AFE1FD04BF500DE2DD5 /* Float+Extensions.swift */; };
+		2052F8FD1FD942E700BE53E3 /* OffroadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2052F8FC1FD942E700BE53E3 /* OffroadTests.swift */; };
+		2052F8FF1FD9451900BE53E3 /* Race.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2052F8FE1FD9451900BE53E3 /* Race.swift */; };
+		2052F9011FD9459400BE53E3 /* AccelerationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2052F9001FD9459400BE53E3 /* AccelerationType.swift */; };
+		2052F9031FD9497500BE53E3 /* RaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2052F9021FD9497500BE53E3 /* RaceTests.swift */; };
+		2052F9051FD9543500BE53E3 /* Acceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2052F9041FD9543500BE53E3 /* Acceleration.swift */; };
+		2052F9071FD955FC00BE53E3 /* Seats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2052F9061FD955FC00BE53E3 /* Seats.swift */; };
+		2052F9091FD9565800BE53E3 /* SeatPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2052F9081FD9565800BE53E3 /* SeatPosition.swift */; };
+		2052F9111FD9572B00BE53E3 /* Seat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2052F9101FD9572B00BE53E3 /* Seat.swift */; };
+		2052F9161FD9593200BE53E3 /* SeatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2052F9151FD9593200BE53E3 /* SeatsTests.swift */; };
+		2052F9181FD974EE00BE53E3 /* ParkingBrake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2052F9171FD974EE00BE53E3 /* ParkingBrake.swift */; };
+		2052F91A1FD977FB00BE53E3 /* ParkingBrakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2052F9191FD977FB00BE53E3 /* ParkingBrakeTests.swift */; };
+		2052F91D1FD9795100BE53E3 /* LightConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2052F91C1FD9795100BE53E3 /* LightConditions.swift */; };
+		2052F91F1FD9899C00BE53E3 /* LightConditionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2052F91E1FD9899C00BE53E3 /* LightConditionsTests.swift */; };
+		2052F9211FD98D9C00BE53E3 /* WeatherConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2052F9201FD98D9C00BE53E3 /* WeatherConditions.swift */; };
+		2052F9231FD98E0900BE53E3 /* WeatherConditionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2052F9221FD98E0900BE53E3 /* WeatherConditionsTests.swift */; };
+		205427B61FCEBBAC0010DED2 /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205427B51FCEBBAC0010DED2 /* Door.swift */; };
+		205427C01FCEDBFC0010DED2 /* Maintenance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205427BF1FCEDBFC0010DED2 /* Maintenance.swift */; };
+		205427CB1FCEF9E20010DED2 /* VehicleStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205427CA1FCEF9E20010DED2 /* VehicleStateType.swift */; };
+		205427CD1FCF01650010DED2 /* StateGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205427CC1FCF01650010DED2 /* StateGettable.swift */; };
+		205427CF1FCF02E30010DED2 /* StateGettableDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205427CE1FCF02E30010DED2 /* StateGettableDefault.swift */; };
+		205427D11FCF07CA0010DED2 /* MaintenanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205427D01FCF07CA0010DED2 /* MaintenanceTests.swift */; };
+		205427D51FCF0A850010DED2 /* WakeUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205427D41FCF0A850010DED2 /* WakeUp.swift */; };
+		205427D91FCF0E9E0010DED2 /* WakeUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205427D81FCF0E9E0010DED2 /* WakeUpTests.swift */; };
+		2058941B1FCD577700C30D0F /* FailureMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058941A1FCD577700C30D0F /* FailureMessage.swift */; };
+		2058941D1FCD5AD000C30D0F /* FailureMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058941C1FCD5AD000C30D0F /* FailureMessageTests.swift */; };
+		2058941F1FCD5F6900C30D0F /* FailureReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058941E1FCD5F6900C30D0F /* FailureReason.swift */; };
+		205894211FCD627C00C30D0F /* FirmwareVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205894201FCD627C00C30D0F /* FirmwareVersion.swift */; };
+		205894231FCD64A600C30D0F /* CarSDKVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205894221FCD64A600C30D0F /* CarSDKVersion.swift */; };
+		205894251FCD652800C30D0F /* FirmwareVersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205894241FCD652800C30D0F /* FirmwareVersionTests.swift */; };
+		205894271FCD684A00C30D0F /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205894261FCD684A00C30D0F /* Engine.swift */; };
+		205894291FCD68AB00C30D0F /* IgnitionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205894281FCD68AB00C30D0F /* IgnitionState.swift */; };
+		2058942D1FCD758300C30D0F /* EngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058942C1FCD758300C30D0F /* EngineTests.swift */; };
+		2058942F1FCD86C800C30D0F /* Diagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058942E1FCD86C800C30D0F /* Diagnostics.swift */; };
+		205894311FCD922400C30D0F /* UInt32+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205894301FCD922400C30D0F /* UInt32+Extensions.swift */; };
+		205894331FCD95D300C30D0F /* WasherFluidLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205894321FCD95D300C30D0F /* WasherFluidLevel.swift */; };
+		205894351FCD968200C30D0F /* Tire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205894341FCD968200C30D0F /* Tire.swift */; };
+		205894371FCD96AC00C30D0F /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205894361FCD96AC00C30D0F /* Position.swift */; };
+		2058943E1FCDA00800C30D0F /* DiagnosticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058943D1FCDA00800C30D0F /* DiagnosticsTests.swift */; };
+		2071DF0E1FC80B2A0024C122 /* UInt16+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2071DF0D1FC80B2A0024C122 /* UInt16+Extensions.swift */; };
+		20766CFE1FD1A23C006D87CB /* RooftopControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20766CFD1FD1A23C006D87CB /* RooftopControlTests.swift */; };
+		20766D001FD1A2B2006D87CB /* Windscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20766CFF1FD1A2B2006D87CB /* Windscreen.swift */; };
+		20766D051FD1A4DC006D87CB /* TheftAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20766D041FD1A4DC006D87CB /* TheftAlarm.swift */; };
+		20766D071FD1A621006D87CB /* TheftAlarmState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20766D061FD1A621006D87CB /* TheftAlarmState.swift */; };
+		20766D091FD1A6F4006D87CB /* TheftAlarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20766D081FD1A6F4006D87CB /* TheftAlarmTests.swift */; };
+		2089247C1FE15B8E001C3923 /* ChassisSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2089247B1FE15B8E001C3923 /* ChassisSettings.swift */; };
+		2089247E1FE15C03001C3923 /* DrivingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2089247D1FE15C03001C3923 /* DrivingMode.swift */; };
+		208924801FE15D19001C3923 /* Axle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2089247F1FE15D19001C3923 /* Axle.swift */; };
+		208924831FE15D51001C3923 /* SpringRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208924821FE15D51001C3923 /* SpringRate.swift */; };
+		208924891FE15ED3001C3923 /* ChassisPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208924881FE15ED3001C3923 /* ChassisPosition.swift */; };
+		2089248B1FE163D3001C3923 /* StartStopChrono.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2089248A1FE163D3001C3923 /* StartStopChrono.swift */; };
+		2089248F1FE1648F001C3923 /* ChassisSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2089248E1FE1648F001C3923 /* ChassisSettingsTests.swift */; };
+		208924921FE16E36001C3923 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208924911FE16E36001C3923 /* Browser.swift */; };
+		208924941FE16F60001C3923 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208924931FE16F60001C3923 /* URL+Extensions.swift */; };
+		208924961FE16FCE001C3923 /* BrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208924951FE16FCE001C3923 /* BrowserTests.swift */; };
+		208924981FE17149001C3923 /* Graphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208924971FE17149001C3923 /* Graphics.swift */; };
+		2089249A1FE1720D001C3923 /* GraphicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208924991FE1720D001C3923 /* GraphicsTests.swift */; };
+		2089249C1FE17545001C3923 /* Messaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2089249B1FE17545001C3923 /* Messaging.swift */; };
+		208924A21FE17B72001C3923 /* MessagingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208924A11FE17B72001C3923 /* MessagingTests.swift */; };
+		208924A41FE184AD001C3923 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208924A31FE184AD001C3923 /* Notifications.swift */; };
+		208924A61FE1897A001C3923 /* ActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208924A51FE1897A001C3923 /* ActionItem.swift */; };
+		208924AA1FE18F6B001C3923 /* NotificationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208924A91FE18F6B001C3923 /* NotificationsTests.swift */; };
+		208924AC1FE19758001C3923 /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208924AB1FE19758001C3923 /* TextInput.swift */; };
+		208924AE1FE19F4F001C3923 /* TextInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208924AD1FE19F4F001C3923 /* TextInputTests.swift */; };
+		208924B01FE1A3F1001C3923 /* VideoHandover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208924AF1FE1A3F1001C3923 /* VideoHandover.swift */; };
+		208924B21FE1A508001C3923 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208924B11FE1A508001C3923 /* Screen.swift */; };
+		208924B41FE1A5DD001C3923 /* VideoHandoverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208924B31FE1A5DD001C3923 /* VideoHandoverTests.swift */; };
+		209637791FD7F13000F97E87 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209637781FD7F13000F97E87 /* Colour.swift */; };
+		2096377B1FD7FC7600F97E87 /* LightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096377A1FD7FC7600F97E87 /* LightsTests.swift */; };
+		209C3FC41FF51FAF00EEF1BB /* MessageTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209C3FC31FF51FAF00EEF1BB /* MessageTypes.swift */; };
+		20A449931FD1B63B003F4920 /* PropertiesCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A449921FD1B63B003F4920 /* PropertiesCapable.swift */; };
+		20A6D6FD1FC3139B00438F4F /* AutoAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A6D6F31FC3139B00438F4F /* AutoAPI.framework */; };
+		20A6D7021FC3139B00438F4F /* DoorLocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A6D7011FC3139B00438F4F /* DoorLocksTests.swift */; };
+		20B06EFA1FC850DC00463FEA /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B06EF91FC850DC00463FEA /* Properties.swift */; };
+		20B06EFC1FC850F700463FEA /* PropertiesIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B06EFB1FC850F700463FEA /* PropertiesIterator.swift */; };
+		20B06F031FC8632F00463FEA /* DoorLocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B06F021FC8632F00463FEA /* DoorLocks.swift */; };
+		20B06F081FC879A700463FEA /* TrunkAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B06F071FC879A700463FEA /* TrunkAccess.swift */; };
+		20BE22741FCBE64E0032CCC2 /* TrunkAccessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE22731FCBE64E0032CCC2 /* TrunkAccessTests.swift */; };
+		20BE22781FCBE76A0032CCC2 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE22771FCBE76A0032CCC2 /* Identifiable.swift */; };
+		20BE227F1FCBF6990032CCC2 /* Capabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE227E1FCBF6990032CCC2 /* Capabilities.swift */; };
+		20BE22811FCBFA970032CCC2 /* CapabilitiesIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE22801FCBFA970032CCC2 /* CapabilitiesIterator.swift */; };
+		20BE22851FCC52450032CCC2 /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE22841FCC52450032CCC2 /* Sequence+Extensions.swift */; };
+		20BE22871FCC52F40032CCC2 /* Sequence+FlatMapFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE22861FCC52F40032CCC2 /* Sequence+FlatMapFirst.swift */; };
+		20BE228A1FCC57570032CCC2 /* VehicleStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE22891FCC57570032CCC2 /* VehicleStatus.swift */; };
+		20BE228E1FCC5E730032CCC2 /* PowerTrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE228D1FCC5E730032CCC2 /* PowerTrain.swift */; };
+		20BE22911FCC5EA80032CCC2 /* LockState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE22901FCC5EA80032CCC2 /* LockState.swift */; };
+		20BE22931FCC5EB80032CCC2 /* PositionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE22921FCC5EB80032CCC2 /* PositionState.swift */; };
+		20BE22951FCC618E0032CCC2 /* VehicleStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE22941FCC618E0032CCC2 /* VehicleStatusTests.swift */; };
+		20BE22A21FCCA7E30032CCC2 /* VehicleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE22A11FCCA7E30032CCC2 /* VehicleState.swift */; };
+		20BE22A61FCCB62B0032CCC2 /* BinaryInitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE22A51FCCB62B0032CCC2 /* BinaryInitable.swift */; };
+		20CAEC0C1FD85E6700118DB4 /* Offroad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CAEC0B1FD85E6700118DB4 /* Offroad.swift */; };
+		20D681761FC80BC700CE89A2 /* UInt8+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D681751FC80BC700CE89A2 /* UInt8+Extensions.swift */; };
+		20DD5A512007B31900F2D01C /* SeatsIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DD5A502007B31900F2D01C /* SeatsIterator.swift */; };
+		20DD5A532007B33B00F2D01C /* ItemIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DD5A522007B33B00F2D01C /* ItemIterator.swift */; };
+		20DD5A552007B7B100F2D01C /* WindowsIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DD5A542007B7B000F2D01C /* WindowsIterator.swift */; };
+		20DD5A572007B81800F2D01C /* DoorsIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DD5A562007B81800F2D01C /* DoorsIterator.swift */; };
+		20DD5A592007BA1C00F2D01C /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DD5A582007BA1C00F2D01C /* Tree.swift */; };
+		20DD5A5E2007BD4D00F2D01C /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DD5A5D2007BD4D00F2D01C /* String+Extensions.swift */; };
+		20DD5A602007C16E00F2D01C /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DD5A5F2007C16E00F2D01C /* Misc.swift */; };
+		20E7DAD31FE26F140052DF91 /* BrakeTorqueVectoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E7DAD21FE26F140052DF91 /* BrakeTorqueVectoring.swift */; };
+		20E7DAD91FE2A9F80052DF91 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E7DAD81FE2A9F80052DF91 /* Command.swift */; };
+		20E7DADB1FE2AA0F0052DF91 /* OutboundCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E7DADA1FE2AA0F0052DF91 /* OutboundCommand.swift */; };
+		20E7DADD1FE2AA1E0052DF91 /* InboundCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E7DADC1FE2AA1E0052DF91 /* InboundCommand.swift */; };
+		20E7DADF1FE2AA3C0052DF91 /* BidirectionalCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E7DADE1FE2AA3C0052DF91 /* BidirectionalCommand.swift */; };
+		20E7DAE11FE2AA4E0052DF91 /* FullCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E7DAE01FE2AA4E0052DF91 /* FullCommand.swift */; };
+		20E7DAE31FE2AA640052DF91 /* FullStandardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E7DAE21FE2AA640052DF91 /* FullStandardCommand.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		204C0E751FEBEF66002E319C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20A6D6EA1FC3139B00438F4F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 20A6D6F21FC3139B00438F4F;
+			remoteInfo = AutoAPI;
+		};
+		20A6D6FE1FC3139B00438F4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20A6D6EA1FC3139B00438F4F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 20A6D6F21FC3139B00438F4F;
+			remoteInfo = AutoAPI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		204C0E681FEBEC8A002E319C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		20098FB61FC6F0EF00A2BA98 /* AutoAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoAPI.swift; sourceTree = "<group>"; };
+		20098FBC1FC6FC6E00A2BA98 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		20098FBF1FC705AA00A2BA98 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		20098FC11FC7073900A2BA98 /* UInt8Collection+Binary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt8Collection+Binary.swift"; sourceTree = "<group>"; };
+		200BBB9B1FD6CA3000CCBA30 /* WipersState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WipersState.swift; sourceTree = "<group>"; };
+		200BBB9D1FD6CB3500CCBA30 /* WindscreenDamage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindscreenDamage.swift; sourceTree = "<group>"; };
+		200BBB9F1FD6CC9100CCBA30 /* Zone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
+		200BBBA11FD6D13500CCBA30 /* NeedsReplacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsReplacement.swift; sourceTree = "<group>"; };
+		200BBBA31FD6D28C00CCBA30 /* YearTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearTime.swift; sourceTree = "<group>"; };
+		200BBBA51FD6D83B00CCBA30 /* WindscreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindscreenTests.swift; sourceTree = "<group>"; };
+		200BBBA71FD6DA2100CCBA30 /* WipersLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WipersLevel.swift; sourceTree = "<group>"; };
+		200F70412007C42600A03FBB /* UInt8Collection+Binary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UInt8Collection+Binary.swift"; path = "Sources/AutoAPI CLT/UInt8Collection+Binary.swift"; sourceTree = SOURCE_ROOT; };
+		201628241FD5896100C895B5 /* VehicleLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleLocation.swift; sourceTree = "<group>"; };
+		201628261FD58C1B00C895B5 /* VehicleLocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleLocationTests.swift; sourceTree = "<group>"; };
+		202BDB1F1FDFD4EA005A4063 /* KeyfobPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyfobPosition.swift; sourceTree = "<group>"; };
+		202BDB211FDFD591005A4063 /* KeyfobRelativePosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyfobRelativePosition.swift; sourceTree = "<group>"; };
+		202BDB251FDFD6BB005A4063 /* KeyfobPositionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyfobPositionTests.swift; sourceTree = "<group>"; };
+		202BDB271FDFE2CC005A4063 /* HonkHornFlashLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonkHornFlashLights.swift; sourceTree = "<group>"; };
+		202BDB2B1FDFE3FD005A4063 /* FlasherState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlasherState.swift; sourceTree = "<group>"; };
+		202BDB2D1FDFE58A005A4063 /* HonkHornFlashLightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonkHornFlashLightsTests.swift; sourceTree = "<group>"; };
+		202BDB2F1FDFFEE0005A4063 /* RemoteControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControl.swift; sourceTree = "<group>"; };
+		202BDB311FDFFF3E005A4063 /* ControlMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlMode.swift; sourceTree = "<group>"; };
+		202BDB331FE00008005A4063 /* Int16+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int16+Extensions.swift"; sourceTree = "<group>"; };
+		202BDB351FE000F4005A4063 /* Int8+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int8+Extensions.swift"; sourceTree = "<group>"; };
+		202BDB371FE0021C005A4063 /* RemoteControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlTests.swift; sourceTree = "<group>"; };
+		202BDB391FE00448005A4063 /* ValetMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValetMode.swift; sourceTree = "<group>"; };
+		202BDB3B1FE006E5005A4063 /* ValetModeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValetModeTests.swift; sourceTree = "<group>"; };
+		202BDB3E1FE007AC005A4063 /* HeartRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRate.swift; sourceTree = "<group>"; };
+		202BDB401FE009B2005A4063 /* DriverFatigue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverFatigue.swift; sourceTree = "<group>"; };
+		202BDB421FE00AC2005A4063 /* FatigueLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatigueLevel.swift; sourceTree = "<group>"; };
+		202BDB441FE00BAD005A4063 /* DriverFatigueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverFatigueTests.swift; sourceTree = "<group>"; };
+		202BDB461FE00CD4005A4063 /* HeartRateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateTests.swift; sourceTree = "<group>"; };
+		202BDB481FE011EC005A4063 /* VehicleTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTime.swift; sourceTree = "<group>"; };
+		202BDB4A1FE0135E005A4063 /* NaviDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviDestination.swift; sourceTree = "<group>"; };
+		202BDB4C1FE0141E005A4063 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		202BDB4E1FE016B3005A4063 /* NaviDestinationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviDestinationTests.swift; sourceTree = "<group>"; };
+		202BDB501FE018A9005A4063 /* VehicleTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTimeTests.swift; sourceTree = "<group>"; };
+		202BDB521FE02DEE005A4063 /* ParkingTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTicket.swift; sourceTree = "<group>"; };
+		202BDB541FE02EAF005A4063 /* ParkingTicketState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTicketState.swift; sourceTree = "<group>"; };
+		202BDB561FE033E2005A4063 /* ParkingTicketTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTicketTests.swift; sourceTree = "<group>"; };
+		202BDB581FE039C1005A4063 /* Fueling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fueling.swift; sourceTree = "<group>"; };
+		202BDB5A1FE03A30005A4063 /* FuelingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelingTests.swift; sourceTree = "<group>"; };
+		2031AA991FEA4529006F6C78 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
+		2031AA9D1FEA8BBB006F6C78 /* PropertiesInitable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesInitable.swift; sourceTree = "<group>"; };
+		2031AA9F1FEA9358006F6C78 /* Capability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capability.swift; sourceTree = "<group>"; };
+		2041EA1E2003C46D00B4BF80 /* RawRepresentable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RawRepresentable+Extensions.swift"; sourceTree = "<group>"; };
+		204C0E621FEBB34D002E319C /* GearMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearMode.swift; sourceTree = "<group>"; };
+		204C0E641FEBDE77002E319C /* LinuxMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinuxMain.swift; sourceTree = "<group>"; };
+		204C0E6A1FEBEC8A002E319C /* AutoAPI CLT */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "AutoAPI CLT"; sourceTree = BUILT_PRODUCTS_DIR; };
+		204C0E6C1FEBEC8A002E319C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		204D0B261FD052A900C6118A /* Lights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lights.swift; sourceTree = "<group>"; };
+		204D0B281FD0531000C6118A /* LightState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightState.swift; sourceTree = "<group>"; };
+		204D0B2C1FD14A5100C6118A /* Windows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Windows.swift; sourceTree = "<group>"; };
+		204D0B2E1FD14B7C00C6118A /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
+		204D0B351FD1510300C6118A /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		204D0B391FD1560900C6118A /* PropertyConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyConvertable.swift; sourceTree = "<group>"; };
+		204D0B3B1FD18FD500C6118A /* WindowsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsTests.swift; sourceTree = "<group>"; };
+		204D0B3D1FD19A2200C6118A /* RooftopControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RooftopControl.swift; sourceTree = "<group>"; };
+		204E2ADF1FD01CF400DE2DD5 /* Charging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charging.swift; sourceTree = "<group>"; };
+		204E2AE31FD01DDC00DE2DD5 /* ChargingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargingState.swift; sourceTree = "<group>"; };
+		204E2AE51FD0206000DE2DD5 /* ChargePortState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargePortState.swift; sourceTree = "<group>"; };
+		204E2AE71FD022BA00DE2DD5 /* StartStopCharging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStopCharging.swift; sourceTree = "<group>"; };
+		204E2AE91FD022EF00DE2DD5 /* ChargingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargingTests.swift; sourceTree = "<group>"; };
+		204E2AEB1FD02F6B00DE2DD5 /* Climate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Climate.swift; sourceTree = "<group>"; };
+		204E2AED1FD030CC00DE2DD5 /* ActiveState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveState.swift; sourceTree = "<group>"; };
+		204E2AF11FD0353500DE2DD5 /* DayTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTime.swift; sourceTree = "<group>"; };
+		204E2AF31FD0372700DE2DD5 /* WeekdaysTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdaysTimes.swift; sourceTree = "<group>"; };
+		204E2AF61FD03A9700DE2DD5 /* ActivatedDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivatedDays.swift; sourceTree = "<group>"; };
+		204E2AF81FD03D3700DE2DD5 /* ClimateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateTests.swift; sourceTree = "<group>"; };
+		204E2AFC1FD04A8100DE2DD5 /* ClimateProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateProfile.swift; sourceTree = "<group>"; };
+		204E2AFE1FD04BF500DE2DD5 /* Float+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extensions.swift"; sourceTree = "<group>"; };
+		2052F8FC1FD942E700BE53E3 /* OffroadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffroadTests.swift; sourceTree = "<group>"; };
+		2052F8FE1FD9451900BE53E3 /* Race.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Race.swift; sourceTree = "<group>"; };
+		2052F9001FD9459400BE53E3 /* AccelerationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerationType.swift; sourceTree = "<group>"; };
+		2052F9021FD9497500BE53E3 /* RaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceTests.swift; sourceTree = "<group>"; };
+		2052F9041FD9543500BE53E3 /* Acceleration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Acceleration.swift; sourceTree = "<group>"; };
+		2052F9061FD955FC00BE53E3 /* Seats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seats.swift; sourceTree = "<group>"; };
+		2052F9081FD9565800BE53E3 /* SeatPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatPosition.swift; sourceTree = "<group>"; };
+		2052F9101FD9572B00BE53E3 /* Seat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seat.swift; sourceTree = "<group>"; };
+		2052F9151FD9593200BE53E3 /* SeatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatsTests.swift; sourceTree = "<group>"; };
+		2052F9171FD974EE00BE53E3 /* ParkingBrake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingBrake.swift; sourceTree = "<group>"; };
+		2052F9191FD977FB00BE53E3 /* ParkingBrakeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingBrakeTests.swift; sourceTree = "<group>"; };
+		2052F91C1FD9795100BE53E3 /* LightConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightConditions.swift; sourceTree = "<group>"; };
+		2052F91E1FD9899C00BE53E3 /* LightConditionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightConditionsTests.swift; sourceTree = "<group>"; };
+		2052F9201FD98D9C00BE53E3 /* WeatherConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherConditions.swift; sourceTree = "<group>"; };
+		2052F9221FD98E0900BE53E3 /* WeatherConditionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherConditionsTests.swift; sourceTree = "<group>"; };
+		205427B51FCEBBAC0010DED2 /* Door.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Door.swift; sourceTree = "<group>"; };
+		205427BF1FCEDBFC0010DED2 /* Maintenance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maintenance.swift; sourceTree = "<group>"; };
+		205427CA1FCEF9E20010DED2 /* VehicleStateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleStateType.swift; sourceTree = "<group>"; };
+		205427CC1FCF01650010DED2 /* StateGettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateGettable.swift; sourceTree = "<group>"; };
+		205427CE1FCF02E30010DED2 /* StateGettableDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateGettableDefault.swift; sourceTree = "<group>"; };
+		205427D01FCF07CA0010DED2 /* MaintenanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceTests.swift; sourceTree = "<group>"; };
+		205427D41FCF0A850010DED2 /* WakeUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUp.swift; sourceTree = "<group>"; };
+		205427D81FCF0E9E0010DED2 /* WakeUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpTests.swift; sourceTree = "<group>"; };
+		2058941A1FCD577700C30D0F /* FailureMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureMessage.swift; sourceTree = "<group>"; };
+		2058941C1FCD5AD000C30D0F /* FailureMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureMessageTests.swift; sourceTree = "<group>"; };
+		2058941E1FCD5F6900C30D0F /* FailureReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureReason.swift; sourceTree = "<group>"; };
+		205894201FCD627C00C30D0F /* FirmwareVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirmwareVersion.swift; sourceTree = "<group>"; };
+		205894221FCD64A600C30D0F /* CarSDKVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSDKVersion.swift; sourceTree = "<group>"; };
+		205894241FCD652800C30D0F /* FirmwareVersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirmwareVersionTests.swift; sourceTree = "<group>"; };
+		205894261FCD684A00C30D0F /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
+		205894281FCD68AB00C30D0F /* IgnitionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IgnitionState.swift; sourceTree = "<group>"; };
+		2058942C1FCD758300C30D0F /* EngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineTests.swift; sourceTree = "<group>"; };
+		2058942E1FCD86C800C30D0F /* Diagnostics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diagnostics.swift; sourceTree = "<group>"; };
+		205894301FCD922400C30D0F /* UInt32+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt32+Extensions.swift"; sourceTree = "<group>"; };
+		205894321FCD95D300C30D0F /* WasherFluidLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherFluidLevel.swift; sourceTree = "<group>"; };
+		205894341FCD968200C30D0F /* Tire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tire.swift; sourceTree = "<group>"; };
+		205894361FCD96AC00C30D0F /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		2058943D1FCDA00800C30D0F /* DiagnosticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsTests.swift; sourceTree = "<group>"; };
+		2071DF0D1FC80B2A0024C122 /* UInt16+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt16+Extensions.swift"; sourceTree = "<group>"; };
+		20766CFD1FD1A23C006D87CB /* RooftopControlTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RooftopControlTests.swift; sourceTree = "<group>"; };
+		20766CFF1FD1A2B2006D87CB /* Windscreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Windscreen.swift; sourceTree = "<group>"; };
+		20766D041FD1A4DC006D87CB /* TheftAlarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheftAlarm.swift; sourceTree = "<group>"; };
+		20766D061FD1A621006D87CB /* TheftAlarmState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheftAlarmState.swift; sourceTree = "<group>"; };
+		20766D081FD1A6F4006D87CB /* TheftAlarmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheftAlarmTests.swift; sourceTree = "<group>"; };
+		2089247B1FE15B8E001C3923 /* ChassisSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChassisSettings.swift; sourceTree = "<group>"; };
+		2089247D1FE15C03001C3923 /* DrivingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingMode.swift; sourceTree = "<group>"; };
+		2089247F1FE15D19001C3923 /* Axle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axle.swift; sourceTree = "<group>"; };
+		208924821FE15D51001C3923 /* SpringRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringRate.swift; sourceTree = "<group>"; };
+		208924881FE15ED3001C3923 /* ChassisPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChassisPosition.swift; sourceTree = "<group>"; };
+		2089248A1FE163D3001C3923 /* StartStopChrono.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStopChrono.swift; sourceTree = "<group>"; };
+		2089248E1FE1648F001C3923 /* ChassisSettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChassisSettingsTests.swift; sourceTree = "<group>"; };
+		208924911FE16E36001C3923 /* Browser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Browser.swift; sourceTree = "<group>"; };
+		208924931FE16F60001C3923 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
+		208924951FE16FCE001C3923 /* BrowserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTests.swift; sourceTree = "<group>"; };
+		208924971FE17149001C3923 /* Graphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphics.swift; sourceTree = "<group>"; };
+		208924991FE1720D001C3923 /* GraphicsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicsTests.swift; sourceTree = "<group>"; };
+		2089249B1FE17545001C3923 /* Messaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messaging.swift; sourceTree = "<group>"; };
+		208924A11FE17B72001C3923 /* MessagingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingTests.swift; sourceTree = "<group>"; };
+		208924A31FE184AD001C3923 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		208924A51FE1897A001C3923 /* ActionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionItem.swift; sourceTree = "<group>"; };
+		208924A91FE18F6B001C3923 /* NotificationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTests.swift; sourceTree = "<group>"; };
+		208924AB1FE19758001C3923 /* TextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
+		208924AD1FE19F4F001C3923 /* TextInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputTests.swift; sourceTree = "<group>"; };
+		208924AF1FE1A3F1001C3923 /* VideoHandover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoHandover.swift; sourceTree = "<group>"; };
+		208924B11FE1A508001C3923 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		208924B31FE1A5DD001C3923 /* VideoHandoverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoHandoverTests.swift; sourceTree = "<group>"; };
+		209637781FD7F13000F97E87 /* Colour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
+		2096377A1FD7FC7600F97E87 /* LightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsTests.swift; sourceTree = "<group>"; };
+		209C3FC31FF51FAF00EEF1BB /* MessageTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTypes.swift; sourceTree = "<group>"; };
+		20A449921FD1B63B003F4920 /* PropertiesCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesCapable.swift; sourceTree = "<group>"; };
+		20A6D6F31FC3139B00438F4F /* AutoAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AutoAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		20A6D6F71FC3139B00438F4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20A6D6FC1FC3139B00438F4F /* AutoAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutoAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		20A6D7011FC3139B00438F4F /* DoorLocksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorLocksTests.swift; sourceTree = "<group>"; };
+		20A6D7031FC3139B00438F4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20B06EF91FC850DC00463FEA /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
+		20B06EFB1FC850F700463FEA /* PropertiesIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesIterator.swift; sourceTree = "<group>"; };
+		20B06F021FC8632F00463FEA /* DoorLocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorLocks.swift; sourceTree = "<group>"; };
+		20B06F071FC879A700463FEA /* TrunkAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrunkAccess.swift; sourceTree = "<group>"; };
+		20B8A8C51FF3879E000F9C40 /* UniversalBuildScript.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = UniversalBuildScript.sh; sourceTree = "<group>"; };
+		20B8A8C71FF387B0000F9C40 /* AppStoreCompatible.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = AppStoreCompatible.sh; sourceTree = "<group>"; };
+		20BE22731FCBE64E0032CCC2 /* TrunkAccessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrunkAccessTests.swift; sourceTree = "<group>"; };
+		20BE22771FCBE76A0032CCC2 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
+		20BE227E1FCBF6990032CCC2 /* Capabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capabilities.swift; sourceTree = "<group>"; };
+		20BE22801FCBFA970032CCC2 /* CapabilitiesIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapabilitiesIterator.swift; sourceTree = "<group>"; };
+		20BE22821FCC4F420032CCC2 /* CapabilitiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapabilitiesTests.swift; sourceTree = "<group>"; };
+		20BE22841FCC52450032CCC2 /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
+		20BE22861FCC52F40032CCC2 /* Sequence+FlatMapFirst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+FlatMapFirst.swift"; sourceTree = "<group>"; };
+		20BE22891FCC57570032CCC2 /* VehicleStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleStatus.swift; sourceTree = "<group>"; };
+		20BE228D1FCC5E730032CCC2 /* PowerTrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerTrain.swift; sourceTree = "<group>"; };
+		20BE22901FCC5EA80032CCC2 /* LockState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockState.swift; sourceTree = "<group>"; };
+		20BE22921FCC5EB80032CCC2 /* PositionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionState.swift; sourceTree = "<group>"; };
+		20BE22941FCC618E0032CCC2 /* VehicleStatusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleStatusTests.swift; sourceTree = "<group>"; };
+		20BE22A11FCCA7E30032CCC2 /* VehicleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleState.swift; sourceTree = "<group>"; };
+		20BE22A51FCCB62B0032CCC2 /* BinaryInitable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryInitable.swift; sourceTree = "<group>"; };
+		20CAEC0B1FD85E6700118DB4 /* Offroad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offroad.swift; sourceTree = "<group>"; };
+		20D681751FC80BC700CE89A2 /* UInt8+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt8+Extensions.swift"; sourceTree = "<group>"; };
+		20DD5A502007B31900F2D01C /* SeatsIterator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeatsIterator.swift; sourceTree = "<group>"; };
+		20DD5A522007B33B00F2D01C /* ItemIterator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemIterator.swift; sourceTree = "<group>"; };
+		20DD5A542007B7B000F2D01C /* WindowsIterator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowsIterator.swift; sourceTree = "<group>"; };
+		20DD5A562007B81800F2D01C /* DoorsIterator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorsIterator.swift; sourceTree = "<group>"; };
+		20DD5A582007BA1C00F2D01C /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
+		20DD5A5D2007BD4D00F2D01C /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		20DD5A5F2007C16E00F2D01C /* Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
+		20E7DAD21FE26F140052DF91 /* BrakeTorqueVectoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrakeTorqueVectoring.swift; sourceTree = "<group>"; };
+		20E7DAD81FE2A9F80052DF91 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		20E7DADA1FE2AA0F0052DF91 /* OutboundCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutboundCommand.swift; sourceTree = "<group>"; };
+		20E7DADC1FE2AA1E0052DF91 /* InboundCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboundCommand.swift; sourceTree = "<group>"; };
+		20E7DADE1FE2AA3C0052DF91 /* BidirectionalCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidirectionalCommand.swift; sourceTree = "<group>"; };
+		20E7DAE01FE2AA4E0052DF91 /* FullCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullCommand.swift; sourceTree = "<group>"; };
+		20E7DAE21FE2AA640052DF91 /* FullStandardCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStandardCommand.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		204C0E671FEBEC8A002E319C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				204C0E771FEBEF8A002E319C /* AutoAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20A6D6EF1FC3139B00438F4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20A6D6F91FC3139B00438F4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20A6D6FD1FC3139B00438F4F /* AutoAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		20098FB11FC6ED9000A2BA98 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				20B8A8C71FF387B0000F9C40 /* AppStoreCompatible.sh */,
+				20A6D6F71FC3139B00438F4F /* Info.plist */,
+				20B8A8C51FF3879E000F9C40 /* UniversalBuildScript.sh */,
+			);
+			name = Resources;
+			path = AutoAPI/Resources;
+			sourceTree = "<group>";
+		};
+		20098FB51FC6F0B700A2BA98 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				20BE227D1FCBF6800032CCC2 /* Capability */,
+				20B06F061FC864AD00463FEA /* Commands */,
+				20BE228F1FCC5E7E0032CCC2 /* Enums */,
+				2071DF0F1FC80B3A0024C122 /* Extensions */,
+				205427BE1FCEC4D00010DED2 /* Items */,
+				20B06EFD1FC852A400463FEA /* Property */,
+				20BE22961FCCA56D0032CCC2 /* VehicleStatus */,
+				20098FB61FC6F0EF00A2BA98 /* AutoAPI.swift */,
+				20BE22A51FCCB62B0032CCC2 /* BinaryInitable.swift */,
+				205894221FCD64A600C30D0F /* CarSDKVersion.swift */,
+				20BE22771FCBE76A0032CCC2 /* Identifiable.swift */,
+				209C3FC31FF51FAF00EEF1BB /* MessageTypes.swift */,
+				205427CC1FCF01650010DED2 /* StateGettable.swift */,
+				205427CE1FCF02E30010DED2 /* StateGettableDefault.swift */,
+			);
+			name = Sources;
+			path = AutoAPI;
+			sourceTree = "<group>";
+		};
+		20098FB81FC6F20F00A2BA98 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				20A6D7031FC3139B00438F4F /* Info.plist */,
+			);
+			name = Resources;
+			path = AutoAPITests/Resources;
+			sourceTree = "<group>";
+		};
+		20098FB91FC6F25200A2BA98 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				20BE22881FCC53790032CCC2 /* Extensions */,
+				208924951FE16FCE001C3923 /* BrowserTests.swift */,
+				20BE22821FCC4F420032CCC2 /* CapabilitiesTests.swift */,
+				204E2AE91FD022EF00DE2DD5 /* ChargingTests.swift */,
+				2089248E1FE1648F001C3923 /* ChassisSettingsTests.swift */,
+				204E2AF81FD03D3700DE2DD5 /* ClimateTests.swift */,
+				2058943D1FCDA00800C30D0F /* DiagnosticsTests.swift */,
+				20A6D7011FC3139B00438F4F /* DoorLocksTests.swift */,
+				202BDB441FE00BAD005A4063 /* DriverFatigueTests.swift */,
+				2058942C1FCD758300C30D0F /* EngineTests.swift */,
+				2058941C1FCD5AD000C30D0F /* FailureMessageTests.swift */,
+				205894241FCD652800C30D0F /* FirmwareVersionTests.swift */,
+				202BDB5A1FE03A30005A4063 /* FuelingTests.swift */,
+				208924991FE1720D001C3923 /* GraphicsTests.swift */,
+				202BDB461FE00CD4005A4063 /* HeartRateTests.swift */,
+				202BDB2D1FDFE58A005A4063 /* HonkHornFlashLightsTests.swift */,
+				202BDB251FDFD6BB005A4063 /* KeyfobPositionTests.swift */,
+				2052F91E1FD9899C00BE53E3 /* LightConditionsTests.swift */,
+				2096377A1FD7FC7600F97E87 /* LightsTests.swift */,
+				205427D01FCF07CA0010DED2 /* MaintenanceTests.swift */,
+				208924A11FE17B72001C3923 /* MessagingTests.swift */,
+				202BDB4E1FE016B3005A4063 /* NaviDestinationTests.swift */,
+				208924A91FE18F6B001C3923 /* NotificationsTests.swift */,
+				2052F8FC1FD942E700BE53E3 /* OffroadTests.swift */,
+				2052F9191FD977FB00BE53E3 /* ParkingBrakeTests.swift */,
+				202BDB561FE033E2005A4063 /* ParkingTicketTests.swift */,
+				2052F9021FD9497500BE53E3 /* RaceTests.swift */,
+				202BDB371FE0021C005A4063 /* RemoteControlTests.swift */,
+				20766CFD1FD1A23C006D87CB /* RooftopControlTests.swift */,
+				2052F9151FD9593200BE53E3 /* SeatsTests.swift */,
+				208924AD1FE19F4F001C3923 /* TextInputTests.swift */,
+				20BE22731FCBE64E0032CCC2 /* TrunkAccessTests.swift */,
+				20766D081FD1A6F4006D87CB /* TheftAlarmTests.swift */,
+				202BDB3B1FE006E5005A4063 /* ValetModeTests.swift */,
+				201628261FD58C1B00C895B5 /* VehicleLocationTests.swift */,
+				20BE22941FCC618E0032CCC2 /* VehicleStatusTests.swift */,
+				202BDB501FE018A9005A4063 /* VehicleTimeTests.swift */,
+				208924B31FE1A5DD001C3923 /* VideoHandoverTests.swift */,
+				205427D81FCF0E9E0010DED2 /* WakeUpTests.swift */,
+				2052F9221FD98E0900BE53E3 /* WeatherConditionsTests.swift */,
+				204D0B3B1FD18FD500C6118A /* WindowsTests.swift */,
+				200BBBA51FD6D83B00CCBA30 /* WindscreenTests.swift */,
+			);
+			name = Sources;
+			path = AutoAPITests;
+			sourceTree = "<group>";
+		};
+		200F70432007C97700A03FBB /* Iterators */ = {
+			isa = PBXGroup;
+			children = (
+				20DD5A562007B81800F2D01C /* DoorsIterator.swift */,
+				20DD5A522007B33B00F2D01C /* ItemIterator.swift */,
+				20DD5A502007B31900F2D01C /* SeatsIterator.swift */,
+				20DD5A542007B7B000F2D01C /* WindowsIterator.swift */,
+			);
+			path = Iterators;
+			sourceTree = "<group>";
+		};
+		201628231FD5894900C895B5 /* PointsOfInterest */ = {
+			isa = PBXGroup;
+			children = (
+				202BDB4A1FE0135E005A4063 /* NaviDestination.swift */,
+				201628241FD5896100C895B5 /* VehicleLocation.swift */,
+				202BDB481FE011EC005A4063 /* VehicleTime.swift */,
+			);
+			path = PointsOfInterest;
+			sourceTree = "<group>";
+		};
+		202BDB3D1FE0078B005A4063 /* Health */ = {
+			isa = PBXGroup;
+			children = (
+				202BDB401FE009B2005A4063 /* DriverFatigue.swift */,
+				202BDB3E1FE007AC005A4063 /* HeartRate.swift */,
+			);
+			path = Health;
+			sourceTree = "<group>";
+		};
+		204C0E6B1FEBEC8A002E319C /* AutoAPI CLT */ = {
+			isa = PBXGroup;
+			children = (
+				204C0E6C1FEBEC8A002E319C /* main.swift */,
+				20DD5A5F2007C16E00F2D01C /* Misc.swift */,
+				20DD5A5D2007BD4D00F2D01C /* String+Extensions.swift */,
+				20DD5A582007BA1C00F2D01C /* Tree.swift */,
+				200F70412007C42600A03FBB /* UInt8Collection+Binary.swift */,
+			);
+			name = "AutoAPI CLT";
+			path = "Sources/AutoAPI CLT";
+			sourceTree = "<group>";
+		};
+		204C0E711FEBEEC2002E319C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		204E2AE21FD01D0400DE2DD5 /* Chassis */ = {
+			isa = PBXGroup;
+			children = (
+				204E2ADF1FD01CF400DE2DD5 /* Charging.swift */,
+				2089247B1FE15B8E001C3923 /* ChassisSettings.swift */,
+				204E2AEB1FD02F6B00DE2DD5 /* Climate.swift */,
+				202BDB271FDFE2CC005A4063 /* HonkHornFlashLights.swift */,
+				202BDB1F1FDFD4EA005A4063 /* KeyfobPosition.swift */,
+				204D0B261FD052A900C6118A /* Lights.swift */,
+				204D0B3D1FD19A2200C6118A /* RooftopControl.swift */,
+				2052F9061FD955FC00BE53E3 /* Seats.swift */,
+				204D0B2C1FD14A5100C6118A /* Windows.swift */,
+				20766CFF1FD1A2B2006D87CB /* Windscreen.swift */,
+			);
+			path = Chassis;
+			sourceTree = "<group>";
+		};
+		204E2AF51FD0372E00DE2DD5 /* Climate */ = {
+			isa = PBXGroup;
+			children = (
+				204E2AF61FD03A9700DE2DD5 /* ActivatedDays.swift */,
+				204E2AFC1FD04A8100DE2DD5 /* ClimateProfile.swift */,
+				204E2AF11FD0353500DE2DD5 /* DayTime.swift */,
+				204E2AF31FD0372700DE2DD5 /* WeekdaysTimes.swift */,
+			);
+			path = Climate;
+			sourceTree = "<group>";
+		};
+		2052F91B1FD9793200BE53E3 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				2052F91C1FD9795100BE53E3 /* LightConditions.swift */,
+				2052F9201FD98D9C00BE53E3 /* WeatherConditions.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
+		205427BE1FCEC4D00010DED2 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				208924811FE15D44001C3923 /* ChassisSettings */,
+				204E2AF51FD0372E00DE2DD5 /* Climate */,
+				200F70432007C97700A03FBB /* Iterators */,
+				2052F9041FD9543500BE53E3 /* Acceleration.swift */,
+				208924A51FE1897A001C3923 /* ActionItem.swift */,
+				20E7DAD21FE26F140052DF91 /* BrakeTorqueVectoring.swift */,
+				209637781FD7F13000F97E87 /* Colour.swift */,
+				2031AA991FEA4529006F6C78 /* Coordinates.swift */,
+				205427B51FCEBBAC0010DED2 /* Door.swift */,
+				204D0B351FD1510300C6118A /* Item.swift */,
+				2052F9101FD9572B00BE53E3 /* Seat.swift */,
+				205894341FCD968200C30D0F /* Tire.swift */,
+				204D0B2E1FD14B7C00C6118A /* Window.swift */,
+				200BBBA31FD6D28C00CCBA30 /* YearTime.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		205427D21FCF0A150010DED2 /* Diagnostics */ = {
+			isa = PBXGroup;
+			children = (
+				2058942E1FCD86C800C30D0F /* Diagnostics.swift */,
+				205427BF1FCEDBFC0010DED2 /* Maintenance.swift */,
+				20CAEC0B1FD85E6700118DB4 /* Offroad.swift */,
+				2052F8FE1FD9451900BE53E3 /* Race.swift */,
+			);
+			path = Diagnostics;
+			sourceTree = "<group>";
+		};
+		205427D31FCF0A260010DED2 /* DigitalKey */ = {
+			isa = PBXGroup;
+			children = (
+				20B06F021FC8632F00463FEA /* DoorLocks.swift */,
+				205894261FCD684A00C30D0F /* Engine.swift */,
+				20B06F071FC879A700463FEA /* TrunkAccess.swift */,
+				205427D41FCF0A850010DED2 /* WakeUp.swift */,
+			);
+			path = DigitalKey;
+			sourceTree = "<group>";
+		};
+		2071DF0F1FC80B3A0024C122 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				204E2AFE1FD04BF500DE2DD5 /* Float+Extensions.swift */,
+				202BDB351FE000F4005A4063 /* Int8+Extensions.swift */,
+				202BDB331FE00008005A4063 /* Int16+Extensions.swift */,
+				2041EA1E2003C46D00B4BF80 /* RawRepresentable+Extensions.swift */,
+				20BE22841FCC52450032CCC2 /* Sequence+Extensions.swift */,
+				202BDB4C1FE0141E005A4063 /* String+Extensions.swift */,
+				20098FC11FC7073900A2BA98 /* UInt8Collection+Binary.swift */,
+				20D681751FC80BC700CE89A2 /* UInt8+Extensions.swift */,
+				2071DF0D1FC80B2A0024C122 /* UInt16+Extensions.swift */,
+				205894301FCD922400C30D0F /* UInt32+Extensions.swift */,
+				208924931FE16F60001C3923 /* URL+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		20766D031FD1A4C7006D87CB /* Parking */ = {
+			isa = PBXGroup;
+			children = (
+				202BDB581FE039C1005A4063 /* Fueling.swift */,
+				2052F9171FD974EE00BE53E3 /* ParkingBrake.swift */,
+				202BDB521FE02DEE005A4063 /* ParkingTicket.swift */,
+				202BDB2F1FDFFEE0005A4063 /* RemoteControl.swift */,
+				20766D041FD1A4DC006D87CB /* TheftAlarm.swift */,
+				202BDB391FE00448005A4063 /* ValetMode.swift */,
+			);
+			path = Parking;
+			sourceTree = "<group>";
+		};
+		208924811FE15D44001C3923 /* ChassisSettings */ = {
+			isa = PBXGroup;
+			children = (
+				208924881FE15ED3001C3923 /* ChassisPosition.swift */,
+				208924821FE15D51001C3923 /* SpringRate.swift */,
+			);
+			path = ChassisSettings;
+			sourceTree = "<group>";
+		};
+		208924901FE16E1E001C3923 /* Headunit */ = {
+			isa = PBXGroup;
+			children = (
+				208924911FE16E36001C3923 /* Browser.swift */,
+				208924971FE17149001C3923 /* Graphics.swift */,
+				2089249B1FE17545001C3923 /* Messaging.swift */,
+				208924A31FE184AD001C3923 /* Notifications.swift */,
+				208924AB1FE19758001C3923 /* TextInput.swift */,
+				208924AF1FE1A3F1001C3923 /* VideoHandover.swift */,
+			);
+			path = Headunit;
+			sourceTree = "<group>";
+		};
+		20A6D6E91FC3139B00438F4F = {
+			isa = PBXGroup;
+			children = (
+				20098FBC1FC6FC6E00A2BA98 /* Package.swift */,
+				20A6D6F51FC3139B00438F4F /* AutoAPI */,
+				204C0E6B1FEBEC8A002E319C /* AutoAPI CLT */,
+				20A6D7001FC3139B00438F4F /* AutoAPITests */,
+				20A6D6F41FC3139B00438F4F /* Products */,
+				204C0E711FEBEEC2002E319C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		20A6D6F41FC3139B00438F4F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				20A6D6F31FC3139B00438F4F /* AutoAPI.framework */,
+				20A6D6FC1FC3139B00438F4F /* AutoAPITests.xctest */,
+				204C0E6A1FEBEC8A002E319C /* AutoAPI CLT */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		20A6D6F51FC3139B00438F4F /* AutoAPI */ = {
+			isa = PBXGroup;
+			children = (
+				20098FB51FC6F0B700A2BA98 /* Sources */,
+				20098FB11FC6ED9000A2BA98 /* Resources */,
+			);
+			name = AutoAPI;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		20A6D7001FC3139B00438F4F /* AutoAPITests */ = {
+			isa = PBXGroup;
+			children = (
+				204C0E641FEBDE77002E319C /* LinuxMain.swift */,
+				20098FB91FC6F25200A2BA98 /* Sources */,
+				20098FB81FC6F20F00A2BA98 /* Resources */,
+			);
+			name = AutoAPITests;
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		20B06EFD1FC852A400463FEA /* Property */ = {
+			isa = PBXGroup;
+			children = (
+				20B06EF91FC850DC00463FEA /* Properties.swift */,
+				20A449921FD1B63B003F4920 /* PropertiesCapable.swift */,
+				2031AA9D1FEA8BBB006F6C78 /* PropertiesInitable.swift */,
+				20B06EFB1FC850F700463FEA /* PropertiesIterator.swift */,
+				20098FBF1FC705AA00A2BA98 /* Property.swift */,
+				204D0B391FD1560900C6118A /* PropertyConvertable.swift */,
+			);
+			path = Property;
+			sourceTree = "<group>";
+		};
+		20B06F061FC864AD00463FEA /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				204E2AE21FD01D0400DE2DD5 /* Chassis */,
+				205427D21FCF0A150010DED2 /* Diagnostics */,
+				205427D31FCF0A260010DED2 /* DigitalKey */,
+				2052F91B1FD9793200BE53E3 /* Environment */,
+				208924901FE16E1E001C3923 /* Headunit */,
+				202BDB3D1FE0078B005A4063 /* Health */,
+				20766D031FD1A4C7006D87CB /* Parking */,
+				201628231FD5894900C895B5 /* PointsOfInterest */,
+				20BE22991FCCA72B0032CCC2 /* Protocols */,
+				2058941A1FCD577700C30D0F /* FailureMessage.swift */,
+				205894201FCD627C00C30D0F /* FirmwareVersion.swift */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		20BE227D1FCBF6800032CCC2 /* Capability */ = {
+			isa = PBXGroup;
+			children = (
+				20BE227E1FCBF6990032CCC2 /* Capabilities.swift */,
+				20BE22801FCBFA970032CCC2 /* CapabilitiesIterator.swift */,
+				2031AA9F1FEA9358006F6C78 /* Capability.swift */,
+			);
+			path = Capability;
+			sourceTree = "<group>";
+		};
+		20BE22881FCC53790032CCC2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				20BE22861FCC52F40032CCC2 /* Sequence+FlatMapFirst.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		20BE228F1FCC5E7E0032CCC2 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				2052F9001FD9459400BE53E3 /* AccelerationType.swift */,
+				204E2AED1FD030CC00DE2DD5 /* ActiveState.swift */,
+				2089247F1FE15D19001C3923 /* Axle.swift */,
+				204E2AE31FD01DDC00DE2DD5 /* ChargingState.swift */,
+				204E2AE51FD0206000DE2DD5 /* ChargePortState.swift */,
+				202BDB311FDFFF3E005A4063 /* ControlMode.swift */,
+				2089247D1FE15C03001C3923 /* DrivingMode.swift */,
+				2058941E1FCD5F6900C30D0F /* FailureReason.swift */,
+				202BDB421FE00AC2005A4063 /* FatigueLevel.swift */,
+				202BDB2B1FDFE3FD005A4063 /* FlasherState.swift */,
+				204C0E621FEBB34D002E319C /* GearMode.swift */,
+				205894281FCD68AB00C30D0F /* IgnitionState.swift */,
+				204D0B281FD0531000C6118A /* LightState.swift */,
+				20BE22901FCC5EA80032CCC2 /* LockState.swift */,
+				200BBBA11FD6D13500CCBA30 /* NeedsReplacement.swift */,
+				202BDB541FE02EAF005A4063 /* ParkingTicketState.swift */,
+				205894361FCD96AC00C30D0F /* Position.swift */,
+				20BE22921FCC5EB80032CCC2 /* PositionState.swift */,
+				20BE228D1FCC5E730032CCC2 /* PowerTrain.swift */,
+				208924B11FE1A508001C3923 /* Screen.swift */,
+				2052F9081FD9565800BE53E3 /* SeatPosition.swift */,
+				204E2AE71FD022BA00DE2DD5 /* StartStopCharging.swift */,
+				2089248A1FE163D3001C3923 /* StartStopChrono.swift */,
+				20766D061FD1A621006D87CB /* TheftAlarmState.swift */,
+				200BBB9F1FD6CC9100CCBA30 /* Zone.swift */,
+				205894321FCD95D300C30D0F /* WasherFluidLevel.swift */,
+				200BBB9D1FD6CB3500CCBA30 /* WindscreenDamage.swift */,
+				200BBBA71FD6DA2100CCBA30 /* WipersLevel.swift */,
+				200BBB9B1FD6CA3000CCBA30 /* WipersState.swift */,
+				202BDB211FDFD591005A4063 /* KeyfobRelativePosition.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		20BE22961FCCA56D0032CCC2 /* VehicleStatus */ = {
+			isa = PBXGroup;
+			children = (
+				20BE22A11FCCA7E30032CCC2 /* VehicleState.swift */,
+				205427CA1FCEF9E20010DED2 /* VehicleStateType.swift */,
+				20BE22891FCC57570032CCC2 /* VehicleStatus.swift */,
+			);
+			path = VehicleStatus;
+			sourceTree = "<group>";
+		};
+		20BE22991FCCA72B0032CCC2 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				20E7DADE1FE2AA3C0052DF91 /* BidirectionalCommand.swift */,
+				20E7DAD81FE2A9F80052DF91 /* Command.swift */,
+				20E7DAE01FE2AA4E0052DF91 /* FullCommand.swift */,
+				20E7DAE21FE2AA640052DF91 /* FullStandardCommand.swift */,
+				20E7DADC1FE2AA1E0052DF91 /* InboundCommand.swift */,
+				20E7DADA1FE2AA0F0052DF91 /* OutboundCommand.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		20A6D6F01FC3139B00438F4F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		204C0E691FEBEC8A002E319C /* AutoAPI CLT */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 204C0E6E1FEBEC8A002E319C /* Build configuration list for PBXNativeTarget "AutoAPI CLT" */;
+			buildPhases = (
+				204C0E661FEBEC8A002E319C /* Sources */,
+				204C0E671FEBEC8A002E319C /* Frameworks */,
+				204C0E681FEBEC8A002E319C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				204C0E761FEBEF66002E319C /* PBXTargetDependency */,
+			);
+			name = "AutoAPI CLT";
+			productName = "AutoAPI CLT";
+			productReference = 204C0E6A1FEBEC8A002E319C /* AutoAPI CLT */;
+			productType = "com.apple.product-type.tool";
+		};
+		20A6D6F21FC3139B00438F4F /* AutoAPI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20A6D7071FC3139B00438F4F /* Build configuration list for PBXNativeTarget "AutoAPI" */;
+			buildPhases = (
+				20A6D6EE1FC3139B00438F4F /* Sources */,
+				20A6D6EF1FC3139B00438F4F /* Frameworks */,
+				20A6D6F01FC3139B00438F4F /* Headers */,
+				20A6D6F11FC3139B00438F4F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AutoAPI;
+			productName = AutoAPI;
+			productReference = 20A6D6F31FC3139B00438F4F /* AutoAPI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		20A6D6FB1FC3139B00438F4F /* AutoAPITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20A6D70A1FC3139B00438F4F /* Build configuration list for PBXNativeTarget "AutoAPITests" */;
+			buildPhases = (
+				20A6D6F81FC3139B00438F4F /* Sources */,
+				20A6D6F91FC3139B00438F4F /* Frameworks */,
+				20A6D6FA1FC3139B00438F4F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				20A6D6FF1FC3139B00438F4F /* PBXTargetDependency */,
+			);
+			name = AutoAPITests;
+			productName = AutoAPITests;
+			productReference = 20A6D6FC1FC3139B00438F4F /* AutoAPITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		20A6D6EA1FC3139B00438F4F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = "High Mobility";
+				TargetAttributes = {
+					204C0E691FEBEC8A002E319C = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					20A6D6F21FC3139B00438F4F = {
+						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 0910;
+						ProvisioningStyle = Automatic;
+					};
+					20A6D6FB1FC3139B00438F4F = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					20B8A8CD1FF388A8000F9C40 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 20A6D6ED1FC3139B00438F4F /* Build configuration list for PBXProject "AutoAPI" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 20A6D6E91FC3139B00438F4F;
+			productRefGroup = 20A6D6F41FC3139B00438F4F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				20A6D6F21FC3139B00438F4F /* AutoAPI */,
+				20A6D6FB1FC3139B00438F4F /* AutoAPITests */,
+				204C0E691FEBEC8A002E319C /* AutoAPI CLT */,
+				20B8A8CD1FF388A8000F9C40 /* AutoAPI iOS Universal */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		20A6D6F11FC3139B00438F4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20A6D6FA1FC3139B00438F4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		20B8A8D11FF388C6000F9C40 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/bin/sh \"${SRCROOT}/Sources/AutoAPI/Resources/UniversalBuildScript.sh\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		204C0E661FEBEC8A002E319C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20DD5A5E2007BD4D00F2D01C /* String+Extensions.swift in Sources */,
+				200F70422007C42600A03FBB /* UInt8Collection+Binary.swift in Sources */,
+				204C0E6D1FEBEC8A002E319C /* main.swift in Sources */,
+				20DD5A602007C16E00F2D01C /* Misc.swift in Sources */,
+				20DD5A592007BA1C00F2D01C /* Tree.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20A6D6EE1FC3139B00438F4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20A449931FD1B63B003F4920 /* PropertiesCapable.swift in Sources */,
+				208924A41FE184AD001C3923 /* Notifications.swift in Sources */,
+				204E2AF21FD0353500DE2DD5 /* DayTime.swift in Sources */,
+				204D0B361FD1510300C6118A /* Item.swift in Sources */,
+				2031AA9A1FEA4529006F6C78 /* Coordinates.swift in Sources */,
+				20E7DAD31FE26F140052DF91 /* BrakeTorqueVectoring.swift in Sources */,
+				20B06EFA1FC850DC00463FEA /* Properties.swift in Sources */,
+				20E7DAE11FE2AA4E0052DF91 /* FullCommand.swift in Sources */,
+				205427CB1FCEF9E20010DED2 /* VehicleStateType.swift in Sources */,
+				20DD5A572007B81800F2D01C /* DoorsIterator.swift in Sources */,
+				205894371FCD96AC00C30D0F /* Position.swift in Sources */,
+				2089248B1FE163D3001C3923 /* StartStopChrono.swift in Sources */,
+				201628251FD5896100C895B5 /* VehicleLocation.swift in Sources */,
+				2052F9211FD98D9C00BE53E3 /* WeatherConditions.swift in Sources */,
+				204D0B291FD0531000C6118A /* LightState.swift in Sources */,
+				204E2AF41FD0372700DE2DD5 /* WeekdaysTimes.swift in Sources */,
+				205894351FCD968200C30D0F /* Tire.swift in Sources */,
+				20BE22811FCBFA970032CCC2 /* CapabilitiesIterator.swift in Sources */,
+				20BE228E1FCC5E730032CCC2 /* PowerTrain.swift in Sources */,
+				200BBB9E1FD6CB3500CCBA30 /* WindscreenDamage.swift in Sources */,
+				200BBB9C1FD6CA3000CCBA30 /* WipersState.swift in Sources */,
+				2071DF0E1FC80B2A0024C122 /* UInt16+Extensions.swift in Sources */,
+				2052F9091FD9565800BE53E3 /* SeatPosition.swift in Sources */,
+				2052F9181FD974EE00BE53E3 /* ParkingBrake.swift in Sources */,
+				2052F9111FD9572B00BE53E3 /* Seat.swift in Sources */,
+				20E7DAE31FE2AA640052DF91 /* FullStandardCommand.swift in Sources */,
+				208924AC1FE19758001C3923 /* TextInput.swift in Sources */,
+				205894311FCD922400C30D0F /* UInt32+Extensions.swift in Sources */,
+				204D0B3E1FD19A2200C6118A /* RooftopControl.swift in Sources */,
+				208924831FE15D51001C3923 /* SpringRate.swift in Sources */,
+				205427CD1FCF01650010DED2 /* StateGettable.swift in Sources */,
+				204E2AE61FD0206000DE2DD5 /* ChargePortState.swift in Sources */,
+				2052F9051FD9543500BE53E3 /* Acceleration.swift in Sources */,
+				20BE228A1FCC57570032CCC2 /* VehicleStatus.swift in Sources */,
+				205894291FCD68AB00C30D0F /* IgnitionState.swift in Sources */,
+				204D0B271FD052A900C6118A /* Lights.swift in Sources */,
+				202BDB531FE02DEE005A4063 /* ParkingTicket.swift in Sources */,
+				202BDB341FE00008005A4063 /* Int16+Extensions.swift in Sources */,
+				205427B61FCEBBAC0010DED2 /* Door.swift in Sources */,
+				208924801FE15D19001C3923 /* Axle.swift in Sources */,
+				208924921FE16E36001C3923 /* Browser.swift in Sources */,
+				204E2AF71FD03A9700DE2DD5 /* ActivatedDays.swift in Sources */,
+				20E7DADB1FE2AA0F0052DF91 /* OutboundCommand.swift in Sources */,
+				204E2AEC1FD02F6B00DE2DD5 /* Climate.swift in Sources */,
+				202BDB4D1FE0141E005A4063 /* String+Extensions.swift in Sources */,
+				2031AA9E1FEA8BBB006F6C78 /* PropertiesInitable.swift in Sources */,
+				205427C01FCEDBFC0010DED2 /* Maintenance.swift in Sources */,
+				202BDB3A1FE00448005A4063 /* ValetMode.swift in Sources */,
+				205894271FCD684A00C30D0F /* Engine.swift in Sources */,
+				202BDB431FE00AC2005A4063 /* FatigueLevel.swift in Sources */,
+				200BBBA01FD6CC9100CCBA30 /* Zone.swift in Sources */,
+				2052F9071FD955FC00BE53E3 /* Seats.swift in Sources */,
+				20B06F081FC879A700463FEA /* TrunkAccess.swift in Sources */,
+				209C3FC41FF51FAF00EEF1BB /* MessageTypes.swift in Sources */,
+				202BDB201FDFD4EA005A4063 /* KeyfobPosition.swift in Sources */,
+				209637791FD7F13000F97E87 /* Colour.swift in Sources */,
+				200BBBA21FD6D13500CCBA30 /* NeedsReplacement.swift in Sources */,
+				20098FC21FC7073900A2BA98 /* UInt8Collection+Binary.swift in Sources */,
+				208924941FE16F60001C3923 /* URL+Extensions.swift in Sources */,
+				2058941F1FCD5F6900C30D0F /* FailureReason.swift in Sources */,
+				2058941B1FCD577700C30D0F /* FailureMessage.swift in Sources */,
+				20DD5A512007B31900F2D01C /* SeatsIterator.swift in Sources */,
+				2089247C1FE15B8E001C3923 /* ChassisSettings.swift in Sources */,
+				202BDB551FE02EAF005A4063 /* ParkingTicketState.swift in Sources */,
+				202BDB4B1FE0135E005A4063 /* NaviDestination.swift in Sources */,
+				204C0E631FEBB34D002E319C /* GearMode.swift in Sources */,
+				202BDB301FDFFEE0005A4063 /* RemoteControl.swift in Sources */,
+				2052F9011FD9459400BE53E3 /* AccelerationType.swift in Sources */,
+				20CAEC0C1FD85E6700118DB4 /* Offroad.swift in Sources */,
+				20BE22781FCBE76A0032CCC2 /* Identifiable.swift in Sources */,
+				2041EA1F2003C46D00B4BF80 /* RawRepresentable+Extensions.swift in Sources */,
+				208924981FE17149001C3923 /* Graphics.swift in Sources */,
+				205894331FCD95D300C30D0F /* WasherFluidLevel.swift in Sources */,
+				20BE22851FCC52450032CCC2 /* Sequence+Extensions.swift in Sources */,
+				205427CF1FCF02E30010DED2 /* StateGettableDefault.swift in Sources */,
+				204E2AE01FD01CF400DE2DD5 /* Charging.swift in Sources */,
+				204E2AE41FD01DDC00DE2DD5 /* ChargingState.swift in Sources */,
+				208924B01FE1A3F1001C3923 /* VideoHandover.swift in Sources */,
+				20098FC01FC705AA00A2BA98 /* Property.swift in Sources */,
+				20766D001FD1A2B2006D87CB /* Windscreen.swift in Sources */,
+				202BDB321FDFFF3E005A4063 /* ControlMode.swift in Sources */,
+				20E7DAD91FE2A9F80052DF91 /* Command.swift in Sources */,
+				202BDB3F1FE007AC005A4063 /* HeartRate.swift in Sources */,
+				20B06EFC1FC850F700463FEA /* PropertiesIterator.swift in Sources */,
+				204E2AFD1FD04A8100DE2DD5 /* ClimateProfile.swift in Sources */,
+				204E2AEE1FD030CC00DE2DD5 /* ActiveState.swift in Sources */,
+				2058942F1FCD86C800C30D0F /* Diagnostics.swift in Sources */,
+				204D0B3A1FD1560900C6118A /* PropertyConvertable.swift in Sources */,
+				204E2AFF1FD04BF500DE2DD5 /* Float+Extensions.swift in Sources */,
+				202BDB281FDFE2CC005A4063 /* HonkHornFlashLights.swift in Sources */,
+				204D0B2F1FD14B7C00C6118A /* Window.swift in Sources */,
+				202BDB361FE000F4005A4063 /* Int8+Extensions.swift in Sources */,
+				202BDB591FE039C1005A4063 /* Fueling.swift in Sources */,
+				202BDB2C1FDFE3FD005A4063 /* FlasherState.swift in Sources */,
+				205894211FCD627C00C30D0F /* FirmwareVersion.swift in Sources */,
+				202BDB221FDFD591005A4063 /* KeyfobRelativePosition.swift in Sources */,
+				2052F91D1FD9795100BE53E3 /* LightConditions.swift in Sources */,
+				20D681761FC80BC700CE89A2 /* UInt8+Extensions.swift in Sources */,
+				20766D051FD1A4DC006D87CB /* TheftAlarm.swift in Sources */,
+				20B06F031FC8632F00463FEA /* DoorLocks.swift in Sources */,
+				204D0B2D1FD14A5100C6118A /* Windows.swift in Sources */,
+				2089247E1FE15C03001C3923 /* DrivingMode.swift in Sources */,
+				20DD5A552007B7B100F2D01C /* WindowsIterator.swift in Sources */,
+				208924A61FE1897A001C3923 /* ActionItem.swift in Sources */,
+				20BE227F1FCBF6990032CCC2 /* Capabilities.swift in Sources */,
+				202BDB411FE009B2005A4063 /* DriverFatigue.swift in Sources */,
+				200BBBA41FD6D28C00CCBA30 /* YearTime.swift in Sources */,
+				208924B21FE1A508001C3923 /* Screen.swift in Sources */,
+				20E7DADD1FE2AA1E0052DF91 /* InboundCommand.swift in Sources */,
+				2031AAA01FEA9358006F6C78 /* Capability.swift in Sources */,
+				20BE22A61FCCB62B0032CCC2 /* BinaryInitable.swift in Sources */,
+				20BE22931FCC5EB80032CCC2 /* PositionState.swift in Sources */,
+				20E7DADF1FE2AA3C0052DF91 /* BidirectionalCommand.swift in Sources */,
+				20BE22A21FCCA7E30032CCC2 /* VehicleState.swift in Sources */,
+				20BE22911FCC5EA80032CCC2 /* LockState.swift in Sources */,
+				205427D51FCF0A850010DED2 /* WakeUp.swift in Sources */,
+				20766D071FD1A621006D87CB /* TheftAlarmState.swift in Sources */,
+				2052F8FF1FD9451900BE53E3 /* Race.swift in Sources */,
+				20098FB71FC6F0EF00A2BA98 /* AutoAPI.swift in Sources */,
+				202BDB491FE011EC005A4063 /* VehicleTime.swift in Sources */,
+				20DD5A532007B33B00F2D01C /* ItemIterator.swift in Sources */,
+				205894231FCD64A600C30D0F /* CarSDKVersion.swift in Sources */,
+				204E2AE81FD022BA00DE2DD5 /* StartStopCharging.swift in Sources */,
+				200BBBA81FD6DA2100CCBA30 /* WipersLevel.swift in Sources */,
+				2089249C1FE17545001C3923 /* Messaging.swift in Sources */,
+				208924891FE15ED3001C3923 /* ChassisPosition.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20A6D6F81FC3139B00438F4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20BE22951FCC618E0032CCC2 /* VehicleStatusTests.swift in Sources */,
+				202BDB241FDFD651005A4063 /* CapabilitiesTests.swift in Sources */,
+				208924A21FE17B72001C3923 /* MessagingTests.swift in Sources */,
+				20BE22741FCBE64E0032CCC2 /* TrunkAccessTests.swift in Sources */,
+				202BDB381FE0021C005A4063 /* RemoteControlTests.swift in Sources */,
+				2052F91F1FD9899C00BE53E3 /* LightConditionsTests.swift in Sources */,
+				2052F9031FD9497500BE53E3 /* RaceTests.swift in Sources */,
+				2096377B1FD7FC7600F97E87 /* LightsTests.swift in Sources */,
+				2058941D1FCD5AD000C30D0F /* FailureMessageTests.swift in Sources */,
+				205427D11FCF07CA0010DED2 /* MaintenanceTests.swift in Sources */,
+				2052F9161FD9593200BE53E3 /* SeatsTests.swift in Sources */,
+				202BDB5B1FE03A30005A4063 /* FuelingTests.swift in Sources */,
+				2089248F1FE1648F001C3923 /* ChassisSettingsTests.swift in Sources */,
+				204E2AEA1FD022EF00DE2DD5 /* ChargingTests.swift in Sources */,
+				202BDB451FE00BAD005A4063 /* DriverFatigueTests.swift in Sources */,
+				2089249A1FE1720D001C3923 /* GraphicsTests.swift in Sources */,
+				208924AA1FE18F6B001C3923 /* NotificationsTests.swift in Sources */,
+				2052F91A1FD977FB00BE53E3 /* ParkingBrakeTests.swift in Sources */,
+				205427D91FCF0E9E0010DED2 /* WakeUpTests.swift in Sources */,
+				202BDB511FE018A9005A4063 /* VehicleTimeTests.swift in Sources */,
+				208924B41FE1A5DD001C3923 /* VideoHandoverTests.swift in Sources */,
+				205894251FCD652800C30D0F /* FirmwareVersionTests.swift in Sources */,
+				204E2AF91FD03D3700DE2DD5 /* ClimateTests.swift in Sources */,
+				202BDB261FDFD6BB005A4063 /* KeyfobPositionTests.swift in Sources */,
+				2052F9231FD98E0900BE53E3 /* WeatherConditionsTests.swift in Sources */,
+				2052F8FD1FD942E700BE53E3 /* OffroadTests.swift in Sources */,
+				20A6D7021FC3139B00438F4F /* DoorLocksTests.swift in Sources */,
+				2058942D1FCD758300C30D0F /* EngineTests.swift in Sources */,
+				2058943E1FCDA00800C30D0F /* DiagnosticsTests.swift in Sources */,
+				200BBBA61FD6D83C00CCBA30 /* WindscreenTests.swift in Sources */,
+				202BDB571FE033E2005A4063 /* ParkingTicketTests.swift in Sources */,
+				20766D091FD1A6F4006D87CB /* TheftAlarmTests.swift in Sources */,
+				202BDB4F1FE016B3005A4063 /* NaviDestinationTests.swift in Sources */,
+				208924AE1FE19F4F001C3923 /* TextInputTests.swift in Sources */,
+				202BDB2E1FDFE58A005A4063 /* HonkHornFlashLightsTests.swift in Sources */,
+				202BDB471FE00CD4005A4063 /* HeartRateTests.swift in Sources */,
+				202BDB3C1FE006E5005A4063 /* ValetModeTests.swift in Sources */,
+				201628271FD58C1B00C895B5 /* VehicleLocationTests.swift in Sources */,
+				204D0B3C1FD18FD500C6118A /* WindowsTests.swift in Sources */,
+				20766CFE1FD1A23C006D87CB /* RooftopControlTests.swift in Sources */,
+				20BE22871FCC52F40032CCC2 /* Sequence+FlatMapFirst.swift in Sources */,
+				208924961FE16FCE001C3923 /* BrowserTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		204C0E761FEBEF66002E319C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 20A6D6F21FC3139B00438F4F /* AutoAPI */;
+			targetProxy = 204C0E751FEBEF66002E319C /* PBXContainerItemProxy */;
+		};
+		20A6D6FF1FC3139B00438F4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 20A6D6F21FC3139B00438F4F /* AutoAPI */;
+			targetProxy = 20A6D6FE1FC3139B00438F4F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		204C0E6F1FEBEC8A002E319C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F42CFRE556;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		204C0E701FEBEC8A002E319C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F42CFRE556;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		20A6D7051FC3139B00438F4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = AutoAPI;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos appletvsimulator appletvos watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Debug;
+		};
+		20A6D7061FC3139B00438F4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = AutoAPI;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos appletvsimulator appletvos watchos watchsimulator";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Release;
+		};
+		20A6D7081FC3139B00438F4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = F42CFRE556;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/AutoAPI/Resources/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hm.AutoAPI;
+				SKIP_INSTALL = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		20A6D7091FC3139B00438F4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = F42CFRE556;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/AutoAPI/Resources/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hm.AutoAPI;
+				SKIP_INSTALL = NO;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		20A6D70B1FC3139B00438F4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = F42CFRE556;
+				INFOPLIST_FILE = "$(SRCROOT)/Tests/AutoAPITests/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hm.AutoAPITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		20A6D70C1FC3139B00438F4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = F42CFRE556;
+				INFOPLIST_FILE = "$(SRCROOT)/Tests/AutoAPITests/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hm.AutoAPITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		20B8A8CF1FF388A8000F9C40 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F42CFRE556;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+			};
+			name = Debug;
+		};
+		20B8A8D01FF388A8000F9C40 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F42CFRE556;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		204C0E6E1FEBEC8A002E319C /* Build configuration list for PBXNativeTarget "AutoAPI CLT" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				204C0E6F1FEBEC8A002E319C /* Debug */,
+				204C0E701FEBEC8A002E319C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20A6D6ED1FC3139B00438F4F /* Build configuration list for PBXProject "AutoAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20A6D7051FC3139B00438F4F /* Debug */,
+				20A6D7061FC3139B00438F4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20A6D7071FC3139B00438F4F /* Build configuration list for PBXNativeTarget "AutoAPI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20A6D7081FC3139B00438F4F /* Debug */,
+				20A6D7091FC3139B00438F4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20A6D70A1FC3139B00438F4F /* Build configuration list for PBXNativeTarget "AutoAPITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20A6D70B1FC3139B00438F4F /* Debug */,
+				20A6D70C1FC3139B00438F4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20B8A8CE1FF388A8000F9C40 /* Build configuration list for PBXAggregateTarget "AutoAPI iOS Universal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20B8A8CF1FF388A8000F9C40 /* Debug */,
+				20B8A8D01FF388A8000F9C40 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 20A6D6EA1FC3139B00438F4F /* Project object */;
+}
