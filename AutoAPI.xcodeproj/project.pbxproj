@@ -239,7 +239,7 @@
 		200BBBA31FD6D28C00CCBA30 /* YearTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearTime.swift; sourceTree = "<group>"; };
 		200BBBA51FD6D83B00CCBA30 /* WindscreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindscreenTests.swift; sourceTree = "<group>"; };
 		200BBBA71FD6DA2100CCBA30 /* WipersLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WipersLevel.swift; sourceTree = "<group>"; };
-		200F70412007C42600A03FBB /* UInt8Collection+Binary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UInt8Collection+Binary.swift"; path = "Sources/AutoAPI CLT/UInt8Collection+Binary.swift"; sourceTree = SOURCE_ROOT; };
+		200F70412007C42600A03FBB /* UInt8Collection+Binary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UInt8Collection+Binary.swift"; sourceTree = "<group>"; };
 		201628241FD5896100C895B5 /* VehicleLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleLocation.swift; sourceTree = "<group>"; };
 		201628261FD58C1B00C895B5 /* VehicleLocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleLocationTests.swift; sourceTree = "<group>"; };
 		202BDB1F1FDFD4EA005A4063 /* KeyfobPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyfobPosition.swift; sourceTree = "<group>"; };
@@ -276,7 +276,7 @@
 		2041EA1E2003C46D00B4BF80 /* RawRepresentable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RawRepresentable+Extensions.swift"; sourceTree = "<group>"; };
 		204C0E621FEBB34D002E319C /* GearMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearMode.swift; sourceTree = "<group>"; };
 		204C0E641FEBDE77002E319C /* LinuxMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinuxMain.swift; sourceTree = "<group>"; };
-		204C0E6A1FEBEC8A002E319C /* AutoAPI CLT */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "AutoAPI CLT"; sourceTree = BUILT_PRODUCTS_DIR; };
+		204C0E6A1FEBEC8A002E319C /* AutoAPICLT */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AutoAPICLT; sourceTree = BUILT_PRODUCTS_DIR; };
 		204C0E6C1FEBEC8A002E319C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		204D0B261FD052A900C6118A /* Lights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lights.swift; sourceTree = "<group>"; };
 		204D0B281FD0531000C6118A /* LightState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightState.swift; sourceTree = "<group>"; };
@@ -561,7 +561,7 @@
 			path = Health;
 			sourceTree = "<group>";
 		};
-		204C0E6B1FEBEC8A002E319C /* AutoAPI CLT */ = {
+		204C0E6B1FEBEC8A002E319C /* AutoAPICLT */ = {
 			isa = PBXGroup;
 			children = (
 				204C0E6C1FEBEC8A002E319C /* main.swift */,
@@ -570,8 +570,8 @@
 				20DD5A582007BA1C00F2D01C /* Tree.swift */,
 				200F70412007C42600A03FBB /* UInt8Collection+Binary.swift */,
 			);
-			name = "AutoAPI CLT";
-			path = "Sources/AutoAPI CLT";
+			name = AutoAPICLT;
+			path = Sources/AutoAPICLT;
 			sourceTree = "<group>";
 		};
 		204C0E711FEBEEC2002E319C /* Frameworks */ = {
@@ -719,7 +719,7 @@
 			children = (
 				20098FBC1FC6FC6E00A2BA98 /* Package.swift */,
 				20A6D6F51FC3139B00438F4F /* AutoAPI */,
-				204C0E6B1FEBEC8A002E319C /* AutoAPI CLT */,
+				204C0E6B1FEBEC8A002E319C /* AutoAPICLT */,
 				20A6D7001FC3139B00438F4F /* AutoAPITests */,
 				20A6D6F41FC3139B00438F4F /* Products */,
 				204C0E711FEBEEC2002E319C /* Frameworks */,
@@ -731,7 +731,7 @@
 			children = (
 				20A6D6F31FC3139B00438F4F /* AutoAPI.framework */,
 				20A6D6FC1FC3139B00438F4F /* AutoAPITests.xctest */,
-				204C0E6A1FEBEC8A002E319C /* AutoAPI CLT */,
+				204C0E6A1FEBEC8A002E319C /* AutoAPICLT */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -879,9 +879,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		204C0E691FEBEC8A002E319C /* AutoAPI CLT */ = {
+		204C0E691FEBEC8A002E319C /* AutoAPICLT */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 204C0E6E1FEBEC8A002E319C /* Build configuration list for PBXNativeTarget "AutoAPI CLT" */;
+			buildConfigurationList = 204C0E6E1FEBEC8A002E319C /* Build configuration list for PBXNativeTarget "AutoAPICLT" */;
 			buildPhases = (
 				204C0E661FEBEC8A002E319C /* Sources */,
 				204C0E671FEBEC8A002E319C /* Frameworks */,
@@ -892,9 +892,9 @@
 			dependencies = (
 				204C0E761FEBEF66002E319C /* PBXTargetDependency */,
 			);
-			name = "AutoAPI CLT";
+			name = AutoAPICLT;
 			productName = "AutoAPI CLT";
-			productReference = 204C0E6A1FEBEC8A002E319C /* AutoAPI CLT */;
+			productReference = 204C0E6A1FEBEC8A002E319C /* AutoAPICLT */;
 			productType = "com.apple.product-type.tool";
 		};
 		20A6D6F21FC3139B00438F4F /* AutoAPI */ = {
@@ -976,7 +976,7 @@
 			targets = (
 				20A6D6F21FC3139B00438F4F /* AutoAPI */,
 				20A6D6FB1FC3139B00438F4F /* AutoAPITests */,
-				204C0E691FEBEC8A002E319C /* AutoAPI CLT */,
+				204C0E691FEBEC8A002E319C /* AutoAPICLT */,
 				20B8A8CD1FF388A8000F9C40 /* AutoAPI iOS Universal */,
 			);
 		};
@@ -1478,7 +1478,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		204C0E6E1FEBEC8A002E319C /* Build configuration list for PBXNativeTarget "AutoAPI CLT" */ = {
+		204C0E6E1FEBEC8A002E319C /* Build configuration list for PBXNativeTarget "AutoAPICLT" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				204C0E6F1FEBEC8A002E319C /* Debug */,

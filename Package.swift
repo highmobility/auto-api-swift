@@ -12,7 +12,7 @@ let package = Package(
     ],
     targets: [
         .target(name: "AutoAPI", exclude: ["Resources"]),
-        .target(name: "AutoAPI CLT", dependencies: ["AutoAPI"]),
+        .target(name: "AutoAPICLT", dependencies: ["AutoAPI"]),
         .testTarget(name: "AutoAPITests", dependencies: ["AutoAPI"], exclude: ["Resources"])
     ]
 )
