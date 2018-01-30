@@ -49,7 +49,7 @@ class ParkingBrakeTests: XCTestCase {
             0x00        // Inactivate
         ]
 
-        XCTAssertEqual(ParkingBrake.activateInactivate(.inactivate), bytes)
+        XCTAssertEqual(ParkingBrake.activate(false), bytes)
     }
 
     func testGetState() {
@@ -75,6 +75,6 @@ class ParkingBrakeTests: XCTestCase {
             return XCTFail("Parsed value is not ParkingBrake")
         }
 
-        XCTAssertEqual(parkingBrake.state, .active)
+        XCTAssertEqual(parkingBrake.isActive, true)
     }
 }

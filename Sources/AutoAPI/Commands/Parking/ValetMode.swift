@@ -31,7 +31,7 @@ import Foundation
 
 public struct ValetMode: FullStandardCommand {
 
-    public let state: ActiveState?
+    public let isActive: Bool?
 
 
     // MARK: FullStandardCommand
@@ -41,7 +41,7 @@ public struct ValetMode: FullStandardCommand {
 
     init?(properties: Properties) {
         // Ordered by the ID
-        state = properties.value(for: 0x01)
+        isActive = properties.value(for: 0x01)
 
         // Properties
         self.properties = properties
@@ -72,9 +72,10 @@ extension ValetMode: MessageTypesGettable {
 
 public extension ValetMode {
 
-    static var activateValetMode: (ActiveState) -> [UInt8] {
+    /// Use `false` to *deactivate*.
+    static var activateValetMode: (Bool) -> [UInt8] {
         return {
-            return commandPrefix(for: .activateDeactivateValetMode, additionalBytes: $0.rawValue)
+            return commandPrefix(for: .activateDeactivateValetMode) + $0.propertyValue
         }
     }
 

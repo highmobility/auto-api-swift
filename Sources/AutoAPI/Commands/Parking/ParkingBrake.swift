@@ -31,7 +31,7 @@ import Foundation
 
 public struct ParkingBrake: FullStandardCommand {
 
-    public let state: ActiveState?
+    public let isActive: Bool?
 
 
     // MARK: FullStandardCommand
@@ -41,7 +41,7 @@ public struct ParkingBrake: FullStandardCommand {
 
     init?(properties: Properties) {
         // Ordered by the ID
-        state = properties.value(for: 0x01)
+        isActive = properties.value(for: 0x01)
 
         // Properties
         self.properties = properties
@@ -72,7 +72,8 @@ extension ParkingBrake: MessageTypesGettable {
 
 public extension ParkingBrake {
 
-    static var activateInactivate: (ActiveState) -> [UInt8] {
+    /// Use `false` to *inactivate*.
+    static var activate: (Bool) -> [UInt8] {
         return {
             return commandPrefix(for: .setParkingBrake) + $0.propertyBytes(0x01)
         }

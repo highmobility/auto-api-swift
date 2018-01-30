@@ -35,9 +35,9 @@ public struct Race: FullStandardCommand {
     public let brakePedalPosition: UInt8?
     public let brakePressure: Float?
     public let brakeTorqueVectorings: [BrakeTorqueVectoring]?
-    public let espIntervertion: ActiveState?
     public let gasPedalPosition: UInt8?
     public let gearMode: GearMode?
+    public let isESPActive: Bool?
     public let oversteering: UInt8?
     public let rearSuspensionSteering: Int8?
     public let selectedGear: Int8?
@@ -61,7 +61,7 @@ public struct Race: FullStandardCommand {
         brakePressure = properties.value(for: 0x06)
         yawRate = properties.value(for: 0x07)
         rearSuspensionSteering = properties.value(for: 0x08)
-        espIntervertion = properties.value(for: 0x09)
+        isESPActive = properties.value(for: 0x09)
         brakeTorqueVectorings = properties.flatMap(for: 0x0A) { BrakeTorqueVectoring($0.value) }
         gearMode = GearMode(rawValue: properties.first(for: 0x0B)?.monoValue)
         selectedGear = properties.value(for: 0x0C)

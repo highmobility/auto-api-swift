@@ -135,7 +135,7 @@ class ChassisSettingsTests: XCTestCase {
         }
 
         XCTAssertEqual(chassisSettings.drivingMode, .eco)
-        XCTAssertEqual(chassisSettings.sportChrono, .active)
+        XCTAssertEqual(chassisSettings.isSportChroneActive, true)
         XCTAssertEqual(chassisSettings.springRates?.count, 2)
 
         // Front axle Spring rate

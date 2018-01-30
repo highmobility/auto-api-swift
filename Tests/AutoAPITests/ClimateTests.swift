@@ -93,7 +93,7 @@ class ClimateTests: XCTestCase {
             0x01        // Activate
         ]
 
-        XCTAssertEqual(Climate.startStopDefogging(.activate), bytes)
+        XCTAssertEqual(Climate.startDefogging(true), bytes)
     }
 
     func testStartStopDefrosting() {
@@ -103,7 +103,7 @@ class ClimateTests: XCTestCase {
             0x01        // Activate
         ]
 
-        XCTAssertEqual(Climate.startStopDefrosting(.activate), bytes)
+        XCTAssertEqual(Climate.startDefrosting(true), bytes)
     }
 
     func testStartStopHVAC() {
@@ -113,7 +113,7 @@ class ClimateTests: XCTestCase {
             0x01        // Activate
         ]
 
-        XCTAssertEqual(Climate.startStopHVAC(.activate), bytes)
+        XCTAssertEqual(Climate.startHVAC(true), bytes)
     }
 
     func testStartStopIonising() {
@@ -123,7 +123,7 @@ class ClimateTests: XCTestCase {
             0x01        // Activate
         ]
 
-        XCTAssertEqual(Climate.startStopIonising(.activate), bytes)
+        XCTAssertEqual(Climate.startIonising(true), bytes)
     }
 
     func testState() {
@@ -189,10 +189,10 @@ class ClimateTests: XCTestCase {
         XCTAssertEqual(climate.outsideTemperature, 12.0)
         XCTAssertEqual(climate.driverTemperature, 21.5)
         XCTAssertEqual(climate.passengerTemperature, 21.5)
-        XCTAssertEqual(climate.hvacState, .activated)
-        XCTAssertEqual(climate.defoggingState, .deactivated)
-        XCTAssertEqual(climate.defrostingState, .deactivated)
-        XCTAssertEqual(climate.ionisingState, .deactivated)
+        XCTAssertEqual(climate.isHVACActive, true)
+        XCTAssertEqual(climate.isDefoggingActive, false)
+        XCTAssertEqual(climate.isDefrostingActive, false)
+        XCTAssertEqual(climate.isIonisingActive, false)
         XCTAssertEqual(climate.defrostingTemperature, 21.5)
 
         if let hvacProfile = climate.climateProfile {

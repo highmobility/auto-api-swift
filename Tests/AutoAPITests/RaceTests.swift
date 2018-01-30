@@ -123,7 +123,7 @@ class RaceTests: XCTestCase {
         XCTAssertEqual(race.brakePressure, 11.56)
         XCTAssertEqual(race.yawRate, 6.66)
         XCTAssertEqual(race.rearSuspensionSteering, 3)
-        XCTAssertEqual(race.espIntervertion, .active)
+        XCTAssertEqual(race.isESPActive, true)
 
         // Accelerations
         let accelerations = race.accelerations
@@ -148,7 +148,7 @@ class RaceTests: XCTestCase {
         XCTAssertEqual(race.brakeTorqueVectorings?.count, 1)
 
         if let btv = race.brakeTorqueVectorings?.first(where: { $0.axle == .rear }) {
-            XCTAssertEqual(btv.state, .active)
+            XCTAssertTrue(btv.isActive)
         }
         else {
             XCTFail("BrakeTorqueVectorings doesn't contain Rear Axle")

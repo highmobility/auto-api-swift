@@ -95,10 +95,8 @@
 		204E2AE01FD01CF400DE2DD5 /* Charging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2ADF1FD01CF400DE2DD5 /* Charging.swift */; };
 		204E2AE41FD01DDC00DE2DD5 /* ChargingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AE31FD01DDC00DE2DD5 /* ChargingState.swift */; };
 		204E2AE61FD0206000DE2DD5 /* ChargePortState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AE51FD0206000DE2DD5 /* ChargePortState.swift */; };
-		204E2AE81FD022BA00DE2DD5 /* StartStopCharging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AE71FD022BA00DE2DD5 /* StartStopCharging.swift */; };
 		204E2AEA1FD022EF00DE2DD5 /* ChargingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AE91FD022EF00DE2DD5 /* ChargingTests.swift */; };
 		204E2AEC1FD02F6B00DE2DD5 /* Climate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AEB1FD02F6B00DE2DD5 /* Climate.swift */; };
-		204E2AEE1FD030CC00DE2DD5 /* ActiveState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AED1FD030CC00DE2DD5 /* ActiveState.swift */; };
 		204E2AF21FD0353500DE2DD5 /* DayTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AF11FD0353500DE2DD5 /* DayTime.swift */; };
 		204E2AF41FD0372700DE2DD5 /* WeekdaysTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AF31FD0372700DE2DD5 /* WeekdaysTimes.swift */; };
 		204E2AF71FD03A9700DE2DD5 /* ActivatedDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E2AF61FD03A9700DE2DD5 /* ActivatedDays.swift */; };
@@ -133,7 +131,6 @@
 		205894231FCD64A600C30D0F /* CarSDKVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205894221FCD64A600C30D0F /* CarSDKVersion.swift */; };
 		205894251FCD652800C30D0F /* FirmwareVersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205894241FCD652800C30D0F /* FirmwareVersionTests.swift */; };
 		205894271FCD684A00C30D0F /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205894261FCD684A00C30D0F /* Engine.swift */; };
-		205894291FCD68AB00C30D0F /* IgnitionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205894281FCD68AB00C30D0F /* IgnitionState.swift */; };
 		2058942D1FCD758300C30D0F /* EngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058942C1FCD758300C30D0F /* EngineTests.swift */; };
 		2058942F1FCD86C800C30D0F /* Diagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2058942E1FCD86C800C30D0F /* Diagnostics.swift */; };
 		205894311FCD922400C30D0F /* UInt32+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205894301FCD922400C30D0F /* UInt32+Extensions.swift */; };
@@ -315,10 +312,8 @@
 		204E2ADF1FD01CF400DE2DD5 /* Charging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charging.swift; sourceTree = "<group>"; };
 		204E2AE31FD01DDC00DE2DD5 /* ChargingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargingState.swift; sourceTree = "<group>"; };
 		204E2AE51FD0206000DE2DD5 /* ChargePortState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargePortState.swift; sourceTree = "<group>"; };
-		204E2AE71FD022BA00DE2DD5 /* StartStopCharging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStopCharging.swift; sourceTree = "<group>"; };
 		204E2AE91FD022EF00DE2DD5 /* ChargingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargingTests.swift; sourceTree = "<group>"; };
 		204E2AEB1FD02F6B00DE2DD5 /* Climate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Climate.swift; sourceTree = "<group>"; };
-		204E2AED1FD030CC00DE2DD5 /* ActiveState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveState.swift; sourceTree = "<group>"; };
 		204E2AF11FD0353500DE2DD5 /* DayTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTime.swift; sourceTree = "<group>"; };
 		204E2AF31FD0372700DE2DD5 /* WeekdaysTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdaysTimes.swift; sourceTree = "<group>"; };
 		204E2AF61FD03A9700DE2DD5 /* ActivatedDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivatedDays.swift; sourceTree = "<group>"; };
@@ -353,7 +348,6 @@
 		205894221FCD64A600C30D0F /* CarSDKVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSDKVersion.swift; sourceTree = "<group>"; };
 		205894241FCD652800C30D0F /* FirmwareVersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirmwareVersionTests.swift; sourceTree = "<group>"; };
 		205894261FCD684A00C30D0F /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
-		205894281FCD68AB00C30D0F /* IgnitionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IgnitionState.swift; sourceTree = "<group>"; };
 		2058942C1FCD758300C30D0F /* EngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineTests.swift; sourceTree = "<group>"; };
 		2058942E1FCD86C800C30D0F /* Diagnostics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diagnostics.swift; sourceTree = "<group>"; };
 		205894301FCD922400C30D0F /* UInt32+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt32+Extensions.swift"; sourceTree = "<group>"; };
@@ -848,7 +842,6 @@
 			isa = PBXGroup;
 			children = (
 				2052F9001FD9459400BE53E3 /* AccelerationType.swift */,
-				204E2AED1FD030CC00DE2DD5 /* ActiveState.swift */,
 				200B3A322020A9AF00EC52E4 /* AuthenticationMechanism.swift */,
 				2089247F1FE15D19001C3923 /* Axle.swift */,
 				200B3A292020A0C600EC52E4 /* ChargeMode.swift */,
@@ -860,7 +853,6 @@
 				202BDB421FE00AC2005A4063 /* FatigueLevel.swift */,
 				202BDB2B1FDFE3FD005A4063 /* FlasherState.swift */,
 				204C0E621FEBB34D002E319C /* GearMode.swift */,
-				205894281FCD68AB00C30D0F /* IgnitionState.swift */,
 				204D0B281FD0531000C6118A /* LightState.swift */,
 				20BE22901FCC5EA80032CCC2 /* LockState.swift */,
 				200BBBA11FD6D13500CCBA30 /* NeedsReplacement.swift */,
@@ -873,7 +865,6 @@
 				200B3A382020ADA600EC52E4 /* PricingType.swift */,
 				208924B11FE1A508001C3923 /* Screen.swift */,
 				2052F9081FD9565800BE53E3 /* SeatPosition.swift */,
-				204E2AE71FD022BA00DE2DD5 /* StartStopCharging.swift */,
 				2089248A1FE163D3001C3923 /* StartStopChrono.swift */,
 				20766D061FD1A621006D87CB /* TheftAlarmState.swift */,
 				200B3A2B2020A1C000EC52E4 /* TimerType.swift */,
@@ -1110,7 +1101,6 @@
 				204E2AE61FD0206000DE2DD5 /* ChargePortState.swift in Sources */,
 				2052F9051FD9543500BE53E3 /* Acceleration.swift in Sources */,
 				20BE228A1FCC57570032CCC2 /* VehicleStatus.swift in Sources */,
-				205894291FCD68AB00C30D0F /* IgnitionState.swift in Sources */,
 				204D0B271FD052A900C6118A /* Lights.swift in Sources */,
 				202BDB531FE02DEE005A4063 /* ParkingTicket.swift in Sources */,
 				202BDB341FE00008005A4063 /* Int16+Extensions.swift in Sources */,
@@ -1168,7 +1158,6 @@
 				20B06EFC1FC850F700463FEA /* PropertiesIterator.swift in Sources */,
 				200B3A392020ADA600EC52E4 /* PricingType.swift in Sources */,
 				204E2AFD1FD04A8100DE2DD5 /* ClimateProfile.swift in Sources */,
-				204E2AEE1FD030CC00DE2DD5 /* ActiveState.swift in Sources */,
 				200B3A2620209CB300EC52E4 /* Bool+Extensions.swift in Sources */,
 				2058942F1FCD86C800C30D0F /* Diagnostics.swift in Sources */,
 				204D0B3A1FD1560900C6118A /* PropertyConvertable.swift in Sources */,
@@ -1208,7 +1197,6 @@
 				202BDB491FE011EC005A4063 /* VehicleTime.swift in Sources */,
 				20DD5A532007B33B00F2D01C /* ItemIterator.swift in Sources */,
 				205894231FCD64A600C30D0F /* CarSDKVersion.swift in Sources */,
-				204E2AE81FD022BA00DE2DD5 /* StartStopCharging.swift in Sources */,
 				200BBBA81FD6DA2100CCBA30 /* WipersLevel.swift in Sources */,
 				2089249C1FE17545001C3923 /* Messaging.swift in Sources */,
 				208924891FE15ED3001C3923 /* ChassisPosition.swift in Sources */,

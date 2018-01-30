@@ -110,7 +110,7 @@ class ChargingTests: XCTestCase {
             0x01        // Start Charging
         ]
 
-        XCTAssertEqual(Charging.startStopCharging(.start), bytes)
+        XCTAssertEqual(Charging.startCharging(true), bytes)
     }
 
     func testState() {

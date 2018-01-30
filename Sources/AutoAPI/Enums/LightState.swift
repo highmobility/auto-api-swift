@@ -29,17 +29,11 @@
 import Foundation
 
 
-public typealias LightState = ActiveState
-
-
 public enum FrontLightState: UInt8 {
 
     case inactive       = 0x00
     case active         = 0x01
     case activeFullBeam = 0x02
-
-
-    public static let fullBeam = FrontLightState.activeFullBeam
 }
 
 extension FrontLightState: PropertyConvertable {

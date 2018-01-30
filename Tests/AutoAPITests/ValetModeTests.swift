@@ -46,7 +46,7 @@ class ValetModeTests: XCTestCase {
             0x01        // Activate
         ]
 
-        XCTAssertEqual(ValetMode.activateValetMode(.activate), bytes)
+        XCTAssertEqual(ValetMode.activateValetMode(true), bytes)
     }
 
     func testGetState() {
@@ -72,6 +72,6 @@ class ValetModeTests: XCTestCase {
             return XCTFail("Parsed value is not ValetMode")
         }
 
-        XCTAssertEqual(valetMode.state, .activated)
+        XCTAssertEqual(valetMode.isActive, true)
     }
 }

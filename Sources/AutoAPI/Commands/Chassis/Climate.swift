@@ -32,13 +32,13 @@ import Foundation
 public struct Climate: FullStandardCommand {
 
     public let climateProfile: ClimateProfile?
-    public let defoggingState: ActiveState?
-    public let defrostingState: ActiveState?
     public let defrostingTemperature: Float?
     public let driverTemperature: Float?
-    public let hvacState: ActiveState?
     public let insideTemperature: Float?
-    public let ionisingState: ActiveState?
+    public let isDefoggingActive: Bool?
+    public let isDefrostingActive: Bool?
+    public let isHVACActive: Bool?
+    public let isIonisingActive: Bool?
     public let outsideTemperature: Float?
     public let passengerTemperature: Float?
 
@@ -54,10 +54,10 @@ public struct Climate: FullStandardCommand {
         outsideTemperature = properties.value(for: 0x02)
         driverTemperature = properties.value(for: 0x03)
         passengerTemperature = properties.value(for: 0x04)
-        hvacState = properties.value(for: 0x05)
-        defoggingState = properties.value(for: 0x06)
-        defrostingState = properties.value(for: 0x07)
-        ionisingState = properties.value(for: 0x08)
+        isHVACActive = properties.value(for: 0x05)
+        isDefoggingActive = properties.value(for: 0x06)
+        isDefrostingActive = properties.value(for: 0x07)
+        isIonisingActive = properties.value(for: 0x08)
         defrostingTemperature = properties.value(for: 0x09)
         climateProfile = ClimateProfile(bytes: properties.first(for: 0x0A)?.value)
 
@@ -125,27 +125,31 @@ public extension Climate {
         }
     }
 
-    static var startStopDefogging: (ActiveState) -> [UInt8] {
+    /// Use `false` to *stop*.
+    static var startDefogging: (Bool) -> [UInt8] {
         return {
-            return commandPrefix(for: .startStopDefogging, additionalBytes: $0.rawValue)
+            return commandPrefix(for: .startStopDefogging, additionalBytes: $0.byte)
         }
     }
 
-    static var startStopDefrosting: (ActiveState) -> [UInt8] {
+    /// Use `false` to *stop*.
+    static var startDefrosting: (Bool) -> [UInt8] {
         return {
-            return commandPrefix(for: .startStopDefrosting, additionalBytes: $0.rawValue)
+            return commandPrefix(for: .startStopDefrosting, additionalBytes: $0.byte)
         }
     }
 
-    static var startStopHVAC: (ActiveState) -> [UInt8] {
+    /// Use `false` to *stop*.
+    static var startHVAC: (Bool) -> [UInt8] {
         return {
-            return commandPrefix(for: .startStopHVAC, additionalBytes: $0.rawValue)
+            return commandPrefix(for: .startStopHVAC, additionalBytes: $0.byte)
         }
     }
 
-    static var startStopIonising: (ActiveState) -> [UInt8] {
+    /// Use `false` to *stop*.
+    static var startIonising: (Bool) -> [UInt8] {
         return {
-            return commandPrefix(for: .startStopIonising, additionalBytes: $0.rawValue)
+            return commandPrefix(for: .startStopIonising, additionalBytes: $0.byte)
         }
     }
 }

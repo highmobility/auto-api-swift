@@ -33,7 +33,7 @@ public struct ChassisSettings: FullStandardCommand {
 
     public let chassisPosition: ChassisPosition?
     public let drivingMode: DrivingMode?
-    public let sportChrono: ActiveState?
+    public let isSportChroneActive: Bool?
     public let springRates: [SpringRate]?
 
 
@@ -45,7 +45,7 @@ public struct ChassisSettings: FullStandardCommand {
     init?(properties: Properties) {
         // Ordered by the ID
         drivingMode = DrivingMode(rawValue: properties.first(for: 0x01)?.monoValue)
-        sportChrono = properties.value(for: 0x02)
+        isSportChroneActive = properties.value(for: 0x02)
         springRates = properties.flatMap(for: 0x03) { SpringRate($0.value) }
         chassisPosition = ChassisPosition(bytes: properties.first(for: 0x04)?.value)
 

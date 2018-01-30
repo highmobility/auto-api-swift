@@ -104,12 +104,14 @@ public extension HomeCharger {
     typealias PriceTariff = PricingTariff
 
 
+    /// Use `false` to *deactivate*.
     static var activateSolarCharging: (Bool) -> [UInt8] {
         return {
             return commandPrefix(for: .activateDeactivateSolarCharging) + $0.propertyValue
         }
     }
 
+    /// Use `false` to *disable*.
     static var enableWifiHotspot: (Bool) -> [UInt8] {
         return {
             return commandPrefix(for: .enableDisableWifiHotspot) + $0.propertyValue

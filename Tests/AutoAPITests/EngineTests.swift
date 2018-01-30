@@ -62,7 +62,7 @@ class EngineTests: XCTestCase {
             return XCTFail("Parsed value is not Engine")
         }
 
-        XCTAssertEqual(engine.ignition, .engineOn)
+        XCTAssertEqual(engine.isIgnitionOn, true)
     }
 
     func testTurnEngine() {
@@ -72,6 +72,6 @@ class EngineTests: XCTestCase {
             0x01        // Engine On
         ]
 
-        XCTAssertEqual(Engine.turnIgnition(.engineOn), bytes)
+        XCTAssertEqual(Engine.turnIgnitionOn(true), bytes)
     }
 }

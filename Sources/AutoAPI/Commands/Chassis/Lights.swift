@@ -37,8 +37,8 @@ public struct Lights: FullStandardCommand {
 
     public let ambientColour: Colour?
     public let frontExterior: FrontLightState?
-    public let interior: LightState?
-    public let rearExterior: LightState?
+    public let isInteriorActive: Bool?
+    public let isRearExteriorActive: Bool?
 
 
     // MARK: FullStandardCommand
@@ -49,8 +49,8 @@ public struct Lights: FullStandardCommand {
     init?(properties: Properties) {
         // Ordered by the ID
         frontExterior = FrontLightState(rawValue: properties.first(for: 0x01)?.monoValue)
-        rearExterior = properties.value(for: 0x02)
-        interior = properties.value(for: 0x03)
+        isRearExteriorActive = properties.value(for: 0x02)
+        isInteriorActive = properties.value(for: 0x03)
 
         if let bytes = properties.first(for: 0x04)?.value, bytes.count == 3 {
             let red = CGFloat(bytes[0]) / 255.0
@@ -94,14 +94,14 @@ public extension Lights {
 
     struct Control {
         public let frontExterior: FrontLightState?
-        public let rearExterior: LightState?
-        public let interior: LightState?
+        public let isRearExteriorActive: Bool?
+        public let isInteriorActive: Bool?
         public let ambientColour: Colour?
 
-        public init(frontExterior: FrontLightState?, rearExterior: LightState?, interior: LightState?, ambientColour: Colour?) {
+        public init(frontExterior: FrontLightState?, isRearExteriorActive: Bool?, isInteriorActive: Bool?, ambientColour: Colour?) {
             self.frontExterior = frontExterior
-            self.rearExterior = rearExterior
-            self.interior = interior
+            self.isRearExteriorActive = isRearExteriorActive
+            self.isInteriorActive = isInteriorActive
             self.ambientColour = ambientColour
         }
     }
@@ -110,8 +110,8 @@ public extension Lights {
     static var controlLights: (Control) -> [UInt8] {
         return {
             let frontBytes: [UInt8] = $0.frontExterior?.propertyBytes(0x01) ?? []
-            let rearBytes: [UInt8] = $0.rearExterior?.propertyBytes(0x02) ?? []
-            let interiorBytes: [UInt8] = $0.interior?.propertyBytes(0x03) ?? []
+            let rearBytes: [UInt8] = $0.isRearExteriorActive?.propertyBytes(0x02) ?? []
+            let interiorBytes: [UInt8] = $0.isInteriorActive?.propertyBytes(0x03) ?? []
             let ambientBytes: [UInt8] = $0.ambientColour?.propertyBytes(0x04) ?? []
 
             return commandPrefix(for: .controlLights) + frontBytes + rearBytes + interiorBytes + ambientBytes

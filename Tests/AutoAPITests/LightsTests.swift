@@ -63,7 +63,7 @@ class LightsTests: XCTestCase {
             0x00        // No blue ambient light
         ]
 
-        let control = Lights.Control(frontExterior: .fullBeam, rearExterior: .deactivate, interior: .deactivate, ambientColour: Colour(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0))
+        let control = Lights.Control(frontExterior: .activeFullBeam, isRearExteriorActive: false, isInteriorActive: false, ambientColour: Colour(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0))
 
         XCTAssertEqual(Lights.controlLights(control), bytes)
     }
@@ -105,9 +105,9 @@ class LightsTests: XCTestCase {
             return XCTFail("Parsed value is not Lights")
         }
 
-        XCTAssertEqual(lights.frontExterior, .fullBeam)
-        XCTAssertEqual(lights.rearExterior, .active)
-        XCTAssertEqual(lights.interior, .inactive)
+        XCTAssertEqual(lights.frontExterior, .activeFullBeam)
+        XCTAssertEqual(lights.isRearExteriorActive, true)
+        XCTAssertEqual(lights.isInteriorActive, false)
         XCTAssertEqual(lights.ambientColour, Colour(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0))
     }
 }

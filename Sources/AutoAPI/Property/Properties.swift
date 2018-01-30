@@ -86,9 +86,6 @@ extension Properties {
             return Int32(bitPattern: UInt32(bytes)) as? ReturnType
 
         /*** OTHERs ***/
-        case is ActiveState.Type:
-            return ActiveState(rawValue: firstByte) as? ReturnType
-
         case is Bool.Type:
             return (firstByte == 0x01) as? ReturnType
 

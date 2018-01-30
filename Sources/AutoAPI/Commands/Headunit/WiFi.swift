@@ -107,6 +107,7 @@ public extension WiFi {
         }
     }
 
+    /// Use `false` to *disable*.
     static var enableWifi: (Bool) -> [UInt8] {
         return {
             return commandPrefix(for: .enableDisableWifi) + $0.propertyBytes(0x04)

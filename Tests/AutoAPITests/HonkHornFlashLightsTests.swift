@@ -47,7 +47,7 @@ class HonkHornFlashLightsTests: XCTestCase {
             0x01        // Activate
         ]
 
-        XCTAssertEqual(HonkHornFlashFlights.activateEmergencyFlasher(.activate), bytes)
+        XCTAssertEqual(HonkHornFlashFlights.activateEmergencyFlasher(true), bytes)
     }
 
     func testGetState() {

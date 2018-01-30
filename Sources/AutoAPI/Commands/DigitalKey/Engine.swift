@@ -31,7 +31,7 @@ import Foundation
 
 public struct Engine: FullStandardCommand {
 
-    public let ignition: IgnitionState?
+    public let isIgnitionOn: Bool?
 
 
     // MARK: FullStandardCommand
@@ -41,7 +41,7 @@ public struct Engine: FullStandardCommand {
 
     init?(properties: Properties) {
         // Ordered by the ID
-        ignition = IgnitionState(rawValue: properties.first(for: 0x01)?.monoValue)
+        isIgnitionOn = properties.value(for: 0x01)
 
         // Properties
         self.properties = properties
@@ -76,9 +76,10 @@ public extension Engine {
         return commandPrefix(for: .getIgnitionState)
     }
 
-    static var turnIgnition: (IgnitionState) -> [UInt8] {
+    /// Use `false` to turn ignition *off*.
+    static var turnIgnitionOn: (Bool) -> [UInt8] {
         return {
-            return commandPrefix(for: .turnEngineOnOff, additionalBytes: $0.rawValue)
+            return commandPrefix(for: .turnEngineOnOff, additionalBytes: $0.byte)
         }
     }
 }
