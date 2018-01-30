@@ -44,7 +44,7 @@ class LightConditionsTests: XCTestCase {
             0x00        // Message Type for Get Light Conditions
         ]
 
-        XCTAssertEqual(LightConditions.getState, bytes)
+        XCTAssertEqual(LightConditions.getLightConditions, bytes)
     }
 
     func testState() {

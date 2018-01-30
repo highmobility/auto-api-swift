@@ -45,7 +45,7 @@ class WindscreenTests: XCTestCase {
             0x00        // Message Type for Get Windscreen State
         ]
 
-        XCTAssertEqual(Windscreen.getState, bytes)
+        XCTAssertEqual(Windscreen.getWindscreenState, bytes)
     }
 
     func testSetWindscreenDamage() {

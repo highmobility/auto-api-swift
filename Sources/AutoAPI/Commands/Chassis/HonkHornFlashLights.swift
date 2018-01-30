@@ -55,7 +55,7 @@ extension HonkHornFlashFlights: Identifiable {
 
 extension HonkHornFlashFlights: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getFlasherState                    = 0x00
         case flasherState                       = 0x01
@@ -63,14 +63,11 @@ extension HonkHornFlashFlights: MessageTypesGettable {
         case activateDeactivateEmergencyFlasher = 0x03
 
 
-        public static let getState = MessageTypes.getFlasherState
-        public static let state = MessageTypes.flasherState
-
-        public static var all: [UInt8] {
-            return [self.getFlasherState.rawValue,
-                    self.flasherState.rawValue,
-                    self.honkFlash.rawValue,
-                    self.activateDeactivateEmergencyFlasher.rawValue]
+        public static var all: [HonkHornFlashFlights.MessageTypes] {
+            return [self.getFlasherState,
+                    self.flasherState,
+                    self.honkFlash,
+                    self.activateDeactivateEmergencyFlasher]
         }
     }
 }
@@ -90,12 +87,12 @@ public extension HonkHornFlashFlights {
 
     static var activateEmergencyFlasher: (ActiveState) -> [UInt8] {
         return {
-            return identifier.bytes + [MessageTypes.activateDeactivateEmergencyFlasher.rawValue, $0.rawValue]
+            return commandPrefix(for: .activateDeactivateEmergencyFlasher, additionalBytes: $0.rawValue)
         }
     }
 
     static var getFlasherState: [UInt8] {
-        return getState
+        return commandPrefix(for: .getFlasherState)
     }
 
     static var honkHornFlashLights: (Settings) -> [UInt8] {
@@ -103,7 +100,7 @@ public extension HonkHornFlashFlights {
             let hornBytes: [UInt8] = $0.honkHornSeconds?.propertyBytes(0x01) ?? []
             let flashBytes: [UInt8] = $0.flashLightsTimes?.propertyBytes(0x02) ?? []
 
-            return identifier.bytes + [MessageTypes.honkFlash.rawValue] + hornBytes + flashBytes
+            return commandPrefix(for: .honkFlash) + hornBytes + flashBytes
         }
     }
 }

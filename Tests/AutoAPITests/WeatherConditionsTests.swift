@@ -44,7 +44,7 @@ class WeatherConditionsTests: XCTestCase {
             0x00        // Message Type for Get Weather Conditions
         ]
 
-        XCTAssertEqual(WeatherConditions.getState, bytes)
+        XCTAssertEqual(WeatherConditions.getWeatherConditions, bytes)
     }
 
     func testState() {

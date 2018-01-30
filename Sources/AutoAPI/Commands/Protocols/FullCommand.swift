@@ -29,7 +29,7 @@
 import Foundation
 
 
-protocol FullCommand: BidirectionalCommand, StateGettable, VehicleStateType {
+protocol FullCommand: BidirectionalCommand, VehicleStateType {
 
     init?(properties: Properties)
 }

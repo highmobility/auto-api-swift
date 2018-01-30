@@ -43,7 +43,7 @@ class FuelingTests: XCTestCase {
             0x00 // Message Type for Get Gas Flap State
         ]
 
-        XCTAssertEqual(Fueling.getState, bytes)
+        XCTAssertEqual(Fueling.getGasFlapState, bytes)
     }
 
     func testState() {

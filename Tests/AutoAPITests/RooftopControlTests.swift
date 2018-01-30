@@ -45,7 +45,7 @@ class RooftopControlTests: XCTestCase {
             0x00        // Message Type for Get Rooftop State
         ]
 
-        XCTAssertEqual(RooftopControl.getState, bytes)
+        XCTAssertEqual(RooftopControl.getRooftopState, bytes)
     }
 
     func testControlRooftop() {

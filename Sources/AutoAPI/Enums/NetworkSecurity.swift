@@ -19,17 +19,24 @@
 // licensing@high-mobility.com
 //
 //
-//  StateGettable.swift
+//  NetworkSecurity.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 29/11/2017.
-//  Copyright © 2017 High Mobility. All rights reserved.
+//  Created by Mikk Rätsep on 30/01/2018.
+//  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public protocol StateGettable {
+public enum NetworkSecurity: UInt8 {
 
-    static var getState: [UInt8] { get }
+    case none               = 0x00
+    case WEP                = 0x01
+    case WPA_WPA2Personal   = 0x02
+    case WPA2Personal       = 0x03
+}
+
+extension NetworkSecurity: PropertyConvertable {
+    
 }

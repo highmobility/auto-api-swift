@@ -44,7 +44,7 @@ class VehicleLocationTests: XCTestCase {
             0x00        // Message Type for Get Vehicle Location
         ]
 
-        XCTAssertEqual(VehicleLocation.getState, bytes)
+        XCTAssertEqual(VehicleLocation.getVehicleLocation, bytes)
     }
 
     func testState() {

@@ -56,7 +56,7 @@ class HonkHornFlashLightsTests: XCTestCase {
             0x00        // Message Type for Get Flashers State
         ]
 
-        XCTAssertEqual(HonkHornFlashFlights.getState, bytes)
+        XCTAssertEqual(HonkHornFlashFlights.getFlasherState, bytes)
     }
 
     func testHonkHornFlashLights() {

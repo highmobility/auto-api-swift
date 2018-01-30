@@ -54,13 +54,13 @@ public struct DriverFatigue: InboundCommand {
 
 extension DriverFatigue: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case driverFatigueDetected  = 0x01
 
 
-        public static var all: [UInt8] {
-            return [self.driverFatigueDetected.rawValue]
+        public static var all: [DriverFatigue.MessageTypes] {
+            return [self.driverFatigueDetected]
         }
     }
 }

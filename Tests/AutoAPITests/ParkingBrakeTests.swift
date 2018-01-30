@@ -58,7 +58,7 @@ class ParkingBrakeTests: XCTestCase {
             0x00        // Message Type for Get Parking Brake State
         ]
 
-        XCTAssertEqual(ParkingBrake.getState, bytes)
+        XCTAssertEqual(ParkingBrake.getParkingBrakeState, bytes)
     }
 
     func testState() {

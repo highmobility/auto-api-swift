@@ -42,12 +42,12 @@ public struct Capability {
         return Set(supportedMessageTypes).isSuperset(of: messageTypes)
     }
 
-    public func supports<M: MessageTypesType>(_ messageTypes: M...) -> Bool where M.RawValue == UInt8 {
+    public func supports<M: MessageTypesKind>(_ messageTypes: M...) -> Bool where M.RawValue == UInt8 {
         return supports(messageTypes.map { $0.rawValue })
     }
 
     public func supportsAllMessageTypes<M: MessageTypesGettable>(for command: M.Type) -> Bool where M.MessageTypes.RawValue == UInt8 {
-        return supports(command.MessageTypes.all)
+        return supports(command.MessageTypes.all.map { $0.rawValue })
     }
 
 

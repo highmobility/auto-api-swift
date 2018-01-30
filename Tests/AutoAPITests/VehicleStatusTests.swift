@@ -44,7 +44,7 @@ class VehicleStatusTests: XCTestCase {
             0x00        // Message Type for Get Vehicle Status
         ]
 
-        XCTAssertEqual(VehicleStatus.getStatus, bytes)
+        XCTAssertEqual(VehicleStatus.getVehicleStatus, bytes)
     }
 
     func testState() {

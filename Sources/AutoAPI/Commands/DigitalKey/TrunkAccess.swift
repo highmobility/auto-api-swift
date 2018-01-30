@@ -57,20 +57,17 @@ extension TrunkAccess: Identifiable {
 
 extension TrunkAccess: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getTrunkState  = 0x00
         case trunkState     = 0x01
         case openCloseTrunk = 0x02
 
 
-        public static let getState = MessageTypes.getTrunkState
-        public static let state = MessageTypes.trunkState
-
-        public static var all: [UInt8] {
-            return [self.getTrunkState.rawValue,
-                    self.trunkState.rawValue,
-                    self.openCloseTrunk.rawValue]
+        public static var all: [TrunkAccess.MessageTypes] {
+            return [self.getTrunkState,
+                    self.trunkState,
+                    self.openCloseTrunk]
         }
     }
 }
@@ -89,7 +86,7 @@ public extension TrunkAccess {
 
 
     static var getTrunkState: [UInt8] {
-        return getState
+        return commandPrefix(for: .getTrunkState)
     }
 
     static var openClose: (Settings) -> [UInt8] {
@@ -97,7 +94,7 @@ public extension TrunkAccess {
             let lockBytes: [UInt8] = $0.lock?.propertyBytes(0x01) ?? []
             let positionBytes: [UInt8] = $0.position?.propertyBytes(0x02) ?? []
 
-            return TrunkAccess.identifier.bytes + [MessageTypes.openCloseTrunk.rawValue] + lockBytes + positionBytes
+            return commandPrefix(for: .openCloseTrunk) + lockBytes + positionBytes
         }
     }
 }

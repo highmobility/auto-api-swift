@@ -29,12 +29,13 @@
 import Foundation
 
 
-public protocol MessageTypesType: RawRepresentable {
+public protocol MessageTypesKind: RawRepresentable {
 
-    static var all: [RawValue] { get }
+    static var all: [Self] { get }
 }
+
 
 public protocol MessageTypesGettable {
 
-    associatedtype MessageTypes: MessageTypesType
+    associatedtype MessageTypes: MessageTypesKind
 }

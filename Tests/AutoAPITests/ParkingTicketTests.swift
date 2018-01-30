@@ -55,7 +55,7 @@ class ParkingTicketTests: XCTestCase {
             0x00        // Message Type for Get Parking Ticket
         ]
 
-        XCTAssertEqual(ParkingTicket.getState, bytes)
+        XCTAssertEqual(ParkingTicket.getParkingTicket, bytes)
     }
 
     func testStartParking() {

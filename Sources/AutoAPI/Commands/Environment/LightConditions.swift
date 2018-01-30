@@ -57,18 +57,15 @@ extension LightConditions: Identifiable {
 
 extension LightConditions: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getLightConditions = 0x00
         case lightConditions    = 0x01
 
 
-        public static let getState = MessageTypes.getLightConditions
-        public static let state = MessageTypes.lightConditions
-
-        public static var all: [UInt8] {
-            return [self.getLightConditions.rawValue,
-                    self.lightConditions.rawValue]
+        public static var all: [LightConditions.MessageTypes] {
+            return [self.getLightConditions,
+                    self.lightConditions]
         }
     }
 }
@@ -76,6 +73,6 @@ extension LightConditions: MessageTypesGettable {
 public extension LightConditions {
 
     static var getLightConditions: [UInt8] {
-        return getState
+        return commandPrefix(for: .getLightConditions)
     }
 }

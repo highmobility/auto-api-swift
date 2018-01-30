@@ -45,7 +45,7 @@ class TheftAlarmTests: XCTestCase {
             0x00        // Message Type for Get Theft Alarm State
         ]
 
-        XCTAssertEqual(TheftAlarm.getState, bytes)
+        XCTAssertEqual(TheftAlarm.getTheftAlarmState, bytes)
     }
 
     func testSetTheftAlarm() {

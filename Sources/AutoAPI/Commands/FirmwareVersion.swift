@@ -63,18 +63,15 @@ extension FirmwareVersion: Identifiable {
 
 extension FirmwareVersion: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getFirmwareVersion = 0x00
         case firmwareVersion    = 0x01
 
 
-        public static let getState = MessageTypes.getFirmwareVersion
-        public static let state = MessageTypes.firmwareVersion
-
-        public static var all: [UInt8] {
-            return [self.getFirmwareVersion.rawValue,
-                    self.firmwareVersion.rawValue]
+        public static var all: [FirmwareVersion.MessageTypes] {
+            return [self.getFirmwareVersion,
+                    self.firmwareVersion]
         }
     }
 }
@@ -82,6 +79,6 @@ extension FirmwareVersion: MessageTypesGettable {
 public extension FirmwareVersion {
 
     static var getFirmwareVersion: [UInt8] {
-        return FirmwareVersion.identifier.bytes + [0x00]
+        return commandPrefix(for: .getFirmwareVersion)
     }
 }

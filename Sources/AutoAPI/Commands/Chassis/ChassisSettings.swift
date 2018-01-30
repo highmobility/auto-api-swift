@@ -61,7 +61,7 @@ extension ChassisSettings: Identifiable {
 
 extension ChassisSettings: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getChassisSettings     = 0x00
         case chassisSettings        = 0x01
@@ -71,16 +71,13 @@ extension ChassisSettings: MessageTypesGettable {
         case setChassisPosition     = 0x05
 
 
-        public static let getState = MessageTypes.getChassisSettings
-        public static let state = MessageTypes.chassisSettings
-
-        public static var all: [UInt8] {
-            return [self.getChassisSettings.rawValue,
-                    self.chassisSettings.rawValue,
-                    self.setDrivingMode.rawValue,
-                    self.startStopSportChrono.rawValue,
-                    self.setSpringRate.rawValue,
-                    self.setChassisPosition.rawValue]
+        public static var all: [ChassisSettings.MessageTypes] {
+            return [self.getChassisSettings,
+                    self.chassisSettings,
+                    self.setDrivingMode,
+                    self.startStopSportChrono,
+                    self.setSpringRate,
+                    self.setChassisPosition]
         }
     }
 }
@@ -88,30 +85,30 @@ extension ChassisSettings: MessageTypesGettable {
 public extension ChassisSettings {
 
     static var getChassisSettings: [UInt8] {
-        return getState
+        return commandPrefix(for: .getChassisSettings)
     }
 
     static var setChassisPosition: (UInt8) -> [UInt8] {
         return {
-            return identifier.bytes + [MessageTypes.setChassisPosition.rawValue, $0]
+            return commandPrefix(for: .setChassisPosition, additionalBytes: $0)
         }
     }
 
     static var setDrivingMode: (DrivingMode) -> [UInt8] {
         return {
-            return identifier.bytes + [MessageTypes.setDrivingMode.rawValue, $0.rawValue]
+            return commandPrefix(for: .setDrivingMode, additionalBytes: $0.rawValue)
         }
     }
 
     static var setSpringRate: (Axle, UInt8) -> [UInt8] {
         return {
-            return identifier.bytes + [MessageTypes.setSpringRate.rawValue, $0.rawValue, $1]
+            return commandPrefix(for: .setSpringRate, additionalBytes: $0.rawValue, $1)
         }
     }
 
     static var startStopSportChrono: (StartStopChrono) -> [UInt8] {
         return {
-            return identifier.bytes + [MessageTypes.startStopSportChrono.rawValue, $0.rawValue]
+            return commandPrefix(for: .startStopSportChrono, additionalBytes: $0.rawValue)
         }
     }
 }

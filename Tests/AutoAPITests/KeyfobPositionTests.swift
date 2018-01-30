@@ -44,7 +44,7 @@ class KeyfobPositionTests: XCTestCase {
             0x00        // Message Type for Get Keyfob Position
         ]
 
-        XCTAssertEqual(KeyfobPosition.getState, bytes)
+        XCTAssertEqual(KeyfobPosition.getKeyfobPosition, bytes)
     }
 
     func testState() {

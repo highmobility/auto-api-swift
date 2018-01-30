@@ -57,18 +57,15 @@ extension Offroad: Identifiable {
 
 extension Offroad: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getOffroadState    = 0x00
         case offroadState       = 0x01
 
 
-        public static let getState = MessageTypes.getOffroadState
-        public static let state = MessageTypes.offroadState
-
-        public static var all: [UInt8] {
-            return [self.getOffroadState.rawValue,
-                    self.offroadState.rawValue]
+        public static var all: [Offroad.MessageTypes] {
+            return [self.getOffroadState,
+                    self.offroadState]
         }
     }
 }
@@ -76,6 +73,6 @@ extension Offroad: MessageTypesGettable {
 public extension Offroad {
 
     static var getOffroadState: [UInt8] {
-        return getState
+        return commandPrefix(for: .getOffroadState)
     }
 }

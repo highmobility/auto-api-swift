@@ -76,20 +76,17 @@ extension Windscreen: Identifiable {
 
 extension Windscreen: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getWindscreenState     = 0x00
         case windscreenState        = 0x01
         case setWindscreenDamage    = 0x02
 
 
-        public static let getState = MessageTypes.getWindscreenState
-        public static let state = MessageTypes.windscreenState
-
-        public static var all: [UInt8] {
-            return [self.getWindscreenState.rawValue,
-                    self.windscreenState.rawValue,
-                    self.setWindscreenDamage.rawValue]
+        public static var all: [Windscreen.MessageTypes] {
+            return [self.getWindscreenState,
+                    self.windscreenState,
+                    self.setWindscreenDamage]
         }
     }
 }
@@ -110,7 +107,7 @@ public extension Windscreen {
 
 
     static var getWindscreenState: [UInt8] {
-        return getState
+        return commandPrefix(for: .getWindscreenState)
     }
 
     static var setWindscreenDamage: (Damage) -> [UInt8] {
@@ -119,7 +116,7 @@ public extension Windscreen {
             let zoneBytes = $0.zone.propertyBytes(0x05)
             let replacementBytes = $0.needsReplacement.propertyBytes(0x06)
 
-            return Windscreen.identifier.bytes + [MessageTypes.setWindscreenDamage.rawValue] + damageBytes + zoneBytes + replacementBytes
+            return commandPrefix(for: .setWindscreenDamage) + damageBytes + zoneBytes + replacementBytes
         }
     }
 }

@@ -45,3 +45,14 @@ extension Command {
 protocol CommandAggregate: Command, MessageTypesGettable {
 
 }
+
+extension CommandAggregate where Self.MessageTypes.RawValue == UInt8 {
+
+    static func commandPrefix(for messageType: Self.MessageTypes) -> [UInt8] {
+        return commandPrefix(for: messageType, additionalBytes: nil)
+    }
+
+    static func commandPrefix(for messageType: Self.MessageTypes, additionalBytes bytes: UInt8?...) -> [UInt8] {
+        return Self.identifier.bytes + [messageType.rawValue] + bytes.flatMap { $0 }
+    }
+}

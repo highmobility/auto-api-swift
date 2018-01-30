@@ -77,18 +77,15 @@ extension Race: Identifiable {
 
 extension Race: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getRaceState   = 0x00
         case raceState      = 0x01
 
 
-        public static let getState = MessageTypes.getRaceState
-        public static let state = MessageTypes.raceState
-
-        public static var all: [UInt8] {
-            return [self.getRaceState.rawValue,
-                    self.raceState.rawValue]
+        public static var all: [Race.MessageTypes] {
+            return [self.getRaceState,
+                    self.raceState]
         }
     }
 }
@@ -96,6 +93,6 @@ extension Race: MessageTypesGettable {
 public extension Race {
 
     static var getRaceState: [UInt8] {
-        return getState
+        return commandPrefix(for: .getRaceState)
     }
 }

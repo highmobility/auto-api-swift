@@ -44,7 +44,7 @@ class MaintenanceTests: XCTestCase {
             0x00        // Message Type for Get Maintenance State
         ]
 
-        XCTAssertEqual(Maintenance.getState, bytes)
+        XCTAssertEqual(Maintenance.getMaintenanceState, bytes)
     }
 
     func testState() {

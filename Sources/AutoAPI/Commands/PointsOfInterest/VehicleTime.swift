@@ -50,18 +50,15 @@ public struct VehicleTime: FullStandardCommand {
 
 extension VehicleTime: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getVehicleTime = 0x00
         case vehicleTime    = 0x01
 
 
-        public static let getState = MessageTypes.getVehicleTime
-        public static let state = MessageTypes.vehicleTime
-
-        public static var all: [UInt8] {
-            return [self.getVehicleTime.rawValue,
-                    self.vehicleTime.rawValue]
+        public static var all: [VehicleTime.MessageTypes] {
+            return [self.getVehicleTime,
+                    self.vehicleTime]
         }
     }
 }
@@ -74,6 +71,6 @@ extension VehicleTime: Identifiable {
 public extension VehicleTime {
 
     static var getVehicleTime: [UInt8] {
-        return getState
+        return commandPrefix(for: .getVehicleTime)
     }
 }

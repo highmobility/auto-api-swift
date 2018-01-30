@@ -40,13 +40,13 @@ extension Graphics: Identifiable {
 
 extension Graphics: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case displayImage   = 0x00
 
 
-        public static var all: [UInt8] {
-            return [self.displayImage.rawValue]
+        public static var all: [Graphics.MessageTypes] {
+            return [self.displayImage]
         }
     }
 }
@@ -55,7 +55,7 @@ public extension Graphics {
 
     static var displayImage: (URL) -> [UInt8] {
         return {
-            return identifier.bytes + [MessageTypes.displayImage.rawValue] + $0.propertyBytes(0x01)
+            return commandPrefix(for: .displayImage) + $0.propertyBytes(0x01)
         }
     }
 }

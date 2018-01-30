@@ -57,18 +57,15 @@ extension Maintenance: Identifiable {
 
 extension Maintenance: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getMaintenanceState    = 0x00
         case maintenanceState       = 0x01
 
 
-        public static let getState = MessageTypes.getMaintenanceState
-        public static let state = MessageTypes.maintenanceState
-
-        public static var all: [UInt8] {
-            return [self.getMaintenanceState.rawValue,
-                    self.maintenanceState.rawValue]
+        public static var all: [Maintenance.MessageTypes] {
+            return [self.getMaintenanceState,
+                    self.maintenanceState]
         }
     }
 }
@@ -76,6 +73,6 @@ extension Maintenance: MessageTypesGettable {
 public extension Maintenance {
 
     static var getMaintenanceState: [UInt8] {
-        return getState
+        return commandPrefix(for: .getMaintenanceState)
     }
 }

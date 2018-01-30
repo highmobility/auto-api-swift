@@ -40,13 +40,13 @@ extension VideoHandover: Identifiable {
 
 extension VideoHandover: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case videoHandover  = 0x00
 
 
-        public static var all: [UInt8] {
-            return [self.videoHandover.rawValue]
+        public static var all: [VideoHandover.MessageTypes] {
+            return [self.videoHandover]
         }
     }
 }
@@ -72,7 +72,7 @@ public extension VideoHandover {
             let secondBytes: [UInt8] = $0.startingSecond?.propertyBytes(0x02) ?? []
             let screenBytes: [UInt8] = $0.screen?.propertyBytes(0x03) ?? []
 
-            return identifier.bytes + [MessageTypes.videoHandover.rawValue] + urlBytes + secondBytes + screenBytes
+            return commandPrefix(for: .videoHandover) + urlBytes + secondBytes + screenBytes
         }
     }
 }

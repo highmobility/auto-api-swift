@@ -45,7 +45,7 @@ class TrunkAccessTests: XCTestCase {
             0x00        // Message Type for Get Trunk State
         ]
 
-        XCTAssertEqual(TrunkAccess.getState, bytes)
+        XCTAssertEqual(TrunkAccess.getTrunkState, bytes)
     }
 
     func testOpenClose() {

@@ -44,7 +44,7 @@ class VehicleTimeTests: XCTestCase {
             0x00        // Message Type for Get Vehicle Time
         ]
 
-        XCTAssertEqual(VehicleTime.getState, bytes)
+        XCTAssertEqual(VehicleTime.getVehicleTime, bytes)
     }
 
     func testState() {

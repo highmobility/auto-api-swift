@@ -52,18 +52,15 @@ public struct VehicleLocation: FullStandardCommand {
 
 extension VehicleLocation: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getVehicleLocation = 0x00
         case vehicleLocation    = 0x01
 
 
-        public static let getState = MessageTypes.getVehicleLocation
-        public static let state = MessageTypes.vehicleLocation
-
-        public static var all: [UInt8] {
-            return [self.getVehicleLocation.rawValue,
-                    self.vehicleLocation.rawValue]
+        public static var all: [VehicleLocation.MessageTypes] {
+            return [self.getVehicleLocation,
+                    self.vehicleLocation]
         }
     }
 }
@@ -76,6 +73,6 @@ extension VehicleLocation: Identifiable {
 public extension VehicleLocation {
 
     static var getVehicleLocation: [UInt8] {
-        return getState
+        return commandPrefix(for: .getVehicleLocation)
     }
 }

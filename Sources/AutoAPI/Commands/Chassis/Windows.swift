@@ -65,20 +65,17 @@ extension Windows: Identifiable {
 
 extension Windows: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getWindowsState    = 0x00
         case windowsState       = 0x01
         case openCloseWindows   = 0x02
 
 
-        public static let getState = MessageTypes.getWindowsState
-        public static let state = MessageTypes.windowsState
-
-        public static var all: [UInt8] {
-            return [self.getWindowsState.rawValue,
-                    self.windowsState.rawValue,
-                    self.openCloseWindows.rawValue]
+        public static var all: [Windows.MessageTypes] {
+            return [self.getWindowsState,
+                    self.windowsState,
+                    self.openCloseWindows]
         }
     }
 }
@@ -86,12 +83,12 @@ extension Windows: MessageTypesGettable {
 public extension Windows {
 
     static var getWindowsState: [UInt8] {
-        return getState
+        return commandPrefix(for: .getWindowsState)
     }
 
     static var openClose: ([Window]) -> [UInt8] {
         return {
-            return Windows.identifier.bytes + [MessageTypes.openCloseWindows.rawValue] + $0.flatMap { $0.propertyBytes(0x01) }
+            return commandPrefix(for: .openCloseWindows) + $0.flatMap { $0.propertyBytes(0x01) }
         }
     }
 }

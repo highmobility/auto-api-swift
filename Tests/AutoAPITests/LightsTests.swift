@@ -74,7 +74,7 @@ class LightsTests: XCTestCase {
             0x00        // Message Type for Get Lights State
         ]
 
-        XCTAssertEqual(Lights.getState, bytes)
+        XCTAssertEqual(Lights.getLightsState, bytes)
     }
 
     func testState() {

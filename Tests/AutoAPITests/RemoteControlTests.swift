@@ -66,7 +66,7 @@ class RemoteControlTests: XCTestCase {
             0x00        // Message Type for Get Control Mode
         ]
 
-        XCTAssertEqual(RemoteControl.getState, bytes)
+        XCTAssertEqual(RemoteControl.getControlMode, bytes)
     }
 
     func testStartControlMode() {

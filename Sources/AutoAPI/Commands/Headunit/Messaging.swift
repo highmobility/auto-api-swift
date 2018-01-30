@@ -61,15 +61,15 @@ extension Messaging: Identifiable {
 
 extension Messaging: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case messageReceived    = 0x00
         case sendMessage        = 0x01
 
 
-        public static var all: [UInt8] {
-            return [self.messageReceived.rawValue,
-                    self.sendMessage.rawValue]
+        public static var all: [Messaging.MessageTypes] {
+            return [self.messageReceived,
+                    self.sendMessage]
         }
     }
 }
@@ -92,7 +92,7 @@ public extension Messaging {
             let handleBytes: [UInt8] = $0.senderHandle?.propertyBytes(0x01) ?? []
             let textBytes: [UInt8] = $0.text.propertyBytes(0x02)
 
-            return identifier.bytes + [MessageTypes.messageReceived.rawValue] + handleBytes + textBytes
+            return commandPrefix(for: .messageReceived) + handleBytes + textBytes
         }
     }
 }

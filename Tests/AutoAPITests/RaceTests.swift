@@ -44,7 +44,7 @@ class RaceTests: XCTestCase {
             0x00        // Message Type for Get Race State
         ]
 
-        XCTAssertEqual(Race.getState, bytes)
+        XCTAssertEqual(Race.getRaceState, bytes)
     }
 
     func testState() {

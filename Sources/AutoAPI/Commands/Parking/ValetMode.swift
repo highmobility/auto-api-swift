@@ -55,20 +55,17 @@ extension ValetMode: Identifiable {
 
 extension ValetMode: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getValetMode                   = 0x00
         case valetMode                      = 0x01
         case activateDeactivateValetMode    = 0x02
 
 
-        public static let getState = MessageTypes.getValetMode
-        public static let state = MessageTypes.valetMode
-
-        public static var all: [UInt8] {
-            return [self.getValetMode.rawValue,
-                    self.valetMode.rawValue,
-                    self.activateDeactivateValetMode.rawValue]
+        public static var all: [ValetMode.MessageTypes] {
+            return [self.getValetMode,
+                    self.valetMode,
+                    self.activateDeactivateValetMode]
         }
     }
 }
@@ -77,11 +74,11 @@ public extension ValetMode {
 
     static var activateValetMode: (ActiveState) -> [UInt8] {
         return {
-            return identifier.bytes + [0x02, $0.rawValue]
+            return commandPrefix(for: .activateDeactivateValetMode, additionalBytes: $0.rawValue)
         }
     }
 
     static var getValetMode: [UInt8] {
-        return getState
+        return commandPrefix(for: .getValetMode)
     }
 }

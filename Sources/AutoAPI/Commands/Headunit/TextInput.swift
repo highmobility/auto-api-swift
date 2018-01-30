@@ -40,13 +40,13 @@ extension TextInput: Identifiable {
 
 extension TextInput: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case textInput  = 0x00
 
 
-        public static var all: [UInt8] {
-            return [self.textInput.rawValue]
+        public static var all: [TextInput.MessageTypes] {
+            return [self.textInput]
         }
     }
 }
@@ -55,7 +55,7 @@ public extension TextInput {
 
     static var textInput: (String) -> [UInt8] {
         return {
-            return identifier.bytes + [MessageTypes.textInput.rawValue] + $0.propertyBytes(0x01)
+            return commandPrefix(for: .textInput) + $0.propertyBytes(0x01)
         }
     }
 }

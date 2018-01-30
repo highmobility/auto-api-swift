@@ -44,7 +44,7 @@ class SeatsTests: XCTestCase {
             0x00        // Message Type for Get Seats State
         ]
 
-        XCTAssertEqual(Seats.getState, bytes)
+        XCTAssertEqual(Seats.getSeatsState, bytes)
     }
 
     func testState() {

@@ -50,18 +50,15 @@ public struct KeyfobPosition: FullStandardCommand {
 
 extension KeyfobPosition: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getKeyfobPosition  = 0x00
         case keyfobPosition     = 0x01
 
 
-        public static let getState = MessageTypes.getKeyfobPosition
-        public static let state = MessageTypes.keyfobPosition
-
-        public static var all: [UInt8] {
-            return [self.getKeyfobPosition.rawValue,
-                    self.keyfobPosition.rawValue]
+        public static var all: [KeyfobPosition.MessageTypes] {
+            return [self.getKeyfobPosition,
+                    self.keyfobPosition]
         }
     }
 }
@@ -74,6 +71,6 @@ extension KeyfobPosition: Identifiable {
 public extension KeyfobPosition {
 
     static var getKeyfobPosition: [UInt8] {
-        return getState
+        return commandPrefix(for: .getKeyfobPosition)
     }
 }

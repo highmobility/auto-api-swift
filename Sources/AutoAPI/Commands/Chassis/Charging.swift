@@ -74,7 +74,7 @@ extension Charging: Identifiable {
 
 extension Charging: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getChargeState         = 0x00
         case chargeState            = 0x01
@@ -83,15 +83,12 @@ extension Charging: MessageTypesGettable {
         case openCloseChargePort    = 0x04
 
 
-        public static let getState = MessageTypes.getChargeState
-        public static let state = MessageTypes.chargeState
-
-        public static var all: [UInt8] {
-            return [self.getChargeState.rawValue,
-                    self.chargeState.rawValue,
-                    self.startStopCharging.rawValue,
-                    self.setChargeLimit.rawValue,
-                    self.openCloseChargePort.rawValue]
+        public static var all: [Charging.MessageTypes] {
+            return [self.getChargeState,
+                    self.chargeState,
+                    self.startStopCharging,
+                    self.setChargeLimit,
+                    self.openCloseChargePort]
         }
     }
 }
@@ -99,24 +96,24 @@ extension Charging: MessageTypesGettable {
 public extension Charging {
 
     static var getChargeState: [UInt8] {
-        return getState
+        return commandPrefix(for: .getChargeState)
     }
 
     static var openCloseChargePort: (ChargePortState) -> [UInt8] {
         return {
-            return identifier.bytes + [MessageTypes.openCloseChargePort.rawValue, $0.rawValue]
+            return commandPrefix(for: .openCloseChargePort, additionalBytes: $0.rawValue)
         }
     }
 
     static var setChargeLimit: (UInt8) -> [UInt8] {
         return {
-            return identifier.bytes + [MessageTypes.setChargeLimit.rawValue, $0]
+            return commandPrefix(for: .setChargeLimit, additionalBytes: $0)
         }
     }
 
     static var startStopCharging: (StartStopCharging) -> [UInt8] {
         return {
-            return identifier.bytes + [MessageTypes.startStopCharging.rawValue, $0.rawValue]
+            return commandPrefix(for: .startStopCharging, additionalBytes: $0.rawValue)
         }
     }
 }

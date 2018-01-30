@@ -19,23 +19,19 @@
 // licensing@high-mobility.com
 //
 //
-//  StateGettableDefault.swift
+//  Bool+Extensions.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 29/11/2017.
-//  Copyright © 2017 High Mobility. All rights reserved.
+//  Created by Mikk Rätsep on 30/01/2018.
+//  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-protocol StateGettableDefault: Identifiable, StateGettable {
+extension Bool: PropertyConvertable {
 
-}
-
-extension StateGettableDefault {
-
-    public static var getState: [UInt8] {
-        return Self.identifier.bytes + [0x00]
+    var propertyValue: [UInt8] {
+        return [(self ? 0x01 : 0x00)]
     }
 }

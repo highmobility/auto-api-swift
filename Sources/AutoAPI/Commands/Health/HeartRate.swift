@@ -40,13 +40,13 @@ extension HeartRate: Identifiable {
 
 extension HeartRate: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case sendHeartRate  = 0x02
 
 
-        public static var all: [UInt8] {
-            return [self.sendHeartRate.rawValue]
+        public static var all: [HeartRate.MessageTypes] {
+            return [self.sendHeartRate]
         }
     }
 }
@@ -55,7 +55,7 @@ public extension HeartRate {
 
     static var sendHeartRate: (UInt8) -> [UInt8] {
         return {
-            return identifier.bytes + [0x02, $0]
+            return commandPrefix(for: .sendHeartRate, additionalBytes: $0)
         }
     }
 }

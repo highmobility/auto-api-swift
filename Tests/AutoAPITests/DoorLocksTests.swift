@@ -45,7 +45,7 @@ class DoorLocksTests: XCTestCase {
             0x00        // Message Type for Get Lock State
         ]
 
-        XCTAssertEqual(DoorLocks.getState, bytes)
+        XCTAssertEqual(DoorLocks.getLockState, bytes)
     }
 
     func testLockUnlock() {

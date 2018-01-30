@@ -65,20 +65,17 @@ extension DoorLocks: Identifiable {
 
 extension DoorLocks: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getLockState       = 0x00
         case lockState          = 0x01
         case lockUnlockDoors    = 0x02
 
 
-        public static let getState = MessageTypes.getLockState
-        public static let state = MessageTypes.lockState
-
-        public static var all: [UInt8] {
-            return [self.getLockState.rawValue,
-                    self.lockState.rawValue,
-                    self.lockUnlockDoors.rawValue]
+        public static var all: [DoorLocks.MessageTypes] {
+            return [self.getLockState,
+                    self.lockState,
+                    self.lockUnlockDoors]
         }
     }
 }
@@ -86,12 +83,12 @@ extension DoorLocks: MessageTypesGettable {
 public extension DoorLocks {
 
     static var getLockState: [UInt8] {
-        return getState
+        return commandPrefix(for: .getLockState)
     }
 
     static var lockUnlock: (LockState) -> [UInt8] {
         return {
-            return DoorLocks.identifier.bytes + [MessageTypes.lockUnlockDoors.rawValue, $0.rawValue]
+            return commandPrefix(for: .lockUnlockDoors, additionalBytes: $0.rawValue)
         }
     }
 }

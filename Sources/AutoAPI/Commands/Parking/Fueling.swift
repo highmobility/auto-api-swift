@@ -55,20 +55,17 @@ extension Fueling: Identifiable {
 
 extension Fueling: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getGasFlapState    = 0x00
         case gasFlapState       = 0x01
         case openGasFlap        = 0x02
 
 
-        public static let getState = MessageTypes.getGasFlapState
-        public static let state = MessageTypes.gasFlapState
-
-        public static var all: [UInt8] {
-            return [self.getGasFlapState.rawValue,
-                    self.gasFlapState.rawValue,
-                    self.openGasFlap.rawValue]
+        public static var all: [Fueling.MessageTypes] {
+            return [self.getGasFlapState,
+                    self.gasFlapState,
+                    self.openGasFlap]
         }
     }
 }
@@ -76,10 +73,10 @@ extension Fueling: MessageTypesGettable {
 public extension Fueling {
 
     static var getGasFlapState: [UInt8] {
-        return getState
+        return commandPrefix(for: .getGasFlapState)
     }
 
     static var openGasFlap: [UInt8] {
-        return identifier.bytes + [0x02]
+        return commandPrefix(for: .openGasFlap)
     }
 }

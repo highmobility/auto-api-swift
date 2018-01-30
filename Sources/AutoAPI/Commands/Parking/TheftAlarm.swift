@@ -55,20 +55,17 @@ extension TheftAlarm: Identifiable {
 
 extension TheftAlarm: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getTheftAlarmState = 0x00
         case theftAlarmState    = 0x01
         case setTheftAlarm      = 0x02
 
 
-        public static let getState = MessageTypes.getTheftAlarmState
-        public static let state = MessageTypes.theftAlarmState
-
-        public static var all: [UInt8] {
-            return [self.getTheftAlarmState.rawValue,
-                    self.theftAlarmState.rawValue,
-                    self.setTheftAlarm.rawValue]
+        public static var all: [TheftAlarm.MessageTypes] {
+            return [self.getTheftAlarmState,
+                    self.theftAlarmState,
+                    self.setTheftAlarm]
         }
     }
 }
@@ -76,12 +73,12 @@ extension TheftAlarm: MessageTypesGettable {
 public extension TheftAlarm {
 
     static var getTheftAlarmState: [UInt8] {
-        return getState
+        return commandPrefix(for: .getTheftAlarmState)
     }
 
     static var setTheftAlarm: (TheftAlarmState) -> [UInt8] {
         return {
-            return TheftAlarm.identifier.bytes + [0x02, $0.rawValue]
+            return commandPrefix(for: .setTheftAlarm, additionalBytes: $0.rawValue)
         }
     }
 }

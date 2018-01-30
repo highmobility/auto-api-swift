@@ -41,13 +41,13 @@ extension Browser: Identifiable {
 
 extension Browser: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case loadURL    = 0x00
 
 
-        public static var all: [UInt8] {
-            return [self.loadURL.rawValue]
+        public static var all: [Browser.MessageTypes] {
+            return [self.loadURL]
         }
     }
 }
@@ -56,7 +56,7 @@ public extension Browser {
 
     static var loadURL: (URL) -> [UInt8] {
         return {
-            return identifier.bytes + [MessageTypes.loadURL.rawValue] + $0.propertyBytes(0x01)
+            return commandPrefix(for: .loadURL) + $0.propertyBytes(0x01)
         }
     }
 }

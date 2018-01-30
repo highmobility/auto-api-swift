@@ -57,20 +57,17 @@ extension RooftopControl: Identifiable {
 
 extension RooftopControl: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getRooftopState    = 0x00
         case rooftopState       = 0x01
         case controlRooftop     = 0x02
 
 
-        public static let getState = MessageTypes.getRooftopState
-        public static let state = MessageTypes.rooftopState
-
-        public static var all: [UInt8] {
-            return [self.getRooftopState.rawValue,
-                    self.rooftopState.rawValue,
-                    self.controlRooftop.rawValue]
+        public static var all: [RooftopControl.MessageTypes] {
+            return [self.getRooftopState,
+                    self.rooftopState,
+                    self.controlRooftop]
         }
     }
 }
@@ -93,11 +90,11 @@ public extension RooftopControl {
             let dimmingBytes: [UInt8] = $0.dimming?.propertyBytes(0x01) ?? []
             let openCloseBytes: [UInt8] = $0.openClose?.propertyBytes(0x02) ?? []
 
-            return RooftopControl.identifier.bytes + [MessageTypes.controlRooftop.rawValue] + dimmingBytes + openCloseBytes
+            return commandPrefix(for: .controlRooftop) + dimmingBytes + openCloseBytes
         }
     }
 
     static var getRooftopState: [UInt8] {
-        return getState
+        return commandPrefix(for: .getRooftopState)
     }
 }

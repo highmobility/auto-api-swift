@@ -55,7 +55,7 @@ class ValetModeTests: XCTestCase {
             0x00        // Message Type for Get Valet Mode
         ]
 
-        XCTAssertEqual(ValetMode.getState, bytes)
+        XCTAssertEqual(ValetMode.getValetMode, bytes)
     }
 
     func testState() {

@@ -83,18 +83,15 @@ extension Diagnostics: Identifiable {
 
 extension Diagnostics: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getDiagnosticsState    = 0x00
         case diagnosticsState       = 0x01
 
 
-        public static let getState = MessageTypes.getDiagnosticsState
-        public static let state = MessageTypes.diagnosticsState
-
-        public static var all: [UInt8] {
-            return [self.getDiagnosticsState.rawValue,
-                    self.diagnosticsState.rawValue]
+        public static var all: [Diagnostics.MessageTypes] {
+            return [self.getDiagnosticsState,
+                    self.diagnosticsState]
         }
     }
 }
@@ -102,6 +99,6 @@ extension Diagnostics: MessageTypesGettable {
 public extension Diagnostics {
 
     static var getDiagnosticsState: [UInt8] {
-        return getState
+        return commandPrefix(for: .getDiagnosticsState)
     }
 }

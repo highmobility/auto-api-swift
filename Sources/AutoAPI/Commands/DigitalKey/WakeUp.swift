@@ -40,13 +40,13 @@ extension WakeUp: Identifiable {
 
 extension WakeUp: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case wakeUp = 0x02
 
 
-        public static var all: [UInt8] {
-            return [self.wakeUp.rawValue]
+        public static var all: [WakeUp.MessageTypes] {
+            return [self.wakeUp]
         }
     }
 }
@@ -54,6 +54,6 @@ extension WakeUp: MessageTypesGettable {
 public extension WakeUp {
 
     static var wakeUp: [UInt8] {
-        return WakeUp.identifier.bytes + [MessageTypes.wakeUp.rawValue]
+        return commandPrefix(for: .wakeUp)
     }
 }

@@ -119,17 +119,17 @@ extension Notifications: Identifiable {
 
 extension Notifications: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case notification       = 0x00
         case notificationAction = 0x01
         case clearNotification  = 0x02
 
 
-        public static var all: [UInt8] {
-            return [self.notification.rawValue,
-                    self.notificationAction.rawValue,
-                    self.clearNotification.rawValue]
+        public static var all: [Notifications.MessageTypes] {
+            return [self.notification,
+                    self.notificationAction,
+                    self.clearNotification]
         }
     }
 }
@@ -148,7 +148,7 @@ public extension Notifications {
 
 
     static var clearNotification: [UInt8] {
-        return identifier.bytes + [MessageTypes.clearNotification.rawValue]
+        return commandPrefix(for: .clearNotification)
     }
 
     static var notification: (Notification) -> [UInt8] {
@@ -156,13 +156,13 @@ public extension Notifications {
             let textBytes = $0.text.propertyBytes(0x01)
             let actionsBytes: [UInt8] = $0.actionItems?.flatMap { $0.propertyBytes(0x02) } ?? []
 
-            return identifier.bytes + [MessageTypes.notification.rawValue] + textBytes + actionsBytes
+            return commandPrefix(for: .notification) + textBytes + actionsBytes
         }
     }
 
     static var notificationAction: (UInt8) -> [UInt8] {
         return {
-            return identifier.bytes + [MessageTypes.notificationAction.rawValue, $0]
+            return commandPrefix(for: .notificationAction, additionalBytes: $0)
         }
     }
 }

@@ -64,6 +64,7 @@ XCTMain([
     testCase(VideoHandoverTests.allTests),
     testCase(WakeUpTests.allTests),
     testCase(WeatherConditionsTests.allTests),
+    testCase(WiFiTests.allTests),
     testCase(WindowsTests.allTests),
     testCase(WindscreenTests.allTests),
 ])

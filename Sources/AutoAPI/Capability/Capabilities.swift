@@ -79,42 +79,30 @@ extension Capabilities: Identifiable {
 
 extension Capabilities: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getCapabilities    = 0x00
         case capabilities       = 0x01
         case getCapability      = 0x02
 
 
-        public static var all: [UInt8] {
-            return [self.getCapabilities.rawValue,
-                    self.capabilities.rawValue,
-                    self.getCapability.rawValue]
+        public static var all: [Capabilities.MessageTypes] {
+            return [self.getCapabilities,
+                    self.capabilities,
+                    self.getCapability]
         }
     }
 }
 
 public extension Capabilities {
 
-    /// Same as `getCapabilities` type var.
-    static var getAll: [UInt8] {
-        return Capabilities.identifier.bytes + [0x00]
-    }
-
-    /// Same as `getAll` type var.
     static var getCapabilities: [UInt8] {
-        return getAll
+        return commandPrefix(for: .getCapabilities)
     }
 
-    /// Same as `getSingle` type var.
     static var getCapability: (Identifier) -> [UInt8] {
-        return getSingle
-    }
-
-    /// Same as `getCapability` type var.
-    static var getSingle: (Identifier) -> [UInt8] {
         return {
-            return Capabilities.identifier.bytes + [0x02] + $0.bytes
+            return commandPrefix(for: .getCapability) + $0.bytes
         }
     }
 }

@@ -24,6 +24,10 @@
 		20098FB71FC6F0EF00A2BA98 /* AutoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20098FB61FC6F0EF00A2BA98 /* AutoAPI.swift */; };
 		20098FC01FC705AA00A2BA98 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20098FBF1FC705AA00A2BA98 /* Property.swift */; };
 		20098FC21FC7073900A2BA98 /* UInt8Collection+Binary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20098FC11FC7073900A2BA98 /* UInt8Collection+Binary.swift */; };
+		200B3A2220206F8A00EC52E4 /* WiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B3A2120206F8A00EC52E4 /* WiFi.swift */; };
+		200B3A242020983100EC52E4 /* NetworkSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B3A232020983100EC52E4 /* NetworkSecurity.swift */; };
+		200B3A2620209CB300EC52E4 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B3A2520209CB300EC52E4 /* Bool+Extensions.swift */; };
+		200B3A2820209D1200EC52E4 /* WiFiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B3A2720209D1200EC52E4 /* WiFiTests.swift */; };
 		200BBB9C1FD6CA3000CCBA30 /* WipersState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200BBB9B1FD6CA3000CCBA30 /* WipersState.swift */; };
 		200BBB9E1FD6CB3500CCBA30 /* WindscreenDamage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200BBB9D1FD6CB3500CCBA30 /* WindscreenDamage.swift */; };
 		200BBBA01FD6CC9100CCBA30 /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200BBB9F1FD6CC9100CCBA30 /* Zone.swift */; };
@@ -109,8 +113,6 @@
 		205427B61FCEBBAC0010DED2 /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205427B51FCEBBAC0010DED2 /* Door.swift */; };
 		205427C01FCEDBFC0010DED2 /* Maintenance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205427BF1FCEDBFC0010DED2 /* Maintenance.swift */; };
 		205427CB1FCEF9E20010DED2 /* VehicleStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205427CA1FCEF9E20010DED2 /* VehicleStateType.swift */; };
-		205427CD1FCF01650010DED2 /* StateGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205427CC1FCF01650010DED2 /* StateGettable.swift */; };
-		205427CF1FCF02E30010DED2 /* StateGettableDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205427CE1FCF02E30010DED2 /* StateGettableDefault.swift */; };
 		205427D11FCF07CA0010DED2 /* MaintenanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205427D01FCF07CA0010DED2 /* MaintenanceTests.swift */; };
 		205427D51FCF0A850010DED2 /* WakeUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205427D41FCF0A850010DED2 /* WakeUp.swift */; };
 		205427D91FCF0E9E0010DED2 /* WakeUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205427D81FCF0E9E0010DED2 /* WakeUpTests.swift */; };
@@ -232,6 +234,10 @@
 		20098FBC1FC6FC6E00A2BA98 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		20098FBF1FC705AA00A2BA98 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		20098FC11FC7073900A2BA98 /* UInt8Collection+Binary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt8Collection+Binary.swift"; sourceTree = "<group>"; };
+		200B3A2120206F8A00EC52E4 /* WiFi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFi.swift; sourceTree = "<group>"; };
+		200B3A232020983100EC52E4 /* NetworkSecurity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSecurity.swift; sourceTree = "<group>"; };
+		200B3A2520209CB300EC52E4 /* Bool+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
+		200B3A2720209D1200EC52E4 /* WiFiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiTests.swift; sourceTree = "<group>"; };
 		200BBB9B1FD6CA3000CCBA30 /* WipersState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WipersState.swift; sourceTree = "<group>"; };
 		200BBB9D1FD6CB3500CCBA30 /* WindscreenDamage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindscreenDamage.swift; sourceTree = "<group>"; };
 		200BBB9F1FD6CC9100CCBA30 /* Zone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
@@ -317,8 +323,6 @@
 		205427B51FCEBBAC0010DED2 /* Door.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Door.swift; sourceTree = "<group>"; };
 		205427BF1FCEDBFC0010DED2 /* Maintenance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maintenance.swift; sourceTree = "<group>"; };
 		205427CA1FCEF9E20010DED2 /* VehicleStateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleStateType.swift; sourceTree = "<group>"; };
-		205427CC1FCF01650010DED2 /* StateGettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateGettable.swift; sourceTree = "<group>"; };
-		205427CE1FCF02E30010DED2 /* StateGettableDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateGettableDefault.swift; sourceTree = "<group>"; };
 		205427D01FCF07CA0010DED2 /* MaintenanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceTests.swift; sourceTree = "<group>"; };
 		205427D41FCF0A850010DED2 /* WakeUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUp.swift; sourceTree = "<group>"; };
 		205427D81FCF0E9E0010DED2 /* WakeUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpTests.swift; sourceTree = "<group>"; };
@@ -466,8 +470,6 @@
 				20DD5A582007BA1C00F2D01C /* DebugTree.swift */,
 				20BE22771FCBE76A0032CCC2 /* Identifiable.swift */,
 				209C3FC31FF51FAF00EEF1BB /* MessageTypes.swift */,
-				205427CC1FCF01650010DED2 /* StateGettable.swift */,
-				205427CE1FCF02E30010DED2 /* StateGettableDefault.swift */,
 			);
 			name = Sources;
 			path = AutoAPI;
@@ -525,6 +527,7 @@
 				208924B31FE1A5DD001C3923 /* VideoHandoverTests.swift */,
 				205427D81FCF0E9E0010DED2 /* WakeUpTests.swift */,
 				2052F9221FD98E0900BE53E3 /* WeatherConditionsTests.swift */,
+				200B3A2720209D1200EC52E4 /* WiFiTests.swift */,
 				204D0B3B1FD18FD500C6118A /* WindowsTests.swift */,
 				200BBBA51FD6D83B00CCBA30 /* WindscreenTests.swift */,
 			);
@@ -664,6 +667,7 @@
 		2071DF0F1FC80B3A0024C122 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				200B3A2520209CB300EC52E4 /* Bool+Extensions.swift */,
 				204E2AFE1FD04BF500DE2DD5 /* Float+Extensions.swift */,
 				202BDB351FE000F4005A4063 /* Int8+Extensions.swift */,
 				202BDB331FE00008005A4063 /* Int16+Extensions.swift */,
@@ -710,6 +714,7 @@
 				208924A31FE184AD001C3923 /* Notifications.swift */,
 				208924AB1FE19758001C3923 /* TextInput.swift */,
 				208924AF1FE1A3F1001C3923 /* VideoHandover.swift */,
+				200B3A2120206F8A00EC52E4 /* WiFi.swift */,
 			);
 			path = Headunit;
 			sourceTree = "<group>";
@@ -824,6 +829,7 @@
 				204D0B281FD0531000C6118A /* LightState.swift */,
 				20BE22901FCC5EA80032CCC2 /* LockState.swift */,
 				200BBBA11FD6D13500CCBA30 /* NeedsReplacement.swift */,
+				200B3A232020983100EC52E4 /* NetworkSecurity.swift */,
 				202BDB541FE02EAF005A4063 /* ParkingTicketState.swift */,
 				205894361FCD96AC00C30D0F /* Position.swift */,
 				20BE22921FCC5EB80032CCC2 /* PositionState.swift */,
@@ -1061,7 +1067,6 @@
 				205894311FCD922400C30D0F /* UInt32+Extensions.swift in Sources */,
 				204D0B3E1FD19A2200C6118A /* RooftopControl.swift in Sources */,
 				208924831FE15D51001C3923 /* SpringRate.swift in Sources */,
-				205427CD1FCF01650010DED2 /* StateGettable.swift in Sources */,
 				204E2AE61FD0206000DE2DD5 /* ChargePortState.swift in Sources */,
 				2052F9051FD9543500BE53E3 /* Acceleration.swift in Sources */,
 				20BE228A1FCC57570032CCC2 /* VehicleStatus.swift in Sources */,
@@ -1087,6 +1092,7 @@
 				209C3FC41FF51FAF00EEF1BB /* MessageTypes.swift in Sources */,
 				202BDB201FDFD4EA005A4063 /* KeyfobPosition.swift in Sources */,
 				209637791FD7F13000F97E87 /* Colour.swift in Sources */,
+				200B3A242020983100EC52E4 /* NetworkSecurity.swift in Sources */,
 				200BBBA21FD6D13500CCBA30 /* NeedsReplacement.swift in Sources */,
 				20098FC21FC7073900A2BA98 /* UInt8Collection+Binary.swift in Sources */,
 				208924941FE16F60001C3923 /* URL+Extensions.swift in Sources */,
@@ -1105,7 +1111,6 @@
 				208924981FE17149001C3923 /* Graphics.swift in Sources */,
 				205894331FCD95D300C30D0F /* WasherFluidLevel.swift in Sources */,
 				20BE22851FCC52450032CCC2 /* Sequence+Extensions.swift in Sources */,
-				205427CF1FCF02E30010DED2 /* StateGettableDefault.swift in Sources */,
 				204E2AE01FD01CF400DE2DD5 /* Charging.swift in Sources */,
 				204E2AE41FD01DDC00DE2DD5 /* ChargingState.swift in Sources */,
 				208924B01FE1A3F1001C3923 /* VideoHandover.swift in Sources */,
@@ -1115,9 +1120,11 @@
 				202BDB321FDFFF3E005A4063 /* ControlMode.swift in Sources */,
 				20E7DAD91FE2A9F80052DF91 /* Command.swift in Sources */,
 				202BDB3F1FE007AC005A4063 /* HeartRate.swift in Sources */,
+				200B3A2220206F8A00EC52E4 /* WiFi.swift in Sources */,
 				20B06EFC1FC850F700463FEA /* PropertiesIterator.swift in Sources */,
 				204E2AFD1FD04A8100DE2DD5 /* ClimateProfile.swift in Sources */,
 				204E2AEE1FD030CC00DE2DD5 /* ActiveState.swift in Sources */,
+				200B3A2620209CB300EC52E4 /* Bool+Extensions.swift in Sources */,
 				2058942F1FCD86C800C30D0F /* Diagnostics.swift in Sources */,
 				204D0B3A1FD1560900C6118A /* PropertyConvertable.swift in Sources */,
 				204E2AFF1FD04BF500DE2DD5 /* Float+Extensions.swift in Sources */,
@@ -1172,6 +1179,7 @@
 				202BDB381FE0021C005A4063 /* RemoteControlTests.swift in Sources */,
 				2052F91F1FD9899C00BE53E3 /* LightConditionsTests.swift in Sources */,
 				2052F9031FD9497500BE53E3 /* RaceTests.swift in Sources */,
+				200B3A2820209D1200EC52E4 /* WiFiTests.swift in Sources */,
 				2096377B1FD7FC7600F97E87 /* LightsTests.swift in Sources */,
 				2058941D1FCD5AD000C30D0F /* FailureMessageTests.swift in Sources */,
 				205427D11FCF07CA0010DED2 /* MaintenanceTests.swift in Sources */,

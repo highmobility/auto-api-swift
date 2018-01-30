@@ -46,7 +46,7 @@ class CapabilitiesTests: XCTestCase {
             0x00        // Message Type for Get Capabilities
         ]
 
-        XCTAssertEqual(Capabilities.getAll, bytes)
+        XCTAssertEqual(Capabilities.getCapabilities, bytes)
     }
 
     func testGetCapability() {
@@ -56,7 +56,7 @@ class CapabilitiesTests: XCTestCase {
             0x00, 0x29  // MSB, LSB Idenfitier for Heart Rate
         ]
 
-        XCTAssertEqual(Capabilities.getSingle(HeartRate.identifier), bytes)
+        XCTAssertEqual(Capabilities.getCapability(HeartRate.identifier), bytes)
     }
 
     func testMultiple() {

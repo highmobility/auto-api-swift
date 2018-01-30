@@ -45,7 +45,7 @@ class NaviDestinationTests: XCTestCase {
             0x00        // Message Type for Get Navi Destination
         ]
 
-        XCTAssertEqual(NaviDestination.getState, bytes)
+        XCTAssertEqual(NaviDestination.getNaviDestination, bytes)
     }
 
     func testSetDestination() {

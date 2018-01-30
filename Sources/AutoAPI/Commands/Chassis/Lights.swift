@@ -75,21 +75,17 @@ extension Lights: Identifiable {
 
 extension Lights: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getLightsState = 0x00
         case lightsState    = 0x01
         case controlLights  = 0x02
 
 
-        public static let getState = MessageTypes.getLightsState
-        public static let state = MessageTypes.lightsState
-
-
-        public static var all: [UInt8] {
-            return [self.getLightsState.rawValue,
-                    self.lightsState.rawValue,
-                    self.controlLights.rawValue]
+        public static var all: [Lights.MessageTypes] {
+            return [self.getLightsState,
+                    self.lightsState,
+                    self.controlLights]
         }
     }
 }
@@ -118,11 +114,11 @@ public extension Lights {
             let interiorBytes: [UInt8] = $0.interior?.propertyBytes(0x03) ?? []
             let ambientBytes: [UInt8] = $0.ambientColour?.propertyBytes(0x04) ?? []
 
-            return Lights.identifier.bytes + [MessageTypes.controlLights.rawValue] + frontBytes + rearBytes + interiorBytes + ambientBytes
+            return commandPrefix(for: .controlLights) + frontBytes + rearBytes + interiorBytes + ambientBytes
         }
     }
 
     static var getLightsState: [UInt8] {
-        return getState
+        return commandPrefix(for: .getLightsState)
     }
 }

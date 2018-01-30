@@ -57,7 +57,7 @@ extension RemoteControl: Identifiable {
 
 extension RemoteControl: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getControlMode     = 0x00
         case controlMode        = 0x01
@@ -66,15 +66,12 @@ extension RemoteControl: MessageTypesGettable {
         case controlCommand     = 0x04
 
 
-        public static let getState = MessageTypes.getControlMode
-        public static let state = MessageTypes.controlMode
-
-        public static var all: [UInt8] {
-            return [self.getControlMode.rawValue,
-                    self.controlMode.rawValue,
-                    self.startControlMode.rawValue,
-                    self.stopControlMode.rawValue,
-                    self.controlCommand.rawValue]
+        public static var all: [RemoteControl.MessageTypes] {
+            return [self.getControlMode,
+                    self.controlMode,
+                    self.startControlMode,
+                    self.stopControlMode,
+                    self.controlCommand]
         }
     }
 }
@@ -97,19 +94,19 @@ public extension RemoteControl {
             let speedBytes: [UInt8] = $0.speed?.propertyBytes(0x01) ?? []
             let angleBytes: [UInt8] = $0.angle?.propertyBytes(0x02) ?? []
 
-            return identifier.bytes + [0x04] + speedBytes + angleBytes
+            return commandPrefix(for: .controlCommand) + speedBytes + angleBytes
         }
     }
 
     static var getControlMode: [UInt8] {
-        return getState
+        return commandPrefix(for: .getControlMode)
     }
 
     static var startControlMode: [UInt8] {
-        return identifier.bytes + [0x02]
+        return commandPrefix(for: .startControlMode)
     }
 
     static var stopControlMode: [UInt8] {
-        return identifier.bytes + [0x03]
+        return commandPrefix(for: .stopControlMode)
     }
 }

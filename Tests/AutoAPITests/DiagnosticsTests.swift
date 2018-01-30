@@ -44,7 +44,7 @@ class DiagnosticsTests: XCTestCase {
             0x00        // Message Type for Get Diagnostics State
         ]
 
-        XCTAssertEqual(Diagnostics.getState, bytes)
+        XCTAssertEqual(Diagnostics.getDiagnosticsState, bytes)
     }
 
     func testState() {

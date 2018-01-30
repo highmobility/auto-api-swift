@@ -65,18 +65,15 @@ extension Seats: Identifiable {
 
 extension Seats: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getSeatsState  = 0x00
         case seatsState     = 0x01
 
 
-        public static let getState = MessageTypes.getSeatsState
-        public static let state = MessageTypes.seatsState
-
-        public static var all: [UInt8] {
-            return [self.getSeatsState.rawValue,
-                    self.seatsState.rawValue]
+        public static var all: [Seats.MessageTypes] {
+            return [self.getSeatsState,
+                    self.seatsState]
         }
     }
 }
@@ -84,6 +81,6 @@ extension Seats: MessageTypesGettable {
 public extension Seats {
 
     static var getSeatsState: [UInt8] {
-        return getState
+        return commandPrefix(for: .getSeatsState)
     }
 }

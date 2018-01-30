@@ -86,28 +86,22 @@ extension VehicleStatus: Identifiable {
 
 extension VehicleStatus: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getVehicleStatus   = 0x00
         case vehicleStatus      = 0x01
 
 
-        public static var all: [UInt8] {
-            return [self.getVehicleStatus.rawValue,
-                    self.vehicleStatus.rawValue]
+        public static var all: [VehicleStatus.MessageTypes] {
+            return [self.getVehicleStatus,
+                    self.vehicleStatus]
         }
     }
 }
 
 public extension VehicleStatus {
 
-    /// Same as `getVehicleStatus` type var.
-    static var getStatus: [UInt8] {
-        return VehicleStatus.identifier.bytes + [0x00]
-    }
-
-    /// Same as `getStatus` type var.
     static var getVehicleStatus: [UInt8] {
-        return getStatus
+        return commandPrefix(for: .getVehicleStatus)
     }
 }

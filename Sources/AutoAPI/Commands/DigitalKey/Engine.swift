@@ -55,20 +55,17 @@ extension Engine: Identifiable {
 
 extension Engine: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getIgnitionState   = 0x00
         case ignitionState      = 0x01
         case turnEngineOnOff    = 0x02
 
 
-        public static let getState = MessageTypes.getIgnitionState
-        public static let state = MessageTypes.ignitionState
-
-        public static var all: [UInt8] {
-            return [self.getIgnitionState.rawValue,
-                    self.ignitionState.rawValue,
-                    self.turnEngineOnOff.rawValue]
+        public static var all: [Engine.MessageTypes] {
+            return [self.getIgnitionState,
+                    self.ignitionState,
+                    self.turnEngineOnOff]
         }
     }
 }
@@ -76,12 +73,12 @@ extension Engine: MessageTypesGettable {
 public extension Engine {
 
     static var getIgnitionState: [UInt8] {
-        return getState
+        return commandPrefix(for: .getIgnitionState)
     }
 
     static var turnIgnition: (IgnitionState) -> [UInt8] {
         return {
-            return Engine.identifier.bytes + [MessageTypes.turnEngineOnOff.rawValue, $0.rawValue]
+            return commandPrefix(for: .turnEngineOnOff, additionalBytes: $0.rawValue)
         }
     }
 }

@@ -44,7 +44,7 @@ class OffroadTests: XCTestCase {
             0x00        // Message Type for Get Offroad State
         ]
 
-        XCTAssertEqual(Offroad.getState, bytes)
+        XCTAssertEqual(Offroad.getOffroadState, bytes)
     }
 
     func testState() {

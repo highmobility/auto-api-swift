@@ -71,6 +71,7 @@ public struct AutoAPI {
                 VideoHandover.self,
                 WakeUp.self,
                 WeatherConditions.self,
+                WiFi.self,
                 Windows.self,
                 Windscreen.self]
     }

@@ -73,7 +73,7 @@ extension Climate: Identifiable {
 
 extension Climate: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getClimateState        = 0x00
         case climateState           = 0x01
@@ -84,17 +84,14 @@ extension Climate: MessageTypesGettable {
         case startStopIonising      = 0x06
 
 
-        public static let getState = MessageTypes.getClimateState
-        public static let state = MessageTypes.climateState
-
-        public static var all: [UInt8] {
-            return [self.getClimateState.rawValue,
-                    self.climateState.rawValue,
-                    self.setClimateProfile.rawValue,
-                    self.startStopHVAC.rawValue,
-                    self.startStopDefogging.rawValue,
-                    self.startStopDefrosting.rawValue,
-                    self.startStopIonising.rawValue]
+        public static var all: [Climate.MessageTypes] {
+            return [self.getClimateState,
+                    self.climateState,
+                    self.setClimateProfile,
+                    self.startStopHVAC,
+                    self.startStopDefogging,
+                    self.startStopDefrosting,
+                    self.startStopIonising]
         }
     }
 }
@@ -115,7 +112,7 @@ public extension Climate {
 
 
     static var getClimateState: [UInt8] {
-        return getState
+        return commandPrefix(for: .getClimateState)
     }
 
     static var setClimateProfile: (Settings) -> [UInt8] {
@@ -124,31 +121,31 @@ public extension Climate {
             let driverBytes: [UInt8] = $0.driverTemp?.propertyBytes(0x02) ?? []
             let passengerBytes: [UInt8] = $0.passengerTemp?.propertyBytes(0x03) ?? []
 
-            return Climate.identifier.bytes + [MessageTypes.setClimateProfile.rawValue] + profileBytes + driverBytes + passengerBytes
+            return commandPrefix(for: .setClimateProfile) + profileBytes + driverBytes + passengerBytes
         }
     }
 
     static var startStopDefogging: (ActiveState) -> [UInt8] {
         return {
-            return Climate.identifier.bytes + [MessageTypes.startStopDefogging.rawValue, $0.rawValue]
+            return commandPrefix(for: .startStopDefogging, additionalBytes: $0.rawValue)
         }
     }
 
     static var startStopDefrosting: (ActiveState) -> [UInt8] {
         return {
-            return Climate.identifier.bytes + [MessageTypes.startStopDefrosting.rawValue, $0.rawValue]
+            return commandPrefix(for: .startStopDefrosting, additionalBytes: $0.rawValue)
         }
     }
 
     static var startStopHVAC: (ActiveState) -> [UInt8] {
         return {
-            return Climate.identifier.bytes + [MessageTypes.startStopHVAC.rawValue, $0.rawValue]
+            return commandPrefix(for: .startStopHVAC, additionalBytes: $0.rawValue)
         }
     }
 
     static var startStopIonising: (ActiveState) -> [UInt8] {
         return {
-            return Climate.identifier.bytes + [MessageTypes.startStopIonising.rawValue, $0.rawValue]
+            return commandPrefix(for: .startStopIonising, additionalBytes: $0.rawValue)
         }
     }
 }

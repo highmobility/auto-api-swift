@@ -49,7 +49,7 @@ class ClimateTests: XCTestCase {
             0x00        // Message Type for Get Climate State
         ]
 
-        XCTAssertEqual(Climate.getState, bytes)
+        XCTAssertEqual(Climate.getClimateState, bytes)
     }
 
     func testSetClimateProfile() {

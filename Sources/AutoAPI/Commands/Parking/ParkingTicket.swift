@@ -63,7 +63,7 @@ extension ParkingTicket: Identifiable {
 
 extension ParkingTicket: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getParkingTicket   = 0x00
         case parkingTicket      = 0x01
@@ -71,14 +71,11 @@ extension ParkingTicket: MessageTypesGettable {
         case endParking         = 0x03
 
 
-        public static let getState = MessageTypes.getParkingTicket
-        public static let state = MessageTypes.parkingTicket
-
-        public static var all: [UInt8] {
-            return [self.getParkingTicket.rawValue,
-                    self.parkingTicket.rawValue,
-                    self.startParking.rawValue,
-                    self.endParking.rawValue]
+        public static var all: [ParkingTicket.MessageTypes] {
+            return [self.getParkingTicket,
+                    self.parkingTicket,
+                    self.startParking,
+                    self.endParking]
         }
     }
 }
@@ -101,11 +98,11 @@ public extension ParkingTicket {
 
 
     static var endParking: [UInt8] {
-        return identifier.bytes + [0x03]
+        return commandPrefix(for: .endParking)
     }
 
     static var getParkingTicket: [UInt8] {
-        return getState
+        return commandPrefix(for: .getParkingTicket)
     }
 
     static var startParking: (Settings) -> [UInt8] {
@@ -116,7 +113,7 @@ public extension ParkingTicket {
             let startBytes = $0.startTime.propertyBytes(0x03)
             let endBytes: [UInt8] = $0.endTime?.propertyBytes(0x04) ?? []
 
-            return identifier.bytes + [0x02] + nameBytes + ticketBytes + startBytes + endBytes
+            return commandPrefix(for: .startParking) + nameBytes + ticketBytes + startBytes + endBytes
         }
     }
 }

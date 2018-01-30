@@ -48,7 +48,7 @@ class ChassisSettingsTests: XCTestCase {
             0x00        // Message Type for Get Chassis Settings
         ]
 
-        XCTAssertEqual(ChassisSettings.getState, bytes)
+        XCTAssertEqual(ChassisSettings.getChassisSettings, bytes)
     }
 
     func testSetChassisPosition() {

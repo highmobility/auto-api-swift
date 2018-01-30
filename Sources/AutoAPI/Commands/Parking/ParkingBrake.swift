@@ -55,20 +55,17 @@ extension ParkingBrake: Identifiable {
 
 extension ParkingBrake: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getParkingBrakeState   = 0x00
         case parkingBrakeState      = 0x01
         case setParkingBrake        = 0x02
 
 
-        public static let getState = MessageTypes.getParkingBrakeState
-        public static let state = MessageTypes.parkingBrakeState
-
-        public static var all: [UInt8] {
-            return [self.getParkingBrakeState.rawValue,
-                    self.parkingBrakeState.rawValue,
-                    self.setParkingBrake.rawValue]
+        public static var all: [ParkingBrake.MessageTypes] {
+            return [self.getParkingBrakeState,
+                    self.parkingBrakeState,
+                    self.setParkingBrake]
         }
     }
 }
@@ -77,11 +74,11 @@ public extension ParkingBrake {
 
     static var activateInactivate: (ActiveState) -> [UInt8] {
         return {
-            return ParkingBrake.identifier.bytes + [0x02] + $0.propertyBytes(0x01)
+            return commandPrefix(for: .setParkingBrake) + $0.propertyBytes(0x01)
         }
     }
 
     static var getParkingBrakeState: [UInt8] {
-        return getState
+        return commandPrefix(for: .getParkingBrakeState)
     }
 }

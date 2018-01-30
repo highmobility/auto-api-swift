@@ -30,7 +30,7 @@ import Foundation
 
 
 /// Expects `state` to come in with `0x01` messageType
-protocol FullStandardCommand: FullCommand, StateGettableDefault {
+protocol FullStandardCommand: FullCommand {
 
 }
 

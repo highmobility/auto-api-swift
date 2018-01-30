@@ -57,20 +57,17 @@ extension NaviDestination: Identifiable {
 
 extension NaviDestination: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesType {
+    public enum MessageTypes: UInt8, MessageTypesKind {
 
         case getNaviDestination = 0x00
         case naviDestination    = 0x01
         case setNaviDestination = 0x02
 
 
-        public static let getState = MessageTypes.getNaviDestination
-        public static let state = MessageTypes.naviDestination
-
-        public static var all: [UInt8] {
-            return [self.getNaviDestination.rawValue,
-                    self.naviDestination.rawValue,
-                    self.setNaviDestination.rawValue]
+        public static var all: [NaviDestination.MessageTypes] {
+            return [self.getNaviDestination,
+                    self.naviDestination,
+                    self.setNaviDestination]
         }
     }
 }
@@ -89,7 +86,7 @@ public extension NaviDestination {
 
 
     static var getNaviDestination: [UInt8] {
-        return getState
+        return commandPrefix(for: .getNaviDestination)
     }
 
     static var setDestination: (Destination) -> [UInt8] {
@@ -97,7 +94,7 @@ public extension NaviDestination {
             let coordinateBytes = $0.coordinate.propertyBytes(0x01)
             let nameBytes: [UInt8] = $0.name?.propertyBytes(0x02) ?? []
 
-            return identifier.bytes + [0x02] + coordinateBytes + nameBytes
+            return commandPrefix(for: .setNaviDestination) + coordinateBytes + nameBytes
         }
     }
 }

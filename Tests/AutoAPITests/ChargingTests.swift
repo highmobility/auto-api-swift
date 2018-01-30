@@ -46,7 +46,7 @@ class ChargingTests: XCTestCase {
             0x00        // Message Type for Get Charge State
         ]
 
-        XCTAssertEqual(Charging.getState, bytes)
+        XCTAssertEqual(Charging.getChargeState, bytes)
     }
 
     func testOpenClose() {

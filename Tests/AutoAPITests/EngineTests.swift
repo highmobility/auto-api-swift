@@ -45,7 +45,7 @@ class EngineTests: XCTestCase {
             0x00        // Message Type for Get Ignition State
         ]
 
-        XCTAssertEqual(Engine.getState, bytes)
+        XCTAssertEqual(Engine.getIgnitionState, bytes)
     }
 
     func testState() {

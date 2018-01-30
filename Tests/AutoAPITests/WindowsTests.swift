@@ -45,7 +45,7 @@ class WindowsTests: XCTestCase {
             0x00        // Message Type for Get Windows State
         ]
 
-        XCTAssertEqual(Windows.getState, bytes)
+        XCTAssertEqual(Windows.getWindowsState, bytes)
     }
 
     func testOpenClose() {
