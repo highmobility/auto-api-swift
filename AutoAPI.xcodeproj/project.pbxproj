@@ -28,6 +28,9 @@
 		200B3A242020983100EC52E4 /* NetworkSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B3A232020983100EC52E4 /* NetworkSecurity.swift */; };
 		200B3A2620209CB300EC52E4 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B3A2520209CB300EC52E4 /* Bool+Extensions.swift */; };
 		200B3A2820209D1200EC52E4 /* WiFiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B3A2720209D1200EC52E4 /* WiFiTests.swift */; };
+		200B3A2A2020A0C600EC52E4 /* ChargeMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B3A292020A0C600EC52E4 /* ChargeMode.swift */; };
+		200B3A2C2020A1C000EC52E4 /* TimerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B3A2B2020A1C000EC52E4 /* TimerType.swift */; };
+		200B3A2E2020A22800EC52E4 /* ChargeTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B3A2D2020A22800EC52E4 /* ChargeTimer.swift */; };
 		200BBB9C1FD6CA3000CCBA30 /* WipersState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200BBB9B1FD6CA3000CCBA30 /* WipersState.swift */; };
 		200BBB9E1FD6CB3500CCBA30 /* WindscreenDamage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200BBB9D1FD6CB3500CCBA30 /* WindscreenDamage.swift */; };
 		200BBBA01FD6CC9100CCBA30 /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200BBB9F1FD6CC9100CCBA30 /* Zone.swift */; };
@@ -238,6 +241,9 @@
 		200B3A232020983100EC52E4 /* NetworkSecurity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSecurity.swift; sourceTree = "<group>"; };
 		200B3A2520209CB300EC52E4 /* Bool+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
 		200B3A2720209D1200EC52E4 /* WiFiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiTests.swift; sourceTree = "<group>"; };
+		200B3A292020A0C600EC52E4 /* ChargeMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeMode.swift; sourceTree = "<group>"; };
+		200B3A2B2020A1C000EC52E4 /* TimerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerType.swift; sourceTree = "<group>"; };
+		200B3A2D2020A22800EC52E4 /* ChargeTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeTimer.swift; sourceTree = "<group>"; };
 		200BBB9B1FD6CA3000CCBA30 /* WipersState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WipersState.swift; sourceTree = "<group>"; };
 		200BBB9D1FD6CB3500CCBA30 /* WindscreenDamage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindscreenDamage.swift; sourceTree = "<group>"; };
 		200BBB9F1FD6CC9100CCBA30 /* Zone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
@@ -630,6 +636,7 @@
 				2052F9041FD9543500BE53E3 /* Acceleration.swift */,
 				208924A51FE1897A001C3923 /* ActionItem.swift */,
 				20E7DAD21FE26F140052DF91 /* BrakeTorqueVectoring.swift */,
+				200B3A2D2020A22800EC52E4 /* ChargeTimer.swift */,
 				209637781FD7F13000F97E87 /* Colour.swift */,
 				2031AA991FEA4529006F6C78 /* Coordinate.swift */,
 				205427B51FCEBBAC0010DED2 /* Door.swift */,
@@ -817,6 +824,7 @@
 				2052F9001FD9459400BE53E3 /* AccelerationType.swift */,
 				204E2AED1FD030CC00DE2DD5 /* ActiveState.swift */,
 				2089247F1FE15D19001C3923 /* Axle.swift */,
+				200B3A292020A0C600EC52E4 /* ChargeMode.swift */,
 				204E2AE31FD01DDC00DE2DD5 /* ChargingState.swift */,
 				204E2AE51FD0206000DE2DD5 /* ChargePortState.swift */,
 				202BDB311FDFFF3E005A4063 /* ControlMode.swift */,
@@ -839,6 +847,7 @@
 				204E2AE71FD022BA00DE2DD5 /* StartStopCharging.swift */,
 				2089248A1FE163D3001C3923 /* StartStopChrono.swift */,
 				20766D061FD1A621006D87CB /* TheftAlarmState.swift */,
+				200B3A2B2020A1C000EC52E4 /* TimerType.swift */,
 				200BBB9F1FD6CC9100CCBA30 /* Zone.swift */,
 				205894321FCD95D300C30D0F /* WasherFluidLevel.swift */,
 				200BBB9D1FD6CB3500CCBA30 /* WindscreenDamage.swift */,
@@ -1074,6 +1083,7 @@
 				204D0B271FD052A900C6118A /* Lights.swift in Sources */,
 				202BDB531FE02DEE005A4063 /* ParkingTicket.swift in Sources */,
 				202BDB341FE00008005A4063 /* Int16+Extensions.swift in Sources */,
+				200B3A2C2020A1C000EC52E4 /* TimerType.swift in Sources */,
 				205427B61FCEBBAC0010DED2 /* Door.swift in Sources */,
 				208924801FE15D19001C3923 /* Axle.swift in Sources */,
 				208924921FE16E36001C3923 /* Browser.swift in Sources */,
@@ -1139,6 +1149,7 @@
 				20D681761FC80BC700CE89A2 /* UInt8+Extensions.swift in Sources */,
 				20766D051FD1A4DC006D87CB /* TheftAlarm.swift in Sources */,
 				20B06F031FC8632F00463FEA /* DoorLocks.swift in Sources */,
+				200B3A2E2020A22800EC52E4 /* ChargeTimer.swift in Sources */,
 				204D0B2D1FD14A5100C6118A /* Windows.swift in Sources */,
 				2089247E1FE15C03001C3923 /* DrivingMode.swift in Sources */,
 				20DD5A552007B7B100F2D01C /* WindowsIterator.swift in Sources */,
@@ -1148,6 +1159,7 @@
 				200BBBA41FD6D28C00CCBA30 /* YearTime.swift in Sources */,
 				208924B21FE1A508001C3923 /* Screen.swift in Sources */,
 				20E7DADD1FE2AA1E0052DF91 /* InboundCommand.swift in Sources */,
+				200B3A2A2020A0C600EC52E4 /* ChargeMode.swift in Sources */,
 				2031AAA01FEA9358006F6C78 /* Capability.swift in Sources */,
 				20BE22A61FCCB62B0032CCC2 /* BinaryInitable.swift in Sources */,
 				20BE22931FCC5EB80032CCC2 /* PositionState.swift in Sources */,

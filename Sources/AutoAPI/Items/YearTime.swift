@@ -77,6 +77,19 @@ extension YearTime: BinaryInitable {
     }
 }
 
+extension YearTime: Equatable {
+
+    public static func ==(lhs: YearTime, rhs: YearTime) -> Bool {
+        return (lhs.year == rhs.year) &&
+            (lhs.month == rhs.month) &&
+            (lhs.day == rhs.day) &&
+            (lhs.hour == rhs.hour) &&
+            (lhs.minute == rhs.minute) &&
+            (lhs.second == rhs.second) &&
+            (lhs.offset == rhs.offset)
+    }
+}
+
 extension YearTime: PropertyConvertable {
 
     var propertyValue: [UInt8] {

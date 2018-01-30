@@ -34,6 +34,8 @@ class ChargingTests: XCTestCase {
 
     static var allTests = [("testGetState", testGetState),
                            ("testSetChargeLimit", testSetChargeLimit),
+                           ("testSetChargeMode", testSetChargeMode),
+                           ("testSetChargeTimer", testSetChargeTimer),
                            ("testStartStopCharging", testStartStopCharging),
                            ("testState", testState)]
 
@@ -67,6 +69,38 @@ class ChargingTests: XCTestCase {
         ]
 
         XCTAssertEqual(Charging.setChargeLimit(90), bytes)
+    }
+
+    func testSetChargeMode() {
+        let bytes: [UInt8] = [
+            0x00, 0x23, // MSB, LSB Message Identifier for Charging
+            0x05,       // Message Type for Set Charge Mode
+            0x02        // Inductive charging
+        ]
+
+        XCTAssertEqual(Charging.setChargeMode(.inductive) ?? [], bytes)
+    }
+
+    func testSetChargeTimer() {
+        let bytes: [UInt8] = [
+            0x00, 0x23, // MSB, LSB Message Identifier for Charging
+            0x06,       // Message Type for Set Charge Timer
+
+            0x0D,       // Property Identifier for Charge timer
+            0x00, 0x09, // Property size 9 bytes
+            0x02,       // Departure time
+            0x12,       // 2018
+            0x01,       // January
+            0x0a,       // the 10th
+            0x10,       // at 16h
+            0x20,       // 32min
+            0x05,       // 5 seconds
+            0x00, 0x00  // 0 min UTC time offset
+        ]
+
+        let time = YearTime(year: 2018, month: 1, day: 10, hour: 16, minute: 32, second: 5, offset: 0)
+
+        XCTAssertEqual(Charging.setChargeTimer(.init(type: .departureDate, time: time)), bytes)
     }
 
     func testStartStopCharging() {
@@ -128,7 +162,22 @@ class ChargingTests: XCTestCase {
 
             0x0B,       // Property Identifier for Charge port
             0x00, 0x01, // Property size 1 byte
-            0x01        // Charge port open
+            0x01,       // Charge port open
+
+            0x0C,       // Property identifier for Charge mode
+            0x00, 0x01, // Property size is 1 bytes
+            0x00,       // Immediate charging
+
+            0x0D,       // Property identifier for Charge timer
+            0x00, 0x09, // Property size is 9 bytes
+            0x02,       // Departure time
+            0x12,       // 2018
+            0x01,       // January
+            0x0A,       // the 10th
+            0x10,       // at 16h
+            0x20,       // 32min
+            0x05,       // 5 seconds
+            0x00, 0x00  // 0 min UTC time offset
         ]
 
         guard let charging = AutoAPI.parseBinary(bytes) as? Charging else {
@@ -146,5 +195,10 @@ class ChargingTests: XCTestCase {
         XCTAssertEqual(charging.timeToCompleteCharge, 60)
         XCTAssertEqual(charging.chargingRate, 0.0)
         XCTAssertEqual(charging.chargePortState, .open)
+        XCTAssertEqual(charging.chargeMode, .immediate)
+
+        let time = YearTime(year: 2018, month: 1, day: 10, hour: 16, minute: 32, second: 5, offset: 0)
+        
+        XCTAssertEqual(charging.chargeTimer, ChargeTimer(type: .departureDate, time: time))
     }
 }

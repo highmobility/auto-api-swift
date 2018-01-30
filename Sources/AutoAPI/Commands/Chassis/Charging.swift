@@ -35,7 +35,9 @@ public struct Charging: FullStandardCommand {
     public let batteryCurrentDC: Float?
     public let batteryLevel: UInt8?
     public let chargeLimit: UInt8?
+    public let chargeMode: ChargeMode?
     public let chargePortState: ChargePortState?
+    public let chargeTimer: ChargeTimer?
     public let chargerVoltageAC: Float?
     public let chargerVoltageDC: Float?
     public let chargingRate: Float?
@@ -62,7 +64,10 @@ public struct Charging: FullStandardCommand {
         timeToCompleteCharge = properties.value(for: 0x09)
         chargingRate = properties.value(for: 0x0A)
         chargePortState = ChargePortState(rawValue: properties.first(for: 0x0B)?.monoValue)
+        chargeMode = ChargeMode(rawValue: properties.first(for: 0x0C)?.monoValue)
+        chargeTimer = ChargeTimer(bytes: properties.first(for: 0x0D)?.value ?? [])
 
+        // Properties
         self.properties = properties
     }
 }
@@ -81,6 +86,8 @@ extension Charging: MessageTypesGettable {
         case startStopCharging      = 0x02
         case setChargeLimit         = 0x03
         case openCloseChargePort    = 0x04
+        case setChargeMode          = 0x05
+        case setChargeTimer         = 0x06
 
 
         public static var all: [Charging.MessageTypes] {
@@ -88,7 +95,9 @@ extension Charging: MessageTypesGettable {
                     self.chargeState,
                     self.startStopCharging,
                     self.setChargeLimit,
-                    self.openCloseChargePort]
+                    self.openCloseChargePort,
+                    self.setChargeMode,
+                    self.setChargeTimer]
         }
     }
 }
@@ -108,6 +117,23 @@ public extension Charging {
     static var setChargeLimit: (UInt8) -> [UInt8] {
         return {
             return commandPrefix(for: .setChargeLimit, additionalBytes: $0)
+        }
+    }
+
+    /// `.immediate` is not supported
+    static var setChargeMode: (ChargeMode) -> [UInt8]? {
+        return {
+            guard $0 != .immediate else {
+                return nil
+            }
+
+            return commandPrefix(for: .setChargeMode, additionalBytes: $0.rawValue)
+        }
+    }
+
+    static var setChargeTimer: (ChargeTimer) -> [UInt8] {
+        return {
+            return commandPrefix(for: .setChargeTimer) + $0.propertyBytes(0x0D)
         }
     }
 
