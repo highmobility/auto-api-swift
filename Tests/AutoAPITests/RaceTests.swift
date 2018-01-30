@@ -105,7 +105,11 @@ class RaceTests: XCTestCase {
 
             0x0C,                   // Property Identifier for Selected gear
             0x00, 0x01,             // Property size 1 byte
-            0x04                    // 4th gear selected
+            0x04,                   // 4th gear selected
+
+            0x0D,       // Property identifier for Brake pedal position
+            0x00, 0x01, // Property size is 1 bytes
+            0x00        // 0%, no brakes
         ]
 
         guard let race = AutoAPI.parseBinary(bytes) as? Race else {
@@ -152,5 +156,6 @@ class RaceTests: XCTestCase {
 
         XCTAssertEqual(race.gearMode, .drive)
         XCTAssertEqual(race.selectedGear, 4)
+        XCTAssertEqual(race.brakePedalPosition, 0)
     }
 }

@@ -32,6 +32,7 @@ import Foundation
 public struct Race: FullStandardCommand {
 
     public let accelerations: [Acceleration]?
+    public let brakePedalPosition: UInt8?
     public let brakePressure: Float?
     public let brakeTorqueVectorings: [BrakeTorqueVectoring]?
     public let espIntervertion: ActiveState?
@@ -64,6 +65,7 @@ public struct Race: FullStandardCommand {
         brakeTorqueVectorings = properties.flatMap(for: 0x0A) { BrakeTorqueVectoring($0.value) }
         gearMode = GearMode(rawValue: properties.first(for: 0x0B)?.monoValue)
         selectedGear = properties.value(for: 0x0C)
+        brakePedalPosition = properties.value(for: 0x0D)
 
         // Properties
         self.properties = properties
