@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  ChargeTimer.swift
+//  PricingTariff.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 30/01/2018.
@@ -29,51 +29,56 @@
 import Foundation
 
 
-public struct ChargeTimer: Item {
+public struct PricingTariff: Item {
 
-    public let type: TimerType
-    public let time: YearTime
+    public let type: PricingType
+    public let currency: String
+    public let price: Float
 
 
     // MARK: Item
 
-    static var size: Int = 9
+    static var size: Int = 8
 
 
     // MARK: Init
 
-    public init(type: TimerType, time: YearTime) {
+    public init(type: PricingType, currency: String, price: Float) {
         self.type = type
-        self.time = time
+        self.currency = currency
+        self.price = price
     }
 }
 
-extension ChargeTimer: BinaryInitable {
+extension PricingTariff: BinaryInitable {
 
     init?(bytes: [UInt8]) {
-        guard let timerType = TimerType(rawValue: bytes[0]) else {
-            return nil
-        }
-        
-        guard let yearTime = YearTime(bytes: bytes.dropFirst().bytesArray) else {
+        guard let type = PricingType(rawValue: bytes[0]) else {
             return nil
         }
 
-        type = timerType
-        time = yearTime
+        guard let currency = String(bytes: bytes[1..<4], encoding: .utf8) else {
+            return nil
+        }
+
+        self.type = type
+        self.currency = currency
+        self.price = Float(bytes.suffix(from: 4))
     }
 }
 
-extension ChargeTimer: Equatable {
+extension PricingTariff: Equatable {
 
-    public static func ==(lhs: ChargeTimer, rhs: ChargeTimer) -> Bool {
-        return (lhs.type == rhs.type) && (lhs.time == rhs.time)
+    public static func ==(lhs: PricingTariff, rhs: PricingTariff) -> Bool {
+        return (lhs.type == rhs.type) &&
+            (lhs.currency == rhs.currency) &&
+            (lhs.price == rhs.price)
     }
 }
 
-extension ChargeTimer: PropertyConvertable {
+extension PricingTariff: PropertyConvertable {
 
     var propertyValue: [UInt8] {
-        return [type.rawValue] + time.propertyValue
+        return [type.rawValue] + currency.propertyValue + price.propertyValue
     }
 }

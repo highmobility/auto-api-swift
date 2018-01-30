@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  ChargeTimer.swift
+//  ChargeCurrent.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 30/01/2018.
@@ -29,51 +29,32 @@
 import Foundation
 
 
-public struct ChargeTimer: Item {
+public struct ChargeCurrent: Item {
 
-    public let type: TimerType
-    public let time: YearTime
+    public let chargeCurrentDC: Float
+    public let maximumValue: Float
+    public let minimumValue: Float
 
 
     // MARK: Item
 
-    static var size: Int = 9
-
-
-    // MARK: Init
-
-    public init(type: TimerType, time: YearTime) {
-        self.type = type
-        self.time = time
-    }
+    static var size: Int = 12
 }
 
-extension ChargeTimer: BinaryInitable {
+extension ChargeCurrent: BinaryInitable {
 
     init?(bytes: [UInt8]) {
-        guard let timerType = TimerType(rawValue: bytes[0]) else {
-            return nil
-        }
-        
-        guard let yearTime = YearTime(bytes: bytes.dropFirst().bytesArray) else {
-            return nil
-        }
-
-        type = timerType
-        time = yearTime
+        chargeCurrentDC = Float(bytes.prefix(upTo: 4))
+        maximumValue = Float(bytes[4..<8])
+        minimumValue = Float(bytes.suffix(from: 8))
     }
 }
 
-extension ChargeTimer: Equatable {
+extension ChargeCurrent: Equatable {
 
-    public static func ==(lhs: ChargeTimer, rhs: ChargeTimer) -> Bool {
-        return (lhs.type == rhs.type) && (lhs.time == rhs.time)
-    }
-}
-
-extension ChargeTimer: PropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [type.rawValue] + time.propertyValue
+    public static func ==(lhs: ChargeCurrent, rhs: ChargeCurrent) -> Bool {
+        return (lhs.chargeCurrentDC == rhs.chargeCurrentDC) &&
+            (lhs.maximumValue == rhs.maximumValue) &&
+            (lhs.minimumValue == rhs.minimumValue)
     }
 }

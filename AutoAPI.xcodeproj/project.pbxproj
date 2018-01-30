@@ -31,6 +31,13 @@
 		200B3A2A2020A0C600EC52E4 /* ChargeMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B3A292020A0C600EC52E4 /* ChargeMode.swift */; };
 		200B3A2C2020A1C000EC52E4 /* TimerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B3A2B2020A1C000EC52E4 /* TimerType.swift */; };
 		200B3A2E2020A22800EC52E4 /* ChargeTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B3A2D2020A22800EC52E4 /* ChargeTimer.swift */; };
+		200B3A302020A87B00EC52E4 /* HomeCharger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B3A2F2020A87B00EC52E4 /* HomeCharger.swift */; };
+		200B3A332020A9AF00EC52E4 /* AuthenticationMechanism.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B3A322020A9AF00EC52E4 /* AuthenticationMechanism.swift */; };
+		200B3A352020AA2100EC52E4 /* PlugType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B3A342020AA2100EC52E4 /* PlugType.swift */; };
+		200B3A372020AB7100EC52E4 /* ChargeCurrent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B3A362020AB7100EC52E4 /* ChargeCurrent.swift */; };
+		200B3A392020ADA600EC52E4 /* PricingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B3A382020ADA600EC52E4 /* PricingType.swift */; };
+		200B3A3B2020ADEB00EC52E4 /* PricingTariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B3A3A2020ADEB00EC52E4 /* PricingTariff.swift */; };
+		200B3A3D2020B19700EC52E4 /* HomeChargerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B3A3C2020B19700EC52E4 /* HomeChargerTests.swift */; };
 		200BBB9C1FD6CA3000CCBA30 /* WipersState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200BBB9B1FD6CA3000CCBA30 /* WipersState.swift */; };
 		200BBB9E1FD6CB3500CCBA30 /* WindscreenDamage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200BBB9D1FD6CB3500CCBA30 /* WindscreenDamage.swift */; };
 		200BBBA01FD6CC9100CCBA30 /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200BBB9F1FD6CC9100CCBA30 /* Zone.swift */; };
@@ -244,6 +251,13 @@
 		200B3A292020A0C600EC52E4 /* ChargeMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeMode.swift; sourceTree = "<group>"; };
 		200B3A2B2020A1C000EC52E4 /* TimerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerType.swift; sourceTree = "<group>"; };
 		200B3A2D2020A22800EC52E4 /* ChargeTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeTimer.swift; sourceTree = "<group>"; };
+		200B3A2F2020A87B00EC52E4 /* HomeCharger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCharger.swift; sourceTree = "<group>"; };
+		200B3A322020A9AF00EC52E4 /* AuthenticationMechanism.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationMechanism.swift; sourceTree = "<group>"; };
+		200B3A342020AA2100EC52E4 /* PlugType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlugType.swift; sourceTree = "<group>"; };
+		200B3A362020AB7100EC52E4 /* ChargeCurrent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeCurrent.swift; sourceTree = "<group>"; };
+		200B3A382020ADA600EC52E4 /* PricingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingType.swift; sourceTree = "<group>"; };
+		200B3A3A2020ADEB00EC52E4 /* PricingTariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingTariff.swift; sourceTree = "<group>"; };
+		200B3A3C2020B19700EC52E4 /* HomeChargerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChargerTests.swift; sourceTree = "<group>"; };
 		200BBB9B1FD6CA3000CCBA30 /* WipersState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WipersState.swift; sourceTree = "<group>"; };
 		200BBB9D1FD6CB3500CCBA30 /* WindscreenDamage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindscreenDamage.swift; sourceTree = "<group>"; };
 		200BBB9F1FD6CC9100CCBA30 /* Zone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
@@ -508,6 +522,7 @@
 				202BDB5A1FE03A30005A4063 /* FuelingTests.swift */,
 				208924991FE1720D001C3923 /* GraphicsTests.swift */,
 				202BDB461FE00CD4005A4063 /* HeartRateTests.swift */,
+				200B3A3C2020B19700EC52E4 /* HomeChargerTests.swift */,
 				202BDB2D1FDFE58A005A4063 /* HonkHornFlashLightsTests.swift */,
 				202BDB251FDFD6BB005A4063 /* KeyfobPositionTests.swift */,
 				2052F91E1FD9899C00BE53E3 /* LightConditionsTests.swift */,
@@ -539,6 +554,14 @@
 			);
 			name = Sources;
 			path = AutoAPITests;
+			sourceTree = "<group>";
+		};
+		200B3A312020A88100EC52E4 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				200B3A2F2020A87B00EC52E4 /* HomeCharger.swift */,
+			);
+			path = Infrastructure;
 			sourceTree = "<group>";
 		};
 		200F70432007C97700A03FBB /* Iterators */ = {
@@ -636,11 +659,13 @@
 				2052F9041FD9543500BE53E3 /* Acceleration.swift */,
 				208924A51FE1897A001C3923 /* ActionItem.swift */,
 				20E7DAD21FE26F140052DF91 /* BrakeTorqueVectoring.swift */,
+				200B3A362020AB7100EC52E4 /* ChargeCurrent.swift */,
 				200B3A2D2020A22800EC52E4 /* ChargeTimer.swift */,
 				209637781FD7F13000F97E87 /* Colour.swift */,
 				2031AA991FEA4529006F6C78 /* Coordinate.swift */,
 				205427B51FCEBBAC0010DED2 /* Door.swift */,
 				204D0B351FD1510300C6118A /* Item.swift */,
+				200B3A3A2020ADEB00EC52E4 /* PricingTariff.swift */,
 				2052F9101FD9572B00BE53E3 /* Seat.swift */,
 				205894341FCD968200C30D0F /* Tire.swift */,
 				204D0B2E1FD14B7C00C6118A /* Window.swift */,
@@ -791,6 +816,7 @@
 				2052F91B1FD9793200BE53E3 /* Environment */,
 				208924901FE16E1E001C3923 /* Headunit */,
 				202BDB3D1FE0078B005A4063 /* Health */,
+				200B3A312020A88100EC52E4 /* Infrastructure */,
 				20766D031FD1A4C7006D87CB /* Parking */,
 				201628231FD5894900C895B5 /* PointsOfInterest */,
 				20BE22991FCCA72B0032CCC2 /* Protocols */,
@@ -823,6 +849,7 @@
 			children = (
 				2052F9001FD9459400BE53E3 /* AccelerationType.swift */,
 				204E2AED1FD030CC00DE2DD5 /* ActiveState.swift */,
+				200B3A322020A9AF00EC52E4 /* AuthenticationMechanism.swift */,
 				2089247F1FE15D19001C3923 /* Axle.swift */,
 				200B3A292020A0C600EC52E4 /* ChargeMode.swift */,
 				204E2AE31FD01DDC00DE2DD5 /* ChargingState.swift */,
@@ -839,9 +866,11 @@
 				200BBBA11FD6D13500CCBA30 /* NeedsReplacement.swift */,
 				200B3A232020983100EC52E4 /* NetworkSecurity.swift */,
 				202BDB541FE02EAF005A4063 /* ParkingTicketState.swift */,
+				200B3A342020AA2100EC52E4 /* PlugType.swift */,
 				205894361FCD96AC00C30D0F /* Position.swift */,
 				20BE22921FCC5EB80032CCC2 /* PositionState.swift */,
 				20BE228D1FCC5E730032CCC2 /* PowerTrain.swift */,
+				200B3A382020ADA600EC52E4 /* PricingType.swift */,
 				208924B11FE1A508001C3923 /* Screen.swift */,
 				2052F9081FD9565800BE53E3 /* SeatPosition.swift */,
 				204E2AE71FD022BA00DE2DD5 /* StartStopCharging.swift */,
@@ -1046,10 +1075,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				200B3A3B2020ADEB00EC52E4 /* PricingTariff.swift in Sources */,
 				20A449931FD1B63B003F4920 /* PropertiesCapable.swift in Sources */,
 				208924A41FE184AD001C3923 /* Notifications.swift in Sources */,
 				204E2AF21FD0353500DE2DD5 /* DayTime.swift in Sources */,
 				204D0B361FD1510300C6118A /* Item.swift in Sources */,
+				200B3A372020AB7100EC52E4 /* ChargeCurrent.swift in Sources */,
 				2031AA9A1FEA4529006F6C78 /* Coordinate.swift in Sources */,
 				20E7DAD31FE26F140052DF91 /* BrakeTorqueVectoring.swift in Sources */,
 				20B06EFA1FC850DC00463FEA /* Properties.swift in Sources */,
@@ -1093,6 +1124,7 @@
 				202BDB4D1FE0141E005A4063 /* String+Extensions.swift in Sources */,
 				2031AA9E1FEA8BBB006F6C78 /* PropertiesInitable.swift in Sources */,
 				205427C01FCEDBFC0010DED2 /* Maintenance.swift in Sources */,
+				200B3A332020A9AF00EC52E4 /* AuthenticationMechanism.swift in Sources */,
 				202BDB3A1FE00448005A4063 /* ValetMode.swift in Sources */,
 				205894271FCD684A00C30D0F /* Engine.swift in Sources */,
 				202BDB431FE00AC2005A4063 /* FatigueLevel.swift in Sources */,
@@ -1110,6 +1142,7 @@
 				2058941B1FCD577700C30D0F /* FailureMessage.swift in Sources */,
 				20DD5A512007B31900F2D01C /* SeatsIterator.swift in Sources */,
 				2089247C1FE15B8E001C3923 /* ChassisSettings.swift in Sources */,
+				200B3A352020AA2100EC52E4 /* PlugType.swift in Sources */,
 				202BDB551FE02EAF005A4063 /* ParkingTicketState.swift in Sources */,
 				202BDB4B1FE0135E005A4063 /* NaviDestination.swift in Sources */,
 				204C0E631FEBB34D002E319C /* GearMode.swift in Sources */,
@@ -1131,7 +1164,9 @@
 				20E7DAD91FE2A9F80052DF91 /* Command.swift in Sources */,
 				202BDB3F1FE007AC005A4063 /* HeartRate.swift in Sources */,
 				200B3A2220206F8A00EC52E4 /* WiFi.swift in Sources */,
+				200B3A302020A87B00EC52E4 /* HomeCharger.swift in Sources */,
 				20B06EFC1FC850F700463FEA /* PropertiesIterator.swift in Sources */,
+				200B3A392020ADA600EC52E4 /* PricingType.swift in Sources */,
 				204E2AFD1FD04A8100DE2DD5 /* ClimateProfile.swift in Sources */,
 				204E2AEE1FD030CC00DE2DD5 /* ActiveState.swift in Sources */,
 				200B3A2620209CB300EC52E4 /* Bool+Extensions.swift in Sources */,
@@ -1201,6 +1236,7 @@
 				204E2AEA1FD022EF00DE2DD5 /* ChargingTests.swift in Sources */,
 				202BDB451FE00BAD005A4063 /* DriverFatigueTests.swift in Sources */,
 				2089249A1FE1720D001C3923 /* GraphicsTests.swift in Sources */,
+				200B3A3D2020B19700EC52E4 /* HomeChargerTests.swift in Sources */,
 				208924AA1FE18F6B001C3923 /* NotificationsTests.swift in Sources */,
 				2052F91A1FD977FB00BE53E3 /* ParkingBrakeTests.swift in Sources */,
 				205427D91FCF0E9E0010DED2 /* WakeUpTests.swift in Sources */,

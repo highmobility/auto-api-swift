@@ -64,6 +64,13 @@ extension Window: BinaryInitable {
     }
 }
 
+extension Window: Equatable {
+
+    public static func ==(lhs: Window, rhs: Window) -> Bool {
+        return (lhs.openClosed == rhs.openClosed) && (lhs.position == rhs.position)
+    }
+}
+
 extension Window: PropertyConvertable {
 
     var propertyValue: [UInt8] {

@@ -65,7 +65,7 @@ public struct Charging: FullStandardCommand {
         chargingRate = properties.value(for: 0x0A)
         chargePortState = ChargePortState(rawValue: properties.first(for: 0x0B)?.monoValue)
         chargeMode = ChargeMode(rawValue: properties.first(for: 0x0C)?.monoValue)
-        chargeTimer = ChargeTimer(bytes: properties.first(for: 0x0D)?.value ?? [])
+        chargeTimer = ChargeTimer(properties.first(for: 0x0D)?.value ?? [])
 
         // Properties
         self.properties = properties

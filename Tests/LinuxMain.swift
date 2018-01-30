@@ -40,6 +40,7 @@ XCTMain([
     testCase(FuelingTests.allTests),
     testCase(GraphicsTests.allTests),
     testCase(HeartRateTests.allTests),
+    testCase(HomeChargerTests.allTests),
     testCase(HonkHornFlashLightsTests.allTests),
     testCase(KeyfobPositionTests.allTests),
     testCase(LightConditionsTests.allTests),
