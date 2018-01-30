@@ -63,8 +63,8 @@ class NaviDestinationTests: XCTestCase {
             0x42, 0x65, 0x72, 0x6c, 0x69, 0x6e  // Berlin
         ]
 
-        let coordinates = Coordinates(latitude: 52.520008, longitude: 13.404954)
-        let destination = NaviDestination.Destination(coordinates: coordinates, name: "Berlin")
+        let coordinate = Coordinate(latitude: 52.520008, longitude: 13.404954)
+        let destination = NaviDestination.Destination(coordinate: coordinate, name: "Berlin")
 
         XCTAssertEqual(NaviDestination.setDestination(destination), bytes)
     }
@@ -88,12 +88,12 @@ class NaviDestinationTests: XCTestCase {
             return XCTFail("Parsed value is not NaviDestination")
         }
 
-        if let coordinates = naviDestination.coordinates {
-            XCTAssertEqual(coordinates.latitude, 52.520008, accuracy: 1e-7)
-            XCTAssertEqual(coordinates.longitude, 13.404954, accuracy: 1e-7)
+        if let coordinate = naviDestination.coordinate {
+            XCTAssertEqual(coordinate.latitude, 52.520008, accuracy: 1e-7)
+            XCTAssertEqual(coordinate.longitude, 13.404954, accuracy: 1e-7)
         }
         else {
-            XCTFail("NaviDestination Location doesn't contain Coordinates")
+            XCTFail("NaviDestination Location doesn't contain Coordinate")
         }
 
         XCTAssertEqual(naviDestination.name, "Berlin")

@@ -74,7 +74,7 @@ func main() {
         return print(" INVALID AUTOAPI DATA")
     }
 
-    Tree(parsed).visualise()
+    DebugTree(parsed, expandProperties: expandProperties).visualise()
 }
 
 

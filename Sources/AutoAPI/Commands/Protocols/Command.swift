@@ -31,7 +31,16 @@ import Foundation
 
 public protocol Command: Identifiable {
 
+    var debugTree: DebugTree { get }
 }
+
+extension Command {
+
+    public var debugTree: DebugTree {
+        return DebugTree(self, expandProperties: false)
+    }
+}
+
 
 protocol CommandAggregate: Command, MessageTypesGettable {
 

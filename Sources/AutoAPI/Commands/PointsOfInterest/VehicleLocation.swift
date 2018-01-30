@@ -32,7 +32,7 @@ import Foundation
 public struct VehicleLocation: FullStandardCommand {
 
     public let heading: Float?
-    public let coordinates: Coordinates?
+    public let coordinate: Coordinate?
 
 
     // MARK: FullStandardCommand
@@ -42,7 +42,7 @@ public struct VehicleLocation: FullStandardCommand {
 
     init?(properties: Properties) {
         // Ordered by the ID
-        coordinates = Coordinates(properties.first(for: 0x01)?.value ?? [])
+        coordinate = Coordinate(properties.first(for: 0x01)?.value ?? [])
         heading = properties.value(for: 0x02)
 
         // Properties

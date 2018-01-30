@@ -26,20 +26,23 @@
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
-import AutoAPI
 import Foundation
 
 
-enum Tree {
+public enum DebugTree {
 
     case leaf(label: String)
 
-    indirect case node(label: String, nodes: [Tree])
+    indirect case node(label: String, nodes: [DebugTree])
 
 
     // MARK: Methods
 
-    func visualise(_ prefix: String = "") {
+    public func visualise() {
+        visualise("")
+    }
+
+    private func visualise(_ prefix: String) {
         switch self {
         case .leaf(let label):
             print(prefix + label)
@@ -56,14 +59,15 @@ enum Tree {
 
     // MARK: Init
 
-    init(_ anything: Any, label: String? = nil) {
+    public init(_ anything: Any, label: String? = nil, expandProperties: Bool = false) {
         let mirror = Mirror(reflecting: anything)
         let label = label ?? "\(type(of: anything))"
 
+        // Handle some custom-ly, others by their swift-type
         if let capabilities = anything as? Capabilities {
-            let nodes: [Tree] = capabilities.map {
-                let idLeaf: Tree = .leaf(label: "identifier = " + String(format: "0x%04X", $0.identifier))
-                let msgTypesLeaf: Tree = .leaf(label: "supportedMessageTypes = " + $0.supportedMessageTypes.map { String(format: "0x%02X", $0) }.joined(separator: ", "))
+            let nodes: [DebugTree] = capabilities.map {
+                let idLeaf: DebugTree = .leaf(label: "identifier = " + String(format: "0x%04X", $0.identifier))
+                let msgTypesLeaf: DebugTree = .leaf(label: "supportedMessageTypes = " + $0.supportedMessageTypes.map { String(format: "0x%02X", $0) }.joined(separator: ", "))
 
                 return .node(label: "\($0.command)", nodes: [idLeaf, msgTypesLeaf])
             }
@@ -71,12 +75,21 @@ enum Tree {
             self = .node(label: label, nodes: nodes)
         }
         else if let colour = anything as? Colour {
-            if case .node(_, let nodes) = Tree(colour.values) {
+            if case .node(_, let nodes) = DebugTree(colour.values, expandProperties: expandProperties) {
                 self = .node(label: label, nodes: nodes)
             }
             else {
-                self = .node(label: label, nodes: [Tree(colour.values)])
+                self = .node(label: label, nodes: [DebugTree(colour.values, expandProperties: expandProperties)])
             }
+        }
+        else if let failureMessage = anything as? FailureMessage {
+            let nodes: [DebugTree] = [.leaf(label: "failedMessageIdentifier = " + String(format: "0x%04X", failureMessage.failedMessageIdentifier)),
+                                      .leaf(label: "failedMessageType = " + String(format: "0x%02X", failureMessage.failedMessageType)),
+                                      .leaf(label: "failureDescription = \(String(describing: failureMessage.failureDescription))"),
+                                        DebugTree((failureMessage.failureReason as Any), label: "failureReason", expandProperties: expandProperties),
+                                        DebugTree(failureMessage.properties, expandProperties: expandProperties)]
+
+            self = .node(label: label, nodes: nodes)
         }
         else if let properties = anything as? Properties {
             if expandProperties {
@@ -84,7 +97,7 @@ enum Tree {
                     self = .leaf(label: "properties = []")
                 }
                 else {
-                    let nodes = properties.map { Tree.leaf(label: "\($0)") }
+                    let nodes = properties.map { DebugTree.leaf(label: "\($0)") }
 
                     self = .node(label: label, nodes: nodes)
                 }
@@ -97,7 +110,7 @@ enum Tree {
             switch displayStyle {
             case .collection:
                 if let array = anything as? Array<Any> {
-                    self = .node(label: label, nodes: array.map { Tree($0) })
+                    self = .node(label: label, nodes: array.map { DebugTree($0, expandProperties: expandProperties) })
                 }
                 else {
                     self = .leaf(label: label)
@@ -108,7 +121,7 @@ enum Tree {
 
             case .optional:
                 if let value = mirror.children.first?.value {
-                    self = Tree(value, label: label)
+                    self = DebugTree(value, label: label, expandProperties: expandProperties)
                 }
                 else {
                     self = .leaf(label: label + " = nil")
@@ -121,13 +134,13 @@ enum Tree {
                 }
                 else {
                     // Pass the iVar label onward
-                    let nodes = mirror.children.map { Tree($0.value, label: $0.label) }
+                    let nodes = mirror.children.map { DebugTree($0.value, label: $0.label, expandProperties: expandProperties) }
 
                     self = .node(label: label, nodes: nodes)
                 }
 
             case .tuple:
-                let nodes = mirror.children.map { Tree($0.value, label: $0.label) }
+                let nodes = mirror.children.map { DebugTree($0.value, label: $0.label, expandProperties: expandProperties) }
 
                 self = .node(label: label, nodes: nodes)
 
@@ -135,8 +148,8 @@ enum Tree {
                 self = .leaf(label: label)
             }
         }
-            // Meaning it's a "simple" type – int, float, string, etc.
         else {
+            // Meaning it's a "simple" type – int, float, string, etc.
             self = .leaf(label: "\(label) = \(anything)")
         }
     }

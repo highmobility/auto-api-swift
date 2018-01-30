@@ -42,7 +42,7 @@ public struct Capability {
         return Set(supportedMessageTypes).isSuperset(of: messageTypes)
     }
 
-    public func supports<M: MessageTypesType>(_ messageTypes: [M]) -> Bool where M.RawValue == UInt8 {
+    public func supports<M: MessageTypesType>(_ messageTypes: M...) -> Bool where M.RawValue == UInt8 {
         return supports(messageTypes.map { $0.rawValue })
     }
 
@@ -61,5 +61,13 @@ public struct Capability {
         self.command = command
         self.identifier = Identifier(binary.bytesArray.prefix(2))
         self.supportedMessageTypes = binary.dropFirstBytes(2)
+    }
+}
+
+extension Capability: Equatable {
+
+    public static func ==(lhs: Capability, rhs: Capability) -> Bool {
+        // If the command matches, the 'identifier' must be the same
+        return (lhs.command == rhs.command) && (lhs.supportedMessageTypes == rhs.supportedMessageTypes)
     }
 }

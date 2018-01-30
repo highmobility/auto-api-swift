@@ -63,7 +63,7 @@
 		202BDB571FE033E2005A4063 /* ParkingTicketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB561FE033E2005A4063 /* ParkingTicketTests.swift */; };
 		202BDB591FE039C1005A4063 /* Fueling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB581FE039C1005A4063 /* Fueling.swift */; };
 		202BDB5B1FE03A30005A4063 /* FuelingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BDB5A1FE03A30005A4063 /* FuelingTests.swift */; };
-		2031AA9A1FEA4529006F6C78 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2031AA991FEA4529006F6C78 /* Coordinates.swift */; };
+		2031AA9A1FEA4529006F6C78 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2031AA991FEA4529006F6C78 /* Coordinate.swift */; };
 		2031AA9E1FEA8BBB006F6C78 /* PropertiesInitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2031AA9D1FEA8BBB006F6C78 /* PropertiesInitable.swift */; };
 		2031AAA01FEA9358006F6C78 /* Capability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2031AA9F1FEA9358006F6C78 /* Capability.swift */; };
 		2041EA1F2003C46D00B4BF80 /* RawRepresentable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041EA1E2003C46D00B4BF80 /* RawRepresentable+Extensions.swift */; };
@@ -167,6 +167,7 @@
 		20B06EFC1FC850F700463FEA /* PropertiesIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B06EFB1FC850F700463FEA /* PropertiesIterator.swift */; };
 		20B06F031FC8632F00463FEA /* DoorLocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B06F021FC8632F00463FEA /* DoorLocks.swift */; };
 		20B06F081FC879A700463FEA /* TrunkAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B06F071FC879A700463FEA /* TrunkAccess.swift */; };
+		20B16CA32010B287009C9BA5 /* DebugTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DD5A582007BA1C00F2D01C /* DebugTree.swift */; };
 		20BE22741FCBE64E0032CCC2 /* TrunkAccessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE22731FCBE64E0032CCC2 /* TrunkAccessTests.swift */; };
 		20BE22781FCBE76A0032CCC2 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE22771FCBE76A0032CCC2 /* Identifiable.swift */; };
 		20BE227F1FCBF6990032CCC2 /* Capabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BE227E1FCBF6990032CCC2 /* Capabilities.swift */; };
@@ -186,7 +187,6 @@
 		20DD5A532007B33B00F2D01C /* ItemIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DD5A522007B33B00F2D01C /* ItemIterator.swift */; };
 		20DD5A552007B7B100F2D01C /* WindowsIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DD5A542007B7B000F2D01C /* WindowsIterator.swift */; };
 		20DD5A572007B81800F2D01C /* DoorsIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DD5A562007B81800F2D01C /* DoorsIterator.swift */; };
-		20DD5A592007BA1C00F2D01C /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DD5A582007BA1C00F2D01C /* Tree.swift */; };
 		20DD5A5E2007BD4D00F2D01C /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DD5A5D2007BD4D00F2D01C /* String+Extensions.swift */; };
 		20DD5A602007C16E00F2D01C /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DD5A5F2007C16E00F2D01C /* Misc.swift */; };
 		20E7DAD31FE26F140052DF91 /* BrakeTorqueVectoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E7DAD21FE26F140052DF91 /* BrakeTorqueVectoring.swift */; };
@@ -270,7 +270,7 @@
 		202BDB561FE033E2005A4063 /* ParkingTicketTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTicketTests.swift; sourceTree = "<group>"; };
 		202BDB581FE039C1005A4063 /* Fueling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fueling.swift; sourceTree = "<group>"; };
 		202BDB5A1FE03A30005A4063 /* FuelingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelingTests.swift; sourceTree = "<group>"; };
-		2031AA991FEA4529006F6C78 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
+		2031AA991FEA4529006F6C78 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		2031AA9D1FEA8BBB006F6C78 /* PropertiesInitable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesInitable.swift; sourceTree = "<group>"; };
 		2031AA9F1FEA9358006F6C78 /* Capability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capability.swift; sourceTree = "<group>"; };
 		2041EA1E2003C46D00B4BF80 /* RawRepresentable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RawRepresentable+Extensions.swift"; sourceTree = "<group>"; };
@@ -400,7 +400,7 @@
 		20DD5A522007B33B00F2D01C /* ItemIterator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemIterator.swift; sourceTree = "<group>"; };
 		20DD5A542007B7B000F2D01C /* WindowsIterator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowsIterator.swift; sourceTree = "<group>"; };
 		20DD5A562007B81800F2D01C /* DoorsIterator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoorsIterator.swift; sourceTree = "<group>"; };
-		20DD5A582007BA1C00F2D01C /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
+		20DD5A582007BA1C00F2D01C /* DebugTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugTree.swift; sourceTree = "<group>"; };
 		20DD5A5D2007BD4D00F2D01C /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		20DD5A5F2007C16E00F2D01C /* Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
 		20E7DAD21FE26F140052DF91 /* BrakeTorqueVectoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrakeTorqueVectoring.swift; sourceTree = "<group>"; };
@@ -463,6 +463,7 @@
 				20098FB61FC6F0EF00A2BA98 /* AutoAPI.swift */,
 				20BE22A51FCCB62B0032CCC2 /* BinaryInitable.swift */,
 				205894221FCD64A600C30D0F /* CarSDKVersion.swift */,
+				20DD5A582007BA1C00F2D01C /* DebugTree.swift */,
 				20BE22771FCBE76A0032CCC2 /* Identifiable.swift */,
 				209C3FC31FF51FAF00EEF1BB /* MessageTypes.swift */,
 				205427CC1FCF01650010DED2 /* StateGettable.swift */,
@@ -567,7 +568,6 @@
 				204C0E6C1FEBEC8A002E319C /* main.swift */,
 				20DD5A5F2007C16E00F2D01C /* Misc.swift */,
 				20DD5A5D2007BD4D00F2D01C /* String+Extensions.swift */,
-				20DD5A582007BA1C00F2D01C /* Tree.swift */,
 				200F70412007C42600A03FBB /* UInt8Collection+Binary.swift */,
 			);
 			name = AutoAPICLT;
@@ -628,7 +628,7 @@
 				208924A51FE1897A001C3923 /* ActionItem.swift */,
 				20E7DAD21FE26F140052DF91 /* BrakeTorqueVectoring.swift */,
 				209637781FD7F13000F97E87 /* Colour.swift */,
-				2031AA991FEA4529006F6C78 /* Coordinates.swift */,
+				2031AA991FEA4529006F6C78 /* Coordinate.swift */,
 				205427B51FCEBBAC0010DED2 /* Door.swift */,
 				204D0B351FD1510300C6118A /* Item.swift */,
 				2052F9101FD9572B00BE53E3 /* Seat.swift */,
@@ -1024,7 +1024,6 @@
 				200F70422007C42600A03FBB /* UInt8Collection+Binary.swift in Sources */,
 				204C0E6D1FEBEC8A002E319C /* main.swift in Sources */,
 				20DD5A602007C16E00F2D01C /* Misc.swift in Sources */,
-				20DD5A592007BA1C00F2D01C /* Tree.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1036,7 +1035,7 @@
 				208924A41FE184AD001C3923 /* Notifications.swift in Sources */,
 				204E2AF21FD0353500DE2DD5 /* DayTime.swift in Sources */,
 				204D0B361FD1510300C6118A /* Item.swift in Sources */,
-				2031AA9A1FEA4529006F6C78 /* Coordinates.swift in Sources */,
+				2031AA9A1FEA4529006F6C78 /* Coordinate.swift in Sources */,
 				20E7DAD31FE26F140052DF91 /* BrakeTorqueVectoring.swift in Sources */,
 				20B06EFA1FC850DC00463FEA /* Properties.swift in Sources */,
 				20E7DAE11FE2AA4E0052DF91 /* FullCommand.swift in Sources */,
@@ -1111,6 +1110,7 @@
 				204E2AE41FD01DDC00DE2DD5 /* ChargingState.swift in Sources */,
 				208924B01FE1A3F1001C3923 /* VideoHandover.swift in Sources */,
 				20098FC01FC705AA00A2BA98 /* Property.swift in Sources */,
+				20B16CA32010B287009C9BA5 /* DebugTree.swift in Sources */,
 				20766D001FD1A2B2006D87CB /* Windscreen.swift in Sources */,
 				202BDB321FDFFF3E005A4063 /* ControlMode.swift in Sources */,
 				20E7DAD91FE2A9F80052DF91 /* Command.swift in Sources */,

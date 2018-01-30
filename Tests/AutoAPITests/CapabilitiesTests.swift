@@ -173,7 +173,7 @@ class CapabilitiesTests: XCTestCase {
 
         // CHARGING
         if let capability = capabilities.first(where: { $0.command is Charging.Type }) {
-            XCTAssertTrue(capability.supports([Charging.MessageTypes.getChargeState, .chargeState, .startStopCharging, .setChargeLimit]))
+            XCTAssertTrue(capability.supports(Charging.MessageTypes.getChargeState, .chargeState, .startStopCharging, .setChargeLimit))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for Charging")

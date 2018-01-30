@@ -42,9 +42,4 @@ extension Collection where Element == UInt8 {
     var hex: String {
         return map { String(format: "%02X", $0) }.joined()
     }
-
-
-    func dropFirstBytes(_ n: Int) -> [UInt8] {
-        return bytesArray.dropFirst(n).bytesArray
-    }
 }

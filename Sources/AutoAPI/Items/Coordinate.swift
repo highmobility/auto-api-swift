@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Coordinates.swift
+//  Coordinate.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 20/12/2017.
@@ -31,9 +31,9 @@ import Foundation
 
 #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     import CoreLocation
-    public typealias Coordinates = CLLocationCoordinate2D
+    public typealias Coordinate = CLLocationCoordinate2D
 #else
-    public struct Coordinates {
+    public struct Coordinate {
 
         public var latitude: Double
         public var longitude: Double
@@ -45,23 +45,23 @@ import Foundation
         }
     }
 
-    extension Coordinates: Equatable {
+    extension Coordinate: Equatable {
 
-        public static func ==(lhs: Coordinates, rhs: Coordinates) -> Bool {
+        public static func ==(lhs: Coordinate, rhs: Coordinate) -> Bool {
             return (lhs.latitude == rhs.latitude) && (lhs.longitude == rhs.longitude)
         }
     }
 #endif
 
 
-extension Coordinates {
+extension Coordinate {
 
     var bytes: [UInt8] {
         return Float(latitude).bytes + Float(longitude).bytes
     }
 }
 
-extension Coordinates: BinaryInitable {
+extension Coordinate: BinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
         guard binary.count >= 8 else {
@@ -75,7 +75,7 @@ extension Coordinates: BinaryInitable {
     }
 }
 
-extension Coordinates: PropertyConvertable {
+extension Coordinate: PropertyConvertable {
 
     var propertyValue: [UInt8] {
         return bytes

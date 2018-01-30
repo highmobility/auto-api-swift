@@ -52,7 +52,7 @@ class VehicleLocationTests: XCTestCase {
             0x00, 0x30, // MSB, LSB Message Identifier for Vehicle Location
             0x01,       // Message Type for Vehicle Location
 
-            0x01,                   // Property Identifier for Coordinates
+            0x01,                   // Property Identifier for Coordinate
             0x00, 0x08,             // Property size 8 bytes
             0x42, 0x52, 0x14, 0x7d, // 52.520008 Latitude in IEE 754 format
             0x41, 0x56, 0x7a, 0xb1, // 13.404954 Longitude in IEE 754 format
@@ -66,12 +66,12 @@ class VehicleLocationTests: XCTestCase {
             return XCTFail("Parsed value is not VehicleLocation")
         }
 
-        if let coordinates = vehicleLocation.coordinates {
-            XCTAssertEqual(coordinates.latitude, 52.520008, accuracy: 1e-7)
-            XCTAssertEqual(coordinates.longitude, 13.404954, accuracy: 1e-7)
+        if let coordinate = vehicleLocation.coordinate {
+            XCTAssertEqual(coordinate.latitude, 52.520008, accuracy: 1e-7)
+            XCTAssertEqual(coordinate.longitude, 13.404954, accuracy: 1e-7)
         }
         else {
-            XCTFail("Vehicle Location doesn't contain Coordinates")
+            XCTFail("Vehicle Location doesn't contain Coordinate")
         }
 
         XCTAssertEqual(vehicleLocation.heading, 52.520008)

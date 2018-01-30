@@ -31,7 +31,7 @@ import Foundation
 
 public struct NaviDestination: FullStandardCommand {
 
-    public let coordinates: Coordinates?
+    public let coordinate: Coordinate?
     public let name: String?
 
 
@@ -42,7 +42,7 @@ public struct NaviDestination: FullStandardCommand {
 
     init?(properties: Properties) {
         // Ordered by the ID
-        coordinates = Coordinates(properties.first(for: 0x01)?.value ?? [])
+        coordinate = Coordinate(properties.first(for: 0x01)?.value ?? [])
         name = properties.value(for: 0x02)
 
         // Properties
@@ -78,11 +78,11 @@ extension NaviDestination: MessageTypesGettable {
 public extension NaviDestination {
 
     struct Destination {
-        public let coordinates: Coordinates
+        public let coordinate: Coordinate
         public let name: String?
 
-        public init(coordinates: Coordinates, name: String?) {
-            self.coordinates = coordinates
+        public init(coordinate: Coordinate, name: String?) {
+            self.coordinate = coordinate
             self.name = name
         }
     }
@@ -94,10 +94,10 @@ public extension NaviDestination {
 
     static var setDestination: (Destination) -> [UInt8] {
         return {
-            let coordinatesBytes = $0.coordinates.propertyBytes(0x01)
+            let coordinateBytes = $0.coordinate.propertyBytes(0x01)
             let nameBytes: [UInt8] = $0.name?.propertyBytes(0x02) ?? []
 
-            return identifier.bytes + [0x02] + coordinatesBytes + nameBytes
+            return identifier.bytes + [0x02] + coordinateBytes + nameBytes
         }
     }
 }
