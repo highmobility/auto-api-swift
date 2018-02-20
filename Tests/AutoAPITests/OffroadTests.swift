@@ -54,7 +54,7 @@ class OffroadTests: XCTestCase {
 
             0x01,       // Property Identifier for Route incline
             0x00, 0x02, // Property size 2 bytes
-            0x00, 0x0A, // 10 degrees incline
+            0xFF, 0xF6, // -10 degrees incline
 
             0x02,       // Property Identifier for Wheel suspension
             0x00, 0x01, // Property size 1 byte
@@ -65,7 +65,7 @@ class OffroadTests: XCTestCase {
             return XCTFail("Parsed value is not Offroad")
         }
 
-        XCTAssertEqual(offroad.routeIncline, 10)
+        XCTAssertEqual(offroad.routeIncline, -10)
         XCTAssertEqual(offroad.wheelSuspension, 50)
     }
 }

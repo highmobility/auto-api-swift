@@ -75,7 +75,7 @@ public extension ParkingBrake {
     /// Use `false` to *inactivate*.
     static var activate: (Bool) -> [UInt8] {
         return {
-            return commandPrefix(for: .setParkingBrake) + $0.propertyBytes(0x01)
+            return commandPrefix(for: .setParkingBrake) + [$0 ? 0x01 : 0x00]
         }
     }
 

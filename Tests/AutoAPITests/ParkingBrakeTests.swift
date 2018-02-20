@@ -43,9 +43,6 @@ class ParkingBrakeTests: XCTestCase {
         let bytes: [UInt8] = [
             0x00, 0x58, // MSB, LSB Message Identifier for Parking Brake
             0x02,       // Message Type for Set Parking Brake
-
-            0x01,       // Property Identifier for Parking brake
-            0x00, 0x01, // Property size 1 byte
             0x00        // Inactivate
         ]
 

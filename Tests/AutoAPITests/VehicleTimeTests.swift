@@ -60,7 +60,7 @@ class VehicleTimeTests: XCTestCase {
             0x10,       // 16h
             0x20,       // 32min
             0x33,       // 51sec
-            0x00, 0x78  // +120 min UTC time offset
+            0xFF, 0x88  // -120 min UTC time offset
         ]
 
         guard let vehicleTime = AutoAPI.parseBinary(bytes) as? VehicleTime else {
@@ -73,6 +73,6 @@ class VehicleTimeTests: XCTestCase {
         XCTAssertEqual(vehicleTime.time?.hour, 16)
         XCTAssertEqual(vehicleTime.time?.minute, 32)
         XCTAssertEqual(vehicleTime.time?.second, 51)
-        XCTAssertEqual(vehicleTime.time?.offset, 120)
+        XCTAssertEqual(vehicleTime.time?.offset, -120)
     }
 }

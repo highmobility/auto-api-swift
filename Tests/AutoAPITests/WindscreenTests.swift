@@ -110,7 +110,7 @@ class WindscreenTests: XCTestCase {
             0x10,       // at 16h
             0x20,       // 32min
             0x05,       // 5 seconds
-            0x00, 0x00  // 0 min UTC time offset
+            0x00, 0x78  // 0 min UTC time offset
         ]
 
         guard let windscreen = AutoAPI.parseBinary(bytes) as? Windscreen else {
@@ -135,6 +135,6 @@ class WindscreenTests: XCTestCase {
         XCTAssertEqual(windscreen.damageDetectionTime?.hour, 16)
         XCTAssertEqual(windscreen.damageDetectionTime?.minute, 32)
         XCTAssertEqual(windscreen.damageDetectionTime?.second, 5)
-        XCTAssertEqual(windscreen.damageDetectionTime?.offset, 0)
+        XCTAssertEqual(windscreen.damageDetectionTime?.offset, 120)
     }
 }
