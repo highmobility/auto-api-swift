@@ -130,7 +130,11 @@ class DiagnosticsTests: XCTestCase {
 
             0x0E,       // Property Identifier for Distance since start
             0x00, 0x02, // Property size 2 bytes
-            0x00, 0x0A  // 10 km driven since engine start
+            0x00, 0x0A, // 10 km driven since engine start
+
+            0x0F,                   // Property identifier for Fuel volume
+            0x00, 0x04,             // Property size is 4 bytes
+            0x42, 0x0E, 0x00, 0x00  // 35,5 liters of fuel left
         ]
 
         guard let diagnostics = AutoAPI.parseBinary(bytes) as? Diagnostics else {
@@ -150,6 +154,7 @@ class DiagnosticsTests: XCTestCase {
         XCTAssertEqual(diagnostics.adBlueLevel, 0.5)
         XCTAssertEqual(diagnostics.distanceSinceReset, 1_500)
         XCTAssertEqual(diagnostics.distanceSinceStart, 10)
+        XCTAssertEqual(diagnostics.fuelVolume, 35.5)
 
         let tires = diagnostics.tires
 

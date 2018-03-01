@@ -42,6 +42,7 @@ public struct Diagnostics: FullStandardCommand {
     public let engineRPM: UInt16?
     public let estimatedRange: UInt16?
     public let fuelLevel: UInt8?
+    public let fuelVolume: Float?
     public let mileage: UInt32?
     public let speed: Int16?
     public let tires: [Tire]?
@@ -70,6 +71,7 @@ public struct Diagnostics: FullStandardCommand {
         dieselExhaustFluid = adBlueLevel
         distanceSinceReset = properties.value(for: 0x0D)
         distanceSinceStart = properties.value(for: 0x0E)
+        fuelVolume = properties.value(for: 0x0F)
 
         // Properties
         self.properties = properties
