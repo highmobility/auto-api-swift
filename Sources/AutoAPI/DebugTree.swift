@@ -36,6 +36,13 @@ public enum DebugTree {
     indirect case node(label: String, nodes: [DebugTree])
 
 
+    // MARK: Vars
+
+    public var stringValue: String {
+        return stringValue("")
+    }
+
+
     // MARK: Methods
 
     public func visualise() {
@@ -53,6 +60,16 @@ public enum DebugTree {
             nodes.forEach {
                 $0.visualise("\t" + prefix)
             }
+        }
+    }
+
+    private func stringValue(_ prefix: String) -> String {
+        switch self {
+        case .leaf(let label):
+            return prefix + label + "\n"
+
+        case .node(let label, let nodes):
+            return prefix + label + " =\n" + nodes.map { $0.stringValue("\t" + prefix) }.joined()
         }
     }
 
