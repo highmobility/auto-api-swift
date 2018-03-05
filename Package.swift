@@ -7,12 +7,11 @@ import PackageDescription
 let package = Package(
     name: "AutoAPI",
     products: [
-        .library(name: "AutoAPI", type: .static, targets: ["AutoAPI"]),
-        .library(name: "AutoAPI", type: .dynamic, targets: ["AutoAPI"])
+        .library(name: "AutoAPI", type: .dynamic, targets: ["AutoAPI"]),
     ],
     targets: [
         .target(name: "AutoAPI", exclude: ["Resources"]),
         .target(name: "AutoAPICLT", dependencies: ["AutoAPI"]),
-        .testTarget(name: "AutoAPITests", dependencies: ["AutoAPI"], exclude: ["Resources"])
+        .testTarget(name: "AutoAPITests", dependencies: ["AutoAPI"], exclude: ["Resources"]),
     ]
 )
