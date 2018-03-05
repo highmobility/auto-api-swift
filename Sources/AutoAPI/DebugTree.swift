@@ -38,6 +38,11 @@ public enum DebugTree {
 
     // MARK: Vars
 
+    // TODO: Needs work
+//    public var jsonValue: [String : Any] {
+//        return jsonValue("")
+//    }
+
     public var stringValue: String {
         return stringValue("")
     }
@@ -47,6 +52,28 @@ public enum DebugTree {
 
     public func visualise() {
         visualise("")
+    }
+
+    private func jsonValue(_ prefix: String) -> [String : Any] {
+        switch self {
+        case .leaf(let label):
+            let components = label.components(separatedBy: " = ")
+
+            if components.count == 2 {
+                if components[0].hasPrefix("* properties.count") {
+                    return ["propertiesCount" : components[1]]
+                }
+                else {
+                    return [components[0] : components[1]]
+                }
+            }
+            else {
+                return [label : ""]
+            }
+
+        case .node(let label, let nodes):
+            return [label : nodes.map { $0.jsonValue(prefix) }]
+        }
     }
 
     private func visualise(_ prefix: String) {
@@ -103,8 +130,8 @@ public enum DebugTree {
             let nodes: [DebugTree] = [.leaf(label: "failedMessageIdentifier = " + String(format: "0x%04X", failureMessage.failedMessageIdentifier)),
                                       .leaf(label: "failedMessageType = " + String(format: "0x%02X", failureMessage.failedMessageType)),
                                       .leaf(label: "failureDescription = \(String(describing: failureMessage.failureDescription))"),
-                                        DebugTree((failureMessage.failureReason as Any), label: "failureReason", expandProperties: expandProperties),
-                                        DebugTree(failureMessage.properties, expandProperties: expandProperties)]
+                                      DebugTree((failureMessage.failureReason as Any), label: "failureReason", expandProperties: expandProperties),
+                                      DebugTree(failureMessage.properties, expandProperties: expandProperties)]
 
             self = .node(label: label, nodes: nodes)
         }
@@ -171,3 +198,4 @@ public enum DebugTree {
         }
     }
 }
+
