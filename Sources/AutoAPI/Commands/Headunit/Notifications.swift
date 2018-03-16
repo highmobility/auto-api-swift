@@ -53,7 +53,7 @@ public struct Notifications: BidirectionalCommand {
         }
 
         let properties: Properties
-        let messageType = binary.bytesArray[2]
+        let messageType = binary.bytes[2]
 
         switch messageType {
         case 0x00:
@@ -65,7 +65,7 @@ public struct Notifications: BidirectionalCommand {
             }
 
             // Hack
-            properties = Properties([0x99, 0x00, 0x01, binary.bytesArray[3]])
+            properties = Properties([0x99, 0x00, 0x01, binary.bytes[3]])
 
         case 0x02:
             guard binary.count == 3 else {

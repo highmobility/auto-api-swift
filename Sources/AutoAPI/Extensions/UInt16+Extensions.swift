@@ -31,11 +31,6 @@ import Foundation
 
 extension UInt16 {
 
-    var bytes: [UInt8] {
-        // There must be a "nicer" way to do this (maybe reduce)
-        return [UInt8((self >> 8) & 0xFF), UInt8(self & 0xFF)]
-    }
-
     var int: Int {
         return Int(self)
     }
@@ -44,7 +39,7 @@ extension UInt16 {
 extension UInt16: BinaryInitable {
 
     init<C: Collection>(_ binary: C) where C.Element == UInt8 {
-        self = binary.bytesArray.prefix(2).reduce(UInt16(0)) { ($0 << 8) + $1.uint16 }
+        self = binary.bytes.prefix(2).reduce(UInt16(0)) { ($0 << 8) + $1.uint16 }
     }
 }
 

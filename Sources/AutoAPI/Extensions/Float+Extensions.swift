@@ -29,13 +29,6 @@
 import Foundation
 
 
-extension Float {
-
-    var bytes: [UInt8] {
-        return bitPattern.bytes
-    }
-}
-
 extension Float: BinaryInitable {
 
     init<C>(_ binary: C) where C : Collection, C.Element == UInt8 {

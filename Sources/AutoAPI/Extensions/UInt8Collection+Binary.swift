@@ -31,20 +31,7 @@ import Foundation
 
 extension Collection where Element == UInt8 {
 
-    var bytesArray: [UInt8] {
-        return Array(self)
-    }
-
-    var data: Data {
-        return Data(bytes: bytesArray)
-    }
-
-    var hex: String {
-        return map { String(format: "%02X", $0) }.joined()
-    }
-
-
     func dropFirstBytes(_ n: Int) -> [UInt8] {
-        return bytesArray.dropFirst(n).bytesArray
+        return bytes.dropFirst(n).bytes
     }
 }

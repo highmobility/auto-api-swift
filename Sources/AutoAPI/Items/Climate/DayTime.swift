@@ -55,7 +55,7 @@ extension DayTime: BinaryInitable {
             return nil
         }
 
-        hour = binary.bytesArray[0]
-        minute = binary.bytesArray[1]
+        hour = binary.bytes[0]
+        minute = binary.bytes[1]
     }
 }

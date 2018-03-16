@@ -9,8 +9,11 @@ let package = Package(
     products: [
         .library(name: "AutoAPI", type: .dynamic, targets: ["AutoAPI"]),
     ],
+    dependencies: [
+        .package(url: "https://github.com/highmobility/hm-utilities-swift", .branch("master")),
+    ],
     targets: [
-        .target(name: "AutoAPI", exclude: ["Resources"]),
+        .target(name: "AutoAPI", dependencies: ["HMUtilities"], exclude: ["Resources"]),
         .target(name: "AutoAPICLT", dependencies: ["AutoAPI"]),
         .testTarget(name: "AutoAPITests", dependencies: ["AutoAPI"], exclude: ["Resources"]),
     ]

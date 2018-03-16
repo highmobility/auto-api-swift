@@ -36,7 +36,7 @@ public struct Property {
     public let value: [UInt8]
 
     public var bytes: [UInt8] {
-        return [identifier] + size.bytes + value.bytesArray
+        return [identifier] + size.bytes + value.bytes
     }
 
     
@@ -56,7 +56,7 @@ extension Property: BinaryInitable {
          This is a workaround for a Swift Compiler problem/bug? that doesn't let to subscript with an Int.
          Which should work, as it inherits Comparable from (BinaryInteger -> Stridable).
          */
-        let bytes = binary.bytesArray
+        let bytes = binary.bytes
 
         identifier = bytes[0]
         size = UInt16(bytes[1...2])
@@ -65,7 +65,7 @@ extension Property: BinaryInitable {
             return nil
         }
 
-        value = bytes.suffix(from: 3).bytesArray
+        value = bytes.suffix(from: 3).bytes
     }
 }
 

@@ -40,6 +40,6 @@ public struct SeatsIterator: ItemIterator {
 extension SeatsIterator: BinaryInitable {
 
     init<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        bytes = binary.bytesArray
+        bytes = binary.bytes
     }
 }

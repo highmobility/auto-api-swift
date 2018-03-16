@@ -22,7 +22,7 @@
 #
 #  UniversalBuildScript.sh
 #
-#  Created by Mikk Rätsep on 07/10/2016.
+#  Created by Mikk Rätsep on 16/03/2018.
 #  Copyright © 2016 High-Mobility. All rights reserved.
 
 
@@ -30,7 +30,9 @@
 # Options
 ######################
 
-FRAMEWORK_NAME="${PRODUCT_NAME}"
+FRAMEWORK_NAME="AutoAPI"
+
+PROJECT_PATH="${FRAMEWORK_NAME}.xcodeproj"
 
 SIMULATOR_PATH="${BUILD_DIR}/${CONFIGURATION}-simulator"
 SIMULATOR_LIBRARY_PATH="${SIMULATOR_PATH}/${FRAMEWORK_NAME}.framework"
@@ -50,10 +52,10 @@ FRAMEWORK="${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework"
 ######################
 
 echo "Building for Simulator..."
-xcodebuild -quiet -target ${PRODUCT_NAME} -sdk iphonesimulator -configuration ${CONFIGURATION} CONFIGURATION_BUILD_DIR=${SIMULATOR_PATH} ONLY_ACTIVE_ARCH=NO clean build
+xcodebuild -quiet -project ${PROJECT_PATH} -target ${FRAMEWORK_NAME} -sdk iphonesimulator -configuration ${CONFIGURATION} CONFIGURATION_BUILD_DIR=${SIMULATOR_PATH} ONLY_ACTIVE_ARCH=NO clean build
 
 echo "Archiving for Device..."
-xcodebuild -quiet -scheme ${PRODUCT_NAME} -sdk iphoneos -configuration ${CONFIGURATION} -archivePath ${ARCHIVE_PATH} clean archive
+xcodebuild -quiet -project ${PROJECT_PATH} -scheme ${FRAMEWORK_NAME} -sdk iphoneos -configuration ${CONFIGURATION} -archivePath ${ARCHIVE_PATH} clean archive
 
 # Updates the device's library path
 DEVICE_LIBRARY_PATH="${ARCHIVE_PATH}/Products/Library/Frameworks/${FRAMEWORK_NAME}.framework"
@@ -110,6 +112,7 @@ echo ${SRCROOT}/build
 ######################
 
 open ${UNIVERSAL_LIBRARY_DIR}
+
 
 
 

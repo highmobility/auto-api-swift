@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0910"
+   LastUpgradeVersion = "0920"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "20A6D6F21FC3139B00438F4F"
+               BlueprintIdentifier = "AutoAPI::AutoAPI"
                BuildableName = "AutoAPI.framework"
                BlueprintName = "AutoAPI"
                ReferencedContainer = "container:AutoAPI.xcodeproj">
@@ -27,14 +27,13 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       language = ""
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "20A6D6FB1FC3139B00438F4F"
+               BlueprintIdentifier = "AutoAPI::AutoAPITests"
                BuildableName = "AutoAPITests.xctest"
                BlueprintName = "AutoAPITests"
                ReferencedContainer = "container:AutoAPI.xcodeproj">
@@ -44,7 +43,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "20A6D6F21FC3139B00438F4F"
+            BlueprintIdentifier = "AutoAPI::AutoAPI"
             BuildableName = "AutoAPI.framework"
             BlueprintName = "AutoAPI"
             ReferencedContainer = "container:AutoAPI.xcodeproj">
@@ -67,7 +66,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "20A6D6F21FC3139B00438F4F"
+            BlueprintIdentifier = "AutoAPI::AutoAPI"
             BuildableName = "AutoAPI.framework"
             BlueprintName = "AutoAPI"
             ReferencedContainer = "container:AutoAPI.xcodeproj">
@@ -85,7 +84,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "20A6D6F21FC3139B00438F4F"
+            BlueprintIdentifier = "AutoAPI::AutoAPI"
             BuildableName = "AutoAPI.framework"
             BlueprintName = "AutoAPI"
             ReferencedContainer = "container:AutoAPI.xcodeproj">

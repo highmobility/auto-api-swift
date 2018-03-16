@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "204C0E691FEBEC8A002E319C"
+               BlueprintIdentifier = "AutoAPI::AutoAPICLT"
                BuildableName = "AutoAPICLT"
                BlueprintName = "AutoAPICLT"
                ReferencedContainer = "container:AutoAPI.xcodeproj">
@@ -33,7 +33,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "204C0E691FEBEC8A002E319C"
+            BlueprintIdentifier = "AutoAPI::AutoAPICLT"
             BuildableName = "AutoAPICLT"
             BlueprintName = "AutoAPICLT"
             ReferencedContainer = "container:AutoAPI.xcodeproj">
@@ -57,7 +57,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "204C0E691FEBEC8A002E319C"
+            BlueprintIdentifier = "AutoAPI::AutoAPICLT"
             BuildableName = "AutoAPICLT"
             BlueprintName = "AutoAPICLT"
             ReferencedContainer = "container:AutoAPI.xcodeproj">
@@ -76,7 +76,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "204C0E691FEBEC8A002E319C"
+            BlueprintIdentifier = "AutoAPI::AutoAPICLT"
             BuildableName = "AutoAPICLT"
             BlueprintName = "AutoAPICLT"
             ReferencedContainer = "container:AutoAPI.xcodeproj">

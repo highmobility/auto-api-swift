@@ -45,7 +45,7 @@ extension Item {
             return nil
         }
 
-        self.init(bytes: binary.bytesArray)
+        self.init(bytes: binary.bytes)
     }
 
     init?(bytes: [UInt8]?) {

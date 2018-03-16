@@ -52,7 +52,7 @@ extension ActionItem: BinaryInitable {
             return nil
         }
 
-        identifier = binary.bytesArray[0]
+        identifier = binary.bytes[0]
         name = string
     }
 }
@@ -60,7 +60,7 @@ extension ActionItem: BinaryInitable {
 extension ActionItem: PropertyConvertable {
 
     var propertyValue: [UInt8] {
-        let nameBytes: [UInt8] = name.data(using: .utf8)?.bytesArray ?? []
+        let nameBytes: [UInt8] = name.data(using: .utf8)?.bytes ?? []
 
         return [identifier] + nameBytes
     }

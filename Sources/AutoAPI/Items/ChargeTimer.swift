@@ -55,7 +55,7 @@ extension ChargeTimer: BinaryInitable {
             return nil
         }
         
-        guard let yearTime = YearTime(bytes: bytes.dropFirst().bytesArray) else {
+        guard let yearTime = YearTime(bytes: bytes.dropFirst().bytes) else {
             return nil
         }
 

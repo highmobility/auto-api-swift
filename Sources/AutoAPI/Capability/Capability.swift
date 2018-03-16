@@ -59,7 +59,7 @@ public struct Capability {
         }
 
         self.command = command
-        self.identifier = Identifier(binary.bytesArray.prefix(2))
+        self.identifier = Identifier(binary.bytes.prefix(2))
         self.supportedMessageTypes = binary.dropFirstBytes(2)
     }
 }

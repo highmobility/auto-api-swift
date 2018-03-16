@@ -29,13 +29,6 @@
 import Foundation
 
 
-extension Bool {
-
-    var byte: UInt8 {
-        return self ? 0x01 : 0x00
-    }
-}
-
 extension Bool: PropertyConvertable {
 
     var propertyValue: [UInt8] {

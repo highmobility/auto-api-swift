@@ -40,6 +40,6 @@ public struct WindowsIterator: ItemIterator {
 extension WindowsIterator: BinaryInitable {
 
     init<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        bytes = binary.bytesArray
+        bytes = binary.bytes
     }
 }

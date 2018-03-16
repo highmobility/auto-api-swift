@@ -31,28 +31,6 @@ import Foundation
 
 extension String {
 
-    var bytes: [UInt8] {
-        return characterPairs.flatMap { UInt8($0, radix: 16) }
-    }
-
-    var characterPairs: [String] {
-        let startEmptyStringPairsArray: [String] = []
-
-        return enumerated().reduce(startEmptyStringPairsArray) { (midResult, enumerationTuple) in
-            var result = midResult
-
-            if (enumerationTuple.offset % 2) == 1 {
-                result[result.endIndex - 1] = midResult.last! + enumerationTuple.element.description
-            }
-            else {
-                result.append(enumerationTuple.element.description)
-            }
-
-            return result
-        }
-    }
-
-
     init(format: String, _ arguments: CVarArg?...) {
         if arguments.contains(where: { $0 == nil }) {
             self.init("nil")
@@ -74,6 +52,6 @@ extension String {
 extension String: PropertyConvertable {
 
     var propertyValue: [UInt8] {
-        return data(using: .utf8)?.bytesArray ?? []
+        return data(using: .utf8)?.bytes ?? []
     }
 }

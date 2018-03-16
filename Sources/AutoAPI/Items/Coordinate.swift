@@ -68,7 +68,7 @@ extension Coordinate: BinaryInitable {
             return nil
         }
 
-        let latitudeBytes = Float(binary.bytesArray.prefix(upTo: 4))
+        let latitudeBytes = Float(binary.bytes.prefix(upTo: 4))
         let longitudeBytes = Float(binary.dropFirstBytes(4))
 
         self.init(latitude: Double(latitudeBytes), longitude: Double(longitudeBytes))

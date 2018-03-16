@@ -47,8 +47,8 @@ extension CarSDKVersion: BinaryInitable {
             return nil
         }
 
-        major = binary.bytesArray[0]
-        minor = binary.bytesArray[1]
-        patch = binary.bytesArray[2]
+        major = binary.bytes[0]
+        minor = binary.bytes[1]
+        patch = binary.bytes[2]
     }
 }

@@ -56,7 +56,7 @@ public struct Properties: Sequence {
 extension Properties: BinaryInitable {
 
     init<C: Collection>(_ binary: C) where C.Element == UInt8 {
-        bytes = binary.bytesArray
+        bytes = binary.bytes
     }
 }
 

@@ -70,7 +70,7 @@ extension WeekdaysTimes: BinaryInitable {
             return nil
         }
 
-        let bytes = binary.bytesArray
+        let bytes = binary.bytes
 
         guard let monday = DayTime(bytes),
             let tuesday = DayTime(bytes.suffix(from: 2)),

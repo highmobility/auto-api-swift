@@ -32,6 +32,6 @@ import Foundation
 extension URL: PropertyConvertable {
 
     var propertyValue: [UInt8] {
-        return absoluteString.data(using: .utf8)?.bytesArray ?? []
+        return absoluteString.data(using: .utf8)?.bytes ?? []
     }
 }

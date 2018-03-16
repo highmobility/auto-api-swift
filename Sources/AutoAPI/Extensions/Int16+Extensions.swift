@@ -29,17 +29,10 @@
 import Foundation
 
 
-extension Int16 {
-
-    var bytes: [UInt8] {
-        return UInt16(bitPattern: self).bytes
-    }
-}
-
 extension Int16: BinaryInitable {
 
     init<C: Collection>(_ binary: C) where C.Element == UInt8 {
-        self = binary.bytesArray.prefix(2).reduce(Int16(0)) { ($0 << 8) + $1.int16 }
+        self = binary.bytes.prefix(2).reduce(Int16(0)) { ($0 << 8) + $1.int16 }
     }
 }
 

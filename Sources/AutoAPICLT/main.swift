@@ -28,6 +28,7 @@
 
 import AutoAPI
 import Foundation
+import HMUtilities
 
 
 var expandProperties = false
@@ -51,7 +52,7 @@ func main() {
             return print(" INVALID INPUT - base64 data can't be extracted")
         }
 
-        bytes = data.bytesArray
+        bytes = data.bytes
     }
     else if flags.contains("-dc") {
         bytes = developerCenterBytes(input)

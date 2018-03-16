@@ -29,17 +29,9 @@
 import Foundation
 
 
-extension UInt32 {
-
-    var bytes: [UInt8] {
-        // There must be a "nicer" way to do this (maybe reduce)
-        return [UInt8((self >> 24) & 0xFF), UInt8((self >> 16) & 0xFF), UInt8((self >> 8) & 0xFF), UInt8(self & 0xFF)]
-    }
-}
-
 extension UInt32: BinaryInitable {
 
     init<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        self = binary.bytesArray.prefix(4).reduce(UInt32(0)) { ($0 << 8) + $1.uint32 }
+        self = binary.bytes.prefix(4).reduce(UInt32(0)) { ($0 << 8) + $1.uint32 }
     }
 }

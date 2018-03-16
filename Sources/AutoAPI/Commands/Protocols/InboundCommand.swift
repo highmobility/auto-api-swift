@@ -47,7 +47,7 @@ extension InboundCommand {
             return nil
         }
 
-        let messageType = binary.bytesArray[2]
+        let messageType = binary.bytes[2]
         let properties = Properties(binary.dropFirstBytes(3))
 
         self.init(messageType, properties: properties)

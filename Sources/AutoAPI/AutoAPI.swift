@@ -27,6 +27,7 @@
 //
 
 import Foundation
+import HMUtilities
 
 
 public struct AutoAPI {
