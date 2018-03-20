@@ -13,8 +13,8 @@ let package = Package(
         .package(url: "https://github.com/highmobility/hm-utilities-swift", .branch("master")),
     ],
     targets: [
-        .target(name: "AutoAPI", dependencies: ["HMUtilities"], exclude: ["Resources"]),
+        .target(name: "AutoAPI", dependencies: ["HMUtilities"]),
         .target(name: "AutoAPICLT", dependencies: ["AutoAPI"]),
-        .testTarget(name: "AutoAPITests", dependencies: ["AutoAPI"], exclude: ["Resources"]),
+        .testTarget(name: "AutoAPITests", dependencies: ["AutoAPI"]),
     ]
 )
