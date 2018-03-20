@@ -253,8 +253,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		20D39005205C020400B6D7D2 /* UniversalBuildScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = UniversalBuildScript.sh; sourceTree = "<group>"; };
-		20D39006205C020400B6D7D2 /* AppStoreCompatible.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppStoreCompatible.sh; sourceTree = "<group>"; };
+		206ED7D02060FD7000D7761E /* UniversalBuildScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = UniversalBuildScript.sh; sourceTree = "<group>"; };
+		206ED7D12060FD7000D7761E /* AppStoreCompatible.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppStoreCompatible.sh; sourceTree = "<group>"; };
 		"AutoAPI::AutoAPI::Product" /* AutoAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AutoAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"AutoAPI::AutoAPICLT::Product" /* AutoAPICLT */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = AutoAPICLT; sourceTree = BUILT_PRODUCTS_DIR; };
 		"AutoAPI::AutoAPITests::Product" /* AutoAPITests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = AutoAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -486,13 +486,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		20D39004205C020400B6D7D2 /* Resources */ = {
+		206ED7CF2060FD7000D7761E /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
-				20D39006205C020400B6D7D2 /* AppStoreCompatible.sh */,
-				20D39005205C020400B6D7D2 /* UniversalBuildScript.sh */,
+				206ED7D02060FD7000D7761E /* UniversalBuildScript.sh */,
+				206ED7D12060FD7000D7761E /* AppStoreCompatible.sh */,
 			);
-			path = Resources;
+			path = Scripts;
 			sourceTree = "<group>";
 		};
 		OBJ_11 /* Capability */ = {
@@ -807,6 +807,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
+				206ED7CF2060FD7000D7761E /* Scripts */,
 				OBJ_7 /* Sources */,
 				OBJ_171 /* Tests */,
 				OBJ_219 /* Dependencies */,
@@ -931,7 +932,6 @@
 				OBJ_126 /* Items */,
 				OBJ_154 /* MessageTypes.swift */,
 				OBJ_155 /* Property */,
-				20D39004205C020400B6D7D2 /* Resources */,
 				OBJ_164 /* VehicleStatus */,
 			);
 			name = AutoAPI;
@@ -1058,7 +1058,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"${SRCROOT}/Sources/AutoAPI/Resources/UniversalBuildScript.sh\"";
+			shellScript = "/bin/sh \"${SRCROOT}/Scripts/UniversalBuildScript.sh\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1417,6 +1417,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1424,7 +1425,9 @@
 				SUPPORTED_PLATFORMS = "macosx watchos watchsimulator appletvos appletvsimulator iphoneos iphonesimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 				USE_HEADERMAP = NO;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
@@ -1488,13 +1491,16 @@
 				DEFINES_MODULE = YES;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_OPTIMIZATION_LEVEL = s;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "macosx watchos watchsimulator appletvos appletvsimulator iphoneos iphonesimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 				USE_HEADERMAP = NO;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
@@ -1552,7 +1558,7 @@
 				20D3900A205C022400B6D7D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		OBJ_2 /* Build configuration list for PBXProject "AutoAPI" */ = {
 			isa = XCConfigurationList;
@@ -1561,7 +1567,7 @@
 				OBJ_4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		OBJ_247 /* Build configuration list for PBXNativeTarget "AutoAPICLT" */ = {
 			isa = XCConfigurationList;
@@ -1588,7 +1594,7 @@
 				OBJ_316 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		OBJ_460 /* Build configuration list for PBXNativeTarget "HMUtilities" */ = {
 			isa = XCConfigurationList;

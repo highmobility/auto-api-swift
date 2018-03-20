@@ -26,6 +26,26 @@
 #  Copyright © 2016 High-Mobility. All rights reserved.
 
 
+
+
+######################
+# Conf Some Vars
+######################
+
+
+if [ -z "${CONFIGURATION}" ]; then
+    CONFIGURATION="Release"
+fi
+
+if [ -z "${SRCROOT}" ]; then
+    SRCROOT="$( cd "$(dirname "$0")" ; pwd -P )/.."
+fi
+
+if [ -z "${BUILD_DIR}" ]; then
+    BUILD_DIR="${SRCROOT}/build"
+fi
+
+
 ######################
 # Options
 ######################
@@ -81,7 +101,7 @@ cp -r "${DEVICE_LIBRARY_PATH}/." "${FRAMEWORK}"
 
 # And the AppStoreCompatible script
 echo "Copying AppStoreCompatible script"
-cp "${SRCROOT}/Sources/${FRAMEWORK_NAME}/Resources/AppStoreCompatible.sh" "${FRAMEWORK}"
+cp "${SRCROOT}/Scripts/AppStoreCompatible.sh" "${FRAMEWORK}"
 
 
 ######################
@@ -100,19 +120,13 @@ if [ -d "${SIMULATOR_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/" ]; th
 cp -f -R "${SIMULATOR_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/" "${FRAMEWORK}/Modules/${FRAMEWORK_NAME}.swiftmodule/"
 fi
 
+
+# Copy the Universal to the root dir
+cp -f -R "${FRAMEWORK}" "${SRCROOT}"
+
 # Removes the build/ folder from the source folder
 echo "Removing build directory..."
-rm -rfd ${SRCROOT}/build
-echo ${SRCROOT}/build
-
-
-
-######################
-# Open the Universal folder
-######################
-
-open ${UNIVERSAL_LIBRARY_DIR}
-
+rm -rfd "${SRCROOT}/build"
 
 
 
