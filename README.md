@@ -1,6 +1,8 @@
 ## What is in this repository ##
 
 **AutoAPI** parsing source code in *Swift*, that can be made into a *framework* by `swift build` (*macOS* and *Linux* only), or through *Xcode*. Using the latter allows additionally to build for *iOS*, *tvOS* or *watchOS*.  
+
+In addition, if using this as a *dependency* with Swift Package Manager, the suitable architecture is handled by Xcode.
   
 Lastly, there's a *command-line* parser for quickly debugging AutoAPI data.  
 
