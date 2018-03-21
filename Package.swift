@@ -8,6 +8,7 @@ let package = Package(
     name: "AutoAPI",
     products: [
         .library(name: "AutoAPI", type: .dynamic, targets: ["AutoAPI"]),
+        .library(name: "AutoAPI", type: .static, targets: ["AutoAPI"]),
     ],
     dependencies: [
         .package(url: "https://github.com/highmobility/hm-utilities-swift", .branch("master")),
