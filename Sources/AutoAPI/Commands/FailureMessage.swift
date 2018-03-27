@@ -47,18 +47,10 @@ public struct FailureMessage: InboundCommand {
             return nil
         }
 
-        // Ordered by the ID
-        if let bytes = properties.first(for: 0x01)?.value, bytes.count == 3 {
-            failedMessageIdentifier = Identifier(bytes)
-            failedMessageType = bytes[2]
-        }
-        else {
-            failedMessageIdentifier = nil
-            failedMessageType = nil
-        }
-
-        failureReason = FailureReason(rawValue: properties.first(for: 0x02)?.monoValue)
-        failureDescription = properties.value(for: 0x03)
+        failedMessageIdentifier = properties.value(for: 0x01)
+        failedMessageType = properties.value(for: 0x02)
+        failureReason = FailureReason(rawValue: properties.first(for: 0x03)?.monoValue)
+        failureDescription = properties.value(for: 0x04)
 
         // Properties
         self.properties = properties

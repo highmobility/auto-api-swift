@@ -42,14 +42,21 @@ class FailureMessageTests: XCTestCase {
             0x00, 0x02, // MSB, LSB Message Identifier for Failure Message
             0x01,       // Message Type for Failure
 
-            0x01,       // Property Identifier for Failed Message
-            0x00, 0x03, // Property size 3 bytes
+            0x01, // Property identifier for Failed message identifier
+            0x00, 0x02, // Property size is 2 bytes
             0x00, 0x21, // MSB, LSB Message Identifier for Trunk State
+
+            0x02, // Property identifier for Failed message type
+            0x00, 0x01, // Property size is 1 bytes
             0x00,       // Get Trunk State Message Type
 
-            0x02,       // Property Identifier for Failure Reason
-            0x00, 0x01, // Property size 1 bytes
-            0x01        // Unauthorised
+            0x03, // Property identifier for Failure reason
+            0x00, 0x01, // Property size is 1 bytes
+            0x01,       // Unauthorised
+
+            0x04, // Property identifier for Failure description
+            0x00, 0x09, // Property size is 9 bytes
+            0x54, 0x72, 0x79, 0x20, 0x61, 0x67, 0x61, 0x69, 0x6e // Try again
         ]
 
         guard let failureMessage = AutoAPI.parseBinary(bytes) as? FailureMessage else {
@@ -57,7 +64,8 @@ class FailureMessageTests: XCTestCase {
         }
 
         XCTAssertEqual(failureMessage.failedMessageIdentifier, TrunkAccess.identifier)
-        XCTAssertEqual(failureMessage.failedMessageType, 0x00)
+        XCTAssertEqual(failureMessage.failedMessageType, TrunkAccess.MessageTypes.getTrunkState.rawValue)
         XCTAssertEqual(failureMessage.failureReason, .unauthorised)
+        XCTAssertEqual(failureMessage.failureDescription, "Try again")
     }
 }
