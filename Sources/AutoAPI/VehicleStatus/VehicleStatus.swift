@@ -55,7 +55,7 @@ public struct VehicleStatus: InboundCommand {
             return nil
         }
 
-        let stateTypes = AutoAPI.commands.flatMap { $0 as? VehicleStateType.Type }
+        let stateTypes = AutoAPI.commands.compactMap { $0 as? VehicleStateType.Type }
 
         // Ordered by the ID
         vin = String(bytes: properties.first(for: 0x01)?.value, encoding: .ascii)

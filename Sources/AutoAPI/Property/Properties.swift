@@ -136,6 +136,6 @@ public extension Properties {
             return nil
         }
 
-        return try filtered.flatMap(transform)
+        return try filtered.compactMap(transform)
     }
 }

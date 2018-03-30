@@ -32,6 +32,6 @@ import Foundation
 extension Sequence {
 
     func flatMapFirst<ElementOfResult>(_ transform: (Self.Element) throws -> ElementOfResult?) rethrows -> ElementOfResult? {
-        return try flatMap(transform).first
+        return try compactMap(transform).first
     }
 }

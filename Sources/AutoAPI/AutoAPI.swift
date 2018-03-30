@@ -80,6 +80,6 @@ public struct AutoAPI {
 
 
     public static func parseBinary<C: Collection>(_ binary: C) -> Command? where C.Element == UInt8 {
-        return commands.flatMap { $0 as? BinaryInitable.Type }.flatMapFirst { $0.init(binary) as? Command }
+        return commands.compactMap { $0 as? BinaryInitable.Type }.flatMapFirst { $0.init(binary) as? Command }
     }
 }

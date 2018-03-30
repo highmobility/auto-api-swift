@@ -44,10 +44,10 @@ public struct Capabilities: InboundCommand, Sequence  {
             return nil
         }
 
-        let commandTypes = AutoAPI.commands.flatMap { $0 as? Command.Type }
+        let commandTypes = AutoAPI.commands.compactMap { $0 as? Command.Type }
 
         // Ordered by the ID
-        capabilities = properties.filter(for: 0x01).flatMap { property in
+        capabilities = properties.filter(for: 0x01).compactMap { property in
             let identifier = Identifier(property.value.prefix(2))
 
             guard let command = commandTypes.first(where: { $0.identifier == identifier }) else {

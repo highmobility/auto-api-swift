@@ -36,7 +36,7 @@ extension String {
             self.init("nil")
         }
         else {
-            self.init(format: format, arguments: arguments.flatMap { $0 })
+            self.init(format: format, arguments: arguments.compactMap { $0 })
         }
     }
 

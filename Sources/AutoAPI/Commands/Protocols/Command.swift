@@ -53,6 +53,6 @@ extension CommandAggregate where Self.MessageTypes.RawValue == UInt8 {
     }
 
     static func commandPrefix(for messageType: Self.MessageTypes, additionalBytes bytes: UInt8?...) -> [UInt8] {
-        return Self.identifier.bytes + [messageType.rawValue] + bytes.flatMap { $0 }
+        return Self.identifier.bytes + [messageType.rawValue] + bytes.compactMap { $0 }
     }
 }
