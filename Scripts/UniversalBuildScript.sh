@@ -1,8 +1,7 @@
 #!/bin/sh
 
 #
-# AutoAPI
-# Copyright (C) 2017 High-Mobility GmbH
+# Copyright (C) 2018 High-Mobility GmbH
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,8 +23,6 @@
 #
 #  Created by Mikk Rätsep on 16/03/2018.
 #  Copyright © 2016 High-Mobility. All rights reserved.
-
-
 
 
 ######################
@@ -50,7 +47,9 @@ fi
 # Options
 ######################
 
-FRAMEWORK_NAME="AutoAPI"
+FRAMEWORK_NAME="$(find ${SRCROOT} -name '*.xcodeproj')"
+FRAMEWORK_NAME=${FRAMEWORK_NAME##*/}
+FRAMEWORK_NAME=${FRAMEWORK_NAME%.*}
 
 PROJECT_PATH="${SRCROOT}/${FRAMEWORK_NAME}.xcodeproj"
 
@@ -72,10 +71,10 @@ FRAMEWORK="${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework"
 ######################
 
 echo "Building for Simulator..."
-xcodebuild -quiet -project ${PROJECT_PATH} -target ${FRAMEWORK_NAME} -sdk iphonesimulator -configuration ${CONFIGURATION} CONFIGURATION_BUILD_DIR=${SIMULATOR_PATH} ONLY_ACTIVE_ARCH=NO clean build
+xcodebuild -quiet -project ${PROJECT_PATH} -target ${FRAMEWORK_NAME} -sdk iphonesimulator -configuration ${CONFIGURATION} CONFIGURATION_BUILD_DIR=${SIMULATOR_PATH} OTHER_CFLAGS="-fembed-bitcode" ONLY_ACTIVE_ARCH=NO clean build
 
 echo "Archiving for Device..."
-xcodebuild -quiet -project ${PROJECT_PATH} -scheme ${FRAMEWORK_NAME} -sdk iphoneos -configuration ${CONFIGURATION} -archivePath ${ARCHIVE_PATH} clean archive
+xcodebuild -quiet -project ${PROJECT_PATH} -scheme ${FRAMEWORK_NAME} -sdk iphoneos -configuration ${CONFIGURATION} OTHER_CFLAGS="-fembed-bitcode" -archivePath ${ARCHIVE_PATH} clean archive
 
 # Updates the device's library path
 DEVICE_LIBRARY_PATH="${ARCHIVE_PATH}/Products/Library/Frameworks/${FRAMEWORK_NAME}.framework"
@@ -127,8 +126,3 @@ cp -f -R "${FRAMEWORK}" "${SRCROOT}"
 # Removes the build/ folder from the source folder
 echo "Removing build directory..."
 rm -rfd "${SRCROOT}/build"
-
-
-
-
-
