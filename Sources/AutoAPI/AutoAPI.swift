@@ -38,6 +38,7 @@ public struct AutoAPI {
                 Charging.self,
                 ChassisSettings.self,
                 Climate.self,
+                CruiseControl.self,
                 DashboardLights.self,
                 Diagnostics.self,
                 DoorLocks.self,

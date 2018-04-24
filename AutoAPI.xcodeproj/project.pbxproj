@@ -29,6 +29,9 @@
 		205C5173208F319900B55ACE /* DashboardLightState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5172208F319900B55ACE /* DashboardLightState.swift */; };
 		205C5175208F3E6400B55ACE /* StartStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5174208F3E6400B55ACE /* StartStop.swift */; };
 		205C5177208F3FFD00B55ACE /* StartStopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5176208F3FFD00B55ACE /* StartStopTests.swift */; };
+		205C5179208F41C700B55ACE /* CruiseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5178208F41C700B55ACE /* CruiseControl.swift */; };
+		205C517B208F430100B55ACE /* CruiseControlState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517A208F430100B55ACE /* CruiseControlState.swift */; };
+		205C517D208F451300B55ACE /* CruiseControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517C208F451300B55ACE /* CruiseControlTests.swift */; };
 		OBJ_251 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_169 /* Misc.swift */; };
 		OBJ_252 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_170 /* main.swift */; };
 		OBJ_254 /* AutoAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "AutoAPI::AutoAPI::Product" /* AutoAPI.framework */; };
@@ -269,6 +272,9 @@
 		205C5172208F319900B55ACE /* DashboardLightState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLightState.swift; sourceTree = "<group>"; };
 		205C5174208F3E6400B55ACE /* StartStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStop.swift; sourceTree = "<group>"; };
 		205C5176208F3FFD00B55ACE /* StartStopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStopTests.swift; sourceTree = "<group>"; };
+		205C5178208F41C700B55ACE /* CruiseControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruiseControl.swift; sourceTree = "<group>"; };
+		205C517A208F430100B55ACE /* CruiseControlState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruiseControlState.swift; sourceTree = "<group>"; };
+		205C517C208F451300B55ACE /* CruiseControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruiseControlTests.swift; sourceTree = "<group>"; };
 		206ED7D02060FD7000D7761E /* UniversalBuildScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = UniversalBuildScript.sh; sourceTree = "<group>"; };
 		206ED7D12060FD7000D7761E /* AppStoreCompatible.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppStoreCompatible.sh; sourceTree = "<group>"; };
 		"AutoAPI::AutoAPI::Product" /* AutoAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AutoAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -654,6 +660,7 @@
 				OBJ_18 /* Charging.swift */,
 				OBJ_19 /* ChassisSettings.swift */,
 				OBJ_20 /* Climate.swift */,
+				205C5178208F41C700B55ACE /* CruiseControl.swift */,
 				OBJ_21 /* HonkHornFlashLights.swift */,
 				OBJ_22 /* KeyfobPosition.swift */,
 				OBJ_23 /* Lights.swift */,
@@ -681,6 +688,7 @@
 				OBJ_175 /* ChargingTests.swift */,
 				OBJ_176 /* ChassisSettingsTests.swift */,
 				OBJ_177 /* ClimateTests.swift */,
+				205C517C208F451300B55ACE /* CruiseControlTests.swift */,
 				205C516E208F2EF700B55ACE /* DashboardLightsTests.swift */,
 				OBJ_178 /* DiagnosticsTests.swift */,
 				OBJ_179 /* DoorLocksTests.swift */,
@@ -909,6 +917,7 @@
 				OBJ_81 /* ChargePortState.swift */,
 				OBJ_82 /* ChargingState.swift */,
 				OBJ_83 /* ControlMode.swift */,
+				205C517A208F430100B55ACE /* CruiseControlState.swift */,
 				205C5170208F315C00B55ACE /* DashboardLightName.swift */,
 				205C5172208F319900B55ACE /* DashboardLightState.swift */,
 				OBJ_84 /* DrivingMode.swift */,
@@ -1118,6 +1127,7 @@
 				OBJ_279 /* HeartRateTests.swift in Sources */,
 				205C516F208F2EF700B55ACE /* DashboardLightsTests.swift in Sources */,
 				OBJ_280 /* HomeChargerTests.swift in Sources */,
+				205C517D208F451300B55ACE /* CruiseControlTests.swift in Sources */,
 				OBJ_281 /* HonkHornFlashLightsTests.swift in Sources */,
 				OBJ_282 /* KeyfobPositionTests.swift in Sources */,
 				OBJ_283 /* LightConditionsTests.swift in Sources */,
@@ -1215,11 +1225,13 @@
 				OBJ_376 /* ChargeMode.swift in Sources */,
 				OBJ_377 /* ChargePortState.swift in Sources */,
 				OBJ_378 /* ChargingState.swift in Sources */,
+				205C517B208F430100B55ACE /* CruiseControlState.swift in Sources */,
 				OBJ_379 /* ControlMode.swift in Sources */,
 				OBJ_380 /* DrivingMode.swift in Sources */,
 				OBJ_381 /* FailureReason.swift in Sources */,
 				OBJ_382 /* FatigueLevel.swift in Sources */,
 				OBJ_383 /* FlasherState.swift in Sources */,
+				205C5179208F41C700B55ACE /* CruiseControl.swift in Sources */,
 				OBJ_384 /* GearMode.swift in Sources */,
 				OBJ_386 /* KeyfobRelativePosition.swift in Sources */,
 				OBJ_387 /* LightState.swift in Sources */,
