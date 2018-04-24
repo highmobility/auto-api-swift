@@ -109,7 +109,23 @@ class RaceTests: XCTestCase {
 
             0x0D,       // Property identifier for Brake pedal position
             0x00, 0x01, // Property size is 1 bytes
-            0x00        // 0%, no brakes
+            0x00,       // 0%, no brakes
+
+            0x0E,       // Property identifier for Brake pedal switch
+            0x00, 0x01, // Property size is 1 bytes
+            0x01,       // Brake pedal switch active, brake lights active
+
+            0x0F,       // Property identifier for Clutch pedal switch
+            0x00, 0x01, // Property size is 1 bytes
+            0x01,       // Clutch pedal switch active, clutch fully depressed
+
+            0x10,       // Property identifier for Accelerator pedal idle switch
+            0x00, 0x01, // Property size is 1 bytes
+            0x01,       // Accelerator pedal idle switch active, pedal fully released
+
+            0x11,       // Property identifier for Accelerator pedal kickdown switch
+            0x00, 0x01, // Property size is 1 bytes
+            0x01        // Accelerator pedal switch active, pedal fully depressed
         ]
 
         guard let race = AutoAPI.parseBinary(bytes) as? Race else {
@@ -124,6 +140,10 @@ class RaceTests: XCTestCase {
         XCTAssertEqual(race.yawRate, 6.66)
         XCTAssertEqual(race.rearSuspensionSteering, 3)
         XCTAssertEqual(race.isESPActive, true)
+        XCTAssertEqual(race.isBrakePedalSwitchActive, true)
+        XCTAssertEqual(race.isClutchPedalSwitchActive, true)
+        XCTAssertEqual(race.isAcceleratorPedalIdleSwitchActive, true)
+        XCTAssertEqual(race.isAcceleratorPedalKickdownSwitchActive, true)
 
         // Accelerations
         let accelerations = race.accelerations
