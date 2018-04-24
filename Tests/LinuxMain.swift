@@ -31,6 +31,7 @@ XCTMain([
     testCase(ChargingTests.allTests),
     testCase(ChassisSettingsTests.allTests),
     testCase(ClimateTests.allTests),
+    testCase(DashboardLightsTests.allTests),
     testCase(DiagnosticsTests.allTests),
     testCase(DoorLocksTests.allTests),
     testCase(DriverFatigueTests.allTests),

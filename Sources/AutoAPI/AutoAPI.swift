@@ -23,7 +23,7 @@
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 23/11/2017.
-//  Copyright © 2017 High Mobility. All rights reserved.
+//  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
@@ -38,6 +38,7 @@ public struct AutoAPI {
                 Charging.self,
                 ChassisSettings.self,
                 Climate.self,
+                DashboardLights.self,
                 Diagnostics.self,
                 DoorLocks.self,
                 DriverFatigue.self,

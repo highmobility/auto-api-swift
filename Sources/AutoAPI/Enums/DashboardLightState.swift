@@ -19,33 +19,20 @@
 // licensing@high-mobility.com
 //
 //
-//  UInt16+Extensions.swift
+//  DashboardLightState.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 24/11/2017.
+//  Created by Mikk Rätsep on 24/04/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-extension UInt16 {
+public enum DashboardLightState: UInt8 {
 
-    var int: Int {
-        return Int(self)
-    }
-}
-
-extension UInt16: BinaryInitable {
-
-    init<C: Collection>(_ binary: C) where C.Element == UInt8 {
-        self = binary.bytes.prefix(2).reduce(UInt16(0)) { ($0 << 8) + $1.uint16 }
-    }
-}
-
-extension UInt16: PropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return bytes
-    }
+    case inactive   = 0x00
+    case info       = 0x01
+    case yellow     = 0x02
+    case red        = 0x03
 }

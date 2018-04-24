@@ -23,7 +23,7 @@
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 05/12/2017.
-//  Copyright © 2017 High Mobility. All rights reserved.
+//  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import AutoAPI

@@ -19,33 +19,40 @@
 // licensing@high-mobility.com
 //
 //
-//  UInt16+Extensions.swift
+//  DashboardLight.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 24/11/2017.
+//  Created by Mikk Rätsep on 24/04/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-extension UInt16 {
+public struct DashboardLight {
 
-    var int: Int {
-        return Int(self)
-    }
+    public typealias Name = DashboardLightName
+    public typealias State = DashboardLightState
+
+
+    // MARK: Properties
+
+    public let name: Name
+    public let state: State
 }
 
-extension UInt16: BinaryInitable {
+extension DashboardLight: Item {
 
-    init<C: Collection>(_ binary: C) where C.Element == UInt8 {
-        self = binary.bytes.prefix(2).reduce(UInt16(0)) { ($0 << 8) + $1.uint16 }
-    }
-}
+    static var size: Int = 2
 
-extension UInt16: PropertyConvertable {
 
-    var propertyValue: [UInt8] {
-        return bytes
+    init?(bytes: [UInt8]) {
+        guard let name = Name(rawValue: bytes[0]),
+            let state = State(rawValue: bytes[1]) else {
+                return nil
+        }
+
+        self.name = name
+        self.state = state
     }
 }

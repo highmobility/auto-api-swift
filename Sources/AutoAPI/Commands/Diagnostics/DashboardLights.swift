@@ -19,19 +19,19 @@
 // licensing@high-mobility.com
 //
 //
-//  Engine.swift
+//  DashboardLights.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 28/11/2017.
+//  Created by Mikk Rätsep on 24/04/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct Engine: FullStandardCommand {
+public struct DashboardLights: FullStandardCommand {
 
-    public let isIgnitionOn: Bool?
+    public let lights: [DashboardLight]?
 
 
     // MARK: FullStandardCommand
@@ -41,45 +41,35 @@ public struct Engine: FullStandardCommand {
 
     init?(properties: Properties) {
         // Ordered by the ID
-        isIgnitionOn = properties.value(for: 0x01)
+        lights = properties.flatMap(for: 0x01) { DashboardLight($0.value) }
 
         // Properties
         self.properties = properties
     }
 }
 
-extension Engine: Identifiable {
+extension DashboardLights: Identifiable {
 
-    public static var identifier: Identifier = Identifier(0x0035)
+    public static var identifier: Identifier = Identifier(0x0061)
 }
 
-extension Engine: MessageTypesGettable {
+extension DashboardLights: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, MessageTypesKind {
 
-        case getIgnitionState   = 0x00
-        case ignitionState      = 0x01
-        case turnEngineOnOff    = 0x02
+        case getDashboardLights = 0x00
+        case dashboardLights    = 0x01
 
-
-        public static var all: [Engine.MessageTypes] {
-            return [self.getIgnitionState,
-                    self.ignitionState,
-                    self.turnEngineOnOff]
+        public static var all: [DashboardLights.MessageTypes] {
+            return [self.getDashboardLights,
+                    self.dashboardLights]
         }
     }
 }
 
-public extension Engine {
+public extension DashboardLights {
 
-    static var getIgnitionState: [UInt8] {
-        return commandPrefix(for: .getIgnitionState)
-    }
-
-    /// Use `false` to turn ignition *off*.
-    static var turnIgnitionOn: (Bool) -> [UInt8] {
-        return {
-            return commandPrefix(for: .turnEngineOnOff, additionalBytes: $0.byte)
-        }
+    static var getDashboardLights: [UInt8] {
+        return commandPrefix(for: .getDashboardLights)
     }
 }
