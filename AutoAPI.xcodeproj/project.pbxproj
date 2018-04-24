@@ -27,6 +27,8 @@
 		205C516F208F2EF700B55ACE /* DashboardLightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C516E208F2EF700B55ACE /* DashboardLightsTests.swift */; };
 		205C5171208F315D00B55ACE /* DashboardLightName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5170208F315C00B55ACE /* DashboardLightName.swift */; };
 		205C5173208F319900B55ACE /* DashboardLightState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5172208F319900B55ACE /* DashboardLightState.swift */; };
+		205C5175208F3E6400B55ACE /* StartStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5174208F3E6400B55ACE /* StartStop.swift */; };
+		205C5177208F3FFD00B55ACE /* StartStopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5176208F3FFD00B55ACE /* StartStopTests.swift */; };
 		OBJ_251 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_169 /* Misc.swift */; };
 		OBJ_252 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_170 /* main.swift */; };
 		OBJ_254 /* AutoAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "AutoAPI::AutoAPI::Product" /* AutoAPI.framework */; };
@@ -265,6 +267,8 @@
 		205C516E208F2EF700B55ACE /* DashboardLightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLightsTests.swift; sourceTree = "<group>"; };
 		205C5170208F315C00B55ACE /* DashboardLightName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLightName.swift; sourceTree = "<group>"; };
 		205C5172208F319900B55ACE /* DashboardLightState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLightState.swift; sourceTree = "<group>"; };
+		205C5174208F3E6400B55ACE /* StartStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStop.swift; sourceTree = "<group>"; };
+		205C5176208F3FFD00B55ACE /* StartStopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStopTests.swift; sourceTree = "<group>"; };
 		206ED7D02060FD7000D7761E /* UniversalBuildScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = UniversalBuildScript.sh; sourceTree = "<group>"; };
 		206ED7D12060FD7000D7761E /* AppStoreCompatible.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppStoreCompatible.sh; sourceTree = "<group>"; };
 		"AutoAPI::AutoAPI::Product" /* AutoAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AutoAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -705,6 +709,7 @@
 				OBJ_202 /* RemoteControlTests.swift */,
 				OBJ_203 /* RooftopControlTests.swift */,
 				OBJ_204 /* SeatsTests.swift */,
+				205C5176208F3FFD00B55ACE /* StartStopTests.swift */,
 				OBJ_205 /* TextInputTests.swift */,
 				OBJ_206 /* TheftAlarmTests.swift */,
 				OBJ_207 /* TrunkAccessTests.swift */,
@@ -790,6 +795,7 @@
 			children = (
 				OBJ_34 /* DoorLocks.swift */,
 				OBJ_35 /* Engine.swift */,
+				205C5174208F3E6400B55ACE /* StartStop.swift */,
 				OBJ_36 /* TrunkAccess.swift */,
 				OBJ_37 /* WakeUp.swift */,
 			);
@@ -1099,6 +1105,7 @@
 				OBJ_267 /* ChargingTests.swift in Sources */,
 				OBJ_268 /* ChassisSettingsTests.swift in Sources */,
 				OBJ_269 /* ClimateTests.swift in Sources */,
+				205C5177208F3FFD00B55ACE /* StartStopTests.swift in Sources */,
 				OBJ_270 /* DiagnosticsTests.swift in Sources */,
 				OBJ_271 /* DoorLocksTests.swift in Sources */,
 				OBJ_272 /* DriverFatigueTests.swift in Sources */,
@@ -1190,6 +1197,7 @@
 				OBJ_358 /* ParkingTicket.swift in Sources */,
 				OBJ_359 /* RemoteControl.swift in Sources */,
 				OBJ_360 /* TheftAlarm.swift in Sources */,
+				205C5175208F3E6400B55ACE /* StartStop.swift in Sources */,
 				OBJ_361 /* ValetMode.swift in Sources */,
 				OBJ_362 /* NaviDestination.swift in Sources */,
 				OBJ_363 /* VehicleLocation.swift in Sources */,
