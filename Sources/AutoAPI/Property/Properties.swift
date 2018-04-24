@@ -32,11 +32,15 @@ import Foundation
 public struct Properties: Sequence {
 
     public var carSignature: [UInt8]? {
-        return self.first(for: 0xA1)?.value
+        return first(for: 0xA1)?.value
     }
 
     public var nonce: [UInt8]? {
         return first(for: 0xA0)?.value
+    }
+
+    public var timestamp: YearTime? {
+        return value(for: 0xA2)
     }
 
 

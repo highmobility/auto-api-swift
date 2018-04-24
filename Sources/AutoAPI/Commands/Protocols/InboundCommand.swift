@@ -63,4 +63,8 @@ extension InboundCommand {
     public var nonce: [UInt8]? {
         return properties.nonce
     }
+
+    public var timestamp: YearTime? {
+        return properties.timestamp
+    }
 }

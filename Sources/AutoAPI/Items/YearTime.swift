@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct YearTime: Item {
+public struct YearTime: Item, Equatable {
 
     public var year: UInt16
     public var month: UInt8
@@ -74,19 +74,6 @@ extension YearTime: BinaryInitable {
         minute = bytes[4]
         second = bytes[5]
         offset = Int16(bytes.suffix(2))
-    }
-}
-
-extension YearTime: Equatable {
-
-    public static func ==(lhs: YearTime, rhs: YearTime) -> Bool {
-        return (lhs.year == rhs.year) &&
-            (lhs.month == rhs.month) &&
-            (lhs.day == rhs.day) &&
-            (lhs.hour == rhs.hour) &&
-            (lhs.minute == rhs.minute) &&
-            (lhs.second == rhs.second) &&
-            (lhs.offset == rhs.offset)
     }
 }
 

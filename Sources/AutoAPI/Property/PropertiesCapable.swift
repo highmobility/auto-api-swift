@@ -33,6 +33,7 @@ public protocol PropertiesCapable {
 
     var carSignature: [UInt8]? { get }
     var nonce: [UInt8]? { get }
+    var timestamp: YearTime? { get }
 
     var properties: Properties { get }
 }

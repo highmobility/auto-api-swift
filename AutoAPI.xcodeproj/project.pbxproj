@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		205C5169208F154900B55ACE /* PropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5168208F154900B55ACE /* PropertiesTests.swift */; };
 		OBJ_251 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_169 /* Misc.swift */; };
 		OBJ_252 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_170 /* main.swift */; };
 		OBJ_254 /* AutoAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "AutoAPI::AutoAPI::Product" /* AutoAPI.framework */; };
@@ -253,6 +254,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		205C5168208F154900B55ACE /* PropertiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesTests.swift; sourceTree = "<group>"; };
 		206ED7D02060FD7000D7761E /* UniversalBuildScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = UniversalBuildScript.sh; sourceTree = "<group>"; };
 		206ED7D12060FD7000D7761E /* AppStoreCompatible.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppStoreCompatible.sh; sourceTree = "<group>"; };
 		"AutoAPI::AutoAPI::Product" /* AutoAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AutoAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -686,6 +688,7 @@
 				OBJ_198 /* OffroadTests.swift */,
 				OBJ_199 /* ParkingBrakeTests.swift */,
 				OBJ_200 /* ParkingTicketTests.swift */,
+				205C5168208F154900B55ACE /* PropertiesTests.swift */,
 				OBJ_201 /* RaceTests.swift */,
 				OBJ_202 /* RemoteControlTests.swift */,
 				OBJ_203 /* RooftopControlTests.swift */,
@@ -1114,6 +1117,7 @@
 				OBJ_300 /* VehicleLocationTests.swift in Sources */,
 				OBJ_301 /* VehicleStatusTests.swift in Sources */,
 				OBJ_302 /* VehicleTimeTests.swift in Sources */,
+				205C5169208F154900B55ACE /* PropertiesTests.swift in Sources */,
 				OBJ_303 /* VideoHandoverTests.swift in Sources */,
 				OBJ_304 /* WakeUpTests.swift in Sources */,
 				OBJ_305 /* WeatherConditionsTests.swift in Sources */,

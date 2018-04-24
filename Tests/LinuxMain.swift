@@ -52,6 +52,7 @@ XCTMain([
     testCase(OffroadTests.allTests),
     testCase(ParkingBrakeTests.allTests),
     testCase(ParkingTicketTests.allTests),
+    testCase(PropertiesTests.allTests),
     testCase(RaceTests.allTests),
     testCase(RemoteControlTests.allTests),
     testCase(SeatsTests.allTests),

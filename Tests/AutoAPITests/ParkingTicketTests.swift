@@ -91,7 +91,6 @@ class ParkingTicketTests: XCTestCase {
         let startTime = YearTime(year: 2017, month: 1, day: 10, hour: 17, minute: 34, second: 0, offset: 0)
         let settings = ParkingTicket.Settings(operatorName: name, ticketID: ticketID, startTime: startTime, endTime: nil)
 
-
         XCTAssertEqual(ParkingTicket.startParking(settings), bytes)
     }
 
