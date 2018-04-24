@@ -134,7 +134,27 @@ class DiagnosticsTests: XCTestCase {
 
             0x0F,                   // Property identifier for Fuel volume
             0x00, 0x04,             // Property size is 4 bytes
-            0x42, 0x0E, 0x00, 0x00  // 35,5 liters of fuel left
+            0x42, 0x0E, 0x00, 0x00,  // 35,5 liters of fuel left
+
+            0x10,       // Property identifier for Anti lock braking
+            0x00, 0x01, // Property size is 1 bytes
+            0x01,       // ABS active
+
+            0x11,       // Property identifier for Engine coolant temperature
+            0x00, 0x02, // Property size is 2 bytes
+            0x00, 0x14, // Engine coolant temperature is 20 degrees Celsius
+
+            0x12,                   // Property identifier for Engine total operating hours
+            0x00, 0x04,             // Property size is 4 bytes
+            0x44, 0xbb, 0x94, 0xcd, // The engine has been operating in a total of 1500.65 hours
+
+            0x13,                   // Property identifier for Engine total fuel consumption
+            0x00, 0x04,             // Property size is 4 bytes
+            0x46, 0xd7, 0x86, 0x00, // The engine total fuel consumption over its lifespan is 27587.0 liters
+
+            0x14,       // Property identifier for Brake fluid level
+            0x00, 0x01, // Property size is 1 bytes
+            0x00        // Brake fluid low
         ]
 
         guard let diagnostics = AutoAPI.parseBinary(bytes) as? Diagnostics else {
@@ -155,6 +175,11 @@ class DiagnosticsTests: XCTestCase {
         XCTAssertEqual(diagnostics.distanceSinceReset, 1_500)
         XCTAssertEqual(diagnostics.distanceSinceStart, 10)
         XCTAssertEqual(diagnostics.fuelVolume, 35.5)
+        XCTAssertEqual(diagnostics.isABSActive, true)
+        XCTAssertEqual(diagnostics.engineCoolantTemperature, 20)
+        XCTAssertEqual(diagnostics.engineTotalOperatingHours, 1500.65)
+        XCTAssertEqual(diagnostics.engineTotalFuelConsumption, 27587.0)
+        XCTAssertEqual(diagnostics.brakeFluidLevel, .low)
 
         let tires = diagnostics.tires
 

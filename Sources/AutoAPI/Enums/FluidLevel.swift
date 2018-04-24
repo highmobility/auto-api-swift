@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  WasherFluidLevel.swift
+//  FluidLevel.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 28/11/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public enum WasherFluidLevel: UInt8 {
+public enum FluidLevel: UInt8 {
 
     case low    = 0x00
     case filled = 0x01

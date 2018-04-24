@@ -34,19 +34,24 @@ public struct Diagnostics: FullStandardCommand {
     public let adBlueLevel: Float?
     public let averageFuelConsumption: Float?
     public let batteryVoltage: Float?
+    public let brakeFluidLevel: FluidLevel?
     public let currentFuelConsumption: Float?
     public let dieselExhaustFluid: Float?
     public let distanceSinceReset: UInt16?
     public let distanceSinceStart: UInt16?
+    public let engineCoolantTemperature: Int16?
     public let engineOilTemperature: Int16?
+    public let engineTotalFuelConsumption: Float?
+    public let engineTotalOperatingHours: Float?
     public let engineRPM: UInt16?
     public let estimatedRange: UInt16?
     public let fuelLevel: UInt8?
     public let fuelVolume: Float?
+    public let isABSActive: Bool?
     public let mileage: UInt32?
     public let speed: Int16?
     public let tires: [Tire]?
-    public let washerFluidLevel: WasherFluidLevel?
+    public let washerFluidLevel: FluidLevel?
 
 
     // MARK: FullStandardCommand
@@ -64,7 +69,7 @@ public struct Diagnostics: FullStandardCommand {
         estimatedRange = properties.value(for: 0x06)
         currentFuelConsumption = properties.value(for: 0x07)
         averageFuelConsumption = properties.value(for: 0x08)
-        washerFluidLevel = WasherFluidLevel(rawValue: properties.first(for: 0x09)?.monoValue)
+        washerFluidLevel = properties.value(for: 0x09)
         tires = properties.flatMap(for: 0x0A) { Tire($0.value) }
         batteryVoltage = properties.value(for: 0x0B)
         adBlueLevel = properties.value(for: 0x0C)
@@ -72,6 +77,11 @@ public struct Diagnostics: FullStandardCommand {
         distanceSinceReset = properties.value(for: 0x0D)
         distanceSinceStart = properties.value(for: 0x0E)
         fuelVolume = properties.value(for: 0x0F)
+        isABSActive = properties.value(for: 0x10)
+        engineCoolantTemperature = properties.value(for: 0x11)
+        engineTotalOperatingHours = properties.value(for: 0x12)
+        engineTotalFuelConsumption = properties.value(for: 0x13)
+        brakeFluidLevel = properties.value(for: 0x14)
 
         // Properties
         self.properties = properties

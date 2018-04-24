@@ -96,6 +96,9 @@ extension Properties {
         case is Float.Type:
             return Float(bytes) as? ReturnType
 
+        case is FluidLevel.Type:
+            return FluidLevel(rawValue: firstByte) as? ReturnType
+
         case is String.Type:
             return String(bytes: bytes, encoding: .utf8) as? ReturnType
 

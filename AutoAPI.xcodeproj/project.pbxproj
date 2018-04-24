@@ -154,7 +154,7 @@
 		OBJ_400 /* StartStopChrono.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_104 /* StartStopChrono.swift */; };
 		OBJ_401 /* TheftAlarmState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_105 /* TheftAlarmState.swift */; };
 		OBJ_402 /* TimerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_106 /* TimerType.swift */; };
-		OBJ_403 /* WasherFluidLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_107 /* WasherFluidLevel.swift */; };
+		OBJ_403 /* FluidLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_107 /* FluidLevel.swift */; };
 		OBJ_404 /* WindscreenDamage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_108 /* WindscreenDamage.swift */; };
 		OBJ_405 /* WipersLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_109 /* WipersLevel.swift */; };
 		OBJ_406 /* WipersState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_110 /* WipersState.swift */; };
@@ -268,7 +268,7 @@
 		OBJ_104 /* StartStopChrono.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStopChrono.swift; sourceTree = "<group>"; };
 		OBJ_105 /* TheftAlarmState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheftAlarmState.swift; sourceTree = "<group>"; };
 		OBJ_106 /* TimerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerType.swift; sourceTree = "<group>"; };
-		OBJ_107 /* WasherFluidLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasherFluidLevel.swift; sourceTree = "<group>"; };
+		OBJ_107 /* FluidLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluidLevel.swift; sourceTree = "<group>"; };
 		OBJ_108 /* WindscreenDamage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindscreenDamage.swift; sourceTree = "<group>"; };
 		OBJ_109 /* WipersLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WipersLevel.swift; sourceTree = "<group>"; };
 		OBJ_110 /* WipersState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WipersState.swift; sourceTree = "<group>"; };
@@ -894,6 +894,7 @@
 				OBJ_85 /* FailureReason.swift */,
 				OBJ_86 /* FatigueLevel.swift */,
 				OBJ_87 /* FlasherState.swift */,
+				OBJ_107 /* FluidLevel.swift */,
 				OBJ_88 /* GearMode.swift */,
 				OBJ_90 /* KeyfobRelativePosition.swift */,
 				OBJ_91 /* LightState.swift */,
@@ -911,7 +912,6 @@
 				OBJ_104 /* StartStopChrono.swift */,
 				OBJ_105 /* TheftAlarmState.swift */,
 				OBJ_106 /* TimerType.swift */,
-				OBJ_107 /* WasherFluidLevel.swift */,
 				OBJ_108 /* WindscreenDamage.swift */,
 				OBJ_109 /* WipersLevel.swift */,
 				OBJ_110 /* WipersState.swift */,
@@ -1213,7 +1213,7 @@
 				OBJ_400 /* StartStopChrono.swift in Sources */,
 				OBJ_401 /* TheftAlarmState.swift in Sources */,
 				OBJ_402 /* TimerType.swift in Sources */,
-				OBJ_403 /* WasherFluidLevel.swift in Sources */,
+				OBJ_403 /* FluidLevel.swift in Sources */,
 				OBJ_404 /* WindscreenDamage.swift in Sources */,
 				OBJ_405 /* WipersLevel.swift in Sources */,
 				OBJ_406 /* WipersState.swift in Sources */,
