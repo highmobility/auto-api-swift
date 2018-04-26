@@ -31,6 +31,7 @@ import Foundation
 
 public struct Engine: FullStandardCommand {
 
+    public let areAccessoriesPowered: Bool?
     public let isIgnitionOn: Bool?
 
 
@@ -42,6 +43,7 @@ public struct Engine: FullStandardCommand {
     init?(properties: Properties) {
         // Ordered by the ID
         isIgnitionOn = properties.value(for: 0x01)
+        areAccessoriesPowered = properties.value(for: 0x02)
 
         // Properties
         self.properties = properties

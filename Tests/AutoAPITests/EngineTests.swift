@@ -53,9 +53,13 @@ class EngineTests: XCTestCase {
             0x00, 0x35, // MSB, LSB Message Identifier for Engine
             0x01,       // Message Type for Ignition State
 
-            0x01,       // Property Identifier for Ignition
-            0x00, 0x01, // Property size 1 byte
-            0x01        // Engine On
+            0x01,       // Property identifier for Ignition
+            0x00, 0x01, // Property size is 1 bytes
+            0x01,       // Engine ignition is ON
+
+            0x02,       // Property identifier for Accessories ignition
+            0x00, 0x01, // Property size is 1 bytes
+            0x01        // Ignition state is powering on accessories such as radio
         ]
 
         guard let engine = AutoAPI.parseBinary(bytes) as? Engine else {
@@ -63,6 +67,7 @@ class EngineTests: XCTestCase {
         }
 
         XCTAssertEqual(engine.isIgnitionOn, true)
+        XCTAssertEqual(engine.areAccessoriesPowered, true)
     }
 
     func testTurnEngine() {
