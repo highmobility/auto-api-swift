@@ -74,9 +74,13 @@ class CruiseControlTests: XCTestCase {
 
             0x01,       // Property identifier for Cruise control
             0x00, 0x01, // Property size is 1 bytes
-            0x01,       // Higher speed requested by the driver
+            0x01,       // Cruise control is active
 
-            0x02,       // Property identifier for Target speed
+            0x02,       // Property identifier for Limiter
+            0x00, 0x01, // Property size is 1 bytes
+            0x01,       // Higher speed requested by the limiter
+
+            0x03,       // Property identifier for Target speed
             0x00, 0x02, // Property size is 2 bytes
             0x00, 0x3C  // The target speed is set to 60km/h
         ]
@@ -85,7 +89,8 @@ class CruiseControlTests: XCTestCase {
             return XCTFail("Parsed value is not CruiseControl")
         }
 
-        XCTAssertEqual(cruiseControl.state, .higherSpeedRequested)
+        XCTAssertEqual(cruiseControl.isActive, true)
+        XCTAssertEqual(cruiseControl.limiter, .higherSpeedRequested)
         XCTAssertEqual(cruiseControl.targetSpeed, 60)
     }
 }

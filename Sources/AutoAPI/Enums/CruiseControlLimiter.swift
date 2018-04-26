@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  CruiseControlState.swift
+//  CruiseControlLimiter.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 24/04/2018.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public enum CruiseControlState: UInt8 {
+public enum CruiseControlLimiter: UInt8 {
 
     case inactive               = 0x00
     case higherSpeedRequested   = 0x01
