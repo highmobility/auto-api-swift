@@ -100,6 +100,14 @@ class VehicleStatusTests: XCTestCase {
             0x00, 0x01, // Property size 1 byte
             0x05,       // 5 seats
 
+            0x0C,       // Property Identifier for Engine volume
+            0x00, 0x04, // Property size 4 bytes
+            0x40, 0x20, 0x00, 0x00, // Engine volume is 2.5 liters
+
+            0x0D,       // Property Identifier for Engine maximum torque
+            0x00, 0x02, // Property size 2 bytes
+            0x00, 0xF5, // Engine torque is 245 Nm
+
             0x99,       // Property Identifier for State
             0x00, 0x0B, // Property size 11 bytes
             0x00, 0x21, // Trunk Access Identifier
@@ -135,6 +143,8 @@ class VehicleStatusTests: XCTestCase {
         XCTAssertEqual(vehicleStatus.powerKW, 220)
         XCTAssertEqual(vehicleStatus.numberOfDoors, 5)
         XCTAssertEqual(vehicleStatus.numberOfSeats, 5)
+        XCTAssertEqual(vehicleStatus.engineVolume, 2.5)
+        XCTAssertEqual(vehicleStatus.engineMaxTorque, 245)
 
         // Go through the STATES
         let states = vehicleStatus.states

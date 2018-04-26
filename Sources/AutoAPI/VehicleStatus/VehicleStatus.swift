@@ -32,6 +32,8 @@ import Foundation
 public struct VehicleStatus: InboundCommand {
 
     public let colourName: String?
+    public let engineVolume: Float?
+    public let engineMaxTorque: UInt16?
     public let licensePlate: String?
     public let modelName: String?
     public let modelYear: UInt16?
@@ -69,6 +71,8 @@ public struct VehicleStatus: InboundCommand {
         powerKW = properties.value(for: 0x09)
         numberOfDoors = properties.value(for: 0x0A)
         numberOfSeats = properties.value(for: 0x0B)
+        engineVolume = properties.value(for: 0x0C)
+        engineMaxTorque = properties.value(for: 0x0D)
 
         states = properties.flatMap(for: 0x99) { property in
             stateTypes.flatMapFirst { $0.init(property.value) }
