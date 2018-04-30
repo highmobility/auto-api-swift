@@ -98,7 +98,15 @@ class LightsTests: XCTestCase {
             0x00, 0x03, // Property size 1 byte
             0xff,       // Full red ambient light
             0x00,       // No green ambient light
-            0x00        // No blue ambient light
+            0x00,       // No blue ambient light
+
+            0x05,       // Property identifier for Reverse light
+            0x00, 0x01, // Property size is 1 bytes
+            0x00,       // Reverse lights are inactive
+
+            0x06,       // Property identifier for Emergency brake light
+            0x00, 0x01, // Property size is 1 bytes
+            0x00        // Emergency brake lights are inactive
         ]
 
         guard let lights = AutoAPI.parseBinary(bytes) as? Lights else {
@@ -109,5 +117,7 @@ class LightsTests: XCTestCase {
         XCTAssertEqual(lights.isRearExteriorActive, true)
         XCTAssertEqual(lights.isInteriorActive, false)
         XCTAssertEqual(lights.ambientColour, Colour(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0))
+        XCTAssertEqual(lights.isReverseActive, false)
+        XCTAssertEqual(lights.isEmergencyBrakeActive, false)
     }
 }

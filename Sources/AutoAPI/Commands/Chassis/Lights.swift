@@ -36,9 +36,11 @@ import Foundation
 public struct Lights: FullStandardCommand {
 
     public let ambientColour: Colour?
+    public let isEmergencyBrakeActive: Bool?
     public let frontExterior: FrontLightState?
     public let isInteriorActive: Bool?
     public let isRearExteriorActive: Bool?
+    public let isReverseActive: Bool?
 
 
     // MARK: FullStandardCommand
@@ -62,6 +64,9 @@ public struct Lights: FullStandardCommand {
         else {
             ambientColour = nil
         }
+
+        isReverseActive = properties.value(for: 0x05)
+        isEmergencyBrakeActive = properties.value(for: 0x06)
 
         // Properties
         self.properties = properties
