@@ -60,6 +60,7 @@ XCTMain([
     testCase(RemoteControlTests.allTests),
     testCase(SeatsTests.allTests),
     testCase(StartStopTests.allTests),
+    testCase(TachographTests.allTests),
     testCase(TextInputTests.allTests),
     testCase(TrunkAccessTests.allTests),
     testCase(TheftAlarmTests.allTests),

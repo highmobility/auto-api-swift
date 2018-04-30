@@ -67,6 +67,7 @@ public struct AutoAPI {
                 RooftopControl.self,
                 Seats.self,
                 StartStop.self,
+                Tachograph.self,
                 TextInput.self,
                 TheftAlarm.self,
                 TrunkAccess.self,

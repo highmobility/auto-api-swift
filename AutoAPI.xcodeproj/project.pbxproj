@@ -36,6 +36,14 @@
 		20DB153D209701CE00A1658B /* DoorLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB153C209701CE00A1658B /* DoorLock.swift */; };
 		20DB15402097112D00A1658B /* PowerTakeOff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB153F2097112D00A1658B /* PowerTakeOff.swift */; };
 		20DB15422097154D00A1658B /* PowerTakeOffTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15412097154D00A1658B /* PowerTakeOffTests.swift */; };
+		20DB15442097166200A1658B /* Tachograph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15432097166200A1658B /* Tachograph.swift */; };
+		20DB15462097176600A1658B /* DriverWorkingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15452097176600A1658B /* DriverWorkingState.swift */; };
+		20DB1548209718DB00A1658B /* WorkingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB1547209718DB00A1658B /* WorkingState.swift */; };
+		20DB154A20971B9F00A1658B /* TimeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB154920971B9F00A1658B /* TimeState.swift */; };
+		20DB154C20971CD700A1658B /* DriverTimeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB154B20971CD700A1658B /* DriverTimeState.swift */; };
+		20DB154E2097265400A1658B /* DriverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB154D2097265400A1658B /* DriverCard.swift */; };
+		20DB1550209727C700A1658B /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB154F209727C700A1658B /* Direction.swift */; };
+		20DB15522097286200A1658B /* TachographTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15512097286200A1658B /* TachographTests.swift */; };
 		OBJ_251 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_169 /* Misc.swift */; };
 		OBJ_252 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_170 /* main.swift */; };
 		OBJ_254 /* AutoAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "AutoAPI::AutoAPI::Product" /* AutoAPI.framework */; };
@@ -284,6 +292,14 @@
 		20DB153C209701CE00A1658B /* DoorLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorLock.swift; sourceTree = "<group>"; };
 		20DB153F2097112D00A1658B /* PowerTakeOff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerTakeOff.swift; sourceTree = "<group>"; };
 		20DB15412097154D00A1658B /* PowerTakeOffTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerTakeOffTests.swift; sourceTree = "<group>"; };
+		20DB15432097166200A1658B /* Tachograph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tachograph.swift; sourceTree = "<group>"; };
+		20DB15452097176600A1658B /* DriverWorkingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverWorkingState.swift; sourceTree = "<group>"; };
+		20DB1547209718DB00A1658B /* WorkingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingState.swift; sourceTree = "<group>"; };
+		20DB154920971B9F00A1658B /* TimeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeState.swift; sourceTree = "<group>"; };
+		20DB154B20971CD700A1658B /* DriverTimeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverTimeState.swift; sourceTree = "<group>"; };
+		20DB154D2097265400A1658B /* DriverCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverCard.swift; sourceTree = "<group>"; };
+		20DB154F209727C700A1658B /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		20DB15512097286200A1658B /* TachographTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TachographTests.swift; sourceTree = "<group>"; };
 		"AutoAPI::AutoAPI::Product" /* AutoAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AutoAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"AutoAPI::AutoAPICLT::Product" /* AutoAPICLT */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = AutoAPICLT; sourceTree = BUILT_PRODUCTS_DIR; };
 		"AutoAPI::AutoAPITests::Product" /* AutoAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = AutoAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -527,6 +543,7 @@
 			isa = PBXGroup;
 			children = (
 				20DB153F2097112D00A1658B /* PowerTakeOff.swift */,
+				20DB15432097166200A1658B /* Tachograph.swift */,
 			);
 			path = HeavyDuty;
 			sourceTree = "<group>";
@@ -575,6 +592,9 @@
 				205C516C208F28FF00B55ACE /* DashboardLight.swift */,
 				OBJ_142 /* Door.swift */,
 				20DB153C209701CE00A1658B /* DoorLock.swift */,
+				20DB154D2097265400A1658B /* DriverCard.swift */,
+				20DB154B20971CD700A1658B /* DriverTimeState.swift */,
+				20DB15452097176600A1658B /* DriverWorkingState.swift */,
 				OBJ_143 /* Item.swift */,
 				OBJ_144 /* Iterators */,
 				OBJ_149 /* PricingTariff.swift */,
@@ -734,6 +754,7 @@
 				OBJ_203 /* RooftopControlTests.swift */,
 				OBJ_204 /* SeatsTests.swift */,
 				205C5176208F3FFD00B55ACE /* StartStopTests.swift */,
+				20DB15512097286200A1658B /* TachographTests.swift */,
 				OBJ_205 /* TextInputTests.swift */,
 				OBJ_206 /* TheftAlarmTests.swift */,
 				OBJ_207 /* TrunkAccessTests.swift */,
@@ -936,6 +957,7 @@
 				205C517A208F430100B55ACE /* CruiseControlLimiter.swift */,
 				205C5170208F315C00B55ACE /* DashboardLightName.swift */,
 				205C5172208F319900B55ACE /* DashboardLightState.swift */,
+				20DB154F209727C700A1658B /* Direction.swift */,
 				OBJ_84 /* DrivingMode.swift */,
 				OBJ_85 /* FailureReason.swift */,
 				OBJ_86 /* FatigueLevel.swift */,
@@ -959,9 +981,11 @@
 				OBJ_104 /* StartStopChrono.swift */,
 				OBJ_105 /* TheftAlarmState.swift */,
 				OBJ_106 /* TimerType.swift */,
+				20DB154920971B9F00A1658B /* TimeState.swift */,
 				OBJ_108 /* WindscreenDamage.swift */,
 				OBJ_109 /* WipersLevel.swift */,
 				OBJ_110 /* WipersState.swift */,
+				20DB1547209718DB00A1658B /* WorkingState.swift */,
 				OBJ_111 /* Zone.swift */,
 			);
 			path = Enums;
@@ -1175,6 +1199,7 @@
 				OBJ_305 /* WeatherConditionsTests.swift in Sources */,
 				OBJ_306 /* WiFiTests.swift in Sources */,
 				OBJ_307 /* WindowsTests.swift in Sources */,
+				20DB15522097286200A1658B /* TachographTests.swift in Sources */,
 				OBJ_308 /* WindscreenTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1186,6 +1211,7 @@
 				OBJ_318 /* AutoAPI.swift in Sources */,
 				OBJ_319 /* BinaryInitable.swift in Sources */,
 				OBJ_320 /* Capabilities.swift in Sources */,
+				20DB1548209718DB00A1658B /* WorkingState.swift in Sources */,
 				20DB153D209701CE00A1658B /* DoorLock.swift in Sources */,
 				OBJ_321 /* CapabilitiesIterator.swift in Sources */,
 				OBJ_322 /* Capability.swift in Sources */,
@@ -1205,11 +1231,13 @@
 				OBJ_336 /* Offroad.swift in Sources */,
 				OBJ_337 /* Race.swift in Sources */,
 				OBJ_338 /* DoorLocks.swift in Sources */,
+				20DB1550209727C700A1658B /* Direction.swift in Sources */,
 				OBJ_339 /* Engine.swift in Sources */,
 				OBJ_340 /* TrunkAccess.swift in Sources */,
 				OBJ_341 /* WakeUp.swift in Sources */,
 				OBJ_342 /* LightConditions.swift in Sources */,
 				OBJ_343 /* WeatherConditions.swift in Sources */,
+				20DB154E2097265400A1658B /* DriverCard.swift in Sources */,
 				OBJ_344 /* FailureMessage.swift in Sources */,
 				OBJ_345 /* FirmwareVersion.swift in Sources */,
 				OBJ_346 /* Browser.swift in Sources */,
@@ -1229,6 +1257,7 @@
 				20DB15402097112D00A1658B /* PowerTakeOff.swift in Sources */,
 				OBJ_360 /* TheftAlarm.swift in Sources */,
 				205C5175208F3E6400B55ACE /* StartStop.swift in Sources */,
+				20DB154A20971B9F00A1658B /* TimeState.swift in Sources */,
 				OBJ_361 /* ValetMode.swift in Sources */,
 				OBJ_362 /* NaviDestination.swift in Sources */,
 				OBJ_363 /* VehicleLocation.swift in Sources */,
@@ -1290,8 +1319,10 @@
 				OBJ_419 /* URL+Extensions.swift in Sources */,
 				OBJ_420 /* Identifiable.swift in Sources */,
 				OBJ_421 /* Acceleration.swift in Sources */,
+				20DB15462097176600A1658B /* DriverWorkingState.swift in Sources */,
 				OBJ_422 /* ActionItem.swift in Sources */,
 				OBJ_423 /* BrakeTorqueVectoring.swift in Sources */,
+				20DB154C20971CD700A1658B /* DriverTimeState.swift in Sources */,
 				OBJ_424 /* ChargeCurrent.swift in Sources */,
 				OBJ_425 /* ChargeTimer.swift in Sources */,
 				OBJ_426 /* ChassisPosition.swift in Sources */,
@@ -1307,6 +1338,7 @@
 				OBJ_435 /* Item.swift in Sources */,
 				205C516B208F26CE00B55ACE /* DashboardLights.swift in Sources */,
 				OBJ_437 /* ItemIterator.swift in Sources */,
+				20DB15442097166200A1658B /* Tachograph.swift in Sources */,
 				205C5173208F319900B55ACE /* DashboardLightState.swift in Sources */,
 				OBJ_438 /* SeatsIterator.swift in Sources */,
 				OBJ_439 /* WindowsIterator.swift in Sources */,
