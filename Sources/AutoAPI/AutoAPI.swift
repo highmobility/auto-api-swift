@@ -61,6 +61,7 @@ public struct AutoAPI {
                 Offroad.self,
                 ParkingBrake.self,
                 ParkingTicket.self,
+                PowerTakeOff.self,
                 Race.self,
                 RemoteControl.self,
                 RooftopControl.self,
