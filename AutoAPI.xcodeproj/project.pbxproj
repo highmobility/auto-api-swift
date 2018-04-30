@@ -33,6 +33,7 @@
 		205C517B208F430100B55ACE /* CruiseControlLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517A208F430100B55ACE /* CruiseControlLimiter.swift */; };
 		205C517D208F451300B55ACE /* CruiseControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517C208F451300B55ACE /* CruiseControlTests.swift */; };
 		20DB153B2096F7DA00A1658B /* Gearbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB153A2096F7DA00A1658B /* Gearbox.swift */; };
+		20DB153D209701CE00A1658B /* DoorLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB153C209701CE00A1658B /* DoorLock.swift */; };
 		OBJ_251 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_169 /* Misc.swift */; };
 		OBJ_252 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_170 /* main.swift */; };
 		OBJ_254 /* AutoAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "AutoAPI::AutoAPI::Product" /* AutoAPI.framework */; };
@@ -198,7 +199,6 @@
 		OBJ_433 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_141 /* Coordinate.swift */; };
 		OBJ_434 /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_142 /* Door.swift */; };
 		OBJ_435 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_143 /* Item.swift */; };
-		OBJ_436 /* DoorsIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_145 /* DoorsIterator.swift */; };
 		OBJ_437 /* ItemIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_146 /* ItemIterator.swift */; };
 		OBJ_438 /* SeatsIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_147 /* SeatsIterator.swift */; };
 		OBJ_439 /* WindowsIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_148 /* WindowsIterator.swift */; };
@@ -279,6 +279,7 @@
 		206ED7D02060FD7000D7761E /* UniversalBuildScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = UniversalBuildScript.sh; sourceTree = "<group>"; };
 		206ED7D12060FD7000D7761E /* AppStoreCompatible.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppStoreCompatible.sh; sourceTree = "<group>"; };
 		20DB153A2096F7DA00A1658B /* Gearbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gearbox.swift; sourceTree = "<group>"; };
+		20DB153C209701CE00A1658B /* DoorLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorLock.swift; sourceTree = "<group>"; };
 		"AutoAPI::AutoAPI::Product" /* AutoAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AutoAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"AutoAPI::AutoAPICLT::Product" /* AutoAPICLT */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = AutoAPICLT; sourceTree = BUILT_PRODUCTS_DIR; };
 		"AutoAPI::AutoAPITests::Product" /* AutoAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = AutoAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -326,7 +327,6 @@
 		OBJ_141 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		OBJ_142 /* Door.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Door.swift; sourceTree = "<group>"; };
 		OBJ_143 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		OBJ_145 /* DoorsIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorsIterator.swift; sourceTree = "<group>"; };
 		OBJ_146 /* ItemIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemIterator.swift; sourceTree = "<group>"; };
 		OBJ_147 /* SeatsIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatsIterator.swift; sourceTree = "<group>"; };
 		OBJ_148 /* WindowsIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsIterator.swift; sourceTree = "<group>"; };
@@ -562,6 +562,7 @@
 				OBJ_141 /* Coordinate.swift */,
 				205C516C208F28FF00B55ACE /* DashboardLight.swift */,
 				OBJ_142 /* Door.swift */,
+				20DB153C209701CE00A1658B /* DoorLock.swift */,
 				OBJ_143 /* Item.swift */,
 				OBJ_144 /* Iterators */,
 				OBJ_149 /* PricingTariff.swift */,
@@ -596,7 +597,6 @@
 		OBJ_144 /* Iterators */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_145 /* DoorsIterator.swift */,
 				OBJ_146 /* ItemIterator.swift */,
 				OBJ_147 /* SeatsIterator.swift */,
 				OBJ_148 /* WindowsIterator.swift */,
@@ -1171,6 +1171,7 @@
 				OBJ_318 /* AutoAPI.swift in Sources */,
 				OBJ_319 /* BinaryInitable.swift in Sources */,
 				OBJ_320 /* Capabilities.swift in Sources */,
+				20DB153D209701CE00A1658B /* DoorLock.swift in Sources */,
 				OBJ_321 /* CapabilitiesIterator.swift in Sources */,
 				OBJ_322 /* Capability.swift in Sources */,
 				OBJ_323 /* CarSDKVersion.swift in Sources */,
@@ -1289,7 +1290,6 @@
 				OBJ_434 /* Door.swift in Sources */,
 				OBJ_435 /* Item.swift in Sources */,
 				205C516B208F26CE00B55ACE /* DashboardLights.swift in Sources */,
-				OBJ_436 /* DoorsIterator.swift in Sources */,
 				OBJ_437 /* ItemIterator.swift in Sources */,
 				205C5173208F319900B55ACE /* DashboardLightState.swift in Sources */,
 				OBJ_438 /* SeatsIterator.swift in Sources */,

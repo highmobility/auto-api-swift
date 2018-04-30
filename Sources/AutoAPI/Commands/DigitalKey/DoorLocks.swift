@@ -29,9 +29,12 @@
 import Foundation
 
 
-public struct DoorLocks: FullStandardCommand, Sequence {
+// TODO: Maybe this should be kept as a `Sequence` – then the Door should be combined from all properties...
+public struct DoorLocks: FullStandardCommand {
 
     public let doors: [Door]?
+    public let insideLocks: [DoorLock]?
+    public let outsideLocks: [DoorLock]?
 
 
     // MARK: FullStandardCommand
@@ -42,19 +45,11 @@ public struct DoorLocks: FullStandardCommand, Sequence {
     init?(properties: Properties) {
         // Ordered by the ID
         doors = properties.flatMap(for: 0x01) { Door($0.value) }
+        insideLocks = properties.flatMap(for: 0x02) { DoorLock($0.value) }
+        outsideLocks = properties.flatMap(for: 0x03) { DoorLock($0.value) }
 
         // Properties
         self.properties = properties
-    }
-
-
-    // MARK: Sequence
-
-    public typealias Iterator = DoorsIterator
-
-
-    public func makeIterator() -> DoorsIterator {
-        return DoorsIterator(properties.filter(for: 0x01).flatMap { $0.value })
     }
 }
 

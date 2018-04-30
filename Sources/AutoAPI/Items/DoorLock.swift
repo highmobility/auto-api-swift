@@ -19,27 +19,39 @@
 // licensing@high-mobility.com
 //
 //
-//  DoorsIterator.swift
+//  DoorLock.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 29/11/2017.
+//  Created by Mikk Rätsep on 30/04/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct DoorsIterator: ItemIterator {
+public struct DoorLock: Item {
 
-    public typealias Element = Door
+    public typealias Location = Position
 
 
-    var bytes: [UInt8]
+    public let location: Location
+    public let lock: LockState  // TODO: I would prefer `public let isLocked: Bool`
+
+
+    // MARK: Item
+
+    static var size: Int = 2
 }
 
-extension DoorsIterator: BinaryInitable {
-    
-    init<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        bytes = binary.bytes
+extension DoorLock: BinaryInitable {
+
+    init?(bytes: [UInt8]) {
+        guard let location = Location(rawValue: bytes[0]),
+            let lock = LockState(rawValue: bytes[1]) else {
+                return nil
+        }
+
+        self.location = location
+        self.lock = lock
     }
 }
