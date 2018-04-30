@@ -32,6 +32,7 @@
 		205C5179208F41C700B55ACE /* CruiseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5178208F41C700B55ACE /* CruiseControl.swift */; };
 		205C517B208F430100B55ACE /* CruiseControlLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517A208F430100B55ACE /* CruiseControlLimiter.swift */; };
 		205C517D208F451300B55ACE /* CruiseControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517C208F451300B55ACE /* CruiseControlTests.swift */; };
+		20DB153B2096F7DA00A1658B /* Gearbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB153A2096F7DA00A1658B /* Gearbox.swift */; };
 		OBJ_251 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_169 /* Misc.swift */; };
 		OBJ_252 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_170 /* main.swift */; };
 		OBJ_254 /* AutoAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "AutoAPI::AutoAPI::Product" /* AutoAPI.framework */; };
@@ -277,6 +278,7 @@
 		205C517C208F451300B55ACE /* CruiseControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruiseControlTests.swift; sourceTree = "<group>"; };
 		206ED7D02060FD7000D7761E /* UniversalBuildScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = UniversalBuildScript.sh; sourceTree = "<group>"; };
 		206ED7D12060FD7000D7761E /* AppStoreCompatible.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppStoreCompatible.sh; sourceTree = "<group>"; };
+		20DB153A2096F7DA00A1658B /* Gearbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gearbox.swift; sourceTree = "<group>"; };
 		"AutoAPI::AutoAPI::Product" /* AutoAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AutoAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"AutoAPI::AutoAPICLT::Product" /* AutoAPICLT */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = AutoAPICLT; sourceTree = BUILT_PRODUCTS_DIR; };
 		"AutoAPI::AutoAPITests::Product" /* AutoAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = AutoAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -925,6 +927,7 @@
 				OBJ_86 /* FatigueLevel.swift */,
 				OBJ_87 /* FlasherState.swift */,
 				OBJ_107 /* FluidLevel.swift */,
+				20DB153A2096F7DA00A1658B /* Gearbox.swift */,
 				OBJ_88 /* GearMode.swift */,
 				OBJ_90 /* KeyfobRelativePosition.swift */,
 				OBJ_91 /* LightState.swift */,
@@ -1050,6 +1053,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "High Mobility";
 				TargetAttributes = {
 					20D39007205C022400B6D7D2 = {
 						CreatedOnToolsVersion = 9.2;
@@ -1236,6 +1240,7 @@
 				OBJ_386 /* KeyfobRelativePosition.swift in Sources */,
 				OBJ_387 /* LightState.swift in Sources */,
 				OBJ_388 /* LockState.swift in Sources */,
+				20DB153B2096F7DA00A1658B /* Gearbox.swift in Sources */,
 				OBJ_389 /* NeedsReplacement.swift in Sources */,
 				OBJ_390 /* NetworkSecurity.swift in Sources */,
 				OBJ_391 /* ParkingTicketState.swift in Sources */,
