@@ -31,6 +31,7 @@ import Foundation
 
 public struct VehicleLocation: FullStandardCommand {
 
+    public let altitude: Float?
     public let heading: Float?
     public let coordinate: Coordinate?
 
@@ -44,6 +45,7 @@ public struct VehicleLocation: FullStandardCommand {
         // Ordered by the ID
         coordinate = Coordinate(properties.first(for: 0x01)?.value ?? [])
         heading = properties.value(for: 0x02)
+        altitude = properties.value(for: 0x03)
 
         // Properties
         self.properties = properties

@@ -59,7 +59,11 @@ class VehicleLocationTests: XCTestCase {
 
             0x02,                   // Property Identifier for Heading
             0x00, 0x04,             // Property size 4 bytes
-            0x42, 0x52, 0x14, 0x7d  // 52.520008 Heading in IEE 754 format
+            0x42, 0x52, 0x14, 0x7d, // 52.520008 Heading in IEE 754 format
+
+            0x03,                   // Property identifier for Altitude
+            0x00, 0x04,             // Property size is 4 bytes
+            0x43, 0x05, 0x80, 0x00  // 133.5 meters above the WGS 84 reference ellipsoid point
         ]
 
         guard let vehicleLocation = AutoAPI.parseBinary(bytes) as? VehicleLocation else {
@@ -75,5 +79,6 @@ class VehicleLocationTests: XCTestCase {
         }
 
         XCTAssertEqual(vehicleLocation.heading, 52.520008)
+        XCTAssertEqual(vehicleLocation.altitude, 133.5)
     }
 }
