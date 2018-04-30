@@ -82,7 +82,15 @@ class CruiseControlTests: XCTestCase {
 
             0x03,       // Property identifier for Target speed
             0x00, 0x02, // Property size is 2 bytes
-            0x00, 0x3C  // The target speed is set to 60km/h
+            0x00, 0x3C, // The target speed is set to 60km/h
+
+            0x04,       // Property identifier for Acc
+            0x00, 0x01, // Property size is 1 bytes
+            0x00,       // Adaptive Cruise Control is inactive
+
+            0x05,       // Property identifier for Acc target speed
+            0x00, 0x02, // Property size is 2 bytes
+            0x00, 0x3C  // The Adaptive Cruise Control target speed is set to 60km/h
         ]
 
         guard let cruiseControl = AutoAPI.parseBinary(bytes) as? CruiseControl else {
@@ -92,5 +100,7 @@ class CruiseControlTests: XCTestCase {
         XCTAssertEqual(cruiseControl.isActive, true)
         XCTAssertEqual(cruiseControl.limiter, .higherSpeedRequested)
         XCTAssertEqual(cruiseControl.targetSpeed, 60)
+        XCTAssertEqual(cruiseControl.isAdaptiveActive, false)
+        XCTAssertEqual(cruiseControl.adaptiveTargetSpeed, 60)
     }
 }

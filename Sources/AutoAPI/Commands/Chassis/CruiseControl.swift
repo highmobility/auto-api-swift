@@ -31,7 +31,9 @@ import Foundation
 
 public struct CruiseControl: FullStandardCommand {
 
+    public let adaptiveTargetSpeed: Int16?
     public let isActive: Bool?
+    public let isAdaptiveActive: Bool?
     public let limiter: CruiseControlLimiter?
     public let targetSpeed: Int16?
 
@@ -46,6 +48,8 @@ public struct CruiseControl: FullStandardCommand {
         isActive = properties.value(for: 0x01)
         limiter = CruiseControlLimiter(rawValue: properties.first(for: 0x02)?.monoValue)
         targetSpeed = properties.value(for: 0x03)
+        isAdaptiveActive = properties.value(for: 0x04)
+        adaptiveTargetSpeed = properties.value(for: 0x05)
 
         // Properties
         self.properties = properties
