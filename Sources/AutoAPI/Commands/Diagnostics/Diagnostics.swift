@@ -40,7 +40,9 @@ public struct Diagnostics: FullStandardCommand {
     public let distanceSinceReset: UInt16?
     public let distanceSinceStart: UInt16?
     public let engineCoolantTemperature: Int16?
+    public let engineLoad: UInt8?
     public let engineOilTemperature: Int16?
+    public let engineTorque: UInt8?
     public let engineTotalFuelConsumption: Float?
     public let engineTotalOperatingHours: Float?
     public let engineRPM: UInt16?
@@ -52,6 +54,7 @@ public struct Diagnostics: FullStandardCommand {
     public let speed: Int16?
     public let tires: [Tire]?
     public let washerFluidLevel: FluidLevel?
+    public let wheelBasedSpeed: Int16?
 
 
     // MARK: FullStandardCommand
@@ -82,6 +85,9 @@ public struct Diagnostics: FullStandardCommand {
         engineTotalOperatingHours = properties.value(for: 0x12)
         engineTotalFuelConsumption = properties.value(for: 0x13)
         brakeFluidLevel = properties.value(for: 0x14)
+        engineTorque = properties.value(for: 0x15)
+        engineLoad = properties.value(for: 0x16)
+        wheelBasedSpeed = properties.value(for: 0x17)
 
         // Properties
         self.properties = properties

@@ -154,7 +154,19 @@ class DiagnosticsTests: XCTestCase {
 
             0x14,       // Property identifier for Brake fluid level
             0x00, 0x01, // Property size is 1 bytes
-            0x00        // Brake fluid low
+            0x00,       // Brake fluid low
+
+            0x15,       // Property identifier for Engine torque
+            0x00, 0x01, // Property size is 1 bytes
+            0x14,       // Current engine torque is at 20% of full torque
+
+            0x16,       // Property identifier for Engine load
+            0x00, 0x01, // Property size is 1 bytes
+            0x0A,       // Current engine load is at 10% of full capacity
+
+            0x17,       // Property identifier for Wheel based speed
+            0x00, 0x02, // Property size is 2 bytes
+            0x00, 0x41  // The wheel base speed is 65km/h
         ]
 
         guard let diagnostics = AutoAPI.parseBinary(bytes) as? Diagnostics else {
@@ -180,6 +192,9 @@ class DiagnosticsTests: XCTestCase {
         XCTAssertEqual(diagnostics.engineTotalOperatingHours, 1500.65)
         XCTAssertEqual(diagnostics.engineTotalFuelConsumption, 27587.0)
         XCTAssertEqual(diagnostics.brakeFluidLevel, .low)
+        XCTAssertEqual(diagnostics.engineTorque, 20)
+        XCTAssertEqual(diagnostics.engineLoad, 10)
+        XCTAssertEqual(diagnostics.wheelBasedSpeed, 65)
 
         let tires = diagnostics.tires
 
