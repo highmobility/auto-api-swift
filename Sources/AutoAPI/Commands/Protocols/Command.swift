@@ -31,13 +31,13 @@ import Foundation
 
 public protocol Command: Identifiable {
 
-    var debugTree: DebugTree { get }
+    var debugTree: AutoAPI.DebugTree { get }
 }
 
 extension Command {
 
-    public var debugTree: DebugTree {
-        return DebugTree(self, expandProperties: false)
+    public var debugTree: AutoAPI.DebugTree {
+        return AutoAPI.DebugTree(self, expandProperties: false)
     }
 }
 

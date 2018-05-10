@@ -29,7 +29,6 @@
 import Foundation
 
 
-// TODO: Maybe this should be kept as a `Sequence` – then the Door should be combined from all properties...
 public struct DoorLocks: FullStandardCommand {
 
     public let doors: [Door]?
