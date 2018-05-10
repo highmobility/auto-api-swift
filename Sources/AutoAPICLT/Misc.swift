@@ -31,7 +31,7 @@ import Foundation
 
 func developerCenterBytes(_ input: String) -> [UInt8] {
     let filteredComponents = input.components(separatedBy: " ").filter { $0.contains("0x") }
-    let items: [String] = filteredComponents.flatMap {
+    let items: [String] = filteredComponents.compactMap {
         guard let range = $0.range(of: "0x") else {
             return nil
         }

@@ -32,6 +32,7 @@
 		205C5179208F41C700B55ACE /* CruiseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5178208F41C700B55ACE /* CruiseControl.swift */; };
 		205C517B208F430100B55ACE /* CruiseControlLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517A208F430100B55ACE /* CruiseControlLimiter.swift */; };
 		205C517D208F451300B55ACE /* CruiseControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517C208F451300B55ACE /* CruiseControlTests.swift */; };
+		2095DD6D20A45B81004DDB6C /* DebugTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2095DD6C20A45B81004DDB6C /* DebugTree.swift */; };
 		20DB153B2096F7DA00A1658B /* Gearbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB153A2096F7DA00A1658B /* Gearbox.swift */; };
 		20DB153D209701CE00A1658B /* DoorLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB153C209701CE00A1658B /* DoorLock.swift */; };
 		20DB15402097112D00A1658B /* PowerTakeOff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB153F2097112D00A1658B /* PowerTakeOff.swift */; };
@@ -147,7 +148,6 @@
 		OBJ_368 /* FullStandardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_71 /* FullStandardCommand.swift */; };
 		OBJ_369 /* InboundCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_72 /* InboundCommand.swift */; };
 		OBJ_370 /* OutboundCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_73 /* OutboundCommand.swift */; };
-		OBJ_371 /* DebugTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_74 /* DebugTree.swift */; };
 		OBJ_372 /* AccelerationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_76 /* AccelerationType.swift */; };
 		OBJ_374 /* AuthenticationMechanism.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_78 /* AuthenticationMechanism.swift */; };
 		OBJ_375 /* Axle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_79 /* Axle.swift */; };
@@ -288,6 +288,7 @@
 		205C517C208F451300B55ACE /* CruiseControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruiseControlTests.swift; sourceTree = "<group>"; };
 		206ED7D02060FD7000D7761E /* UniversalBuildScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = UniversalBuildScript.sh; sourceTree = "<group>"; };
 		206ED7D12060FD7000D7761E /* AppStoreCompatible.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppStoreCompatible.sh; sourceTree = "<group>"; };
+		2095DD6C20A45B81004DDB6C /* DebugTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugTree.swift; sourceTree = "<group>"; };
 		20DB153A2096F7DA00A1658B /* Gearbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gearbox.swift; sourceTree = "<group>"; };
 		20DB153C209701CE00A1658B /* DoorLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorLock.swift; sourceTree = "<group>"; };
 		20DB153F2097112D00A1658B /* PowerTakeOff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerTakeOff.swift; sourceTree = "<group>"; };
@@ -467,7 +468,6 @@
 		OBJ_71 /* FullStandardCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStandardCommand.swift; sourceTree = "<group>"; };
 		OBJ_72 /* InboundCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboundCommand.swift; sourceTree = "<group>"; };
 		OBJ_73 /* OutboundCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutboundCommand.swift; sourceTree = "<group>"; };
-		OBJ_74 /* DebugTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugTree.swift; sourceTree = "<group>"; };
 		OBJ_76 /* AccelerationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerationType.swift; sourceTree = "<group>"; };
 		OBJ_78 /* AuthenticationMechanism.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationMechanism.swift; sourceTree = "<group>"; };
 		OBJ_79 /* Axle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axle.swift; sourceTree = "<group>"; };
@@ -802,6 +802,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_222 /* Bool+Extensions.swift */,
+				2095DD6C20A45B81004DDB6C /* DebugTree.swift */,
 				OBJ_223 /* FixedWidthInteger+Extensions.swift */,
 				OBJ_224 /* Float+Extensions.swift */,
 				OBJ_225 /* SignedInteger+Extensions.swift */,
@@ -999,7 +1000,6 @@
 				OBJ_11 /* Capability */,
 				OBJ_15 /* CarSDKVersion.swift */,
 				OBJ_16 /* Commands */,
-				OBJ_74 /* DebugTree.swift */,
 				OBJ_75 /* Enums */,
 				OBJ_112 /* Extensions */,
 				OBJ_125 /* Identifiable.swift */,
@@ -1268,7 +1268,6 @@
 				OBJ_368 /* FullStandardCommand.swift in Sources */,
 				OBJ_369 /* InboundCommand.swift in Sources */,
 				OBJ_370 /* OutboundCommand.swift in Sources */,
-				OBJ_371 /* DebugTree.swift in Sources */,
 				OBJ_372 /* AccelerationType.swift in Sources */,
 				OBJ_374 /* AuthenticationMechanism.swift in Sources */,
 				OBJ_375 /* Axle.swift in Sources */,
@@ -1369,6 +1368,7 @@
 				OBJ_465 /* FixedWidthInteger+Extensions.swift in Sources */,
 				OBJ_466 /* Float+Extensions.swift in Sources */,
 				OBJ_467 /* SignedInteger+Extensions.swift in Sources */,
+				2095DD6D20A45B81004DDB6C /* DebugTree.swift in Sources */,
 				OBJ_468 /* String+Extensions.swift in Sources */,
 				OBJ_469 /* UInt8Collection+Extensions.swift in Sources */,
 			);
