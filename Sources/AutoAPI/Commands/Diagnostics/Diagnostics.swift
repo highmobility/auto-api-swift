@@ -40,14 +40,14 @@ public struct Diagnostics: FullStandardCommand {
     public let distanceSinceReset: UInt16?
     public let distanceSinceStart: UInt16?
     public let engineCoolantTemperature: Int16?
-    public let engineLoad: UInt8?
+    public let engineLoad: PercentageInt?
     public let engineOilTemperature: Int16?
-    public let engineTorque: UInt8?
+    public let engineTorque: PercentageInt?
     public let engineTotalFuelConsumption: Float?
     public let engineTotalOperatingHours: Float?
     public let engineRPM: UInt16?
     public let estimatedRange: UInt16?
-    public let fuelLevel: UInt8?
+    public let fuelLevel: PercentageInt?
     public let fuelVolume: Float?
     public let isABSActive: Bool?
     public let mileage: UInt32?
