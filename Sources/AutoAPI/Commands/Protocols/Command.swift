@@ -80,13 +80,7 @@ extension Command {
     }
 }
 
-
-// TODO: Maybe this could be replaced with `extension Command where Self: MessageTypesGettable, Self.MessageTypes.RawValue == UInt8`
-protocol CommandAggregate: Command, MessageTypesGettable {
-
-}
-
-extension CommandAggregate where Self.MessageTypes.RawValue == UInt8 {
+extension Command where Self: MessageTypesGettable, Self.MessageTypes.RawValue == UInt8 {
 
     static func commandPrefix(for messageType: Self.MessageTypes) -> [UInt8] {
         return commandPrefix(for: messageType, additionalBytes: nil)

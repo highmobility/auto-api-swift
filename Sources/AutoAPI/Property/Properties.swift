@@ -66,7 +66,6 @@ extension Properties: BinaryInitable {
 
 extension Properties {
 
-
     func value<ReturnType>(for identifier: UInt8) -> ReturnType? {
         guard let bytes = first(for: identifier)?.value else {
             return nil
@@ -76,7 +75,6 @@ extension Properties {
             return nil
         }
 
-        // Handles some of the Types
         switch ReturnType.self {
 
         /*** INTs ***/
@@ -88,6 +86,7 @@ extension Properties {
 
         case is Int32.Type:
             return Int32(bitPattern: UInt32(bytes)) as? ReturnType
+
 
         /*** OTHERs ***/
         case is Bool.Type:
@@ -105,6 +104,7 @@ extension Properties {
         case is YearTime.Type:
             return YearTime(bytes) as? ReturnType
 
+
         /*** UINTs ***/
         case is UInt8.Type:
             return bytes.first as? ReturnType
@@ -114,6 +114,7 @@ extension Properties {
 
         case is UInt32.Type:
             return UInt32(bytes) as? ReturnType
+
 
         /*** Everything else... ***/
         default:

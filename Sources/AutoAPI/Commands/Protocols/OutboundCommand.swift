@@ -29,6 +29,6 @@
 import Foundation
 
 
-protocol OutboundCommand: CommandAggregate {
+protocol OutboundCommand: Command, MessageTypesGettable {
 
 }
