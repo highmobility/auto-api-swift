@@ -30,6 +30,9 @@ import Foundation
 import HMUtilities
 
 
+public typealias PercentageInt = UInt8
+
+
 public struct AutoAPI {
 
     static var commands: [Any] {
@@ -84,8 +87,9 @@ public struct AutoAPI {
     }
 
 
-    // TODO: This doesn't work – it uses All of the bytes for making a single command
-    public static func parseBinary<C: Collection>(_ binary: C) -> [Command] where C.Element == UInt8 {
-        return commands.compactMap { $0 as? BinaryInitable.Type }.compactMap { $0.init(binary) as? Command }
+    // MARK: Type Methods
+
+    public static func parseBinary<C: Collection>(_ binary: C) -> Command? where C.Element == UInt8 {
+        return commands.compactMap { $0 as? BinaryInitable.Type }.flatMapFirst { $0.init(binary) as? Command }
     }
 }

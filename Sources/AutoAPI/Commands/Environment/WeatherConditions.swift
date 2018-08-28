@@ -31,7 +31,7 @@ import Foundation
 
 public struct WeatherConditions: FullStandardCommand {
 
-    public let rainIntensity: UInt8?
+    public let rainIntensity: PercentageInt?
 
 
     // MARK: FullStandardCommand

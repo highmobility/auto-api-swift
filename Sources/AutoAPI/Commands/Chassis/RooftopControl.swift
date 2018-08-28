@@ -31,8 +31,8 @@ import Foundation
 
 public struct RooftopControl: FullStandardCommand {
 
-    public let dimming: UInt8?
-    public let position: UInt8?
+    public let dimming: PercentageInt?
+    public let position: PercentageInt?
 
 
     // MARK: FullStandardCommand
@@ -75,10 +75,10 @@ extension RooftopControl: MessageTypesGettable {
 public extension RooftopControl {
 
     struct Control {
-        public let dimming: UInt8?
-        public let openClose: UInt8?
+        public let dimming: PercentageInt?
+        public let openClose: PercentageInt?
 
-        public init(dimming: UInt8?, openClose: UInt8?) {
+        public init(dimming: PercentageInt?, openClose: PercentageInt?) {
             self.dimming = dimming
             self.openClose = openClose
         }

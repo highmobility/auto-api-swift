@@ -32,21 +32,21 @@ import Foundation
 public struct Race: FullStandardCommand {
 
     public let accelerations: [Acceleration]?
-    public let brakePedalPosition: UInt8?
+    public let brakePedalPosition: PercentageInt?
     public let brakePressure: Float?
     public let brakeTorqueVectorings: [BrakeTorqueVectoring]?
-    public let gasPedalPosition: UInt8?
+    public let gasPedalPosition: PercentageInt?
     public let gearMode: GearMode?
     public let isAcceleratorPedalIdleSwitchActive: Bool?
     public let isAcceleratorPedalKickdownSwitchActive: Bool?
     public let isBrakePedalSwitchActive: Bool?
     public let isClutchPedalSwitchActive: Bool?
     public let isESPActive: Bool?
-    public let oversteering: UInt8?
+    public let oversteering: PercentageInt?
     public let rearSuspensionSteering: Int8?
     public let selectedGear: Int8?
     public let steeringAngle: Int8?
-    public let understeering: UInt8?
+    public let understeering: PercentageInt?
     public let yawRate: Float?
 
 

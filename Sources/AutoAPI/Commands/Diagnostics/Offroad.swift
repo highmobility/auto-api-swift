@@ -32,7 +32,7 @@ import Foundation
 public struct Offroad: FullStandardCommand {
 
     public let routeIncline: Int16?
-    public let wheelSuspension: UInt8?
+    public let wheelSuspension: PercentageInt?
 
 
     // MARK: FullStandardCommand

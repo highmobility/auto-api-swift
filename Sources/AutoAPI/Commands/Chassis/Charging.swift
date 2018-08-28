@@ -33,8 +33,8 @@ public struct Charging: FullStandardCommand {
 
     public let batteryCurrentAC: Float?
     public let batteryCurrentDC: Float?
-    public let batteryLevel: UInt8?
-    public let chargeLimit: UInt8?
+    public let batteryLevel: PercentageInt?
+    public let chargeLimit: PercentageInt?
     public let chargeMode: ChargeMode?
     public let chargePortState: ChargePortState?
     public let chargeTimer: ChargeTimer?
@@ -114,7 +114,7 @@ public extension Charging {
         }
     }
 
-    static var setChargeLimit: (UInt8) -> [UInt8] {
+    static var setChargeLimit: (PercentageInt) -> [UInt8] {
         return {
             return commandPrefix(for: .setChargeLimit, additionalBytes: $0)
         }

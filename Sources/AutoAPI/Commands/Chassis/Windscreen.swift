@@ -37,7 +37,7 @@ public struct Windscreen: FullStandardCommand {
     // MARK: Properties
 
     public let damage: WindscreenDamage?
-    public let damageConfidence: UInt8?
+    public let damageConfidence: PercentageInt?
     public let damageDetectionTime: YearTime?
     /// The *position* of the *damage* on the Windscreen.
     public let damageZone: ZonePosition?
