@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  MessageTypes.swift
+//  MessageTypesGettable.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 28/12/2017.
@@ -29,13 +29,7 @@
 import Foundation
 
 
-public protocol MessageTypesKind: RawRepresentable {
-
-    static var all: [Self] { get }
-}
-
-
 public protocol MessageTypesGettable {
 
-    associatedtype MessageTypes: MessageTypesKind
+    associatedtype MessageTypes: RawRepresentable & CaseIterable
 }
