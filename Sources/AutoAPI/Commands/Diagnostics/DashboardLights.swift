@@ -55,15 +55,10 @@ extension DashboardLights: Identifiable {
 
 extension DashboardLights: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getDashboardLights = 0x00
         case dashboardLights    = 0x01
-
-        public static var all: [DashboardLights.MessageTypes] {
-            return [self.getDashboardLights,
-                    self.dashboardLights]
-        }
     }
 }
 

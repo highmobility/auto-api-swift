@@ -63,22 +63,13 @@ extension WiFi: Identifiable {
 
 extension WiFi: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getWifiState       = 0x00
         case wifiState          = 0x01
         case connectToNetwork   = 0x02
         case forgetNetwork      = 0x03
         case enableDisableWifi  = 0x04
-
-
-        public static var all: [WiFi.MessageTypes] {
-            return [self.getWifiState,
-                    self.wifiState,
-                    self.connectToNetwork,
-                    self.forgetNetwork,
-                    self.enableDisableWifi]
-        }
     }
 }
 

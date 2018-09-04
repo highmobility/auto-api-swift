@@ -61,16 +61,10 @@ extension Messaging: Identifiable {
 
 extension Messaging: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case messageReceived    = 0x00
         case sendMessage        = 0x01
-
-
-        public static var all: [Messaging.MessageTypes] {
-            return [self.messageReceived,
-                    self.sendMessage]
-        }
     }
 }
 

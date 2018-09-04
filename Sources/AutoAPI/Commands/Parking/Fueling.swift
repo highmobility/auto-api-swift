@@ -55,18 +55,11 @@ extension Fueling: Identifiable {
 
 extension Fueling: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getGasFlapState    = 0x00
         case gasFlapState       = 0x01
         case openGasFlap        = 0x02
-
-
-        public static var all: [Fueling.MessageTypes] {
-            return [self.getGasFlapState,
-                    self.gasFlapState,
-                    self.openGasFlap]
-        }
     }
 }
 

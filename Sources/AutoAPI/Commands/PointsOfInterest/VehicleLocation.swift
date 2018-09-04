@@ -54,16 +54,10 @@ public struct VehicleLocation: FullStandardCommand {
 
 extension VehicleLocation: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getVehicleLocation = 0x00
         case vehicleLocation    = 0x01
-
-
-        public static var all: [VehicleLocation.MessageTypes] {
-            return [self.getVehicleLocation,
-                    self.vehicleLocation]
-        }
     }
 }
 

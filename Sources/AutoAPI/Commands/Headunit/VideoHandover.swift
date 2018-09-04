@@ -40,14 +40,9 @@ extension VideoHandover: Identifiable {
 
 extension VideoHandover: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case videoHandover  = 0x00
-
-
-        public static var all: [VideoHandover.MessageTypes] {
-            return [self.videoHandover]
-        }
     }
 }
 

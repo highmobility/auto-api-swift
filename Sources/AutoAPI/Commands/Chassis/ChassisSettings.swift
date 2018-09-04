@@ -61,7 +61,7 @@ extension ChassisSettings: Identifiable {
 
 extension ChassisSettings: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getChassisSettings     = 0x00
         case chassisSettings        = 0x01
@@ -69,16 +69,6 @@ extension ChassisSettings: MessageTypesGettable {
         case startStopSportChrono   = 0x03
         case setSpringRate          = 0x04
         case setChassisPosition     = 0x05
-
-
-        public static var all: [ChassisSettings.MessageTypes] {
-            return [self.getChassisSettings,
-                    self.chassisSettings,
-                    self.setDrivingMode,
-                    self.startStopSportChrono,
-                    self.setSpringRate,
-                    self.setChassisPosition]
-        }
     }
 }
 

@@ -55,16 +55,10 @@ extension WeatherConditions: Identifiable {
 
 extension WeatherConditions: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getWeatherConditions   = 0x00
         case weatherConditions      = 0x01
-
-
-        public static var all: [WeatherConditions.MessageTypes] {
-            return [self.getWeatherConditions,
-                    self.weatherConditions]
-        }
     }
 }
 

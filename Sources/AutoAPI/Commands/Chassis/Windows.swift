@@ -65,18 +65,11 @@ extension Windows: Identifiable {
 
 extension Windows: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getWindowsState    = 0x00
         case windowsState       = 0x01
         case openCloseWindows   = 0x02
-
-
-        public static var all: [Windows.MessageTypes] {
-            return [self.getWindowsState,
-                    self.windowsState,
-                    self.openCloseWindows]
-        }
     }
 }
 

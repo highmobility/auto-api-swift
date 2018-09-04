@@ -79,18 +79,11 @@ extension Capabilities: Identifiable {
 
 extension Capabilities: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getCapabilities    = 0x00
         case capabilities       = 0x01
         case getCapability      = 0x02
-
-
-        public static var all: [Capabilities.MessageTypes] {
-            return [self.getCapabilities,
-                    self.capabilities,
-                    self.getCapability]
-        }
     }
 }
 

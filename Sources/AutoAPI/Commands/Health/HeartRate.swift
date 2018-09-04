@@ -40,14 +40,9 @@ extension HeartRate: Identifiable {
 
 extension HeartRate: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case sendHeartRate  = 0x02
-
-
-        public static var all: [HeartRate.MessageTypes] {
-            return [self.sendHeartRate]
-        }
     }
 }
 

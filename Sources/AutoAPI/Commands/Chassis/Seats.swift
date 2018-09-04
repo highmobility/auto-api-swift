@@ -65,16 +65,10 @@ extension Seats: Identifiable {
 
 extension Seats: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getSeatsState  = 0x00
         case seatsState     = 0x01
-
-
-        public static var all: [Seats.MessageTypes] {
-            return [self.getSeatsState,
-                    self.seatsState]
-        }
     }
 }
 

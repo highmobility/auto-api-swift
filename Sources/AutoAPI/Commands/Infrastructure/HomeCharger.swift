@@ -78,7 +78,7 @@ extension HomeCharger: Identifiable {
 
 extension HomeCharger: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getHomeChargerState                = 0x00
         case homeChargerState                   = 0x01
@@ -86,16 +86,6 @@ extension HomeCharger: MessageTypesGettable {
         case setPriceTariffs                    = 0x03
         case activateDeactivateSolarCharging    = 0x04
         case enableDisableWifiHotspot           = 0x05
-
-
-        public static var all: [HomeCharger.MessageTypes] {
-            return [self.getHomeChargerState,
-                    self.homeChargerState,
-                    self.setChargeCurrent,
-                    self.setPriceTariffs,
-                    self.activateDeactivateSolarCharging,
-                    self.enableDisableWifiHotspot]
-        }
     }
 }
 

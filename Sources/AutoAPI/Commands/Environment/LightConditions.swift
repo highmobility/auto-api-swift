@@ -57,16 +57,10 @@ extension LightConditions: Identifiable {
 
 extension LightConditions: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getLightConditions = 0x00
         case lightConditions    = 0x01
-
-
-        public static var all: [LightConditions.MessageTypes] {
-            return [self.getLightConditions,
-                    self.lightConditions]
-        }
     }
 }
 

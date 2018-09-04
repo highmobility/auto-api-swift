@@ -76,18 +76,11 @@ extension Windscreen: Identifiable {
 
 extension Windscreen: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getWindscreenState     = 0x00
         case windscreenState        = 0x01
         case setWindscreenDamage    = 0x02
-
-
-        public static var all: [Windscreen.MessageTypes] {
-            return [self.getWindscreenState,
-                    self.windscreenState,
-                    self.setWindscreenDamage]
-        }
     }
 }
 

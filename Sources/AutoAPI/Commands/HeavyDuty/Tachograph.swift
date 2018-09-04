@@ -67,16 +67,10 @@ extension Tachograph: Identifiable {
 
 extension Tachograph: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getTachographState = 0x00
         case tachographState    = 0x01
-
-
-        public static var all: [Tachograph.MessageTypes] {
-            return [self.getTachographState,
-                    self.tachographState]
-        }
     }
 }
 

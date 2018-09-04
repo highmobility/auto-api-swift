@@ -80,18 +80,11 @@ extension Lights: Identifiable {
 
 extension Lights: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getLightsState = 0x00
         case lightsState    = 0x01
         case controlLights  = 0x02
-
-
-        public static var all: [Lights.MessageTypes] {
-            return [self.getLightsState,
-                    self.lightsState,
-                    self.controlLights]
-        }
     }
 }
 

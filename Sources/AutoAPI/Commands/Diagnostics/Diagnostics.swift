@@ -101,16 +101,10 @@ extension Diagnostics: Identifiable {
 
 extension Diagnostics: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getDiagnosticsState    = 0x00
         case diagnosticsState       = 0x01
-
-
-        public static var all: [Diagnostics.MessageTypes] {
-            return [self.getDiagnosticsState,
-                    self.diagnosticsState]
-        }
     }
 }
 

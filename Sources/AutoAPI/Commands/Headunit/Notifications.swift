@@ -119,18 +119,11 @@ extension Notifications: Identifiable {
 
 extension Notifications: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case notification       = 0x00
         case notificationAction = 0x01
         case clearNotification  = 0x02
-
-
-        public static var all: [Notifications.MessageTypes] {
-            return [self.notification,
-                    self.notificationAction,
-                    self.clearNotification]
-        }
     }
 }
 

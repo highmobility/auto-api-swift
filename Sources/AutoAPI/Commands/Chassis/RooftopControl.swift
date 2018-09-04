@@ -57,18 +57,11 @@ extension RooftopControl: Identifiable {
 
 extension RooftopControl: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getRooftopState    = 0x00
         case rooftopState       = 0x01
         case controlRooftop     = 0x02
-
-
-        public static var all: [RooftopControl.MessageTypes] {
-            return [self.getRooftopState,
-                    self.rooftopState,
-                    self.controlRooftop]
-        }
     }
 }
 

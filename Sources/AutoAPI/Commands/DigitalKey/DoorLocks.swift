@@ -59,18 +59,11 @@ extension DoorLocks: Identifiable {
 
 extension DoorLocks: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getLockState       = 0x00
         case lockState          = 0x01
         case lockUnlockDoors    = 0x02
-
-
-        public static var all: [DoorLocks.MessageTypes] {
-            return [self.getLockState,
-                    self.lockState,
-                    self.lockUnlockDoors]
-        }
     }
 }
 

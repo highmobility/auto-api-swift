@@ -57,22 +57,13 @@ extension RemoteControl: Identifiable {
 
 extension RemoteControl: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getControlMode     = 0x00
         case controlMode        = 0x01
         case startControlMode   = 0x02
         case stopControlMode    = 0x03
         case controlCommand     = 0x04
-
-
-        public static var all: [RemoteControl.MessageTypes] {
-            return [self.getControlMode,
-                    self.controlMode,
-                    self.startControlMode,
-                    self.stopControlMode,
-                    self.controlCommand]
-        }
     }
 }
 

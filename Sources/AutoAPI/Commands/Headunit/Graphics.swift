@@ -40,14 +40,9 @@ extension Graphics: Identifiable {
 
 extension Graphics: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case displayImage   = 0x00
-
-
-        public static var all: [Graphics.MessageTypes] {
-            return [self.displayImage]
-        }
     }
 }
 

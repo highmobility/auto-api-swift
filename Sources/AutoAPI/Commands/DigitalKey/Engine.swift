@@ -32,6 +32,7 @@ import Foundation
 public struct Engine: FullStandardCommand {
 
     public let areAccessoriesPowered: Bool?
+    public let isEngineOn: Bool?
     public let isIgnitionOn: Bool?
 
 
@@ -57,18 +58,11 @@ extension Engine: Identifiable {
 
 extension Engine: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getIgnitionState   = 0x00
         case ignitionState      = 0x01
         case turnEngineOnOff    = 0x02
-
-
-        public static var all: [Engine.MessageTypes] {
-            return [self.getIgnitionState,
-                    self.ignitionState,
-                    self.turnEngineOnOff]
-        }
     }
 }
 

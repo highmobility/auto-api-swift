@@ -40,14 +40,9 @@ extension WakeUp: Identifiable {
 
 extension WakeUp: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case wakeUp = 0x02
-
-
-        public static var all: [WakeUp.MessageTypes] {
-            return [self.wakeUp]
-        }
     }
 }
 

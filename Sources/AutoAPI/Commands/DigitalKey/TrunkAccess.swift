@@ -57,18 +57,11 @@ extension TrunkAccess: Identifiable {
 
 extension TrunkAccess: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getTrunkState  = 0x00
         case trunkState     = 0x01
         case openCloseTrunk = 0x02
-
-
-        public static var all: [TrunkAccess.MessageTypes] {
-            return [self.getTrunkState,
-                    self.trunkState,
-                    self.openCloseTrunk]
-        }
     }
 }
 

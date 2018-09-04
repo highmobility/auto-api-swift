@@ -41,14 +41,9 @@ extension Browser: Identifiable {
 
 extension Browser: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case loadURL    = 0x00
-
-
-        public static var all: [Browser.MessageTypes] {
-            return [self.loadURL]
-        }
     }
 }
 

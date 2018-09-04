@@ -79,7 +79,7 @@ extension Charging: Identifiable {
 
 extension Charging: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getChargeState         = 0x00
         case chargeState            = 0x01
@@ -88,17 +88,6 @@ extension Charging: MessageTypesGettable {
         case openCloseChargePort    = 0x04
         case setChargeMode          = 0x05
         case setChargeTimer         = 0x06
-
-
-        public static var all: [Charging.MessageTypes] {
-            return [self.getChargeState,
-                    self.chargeState,
-                    self.startStopCharging,
-                    self.setChargeLimit,
-                    self.openCloseChargePort,
-                    self.setChargeMode,
-                    self.setChargeTimer]
-        }
     }
 }
 

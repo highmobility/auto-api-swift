@@ -64,13 +64,8 @@ extension FailureMessage: Identifiable {
 
 extension FailureMessage: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case failure = 0x01
-
-
-        public static var all: [FailureMessage.MessageTypes] {
-            return [self.failure]
-        }
     }
 }

@@ -55,20 +55,12 @@ extension HonkHornFlashFlights: Identifiable {
 
 extension HonkHornFlashFlights: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getFlasherState                    = 0x00
         case flasherState                       = 0x01
         case honkFlash                          = 0x02
         case activateDeactivateEmergencyFlasher = 0x03
-
-
-        public static var all: [HonkHornFlashFlights.MessageTypes] {
-            return [self.getFlasherState,
-                    self.flasherState,
-                    self.honkFlash,
-                    self.activateDeactivateEmergencyFlasher]
-        }
     }
 }
 

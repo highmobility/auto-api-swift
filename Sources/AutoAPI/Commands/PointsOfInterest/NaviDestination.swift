@@ -57,18 +57,11 @@ extension NaviDestination: Identifiable {
 
 extension NaviDestination: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getNaviDestination = 0x00
         case naviDestination    = 0x01
         case setNaviDestination = 0x02
-
-
-        public static var all: [NaviDestination.MessageTypes] {
-            return [self.getNaviDestination,
-                    self.naviDestination,
-                    self.setNaviDestination]
-        }
     }
 }
 

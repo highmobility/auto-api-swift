@@ -87,16 +87,10 @@ extension Race: Identifiable {
 
 extension Race: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getRaceState   = 0x00
         case raceState      = 0x01
-
-
-        public static var all: [Race.MessageTypes] {
-            return [self.getRaceState,
-                    self.raceState]
-        }
     }
 }
 

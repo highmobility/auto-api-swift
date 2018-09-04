@@ -55,18 +55,11 @@ extension ValetMode: Identifiable {
 
 extension ValetMode: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getValetMode                   = 0x00
         case valetMode                      = 0x01
         case activateDeactivateValetMode    = 0x02
-
-
-        public static var all: [ValetMode.MessageTypes] {
-            return [self.getValetMode,
-                    self.valetMode,
-                    self.activateDeactivateValetMode]
-        }
     }
 }
 

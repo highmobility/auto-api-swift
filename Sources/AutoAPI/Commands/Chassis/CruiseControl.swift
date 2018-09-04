@@ -63,18 +63,11 @@ extension CruiseControl: Identifiable {
 
 extension CruiseControl: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getCruiseControlState  = 0x00
         case cruiseControlState     = 0x01
         case controlCruiseControl   = 0x02
-
-
-        public static var all: [CruiseControl.MessageTypes] {
-            return [self.getCruiseControlState,
-                    self.cruiseControlState,
-                    self.controlCruiseControl]
-        }
     }
 }
 

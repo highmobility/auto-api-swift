@@ -63,16 +63,10 @@ extension FirmwareVersion: Identifiable {
 
 extension FirmwareVersion: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getFirmwareVersion = 0x00
         case firmwareVersion    = 0x01
-
-
-        public static var all: [FirmwareVersion.MessageTypes] {
-            return [self.getFirmwareVersion,
-                    self.firmwareVersion]
-        }
     }
 }
 

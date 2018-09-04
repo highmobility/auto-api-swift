@@ -40,14 +40,9 @@ extension TextInput: Identifiable {
 
 extension TextInput: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case textInput  = 0x00
-
-
-        public static var all: [TextInput.MessageTypes] {
-            return [self.textInput]
-        }
     }
 }
 

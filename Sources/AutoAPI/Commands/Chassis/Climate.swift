@@ -73,7 +73,7 @@ extension Climate: Identifiable {
 
 extension Climate: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getClimateState        = 0x00
         case climateState           = 0x01
@@ -82,17 +82,6 @@ extension Climate: MessageTypesGettable {
         case startStopDefogging     = 0x04
         case startStopDefrosting    = 0x05
         case startStopIonising      = 0x06
-
-
-        public static var all: [Climate.MessageTypes] {
-            return [self.getClimateState,
-                    self.climateState,
-                    self.setClimateProfile,
-                    self.startStopHVAC,
-                    self.startStopDefogging,
-                    self.startStopDefrosting,
-                    self.startStopIonising]
-        }
     }
 }
 

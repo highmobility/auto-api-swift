@@ -50,16 +50,10 @@ public struct VehicleTime: FullStandardCommand {
 
 extension VehicleTime: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getVehicleTime = 0x00
         case vehicleTime    = 0x01
-
-
-        public static var all: [VehicleTime.MessageTypes] {
-            return [self.getVehicleTime,
-                    self.vehicleTime]
-        }
     }
 }
 

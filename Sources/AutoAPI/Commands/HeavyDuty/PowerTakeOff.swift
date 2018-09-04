@@ -57,18 +57,11 @@ extension PowerTakeOff: Identifiable {
 
 extension PowerTakeOff: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getPowerTakeOffState           = 0x00
         case powerTakeOffState              = 0x01
         case activateDeactivatePowerTakeOff = 0x02
-
-
-        public static var all: [PowerTakeOff.MessageTypes] {
-            return [self.getPowerTakeOffState,
-                    self.powerTakeOffState,
-                    self.activateDeactivatePowerTakeOff]
-        }
     }
 }
 

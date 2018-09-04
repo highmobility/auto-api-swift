@@ -63,20 +63,12 @@ extension ParkingTicket: Identifiable {
 
 extension ParkingTicket: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getParkingTicket   = 0x00
         case parkingTicket      = 0x01
         case startParking       = 0x02
         case endParking         = 0x03
-
-
-        public static var all: [ParkingTicket.MessageTypes] {
-            return [self.getParkingTicket,
-                    self.parkingTicket,
-                    self.startParking,
-                    self.endParking]
-        }
     }
 }
 

@@ -55,18 +55,11 @@ extension TheftAlarm: Identifiable {
 
 extension TheftAlarm: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getTheftAlarmState = 0x00
         case theftAlarmState    = 0x01
         case setTheftAlarm      = 0x02
-
-
-        public static var all: [TheftAlarm.MessageTypes] {
-            return [self.getTheftAlarmState,
-                    self.theftAlarmState,
-                    self.setTheftAlarm]
-        }
     }
 }
 

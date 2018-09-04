@@ -55,18 +55,11 @@ extension StartStop: Identifiable {
 
 extension StartStop: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getStartStopState              = 0x00
         case startStopState                 = 0x01
         case activateDeactivateStartStop    = 0x02
-
-
-        public static var all: [StartStop.MessageTypes] {
-            return [self.getStartStopState,
-                    self.startStopState,
-                    self.activateDeactivateStartStop]
-        }
     }
 }
 

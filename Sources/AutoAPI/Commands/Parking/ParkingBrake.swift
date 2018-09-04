@@ -55,18 +55,11 @@ extension ParkingBrake: Identifiable {
 
 extension ParkingBrake: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getParkingBrakeState   = 0x00
         case parkingBrakeState      = 0x01
         case setParkingBrake        = 0x02
-
-
-        public static var all: [ParkingBrake.MessageTypes] {
-            return [self.getParkingBrakeState,
-                    self.parkingBrakeState,
-                    self.setParkingBrake]
-        }
     }
 }
 

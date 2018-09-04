@@ -92,16 +92,10 @@ extension VehicleStatus: Identifiable {
 
 extension VehicleStatus: MessageTypesGettable {
 
-    public enum MessageTypes: UInt8, MessageTypesKind {
+    public enum MessageTypes: UInt8, CaseIterable {
 
         case getVehicleStatus   = 0x00
         case vehicleStatus      = 0x01
-
-
-        public static var all: [VehicleStatus.MessageTypes] {
-            return [self.getVehicleStatus,
-                    self.vehicleStatus]
-        }
     }
 }
 
