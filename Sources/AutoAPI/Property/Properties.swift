@@ -39,7 +39,7 @@ public struct Properties: Sequence {
         return first(for: 0xA0)?.value
     }
 
-    public var timestamp: YearTime? {
+    public var timestamp: Date? {
         return value(for: 0xA2)
     }
 
@@ -92,6 +92,9 @@ extension Properties {
         case is Bool.Type:
             return (firstByte == 0x01) as? ReturnType
 
+        case is Date.Type:
+            return Date(bytes) as? ReturnType
+
         case is Float.Type:
             return Float(bytes) as? ReturnType
 
@@ -100,9 +103,6 @@ extension Properties {
 
         case is String.Type:
             return String(bytes: bytes, encoding: .utf8) as? ReturnType
-
-        case is YearTime.Type:
-            return YearTime(bytes) as? ReturnType
 
 
         /*** UINTs ***/

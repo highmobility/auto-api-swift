@@ -31,9 +31,9 @@ import Foundation
 
 public struct ParkingTicket: FullStandardCommand {
 
-    public let endTime: YearTime?
+    public let endTime: Date?
     public let operatorName: String?
-    public let startTime: YearTime?
+    public let startTime: Date?
     public let state: ParkingTicketState?
     public let ticketID: String?
 
@@ -77,10 +77,10 @@ public extension ParkingTicket {
     struct Settings {
         public let operatorName: String?
         public let ticketID: String
-        public let startTime: YearTime
-        public let endTime: YearTime?
+        public let startTime: Date
+        public let endTime: Date?
 
-        public init(operatorName: String?, ticketID: String, startTime: YearTime, endTime: YearTime?) {
+        public init(operatorName: String?, ticketID: String, startTime: Date, endTime: Date?) {
             self.operatorName = operatorName
             self.ticketID = ticketID
             self.startTime = startTime

@@ -64,7 +64,7 @@ extension InboundCommand {
         return properties.nonce
     }
 
-    public var timestamp: YearTime? {
+    public var timestamp: Date? {
         return properties.timestamp
     }
 }

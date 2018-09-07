@@ -38,7 +38,7 @@ public struct Windscreen: FullStandardCommand {
 
     public let damage: WindscreenDamage?
     public let damageConfidence: PercentageInt?
-    public let damageDetectionTime: YearTime?
+    public let damageDetectionTime: Date?
     /// The *position* of the *damage* on the Windscreen.
     public let damageZone: ZonePosition?
     public let needsReplacement: NeedsReplacement?

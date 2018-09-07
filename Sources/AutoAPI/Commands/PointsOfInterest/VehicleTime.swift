@@ -31,7 +31,7 @@ import Foundation
 
 public struct VehicleTime: FullStandardCommand {
 
-    public let time: YearTime?
+    public let time: Date?
 
 
     // MARK: FullStandardCommand

@@ -32,7 +32,7 @@ import Foundation
 public struct ChargeTimer: Item {
 
     public let type: TimerType
-    public let time: YearTime
+    public let time: Date
 
 
     // MARK: Item
@@ -42,7 +42,7 @@ public struct ChargeTimer: Item {
 
     // MARK: Init
 
-    public init(type: TimerType, time: YearTime) {
+    public init(type: TimerType, time: Date) {
         self.type = type
         self.time = time
     }
@@ -55,12 +55,12 @@ extension ChargeTimer: BinaryInitable {
             return nil
         }
         
-        guard let yearTime = YearTime(bytes: bytes.dropFirst().bytes) else {
+        guard let date = Date(bytes.dropFirst().bytes) else {
             return nil
         }
 
         type = timerType
-        time = yearTime
+        time = date
     }
 }
 
