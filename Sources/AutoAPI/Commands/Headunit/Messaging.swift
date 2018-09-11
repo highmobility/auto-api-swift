@@ -29,13 +29,13 @@
 import Foundation
 
 
-public struct Messaging: BidirectionalCommand {
+public struct Messaging: InboundCommand, OutboundCommand {
 
     public let recipientHandle: String?
     public let text: String?
 
 
-    // MARK: BidirectionalCommand
+    // MARK: InboundCommand
 
     public let properties: Properties
 

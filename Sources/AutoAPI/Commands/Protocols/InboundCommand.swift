@@ -29,7 +29,7 @@
 import Foundation
 
 
-protocol InboundCommand: Command, MessageTypesGettable, BinaryInitable, PropertiesCapable {
+protocol InboundCommand: Command, BinaryInitable, MessageTypesGettable, PropertiesCapable {
 
     init?(_ messageType: UInt8, properties: Properties)
 }

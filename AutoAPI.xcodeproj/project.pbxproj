@@ -161,7 +161,6 @@
 		OBJ_362 /* NaviDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_64 /* NaviDestination.swift */; };
 		OBJ_363 /* VehicleLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_65 /* VehicleLocation.swift */; };
 		OBJ_364 /* VehicleTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_66 /* VehicleTime.swift */; };
-		OBJ_365 /* BidirectionalCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_68 /* BidirectionalCommand.swift */; };
 		OBJ_366 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_69 /* Command.swift */; };
 		OBJ_367 /* FullCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_70 /* FullCommand.swift */; };
 		OBJ_368 /* FullStandardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_71 /* FullStandardCommand.swift */; };
@@ -496,7 +495,6 @@
 		OBJ_64 /* NaviDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviDestination.swift; sourceTree = "<group>"; };
 		OBJ_65 /* VehicleLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleLocation.swift; sourceTree = "<group>"; };
 		OBJ_66 /* VehicleTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTime.swift; sourceTree = "<group>"; };
-		OBJ_68 /* BidirectionalCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidirectionalCommand.swift; sourceTree = "<group>"; };
 		OBJ_69 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		OBJ_70 /* FullCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullCommand.swift; sourceTree = "<group>"; };
 		OBJ_71 /* FullStandardCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStandardCommand.swift; sourceTree = "<group>"; };
@@ -967,7 +965,6 @@
 		OBJ_67 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_68 /* BidirectionalCommand.swift */,
 				OBJ_69 /* Command.swift */,
 				OBJ_70 /* FullCommand.swift */,
 				OBJ_71 /* FullStandardCommand.swift */,
@@ -1318,7 +1315,6 @@
 				OBJ_362 /* NaviDestination.swift in Sources */,
 				OBJ_363 /* VehicleLocation.swift in Sources */,
 				OBJ_364 /* VehicleTime.swift in Sources */,
-				OBJ_365 /* BidirectionalCommand.swift in Sources */,
 				OBJ_366 /* Command.swift in Sources */,
 				OBJ_367 /* FullCommand.swift in Sources */,
 				OBJ_368 /* FullStandardCommand.swift in Sources */,
