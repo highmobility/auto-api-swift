@@ -19,34 +19,18 @@
 // licensing@high-mobility.com
 //
 //
-//  BrakeTorqueVectoring.swift
+//  EnabledState.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 14/12/2017.
+//  Created by Mikk Rätsep on 11/09/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct BrakeTorqueVectoring {
+public enum EnabledState: UInt8 {
 
-    public let axle: Axle
-    public let state: ActiveState
-}
-
-extension BrakeTorqueVectoring: Item {
-
-    static var size: Int = 2
-
-
-    init?(bytes: [UInt8]) {
-        guard let axle = Axle(rawValue: bytes[0]),
-            let state = ActiveState(rawValue: bytes[1]) else {
-                return nil
-        }
-
-        self.axle = axle
-        self.state = state
-    }
+    case disabled   = 0x00
+    case enabled    = 0x01
 }

@@ -31,9 +31,9 @@ import Foundation
 
 public struct CruiseControl: FullStandardCommand {
 
+    public let activeState: ActiveState?
+    public let adaptiveState: ActiveState?
     public let adaptiveTargetSpeed: Int16?
-    public let isActive: Bool?
-    public let isAdaptiveActive: Bool?
     public let limiter: CruiseControlLimiter?
     public let targetSpeed: Int16?
 
@@ -45,10 +45,10 @@ public struct CruiseControl: FullStandardCommand {
 
     init?(properties: Properties) {
         // Ordered by the ID
-        isActive = properties.value(for: 0x01)
+        activeState = ActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
         limiter = CruiseControlLimiter(rawValue: properties.first(for: 0x02)?.monoValue)
         targetSpeed = properties.value(for: 0x03)
-        isAdaptiveActive = properties.value(for: 0x04)
+        adaptiveState = ActiveState(rawValue: properties.first(for: 0x04)?.monoValue)
         adaptiveTargetSpeed = properties.value(for: 0x05)
 
         // Properties
@@ -74,11 +74,11 @@ extension CruiseControl: MessageTypesGettable {
 public extension CruiseControl {
 
     struct Control {
-        public let isActive: Bool
+        public let activeState: ActiveState
         public let targetSpeed: Int16?
 
-        public init(isActive: Bool, targetSpeed: Int16?) {
-            self.isActive = isActive
+        public init(activeState: ActiveState, targetSpeed: Int16?) {
+            self.activeState = activeState
             self.targetSpeed = targetSpeed
         }
     }
@@ -86,7 +86,7 @@ public extension CruiseControl {
 
     static var activateCruiseControl: (Control) -> [UInt8] {
         return {
-            let activationBytes = $0.isActive.propertyBytes(0x01)
+            let activationBytes = $0.activeState.propertyBytes(0x01)
             let speedBytes: [UInt8] = $0.targetSpeed?.propertyBytes(0x02) ?? []
 
             return commandPrefix(for: .controlCruiseControl) + activationBytes + speedBytes

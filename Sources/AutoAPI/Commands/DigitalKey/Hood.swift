@@ -31,7 +31,7 @@ import Foundation
 
 public struct Hood: FullStandardCommand {
 
-    public let isHoodOpen: Bool?
+    public let hoodState: PositionState?
 
 
     // MARK: FullStandardCommand
@@ -40,7 +40,7 @@ public struct Hood: FullStandardCommand {
 
     init?(properties: Properties) {
         // Ordered by the ID
-        isHoodOpen = properties.value(for: 0x01)
+        hoodState = PositionState(rawValue: properties.first(for: 0x01)?.monoValue)
 
         // Properties
         self.properties = properties

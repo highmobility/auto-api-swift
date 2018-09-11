@@ -31,8 +31,8 @@ import Foundation
 
 public struct PowerTakeOff: FullStandardCommand {
 
-    public let isActive: Bool?
-    public let isEngaged: Bool?
+    public let activeState: ActiveState?
+    public let engagedState: ActiveState?
 
 
     // MARK: FullStandardCommand
@@ -42,8 +42,8 @@ public struct PowerTakeOff: FullStandardCommand {
 
     init?(properties: Properties) {
         // Ordered by the ID
-        isActive = properties.value(for: 0x01)
-        isEngaged = properties.value(for: 0x02)
+        activeState = ActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
+        engagedState = ActiveState(rawValue: properties.first(for: 0x02)?.monoValue)
 
         // Properties
         self.properties = properties

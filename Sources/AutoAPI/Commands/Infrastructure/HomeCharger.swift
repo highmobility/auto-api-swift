@@ -36,11 +36,11 @@ public struct HomeCharger: FullStandardCommand {
     /// In kilowatts
     public let chargingPower: Float?
     public let chargingState: ChargingState?
-    public let isHotspotEnabled: Bool?
-    public let isSolarChargingActive: Bool?
+    public let hotspotState: ActiveState?
     public let location: Coordinate?
     public let plugType: PlugType?
     public let pricingTariffs: [PricingTariff]?
+    public let solarChargingState: ActiveState?
     public let wifiHotspotPassword: String?
     public let wifiHotspotSecurity: NetworkSecurity?
     public let wifiHotspotSSID: String?
@@ -57,10 +57,10 @@ public struct HomeCharger: FullStandardCommand {
         authenticationMechanism = AuthenticationMechanism(rawValue: properties.first(for: 0x02)?.monoValue)
         plugType = PlugType(rawValue: properties.first(for: 0x03)?.monoValue)
         chargingPower = properties.value(for: 0x04)
-        isSolarChargingActive = properties.value(for: 0x05)
+        solarChargingState = ActiveState(rawValue: properties.first(for: 0x05)?.monoValue)
         location = Coordinate(properties.first(for: 0x06)?.value ?? [])
         chargeCurrent = ChargeCurrent(properties.first(for: 0x07)?.value ?? [])
-        isHotspotEnabled = properties.value(for: 0x08)
+        hotspotState = ActiveState(rawValue: properties.first(for: 0x08)?.monoValue)
         wifiHotspotSSID = properties.value(for: 0x09)
         wifiHotspotSecurity = NetworkSecurity(rawValue: properties.first(for: 0x0A)?.monoValue)
         wifiHotspotPassword = properties.value(for: 0x0B)

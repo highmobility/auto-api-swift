@@ -31,6 +31,7 @@ import Foundation
 
 public struct Diagnostics: FullStandardCommand {
 
+    public let absState: ActiveState?
     public let adBlueLevel: Float?
     public let averageFuelConsumption: Float?   // TODO: Move to Usage
     public let batteryLevel: PercentageInt?
@@ -51,7 +52,6 @@ public struct Diagnostics: FullStandardCommand {
     public let estimatedRange: UInt16?
     public let fuelLevel: PercentageInt?
     public let fuelVolume: Float?
-    public let isABSActive: Bool?
     public let mileage: UInt32?
     public let speed: Int16?
     public let tires: [Tire]?
@@ -82,7 +82,7 @@ public struct Diagnostics: FullStandardCommand {
         distanceSinceReset = properties.value(for: 0x0D)
         distanceSinceStart = properties.value(for: 0x0E)
         fuelVolume = properties.value(for: 0x0F)
-        isABSActive = properties.value(for: 0x10)
+        absState = ActiveState(rawValue: properties.first(for: 0x10)?.monoValue)
         engineCoolantTemperature = properties.value(for: 0x11)
         engineTotalOperatingHours = properties.value(for: 0x12)
         engineTotalFuelConsumption = properties.value(for: 0x13)

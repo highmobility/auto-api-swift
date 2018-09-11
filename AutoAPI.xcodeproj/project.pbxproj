@@ -32,6 +32,11 @@
 		205C5179208F41C700B55ACE /* CruiseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5178208F41C700B55ACE /* CruiseControl.swift */; };
 		205C517B208F430100B55ACE /* CruiseControlLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517A208F430100B55ACE /* CruiseControlLimiter.swift */; };
 		205C517D208F451300B55ACE /* CruiseControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517C208F451300B55ACE /* CruiseControlTests.swift */; };
+		20896EE4214799C1003A7A63 /* ChosenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EE3214799C1003A7A63 /* ChosenState.swift */; };
+		20896EE621479A8F003A7A63 /* ActiveState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EE521479A8F003A7A63 /* ActiveState.swift */; };
+		20896EE821479DC5003A7A63 /* MovingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EE721479DC5003A7A63 /* MovingState.swift */; };
+		20896EEA21479F4A003A7A63 /* ConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EE921479F4A003A7A63 /* ConnectionState.swift */; };
+		20896EEC2147A024003A7A63 /* EnabledState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EEB2147A024003A7A63 /* EnabledState.swift */; };
 		2093A31E213941E7009E43A0 /* Availability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A31D213941E7009E43A0 /* Availability.swift */; };
 		2093A320213945E1009E43A0 /* Mobile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A31F213945E1009E43A0 /* Mobile.swift */; };
 		2093A32221394EF8009E43A0 /* Hood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A32121394EF8009E43A0 /* Hood.swift */; };
@@ -299,6 +304,11 @@
 		205C517C208F451300B55ACE /* CruiseControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruiseControlTests.swift; sourceTree = "<group>"; };
 		206ED7D02060FD7000D7761E /* UniversalBuildScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = UniversalBuildScript.sh; sourceTree = "<group>"; };
 		206ED7D12060FD7000D7761E /* AppStoreCompatible.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppStoreCompatible.sh; sourceTree = "<group>"; };
+		20896EE3214799C1003A7A63 /* ChosenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenState.swift; sourceTree = "<group>"; };
+		20896EE521479A8F003A7A63 /* ActiveState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveState.swift; sourceTree = "<group>"; };
+		20896EE721479DC5003A7A63 /* MovingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingState.swift; sourceTree = "<group>"; };
+		20896EE921479F4A003A7A63 /* ConnectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionState.swift; sourceTree = "<group>"; };
+		20896EEB2147A024003A7A63 /* EnabledState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnabledState.swift; sourceTree = "<group>"; };
 		2093A31D213941E7009E43A0 /* Availability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Availability.swift; sourceTree = "<group>"; };
 		2093A31F213945E1009E43A0 /* Mobile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mobile.swift; sourceTree = "<group>"; };
 		2093A32121394EF8009E43A0 /* Hood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hood.swift; sourceTree = "<group>"; };
@@ -977,6 +987,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_76 /* AccelerationType.swift */,
+				20896EE521479A8F003A7A63 /* ActiveState.swift */,
 				OBJ_78 /* AuthenticationMechanism.swift */,
 				2093A31D213941E7009E43A0 /* Availability.swift */,
 				OBJ_79 /* Axle.swift */,
@@ -984,6 +995,8 @@
 				OBJ_81 /* ChargePortState.swift */,
 				OBJ_82 /* ChargingState.swift */,
 				20F79032213555CF003BDFA2 /* ChargingMethod.swift */,
+				20896EE3214799C1003A7A63 /* ChosenState.swift */,
+				20896EE921479F4A003A7A63 /* ConnectionState.swift */,
 				OBJ_83 /* ControlMode.swift */,
 				20F7903C2135713A003BDFA2 /* ConvertibleRoofState.swift */,
 				205C517A208F430100B55ACE /* CruiseControlLimiter.swift */,
@@ -993,6 +1006,7 @@
 				20F7903E2135732D003BDFA2 /* DisplayUnit.swift */,
 				OBJ_84 /* DrivingMode.swift */,
 				20F7903A21356F94003BDFA2 /* DueStatus.swift */,
+				20896EEB2147A024003A7A63 /* EnabledState.swift */,
 				OBJ_85 /* FailureReason.swift */,
 				OBJ_86 /* FatigueLevel.swift */,
 				OBJ_87 /* FlasherState.swift */,
@@ -1002,6 +1016,7 @@
 				OBJ_90 /* KeyfobRelativePosition.swift */,
 				OBJ_91 /* LightState.swift */,
 				OBJ_92 /* LockState.swift */,
+				20896EE721479DC5003A7A63 /* MovingState.swift */,
 				OBJ_93 /* NeedsReplacement.swift */,
 				OBJ_94 /* NetworkSecurity.swift */,
 				OBJ_95 /* ParkingTicketState.swift */,
@@ -1247,6 +1262,7 @@
 				20DB1548209718DB00A1658B /* WorkingState.swift in Sources */,
 				20DB153D209701CE00A1658B /* DoorLock.swift in Sources */,
 				OBJ_321 /* CapabilitiesIterator.swift in Sources */,
+				20896EEC2147A024003A7A63 /* EnabledState.swift in Sources */,
 				OBJ_322 /* Capability.swift in Sources */,
 				OBJ_323 /* CarSDKVersion.swift in Sources */,
 				OBJ_324 /* Charging.swift in Sources */,
@@ -1279,6 +1295,7 @@
 				OBJ_348 /* Messaging.swift in Sources */,
 				OBJ_349 /* Notifications.swift in Sources */,
 				OBJ_350 /* TextInput.swift in Sources */,
+				20896EE4214799C1003A7A63 /* ChosenState.swift in Sources */,
 				OBJ_351 /* VideoHandover.swift in Sources */,
 				20F7903F2135732D003BDFA2 /* DisplayUnit.swift in Sources */,
 				OBJ_352 /* WiFi.swift in Sources */,
@@ -1375,7 +1392,9 @@
 				OBJ_430 /* DayTime.swift in Sources */,
 				OBJ_431 /* WeekdaysTimes.swift in Sources */,
 				OBJ_432 /* Colour.swift in Sources */,
+				20896EE821479DC5003A7A63 /* MovingState.swift in Sources */,
 				OBJ_433 /* Coordinate.swift in Sources */,
+				20896EEA21479F4A003A7A63 /* ConnectionState.swift in Sources */,
 				OBJ_434 /* Door.swift in Sources */,
 				OBJ_435 /* Item.swift in Sources */,
 				205C516B208F26CE00B55ACE /* DashboardLights.swift in Sources */,
@@ -1393,6 +1412,7 @@
 				OBJ_446 /* Properties.swift in Sources */,
 				OBJ_447 /* PropertiesCapable.swift in Sources */,
 				OBJ_448 /* PropertiesInitable.swift in Sources */,
+				20896EE621479A8F003A7A63 /* ActiveState.swift in Sources */,
 				20F7903921356F54003BDFA2 /* ConditionBasedService.swift in Sources */,
 				OBJ_449 /* PropertiesIterator.swift in Sources */,
 				OBJ_450 /* Property.swift in Sources */,

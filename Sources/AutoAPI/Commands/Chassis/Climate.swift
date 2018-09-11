@@ -35,10 +35,10 @@ public struct Climate: FullStandardCommand {
     public let defrostingTemperature: Float?
     public let driverTemperature: Float?
     public let insideTemperature: Float?
-    public let isDefoggingActive: Bool?
-    public let isDefrostingActive: Bool?
-    public let isHVACActive: Bool?
-    public let isIonisingActive: Bool?
+    public let defoggingState: ActiveState?
+    public let defrostingState: ActiveState?
+    public let hvacState: ActiveState?
+    public let ionisingState: ActiveState?
     public let outsideTemperature: Float?
     public let passengerTemperature: Float?
 
@@ -54,10 +54,10 @@ public struct Climate: FullStandardCommand {
         outsideTemperature = properties.value(for: 0x02)
         driverTemperature = properties.value(for: 0x03)
         passengerTemperature = properties.value(for: 0x04)
-        isHVACActive = properties.value(for: 0x05)
-        isDefoggingActive = properties.value(for: 0x06)
-        isDefrostingActive = properties.value(for: 0x07)
-        isIonisingActive = properties.value(for: 0x08)
+        hvacState = ActiveState(rawValue: properties.first(for: 0x05)?.monoValue)
+        defoggingState = ActiveState(rawValue: properties.first(for: 0x06)?.monoValue)
+        defrostingState = ActiveState(rawValue: properties.first(for: 0x07)?.monoValue)
+        ionisingState = ActiveState(rawValue: properties.first(for: 0x08)?.monoValue)
         defrostingTemperature = properties.value(for: 0x09)
         climateProfile = ClimateProfile(bytes: properties.first(for: 0x0A)?.value)
 

@@ -32,22 +32,22 @@ import Foundation
 public struct Race: FullStandardCommand {
 
     public let accelerations: [Acceleration]?
+    public let acceleratorPedalIdleSwitchState: ActiveState?
+    public let acceleratorPedalKickdownSwitchState: ActiveState?
     public let brakePedalPosition: PercentageInt?
+    public let brakePedalSwitchState: ActiveState?
     public let brakePressure: Float?
     public let brakeTorqueVectorings: [BrakeTorqueVectoring]?
+    public let clutchPedalSwitchState: ActiveState?
+    public let espState: ActiveState?
     public let gasPedalPosition: PercentageInt?
     public let gearMode: GearMode?
-    public let isAcceleratorPedalIdleSwitchActive: Bool?
-    public let isAcceleratorPedalKickdownSwitchActive: Bool?
-    public let isBrakePedalSwitchActive: Bool?
-    public let isClutchPedalSwitchActive: Bool?
-    public let isESPActive: Bool?
-    public let isVehicleMoving: Bool?
     public let oversteering: PercentageInt?
     public let rearSuspensionSteering: Int8?
     public let selectedGear: Int8?
     public let steeringAngle: Int8?
     public let understeering: PercentageInt?
+    public let vehicleMovingState: MovingState?
     public let yawRate: Float?
 
 
@@ -66,16 +66,16 @@ public struct Race: FullStandardCommand {
         brakePressure = properties.value(for: 0x06)
         yawRate = properties.value(for: 0x07)
         rearSuspensionSteering = properties.value(for: 0x08)
-        isESPActive = properties.value(for: 0x09)
+        espState = ActiveState(rawValue: properties.first(for: 0x09)?.monoValue)
         brakeTorqueVectorings = properties.flatMap(for: 0x0A) { BrakeTorqueVectoring($0.value) }
         gearMode = GearMode(rawValue: properties.first(for: 0x0B)?.monoValue)
         selectedGear = properties.value(for: 0x0C)
         brakePedalPosition = properties.value(for: 0x0D)
-        isBrakePedalSwitchActive = properties.value(for: 0x0E)
-        isClutchPedalSwitchActive = properties.value(for: 0x0F)
-        isAcceleratorPedalIdleSwitchActive = properties.value(for: 0x10)
-        isAcceleratorPedalKickdownSwitchActive = properties.value(for: 0x11)
-        isVehicleMoving = properties.value(for: 0x12)
+        brakePedalSwitchState = ActiveState(rawValue: properties.first(for: 0x0E)?.monoValue)
+        clutchPedalSwitchState = ActiveState(rawValue: properties.first(for: 0x0F)?.monoValue)
+        acceleratorPedalIdleSwitchState = ActiveState(rawValue: properties.first(for: 0x10)?.monoValue)
+        acceleratorPedalKickdownSwitchState = ActiveState(rawValue: properties.first(for: 0x11)?.monoValue)
+        vehicleMovingState = MovingState(rawValue: properties.first(for: 0x12)?.monoValue)
 
         // Properties
         self.properties = properties

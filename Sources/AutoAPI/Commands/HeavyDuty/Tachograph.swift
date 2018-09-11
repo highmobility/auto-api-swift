@@ -34,9 +34,9 @@ public struct Tachograph: FullStandardCommand {
     public let driversCards: [DriverCard]?
     public let driversTimeStates: [DriverTimeState]?
     public let driversWorkingStates: [DriverWorkingState]?
-    public let isVehicleMotionDetected: Bool?
-    public let isVehicleOverspeed: Bool?
     public let vehicleDirection: Direction?
+    public let vehicleMotionState: MovingState?
+    public let vehicleOverspeedActive: ActiveState?
     public let vehicleSpeed: Int16?
 
 
@@ -50,9 +50,9 @@ public struct Tachograph: FullStandardCommand {
         driversWorkingStates = properties.flatMap(for: 0x01) { DriverWorkingState($0.value) }
         driversTimeStates = properties.flatMap(for: 0x02) { DriverTimeState($0.value) }
         driversCards = properties.flatMap(for: 0x03) { DriverCard($0.value) }
-        isVehicleMotionDetected = properties.value(for: 0x04)
-        isVehicleOverspeed = properties.value(for: 0x05)
         vehicleDirection = Direction(rawValue: properties.first(for: 0x06)?.monoValue)
+        vehicleMotionState = MovingState(rawValue: properties.first(for: 0x04)?.monoValue)
+        vehicleOverspeedActive = ActiveState(rawValue: properties.first(for: 0x05)?.monoValue)
         vehicleSpeed = properties.value(for: 0x07)
 
         // Properties

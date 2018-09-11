@@ -36,11 +36,11 @@ import Foundation
 public struct Lights: FullStandardCommand {
 
     public let ambientColour: Colour?
-    public let isEmergencyBrakeActive: Bool?
+    public let emergencyBrakeState: ActiveState?
     public let frontExterior: FrontLightState?
-    public let isInteriorActive: Bool?
-    public let isRearExteriorActive: Bool?
-    public let isReverseActive: Bool?
+    public let interiorState: ActiveState?
+    public let rearExteriorState: ActiveState?
+    public let reverseState: ActiveState?
 
 
     // MARK: FullStandardCommand
@@ -51,8 +51,8 @@ public struct Lights: FullStandardCommand {
     init?(properties: Properties) {
         // Ordered by the ID
         frontExterior = FrontLightState(rawValue: properties.first(for: 0x01)?.monoValue)
-        isRearExteriorActive = properties.value(for: 0x02)
-        isInteriorActive = properties.value(for: 0x03)
+        rearExteriorState = ActiveState(rawValue: properties.first(for: 0x02)?.monoValue)
+        interiorState = ActiveState(rawValue: properties.first(for: 0x03)?.monoValue)
 
         if let bytes = properties.first(for: 0x04)?.value, bytes.count == 3 {
             let red = CGFloat(bytes[0]) / 255.0
@@ -65,8 +65,8 @@ public struct Lights: FullStandardCommand {
             ambientColour = nil
         }
 
-        isReverseActive = properties.value(for: 0x05)
-        isEmergencyBrakeActive = properties.value(for: 0x06)
+        reverseState = ActiveState(rawValue: properties.first(for: 0x05)?.monoValue)
+        emergencyBrakeState = ActiveState(rawValue: properties.first(for: 0x06)?.monoValue)
 
         // Properties
         self.properties = properties
@@ -92,14 +92,14 @@ public extension Lights {
 
     struct Control {
         public let frontExterior: FrontLightState?
-        public let isRearExteriorActive: Bool?
-        public let isInteriorActive: Bool?
+        public let rearExteriorState: ActiveState?
+        public let interiorState: ActiveState?
         public let ambientColour: Colour?
 
-        public init(frontExterior: FrontLightState?, isRearExteriorActive: Bool?, isInteriorActive: Bool?, ambientColour: Colour?) {
+        public init(frontExterior: FrontLightState?, rearExteriorState: ActiveState?, interiorState: ActiveState?, ambientColour: Colour?) {
             self.frontExterior = frontExterior
-            self.isRearExteriorActive = isRearExteriorActive
-            self.isInteriorActive = isInteriorActive
+            self.rearExteriorState = rearExteriorState
+            self.interiorState = interiorState
             self.ambientColour = ambientColour
         }
     }
@@ -108,8 +108,8 @@ public extension Lights {
     static var controlLights: (Control) -> [UInt8] {
         return {
             let frontBytes: [UInt8] = $0.frontExterior?.propertyBytes(0x01) ?? []
-            let rearBytes: [UInt8] = $0.isRearExteriorActive?.propertyBytes(0x02) ?? []
-            let interiorBytes: [UInt8] = $0.isInteriorActive?.propertyBytes(0x03) ?? []
+            let rearBytes: [UInt8] = $0.rearExteriorState?.propertyBytes(0x02) ?? []
+            let interiorBytes: [UInt8] = $0.interiorState?.propertyBytes(0x03) ?? []
             let ambientBytes: [UInt8] = $0.ambientColour?.propertyBytes(0x04) ?? []
 
             return commandPrefix(for: .controlLights) + frontBytes + rearBytes + interiorBytes + ambientBytes

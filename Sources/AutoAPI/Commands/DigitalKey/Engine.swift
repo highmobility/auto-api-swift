@@ -31,9 +31,9 @@ import Foundation
 
 public struct Engine: FullStandardCommand {
 
-    public let areAccessoriesPowered: Bool?
-    public let isEngineOn: Bool?
-    public let isIgnitionOn: Bool?
+    public let accessoriesPoweredState: ActiveState?
+    public let engineState: ActiveState?
+    public let ignitionState: ActiveState?
 
 
     // MARK: FullStandardCommand
@@ -43,9 +43,9 @@ public struct Engine: FullStandardCommand {
 
     init?(properties: Properties) {
         // Ordered by the ID
-        isIgnitionOn = properties.value(for: 0x01)
-        areAccessoriesPowered = properties.value(for: 0x02)
-        isEngineOn = properties.value(for: 0x03)
+        ignitionState = ActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
+        accessoriesPoweredState = ActiveState(rawValue: properties.first(for: 0x02)?.monoValue)
+        engineState = ActiveState(rawValue: properties.first(for: 0x03)?.monoValue)
 
         // Properties
         self.properties = properties

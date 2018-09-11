@@ -31,7 +31,7 @@ import Foundation
 
 public struct StartStop: FullStandardCommand {
 
-    public let isActive: Bool?
+    public let activeState: ActiveState?
 
 
     // MARK: FullStandardCommand
@@ -41,7 +41,7 @@ public struct StartStop: FullStandardCommand {
 
     init?(properties: Properties) {
         // Ordered by the ID
-        isActive = properties.value(for: 0x01)
+        activeState = ActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
 
         // Properties
         self.properties = properties
@@ -69,8 +69,7 @@ public extension StartStop {
         return commandPrefix(for: .getStartStopState)
     }
 
-    /// Use `false` to *deactivate* the start-stop system.
-    static var activateStartStop: (Bool) -> [UInt8] {
+    static var activateStartStop: (ActiveState) -> [UInt8] {
         return {
             return commandPrefix(for: .activateDeactivateStartStop) + $0.propertyBytes(0x01)
         }

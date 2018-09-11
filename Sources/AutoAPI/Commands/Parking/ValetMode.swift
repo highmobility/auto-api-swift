@@ -31,7 +31,7 @@ import Foundation
 
 public struct ValetMode: FullStandardCommand {
 
-    public let isActive: Bool?
+    public let state: ActiveState?
 
 
     // MARK: FullStandardCommand
@@ -41,7 +41,7 @@ public struct ValetMode: FullStandardCommand {
 
     init?(properties: Properties) {
         // Ordered by the ID
-        isActive = properties.value(for: 0x01)
+        state = ActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
 
         // Properties
         self.properties = properties

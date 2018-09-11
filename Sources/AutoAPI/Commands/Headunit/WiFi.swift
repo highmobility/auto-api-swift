@@ -33,8 +33,8 @@ public struct WiFi: FullStandardCommand {
 
     public typealias NetworkSSID = String
 
-    public let isConnected: Bool?
-    public let isEnabled: Bool?
+    public let connectedState: ConnectionState?
+    public let enabledState: EnabledState?
     public let networkSecurity: NetworkSecurity?
     public let networkSSID: NetworkSSID?
 
@@ -46,8 +46,8 @@ public struct WiFi: FullStandardCommand {
 
     init?(properties: Properties) {
         // Ordered by the ID
-        isEnabled = properties.value(for: 0x01)
-        isConnected = properties.value(for: 0x02)
+        enabledState = EnabledState(rawValue: properties.first(for: 0x01)?.monoValue)
+        connectedState = ConnectionState(rawValue: properties.first(for: 0x02)?.monoValue)
         networkSSID = properties.value(for: 0x03)
         networkSecurity = NetworkSecurity(rawValue: properties.first(for: 0x04)?.monoValue)
 

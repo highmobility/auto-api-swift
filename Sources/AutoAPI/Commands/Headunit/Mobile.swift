@@ -31,7 +31,7 @@ import Foundation
 
 public struct Mobile: FullStandardCommand {
 
-    public let isMobileConnected: Bool?
+    public let mobileConnected: ConnectionState?
 
 
     // MARK: FullStandardCommand
@@ -41,7 +41,7 @@ public struct Mobile: FullStandardCommand {
 
     init?(properties: Properties) {
         // Ordered by the ID
-        isMobileConnected = properties.value(for: 0x01)
+        mobileConnected = ConnectionState(rawValue: properties.first(for: 0x01)?.monoValue)
 
 
         // Properties
