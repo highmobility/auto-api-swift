@@ -32,10 +32,12 @@ import Foundation
 public struct Diagnostics: FullStandardCommand {
 
     public let adBlueLevel: Float?
-    public let averageFuelConsumption: Float?
+    public let averageFuelConsumption: Float?   // TODO: Move to Usage
+    public let batteryLevel: PercentageInt?
     public let batteryVoltage: Float?
     public let brakeFluidLevel: FluidLevel?
-    public let currentFuelConsumption: Float?
+    public let brakeFluidChangeDate: Date?  // TODO: Move to Maintenace
+    public let currentFuelConsumption: Float?   // TODO: Move to Usage
     public let dieselExhaustFluid: Float?
     public let distanceSinceReset: UInt16?
     public let distanceSinceStart: UInt16?
@@ -88,6 +90,8 @@ public struct Diagnostics: FullStandardCommand {
         engineTorque = properties.value(for: 0x15)
         engineLoad = properties.value(for: 0x16)
         wheelBasedSpeed = properties.value(for: 0x17)
+        brakeFluidChangeDate = properties.value(for: 0x18)
+        batteryLevel = properties.value(for: 0x19)
 
         // Properties
         self.properties = properties

@@ -31,8 +31,19 @@ import Foundation
 
 public struct Maintenance: FullStandardCommand {
 
+    public typealias Weeks = UInt8
+
+
+    public let automaticTeleserviceCallDate: Date?
+    public let cbsReportsCount: UInt8?
     public let daysToNextService: Int16?
     public let kmToNextService: UInt32?
+    public let monthsToExhaustInspection: UInt8?
+    public let nextInspectionDate: Date?
+    public let serviceDistanceThreshold: UInt16?
+    public let serviceTimeThreshold: Weeks?
+    public let teleserviceAvailability: Availability?
+    public let teleserviceBatteryCallDate: Date?
 
 
     // MARK: FullStandardCommand
@@ -44,6 +55,14 @@ public struct Maintenance: FullStandardCommand {
         // Ordered by the ID
         daysToNextService = properties.value(for: 0x01)
         kmToNextService = properties.value(for: 0x02)
+        cbsReportsCount = properties.value(for: 0x03)
+        monthsToExhaustInspection = properties.value(for: 0x04)
+        teleserviceAvailability = Availability(rawValue: properties.first(for: 0x05)?.monoValue)
+        serviceDistanceThreshold = properties.value(for: 0x06)
+        serviceTimeThreshold = properties.value(for: 0x07)
+        automaticTeleserviceCallDate = properties.value(for: 0x08)
+        teleserviceBatteryCallDate = properties.value(for: 0x09)
+        nextInspectionDate = properties.value(for: 0x0A)
 
         // Properties
         self.properties = properties

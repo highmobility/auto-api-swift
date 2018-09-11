@@ -30,6 +30,26 @@ import Foundation
 import HMUtilities
 
 
+/*
+
+ - master:
+    AutoAPI
+
+
+ - current:
+    Charging
+    DrivingMode.ActivationPeriod
+
+
+ - proposed:
+    AutoAPI.Charging
+    AACharging         // shorter, but AA is a bit weird
+    AutoAPI.DrivingMode.ActivationPeriod
+    AADrivingMode.ActivationPeriod     // shorter, but AA is a bit weird
+
+ */
+
+
 public typealias PercentageInt = UInt8
 
 
@@ -54,11 +74,13 @@ public struct AutoAPI {
                 HeartRate.self,
                 HomeCharger.self,
                 HonkHornFlashFlights.self,
+                Hood.self,
                 KeyfobPosition.self,
                 LightConditions.self,
                 Lights.self,
                 Maintenance.self,
                 Messaging.self,
+                Mobile.self,
                 NaviDestination.self,
                 Notifications.self,
                 Offroad.self,
@@ -74,6 +96,7 @@ public struct AutoAPI {
                 TextInput.self,
                 TheftAlarm.self,
                 TrunkAccess.self,
+                Usage.self,
                 ValetMode.self,
                 VehicleLocation.self,
                 VehicleStatus.self,

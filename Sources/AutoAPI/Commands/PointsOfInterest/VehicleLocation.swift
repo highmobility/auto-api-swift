@@ -71,21 +71,4 @@ public extension VehicleLocation {
     static var getVehicleLocation: [UInt8] {
         return commandPrefix(for: .getVehicleLocation)
     }
-
-
-
-    // TODO: Just concepts atm
-    static func getLocation(start: YearTime?, end: YearTime?) -> [UInt8] {
-        let startBytes = start?.propertyBytes(0x00) ?? []
-        let endBytes = end?.propertyBytes(0x00) ?? []
-
-        return commandPrefix(for: .getVehicleLocation) + startBytes + endBytes
-    }
-
-    static func getLocation(period: (start: YearTime, end: YearTime)?) -> [UInt8] {
-        let startBytes = period?.start.propertyBytes(0x00) ?? []
-        let endBytes = period?.end.propertyBytes(0x00) ?? []
-
-        return commandPrefix(for: .getVehicleLocation) + startBytes + endBytes
-    }
 }

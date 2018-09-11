@@ -40,9 +40,12 @@ public struct Charging: FullStandardCommand {
     public let chargeTimer: ChargeTimer?
     public let chargerVoltageAC: Float?
     public let chargerVoltageDC: Float?
+    public let chargingMethod: ChargingMethod?
     public let chargingRate: Float?
     public let chargingState: ChargingState?
     public let estimatedRange: UInt16?
+    public let isChargingWindowChosen: Bool?
+    public let maxChargingCurrentAC: Float?
     public let timeToCompleteCharge: UInt16?
 
 
@@ -66,6 +69,9 @@ public struct Charging: FullStandardCommand {
         chargePortState = ChargePortState(rawValue: properties.first(for: 0x0B)?.monoValue)
         chargeMode = ChargeMode(rawValue: properties.first(for: 0x0C)?.monoValue)
         chargeTimer = ChargeTimer(properties.first(for: 0x0D)?.value ?? [])
+        maxChargingCurrentAC = properties.value(for: 0x0E)
+        chargingMethod = ChargingMethod(rawValue: properties.first(for: 0x0F)?.monoValue)
+        isChargingWindowChosen = properties.value(for: 0x10)
 
         // Properties
         self.properties = properties

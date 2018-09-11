@@ -42,6 +42,7 @@ public struct Race: FullStandardCommand {
     public let isBrakePedalSwitchActive: Bool?
     public let isClutchPedalSwitchActive: Bool?
     public let isESPActive: Bool?
+    public let isVehicleMoving: Bool?
     public let oversteering: PercentageInt?
     public let rearSuspensionSteering: Int8?
     public let selectedGear: Int8?
@@ -74,6 +75,7 @@ public struct Race: FullStandardCommand {
         isClutchPedalSwitchActive = properties.value(for: 0x0F)
         isAcceleratorPedalIdleSwitchActive = properties.value(for: 0x10)
         isAcceleratorPedalKickdownSwitchActive = properties.value(for: 0x11)
+        isVehicleMoving = properties.value(for: 0x12)
 
         // Properties
         self.properties = properties

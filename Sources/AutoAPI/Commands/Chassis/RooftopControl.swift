@@ -31,8 +31,15 @@ import Foundation
 
 public struct RooftopControl: FullStandardCommand {
 
+    public let convertibleState: ConvertibleRoofState?
+
+    /// 100% denoting *opaque* and 0% *transparent*.
     public let dimming: PercentageInt?
+
+    /// 100% denoting *fully open*, 50% denoting *intermediate* and 0% *closed*.
     public let position: PercentageInt?
+
+    public let tiltState: PositionState?
 
 
     // MARK: FullStandardCommand
@@ -44,6 +51,8 @@ public struct RooftopControl: FullStandardCommand {
         // Ordered by the ID
         dimming = properties.value(for: 0x01)
         position = properties.value(for: 0x02)
+        convertibleState = ConvertibleRoofState(rawValue: properties.first(for: 0x03)?.monoValue)
+        tiltState = PositionState(rawValue: properties.first(for: 0x04)?.monoValue)
 
         // Properties
         self.properties = properties

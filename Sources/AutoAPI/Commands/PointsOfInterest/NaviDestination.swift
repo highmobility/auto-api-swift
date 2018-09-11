@@ -31,8 +31,12 @@ import Foundation
 
 public struct NaviDestination: FullStandardCommand {
 
+    public let arrivalTime: DayTime?
     public let coordinate: Coordinate?
+    public let distanceTo: UInt16?
     public let name: String?
+    public let poiSlotsFree: UInt8?
+    public let poiSlotsMax: UInt8?
 
 
     // MARK: FullStandardCommand
@@ -44,6 +48,10 @@ public struct NaviDestination: FullStandardCommand {
         // Ordered by the ID
         coordinate = Coordinate(properties.first(for: 0x01)?.value ?? [])
         name = properties.value(for: 0x02)
+        poiSlotsFree = properties.value(for: 0x03)
+        poiSlotsMax = properties.value(for: 0x04)
+        arrivalTime = DayTime(properties.first(for: 0x05)?.value ?? [])
+        distanceTo = properties.value(for: 0x06)
 
         // Properties
         self.properties = properties

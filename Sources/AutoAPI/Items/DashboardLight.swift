@@ -31,14 +31,8 @@ import Foundation
 
 public struct DashboardLight {
 
-    public typealias Name = DashboardLightName
-    public typealias State = DashboardLightState
-
-
-    // MARK: Properties
-
-    public let name: Name
-    public let state: State
+    public let name: DashboardLightName
+    public let state: DashboardLightState
 }
 
 extension DashboardLight: Item {
@@ -47,8 +41,8 @@ extension DashboardLight: Item {
 
 
     init?(bytes: [UInt8]) {
-        guard let name = Name(rawValue: bytes[0]),
-            let state = State(rawValue: bytes[1]) else {
+        guard let name = DashboardLightName(rawValue: bytes[0]),
+            let state = DashboardLightState(rawValue: bytes[1]) else {
                 return nil
         }
 

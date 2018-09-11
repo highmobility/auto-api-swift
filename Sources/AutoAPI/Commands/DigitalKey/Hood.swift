@@ -19,28 +19,51 @@
 // licensing@high-mobility.com
 //
 //
-//  PositionState.swift
+//  Hood.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 27/11/2017.
+//  Created by Mikk Rätsep on 31/08/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum PositionState: UInt8 {
+public struct Hood: FullStandardCommand {
 
-    case closed = 0x00
-    case opened = 0x01
-
-    case intermediate   = 0x02
+    public let isHoodOpen: Bool?
 
 
-    public static let close = PositionState.closed
-    public static let open = PositionState.opened
+    // MARK: FullStandardCommand
+
+    public let properties: Properties
+
+    init?(properties: Properties) {
+        // Ordered by the ID
+        isHoodOpen = properties.value(for: 0x01)
+
+        // Properties
+        self.properties = properties
+    }
 }
 
-extension PositionState: PropertyConvertable {
+extension Hood: Identifiable {
 
+    public static var identifier: Identifier = Identifier(0x0067)
+}
+
+extension Hood: MessageTypesGettable {
+
+    public enum MessageTypes: UInt8, CaseIterable {
+
+        case getHoodState   = 0x00
+        case hoodState      = 0x01
+    }
+}
+
+public extension Hood {
+
+    static var getHoodState: [UInt8] {
+        return commandPrefix(for: .getHoodState)
+    }
 }

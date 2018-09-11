@@ -35,4 +35,7 @@ public enum ChargingState: UInt8 {
     case pluggedIn      = 0x01
     case charging       = 0x02
     case chargingDone   = 0x03
+    case initialising   = 0x04
+    case chargingPaused = 0x05
+    case chargingError  = 0x06
 }

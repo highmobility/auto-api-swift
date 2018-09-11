@@ -19,28 +19,24 @@
 // licensing@high-mobility.com
 //
 //
-//  PositionState.swift
+//  DueStatus.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 27/11/2017.
+//  Created by Mikk Rätsep on 28/08/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum PositionState: UInt8 {
+public enum DueStatus: UInt8 {
 
-    case closed = 0x00
-    case opened = 0x01
+    /// Service not due
+    case ok         = 0x00
 
-    case intermediate   = 0x02
+    /// Service imminently due
+    case pending    = 0x01
 
-
-    public static let close = PositionState.closed
-    public static let open = PositionState.opened
-}
-
-extension PositionState: PropertyConvertable {
-
+    // Service overdue
+    case overdue    = 0x02
 }

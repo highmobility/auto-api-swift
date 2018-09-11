@@ -31,8 +31,57 @@ import Foundation
 
 public enum DrivingMode: UInt8 {
 
+    // Also know as *comfort*
     case regular    = 0x00
     case eco        = 0x01
     case sport      = 0x02
     case sportPlus  = 0x03
+
+    case ecoPlus    = 0x04
+}
+
+public extension DrivingMode {
+
+    struct ActivationPeriod: Item {
+
+        public let mode: DrivingMode
+        public let period: PercentageInt
+
+
+        // MARK: Item
+
+        static var size: Int = 2
+
+
+        init?(bytes: [UInt8]) {
+            guard let drivingMode = DrivingMode(rawValue: bytes[0]) else {
+                return nil
+            }
+
+            mode = drivingMode
+            period = bytes[1]
+        }
+    }
+
+
+    struct EnergyConsumption: Item {
+
+        public let mode: DrivingMode
+        public let consumption: Float
+
+
+        // MARK: Item
+
+        static var size: Int = 5
+
+
+        init?(bytes: [UInt8]) {
+            guard let drivingMode = DrivingMode(rawValue: bytes[0]) else {
+                return nil
+            }
+
+            mode = drivingMode
+            consumption = Float(bytes.dropFirstBytes(1))
+        }
+    }
 }

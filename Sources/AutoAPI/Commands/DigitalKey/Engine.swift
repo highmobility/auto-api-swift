@@ -45,6 +45,7 @@ public struct Engine: FullStandardCommand {
         // Ordered by the ID
         isIgnitionOn = properties.value(for: 0x01)
         areAccessoriesPowered = properties.value(for: 0x02)
+        isEngineOn = properties.value(for: 0x03)
 
         // Properties
         self.properties = properties

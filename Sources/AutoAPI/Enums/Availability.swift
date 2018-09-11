@@ -19,28 +19,19 @@
 // licensing@high-mobility.com
 //
 //
-//  PositionState.swift
+//  Availability.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 27/11/2017.
+//  Created by Mikk Rätsep on 31/08/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum PositionState: UInt8 {
-
-    case closed = 0x00
-    case opened = 0x01
-
-    case intermediate   = 0x02
-
-
-    public static let close = PositionState.closed
-    public static let open = PositionState.opened
-}
-
-extension PositionState: PropertyConvertable {
-
+public enum Availability: UInt8 {
+    case pending    = 0x00
+    case idle       = 0x01
+    case successful = 0x02
+    case error      = 0x03
 }

@@ -32,6 +32,7 @@ import Foundation
 public struct VehicleStatus: InboundCommand {
 
     public let colourName: String?
+    public let displayUnit: DisplayUnit?
     public let engineVolume: Float?
     public let engineMaxTorque: UInt16?
     public let gearbox: Gearbox?
@@ -75,6 +76,7 @@ public struct VehicleStatus: InboundCommand {
         engineVolume = properties.value(for: 0x0C)
         engineMaxTorque = properties.value(for: 0x0D)
         gearbox = Gearbox(rawValue: properties.first(for: 0x0E)?.monoValue)
+        displayUnit = DisplayUnit(rawValue: properties.first(for: 0x0F)?.monoValue)
 
         states = properties.flatMap(for: 0x99) { property in
             stateTypes.flatMapFirst { $0.init(property.value) }

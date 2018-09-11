@@ -35,7 +35,7 @@ public struct DoorLock: Item {
 
 
     public let location: Location
-    public let lock: LockState  // TODO: I would prefer `public let isLocked: Bool`
+    public let lock: LockState
 
 
     // MARK: Item
