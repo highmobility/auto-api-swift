@@ -31,7 +31,10 @@ import Foundation
 
 public struct LightConditions: FullStandardCommand {
 
+    /// Value in *lux*.
     public let insideLight: Float?
+
+    /// Value in *lux*.
     public let outsideLight: Float?
 
 

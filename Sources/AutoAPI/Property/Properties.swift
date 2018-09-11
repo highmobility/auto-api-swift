@@ -95,6 +95,9 @@ extension Properties {
         case is Date.Type:
             return Date(bytes) as? ReturnType
 
+        case is Double.Type:
+            return Double(bytes) as? ReturnType
+
         case is Float.Type:
             return Float(bytes) as? ReturnType
 

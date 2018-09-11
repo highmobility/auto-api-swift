@@ -31,6 +31,7 @@ import Foundation
 
 #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     import CoreLocation
+
     public typealias Coordinate = CLLocationCoordinate2D
 #else
     public struct Coordinate {
@@ -57,19 +58,19 @@ import Foundation
 extension Coordinate {
 
     var bytes: [UInt8] {
-        return Float(latitude).bytes + Float(longitude).bytes
+        return latitude.bytes + longitude.bytes
     }
 }
 
 extension Coordinate: BinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        guard binary.count >= 8 else {
+        guard binary.count >= 16 else {
             return nil
         }
 
-        let latitudeBytes = Float(binary.bytes.prefix(upTo: 4))
-        let longitudeBytes = Float(binary.dropFirstBytes(4))
+        let latitudeBytes = Double(binary.bytes.prefix(upTo: 8))
+        let longitudeBytes = Double(binary.dropFirstBytes(8))
 
         self.init(latitude: Double(latitudeBytes), longitude: Double(longitudeBytes))
     }

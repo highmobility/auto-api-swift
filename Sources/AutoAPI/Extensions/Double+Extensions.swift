@@ -19,19 +19,27 @@
 // licensing@high-mobility.com
 //
 //
-//  UInt32+Extensions.swift
+//  Double+Extensions.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 28/11/2017.
+//  Created by Mikk Rätsep on 11/09/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
+import HMUtilities
 
 
-extension UInt32: BinaryInitable {
+extension Double: BinaryInitable {
 
     init<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        self = binary.bytes.prefix(4).reduce(UInt32(0)) { ($0 << 8) + $1.uint32 }
+        self = Double(bitPattern: UInt64(binary))
+    }
+}
+
+extension Double: PropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return bytes
     }
 }

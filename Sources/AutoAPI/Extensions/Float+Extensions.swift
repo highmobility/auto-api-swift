@@ -27,6 +27,7 @@
 //
 
 import Foundation
+import HMUtilities
 
 
 extension Float: BinaryInitable {

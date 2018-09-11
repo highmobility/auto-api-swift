@@ -37,6 +37,8 @@
 		20896EE821479DC5003A7A63 /* MovingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EE721479DC5003A7A63 /* MovingState.swift */; };
 		20896EEA21479F4A003A7A63 /* ConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EE921479F4A003A7A63 /* ConnectionState.swift */; };
 		20896EEC2147A024003A7A63 /* EnabledState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EEB2147A024003A7A63 /* EnabledState.swift */; };
+		20896EEE2147DE32003A7A63 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EED2147DE32003A7A63 /* Double+Extensions.swift */; };
+		20896EF02147DEC9003A7A63 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EEF2147DEC9003A7A63 /* Double+Extensions.swift */; };
 		2093A31E213941E7009E43A0 /* Availability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A31D213941E7009E43A0 /* Availability.swift */; };
 		2093A320213945E1009E43A0 /* Mobile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A31F213945E1009E43A0 /* Mobile.swift */; };
 		2093A32221394EF8009E43A0 /* Hood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A32121394EF8009E43A0 /* Hood.swift */; };
@@ -206,7 +208,6 @@
 		OBJ_413 /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_118 /* Sequence+Extensions.swift */; };
 		OBJ_414 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_119 /* String+Extensions.swift */; };
 		OBJ_415 /* UInt16+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_120 /* UInt16+Extensions.swift */; };
-		OBJ_416 /* UInt32+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_121 /* UInt32+Extensions.swift */; };
 		OBJ_417 /* UInt8+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_122 /* UInt8+Extensions.swift */; };
 		OBJ_418 /* UInt8Collection+Binary.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_123 /* UInt8Collection+Binary.swift */; };
 		OBJ_419 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_124 /* URL+Extensions.swift */; };
@@ -309,6 +310,8 @@
 		20896EE721479DC5003A7A63 /* MovingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingState.swift; sourceTree = "<group>"; };
 		20896EE921479F4A003A7A63 /* ConnectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionState.swift; sourceTree = "<group>"; };
 		20896EEB2147A024003A7A63 /* EnabledState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnabledState.swift; sourceTree = "<group>"; };
+		20896EED2147DE32003A7A63 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		20896EEF2147DEC9003A7A63 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		2093A31D213941E7009E43A0 /* Availability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Availability.swift; sourceTree = "<group>"; };
 		2093A31F213945E1009E43A0 /* Mobile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mobile.swift; sourceTree = "<group>"; };
 		2093A32121394EF8009E43A0 /* Hood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hood.swift; sourceTree = "<group>"; };
@@ -359,7 +362,6 @@
 		OBJ_119 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_12 /* Capabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capabilities.swift; sourceTree = "<group>"; };
 		OBJ_120 /* UInt16+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt16+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_121 /* UInt32+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt32+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_122 /* UInt8+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt8+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_123 /* UInt8Collection+Binary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt8Collection+Binary.swift"; sourceTree = "<group>"; };
 		OBJ_124 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
@@ -595,6 +597,7 @@
 			children = (
 				OBJ_113 /* Bool+Extensions.swift */,
 				20BB171B2142603A00A3FDB5 /* Date+Extensions.swift */,
+				20896EED2147DE32003A7A63 /* Double+Extensions.swift */,
 				OBJ_114 /* Float+Extensions.swift */,
 				OBJ_115 /* Int16+Extensions.swift */,
 				OBJ_116 /* Int8+Extensions.swift */,
@@ -602,7 +605,6 @@
 				OBJ_118 /* Sequence+Extensions.swift */,
 				OBJ_119 /* String+Extensions.swift */,
 				OBJ_120 /* UInt16+Extensions.swift */,
-				OBJ_121 /* UInt32+Extensions.swift */,
 				OBJ_122 /* UInt8+Extensions.swift */,
 				OBJ_123 /* UInt8Collection+Binary.swift */,
 				OBJ_124 /* URL+Extensions.swift */,
@@ -838,6 +840,7 @@
 			children = (
 				OBJ_222 /* Bool+Extensions.swift */,
 				2095DD6C20A45B81004DDB6C /* DebugTree.swift */,
+				20896EEF2147DEC9003A7A63 /* Double+Extensions.swift */,
 				OBJ_223 /* FixedWidthInteger+Extensions.swift */,
 				OBJ_224 /* Float+Extensions.swift */,
 				OBJ_225 /* SignedInteger+Extensions.swift */,
@@ -1265,6 +1268,7 @@
 				20896EEC2147A024003A7A63 /* EnabledState.swift in Sources */,
 				OBJ_322 /* Capability.swift in Sources */,
 				OBJ_323 /* CarSDKVersion.swift in Sources */,
+				20896EEE2147DE32003A7A63 /* Double+Extensions.swift in Sources */,
 				OBJ_324 /* Charging.swift in Sources */,
 				OBJ_325 /* ChassisSettings.swift in Sources */,
 				2093A32221394EF8009E43A0 /* Hood.swift in Sources */,
@@ -1370,7 +1374,6 @@
 				20F7903521356054003BDFA2 /* ChargingProfile.swift in Sources */,
 				OBJ_414 /* String+Extensions.swift in Sources */,
 				OBJ_415 /* UInt16+Extensions.swift in Sources */,
-				OBJ_416 /* UInt32+Extensions.swift in Sources */,
 				OBJ_417 /* UInt8+Extensions.swift in Sources */,
 				OBJ_418 /* UInt8Collection+Binary.swift in Sources */,
 				20F7903D2135713A003BDFA2 /* ConvertibleRoofState.swift in Sources */,
@@ -1428,6 +1431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				20896EF02147DEC9003A7A63 /* Double+Extensions.swift in Sources */,
 				OBJ_464 /* Bool+Extensions.swift in Sources */,
 				OBJ_465 /* FixedWidthInteger+Extensions.swift in Sources */,
 				OBJ_466 /* Float+Extensions.swift in Sources */,
