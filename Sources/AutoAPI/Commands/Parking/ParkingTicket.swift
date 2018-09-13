@@ -65,10 +65,10 @@ extension ParkingTicket: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case getParkingTicket   = 0x00
-        case parkingTicket      = 0x01
-        case startParking       = 0x02
-        case endParking         = 0x03
+        case getTicket      = 0x00
+        case parkingTicket  = 0x01
+        case startParking   = 0x02
+        case endParking     = 0x03
     }
 }
 
@@ -93,8 +93,8 @@ public extension ParkingTicket {
         return commandPrefix(for: .endParking)
     }
 
-    static var getParkingTicket: [UInt8] {
-        return commandPrefix(for: .getParkingTicket)
+    static var getTicket: [UInt8] {
+        return commandPrefix(for: .getTicket)
     }
 
     static var startParking: (Settings) -> [UInt8] {

@@ -41,7 +41,7 @@ public struct WiFi: FullStandardCommand {
 
     // MARK: FullStandardCommand
 
-    public var properties: Properties
+    public let properties: Properties
 
 
     init?(properties: Properties) {
@@ -65,11 +65,11 @@ extension WiFi: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case getWifiState       = 0x00
-        case wifiState          = 0x01
+        case getState           = 0x00
+        case state              = 0x01
         case connectToNetwork   = 0x02
         case forgetNetwork      = 0x03
-        case enableDisableWifi  = 0x04
+        case setWifiState       = 0x04
     }
 }
 
@@ -98,11 +98,8 @@ public extension WiFi {
         }
     }
 
-    /// Use `false` to *disable*.
-    static var enableWifi: (Bool) -> [UInt8] {
-        return {
-            return commandPrefix(for: .enableDisableWifi) + $0.propertyBytes(0x04)
-        }
+    static var getWifiState: [UInt8] {
+        return commandPrefix(for: .getState)
     }
 
     static var forgetNetwork: (NetworkSSID) -> [UInt8] {
@@ -111,7 +108,9 @@ public extension WiFi {
         }
     }
 
-    static var getWifiState: [UInt8] {
-        return commandPrefix(for: .getWifiState)
+    static var setWifiState: (ActiveState) -> [UInt8] {
+        return {
+            return commandPrefix(for: .setWifiState) + $0.propertyBytes(0x04)
+        }
     }
 }

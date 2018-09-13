@@ -57,22 +57,21 @@ extension ValetMode: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case getValetMode                   = 0x00
-        case valetMode                      = 0x01
-        case activateDeactivateValetMode    = 0x02
+        case getState   = 0x00
+        case state      = 0x01
+        case setState   = 0x02
     }
 }
 
 public extension ValetMode {
 
-    /// Use `false` to *deactivate*.
-    static var activateValetMode: (Bool) -> [UInt8] {
-        return {
-            return commandPrefix(for: .activateDeactivateValetMode) + $0.propertyValue
-        }
+    static var getState: [UInt8] {
+        return commandPrefix(for: .getState)
     }
 
-    static var getValetMode: [UInt8] {
-        return commandPrefix(for: .getValetMode)
+    static var setState: (ActiveState) -> [UInt8] {
+        return {
+            return commandPrefix(for: .setState) + $0.propertyBytes(0x01)
+        }
     }
 }

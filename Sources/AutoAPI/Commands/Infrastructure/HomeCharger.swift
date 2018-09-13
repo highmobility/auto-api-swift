@@ -33,6 +33,7 @@ public struct HomeCharger: FullStandardCommand {
 
     public let authenticationMechanism: AuthenticationMechanism?
     public let chargeCurrent: ChargeCurrent?
+
     /// In kilowatts
     public let chargingPower: Float?
     public let chargingState: ChargingState?
@@ -48,7 +49,7 @@ public struct HomeCharger: FullStandardCommand {
 
     // MARK: FullStandardCommand
 
-    public var properties: Properties
+    public let properties: Properties
 
 
     init?(properties: Properties) {
@@ -80,12 +81,12 @@ extension HomeCharger: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case getHomeChargerState                = 0x00
-        case homeChargerState                   = 0x01
-        case setChargeCurrent                   = 0x02
-        case setPriceTariffs                    = 0x03
-        case activateDeactivateSolarCharging    = 0x04
-        case enableDisableWifiHotspot           = 0x05
+        case getChargerState        = 0x00
+        case chargerState           = 0x01
+        case setChargeCurrent       = 0x02
+        case setPriceTariffs        = 0x03
+        case setSolarChargingState  = 0x04
+        case setWifiHotspotState    = 0x05
     }
 }
 
@@ -94,27 +95,25 @@ public extension HomeCharger {
     typealias PriceTariff = PricingTariff
 
 
-    /// Use `false` to *deactivate*.
-    static var activateSolarCharging: (Bool) -> [UInt8] {
+    static var setSolarChargingState: (ActiveState) -> [UInt8] {
         return {
-            return commandPrefix(for: .activateDeactivateSolarCharging) + $0.propertyValue
+            return commandPrefix(for: .setSolarChargingState) + $0.propertyBytes(0x01)
         }
     }
 
-    /// Use `false` to *disable*.
-    static var enableWifiHotspot: (Bool) -> [UInt8] {
+    static var setWifiHotspotState: (ActiveState) -> [UInt8] {
         return {
-            return commandPrefix(for: .enableDisableWifiHotspot) + $0.propertyValue
+            return commandPrefix(for: .setWifiHotspotState) + $0.propertyBytes(0x01)
         }
     }
 
-    static var getHomeChargerState: [UInt8] {
-        return commandPrefix(for: .getHomeChargerState)
+    static var getChargerState: [UInt8] {
+        return commandPrefix(for: .getChargerState)
     }
 
     static var setChargeCurrent: (Float) -> [UInt8] {
         return {
-            return commandPrefix(for: .setChargeCurrent) + $0.propertyValue
+            return commandPrefix(for: .setChargeCurrent) + $0.propertyBytes(0x01)
         }
     }
 

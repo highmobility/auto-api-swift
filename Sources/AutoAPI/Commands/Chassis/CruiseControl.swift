@@ -40,7 +40,7 @@ public struct CruiseControl: FullStandardCommand {
 
     // MARK: FullStandardCommand
 
-    public var properties: Properties
+    public let properties: Properties
 
 
     init?(properties: Properties) {

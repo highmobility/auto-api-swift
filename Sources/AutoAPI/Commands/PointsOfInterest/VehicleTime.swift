@@ -52,8 +52,8 @@ extension VehicleTime: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case getVehicleTime = 0x00
-        case vehicleTime    = 0x01
+        case getTime    = 0x00
+        case time       = 0x01
     }
 }
 
@@ -64,7 +64,7 @@ extension VehicleTime: Identifiable {
 
 public extension VehicleTime {
 
-    static var getVehicleTime: [UInt8] {
-        return commandPrefix(for: .getVehicleTime)
+    static var getTime: [UInt8] {
+        return commandPrefix(for: .getTime)
     }
 }

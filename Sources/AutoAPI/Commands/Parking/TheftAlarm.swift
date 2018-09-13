@@ -57,21 +57,21 @@ extension TheftAlarm: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case getTheftAlarmState = 0x00
-        case theftAlarmState    = 0x01
-        case setTheftAlarm      = 0x02
+        case getAlarmState  = 0x00
+        case alarmState     = 0x01
+        case setAlarmState  = 0x02
     }
 }
 
 public extension TheftAlarm {
 
-    static var getTheftAlarmState: [UInt8] {
-        return commandPrefix(for: .getTheftAlarmState)
+    static var getAlarmState: [UInt8] {
+        return commandPrefix(for: .getAlarmState)
     }
 
-    static var setTheftAlarm: (TheftAlarmState) -> [UInt8] {
+    static var setAlarmState: (TheftAlarmState) -> [UInt8] {
         return {
-            return commandPrefix(for: .setTheftAlarm, additionalBytes: $0.rawValue)
+            return commandPrefix(for: .setAlarmState) + $0.propertyBytes(0x01)
         }
     }
 }

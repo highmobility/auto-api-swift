@@ -36,7 +36,7 @@ public struct StartStop: FullStandardCommand {
 
     // MARK: FullStandardCommand
 
-    public var properties: Properties
+    public let properties: Properties
 
 
     init?(properties: Properties) {
@@ -57,21 +57,21 @@ extension StartStop: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case getStartStopState              = 0x00
-        case startStopState                 = 0x01
-        case activateDeactivateStartStop    = 0x02
+        case getState   = 0x00
+        case state      = 0x01
+        case setState   = 0x02
     }
 }
 
 public extension StartStop {
 
-    static var getStartStopState: [UInt8] {
-        return commandPrefix(for: .getStartStopState)
+    static var getState: [UInt8] {
+        return commandPrefix(for: .getState)
     }
 
-    static var activateStartStop: (ActiveState) -> [UInt8] {
+    static var setState: (ActiveState) -> [UInt8] {
         return {
-            return commandPrefix(for: .activateDeactivateStartStop) + $0.propertyBytes(0x01)
+            return commandPrefix(for: .setState) + $0.propertyBytes(0x01)
         }
     }
 }

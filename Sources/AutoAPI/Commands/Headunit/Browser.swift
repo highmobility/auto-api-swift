@@ -43,7 +43,7 @@ extension Browser: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case loadURL    = 0x00
+        case loadURL = 0x00
     }
 }
 

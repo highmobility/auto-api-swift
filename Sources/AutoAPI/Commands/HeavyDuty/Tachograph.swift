@@ -42,7 +42,7 @@ public struct Tachograph: FullStandardCommand {
 
     // MARK: FullStandardCommand
 
-    public var properties: Properties
+    public let properties: Properties
 
 
     init?(properties: Properties) {
@@ -69,14 +69,14 @@ extension Tachograph: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case getTachographState = 0x00
-        case tachographState    = 0x01
+        case getState = 0x00
+        case state    = 0x01
     }
 }
 
 public extension Tachograph {
 
-    static var getTachographState: [UInt8] {
-        return commandPrefix(for: .getTachographState)
+    static var getState: [UInt8] {
+        return commandPrefix(for: .getState)
     }
 }

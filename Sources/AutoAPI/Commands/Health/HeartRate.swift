@@ -42,15 +42,15 @@ extension HeartRate: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case sendHeartRate  = 0x02
+        case sendRate = 0x02
     }
 }
 
 public extension HeartRate {
 
-    static var sendHeartRate: (UInt8) -> [UInt8] {
+    static var sendRate: (UInt8) -> [UInt8] {
         return {
-            return commandPrefix(for: .sendHeartRate, additionalBytes: $0)
+            return commandPrefix(for: .sendRate, additionalBytes: $0)
         }
     }
 }

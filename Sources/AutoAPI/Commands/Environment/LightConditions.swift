@@ -62,14 +62,14 @@ extension LightConditions: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case getLightConditions = 0x00
-        case lightConditions    = 0x01
+        case getConditions  = 0x00
+        case conditions     = 0x01
     }
 }
 
 public extension LightConditions {
 
-    static var getLightConditions: [UInt8] {
-        return commandPrefix(for: .getLightConditions)
+    static var getConditions: [UInt8] {
+        return commandPrefix(for: .getConditions)
     }
 }

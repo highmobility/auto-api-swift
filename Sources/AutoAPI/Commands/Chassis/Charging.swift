@@ -132,10 +132,9 @@ public extension Charging {
         }
     }
 
-    /// Use `false` to *stop*.
-    static var startCharging: (Bool) -> [UInt8] {
+    static var setChargingState: (ActiveState) -> [UInt8] {
         return {
-            return commandPrefix(for: .startStopCharging, additionalBytes: $0.byte)
+            return commandPrefix(for: .startStopCharging) + $0.propertyBytes(0x01)
         }
     }
 }

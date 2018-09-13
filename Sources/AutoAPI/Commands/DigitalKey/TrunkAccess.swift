@@ -59,9 +59,9 @@ extension TrunkAccess: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case getTrunkState  = 0x00
-        case trunkState     = 0x01
-        case openCloseTrunk = 0x02
+        case getState   = 0x00
+        case state      = 0x01
+        case setState   = 0x02
     }
 }
 
@@ -78,8 +78,8 @@ public extension TrunkAccess {
     }
 
 
-    static var getTrunkState: [UInt8] {
-        return commandPrefix(for: .getTrunkState)
+    static var getState: [UInt8] {
+        return commandPrefix(for: .getState)
     }
 
     static var openClose: (Settings) -> [UInt8] {
@@ -87,7 +87,7 @@ public extension TrunkAccess {
             let lockBytes: [UInt8] = $0.lock?.propertyBytes(0x01) ?? []
             let positionBytes: [UInt8] = $0.position?.propertyBytes(0x02) ?? []
 
-            return commandPrefix(for: .openCloseTrunk) + lockBytes + positionBytes
+            return commandPrefix(for: .setState) + lockBytes + positionBytes
         }
     }
 }

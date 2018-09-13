@@ -77,10 +77,9 @@ public extension HonkHornFlashFlights {
     }
 
 
-    /// Use `false` to *inactivate*.
-    static var activateEmergencyFlasher: (Bool) -> [UInt8] {
+    static var setEmergencyFlasherState: (ActiveState) -> [UInt8] {
         return {
-            return commandPrefix(for: .activateDeactivateEmergencyFlasher, additionalBytes: $0.byte)
+            return commandPrefix(for: .activateDeactivateEmergencyFlasher) + $0.propertyBytes(0x01)
         }
     }
 

@@ -40,6 +40,5 @@ public enum ActiveState: UInt8 {
 }
 
 extension ActiveState: PropertyConvertable {
-
     
 }

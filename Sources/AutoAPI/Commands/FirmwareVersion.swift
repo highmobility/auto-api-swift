@@ -65,14 +65,14 @@ extension FirmwareVersion: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case getFirmwareVersion = 0x00
-        case firmwareVersion    = 0x01
+        case getVersion = 0x00
+        case version    = 0x01
     }
 }
 
 public extension FirmwareVersion {
 
-    static var getFirmwareVersion: [UInt8] {
-        return commandPrefix(for: .getFirmwareVersion)
+    static var getVersion: [UInt8] {
+        return commandPrefix(for: .getVersion)
     }
 }

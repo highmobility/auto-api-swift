@@ -67,9 +67,9 @@ extension NaviDestination: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case getNaviDestination = 0x00
-        case naviDestination    = 0x01
-        case setNaviDestination = 0x02
+        case getDestination = 0x00
+        case destination    = 0x01
+        case setDestination = 0x02
     }
 }
 
@@ -86,8 +86,8 @@ public extension NaviDestination {
     }
 
 
-    static var getNaviDestination: [UInt8] {
-        return commandPrefix(for: .getNaviDestination)
+    static var getDestination: [UInt8] {
+        return commandPrefix(for: .getDestination)
     }
 
     static var setDestination: (Destination) -> [UInt8] {
@@ -95,7 +95,7 @@ public extension NaviDestination {
             let coordinateBytes = $0.coordinate.propertyBytes(0x01)
             let nameBytes: [UInt8] = $0.name?.propertyBytes(0x02) ?? []
 
-            return commandPrefix(for: .setNaviDestination) + coordinateBytes + nameBytes
+            return commandPrefix(for: .setDestination) + coordinateBytes + nameBytes
         }
     }
 }

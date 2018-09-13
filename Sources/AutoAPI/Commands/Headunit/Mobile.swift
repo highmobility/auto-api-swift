@@ -58,14 +58,14 @@ extension Mobile: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case getMobileConnectionState   = 0x00
-        case mobileConnectionState      = 0x01
+        case getConnectionState   = 0x00
+        case connectionState      = 0x01
     }
 }
 
 public extension Mobile {
 
-    static var getMobileConnectionState: [UInt8] {
-        return commandPrefix(for: .getMobileConnectionState)
+    static var getConnectionState: [UInt8] {
+        return commandPrefix(for: .getConnectionState)
     }
 }

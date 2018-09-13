@@ -63,8 +63,8 @@ extension Messaging: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case messageReceived    = 0x00
-        case sendMessage        = 0x01
+        case received   = 0x00
+        case send       = 0x01
     }
 }
 
@@ -81,12 +81,12 @@ public extension Messaging {
     }
 
 
-    static var messageReceived: (Message) -> [UInt8] {
+    static var received: (Message) -> [UInt8] {
         return {
             let handleBytes: [UInt8] = $0.senderHandle?.propertyBytes(0x01) ?? []
             let textBytes: [UInt8] = $0.text.propertyBytes(0x02)
 
-            return commandPrefix(for: .messageReceived) + handleBytes + textBytes
+            return commandPrefix(for: .received) + handleBytes + textBytes
         }
     }
 }

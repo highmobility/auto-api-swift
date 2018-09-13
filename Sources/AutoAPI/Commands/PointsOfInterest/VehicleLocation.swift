@@ -56,8 +56,8 @@ extension VehicleLocation: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case getVehicleLocation = 0x00
-        case vehicleLocation    = 0x01
+        case getLocation    = 0x00
+        case location       = 0x01
     }
 }
 
@@ -68,7 +68,7 @@ extension VehicleLocation: Identifiable {
 
 public extension VehicleLocation {
 
-    static var getVehicleLocation: [UInt8] {
-        return commandPrefix(for: .getVehicleLocation)
+    static var getLocation: [UInt8] {
+        return commandPrefix(for: .getLocation)
     }
 }

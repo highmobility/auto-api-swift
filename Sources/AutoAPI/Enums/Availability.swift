@@ -30,6 +30,7 @@ import Foundation
 
 
 public enum Availability: UInt8 {
+
     case pending    = 0x00
     case idle       = 0x01
     case successful = 0x02

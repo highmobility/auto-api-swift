@@ -57,14 +57,14 @@ extension WeatherConditions: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case getWeatherConditions   = 0x00
-        case weatherConditions      = 0x01
+        case getConditions  = 0x00
+        case conditions     = 0x01
     }
 }
 
 public extension WeatherConditions {
 
-    static var getWeatherConditions: [UInt8] {
-        return commandPrefix(for: .getWeatherConditions)
+    static var getConditions: [UInt8] {
+        return commandPrefix(for: .getConditions)
     }
 }

@@ -114,31 +114,27 @@ public extension Climate {
         }
     }
 
-    /// Use `false` to *stop*.
-    static var startDefogging: (Bool) -> [UInt8] {
+    static var setDefoggingState: (ActiveState) -> [UInt8] {
         return {
-            return commandPrefix(for: .startStopDefogging, additionalBytes: $0.byte)
+            return commandPrefix(for: .startStopDefogging) + $0.propertyBytes(0x01)
         }
     }
 
-    /// Use `false` to *stop*.
-    static var startDefrosting: (Bool) -> [UInt8] {
+    static var setDefrostingState: (ActiveState) -> [UInt8] {
         return {
-            return commandPrefix(for: .startStopDefrosting, additionalBytes: $0.byte)
+            return commandPrefix(for: .startStopDefrosting) + $0.propertyBytes(0x01)
         }
     }
 
-    /// Use `false` to *stop*.
-    static var startHVAC: (Bool) -> [UInt8] {
+    static var setHVACState: (ActiveState) -> [UInt8] {
         return {
-            return commandPrefix(for: .startStopHVAC, additionalBytes: $0.byte)
+            return commandPrefix(for: .startStopHVAC) + $0.propertyBytes(0x01)
         }
     }
 
-    /// Use `false` to *stop*.
-    static var startIonising: (Bool) -> [UInt8] {
+    static var setIonisingState: (ActiveState) -> [UInt8] {
         return {
-            return commandPrefix(for: .startStopIonising, additionalBytes: $0.byte)
+            return commandPrefix(for: .startStopIonising) + $0.propertyBytes(0x01)
         }
     }
 }

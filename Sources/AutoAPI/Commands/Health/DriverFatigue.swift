@@ -56,7 +56,7 @@ extension DriverFatigue: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case driverFatigueDetected  = 0x01
+        case fatigueDetected  = 0x01
     }
 }
 

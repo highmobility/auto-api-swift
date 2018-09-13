@@ -57,22 +57,21 @@ extension ParkingBrake: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case getParkingBrakeState   = 0x00
-        case parkingBrakeState      = 0x01
-        case setParkingBrake        = 0x02
+        case getBrakeState  = 0x00
+        case brakeState     = 0x01
+        case setBrakeState  = 0x02
     }
 }
 
 public extension ParkingBrake {
 
-    /// Use `false` to *inactivate*.
-    static var activate: (Bool) -> [UInt8] {
-        return {
-            return commandPrefix(for: .setParkingBrake) + [$0 ? 0x01 : 0x00]
-        }
+    static var getBrakeState: [UInt8] {
+        return commandPrefix(for: .getBrakeState)
     }
 
-    static var getParkingBrakeState: [UInt8] {
-        return commandPrefix(for: .getParkingBrakeState)
+    static var setBrakeState: (ActiveState) -> [UInt8] {
+        return {
+            return commandPrefix(for: .setBrakeState) + $0.propertyBytes(0x01)
+        }
     }
 }

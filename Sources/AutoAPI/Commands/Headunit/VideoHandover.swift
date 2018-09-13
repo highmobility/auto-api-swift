@@ -42,7 +42,7 @@ extension VideoHandover: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case videoHandover  = 0x00
+        case handover  = 0x00
     }
 }
 
@@ -67,7 +67,7 @@ public extension VideoHandover {
             let secondBytes: [UInt8] = $0.startingSecond?.propertyBytes(0x02) ?? []
             let screenBytes: [UInt8] = $0.screen?.propertyBytes(0x03) ?? []
 
-            return commandPrefix(for: .videoHandover) + urlBytes + secondBytes + screenBytes
+            return commandPrefix(for: .handover) + urlBytes + secondBytes + screenBytes
         }
     }
 }

@@ -42,7 +42,7 @@ extension TextInput: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case textInput  = 0x00
+        case input  = 0x00
     }
 }
 
@@ -50,7 +50,7 @@ public extension TextInput {
 
     static var textInput: (String) -> [UInt8] {
         return {
-            return commandPrefix(for: .textInput) + $0.propertyBytes(0x01)
+            return commandPrefix(for: .input) + $0.propertyBytes(0x01)
         }
     }
 }

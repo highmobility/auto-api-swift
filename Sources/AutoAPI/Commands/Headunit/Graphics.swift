@@ -42,7 +42,7 @@ extension Graphics: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case displayImage   = 0x00
+        case displayImage = 0x00
     }
 }
 

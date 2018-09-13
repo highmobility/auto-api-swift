@@ -73,10 +73,9 @@ public extension Engine {
         return commandPrefix(for: .getIgnitionState)
     }
 
-    /// Use `false` to turn ignition *off*.
-    static var turnIgnitionOn: (Bool) -> [UInt8] {
+    static var setIgnitionState: (ActiveState) -> [UInt8] {
         return {
-            return commandPrefix(for: .turnEngineOnOff, additionalBytes: $0.byte)
+            return commandPrefix(for: .turnEngineOnOff) + $0.propertyBytes(0x01)
         }
     }
 }
