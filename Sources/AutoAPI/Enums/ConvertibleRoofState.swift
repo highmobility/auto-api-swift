@@ -57,5 +57,5 @@ public enum ConvertibleRoofState: UInt8 {
     case hardTopMounted             = 0x05
     case intermediatePosition       = 0x06
     case loadingPosition            = 0x07
-    case lodaingPositionImmediate   = 0x08
+    case loadingPositionImmediate   = 0x08
 }

@@ -30,26 +30,6 @@ import Foundation
 import HMUtilities
 
 
-/*
-
- - master:
-    AutoAPI
-
-
- - current:
-    Charging
-    DrivingMode.ActivationPeriod
-
-
- - proposed:
-    AutoAPI.Charging
-    AACharging         // shorter, but AA is a bit weird
-    AutoAPI.DrivingMode.ActivationPeriod
-    AADrivingMode.ActivationPeriod     // shorter, but AA is a bit weird
-
- */
-
-
 public typealias PercentageInt = UInt8
 
 

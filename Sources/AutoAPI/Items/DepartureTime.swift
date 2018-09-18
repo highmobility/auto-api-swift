@@ -19,53 +19,42 @@
 // licensing@high-mobility.com
 //
 //
-//  Time.swift
+//  DepartureTime.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 30/11/2017.
+//  Created by Mikk Rätsep on 18/09/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct DayTime {
+public struct DepartureTime {
 
-    public let hour: UInt8
-    public let minute: UInt8
-
-
-    // MARK: Type Vars
-
-    public static let zero: DayTime = DayTime(hour: 0, minute: 0)
-
-
-    // MARK: Init
-
-    public init(hour: UInt8, minute: UInt8) {
-        self.hour = hour % 24
-        self.minute = minute % 60
-    }
+    public let state: ActiveState
+    public let time: DayTime?
 }
 
-extension DayTime: BinaryInitable {
+extension DepartureTime: BinaryInitable {
 
-    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        guard binary.count >= 2 else {
+    /// 0xFF for "no time"
+    init?(bytes: [UInt8]) {
+        guard let activeState = ActiveState(rawValue: bytes[0]) else {
             return nil
         }
 
-        hour = binary.bytes[0]
-        minute = binary.bytes[1]
+        state = activeState
+
+        if (bytes[1] == 0xFF) || (bytes[2] == 0xFF) {
+            time = nil
+        }
+        else {
+            time = DayTime(bytes[2...])
+        }
     }
 }
 
-extension DayTime: Item {
+extension DepartureTime: Item {
 
-    static var size: Int = 2
-
-
-    init?(bytes: [UInt8]) {
-        self.init(bytes)
-    }
+    static var size: Int = 3
 }

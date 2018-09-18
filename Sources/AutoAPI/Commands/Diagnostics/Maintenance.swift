@@ -36,6 +36,7 @@ public struct Maintenance: FullStandardCommand {
 
     public let automaticTeleserviceCallDate: Date?
     public let cbsReportsCount: UInt8?
+    public let conditionBasedServices: [ConditionBasedService]?
     public let daysToNextService: Int16?
     public let kmToNextService: UInt32?
     public let monthsToExhaustInspection: UInt8?
@@ -63,6 +64,7 @@ public struct Maintenance: FullStandardCommand {
         automaticTeleserviceCallDate = properties.value(for: 0x08)
         teleserviceBatteryCallDate = properties.value(for: 0x09)
         nextInspectionDate = properties.value(for: 0x0A)
+        conditionBasedServices = properties.flatMap(for: 0x0B) { ConditionBasedService($0.value) }
 
         // Properties
         self.properties = properties

@@ -37,6 +37,6 @@ public enum DueStatus: UInt8 {
     /// Service imminently due
     case pending    = 0x01
 
-    // Service overdue
+    /// Service overdue
     case overdue    = 0x02
 }

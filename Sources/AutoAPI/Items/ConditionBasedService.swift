@@ -29,54 +29,53 @@
 import Foundation
 
 
-/*
-
- date:2017-09
- description:Next change at specified date at the latest.
-
- id:3
- messageType:CBS
- status:OK
- text:Brake fluid
- date:2017- 09
- description:Next visual inspection after specified distance travelled or on given date.
-
- id:17
- messageType:CBS
- status:OK
- text:Vehicle check
- date:2018-10
- description:Next mandatory vehicle inspection on specified date.
-
- id:32
- messageType:CBS
- status:OK
- text:§ Vehicle inspection
-
-
- Possible status values:
- OK means “Service not due“.
- PENDING means “Service imminently due“.
- OVERDUE means “Service overdue“.
-
-
- pane property'sse sisse stringide suurused ja kõik kokku ühe alla
-
- */
-
 public struct ConditionBasedService {
 
+    public let date: Date
+    public let description: String
+    public let id: UInt16
     public let status: DueStatus
     public let text: String
-    public let date: Date
-    public let description: Stream
 }
 
 extension ConditionBasedService: BinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        // TODO: This won't work – there's NO FIXED bytes for them strings
-        // TODO: Might need to concot a sub-property structure for these kinds of things
-        return nil
+        guard binary.count >= 7 else {
+            return nil
+        }
+
+        // Gather some values
+        let bytes = binary.bytes
+        let year = bytes[0].int + 2000
+        let month = bytes[1].int
+        let id = UInt16(bytes[2...3])
+        let textSize = UInt16(bytes[5...6]).int
+
+        guard let date = DateComponents(year: year, month: month).date,
+            let status = DueStatus(rawValue: bytes[4]) else {
+                return nil
+        }
+
+        // Check there's enough bytes (for text)
+        guard bytes.count >= (7 + textSize) else {
+            return nil
+        }
+
+        // Create strings
+        let textBytes = bytes.dropFirstBytes(7).prefix(textSize)
+        let descBytes = bytes.dropFirstBytes(7 + textSize)
+
+        guard let text = String(bytes: textBytes, encoding: .utf8),
+            let description = String(bytes: descBytes, encoding: .utf8) else {
+                return nil
+        }
+
+        // Set the iVars
+        self.date = date
+        self.id = id
+        self.status = status
+        self.text = text
+        self.description = description
     }
 }

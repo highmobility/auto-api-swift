@@ -34,18 +34,17 @@ protocol PropertyConvertable {
     typealias Identifier = UInt8
 
 
-    var propertyBytes: (Identifier) -> [UInt8] { get }
     var propertyValue: [UInt8] { get }
+
+    func propertyBytes(_ id: Identifier) -> [UInt8]
 }
 
 extension PropertyConvertable {
 
-    var propertyBytes: (Identifier) -> [UInt8] {
-        return {
-            let size = self.propertyValue.count
+    func propertyBytes(_ id: Identifier) -> [UInt8] {
+        let size = propertyValue.count
 
-            return [$0, UInt8((size >> 8) & 0xFF), UInt8(size & 0xFF)] + self.propertyValue
-        }
+        return [id, UInt8((size >> 8) & 0xFF), UInt8(size & 0xFF)] + propertyValue
     }
 }
 

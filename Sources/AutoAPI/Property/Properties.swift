@@ -89,8 +89,8 @@ extension Properties {
 
 
         /*** OTHERs ***/
-        case is Bool.Type:
-            return (firstByte == 0x01) as? ReturnType
+        case is ActiveState.Type:
+            return ActiveState(rawValue: firstByte) as? ReturnType
 
         case is Date.Type:
             return Date(bytes) as? ReturnType

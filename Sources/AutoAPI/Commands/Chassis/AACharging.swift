@@ -43,9 +43,12 @@ public struct Charging: FullStandardCommand {
     public let chargingMethod: ChargingMethod?
     public let chargingRate: Float?
     public let chargingState: ChargingState?
-    public let chargingWindowChosenState: ChosenState?
+    public let chargingWindowChosen: ChosenState?
+    public let climatisationActive: ActiveState?
+    public let departureTimes: [DepartureTime]?
     public let estimatedRange: UInt16?
     public let maxChargingCurrentAC: Float?
+    public let reductionOfChargingCurrentTimes: [DayTime]?
     public let timeToCompleteCharge: UInt16?
 
 
@@ -71,7 +74,10 @@ public struct Charging: FullStandardCommand {
         chargeTimer = ChargeTimer(properties.first(for: 0x0D)?.value ?? [])
         maxChargingCurrentAC = properties.value(for: 0x0E)
         chargingMethod = ChargingMethod(rawValue: properties.first(for: 0x0F)?.monoValue)
-        chargingWindowChosenState = ChosenState(rawValue: properties.first(for: 0x10)?.monoValue)
+        chargingWindowChosen = ChosenState(rawValue: properties.first(for: 0x10)?.monoValue)
+        departureTimes = properties.flatMap(for: 0x11) { DepartureTime($0.value) }
+        climatisationActive = properties.value(for: 0x12)
+        reductionOfChargingCurrentTimes = properties.flatMap(for: 0x13) { DayTime($0.value) }
 
         // Properties
         self.properties = properties
@@ -80,7 +86,7 @@ public struct Charging: FullStandardCommand {
 
 extension Charging: Identifiable {
 
-    public static var identifier: Identifier = Identifier(0x0023)
+    public static var identifier: Identifier = 0x0023
 }
 
 extension Charging: MessageTypesGettable {

@@ -38,6 +38,7 @@ public struct Diagnostics: FullStandardCommand {
     public let batteryVoltage: Float?
     public let brakeFluidLevel: FluidLevel?
     public let brakeFluidChangeDate: Date?  // TODO: Move to Maintenace
+    public let checkControlMessages: [CheckControlMessage]?
     public let currentFuelConsumption: Float?   // TODO: Move to Usage
     public let dieselExhaustFluid: Float?
     public let distanceSinceReset: UInt16?
@@ -92,6 +93,7 @@ public struct Diagnostics: FullStandardCommand {
         wheelBasedSpeed = properties.value(for: 0x17)
         brakeFluidChangeDate = properties.value(for: 0x18)
         batteryLevel = properties.value(for: 0x19)
+        checkControlMessages = properties.flatMap(for: 0x1A) { CheckControlMessage($0.value) }
 
         // Properties
         self.properties = properties

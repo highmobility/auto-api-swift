@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  ClimateProfile.swift
+//  AAClimateProfile.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 30/11/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct ClimateProfile: Item {
+public struct AAClimateProfile: Item {
 
     public let activatedDays: ActivatedDays
     public let weekdaysStartingTimes: WeekdaysTimes
@@ -48,7 +48,7 @@ public struct ClimateProfile: Item {
     }
 }
 
-extension ClimateProfile: BinaryInitable {
+extension AAClimateProfile: BinaryInitable {
 
     init?(bytes: [UInt8]) {
         guard let startingTimes = WeekdaysTimes(bytes.dropFirstBytes(1)) else {
@@ -60,7 +60,7 @@ extension ClimateProfile: BinaryInitable {
     }
 }
 
-extension ClimateProfile: PropertyConvertable {
+extension AAClimateProfile: PropertyConvertable {
 
     var propertyValue: [UInt8] {
         return [activatedDays.rawValue] + weekdaysStartingTimes.bytes

@@ -29,37 +29,45 @@
 import Foundation
 
 
-/*
-
- {
-    "name":"bmwcardata_checkControlMessages",
-    "timestamp":"Thu Aug 31 14:21:53 CEST 2017",
-    "unit":"- ",
-    "value":"[{
-        "id":143,
-        "messageType":"CCM",
-        "status":"ZERO",
-        "text":"Tyre pressure loss. Caution stop",
-        "unitOfLengthRemaining":"105592"
-    }]
- "}
-
- */
-
 public struct CheckControlMessage {
 
-//    public let id: Int        // Not sure if this is useful here
-//    public let type: String   // CCM denotes Check Control Message
+    public let id: UInt16
+    public let remainingLength: UInt32
     public let status: String
     public let text: String
-    public let remainingLength: Int
 }
 
 extension CheckControlMessage: BinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        // TODO: This won't work – there's NO FIXED bytes for them strings
-        // TODO: Might need to concot a sub-property structure for these kinds of things
-        return nil
+        guard binary.count >= 8 else {
+            return nil
+        }
+
+        // Gather some values
+        let bytes = binary.bytes
+        let id = UInt16(bytes[0...1])
+        let remainingLength = UInt32(bytes[2...6])
+        let textSize = UInt16(bytes[7...8]).int
+
+        // Check for enough bytes
+        guard bytes.count >= (8 + textSize) else {
+            return nil
+        }
+
+        let textBytes = bytes.dropFirstBytes(8).prefix(textSize)
+        let statusBytes = bytes.dropFirstBytes(8 + textSize)
+
+        // Create strings
+        guard let text = String(bytes: textBytes, encoding: .utf8),
+            let status = String(bytes: statusBytes, encoding: .utf8) else {
+                return nil
+        }
+
+        // Set the iVars
+        self.id = id
+        self.remainingLength = remainingLength
+        self.status = status
+        self.text = text
     }
 }

@@ -31,7 +31,7 @@ import Foundation
 
 public struct Climate: FullStandardCommand {
 
-    public let climateProfile: ClimateProfile?
+    public let climateProfile: AAClimateProfile?
     public let defrostingTemperature: Float?
     public let driverTemperature: Float?
     public let insideTemperature: Float?
@@ -59,7 +59,7 @@ public struct Climate: FullStandardCommand {
         defrostingState = ActiveState(rawValue: properties.first(for: 0x07)?.monoValue)
         ionisingState = ActiveState(rawValue: properties.first(for: 0x08)?.monoValue)
         defrostingTemperature = properties.value(for: 0x09)
-        climateProfile = ClimateProfile(bytes: properties.first(for: 0x0A)?.value)
+        climateProfile = AAClimateProfile(bytes: properties.first(for: 0x0A)?.value)
 
         // Properties
         self.properties = properties

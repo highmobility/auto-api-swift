@@ -32,6 +32,7 @@ import HMUtilities
 
 public protocol Command: Identifiable {
 
+    // FIXME: Not sure this should be here
     var debugTree: DebugTree { get }
 }
 

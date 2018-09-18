@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2028370B2150D17E0001724A /* DepartureTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2028370A2150D17E0001724A /* DepartureTime.swift */; };
 		205C5169208F154900B55ACE /* PropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5168208F154900B55ACE /* PropertiesTests.swift */; };
 		205C516B208F26CE00B55ACE /* DashboardLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C516A208F26CE00B55ACE /* DashboardLights.swift */; };
 		205C516D208F28FF00B55ACE /* DashboardLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C516C208F28FF00B55ACE /* DashboardLight.swift */; };
@@ -58,7 +59,6 @@
 		20DB1550209727C700A1658B /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB154F209727C700A1658B /* Direction.swift */; };
 		20DB15522097286200A1658B /* TachographTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15512097286200A1658B /* TachographTests.swift */; };
 		20F79033213555CF003BDFA2 /* ChargingMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F79032213555CF003BDFA2 /* ChargingMethod.swift */; };
-		20F7903521356054003BDFA2 /* ChargingProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903421356054003BDFA2 /* ChargingProfile.swift */; };
 		20F7903721356C54003BDFA2 /* CheckControlMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903621356C54003BDFA2 /* CheckControlMessage.swift */; };
 		20F7903921356F54003BDFA2 /* ConditionBasedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903821356F54003BDFA2 /* ConditionBasedService.swift */; };
 		20F7903B21356F94003BDFA2 /* DueStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903A21356F94003BDFA2 /* DueStatus.swift */; };
@@ -120,9 +120,9 @@
 		OBJ_321 /* CapabilitiesIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* CapabilitiesIterator.swift */; };
 		OBJ_322 /* Capability.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* Capability.swift */; };
 		OBJ_323 /* CarSDKVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* CarSDKVersion.swift */; };
-		OBJ_324 /* Charging.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Charging.swift */; };
-		OBJ_325 /* ChassisSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* ChassisSettings.swift */; };
-		OBJ_326 /* Climate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* Climate.swift */; };
+		OBJ_324 /* AACharging.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* AACharging.swift */; };
+		OBJ_325 /* AAChassisSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* AAChassisSettings.swift */; };
+		OBJ_326 /* AAClimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* AAClimate.swift */; };
 		OBJ_327 /* HonkHornFlashLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* HonkHornFlashLights.swift */; };
 		OBJ_328 /* KeyfobPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* KeyfobPosition.swift */; };
 		OBJ_329 /* Lights.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* Lights.swift */; };
@@ -219,7 +219,7 @@
 		OBJ_426 /* ChassisPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_133 /* ChassisPosition.swift */; };
 		OBJ_427 /* SpringRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_134 /* SpringRate.swift */; };
 		OBJ_428 /* ActivatedDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_136 /* ActivatedDays.swift */; };
-		OBJ_429 /* ClimateProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_137 /* ClimateProfile.swift */; };
+		OBJ_429 /* AAClimateProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_137 /* AAClimateProfile.swift */; };
 		OBJ_430 /* DayTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_138 /* DayTime.swift */; };
 		OBJ_431 /* WeekdaysTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_139 /* WeekdaysTimes.swift */; };
 		OBJ_432 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_140 /* Colour.swift */; };
@@ -291,6 +291,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2028370A2150D17E0001724A /* DepartureTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureTime.swift; sourceTree = "<group>"; };
 		205C5168208F154900B55ACE /* PropertiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesTests.swift; sourceTree = "<group>"; };
 		205C516A208F26CE00B55ACE /* DashboardLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLights.swift; sourceTree = "<group>"; };
 		205C516C208F28FF00B55ACE /* DashboardLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLight.swift; sourceTree = "<group>"; };
@@ -330,7 +331,6 @@
 		20DB154F209727C700A1658B /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		20DB15512097286200A1658B /* TachographTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TachographTests.swift; sourceTree = "<group>"; };
 		20F79032213555CF003BDFA2 /* ChargingMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargingMethod.swift; sourceTree = "<group>"; };
-		20F7903421356054003BDFA2 /* ChargingProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargingProfile.swift; sourceTree = "<group>"; };
 		20F7903621356C54003BDFA2 /* CheckControlMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckControlMessage.swift; sourceTree = "<group>"; };
 		20F7903821356F54003BDFA2 /* ConditionBasedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionBasedService.swift; sourceTree = "<group>"; };
 		20F7903A21356F94003BDFA2 /* DueStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DueStatus.swift; sourceTree = "<group>"; };
@@ -374,7 +374,7 @@
 		OBJ_133 /* ChassisPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChassisPosition.swift; sourceTree = "<group>"; };
 		OBJ_134 /* SpringRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringRate.swift; sourceTree = "<group>"; };
 		OBJ_136 /* ActivatedDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivatedDays.swift; sourceTree = "<group>"; };
-		OBJ_137 /* ClimateProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateProfile.swift; sourceTree = "<group>"; };
+		OBJ_137 /* AAClimateProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAClimateProfile.swift; sourceTree = "<group>"; };
 		OBJ_138 /* DayTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTime.swift; sourceTree = "<group>"; };
 		OBJ_139 /* WeekdaysTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdaysTimes.swift; sourceTree = "<group>"; };
 		OBJ_14 /* Capability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capability.swift; sourceTree = "<group>"; };
@@ -409,7 +409,7 @@
 		OBJ_177 /* ClimateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateTests.swift; sourceTree = "<group>"; };
 		OBJ_178 /* DiagnosticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsTests.swift; sourceTree = "<group>"; };
 		OBJ_179 /* DoorLocksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorLocksTests.swift; sourceTree = "<group>"; };
-		OBJ_18 /* Charging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charging.swift; sourceTree = "<group>"; };
+		OBJ_18 /* AACharging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACharging.swift; sourceTree = "<group>"; };
 		OBJ_180 /* DriverFatigueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverFatigueTests.swift; sourceTree = "<group>"; };
 		OBJ_181 /* EngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineTests.swift; sourceTree = "<group>"; };
 		OBJ_183 /* Sequence+FlatMapFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+FlatMapFirst.swift"; sourceTree = "<group>"; };
@@ -419,7 +419,7 @@
 		OBJ_187 /* GraphicsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicsTests.swift; sourceTree = "<group>"; };
 		OBJ_188 /* HeartRateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateTests.swift; sourceTree = "<group>"; };
 		OBJ_189 /* HomeChargerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChargerTests.swift; sourceTree = "<group>"; };
-		OBJ_19 /* ChassisSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChassisSettings.swift; sourceTree = "<group>"; };
+		OBJ_19 /* AAChassisSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChassisSettings.swift; sourceTree = "<group>"; };
 		OBJ_190 /* HonkHornFlashLightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonkHornFlashLightsTests.swift; sourceTree = "<group>"; };
 		OBJ_191 /* KeyfobPositionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyfobPositionTests.swift; sourceTree = "<group>"; };
 		OBJ_192 /* LightConditionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightConditionsTests.swift; sourceTree = "<group>"; };
@@ -430,7 +430,7 @@
 		OBJ_197 /* NotificationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTests.swift; sourceTree = "<group>"; };
 		OBJ_198 /* OffroadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffroadTests.swift; sourceTree = "<group>"; };
 		OBJ_199 /* ParkingBrakeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingBrakeTests.swift; sourceTree = "<group>"; };
-		OBJ_20 /* Climate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Climate.swift; sourceTree = "<group>"; };
+		OBJ_20 /* AAClimate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAClimate.swift; sourceTree = "<group>"; };
 		OBJ_200 /* ParkingTicketTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTicketTests.swift; sourceTree = "<group>"; };
 		OBJ_201 /* RaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceTests.swift; sourceTree = "<group>"; };
 		OBJ_202 /* RemoteControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlTests.swift; sourceTree = "<group>"; };
@@ -618,7 +618,6 @@
 				OBJ_129 /* BrakeTorqueVectoring.swift */,
 				OBJ_130 /* ChargeCurrent.swift */,
 				OBJ_131 /* ChargeTimer.swift */,
-				20F7903421356054003BDFA2 /* ChargingProfile.swift */,
 				OBJ_132 /* ChassisSettings */,
 				20F7903621356C54003BDFA2 /* CheckControlMessage.swift */,
 				OBJ_135 /* Climate */,
@@ -626,6 +625,7 @@
 				20F7903821356F54003BDFA2 /* ConditionBasedService.swift */,
 				OBJ_141 /* Coordinate.swift */,
 				205C516C208F28FF00B55ACE /* DashboardLight.swift */,
+				2028370A2150D17E0001724A /* DepartureTime.swift */,
 				OBJ_142 /* Door.swift */,
 				20DB153C209701CE00A1658B /* DoorLock.swift */,
 				20DB154D2097265400A1658B /* DriverCard.swift */,
@@ -654,7 +654,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_136 /* ActivatedDays.swift */,
-				OBJ_137 /* ClimateProfile.swift */,
+				OBJ_137 /* AAClimateProfile.swift */,
 				OBJ_138 /* DayTime.swift */,
 				OBJ_139 /* WeekdaysTimes.swift */,
 			);
@@ -727,9 +727,9 @@
 		OBJ_17 /* Chassis */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_18 /* Charging.swift */,
-				OBJ_19 /* ChassisSettings.swift */,
-				OBJ_20 /* Climate.swift */,
+				OBJ_18 /* AACharging.swift */,
+				OBJ_19 /* AAChassisSettings.swift */,
+				OBJ_20 /* AAClimate.swift */,
 				205C5178208F41C700B55ACE /* CruiseControl.swift */,
 				OBJ_21 /* HonkHornFlashLights.swift */,
 				OBJ_22 /* KeyfobPosition.swift */,
@@ -1266,10 +1266,10 @@
 				OBJ_322 /* Capability.swift in Sources */,
 				OBJ_323 /* CarSDKVersion.swift in Sources */,
 				20896EEE2147DE32003A7A63 /* Double+Extensions.swift in Sources */,
-				OBJ_324 /* Charging.swift in Sources */,
-				OBJ_325 /* ChassisSettings.swift in Sources */,
+				OBJ_324 /* AACharging.swift in Sources */,
+				OBJ_325 /* AAChassisSettings.swift in Sources */,
 				2093A32221394EF8009E43A0 /* Hood.swift in Sources */,
-				OBJ_326 /* Climate.swift in Sources */,
+				OBJ_326 /* AAClimate.swift in Sources */,
 				OBJ_327 /* HonkHornFlashLights.swift in Sources */,
 				OBJ_328 /* KeyfobPosition.swift in Sources */,
 				OBJ_329 /* Lights.swift in Sources */,
@@ -1323,6 +1323,7 @@
 				OBJ_372 /* AccelerationType.swift in Sources */,
 				OBJ_374 /* AuthenticationMechanism.swift in Sources */,
 				OBJ_375 /* Axle.swift in Sources */,
+				2028370B2150D17E0001724A /* DepartureTime.swift in Sources */,
 				OBJ_376 /* ChargeMode.swift in Sources */,
 				OBJ_377 /* ChargePortState.swift in Sources */,
 				OBJ_378 /* ChargingState.swift in Sources */,
@@ -1367,7 +1368,6 @@
 				OBJ_411 /* Int8+Extensions.swift in Sources */,
 				OBJ_412 /* RawRepresentable+Extensions.swift in Sources */,
 				OBJ_413 /* Sequence+Extensions.swift in Sources */,
-				20F7903521356054003BDFA2 /* ChargingProfile.swift in Sources */,
 				OBJ_414 /* String+Extensions.swift in Sources */,
 				OBJ_415 /* UInt16+Extensions.swift in Sources */,
 				OBJ_417 /* UInt8+Extensions.swift in Sources */,
@@ -1387,7 +1387,7 @@
 				205C5171208F315D00B55ACE /* DashboardLightName.swift in Sources */,
 				OBJ_427 /* SpringRate.swift in Sources */,
 				OBJ_428 /* ActivatedDays.swift in Sources */,
-				OBJ_429 /* ClimateProfile.swift in Sources */,
+				OBJ_429 /* AAClimateProfile.swift in Sources */,
 				OBJ_430 /* DayTime.swift in Sources */,
 				OBJ_431 /* WeekdaysTimes.swift in Sources */,
 				OBJ_432 /* Colour.swift in Sources */,
