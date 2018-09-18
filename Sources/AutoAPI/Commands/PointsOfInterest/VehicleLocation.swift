@@ -31,8 +31,8 @@ import Foundation
 
 public struct VehicleLocation: FullStandardCommand {
 
-    public let altitude: Float?
-    public let heading: Float?
+    public let altitude: Double?
+    public let heading: Double?
     public let coordinate: Coordinate?
 
 
