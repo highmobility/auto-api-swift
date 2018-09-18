@@ -33,7 +33,6 @@ public struct DoorLocks: FullStandardCommand {
 
     public let doors: [Door]?
     public let insideLocks: [DoorLock]?
-    public let outsideLocks: [DoorLock]?
 
 
     // MARK: FullStandardCommand
@@ -45,7 +44,6 @@ public struct DoorLocks: FullStandardCommand {
         // Ordered by the ID
         doors = properties.flatMap(for: 0x01) { Door($0.value) }
         insideLocks = properties.flatMap(for: 0x02) { DoorLock($0.value) }
-        outsideLocks = properties.flatMap(for: 0x03) { DoorLock($0.value) }
 
         // Properties
         self.properties = properties
