@@ -47,7 +47,7 @@ public struct Windows: AAFullStandardCommand, Sequence {
     init?(properties: AAProperties) {
         // Ordered by the ID
         windows = properties.flatMap(for: 0x01) { Window($0.value) }    // Deprecated
-
+        /* Level 8 */
         openPercentages = properties.flatMap(for: 0x02) { Window.OpenPercentage($0.value) }
         positions = properties.flatMap(for: 0x03) { Window.Position($0.value) }
 

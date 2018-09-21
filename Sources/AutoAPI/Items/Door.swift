@@ -31,13 +31,8 @@ import Foundation
 
 public struct Door {
 
-    @available(*, deprecated, message: "Use the new struct Door.Lock or Door.Position")
     public let location: Location
-
-    @available(*, deprecated, message: "Use the new struct Door.Lock")
     public let lock: LockState
-
-    @available(*, deprecated, message: "Use the new struct Door.Position")
     public let position: AAPositionState
 }
 

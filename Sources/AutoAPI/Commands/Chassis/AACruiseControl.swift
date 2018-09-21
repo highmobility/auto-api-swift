@@ -38,12 +38,6 @@ public struct AACruiseControl: AAFullStandardCommand {
     public let targetSpeed: Int16?
 
 
-    @available(*, deprecated, renamed: "state")
-    public var activeState: AAActiveState? {
-        return state
-    }
-
-
     // MARK: AAFullStandardCommand
 
     public let properties: AAProperties
@@ -59,6 +53,19 @@ public struct AACruiseControl: AAFullStandardCommand {
 
         // Properties
         self.properties = properties
+    }
+
+
+    // MARK: Deprecated
+
+    @available(*, deprecated, renamed: "state")
+    public var isActive: Bool? {
+        return state == .active
+    }
+
+    @available(*, deprecated, renamed: "adaptiveState")
+    public var isAdaptiveActive: Bool? {
+        return adaptiveState == .active
     }
 }
 
@@ -89,11 +96,31 @@ extension AACruiseControl: AAMessageTypesGettable {
 
 public extension AACruiseControl {
 
-    static func activateCruiseControl(_ settings: AACruiseControlSettings) -> [UInt8] {
-        return commandPrefix(for: .activateCruiseControl) + settings.propertiesValuesCombined
-    }
-
     static var getCruiseControlState: [UInt8] {
         return commandPrefix(for: .getControlState)
+    }
+
+
+    /// If *state* is `.inactivate` – *targetSpeed* is ignored.
+    static func activateCruiseControl(state: AAActiveState, targetSpeed: Int16? = nil) -> [UInt8] {
+        let targetSpeedBytes = (state != .inactivate) ? targetSpeed?.propertyBytes(0x02) : []
+
+        return commandPrefix(for: .activateCruiseControl) + [state.propertyBytes(0x01),
+                                                             targetSpeedBytes].propertiesValuesCombined
+    }
+
+
+    // MARK: Deprecated
+
+    @available(*, deprecated, message: "Use the new method .activateCruiseControl(state:targetSpeed) instead.")
+    typealias Control = (isActive: Bool, targetSpeed: Int16?)
+
+    @available(*, deprecated, message: "Use the new method .activateCruiseControl(state:targetSpeed) instead.")
+    static var activateCruiseControl: (Control) -> [UInt8] {
+        return {
+            let state: AAActiveState = $0.isActive ? .activate : .inactivate
+
+            return activateCruiseControl(state: state, targetSpeed: $0.targetSpeed)
+        }
     }
 }

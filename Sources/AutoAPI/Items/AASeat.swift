@@ -31,13 +31,8 @@ import Foundation
 
 public struct AASeat {
 
-    @available(*, deprecated, message: "Use the new struct Seat.PersonDetected")
     public let personDetected: Bool
-
-    @available(*, deprecated, message: "Use the new struct Seat.PersonDetected or Seat.SeatbeltFastened")
     public let position: AASeatPosition
-
-    @available(*, deprecated, message: "Use the new struct Seat.SeatbeltFastened")
     public let seatbeltFastened: Bool
 }
 

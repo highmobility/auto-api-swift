@@ -29,7 +29,6 @@
 import Foundation
 
 
-@available(*, deprecated, message: "Use the new AAClimateWeek")
 public struct AAClimateProfile: AAItem {
 
     public let activatedDays: AAActivatedDays

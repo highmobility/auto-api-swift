@@ -48,7 +48,7 @@ public struct DoorLocks: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         doors = properties.flatMap(for: 0x01) { Door($0.value) }    // Deprecated
-        
+        /* Level 8 */
         insideLocks = properties.flatMap(for: 0x02) { Door.Lock($0.value) }
         locks = properties.flatMap(for: 0x03) { Door.Lock($0.value) }
         positions = properties.flatMap(for: 0x04) { Door.Position($0.value) }
