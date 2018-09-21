@@ -60,21 +60,6 @@ public struct AALights: AAFullStandardCommand {
         // Properties
         self.properties = properties
     }
-
-
-    // MARK: Methods
-
-    private static func getColour(from bytes: [UInt8]?) -> AAColour? {
-        guard let bytes = bytes, bytes.count == 3 else {
-            return nil
-        }
-
-        let red = CGFloat(bytes[0]) / 255.0
-        let green = CGFloat(bytes[1]) / 255.0
-        let blue = CGFloat(bytes[2]) / 255.0
-
-        return AAColour(red: red, green: green, blue: blue, alpha: 1.0)
-    }
 }
 
 extension AALights: AAIdentifiable {
