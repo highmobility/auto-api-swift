@@ -19,18 +19,22 @@
 // licensing@high-mobility.com
 //
 //
-//  DetectedState.swift
+//  AASeatPosition.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 19/09/2018.
+//  Created by Mikk Rätsep on 07/12/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum DetectedState: UInt8 {
+public enum AASeatPosition: UInt8 {
 
-    case notDetected    = 0x00
-    case detected       = 0x01
+    case frontLeft  = 0x00
+    case frontRight = 0x01
+
+    case rearLeft   = 0x02
+    case rearRight  = 0x03
+    case rearCenter = 0x04
 }

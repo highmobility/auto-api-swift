@@ -19,22 +19,18 @@
 // licensing@high-mobility.com
 //
 //
-//  SeatPosition.swift
+//  AAFastened.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 07/12/2017.
+//  Created by Mikk Rätsep on 19/09/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum SeatPosition: UInt8 {
+public enum AAFastened: UInt8 {
 
-    case frontLeft  = 0x00
-    case frontRight = 0x01
-
-    case rearLeft   = 0x02
-    case rearRight  = 0x03
-    case rearCenter = 0x04
+    case notFastened    = 0x00
+    case fastened       = 0x01
 }

@@ -35,7 +35,7 @@ public struct AASeat {
     public let personDetected: Bool
 
     @available(*, deprecated, message: "Use the new struct Seat.PersonDetected or Seat.SeatbeltFastened")
-    public let position: SeatPosition
+    public let position: AASeatPosition
 
     @available(*, deprecated, message: "Use the new struct Seat.SeatbeltFastened")
     public let seatbeltFastened: Bool
@@ -47,7 +47,7 @@ extension AASeat: AAItem {
 
 
     init?(bytes: [UInt8]) {
-        guard let position = SeatPosition(rawValue: bytes[0]) else {
+        guard let position = AASeatPosition(rawValue: bytes[0]) else {
             return nil
         }
 
@@ -61,8 +61,8 @@ public extension AASeat {
 
     public struct PersonDetected: AAItem {
 
-        public let detected: DetectedState
-        public let location: SeatPosition
+        public let detected: AADetectedState
+        public let location: AASeatPosition
 
 
         // MARK: AAItem
@@ -71,8 +71,8 @@ public extension AASeat {
 
 
         init?(bytes: [UInt8]) {
-            guard let location = SeatPosition(rawValue: bytes[0]),
-                let detected = DetectedState(rawValue: bytes[1]) else {
+            guard let location = AASeatPosition(rawValue: bytes[0]),
+                let detected = AADetectedState(rawValue: bytes[1]) else {
                     return nil
             }
 
@@ -83,8 +83,8 @@ public extension AASeat {
 
     public struct SeatbeltFastened: AAItem {
 
-        public let fastened: Fastened
-        public let location: SeatPosition
+        public let fastened: AAFastened
+        public let location: AASeatPosition
 
 
         // MARK: Init
@@ -93,8 +93,8 @@ public extension AASeat {
 
 
         init?(bytes: [UInt8]) {
-            guard let location = SeatPosition(rawValue: bytes[0]),
-                let fastened = Fastened(rawValue: bytes[1]) else {
+            guard let location = AASeatPosition(rawValue: bytes[0]),
+                let fastened = AAFastened(rawValue: bytes[1]) else {
                     return nil
             }
 

@@ -50,8 +50,8 @@
 		2093A32421395362009E43A0 /* Usage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A32321395362009E43A0 /* Usage.swift */; };
 		2095DD6D20A45B81004DDB6C /* DebugTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2095DD6C20A45B81004DDB6C /* DebugTree.swift */; };
 		20BB171D2142604100A3FDB5 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BB171B2142603A00A3FDB5 /* Date+Extensions.swift */; };
-		20CDFAA7215264F300402BF6 /* DetectedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDFAA6215264F300402BF6 /* DetectedState.swift */; };
-		20CDFAA92152657100402BF6 /* Fastened.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDFAA82152657100402BF6 /* Fastened.swift */; };
+		20CDFAA7215264F300402BF6 /* AADetectedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDFAA6215264F300402BF6 /* AADetectedState.swift */; };
+		20CDFAA92152657100402BF6 /* AAFastened.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDFAA82152657100402BF6 /* AAFastened.swift */; };
 		20DB153B2096F7DA00A1658B /* Gearbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB153A2096F7DA00A1658B /* Gearbox.swift */; };
 		20DB15402097112D00A1658B /* PowerTakeOff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB153F2097112D00A1658B /* PowerTakeOff.swift */; };
 		20DB15422097154D00A1658B /* PowerTakeOffTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15412097154D00A1658B /* PowerTakeOffTests.swift */; };
@@ -194,7 +194,7 @@
 		OBJ_395 /* PowerTrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* PowerTrain.swift */; };
 		OBJ_396 /* PricingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_100 /* PricingType.swift */; };
 		OBJ_397 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_101 /* Screen.swift */; };
-		OBJ_398 /* SeatPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_102 /* SeatPosition.swift */; };
+		OBJ_398 /* AASeatPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_102 /* AASeatPosition.swift */; };
 		OBJ_400 /* AAStartStopChrono.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_104 /* AAStartStopChrono.swift */; };
 		OBJ_401 /* TheftAlarmState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_105 /* TheftAlarmState.swift */; };
 		OBJ_402 /* AATimerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_106 /* AATimerType.swift */; };
@@ -325,8 +325,8 @@
 		2093A32321395362009E43A0 /* Usage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usage.swift; sourceTree = "<group>"; };
 		2095DD6C20A45B81004DDB6C /* DebugTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugTree.swift; sourceTree = "<group>"; };
 		20BB171B2142603A00A3FDB5 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
-		20CDFAA6215264F300402BF6 /* DetectedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedState.swift; sourceTree = "<group>"; };
-		20CDFAA82152657100402BF6 /* Fastened.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fastened.swift; sourceTree = "<group>"; };
+		20CDFAA6215264F300402BF6 /* AADetectedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADetectedState.swift; sourceTree = "<group>"; };
+		20CDFAA82152657100402BF6 /* AAFastened.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFastened.swift; sourceTree = "<group>"; };
 		20DB153A2096F7DA00A1658B /* Gearbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gearbox.swift; sourceTree = "<group>"; };
 		20DB153F2097112D00A1658B /* PowerTakeOff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerTakeOff.swift; sourceTree = "<group>"; };
 		20DB15412097154D00A1658B /* PowerTakeOffTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerTakeOffTests.swift; sourceTree = "<group>"; };
@@ -350,7 +350,7 @@
 		OBJ_10 /* BinaryInitable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryInitable.swift; sourceTree = "<group>"; };
 		OBJ_100 /* PricingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingType.swift; sourceTree = "<group>"; };
 		OBJ_101 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
-		OBJ_102 /* SeatPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatPosition.swift; sourceTree = "<group>"; };
+		OBJ_102 /* AASeatPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASeatPosition.swift; sourceTree = "<group>"; };
 		OBJ_104 /* AAStartStopChrono.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAStartStopChrono.swift; sourceTree = "<group>"; };
 		OBJ_105 /* TheftAlarmState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheftAlarmState.swift; sourceTree = "<group>"; };
 		OBJ_106 /* AATimerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATimerType.swift; sourceTree = "<group>"; };
@@ -1009,14 +1009,14 @@
 				205C517A208F430100B55ACE /* AACruiseControlLimiter.swift */,
 				205C5170208F315C00B55ACE /* DashboardLightName.swift */,
 				205C5172208F319900B55ACE /* DashboardLightState.swift */,
-				20CDFAA6215264F300402BF6 /* DetectedState.swift */,
+				20CDFAA6215264F300402BF6 /* AADetectedState.swift */,
 				20DB154F209727C700A1658B /* Direction.swift */,
 				20F7903E2135732D003BDFA2 /* DisplayUnit.swift */,
 				OBJ_84 /* AADrivingMode.swift */,
 				20F7903A21356F94003BDFA2 /* DueStatus.swift */,
 				20896EEB2147A024003A7A63 /* EnabledState.swift */,
 				OBJ_85 /* FailureReason.swift */,
-				20CDFAA82152657100402BF6 /* Fastened.swift */,
+				20CDFAA82152657100402BF6 /* AAFastened.swift */,
 				OBJ_86 /* FatigueLevel.swift */,
 				OBJ_87 /* AAFlasherState.swift */,
 				OBJ_107 /* FluidLevel.swift */,
@@ -1035,7 +1035,7 @@
 				OBJ_99 /* PowerTrain.swift */,
 				OBJ_100 /* PricingType.swift */,
 				OBJ_101 /* Screen.swift */,
-				OBJ_102 /* SeatPosition.swift */,
+				OBJ_102 /* AASeatPosition.swift */,
 				OBJ_104 /* AAStartStopChrono.swift */,
 				OBJ_105 /* TheftAlarmState.swift */,
 				OBJ_106 /* AATimerType.swift */,
@@ -1360,9 +1360,9 @@
 				OBJ_395 /* PowerTrain.swift in Sources */,
 				OBJ_396 /* PricingType.swift in Sources */,
 				OBJ_397 /* Screen.swift in Sources */,
-				20CDFAA92152657100402BF6 /* Fastened.swift in Sources */,
+				20CDFAA92152657100402BF6 /* AAFastened.swift in Sources */,
 				2093A32421395362009E43A0 /* Usage.swift in Sources */,
-				OBJ_398 /* SeatPosition.swift in Sources */,
+				OBJ_398 /* AASeatPosition.swift in Sources */,
 				OBJ_400 /* AAStartStopChrono.swift in Sources */,
 				OBJ_401 /* TheftAlarmState.swift in Sources */,
 				OBJ_402 /* AATimerType.swift in Sources */,
@@ -1429,7 +1429,7 @@
 				OBJ_451 /* PropertyConvertable.swift in Sources */,
 				OBJ_454 /* VehicleState.swift in Sources */,
 				OBJ_455 /* VehicleStateType.swift in Sources */,
-				20CDFAA7215264F300402BF6 /* DetectedState.swift in Sources */,
+				20CDFAA7215264F300402BF6 /* AADetectedState.swift in Sources */,
 				OBJ_456 /* VehicleStatus.swift in Sources */,
 				205C516D208F28FF00B55ACE /* DashboardLight.swift in Sources */,
 			);

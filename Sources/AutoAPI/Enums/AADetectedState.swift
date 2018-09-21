@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Fastened.swift
+//  AADetectedState.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 19/09/2018.
@@ -29,8 +29,8 @@
 import Foundation
 
 
-public enum Fastened: UInt8 {
+public enum AADetectedState: UInt8 {
 
-    case notFastened    = 0x00
-    case fastened       = 0x01
+    case notDetected    = 0x00
+    case detected       = 0x01
 }
