@@ -37,7 +37,7 @@ public struct Tire {
     public let wheelRPM: UInt16
 }
 
-extension Tire: Item {
+extension Tire: AAItem {
 
     static let size: Int = 11
 

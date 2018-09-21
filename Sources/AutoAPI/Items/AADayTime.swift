@@ -60,7 +60,7 @@ extension AADayTime: BinaryInitable {
     }
 }
 
-extension AADayTime: Item {
+extension AADayTime: AAItem {
 
     static var size: Int = 2
 

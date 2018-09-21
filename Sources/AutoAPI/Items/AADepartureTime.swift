@@ -35,7 +35,7 @@ public struct AADepartureTime {
     public let time: AADayTime?
 }
 
-extension AADepartureTime: Item {
+extension AADepartureTime: AAItem {
 
     static var size: Int = 3
 

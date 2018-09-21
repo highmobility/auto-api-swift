@@ -35,7 +35,7 @@ public struct DashboardLight {
     public let state: DashboardLightState
 }
 
-extension DashboardLight: Item {
+extension DashboardLight: AAItem {
 
     static var size: Int = 2
 

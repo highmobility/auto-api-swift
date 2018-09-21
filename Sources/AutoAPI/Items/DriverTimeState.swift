@@ -35,7 +35,7 @@ public struct DriverTimeState: Equatable {
     public let state: TimeState
 }
 
-extension DriverTimeState: Item {
+extension DriverTimeState: AAItem {
 
     static var size: Int = 2
 

@@ -29,13 +29,13 @@
 import Foundation
 
 
-public struct AAClimateProfile: Item {
+public struct AAClimateProfile: AAItem {
 
     public let activatedDays: AAActivatedDays
     public let weekdaysStartingTimes: AAWeekdaysTimes
 
 
-    // MARK: Item
+    // MARK: AAItem
 
     static var size: Int = 15
 

@@ -41,7 +41,7 @@ public struct Seat {
     public let seatbeltFastened: Bool
 }
 
-extension Seat: Item {
+extension Seat: AAItem {
 
     static var size: Int = 3
 
@@ -59,13 +59,13 @@ extension Seat: Item {
 
 public extension Seat {
 
-    public struct PersonDetected: Item {
+    public struct PersonDetected: AAItem {
 
         public let detected: DetectedState
         public let location: SeatPosition
 
 
-        // MARK: Item
+        // MARK: AAItem
 
         static var size: Int = 2
 
@@ -81,7 +81,7 @@ public extension Seat {
         }
     }
 
-    public struct SeatbeltFastened: Item {
+    public struct SeatbeltFastened: AAItem {
 
         public let fastened: Fastened
         public let location: SeatPosition

@@ -36,7 +36,7 @@ public struct AAChassisPosition {
     public let position: UInt8
 }
 
-extension AAChassisPosition: Item {
+extension AAChassisPosition: AAItem {
 
     static var size: Int = 3
 

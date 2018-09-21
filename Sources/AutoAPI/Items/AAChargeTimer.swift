@@ -29,13 +29,13 @@
 import Foundation
 
 
-public struct AAChargeTimer: Item {
+public struct AAChargeTimer: AAItem {
 
     public let type: AATimerType
     public let time: Date
 
 
-    // MARK: Item
+    // MARK: AAItem
 
     static var size: Int = 9
 

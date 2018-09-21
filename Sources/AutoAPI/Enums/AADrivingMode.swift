@@ -47,13 +47,13 @@ extension AADrivingMode: PropertyConvertable {
 
 public extension AADrivingMode {
 
-    struct ActivationPeriod: Item {
+    struct ActivationPeriod: AAItem {
 
         public let mode: AADrivingMode
         public let period: AAPercentageInt
 
 
-        // MARK: Item
+        // MARK: AAItem
 
         static var size: Int = 2
 
@@ -69,13 +69,13 @@ public extension AADrivingMode {
     }
 
 
-    struct EnergyConsumption: Item {
+    struct EnergyConsumption: AAItem {
 
         public let mode: AADrivingMode
         public let consumption: Float
 
 
-        // MARK: Item
+        // MARK: AAItem
 
         static var size: Int = 5
 

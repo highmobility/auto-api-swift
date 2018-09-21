@@ -37,7 +37,7 @@ public struct AASpringRate {
     public let rate: UInt8
 }
 
-extension AASpringRate: Item {
+extension AASpringRate: AAItem {
 
     static var size: Int = 4
 
@@ -56,7 +56,7 @@ extension AASpringRate: Item {
 
 public extension AASpringRate {
 
-    public struct Value: Item, PropertyConvertable {
+    public struct Value: AAItem, PropertyConvertable {
 
         public let axle: AAAxle
         public let value: UInt8
@@ -68,7 +68,7 @@ public extension AASpringRate {
         }
 
 
-        // MARK: Item
+        // MARK: AAItem
 
         static var size: Int = 2
 

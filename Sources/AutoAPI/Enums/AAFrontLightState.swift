@@ -19,40 +19,23 @@
 // licensing@high-mobility.com
 //
 //
-//  Item.swift
+//  AAFrontLightState.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 01/12/2017.
+//  Created by Mikk Rätsep on 30/11/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-protocol Item: BinaryInitable {
+public enum AAFrontLightState: UInt8 {
 
-    static var size: Int { get }
-
-
-    init?(bytes: [UInt8])
-    init?(bytes: [UInt8]?)
+    case inactive       = 0x00
+    case active         = 0x01
+    case activeFullBeam = 0x02
 }
 
-extension Item {
+extension AAFrontLightState: PropertyConvertable {
 
-    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        guard binary.count == Self.size else {
-            return nil
-        }
-
-        self.init(bytes: binary.bytes)
-    }
-
-    init?(bytes: [UInt8]?) {
-        guard let bytes = bytes else {
-            return nil
-        }
-
-        self.init(bytes: bytes)
-    }
 }

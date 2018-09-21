@@ -19,23 +19,20 @@
 // licensing@high-mobility.com
 //
 //
-//  LightState.swift
+//  CaseIterable+Extensions.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 30/11/2017.
+//  Created by Mikk Rätsep on 21/09/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum FrontLightState: UInt8 {
+public extension CaseIterable {
 
-    case inactive       = 0x00
-    case active         = 0x01
-    case activeFullBeam = 0x02
-}
-
-extension FrontLightState: PropertyConvertable {
-
+    @available(*, deprecated, renamed: "allCases")
+    public static var all: Self.AllCases {
+        return self.allCases
+    }
 }

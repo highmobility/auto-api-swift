@@ -51,7 +51,7 @@ extension Command {
 
                 return .node(label: label, nodes: nodes)
 
-            case let colour as Colour:
+            case let colour as AAColour:
                 if case .node(_, let nodes) = DebugTree(colour.values, expandProperties: expandProperties) {
                     return .node(label: label, nodes: nodes)
                 }

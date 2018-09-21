@@ -50,7 +50,7 @@ public struct Window {
     }
 }
 
-extension Window: Item {
+extension Window: AAItem {
 
     static let size: Int = 2
 
@@ -68,13 +68,13 @@ extension Window: Item {
 
 public extension Window {
 
-    public struct OpenPercentage: Item {
+    public struct OpenPercentage: AAItem {
 
         public let location: Location
         public let percentage: AAPercentageInt
 
 
-        // MARK: Item
+        // MARK: AAItem
 
         static var size: Int = 2
 
@@ -89,13 +89,13 @@ public extension Window {
         }
     }
 
-    public struct Position: Item {
+    public struct Position: AAItem {
 
         public let location: Location
         public let position: PositionState
 
 
-        // MARK: Item
+        // MARK: AAItem
 
         static var size: Int = 2
 

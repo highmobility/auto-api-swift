@@ -41,7 +41,7 @@ public struct Door {
     public let position: PositionState
 }
 
-extension Door: Item {
+extension Door: AAItem {
 
     static let size: Int = 3
 
@@ -61,13 +61,13 @@ extension Door: Item {
 
 public extension Door {
 
-    public struct Position: Item {
+    public struct Position: AAItem {
 
         public let location: Location
         public let position: PositionState
 
 
-        // MARK: Item
+        // MARK: AAItem
 
         static let size: Int = 2
 
@@ -83,13 +83,13 @@ public extension Door {
         }
     }
 
-    public struct Lock: Item {
+    public struct Lock: AAItem {
 
         public let location: Location
         public let lock: LockState
 
 
-        // MARK: Item
+        // MARK: AAItem
 
         static var size: Int = 2
 

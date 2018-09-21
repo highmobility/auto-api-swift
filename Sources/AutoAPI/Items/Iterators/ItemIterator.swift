@@ -29,7 +29,7 @@
 import Foundation
 
 
-protocol ItemIterator: BinaryInitable, IteratorProtocol where Element: Item {
+protocol ItemIterator: BinaryInitable, IteratorProtocol where Element: AAItem {
 
     var bytes: [UInt8] { get set }
 }

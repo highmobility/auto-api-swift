@@ -29,14 +29,14 @@
 import Foundation
 
 
-public struct PricingTariff: Item {
+public struct PricingTariff: AAItem {
 
     public let type: PricingType
     public let currency: String
     public let price: Float
 
 
-    // MARK: Item
+    // MARK: AAItem
 
     static var size: Int = 8
 

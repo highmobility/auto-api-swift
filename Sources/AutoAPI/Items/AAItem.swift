@@ -19,29 +19,40 @@
 // licensing@high-mobility.com
 //
 //
-//  DriverCard.swift
+//  AAItem.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 30/04/2018.
+//  Created by Mikk Rätsep on 01/12/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct DriverCard: Equatable {
+protocol AAItem: BinaryInitable {
 
-    public let driverNumber: UInt8
-    public let isPresent: Bool
+    static var size: Int { get }
+
+
+    init?(bytes: [UInt8])
+    init?(bytes: [UInt8]?)
 }
 
-extension DriverCard: AAItem {
+extension AAItem {
 
-    static var size: Int = 2
+    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
+        guard binary.count == Self.size else {
+            return nil
+        }
 
+        self.init(bytes: binary.bytes)
+    }
 
-    init?(bytes: [UInt8]) {
-        driverNumber = bytes[0]
-        isPresent = bytes[1] == 0x01
+    init?(bytes: [UInt8]?) {
+        guard let bytes = bytes else {
+            return nil
+        }
+
+        self.init(bytes: bytes)
     }
 }

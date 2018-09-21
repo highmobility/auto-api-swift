@@ -35,7 +35,7 @@ public struct Acceleration {
     public let value: Float
 }
 
-extension Acceleration: Item {
+extension Acceleration: AAItem {
 
     static var size: Int = 5
 

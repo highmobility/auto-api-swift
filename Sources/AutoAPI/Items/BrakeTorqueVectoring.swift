@@ -35,7 +35,7 @@ public struct BrakeTorqueVectoring {
     public let state: AAActiveState
 }
 
-extension BrakeTorqueVectoring: Item {
+extension BrakeTorqueVectoring: AAItem {
 
     static var size: Int = 2
 

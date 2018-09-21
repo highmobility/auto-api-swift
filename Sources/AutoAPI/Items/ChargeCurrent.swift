@@ -29,14 +29,14 @@
 import Foundation
 
 
-public struct ChargeCurrent: Item {
+public struct ChargeCurrent: AAItem {
 
     public let chargeCurrentDC: Float
     public let maximumValue: Float
     public let minimumValue: Float
 
 
-    // MARK: Item
+    // MARK: AAItem
 
     static var size: Int = 12
 }
