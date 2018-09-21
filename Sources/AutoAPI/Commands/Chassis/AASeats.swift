@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Seats.swift
+//  AASeats.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 07/12/2017.
@@ -29,14 +29,14 @@
 import Foundation
 
 
-public struct Seats: AAFullStandardCommand, Sequence {
+public struct AASeats: AAFullStandardCommand {
 
-    public let personsDetected: [Seat.PersonDetected]?
-    public let seatbeltsFastened: [Seat.SeatbeltFastened]?
+    public let personsDetected: [AASeat.PersonDetected]?
+    public let seatbeltsFastened: [AASeat.SeatbeltFastened]?
 
 
     @available(*, deprecated, message: "Use the new .personsDetected or .seatbeltsFastened iVars")
-    public let seats: [Seat]?
+    public let seats: [AASeat]?
 
 
     // MARK: AAFullStandardCommand
@@ -46,32 +46,22 @@ public struct Seats: AAFullStandardCommand, Sequence {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        seats = properties.flatMap(for: 0x01) { Seat($0.value) }    // Deprecated
-
-        personsDetected = properties.flatMap(for: 0x02) { Seat.PersonDetected($0.value) }
-        seatbeltsFastened = properties.flatMap(for: 0x03) { Seat.SeatbeltFastened($0.value) }
+        seats = properties.flatMap(for: 0x01) { AASeat($0.value) }    // Deprecated
+        /* Level 8 */
+        personsDetected = properties.flatMap(for: 0x02) { AASeat.PersonDetected($0.value) }
+        seatbeltsFastened = properties.flatMap(for: 0x03) { AASeat.SeatbeltFastened($0.value) }
 
         // Properties
         self.properties = properties
     }
-
-
-    // MARK: Sequence
-
-    public typealias Iterator = SeatsIterator
-
-
-    public func makeIterator() -> SeatsIterator {
-        return SeatsIterator(properties.filter(for: 0x01).flatMap { $0.bytes })
-    }
 }
 
-extension Seats: AAIdentifiable {
+extension AASeats: AAIdentifiable {
 
     public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0056)
 }
 
-extension Seats: AAMessageTypesGettable {
+extension AASeats: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -80,7 +70,7 @@ extension Seats: AAMessageTypesGettable {
     }
 }
 
-public extension Seats {
+public extension AASeats {
 
     static var getSeatsState: [UInt8] {
         return commandPrefix(for: .getSeatsState)

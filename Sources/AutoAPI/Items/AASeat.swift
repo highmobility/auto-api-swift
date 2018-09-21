@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Seat.swift
+//  AASeat.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 07/12/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct Seat {
+public struct AASeat {
 
     @available(*, deprecated, message: "Use the new struct Seat.PersonDetected")
     public let personDetected: Bool
@@ -41,7 +41,7 @@ public struct Seat {
     public let seatbeltFastened: Bool
 }
 
-extension Seat: AAItem {
+extension AASeat: AAItem {
 
     static var size: Int = 3
 
@@ -57,7 +57,7 @@ extension Seat: AAItem {
     }
 }
 
-public extension Seat {
+public extension AASeat {
 
     public struct PersonDetected: AAItem {
 

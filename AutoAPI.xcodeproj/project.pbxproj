@@ -131,7 +131,7 @@
 		OBJ_328 /* AAKeyfobPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* AAKeyfobPosition.swift */; };
 		OBJ_329 /* AALights.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* AALights.swift */; };
 		OBJ_330 /* AARooftopControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* AARooftopControl.swift */; };
-		OBJ_331 /* Seats.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* Seats.swift */; };
+		OBJ_331 /* AASeats.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* AASeats.swift */; };
 		OBJ_332 /* Windows.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* Windows.swift */; };
 		OBJ_333 /* Windscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* Windscreen.swift */; };
 		OBJ_334 /* Diagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Diagnostics.swift */; };
@@ -231,10 +231,9 @@
 		OBJ_434 /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_142 /* Door.swift */; };
 		OBJ_435 /* AAItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_143 /* AAItem.swift */; };
 		OBJ_437 /* ItemIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_146 /* ItemIterator.swift */; };
-		OBJ_438 /* SeatsIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_147 /* SeatsIterator.swift */; };
 		OBJ_439 /* WindowsIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_148 /* WindowsIterator.swift */; };
 		OBJ_440 /* PricingTariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_149 /* PricingTariff.swift */; };
-		OBJ_441 /* Seat.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_150 /* Seat.swift */; };
+		OBJ_441 /* AASeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_150 /* AASeat.swift */; };
 		OBJ_442 /* Tire.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_151 /* Tire.swift */; };
 		OBJ_443 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_152 /* Window.swift */; };
 		OBJ_445 /* AAMessageTypesGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_154 /* AAMessageTypesGettable.swift */; };
@@ -391,11 +390,10 @@
 		OBJ_142 /* Door.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Door.swift; sourceTree = "<group>"; };
 		OBJ_143 /* AAItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAItem.swift; sourceTree = "<group>"; };
 		OBJ_146 /* ItemIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemIterator.swift; sourceTree = "<group>"; };
-		OBJ_147 /* SeatsIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatsIterator.swift; sourceTree = "<group>"; };
 		OBJ_148 /* WindowsIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsIterator.swift; sourceTree = "<group>"; };
 		OBJ_149 /* PricingTariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingTariff.swift; sourceTree = "<group>"; };
 		OBJ_15 /* SDKVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKVersion.swift; sourceTree = "<group>"; };
-		OBJ_150 /* Seat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seat.swift; sourceTree = "<group>"; };
+		OBJ_150 /* AASeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASeat.swift; sourceTree = "<group>"; };
 		OBJ_151 /* Tire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tire.swift; sourceTree = "<group>"; };
 		OBJ_152 /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 		OBJ_154 /* AAMessageTypesGettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAMessageTypesGettable.swift; sourceTree = "<group>"; };
@@ -468,7 +466,7 @@
 		OBJ_228 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/mikk/Desktop/Workspace/Source/hm-auto-api-swift/.build/checkouts/hm-utilities-swift--9129260329164589395/Package.swift"; sourceTree = "<group>"; };
 		OBJ_23 /* AALights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALights.swift; sourceTree = "<group>"; };
 		OBJ_24 /* AARooftopControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AARooftopControl.swift; sourceTree = "<group>"; };
-		OBJ_25 /* Seats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seats.swift; sourceTree = "<group>"; };
+		OBJ_25 /* AASeats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASeats.swift; sourceTree = "<group>"; };
 		OBJ_26 /* Windows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Windows.swift; sourceTree = "<group>"; };
 		OBJ_27 /* Windscreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Windscreen.swift; sourceTree = "<group>"; };
 		OBJ_29 /* Diagnostics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diagnostics.swift; sourceTree = "<group>"; };
@@ -644,7 +642,7 @@
 				OBJ_143 /* AAItem.swift */,
 				OBJ_144 /* Iterators */,
 				OBJ_149 /* PricingTariff.swift */,
-				OBJ_150 /* Seat.swift */,
+				OBJ_150 /* AASeat.swift */,
 				OBJ_151 /* Tire.swift */,
 				OBJ_152 /* Window.swift */,
 			);
@@ -675,7 +673,6 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_146 /* ItemIterator.swift */,
-				OBJ_147 /* SeatsIterator.swift */,
 				OBJ_148 /* WindowsIterator.swift */,
 			);
 			path = Iterators;
@@ -746,7 +743,7 @@
 				OBJ_22 /* AAKeyfobPosition.swift */,
 				OBJ_23 /* AALights.swift */,
 				OBJ_24 /* AARooftopControl.swift */,
-				OBJ_25 /* Seats.swift */,
+				OBJ_25 /* AASeats.swift */,
 				OBJ_26 /* Windows.swift */,
 				OBJ_27 /* Windscreen.swift */,
 			);
@@ -1285,7 +1282,7 @@
 				OBJ_328 /* AAKeyfobPosition.swift in Sources */,
 				OBJ_329 /* AALights.swift in Sources */,
 				OBJ_330 /* AARooftopControl.swift in Sources */,
-				OBJ_331 /* Seats.swift in Sources */,
+				OBJ_331 /* AASeats.swift in Sources */,
 				OBJ_332 /* Windows.swift in Sources */,
 				OBJ_333 /* Windscreen.swift in Sources */,
 				OBJ_334 /* Diagnostics.swift in Sources */,
@@ -1413,11 +1410,10 @@
 				OBJ_437 /* ItemIterator.swift in Sources */,
 				20DB15442097166200A1658B /* Tachograph.swift in Sources */,
 				205C5173208F319900B55ACE /* DashboardLightState.swift in Sources */,
-				OBJ_438 /* SeatsIterator.swift in Sources */,
 				2024BBF62154D7B000AA5261 /* AACruiseControlSettings.swift in Sources */,
 				OBJ_439 /* WindowsIterator.swift in Sources */,
 				OBJ_440 /* PricingTariff.swift in Sources */,
-				OBJ_441 /* Seat.swift in Sources */,
+				OBJ_441 /* AASeat.swift in Sources */,
 				OBJ_442 /* Tire.swift in Sources */,
 				OBJ_443 /* Window.swift in Sources */,
 				20F7903B21356F94003BDFA2 /* DueStatus.swift in Sources */,
