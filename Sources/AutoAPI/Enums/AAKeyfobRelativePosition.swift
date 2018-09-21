@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  KeyfobPosition.swift
+//  AAKeyfobRelativePosition.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 12/12/2017.
@@ -29,42 +29,12 @@
 import Foundation
 
 
-public struct KeyfobPosition: AAFullStandardCommand {
+public enum AAKeyfobRelativePosition: UInt8 {
 
-    public let relativePosition: KeyfobRelativePosition?
-
-
-    // MARK: AAFullStandardCommand
-
-    public let properties: AAProperties
-
-
-    init?(properties: AAProperties) {
-        // Ordered by the ID
-        relativePosition = KeyfobRelativePosition(rawValue: properties.first(for: 0x01)?.monoValue)
-
-        // Properties
-        self.properties = properties
-    }
-}
-
-extension KeyfobPosition: AAMessageTypesGettable {
-
-    public enum MessageTypes: UInt8, CaseIterable {
-
-        case getKeyfobPosition  = 0x00
-        case keyfobPosition     = 0x01
-    }
-}
-
-extension KeyfobPosition: AAIdentifiable {
-
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0048)
-}
-
-public extension KeyfobPosition {
-
-    static var getKeyfobPosition: [UInt8] {
-        return commandPrefix(for: .getKeyfobPosition)
-    }
+    case outOfRange             = 0x00
+    case outsideDriverSide      = 0x01
+    case outsideInFront         = 0x02
+    case outsidePassengerSide   = 0x03
+    case outsideBehind          = 0x04
+    case inside                 = 0x05
 }

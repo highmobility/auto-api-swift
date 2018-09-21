@@ -127,7 +127,7 @@
 		OBJ_325 /* AAChassisSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* AAChassisSettings.swift */; };
 		OBJ_326 /* AAClimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* AAClimate.swift */; };
 		OBJ_327 /* AAHonkHornFlashLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* AAHonkHornFlashLights.swift */; };
-		OBJ_328 /* KeyfobPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* KeyfobPosition.swift */; };
+		OBJ_328 /* AAKeyfobPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* AAKeyfobPosition.swift */; };
 		OBJ_329 /* Lights.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* Lights.swift */; };
 		OBJ_330 /* RooftopControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* RooftopControl.swift */; };
 		OBJ_331 /* Seats.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* Seats.swift */; };
@@ -181,7 +181,7 @@
 		OBJ_382 /* FatigueLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_86 /* FatigueLevel.swift */; };
 		OBJ_383 /* AAFlasherState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_87 /* AAFlasherState.swift */; };
 		OBJ_384 /* GearMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_88 /* GearMode.swift */; };
-		OBJ_386 /* KeyfobRelativePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_90 /* KeyfobRelativePosition.swift */; };
+		OBJ_386 /* AAKeyfobRelativePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_90 /* AAKeyfobRelativePosition.swift */; };
 		OBJ_387 /* LightState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_91 /* LightState.swift */; };
 		OBJ_388 /* LockState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_92 /* LockState.swift */; };
 		OBJ_389 /* NeedsReplacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_93 /* NeedsReplacement.swift */; };
@@ -456,7 +456,7 @@
 		OBJ_215 /* WiFiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiTests.swift; sourceTree = "<group>"; };
 		OBJ_216 /* WindowsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsTests.swift; sourceTree = "<group>"; };
 		OBJ_217 /* WindscreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindscreenTests.swift; sourceTree = "<group>"; };
-		OBJ_22 /* KeyfobPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyfobPosition.swift; sourceTree = "<group>"; };
+		OBJ_22 /* AAKeyfobPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAKeyfobPosition.swift; sourceTree = "<group>"; };
 		OBJ_222 /* Bool+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_223 /* FixedWidthInteger+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FixedWidthInteger+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_224 /* Float+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extensions.swift"; sourceTree = "<group>"; };
@@ -519,7 +519,7 @@
 		OBJ_87 /* AAFlasherState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFlasherState.swift; sourceTree = "<group>"; };
 		OBJ_88 /* GearMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearMode.swift; sourceTree = "<group>"; };
 		OBJ_9 /* AutoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoAPI.swift; sourceTree = "<group>"; };
-		OBJ_90 /* KeyfobRelativePosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyfobRelativePosition.swift; sourceTree = "<group>"; };
+		OBJ_90 /* AAKeyfobRelativePosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAKeyfobRelativePosition.swift; sourceTree = "<group>"; };
 		OBJ_91 /* LightState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightState.swift; sourceTree = "<group>"; };
 		OBJ_92 /* LockState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockState.swift; sourceTree = "<group>"; };
 		OBJ_93 /* NeedsReplacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedsReplacement.swift; sourceTree = "<group>"; };
@@ -740,7 +740,7 @@
 				OBJ_20 /* AAClimate.swift */,
 				205C5178208F41C700B55ACE /* AACruiseControl.swift */,
 				OBJ_21 /* AAHonkHornFlashLights.swift */,
-				OBJ_22 /* KeyfobPosition.swift */,
+				OBJ_22 /* AAKeyfobPosition.swift */,
 				OBJ_23 /* Lights.swift */,
 				OBJ_24 /* RooftopControl.swift */,
 				OBJ_25 /* Seats.swift */,
@@ -1022,7 +1022,7 @@
 				OBJ_107 /* FluidLevel.swift */,
 				20DB153A2096F7DA00A1658B /* Gearbox.swift */,
 				OBJ_88 /* GearMode.swift */,
-				OBJ_90 /* KeyfobRelativePosition.swift */,
+				OBJ_90 /* AAKeyfobRelativePosition.swift */,
 				OBJ_91 /* LightState.swift */,
 				OBJ_92 /* LockState.swift */,
 				20896EE721479DC5003A7A63 /* MovingState.swift */,
@@ -1279,7 +1279,7 @@
 				2093A32221394EF8009E43A0 /* Hood.swift in Sources */,
 				OBJ_326 /* AAClimate.swift in Sources */,
 				OBJ_327 /* AAHonkHornFlashLights.swift in Sources */,
-				OBJ_328 /* KeyfobPosition.swift in Sources */,
+				OBJ_328 /* AAKeyfobPosition.swift in Sources */,
 				OBJ_329 /* Lights.swift in Sources */,
 				OBJ_330 /* RooftopControl.swift in Sources */,
 				OBJ_331 /* Seats.swift in Sources */,
@@ -1343,7 +1343,7 @@
 				OBJ_383 /* AAFlasherState.swift in Sources */,
 				205C5179208F41C700B55ACE /* AACruiseControl.swift in Sources */,
 				OBJ_384 /* GearMode.swift in Sources */,
-				OBJ_386 /* KeyfobRelativePosition.swift in Sources */,
+				OBJ_386 /* AAKeyfobRelativePosition.swift in Sources */,
 				OBJ_387 /* LightState.swift in Sources */,
 				OBJ_388 /* LockState.swift in Sources */,
 				20BB171D2142604100A3FDB5 /* Date+Extensions.swift in Sources */,
