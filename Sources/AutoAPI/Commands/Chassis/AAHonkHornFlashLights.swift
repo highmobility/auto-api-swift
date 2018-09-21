@@ -79,10 +79,16 @@ public extension AAHonkHornFlashLights {
         return commandPrefix(for: .emergencyFlasher) + state.propertyBytes(0x01)
     }
 
-    static func honkHorn(seconds: UInt8?, flashLightsTimes: UInt8?) -> [UInt8] {
+    /// At least *one* value needs to be entered, instead of both being `nil`.
+    static func honkHorn(seconds: UInt8?, flashLightsXTimes: UInt8?) -> [UInt8]? {
+        guard (seconds != nil) || (flashLightsXTimes != nil) else {
+            return nil
+        }
+
         return commandPrefix(for: .honkFlash) + [seconds?.propertyBytes(0x01),
-                                                 flashLightsTimes?.propertyBytes(0x02)].propertiesValuesCombined
+                                                 flashLightsXTimes?.propertyBytes(0x02)].propertiesValuesCombined
     }
+
 
     // MARK: Deprecated
 
@@ -90,9 +96,10 @@ public extension AAHonkHornFlashLights {
     typealias Settings = (honkHornSeconds: UInt8?, flashLightsTimes: UInt8?)
 
     @available(*, deprecated, renamed: "honkHorn(seconds:flashLightsTimes:)")
+    /// - warning: May return an empty collection. Use the new method.
     static var honkHornFlashLights: (Settings) -> [UInt8] {
         return {
-            return honkHorn(seconds: $0.honkHornSeconds, flashLightsTimes: $0.flashLightsTimes)
+            return honkHorn(seconds: $0.honkHornSeconds, flashLightsXTimes: $0.flashLightsTimes) ?? []
         }
     }
 
