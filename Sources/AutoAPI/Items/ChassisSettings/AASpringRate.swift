@@ -54,39 +54,37 @@ extension AASpringRate: AAItem {
     }
 }
 
-public extension AASpringRate {
 
-    public struct Value: AAItem, PropertyConvertable {
+public struct AASpringRateValue {
 
-        public let axle: AAAxle
-        public let value: UInt8
+    public let axle: AAAxle
+    public let value: UInt8
 
 
-        init(axle: AAAxle, value: UInt8) {
-            self.axle = axle
-            self.value = value
+    init(axle: AAAxle, value: UInt8) {
+        self.axle = axle
+        self.value = value
+    }
+}
+
+extension AASpringRateValue: AAItem {
+
+    static var size: Int = 2
+
+
+    init?(bytes: [UInt8]) {
+        guard let axle = AAAxle(rawValue: bytes[0]) else {
+            return nil
         }
 
+        self.axle = axle
+        self.value = bytes[1]
+    }
+}
 
-        // MARK: AAItem
+extension AASpringRateValue: PropertyConvertable {
 
-        static var size: Int = 2
-
-
-        init?(bytes: [UInt8]) {
-            guard let axle = AAAxle(rawValue: bytes[0]) else {
-                return nil
-            }
-
-            self.axle = axle
-            self.value = bytes[1]
-        }
-
-
-        // MARK: PropertyConvertable
-
-        var propertyValue: [UInt8] {
-            return axle.propertyValue + value.propertyValue
-        }
+    var propertyValue: [UInt8] {
+        return axle.propertyValue + value.propertyValue
     }
 }

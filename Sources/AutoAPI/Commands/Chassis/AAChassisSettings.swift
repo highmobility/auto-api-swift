@@ -32,25 +32,13 @@ import Foundation
 public struct AAChassisSettings: AAFullStandardCommand {
 
     public let currentChassisPosition: UInt8?
-    public let currentSpringRates: [AASpringRate.Value]?
+    public let currentSpringRates: [AASpringRateValue]?
     public let drivingMode: AADrivingMode?
     public let maximumChassisPosition: Int8?
-    public let maximumSpringRates: [AASpringRate.Value]?
+    public let maximumSpringRates: [AASpringRateValue]?
     public let minimumChassisPosition: Int8?
-    public let minimumSpringRates: [AASpringRate.Value]?
+    public let minimumSpringRates: [AASpringRateValue]?
     public let sportChronoState: AAActiveState?
-
-
-    @available(*, deprecated, message: "Split into .currentSpringRates, .maximumSpringRates, .minimumSpringRates")
-    public let springRates: [AASpringRate]?
-
-    @available(*, deprecated, message: "Split into .currentChassisPosition, .maximumChassisPosition, .minimumChassisPosition")
-    public let chassisPosition: AAChassisPosition?
-
-    @available(*, deprecated, renamed: "sportChronoState")
-    public var isSportChroneActive: Bool? {
-        return sportChronoState == .active
-    }
 
 
     // MARK: AAFullStandardCommand
@@ -65,15 +53,32 @@ public struct AAChassisSettings: AAFullStandardCommand {
         springRates = properties.flatMap(for: 0x03) { AASpringRate($0.value) }  // Deprecated
         chassisPosition = AAChassisPosition(bytes: properties.first(for: 0x04)?.value)    // Deprecated
         /* Level 8 */
-        currentChassisPosition = properties.value(for: 0x05)
-        maximumChassisPosition = properties.value(for: 0x06)
-        minimumChassisPosition = properties.value(for: 0x07)
-        currentSpringRates = properties.flatMap(for: 0x08) { AASpringRate.Value($0.value) }
-        maximumSpringRates = properties.flatMap(for: 0x09) { AASpringRate.Value($0.value) }
-        minimumSpringRates = properties.flatMap(for: 0x0A) { AASpringRate.Value($0.value) }
+        currentSpringRates = properties.flatMap(for: 0x05) { AASpringRateValue($0.value) }
+        maximumSpringRates = properties.flatMap(for: 0x06) { AASpringRateValue($0.value) }
+        minimumSpringRates = properties.flatMap(for: 0x07) { AASpringRateValue($0.value) }
+        currentChassisPosition = properties.value(for: 0x08)
+        maximumChassisPosition = properties.value(for: 0x09)
+        minimumChassisPosition = properties.value(for: 0x0A)
+
+        // Convert deprecated properties to new ones
+
 
         // Properties
         self.properties = properties
+    }
+
+
+    // MARK: Deprecated
+
+    @available(*, deprecated, message: "Split into .currentChassisPosition, .maximumChassisPosition, .minimumChassisPosition")
+    public let chassisPosition: AAChassisPosition?
+
+    @available(*, deprecated, message: "Split into .currentSpringRates, .maximumSpringRates, .minimumSpringRates")
+    public let springRates: [AASpringRate]?
+
+    @available(*, deprecated, renamed: "sportChronoState")
+    public var isSportChroneActive: Bool? {
+        return sportChronoState == .active
     }
 }
 
@@ -115,7 +120,7 @@ public extension AAChassisSettings {
         return commandPrefix(for: .setDrivingMode) + mode.propertyBytes(0x01)
     }
 
-    static func setSpringRates(_ rates: [AASpringRate.Value]) -> [UInt8] {
+    static func setSpringRates(_ rates: [AASpringRateValue]) -> [UInt8] {
         return commandPrefix(for: .setSpringRates) + rates.reduceToByteArray { $0.propertyBytes(0x01) }
     }
 
@@ -129,7 +134,7 @@ public extension AAChassisSettings {
     @available(*, deprecated, renamed: "setSpringRates")
     static var setSpringRate: (AAAxle, UInt8) -> [UInt8] {
         return {
-            return setSpringRates([AASpringRate.Value(axle: $0, value: $1)])
+            return setSpringRates([AASpringRateValue(axle: $0, value: $1)])
         }
     }
 }

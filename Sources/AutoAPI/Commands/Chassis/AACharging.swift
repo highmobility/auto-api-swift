@@ -53,12 +53,6 @@ public struct AACharging: AAFullStandardCommand {
     public let timeToCompleteCharge: UInt16?
 
 
-    @available(*, deprecated, renamed: "timers")
-    public var chargeTimer: AAChargingTimer? {
-        return timers?.first
-    }
-
-
     // MARK: AAFullStandardCommand
 
     public let properties: AAProperties
@@ -78,8 +72,8 @@ public struct AACharging: AAFullStandardCommand {
         chargingRate = properties.value(for: 0x0A)
         chargePortState = AAChargePortState(rawValue: properties.first(for: 0x0B)?.monoValue)
         chargeMode = AAChargeMode(rawValue: properties.first(for: 0x0C)?.monoValue)
+        chargeTimer = AAChargingTimer(properties.first(for: 0x0D)?.value ?? []) // Deprecated
         /* Level 8 */
-        timers = properties.flatMap(for: 0x0D) { AAChargingTimer($0.value) }
         maxChargingCurrentAC = properties.value(for: 0x0E)
         chargingMethod = AAChargingMethod(rawValue: properties.first(for: 0x0F)?.monoValue)
         chargingWindowChosen = AAChosenState(rawValue: properties.first(for: 0x10)?.monoValue)
@@ -87,10 +81,17 @@ public struct AACharging: AAFullStandardCommand {
         climatisationActive = properties.value(for: 0x12)
         reductionOfChargingCurrentTimes = properties.flatMap(for: 0x13) { AADayTime($0.value) }
         batteryTemperature = properties.value(for: 0x14)
+        timers = properties.flatMap(for: 0x15) { AAChargingTimer($0.value) }
 
         // Properties
         self.properties = properties
     }
+
+
+    // MARK: Deprecated
+
+    @available(*, deprecated, renamed: "timers")
+    public let chargeTimer: AAChargingTimer?
 }
 
 extension AACharging: AAIdentifiable {

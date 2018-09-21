@@ -46,6 +46,10 @@ public struct AAChargingTimer {
 extension AAChargingTimer: BinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
+        guard !binary.isEmpty else {
+            return nil
+        }
+
         guard let timerType = AATimerType(rawValue: binary.bytes[0]) else {
             return nil
         }
