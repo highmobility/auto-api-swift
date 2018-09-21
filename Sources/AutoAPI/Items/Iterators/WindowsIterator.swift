@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct WindowsIterator: ItemIterator {
+public struct WindowsIterator: AAItemIterator {
 
     public typealias Element = Window
 

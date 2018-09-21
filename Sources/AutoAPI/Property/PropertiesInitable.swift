@@ -31,16 +31,16 @@ import Foundation
 
 protocol PropertiesInitable {
 
-    var propertiesIterator: PropertiesIterator { get }
+    var propertiesIterator: AAPropertiesIterator { get }
 
 
     init(propertiesArray properties: [Property])
-    init(propertiesIterator iterator: PropertiesIterator)
+    init(propertiesIterator iterator: AAPropertiesIterator)
 }
 
 extension PropertiesInitable {
 
     init(propertiesArray properties: [Property]) {
-        self.init(propertiesIterator: PropertiesIterator(properties.flatMap { $0.bytes }))
+        self.init(propertiesIterator: AAPropertiesIterator(properties.flatMap { $0.bytes }))
     }
 }

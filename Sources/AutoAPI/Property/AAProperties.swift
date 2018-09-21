@@ -53,11 +53,11 @@ public struct AAProperties: Sequence {
 
     // MARK: Sequence
 
-    public typealias Iterator = PropertiesIterator
+    public typealias Iterator = AAPropertiesIterator
 
 
-    public func makeIterator() -> PropertiesIterator {
-        return PropertiesIterator(bytes)
+    public func makeIterator() -> AAPropertiesIterator {
+        return AAPropertiesIterator(bytes)
     }
 }
 

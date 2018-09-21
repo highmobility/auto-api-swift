@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  ItemIterator.swift
+//  AAItemIterator.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 01/12/2017.
@@ -29,12 +29,13 @@
 import Foundation
 
 
-protocol ItemIterator: BinaryInitable, IteratorProtocol where Element: AAItem {
+// TODO: Remove this protocol
+protocol AAItemIterator: BinaryInitable, IteratorProtocol where Element: AAItem {
 
     var bytes: [UInt8] { get set }
 }
 
-extension ItemIterator {
+extension AAItemIterator {
 
     public mutating func next() -> Element? {
         guard bytes.count >= Element.size else {

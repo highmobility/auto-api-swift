@@ -56,5 +56,5 @@ public struct CapabilitiesIterator: IteratorProtocol, PropertiesInitable {
 
     // MARK: PropertiesInitable
 
-    var propertiesIterator: PropertiesIterator
+    var propertiesIterator: AAPropertiesIterator
 }

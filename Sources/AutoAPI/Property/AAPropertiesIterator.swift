@@ -19,61 +19,50 @@
 // licensing@high-mobility.com
 //
 //
-//  AAChargeTimer.swift
+//  AAPropertiesIterator.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 30/01/2018.
+//  Created by Mikk Rätsep on 24/11/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct AAChargeTimer: AAItem {
+public struct AAPropertiesIterator: IteratorProtocol {
 
-    public let type: AATimerType
-    public let time: Date
-
-
-    // MARK: AAItem
-
-    static var size: Int = 9
+    private var bytes: [UInt8]
 
 
-    // MARK: Init
+    // MARK: IteratorProtocol
 
-    public init(type: AATimerType, time: Date) {
-        self.type = type
-        self.time = time
-    }
-}
+    public typealias Element = Property
 
-extension AAChargeTimer: BinaryInitable {
 
-    init?(bytes: [UInt8]) {
-        guard let timerType = AATimerType(rawValue: bytes[0]) else {
-            return nil
-        }
-        
-        guard let date = Date(bytes.dropFirst().bytes) else {
+    public mutating func next() -> Property? {
+        guard bytes.count >= 3 else {
             return nil
         }
 
-        type = timerType
-        time = date
+        let size = 3 + UInt16(bytes[1...2]).int
+
+        guard bytes.count >= size else {
+            return nil
+        }
+
+        guard let property = Property(bytes.prefix(upTo: size)) else {
+            return nil
+        }
+
+        bytes.removeFirst(size)
+
+        return property
     }
 }
 
-extension AAChargeTimer: Equatable {
+extension AAPropertiesIterator: BinaryInitable {
 
-    public static func ==(lhs: AAChargeTimer, rhs: AAChargeTimer) -> Bool {
-        return (lhs.type == rhs.type) && (lhs.time == rhs.time)
-    }
-}
-
-extension AAChargeTimer: PropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [type.rawValue] + time.propertyValue
+    init<C: Collection>(_ binary: C) where C.Element == UInt8 {
+        bytes = binary.bytes
     }
 }

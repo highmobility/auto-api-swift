@@ -38,7 +38,6 @@ public struct AACharging: AAFullStandardCommand {
     public let chargeLimit: AAPercentageInt?
     public let chargeMode: AAChargeMode?
     public let chargePortState: AAChargePortState?
-    public let chargeTimer: AAChargeTimer?
     public let chargerVoltageAC: Float?
     public let chargerVoltageDC: Float?
     public let chargingMethod: AAChargingMethod?
@@ -50,7 +49,14 @@ public struct AACharging: AAFullStandardCommand {
     public let estimatedRange: UInt16?
     public let maxChargingCurrentAC: Float?
     public let reductionOfChargingCurrentTimes: [AADayTime]?
+    public let timers: [AAChargingTimer]?
     public let timeToCompleteCharge: UInt16?
+
+
+    @available(*, deprecated, renamed: "timers")
+    public var chargeTimer: AAChargingTimer? {
+        return timers?.first
+    }
 
 
     // MARK: AAFullStandardCommand
@@ -72,8 +78,8 @@ public struct AACharging: AAFullStandardCommand {
         chargingRate = properties.value(for: 0x0A)
         chargePortState = AAChargePortState(rawValue: properties.first(for: 0x0B)?.monoValue)
         chargeMode = AAChargeMode(rawValue: properties.first(for: 0x0C)?.monoValue)
-        chargeTimer = AAChargeTimer(bytes: properties.first(for: 0x0D)?.value)
         /* Level 8 */
+        timers = properties.flatMap(for: 0x0D) { AAChargingTimer($0.value) }
         maxChargingCurrentAC = properties.value(for: 0x0E)
         chargingMethod = AAChargingMethod(rawValue: properties.first(for: 0x0F)?.monoValue)
         chargingWindowChosen = AAChosenState(rawValue: properties.first(for: 0x10)?.monoValue)
@@ -102,7 +108,7 @@ extension AACharging: AAMessageTypesGettable {
         case setChargeLimit         = 0x03
         case openCloseChargePort    = 0x04
         case setChargeMode          = 0x05
-        case setChargeTimer         = 0x06
+        case setChargingTimer       = 0x06
 
 
         // MARK: Deprecated
@@ -112,6 +118,9 @@ extension AACharging: AAMessageTypesGettable {
 
         @available(*, deprecated, renamed: "chargingState")
         static let chargeState = MessageTypes.chargingState
+
+        @available(*, deprecated, renamed: "setChargingTimer")
+        static let setChargeTimer = MessageTypes.setChargingTimer
     }
 }
 
@@ -138,8 +147,8 @@ public extension AACharging {
         return commandPrefix(for: .setChargeMode) + mode.propertyBytes(0x01)
     }
 
-    static func setChargeTimer(_ timer: AAChargeTimer) -> [UInt8] {
-        return commandPrefix(for: .setChargeTimer) + timer.propertyBytes(0x0D)
+    static func setChargingTimers(_ timers: [AAChargingTimer]) -> [UInt8] {
+        return commandPrefix(for: .setChargingTimer) + timers.reduceToByteArray { $0.propertyBytes(0x0D) }
     }
 
     static func startStopCharging(_ state: AAActiveState) -> [UInt8] {
@@ -152,6 +161,13 @@ public extension AACharging {
     @available(*, deprecated, renamed: "getChargingState")
     static var getChargeState: [UInt8] {
         return getChargingState
+    }
+
+    @available(*, deprecated, renamed: "setChargingTimers")
+    static var setChargeTimer: (AAChargingTimer) -> [UInt8] {
+        return {
+            return setChargingTimers([$0])
+        }
     }
 
     @available(*, deprecated, renamed: "startStopCharging")

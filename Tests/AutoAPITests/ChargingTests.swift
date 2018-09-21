@@ -202,6 +202,6 @@ class ChargingTests: XCTestCase {
 
         let time = YearTime(year: 2018, month: 1, day: 10, hour: 16, minute: 32, second: 5, offset: 0)
         
-        XCTAssertEqual(charging.chargeTimer, AAChargeTimer(type: .departureDate, time: time))
+        XCTAssertEqual(charging.chargeTimer, AAChargingTimer(type: .departureDate, time: time))
     }
 }
