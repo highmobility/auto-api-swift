@@ -23,7 +23,7 @@
 /* Begin PBXBuildFile section */
 		2024BBF42154CFA400AA5261 /* AAClimateSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2024BBF32154CFA400AA5261 /* AAClimateSettings.swift */; };
 		2024BBF62154D7B000AA5261 /* AACruiseControlSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2024BBF52154D7B000AA5261 /* AACruiseControlSettings.swift */; };
-		2024BBF82154D95200AA5261 /* AAPropertiesMultiCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2024BBF72154D95200AA5261 /* AAPropertiesMultiCapable.swift */; };
+		2024BBF82154D95200AA5261 /* AAPropertiesMultiConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2024BBF72154D95200AA5261 /* AAPropertiesMultiConvertable.swift */; };
 		2028370B2150D17E0001724A /* AADepartureTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2028370A2150D17E0001724A /* AADepartureTime.swift */; };
 		205C5169208F154900B55ACE /* PropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5168208F154900B55ACE /* PropertiesTests.swift */; };
 		205C516B208F26CE00B55ACE /* DashboardLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C516A208F26CE00B55ACE /* DashboardLights.swift */; };
@@ -126,7 +126,7 @@
 		OBJ_324 /* AACharging.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* AACharging.swift */; };
 		OBJ_325 /* AAChassisSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* AAChassisSettings.swift */; };
 		OBJ_326 /* AAClimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* AAClimate.swift */; };
-		OBJ_327 /* HonkHornFlashLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* HonkHornFlashLights.swift */; };
+		OBJ_327 /* AAHonkHornFlashLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* AAHonkHornFlashLights.swift */; };
 		OBJ_328 /* KeyfobPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* KeyfobPosition.swift */; };
 		OBJ_329 /* Lights.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* Lights.swift */; };
 		OBJ_330 /* RooftopControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* RooftopControl.swift */; };
@@ -179,7 +179,7 @@
 		OBJ_380 /* AADrivingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_84 /* AADrivingMode.swift */; };
 		OBJ_381 /* FailureReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_85 /* FailureReason.swift */; };
 		OBJ_382 /* FatigueLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_86 /* FatigueLevel.swift */; };
-		OBJ_383 /* FlasherState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_87 /* FlasherState.swift */; };
+		OBJ_383 /* AAFlasherState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_87 /* AAFlasherState.swift */; };
 		OBJ_384 /* GearMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_88 /* GearMode.swift */; };
 		OBJ_386 /* KeyfobRelativePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_90 /* KeyfobRelativePosition.swift */; };
 		OBJ_387 /* LightState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_91 /* LightState.swift */; };
@@ -296,7 +296,7 @@
 /* Begin PBXFileReference section */
 		2024BBF32154CFA400AA5261 /* AAClimateSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAClimateSettings.swift; sourceTree = "<group>"; };
 		2024BBF52154D7B000AA5261 /* AACruiseControlSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACruiseControlSettings.swift; sourceTree = "<group>"; };
-		2024BBF72154D95200AA5261 /* AAPropertiesMultiCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertiesMultiCapable.swift; sourceTree = "<group>"; };
+		2024BBF72154D95200AA5261 /* AAPropertiesMultiConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertiesMultiConvertable.swift; sourceTree = "<group>"; };
 		2028370A2150D17E0001724A /* AADepartureTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADepartureTime.swift; sourceTree = "<group>"; };
 		205C5168208F154900B55ACE /* PropertiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesTests.swift; sourceTree = "<group>"; };
 		205C516A208F26CE00B55ACE /* DashboardLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLights.swift; sourceTree = "<group>"; };
@@ -447,7 +447,7 @@
 		OBJ_207 /* TrunkAccessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrunkAccessTests.swift; sourceTree = "<group>"; };
 		OBJ_208 /* ValetModeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValetModeTests.swift; sourceTree = "<group>"; };
 		OBJ_209 /* VehicleLocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleLocationTests.swift; sourceTree = "<group>"; };
-		OBJ_21 /* HonkHornFlashLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonkHornFlashLights.swift; sourceTree = "<group>"; };
+		OBJ_21 /* AAHonkHornFlashLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHonkHornFlashLights.swift; sourceTree = "<group>"; };
 		OBJ_210 /* VehicleStatusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleStatusTests.swift; sourceTree = "<group>"; };
 		OBJ_211 /* VehicleTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTimeTests.swift; sourceTree = "<group>"; };
 		OBJ_212 /* VideoHandoverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoHandoverTests.swift; sourceTree = "<group>"; };
@@ -516,7 +516,7 @@
 		OBJ_84 /* AADrivingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADrivingMode.swift; sourceTree = "<group>"; };
 		OBJ_85 /* FailureReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureReason.swift; sourceTree = "<group>"; };
 		OBJ_86 /* FatigueLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatigueLevel.swift; sourceTree = "<group>"; };
-		OBJ_87 /* FlasherState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlasherState.swift; sourceTree = "<group>"; };
+		OBJ_87 /* AAFlasherState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFlasherState.swift; sourceTree = "<group>"; };
 		OBJ_88 /* GearMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearMode.swift; sourceTree = "<group>"; };
 		OBJ_9 /* AutoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoAPI.swift; sourceTree = "<group>"; };
 		OBJ_90 /* KeyfobRelativePosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyfobRelativePosition.swift; sourceTree = "<group>"; };
@@ -685,7 +685,7 @@
 				OBJ_157 /* PropertiesCapable.swift */,
 				OBJ_158 /* PropertiesInitable.swift */,
 				OBJ_159 /* PropertiesIterator.swift */,
-				2024BBF72154D95200AA5261 /* AAPropertiesMultiCapable.swift */,
+				2024BBF72154D95200AA5261 /* AAPropertiesMultiConvertable.swift */,
 				OBJ_160 /* Property.swift */,
 				OBJ_161 /* PropertyConvertable.swift */,
 			);
@@ -739,7 +739,7 @@
 				OBJ_19 /* AAChassisSettings.swift */,
 				OBJ_20 /* AAClimate.swift */,
 				205C5178208F41C700B55ACE /* AACruiseControl.swift */,
-				OBJ_21 /* HonkHornFlashLights.swift */,
+				OBJ_21 /* AAHonkHornFlashLights.swift */,
 				OBJ_22 /* KeyfobPosition.swift */,
 				OBJ_23 /* Lights.swift */,
 				OBJ_24 /* RooftopControl.swift */,
@@ -1018,7 +1018,7 @@
 				OBJ_85 /* FailureReason.swift */,
 				20CDFAA82152657100402BF6 /* Fastened.swift */,
 				OBJ_86 /* FatigueLevel.swift */,
-				OBJ_87 /* FlasherState.swift */,
+				OBJ_87 /* AAFlasherState.swift */,
 				OBJ_107 /* FluidLevel.swift */,
 				20DB153A2096F7DA00A1658B /* Gearbox.swift */,
 				OBJ_88 /* GearMode.swift */,
@@ -1278,7 +1278,7 @@
 				OBJ_325 /* AAChassisSettings.swift in Sources */,
 				2093A32221394EF8009E43A0 /* Hood.swift in Sources */,
 				OBJ_326 /* AAClimate.swift in Sources */,
-				OBJ_327 /* HonkHornFlashLights.swift in Sources */,
+				OBJ_327 /* AAHonkHornFlashLights.swift in Sources */,
 				OBJ_328 /* KeyfobPosition.swift in Sources */,
 				OBJ_329 /* Lights.swift in Sources */,
 				OBJ_330 /* RooftopControl.swift in Sources */,
@@ -1340,7 +1340,7 @@
 				OBJ_380 /* AADrivingMode.swift in Sources */,
 				OBJ_381 /* FailureReason.swift in Sources */,
 				OBJ_382 /* FatigueLevel.swift in Sources */,
-				OBJ_383 /* FlasherState.swift in Sources */,
+				OBJ_383 /* AAFlasherState.swift in Sources */,
 				205C5179208F41C700B55ACE /* AACruiseControl.swift in Sources */,
 				OBJ_384 /* GearMode.swift in Sources */,
 				OBJ_386 /* KeyfobRelativePosition.swift in Sources */,
@@ -1419,7 +1419,7 @@
 				20F7903B21356F94003BDFA2 /* DueStatus.swift in Sources */,
 				OBJ_445 /* AAMessageTypesGettable.swift in Sources */,
 				OBJ_446 /* AAProperties.swift in Sources */,
-				2024BBF82154D95200AA5261 /* AAPropertiesMultiCapable.swift in Sources */,
+				2024BBF82154D95200AA5261 /* AAPropertiesMultiConvertable.swift in Sources */,
 				OBJ_447 /* PropertiesCapable.swift in Sources */,
 				OBJ_448 /* PropertiesInitable.swift in Sources */,
 				20896EE621479A8F003A7A63 /* AAActiveState.swift in Sources */,

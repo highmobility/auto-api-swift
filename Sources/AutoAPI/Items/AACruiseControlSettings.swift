@@ -43,7 +43,7 @@ public struct AACruiseControlSettings {
     }
 }
 
-extension AACruiseControlSettings: AAPropertiesMultiCapable {
+extension AACruiseControlSettings: AAPropertiesMultiConvertable {
 
     var propertiesValues: [[UInt8]?] {
         return [state.propertyBytes(0x01),

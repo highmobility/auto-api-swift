@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  AAPropertiesMultiCapable.swift
+//  AAPropertiesMultiConvertable.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 21/09/2018.
@@ -29,16 +29,15 @@
 import Foundation
 
 
-// TODO: Rename to -Convertable
-protocol AAPropertiesMultiCapable {
+protocol AAPropertiesMultiConvertable {
 
     var propertiesValues: [[UInt8]?] { get }
     var propertiesValuesCombined: [UInt8] { get }
 }
 
-extension AAPropertiesMultiCapable {
+extension AAPropertiesMultiConvertable {
 
     var propertiesValuesCombined: [UInt8] {
-        return propertiesValues.compactMap { $0 }.reduceToByteArray { $0 }
+        return propertiesValues.propertiesValuesCombined
     }
 }

@@ -196,8 +196,8 @@ class CapabilitiesTests: XCTestCase {
         }
 
         // HONK HORN, FLASH LIGHTS
-        if let capability = capabilities.first(where: { $0.command is HonkHornFlashFlights.Type }) {
-            XCTAssertTrue(capability.supportsAllMessageTypes(for: HonkHornFlashFlights.self))
+        if let capability = capabilities.first(where: { $0.command is AAHonkHornFlashFlights.Type }) {
+            XCTAssertTrue(capability.supportsAllMessageTypes(for: AAHonkHornFlashFlights.self))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for HonkHornFlashFlights")

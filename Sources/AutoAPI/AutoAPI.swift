@@ -59,7 +59,7 @@ public struct AutoAPI {
                 Graphics.self,
                 HeartRate.self,
                 HomeCharger.self,
-                HonkHornFlashFlights.self,
+                AAHonkHornFlashLights.self,
                 Hood.self,
                 KeyfobPosition.self,
                 LightConditions.self,

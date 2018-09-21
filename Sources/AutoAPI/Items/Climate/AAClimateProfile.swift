@@ -67,7 +67,7 @@ extension AAClimateProfile: PropertyConvertable {
     }
 }
 
-extension AAClimateProfile: AAPropertiesMultiCapable {
+extension AAClimateProfile: AAPropertiesMultiConvertable {
 
     var propertiesValues: [[UInt8]?] {
         return [activatedDays.propertyBytes(0x01),

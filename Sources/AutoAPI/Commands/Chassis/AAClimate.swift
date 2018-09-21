@@ -137,7 +137,7 @@ public extension AAClimate {
     static func changeTemperatures(driver: Float?, passenger: Float?, rear: Float?) -> [UInt8] {
         return commandPrefix(for: .changeTemperatures) + [driver?.propertyBytes(0x01),
                                                           passenger?.propertyBytes(0x02),
-                                                          rear?.propertyBytes(0x03)].compactMap { $0 }.reduceToByteArray { $0 }
+                                                          rear?.propertyBytes(0x03)].propertiesValuesCombined
     }
 
 

@@ -45,7 +45,7 @@ public struct AAClimateSettings {
     }
 }
 
-extension AAClimateSettings: AAPropertiesMultiCapable {
+extension AAClimateSettings: AAPropertiesMultiConvertable {
 
     var propertiesValues: [[UInt8]?] {
         return [climateProfile?.propertyBytes(0x01),

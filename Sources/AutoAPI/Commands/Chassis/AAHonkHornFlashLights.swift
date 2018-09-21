@@ -1,0 +1,103 @@
+//
+// AutoAPI
+// Copyright (C) 2018 High-Mobility GmbH
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see http://www.gnu.org/licenses/.
+//
+// Please inquire about commercial licensing options at
+// licensing@high-mobility.com
+//
+//
+//  AAHonkHornFlashLights.swift
+//  AutoAPI
+//
+//  Created by Mikk Rätsep on 12/12/2017.
+//  Copyright © 2018 High Mobility. All rights reserved.
+//
+
+import Foundation
+
+
+public struct AAHonkHornFlashLights: AAFullStandardCommand {
+
+    public let flasherState: AAFlasherState?
+
+
+    // MARK: AAFullStandardCommand
+
+    public let properties: AAProperties
+
+
+    init?(properties: AAProperties) {
+        // Ordered by the ID
+        flasherState = AAFlasherState(rawValue: properties.first(for: 0x01)?.monoValue)
+
+        // Properties
+        self.properties = properties
+    }
+}
+
+extension AAHonkHornFlashLights: AAIdentifiable {
+
+    public static var identifier: AACommandIdentifier = 0x0026
+}
+
+extension AAHonkHornFlashLights: AAMessageTypesGettable {
+
+    public enum MessageTypes: UInt8, CaseIterable {
+
+        case getFlasherState    = 0x00
+        case flasherState       = 0x01
+        case honkFlash          = 0x02
+        case emergencyFlasher   = 0x03
+
+
+        @available(*, deprecated, renamed: "emergencyFlasher")
+        static let activateDeactivateEmergencyFlasher = MessageTypes.emergencyFlasher
+    }
+}
+
+public extension AAHonkHornFlashLights {
+
+    static var getFlasherState: [UInt8] {
+        return commandPrefix(for: .getFlasherState)
+    }
+
+
+    static func activateEmergencyFlasher(_ state: AAActiveState) -> [UInt8] {
+        return commandPrefix(for: .emergencyFlasher) + state.propertyBytes(0x01)
+    }
+
+    static func honkHorn(seconds: UInt8?, flashLightsTimes: UInt8?) -> [UInt8] {
+        return commandPrefix(for: .honkFlash) + [seconds?.propertyBytes(0x01),
+                                                 flashLightsTimes?.propertyBytes(0x02)].propertiesValuesCombined
+    }
+
+    // MARK: Deprecated
+
+    @available(*, deprecated, message: "Use the method .honkHorn(seconds:flashLightsTimes:)")
+    typealias Settings = (honkHornSeconds: UInt8?, flashLightsTimes: UInt8?)
+
+    @available(*, deprecated, renamed: "honkHorn(seconds:flashLightsTimes:)")
+    static var honkHornFlashLights: (Settings) -> [UInt8] {
+        return {
+            return honkHorn(seconds: $0.honkHornSeconds, flashLightsTimes: $0.flashLightsTimes)
+        }
+    }
+
+    @available(*, deprecated, renamed: "activateEmergencyFlasher")
+    static var setEmergencyFlasherState: (AAActiveState) -> [UInt8] {
+        return activateEmergencyFlasher
+    }
+}

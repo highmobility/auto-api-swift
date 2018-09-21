@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  FlasherState.swift
+//  AAFlasherState.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 12/12/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public enum FlasherState: UInt8 {
+public enum AAFlasherState: UInt8 {
 
     case inactive               = 0x00
     case emergencyFlasherActive = 0x01
