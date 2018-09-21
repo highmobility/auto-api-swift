@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  AADayTime.swift
+//  AATime.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 30/11/2017.
@@ -29,15 +29,14 @@
 import Foundation
 
 
-public struct AADayTime {
+public struct AATime {
 
-    public let hour: UInt8
-    public let minute: UInt8
+    public var hour: UInt8
+    public var minute: UInt8
 
-
-    // MARK: Type Vars
-
-    public static let zero: AADayTime = AADayTime(hour: 0, minute: 0)
+    var isNil: Bool {
+        return (hour == 0xFF) || (minute == 0xFF)
+    }
 
 
     // MARK: Init
@@ -48,24 +47,20 @@ public struct AADayTime {
     }
 }
 
-extension AADayTime: BinaryInitable {
-
-    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        guard binary.count >= 2 else {
-            return nil
-        }
-
-        hour = binary.bytes[0]
-        minute = binary.bytes[1]
-    }
-}
-
-extension AADayTime: AAItem {
+extension AATime: AAItem {
 
     static var size: Int = 2
 
 
     init?(bytes: [UInt8]) {
-        self.init(bytes)
+        hour = bytes[0]
+        minute = bytes[1]
+    }
+}
+
+extension AATime: PropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [hour, minute]
     }
 }

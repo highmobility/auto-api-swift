@@ -29,20 +29,20 @@
 import Foundation
 
 
-public struct AAWeekdaysTimes {
+public struct AAWeekdaysStartingTimes {
 
-    public let monday: AADayTime
-    public let tuesday: AADayTime
-    public let wednesday: AADayTime
-    public let thursday: AADayTime
-    public let friday: AADayTime
-    public let saturday: AADayTime
-    public let sunday: AADayTime
+    public let monday: AATime
+    public let tuesday: AATime
+    public let wednesday: AATime
+    public let thursday: AATime
+    public let friday: AATime
+    public let saturday: AATime
+    public let sunday: AATime
 
 
     // MARK: Init
 
-    public init(monday: AADayTime, tuesday: AADayTime, wednesday: AADayTime, thursday: AADayTime, friday: AADayTime, saturday: AADayTime, sunday: AADayTime) {
+    public init(monday: AATime, tuesday: AATime, wednesday: AATime, thursday: AATime, friday: AATime, saturday: AATime, sunday: AATime) {
         self.monday = monday
         self.tuesday = tuesday
         self.wednesday = wednesday
@@ -53,7 +53,7 @@ public struct AAWeekdaysTimes {
     }
 }
 
-extension AAWeekdaysTimes: BinaryInitable {
+extension AAWeekdaysStartingTimes: BinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
         guard binary.count == 14 else {
@@ -62,13 +62,13 @@ extension AAWeekdaysTimes: BinaryInitable {
 
         let bytes = binary.bytes
 
-        guard let monday = AADayTime(bytes),
-            let tuesday = AADayTime(bytes.suffix(from: 2)),
-            let wednesday = AADayTime(bytes.suffix(from: 4)),
-            let thursday = AADayTime(bytes.suffix(from: 6)),
-            let friday = AADayTime(bytes.suffix(from: 8)),
-            let saturday = AADayTime(bytes.suffix(from: 10)),
-            let sunday = AADayTime(bytes.suffix(from: 12)) else {
+        guard let monday = AATime(bytes),
+            let tuesday = AATime(bytes.suffix(from: 2)),
+            let wednesday = AATime(bytes.suffix(from: 4)),
+            let thursday = AATime(bytes.suffix(from: 6)),
+            let friday = AATime(bytes.suffix(from: 8)),
+            let saturday = AATime(bytes.suffix(from: 10)),
+            let sunday = AATime(bytes.suffix(from: 12)) else {
                 return nil
         }
 
@@ -82,7 +82,7 @@ extension AAWeekdaysTimes: BinaryInitable {
     }
 }
 
-extension AAWeekdaysTimes: PropertyConvertable {
+extension AAWeekdaysStartingTimes: PropertyConvertable {
 
     var propertyValue: [UInt8] {
         return [monday.hour, monday.minute,

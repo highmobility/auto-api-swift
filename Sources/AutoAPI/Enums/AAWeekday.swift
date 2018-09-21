@@ -19,40 +19,25 @@
 // licensing@high-mobility.com
 //
 //
-//  AADepartureTime.swift
+//  AAWeekday.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 18/09/2018.
+//  Created by Mikk Rätsep on 21/09/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct AADepartureTime {
+public enum AAWeekday: UInt8 {
 
-    public let state: AAActiveState
-    public let time: AATime?
-}
+    case monday     = 0x00
+    case tuesday    = 0x01
+    case wednesday  = 0x02
+    case thursday   = 0x03
+    case friday     = 0x04
+    case saturday   = 0x05
+    case sunday     = 0x06
 
-extension AADepartureTime: AAItem {
-
-    static var size: Int = 3
-
-
-    /// 0xFF for "no time"
-    init?(bytes: [UInt8]) {
-        guard let activeState = AAActiveState(rawValue: bytes[0]) else {
-            return nil
-        }
-
-        state = activeState
-
-        if (bytes[1] == 0xFF) || (bytes[2] == 0xFF) {
-            time = nil
-        }
-        else {
-            time = AATime(bytes[2...])
-        }
-    }
+    case automatic  = 0x07
 }

@@ -31,7 +31,7 @@ import Foundation
 
 public struct NaviDestination: AAFullStandardCommand {
 
-    public let arrivalTime: AADayTime?
+    public let arrivalTime: AATime?
     public let coordinate: Coordinate?
     public let distanceTo: UInt16?
     public let name: String?
@@ -50,7 +50,7 @@ public struct NaviDestination: AAFullStandardCommand {
         name = properties.value(for: 0x02)
         poiSlotsFree = properties.value(for: 0x03)
         poiSlotsMax = properties.value(for: 0x04)
-        arrivalTime = AADayTime(properties.first(for: 0x05)?.value ?? [])
+        arrivalTime = AATime(properties.first(for: 0x05)?.value ?? [])
         distanceTo = properties.value(for: 0x06)
 
         // Properties

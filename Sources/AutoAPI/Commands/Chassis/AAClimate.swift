@@ -31,17 +31,47 @@ import Foundation
 
 public struct AAClimate: AAFullStandardCommand {
 
-    public let climateProfile: AAClimateProfile?
     public let defrostingTemperature: Float?
-    public let driverTemperature: Float?
-    public let insideTemperature: Float?
     public let defoggingState: AAActiveState?
     public let defrostingState: AAActiveState?
+    public let driverTemperature: Float?
     public let hvacState: AAActiveState?
+    public let insideTemperature: Float?
     public let ionisingState: AAActiveState?
     public let outsideTemperature: Float?
     public let passengerTemperature: Float?
+    public let weekdaysStartingTimes: [AAClimateWeekdayTime]?
 
+
+    // MARK: AAFullStandardCommand
+
+    public let properties: AAProperties
+
+
+    init?(properties: AAProperties) {
+        // Ordered by the ID
+        insideTemperature = properties.value(for: 0x01)
+        outsideTemperature = properties.value(for: 0x02)
+        driverTemperature = properties.value(for: 0x03)
+        passengerTemperature = properties.value(for: 0x04)
+        hvacState = properties.value(for: 0x05)
+        defoggingState = properties.value(for: 0x06)
+        defrostingState = properties.value(for: 0x07)
+        ionisingState = properties.value(for: 0x08)
+        defrostingTemperature = properties.value(for: 0x09)
+        climateProfile = AAClimateProfile(bytes: properties.first(for: 0x0A)?.value)    // Deprecated
+        /* Level 8 */
+        weekdaysStartingTimes = properties.flatMap(for: 0x0B) { AAClimateWeekdayTime($0.value) }
+
+        // Properties
+        self.properties = properties
+    }
+
+
+    // MARK: Deprecated
+
+    @available(*, deprecated, renamed: "weekdaysStartingTimes")
+    public let climateProfile: AAClimateProfile?
 
     @available(*, deprecated, renamed: "defoggingState")
     public var isDefoggingActive: Bool? {
@@ -62,29 +92,6 @@ public struct AAClimate: AAFullStandardCommand {
     public var isIonisingActive: Bool? {
         return ionisingState == .active
     }
-
-
-    // MARK: AAFullStandardCommand
-
-    public let properties: AAProperties
-
-
-    init?(properties: AAProperties) {
-        // Ordered by the ID
-        insideTemperature = properties.value(for: 0x01)
-        outsideTemperature = properties.value(for: 0x02)
-        driverTemperature = properties.value(for: 0x03)
-        passengerTemperature = properties.value(for: 0x04)
-        hvacState = properties.value(for: 0x05)
-        defoggingState = properties.value(for: 0x06)
-        defrostingState = properties.value(for: 0x07)
-        ionisingState = properties.value(for: 0x08)
-        defrostingTemperature = properties.value(for: 0x09)
-        climateProfile = AAClimateProfile(bytes: properties.first(for: 0x0A)?.value)
-
-        // Properties
-        self.properties = properties
-    }
 }
 
 extension AAClimate: AAIdentifiable {
@@ -98,12 +105,12 @@ extension AAClimate: AAMessageTypesGettable {
 
         case getClimateState        = 0x00
         case climateState           = 0x01
-        case setClimateProfile      = 0x02
+        case changeStartingTimes    = 0x02
         case startStopHVAC          = 0x03
         case startStopDefogging     = 0x04
         case startStopDefrosting    = 0x05
         case startStopIonising      = 0x06
-        /* Level 8 */
+
         case changeTemperatures     = 0x07
     }
 }
@@ -114,8 +121,16 @@ public extension AAClimate {
         return commandPrefix(for: .getClimateState)
     }
 
-    static func setClimateProfile(_ profile: AAClimateProfile) -> [UInt8] {
-        return commandPrefix(for: .setClimateProfile) + profile.propertiesValuesCombined
+
+
+    static func changeStartingTimes(_ times: [AAClimateWeekdayTime]) -> [UInt8] {
+        return commandPrefix(for: .changeStartingTimes) + times.reduceToByteArray { $0.propertyBytes(0x01) }
+    }
+
+    static func changeTemperatures(driver: Float?, passenger: Float?, rear: Float?) -> [UInt8] {
+        return commandPrefix(for: .changeTemperatures) + [driver?.propertyBytes(0x01),
+                                                          passenger?.propertyBytes(0x02),
+                                                          rear?.propertyBytes(0x03)].propertiesValuesCombined
     }
 
     static func startStopDefogging(_ state: AAActiveState) -> [UInt8] {
@@ -134,14 +149,13 @@ public extension AAClimate {
         return commandPrefix(for: .startStopIonising) + state.propertyBytes(0x01)
     }
 
-    static func changeTemperatures(driver: Float?, passenger: Float?, rear: Float?) -> [UInt8] {
-        return commandPrefix(for: .changeTemperatures) + [driver?.propertyBytes(0x01),
-                                                          passenger?.propertyBytes(0x02),
-                                                          rear?.propertyBytes(0x03)].propertiesValuesCombined
-    }
-
 
     // MARK: Deprecated
+
+    @available(*, deprecated, renamed: "changeStartingTimes")
+    static var setClimateProfile: (AAClimateProfile) -> [UInt8] {
+        return { _ in [] }
+    }
 
     @available(*, deprecated, renamed: "startStopDefogging")
     static var startDefogging: (Bool) -> [UInt8] {

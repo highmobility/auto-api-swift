@@ -48,7 +48,7 @@ public struct AACharging: AAFullStandardCommand {
     public let departureTimes: [AADepartureTime]?
     public let estimatedRange: UInt16?
     public let maxChargingCurrentAC: Float?
-    public let reductionOfChargingCurrentTimes: [AADayTime]?
+    public let reductionOfChargingCurrentTimes: [AATime]?
     public let timers: [AAChargingTimer]?
     public let timeToCompleteCharge: UInt16?
 
@@ -79,7 +79,7 @@ public struct AACharging: AAFullStandardCommand {
         chargingWindowChosen = AAChosenState(rawValue: properties.first(for: 0x10)?.monoValue)
         departureTimes = properties.flatMap(for: 0x11) { AADepartureTime($0.value) }
         climatisationActive = properties.value(for: 0x12)
-        reductionOfChargingCurrentTimes = properties.flatMap(for: 0x13) { AADayTime($0.value) }
+        reductionOfChargingCurrentTimes = properties.flatMap(for: 0x13) { AATime($0.value) }
         batteryTemperature = properties.value(for: 0x14)
         timers = properties.flatMap(for: 0x15) { AAChargingTimer($0.value) }
 

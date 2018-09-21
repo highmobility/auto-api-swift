@@ -25,6 +25,8 @@
 		2024BBF62154D7B000AA5261 /* AACruiseControlSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2024BBF52154D7B000AA5261 /* AACruiseControlSettings.swift */; };
 		2024BBF82154D95200AA5261 /* AAPropertiesMultiConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2024BBF72154D95200AA5261 /* AAPropertiesMultiConvertable.swift */; };
 		2024BBFA2154EF7100AA5261 /* CaseIterable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2024BBF92154EF7100AA5261 /* CaseIterable+Extensions.swift */; };
+		2024BBFC21553A3200AA5261 /* AAWeekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2024BBFB21553A3200AA5261 /* AAWeekday.swift */; };
+		2024BBFE21553D8A00AA5261 /* AAClimateWeekdayTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2024BBFD21553D8A00AA5261 /* AAClimateWeekdayTime.swift */; };
 		2028370B2150D17E0001724A /* AADepartureTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2028370A2150D17E0001724A /* AADepartureTime.swift */; };
 		205C5169208F154900B55ACE /* PropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5168208F154900B55ACE /* PropertiesTests.swift */; };
 		205C516B208F26CE00B55ACE /* DashboardLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C516A208F26CE00B55ACE /* DashboardLights.swift */; };
@@ -224,8 +226,8 @@
 		OBJ_427 /* AASpringRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_134 /* AASpringRate.swift */; };
 		OBJ_428 /* AAActivatedDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_136 /* AAActivatedDays.swift */; };
 		OBJ_429 /* AAClimateProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_137 /* AAClimateProfile.swift */; };
-		OBJ_430 /* AADayTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_138 /* AADayTime.swift */; };
-		OBJ_431 /* AAWeekdaysTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_139 /* AAWeekdaysTimes.swift */; };
+		OBJ_430 /* AATime.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_138 /* AATime.swift */; };
+		OBJ_431 /* AAWeekdaysStartingTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_139 /* AAWeekdaysStartingTimes.swift */; };
 		OBJ_432 /* AAColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_140 /* AAColour.swift */; };
 		OBJ_433 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_141 /* Coordinate.swift */; };
 		OBJ_434 /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_142 /* Door.swift */; };
@@ -298,6 +300,8 @@
 		2024BBF52154D7B000AA5261 /* AACruiseControlSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACruiseControlSettings.swift; sourceTree = "<group>"; };
 		2024BBF72154D95200AA5261 /* AAPropertiesMultiConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertiesMultiConvertable.swift; sourceTree = "<group>"; };
 		2024BBF92154EF7100AA5261 /* CaseIterable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaseIterable+Extensions.swift"; sourceTree = "<group>"; };
+		2024BBFB21553A3200AA5261 /* AAWeekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWeekday.swift; sourceTree = "<group>"; };
+		2024BBFD21553D8A00AA5261 /* AAClimateWeekdayTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAClimateWeekdayTime.swift; sourceTree = "<group>"; };
 		2028370A2150D17E0001724A /* AADepartureTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADepartureTime.swift; sourceTree = "<group>"; };
 		205C5168208F154900B55ACE /* PropertiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesTests.swift; sourceTree = "<group>"; };
 		205C516A208F26CE00B55ACE /* DashboardLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLights.swift; sourceTree = "<group>"; };
@@ -382,8 +386,8 @@
 		OBJ_134 /* AASpringRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASpringRate.swift; sourceTree = "<group>"; };
 		OBJ_136 /* AAActivatedDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAActivatedDays.swift; sourceTree = "<group>"; };
 		OBJ_137 /* AAClimateProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAClimateProfile.swift; sourceTree = "<group>"; };
-		OBJ_138 /* AADayTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADayTime.swift; sourceTree = "<group>"; };
-		OBJ_139 /* AAWeekdaysTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWeekdaysTimes.swift; sourceTree = "<group>"; };
+		OBJ_138 /* AATime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATime.swift; sourceTree = "<group>"; };
+		OBJ_139 /* AAWeekdaysStartingTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWeekdaysStartingTimes.swift; sourceTree = "<group>"; };
 		OBJ_14 /* Capability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capability.swift; sourceTree = "<group>"; };
 		OBJ_140 /* AAColour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAColour.swift; sourceTree = "<group>"; };
 		OBJ_141 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
@@ -627,13 +631,14 @@
 				OBJ_131 /* AAChargingTimer.swift */,
 				OBJ_132 /* ChassisSettings */,
 				20F7903621356C54003BDFA2 /* CheckControlMessage.swift */,
+				2024BBFD21553D8A00AA5261 /* AAClimateWeekdayTime.swift */,
 				OBJ_135 /* Climate */,
 				OBJ_140 /* AAColour.swift */,
 				20F7903821356F54003BDFA2 /* ConditionBasedService.swift */,
 				OBJ_141 /* Coordinate.swift */,
 				2024BBF52154D7B000AA5261 /* AACruiseControlSettings.swift */,
 				205C516C208F28FF00B55ACE /* DashboardLight.swift */,
-				OBJ_138 /* AADayTime.swift */,
+				OBJ_138 /* AATime.swift */,
 				2028370A2150D17E0001724A /* AADepartureTime.swift */,
 				OBJ_142 /* Door.swift */,
 				20DB154D2097265400A1658B /* DriverCard.swift */,
@@ -664,7 +669,7 @@
 				OBJ_136 /* AAActivatedDays.swift */,
 				OBJ_137 /* AAClimateProfile.swift */,
 				2024BBF32154CFA400AA5261 /* AAClimateSettings.swift */,
-				OBJ_139 /* AAWeekdaysTimes.swift */,
+				OBJ_139 /* AAWeekdaysStartingTimes.swift */,
 			);
 			path = Climate;
 			sourceTree = "<group>";
@@ -1040,6 +1045,7 @@
 				OBJ_105 /* TheftAlarmState.swift */,
 				OBJ_106 /* AATimerType.swift */,
 				20DB154920971B9F00A1658B /* TimeState.swift */,
+				2024BBFB21553A3200AA5261 /* AAWeekday.swift */,
 				OBJ_108 /* WindscreenDamage.swift */,
 				OBJ_109 /* WipersLevel.swift */,
 				OBJ_110 /* WipersState.swift */,
@@ -1306,6 +1312,7 @@
 				OBJ_350 /* TextInput.swift in Sources */,
 				20896EE4214799C1003A7A63 /* AAChosenState.swift in Sources */,
 				OBJ_351 /* VideoHandover.swift in Sources */,
+				2024BBFE21553D8A00AA5261 /* AAClimateWeekdayTime.swift in Sources */,
 				20F7903F2135732D003BDFA2 /* DisplayUnit.swift in Sources */,
 				OBJ_352 /* WiFi.swift in Sources */,
 				OBJ_353 /* DriverFatigue.swift in Sources */,
@@ -1391,14 +1398,15 @@
 				OBJ_423 /* BrakeTorqueVectoring.swift in Sources */,
 				20DB154C20971CD700A1658B /* DriverTimeState.swift in Sources */,
 				OBJ_424 /* ChargeCurrent.swift in Sources */,
+				2024BBFC21553A3200AA5261 /* AAWeekday.swift in Sources */,
 				OBJ_425 /* AAChargingTimer.swift in Sources */,
 				OBJ_426 /* AAChassisPosition.swift in Sources */,
 				205C5171208F315D00B55ACE /* DashboardLightName.swift in Sources */,
 				OBJ_427 /* AASpringRate.swift in Sources */,
 				OBJ_428 /* AAActivatedDays.swift in Sources */,
 				OBJ_429 /* AAClimateProfile.swift in Sources */,
-				OBJ_430 /* AADayTime.swift in Sources */,
-				OBJ_431 /* AAWeekdaysTimes.swift in Sources */,
+				OBJ_430 /* AATime.swift in Sources */,
+				OBJ_431 /* AAWeekdaysStartingTimes.swift in Sources */,
 				OBJ_432 /* AAColour.swift in Sources */,
 				20896EE821479DC5003A7A63 /* MovingState.swift in Sources */,
 				OBJ_433 /* Coordinate.swift in Sources */,

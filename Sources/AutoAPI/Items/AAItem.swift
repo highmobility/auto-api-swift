@@ -56,8 +56,3 @@ extension AAItem {
         self.init(bytes: bytes)
     }
 }
-
-
-//protocol AAItem {
-//    <#requirements#>
-//}

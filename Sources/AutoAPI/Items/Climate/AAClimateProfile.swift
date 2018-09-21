@@ -29,10 +29,11 @@
 import Foundation
 
 
+@available(*, deprecated, message: "Use the new AAClimateWeek")
 public struct AAClimateProfile: AAItem {
 
     public let activatedDays: AAActivatedDays
-    public let weekdaysStartingTimes: AAWeekdaysTimes
+    public let weekdaysStartingTimes: AAWeekdaysStartingTimes
 
 
     // MARK: AAItem
@@ -42,7 +43,7 @@ public struct AAClimateProfile: AAItem {
 
     // MARK: Init
 
-    public init(activatedDays: AAActivatedDays, weekdaysStartingTimes: AAWeekdaysTimes) {
+    public init(activatedDays: AAActivatedDays, weekdaysStartingTimes: AAWeekdaysStartingTimes) {
         self.activatedDays = activatedDays
         self.weekdaysStartingTimes = weekdaysStartingTimes
     }
@@ -51,7 +52,7 @@ public struct AAClimateProfile: AAItem {
 extension AAClimateProfile: BinaryInitable {
 
     init?(bytes: [UInt8]) {
-        guard let startingTimes = AAWeekdaysTimes(bytes.dropFirstBytes(1)) else {
+        guard let startingTimes = AAWeekdaysStartingTimes(bytes.dropFirstBytes(1)) else {
             return nil
         }
 

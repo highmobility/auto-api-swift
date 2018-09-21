@@ -31,7 +31,7 @@ import Foundation
 
 public struct VehicleTime: AAFullStandardCommand {
 
-    public let time: AADayTime?
+    public let time: AATime?
 
 
     // MARK: AAFullStandardCommand
@@ -41,7 +41,7 @@ public struct VehicleTime: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        time = AADayTime(bytes: properties.first(for: 0x01)?.value)
+        time = AATime(bytes: properties.first(for: 0x01)?.value)
 
         // Properties
         self.properties = properties

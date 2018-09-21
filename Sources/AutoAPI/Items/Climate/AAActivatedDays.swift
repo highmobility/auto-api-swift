@@ -38,6 +38,7 @@ public struct AAActivatedDays: OptionSet {
     public static let friday    = AAActivatedDays(rawValue: 1 << 4)
     public static let saturday  = AAActivatedDays(rawValue: 1 << 5)
     public static let sunday    = AAActivatedDays(rawValue: 1 << 6)
+
     public static let automatic = AAActivatedDays(rawValue: 1 << 7)
 
 
