@@ -31,7 +31,7 @@ import Foundation
 
 public struct Window {
 
-    public typealias OpenClosed = PositionState
+    public typealias OpenClosed = AAPositionState
 
 
     @available(*, deprecated, message: "Use the new struct Window.Position")
@@ -92,7 +92,7 @@ public extension Window {
     public struct Position: AAItem {
 
         public let location: Location
-        public let position: PositionState
+        public let position: AAPositionState
 
 
         // MARK: AAItem
@@ -102,7 +102,7 @@ public extension Window {
 
         init?(bytes: [UInt8]) {
             guard let location = Location(rawValue: bytes[0]),
-                let position = PositionState(rawValue: bytes[1]) else {
+                let position = AAPositionState(rawValue: bytes[1]) else {
                     return nil
             }
 

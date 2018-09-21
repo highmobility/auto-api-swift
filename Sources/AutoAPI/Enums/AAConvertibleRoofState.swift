@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  ConvertibleRoofState.swift
+//  AAConvertibleRoofState.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 28/08/2018.
@@ -29,33 +29,32 @@
 import Foundation
 
 
-/*
- "Indicates the current status of the convertible roof at the time of data collection, i.e. whether it was
+public enum AAConvertibleRoofState: UInt8 {
 
- closed (CLOSED),
- open (OPEN) or – in an emergency –
- locked (EMERGENCYLOCKED).
-
- The following additional status values are possible:
-
- CLOSEDSECURED = convertible roof closed, vehicle secured
- OPENSECURED = convertible roof open, vehicle secured
- HARDTOPMOUNTED = hard top mounted and closed (removable hard top)
- INTERMEDIATEPOSITION = convertible roof in intermediate position
- LOADINGPOSITION = roof is in a position that allows for easy loading of the boot
- LOADINGPOSITIONIMMEDIATE = roof is in a position that allows for easy loading of the boot"
- */
-
-public enum ConvertibleRoofState: UInt8 {
-
+    /// Roof is closed.
     case closed             = 0x00
+
+    /// Roof is open.
     case open               = 0x01
+
+    /// Roof is locked in an emergency.
     case emergencyLocked    = 0x02
 
+    /// Roof closed, vehicle secured.
     case closedSecured              = 0x03
+
+    /// Roof open, vehicle secured.
     case openSecured                = 0x04
+
+    /// Hard top mounted and closed (removable hard top).
     case hardTopMounted             = 0x05
+
+    /// Roof in intermediate position.
     case intermediatePosition       = 0x06
+
+    /// Roof is in a position that allows for easy loading of the boot.
     case loadingPosition            = 0x07
+
+    /// Roof is in a position that allows for easy loading of the boot.
     case loadingPositionImmediate   = 0x08
 }

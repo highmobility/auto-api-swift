@@ -188,8 +188,8 @@ class CapabilitiesTests: XCTestCase {
         }
 
         // ROOFTOP CONTROL
-        if let capability = capabilities.first(where: { $0.command is RooftopControl.Type }) {
-            XCTAssertTrue(capability.supportsAllMessageTypes(for: RooftopControl.self))
+        if let capability = capabilities.first(where: { $0.command is AARooftopControl.Type }) {
+            XCTAssertTrue(capability.supportsAllMessageTypes(for: AARooftopControl.self))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for RooftopControl")

@@ -38,7 +38,7 @@ public struct Door {
     public let lock: LockState
 
     @available(*, deprecated, message: "Use the new struct Door.Position")
-    public let position: PositionState
+    public let position: AAPositionState
 }
 
 extension Door: AAItem {
@@ -48,7 +48,7 @@ extension Door: AAItem {
 
     init?(bytes: [UInt8]) {
         guard let location = Location(rawValue: bytes[0]),
-            let position = PositionState(rawValue: bytes[1]),
+            let position = AAPositionState(rawValue: bytes[1]),
             let lock = LockState(rawValue: bytes[2]) else {
                 return nil
         }
@@ -64,7 +64,7 @@ public extension Door {
     public struct Position: AAItem {
 
         public let location: Location
-        public let position: PositionState
+        public let position: AAPositionState
 
 
         // MARK: AAItem
@@ -74,7 +74,7 @@ public extension Door {
 
         init?(bytes: [UInt8]) {
             guard let location = Location(rawValue: bytes[0]),
-                let position = PositionState(rawValue: bytes[1]) else {
+                let position = AAPositionState(rawValue: bytes[1]) else {
                     return nil
             }
 

@@ -143,9 +143,6 @@ public extension AAClimate {
 
     // MARK: Deprecated
 
-    @available(*, deprecated, renamed: "ClimateSettings")
-    typealias Settings = AAClimateSettings
-
     @available(*, deprecated, renamed: "startStopDefogging")
     static var startDefogging: (Bool) -> [UInt8] {
         return {

@@ -66,7 +66,7 @@
 		20F7903721356C54003BDFA2 /* CheckControlMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903621356C54003BDFA2 /* CheckControlMessage.swift */; };
 		20F7903921356F54003BDFA2 /* ConditionBasedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903821356F54003BDFA2 /* ConditionBasedService.swift */; };
 		20F7903B21356F94003BDFA2 /* DueStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903A21356F94003BDFA2 /* DueStatus.swift */; };
-		20F7903D2135713A003BDFA2 /* ConvertibleRoofState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903C2135713A003BDFA2 /* ConvertibleRoofState.swift */; };
+		20F7903D2135713A003BDFA2 /* AAConvertibleRoofState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903C2135713A003BDFA2 /* AAConvertibleRoofState.swift */; };
 		20F7903F2135732D003BDFA2 /* DisplayUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903E2135732D003BDFA2 /* DisplayUnit.swift */; };
 		OBJ_251 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_169 /* Misc.swift */; };
 		OBJ_252 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_170 /* main.swift */; };
@@ -130,7 +130,7 @@
 		OBJ_327 /* AAHonkHornFlashLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* AAHonkHornFlashLights.swift */; };
 		OBJ_328 /* AAKeyfobPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* AAKeyfobPosition.swift */; };
 		OBJ_329 /* AALights.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* AALights.swift */; };
-		OBJ_330 /* RooftopControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* RooftopControl.swift */; };
+		OBJ_330 /* AARooftopControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* AARooftopControl.swift */; };
 		OBJ_331 /* Seats.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* Seats.swift */; };
 		OBJ_332 /* Windows.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* Windows.swift */; };
 		OBJ_333 /* Windscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* Windscreen.swift */; };
@@ -190,7 +190,7 @@
 		OBJ_391 /* ParkingTicketState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_95 /* ParkingTicketState.swift */; };
 		OBJ_392 /* PlugType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_96 /* PlugType.swift */; };
 		OBJ_393 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_97 /* Position.swift */; };
-		OBJ_394 /* PositionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_98 /* PositionState.swift */; };
+		OBJ_394 /* AAPositionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_98 /* AAPositionState.swift */; };
 		OBJ_395 /* PowerTrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* PowerTrain.swift */; };
 		OBJ_396 /* PricingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_100 /* PricingType.swift */; };
 		OBJ_397 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_101 /* Screen.swift */; };
@@ -342,7 +342,7 @@
 		20F7903621356C54003BDFA2 /* CheckControlMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckControlMessage.swift; sourceTree = "<group>"; };
 		20F7903821356F54003BDFA2 /* ConditionBasedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionBasedService.swift; sourceTree = "<group>"; };
 		20F7903A21356F94003BDFA2 /* DueStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DueStatus.swift; sourceTree = "<group>"; };
-		20F7903C2135713A003BDFA2 /* ConvertibleRoofState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertibleRoofState.swift; sourceTree = "<group>"; };
+		20F7903C2135713A003BDFA2 /* AAConvertibleRoofState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAConvertibleRoofState.swift; sourceTree = "<group>"; };
 		20F7903E2135732D003BDFA2 /* DisplayUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayUnit.swift; sourceTree = "<group>"; };
 		"AutoAPI::AutoAPI::Product" /* AutoAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AutoAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"AutoAPI::AutoAPICLT::Product" /* AutoAPICLT */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = AutoAPICLT; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -467,7 +467,7 @@
 		OBJ_227 /* UInt8Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt8Collection+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_228 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/mikk/Desktop/Workspace/Source/hm-auto-api-swift/.build/checkouts/hm-utilities-swift--9129260329164589395/Package.swift"; sourceTree = "<group>"; };
 		OBJ_23 /* AALights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALights.swift; sourceTree = "<group>"; };
-		OBJ_24 /* RooftopControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RooftopControl.swift; sourceTree = "<group>"; };
+		OBJ_24 /* AARooftopControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AARooftopControl.swift; sourceTree = "<group>"; };
 		OBJ_25 /* Seats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seats.swift; sourceTree = "<group>"; };
 		OBJ_26 /* Windows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Windows.swift; sourceTree = "<group>"; };
 		OBJ_27 /* Windscreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Windscreen.swift; sourceTree = "<group>"; };
@@ -529,7 +529,7 @@
 		OBJ_95 /* ParkingTicketState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTicketState.swift; sourceTree = "<group>"; };
 		OBJ_96 /* PlugType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlugType.swift; sourceTree = "<group>"; };
 		OBJ_97 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
-		OBJ_98 /* PositionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionState.swift; sourceTree = "<group>"; };
+		OBJ_98 /* AAPositionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPositionState.swift; sourceTree = "<group>"; };
 		OBJ_99 /* PowerTrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerTrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -745,7 +745,7 @@
 				OBJ_21 /* AAHonkHornFlashLights.swift */,
 				OBJ_22 /* AAKeyfobPosition.swift */,
 				OBJ_23 /* AALights.swift */,
-				OBJ_24 /* RooftopControl.swift */,
+				OBJ_24 /* AARooftopControl.swift */,
 				OBJ_25 /* Seats.swift */,
 				OBJ_26 /* Windows.swift */,
 				OBJ_27 /* Windscreen.swift */,
@@ -1008,7 +1008,7 @@
 				20896EE3214799C1003A7A63 /* AAChosenState.swift */,
 				20896EE921479F4A003A7A63 /* ConnectionState.swift */,
 				OBJ_83 /* ControlMode.swift */,
-				20F7903C2135713A003BDFA2 /* ConvertibleRoofState.swift */,
+				20F7903C2135713A003BDFA2 /* AAConvertibleRoofState.swift */,
 				205C517A208F430100B55ACE /* AACruiseControlLimiter.swift */,
 				205C5170208F315C00B55ACE /* DashboardLightName.swift */,
 				205C5172208F319900B55ACE /* DashboardLightState.swift */,
@@ -1034,7 +1034,7 @@
 				OBJ_95 /* ParkingTicketState.swift */,
 				OBJ_96 /* PlugType.swift */,
 				OBJ_97 /* Position.swift */,
-				OBJ_98 /* PositionState.swift */,
+				OBJ_98 /* AAPositionState.swift */,
 				OBJ_99 /* PowerTrain.swift */,
 				OBJ_100 /* PricingType.swift */,
 				OBJ_101 /* Screen.swift */,
@@ -1284,7 +1284,7 @@
 				OBJ_327 /* AAHonkHornFlashLights.swift in Sources */,
 				OBJ_328 /* AAKeyfobPosition.swift in Sources */,
 				OBJ_329 /* AALights.swift in Sources */,
-				OBJ_330 /* RooftopControl.swift in Sources */,
+				OBJ_330 /* AARooftopControl.swift in Sources */,
 				OBJ_331 /* Seats.swift in Sources */,
 				OBJ_332 /* Windows.swift in Sources */,
 				OBJ_333 /* Windscreen.swift in Sources */,
@@ -1359,7 +1359,7 @@
 				OBJ_391 /* ParkingTicketState.swift in Sources */,
 				OBJ_392 /* PlugType.swift in Sources */,
 				OBJ_393 /* Position.swift in Sources */,
-				OBJ_394 /* PositionState.swift in Sources */,
+				OBJ_394 /* AAPositionState.swift in Sources */,
 				OBJ_395 /* PowerTrain.swift in Sources */,
 				OBJ_396 /* PricingType.swift in Sources */,
 				OBJ_397 /* Screen.swift in Sources */,
@@ -1385,7 +1385,7 @@
 				OBJ_415 /* UInt16+Extensions.swift in Sources */,
 				OBJ_417 /* UInt8+Extensions.swift in Sources */,
 				OBJ_418 /* UInt8Collection+Binary.swift in Sources */,
-				20F7903D2135713A003BDFA2 /* ConvertibleRoofState.swift in Sources */,
+				20F7903D2135713A003BDFA2 /* AAConvertibleRoofState.swift in Sources */,
 				OBJ_419 /* URL+Extensions.swift in Sources */,
 				OBJ_420 /* AAIdentifiable.swift in Sources */,
 				OBJ_421 /* Acceleration.swift in Sources */,

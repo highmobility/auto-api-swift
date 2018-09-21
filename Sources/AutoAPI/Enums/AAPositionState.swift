@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  PositionState.swift
+//  AAPositionState.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 27/11/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public enum PositionState: UInt8 {
+public enum AAPositionState: UInt8 {
 
     case closed = 0x00
     case opened = 0x01
@@ -37,10 +37,10 @@ public enum PositionState: UInt8 {
     case intermediate   = 0x02
 
 
-    public static let close = PositionState.closed
-    public static let open = PositionState.opened
+    public static let close = AAPositionState.closed
+    public static let open = AAPositionState.opened
 }
 
-extension PositionState: PropertyConvertable {
+extension AAPositionState: PropertyConvertable {
 
 }

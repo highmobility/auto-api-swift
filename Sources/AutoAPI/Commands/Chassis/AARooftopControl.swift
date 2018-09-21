@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  RooftopControl.swift
+//  AARooftopControl.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 01/12/2017.
@@ -29,9 +29,9 @@
 import Foundation
 
 
-public struct RooftopControl: AAFullStandardCommand {
+public struct AARooftopControl: AAFullStandardCommand {
 
-    public let convertibleState: ConvertibleRoofState?
+    public let convertibleRoofState: AAConvertibleRoofState?
 
     /// 100% denoting *opaque* and 0% *transparent*.
     public let dimming: AAPercentageInt?
@@ -39,7 +39,7 @@ public struct RooftopControl: AAFullStandardCommand {
     /// 100% denoting *fully open*, 50% denoting *intermediate* and 0% *closed*.
     public let position: AAPercentageInt?
 
-    public let tiltState: PositionState?
+    public let sunroofTiltState: AAPositionState?
 
 
     // MARK: AAFullStandardCommand
@@ -51,20 +51,21 @@ public struct RooftopControl: AAFullStandardCommand {
         // Ordered by the ID
         dimming = properties.value(for: 0x01)
         position = properties.value(for: 0x02)
-        convertibleState = ConvertibleRoofState(rawValue: properties.first(for: 0x03)?.monoValue)
-        tiltState = PositionState(rawValue: properties.first(for: 0x04)?.monoValue)
+        /* Level 8 */
+        convertibleRoofState = AAConvertibleRoofState(rawValue: properties.first(for: 0x03)?.monoValue)
+        sunroofTiltState = AAPositionState(rawValue: properties.first(for: 0x04)?.monoValue)
 
         // Properties
         self.properties = properties
     }
 }
 
-extension RooftopControl: AAIdentifiable {
+extension AARooftopControl: AAIdentifiable {
 
     public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0025)
 }
 
-extension RooftopControl: AAMessageTypesGettable {
+extension AARooftopControl: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -74,29 +75,27 @@ extension RooftopControl: AAMessageTypesGettable {
     }
 }
 
-public extension RooftopControl {
-
-    struct Control {
-        public let dimming: AAPercentageInt?
-        public let openClose: AAPercentageInt?
-
-        public init(dimming: AAPercentageInt?, openClose: AAPercentageInt?) {
-            self.dimming = dimming
-            self.openClose = openClose
-        }
-    }
-
-
-    static var controlRooftop: (Control) -> [UInt8] {
-        return {
-            let dimmingBytes: [UInt8] = $0.dimming?.propertyBytes(0x01) ?? []
-            let openCloseBytes: [UInt8] = $0.openClose?.propertyBytes(0x02) ?? []
-
-            return commandPrefix(for: .controlRooftop) + dimmingBytes + openCloseBytes
-        }
-    }
+public extension AARooftopControl {
 
     static var getRooftopState: [UInt8] {
         return commandPrefix(for: .getRooftopState)
+    }
+
+    static func controlRooftop(dimming: AAPercentageInt?, openClose: AAPercentageInt?) -> [UInt8] {
+        return commandPrefix(for: .controlRooftop) + [dimming?.propertyBytes(0x01),
+                                                      openClose?.propertyBytes(0x02)].propertiesValuesCombined
+    }
+
+
+    // MARK: Deprecated
+
+    @available(*, deprecated, message: "Use the method .control(dimming:openClose:)")
+    typealias Control = (dimming: AAPercentageInt?, openClose: AAPercentageInt?)
+
+    @available(*, deprecated, renamed: "control(dimming:openClose:)")
+    static var controlRooftop: (Control) -> [UInt8] {
+        return {
+            return controlRooftop(dimming: $0.dimming, openClose: $0.openClose)
+        }
     }
 }

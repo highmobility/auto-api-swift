@@ -31,7 +31,7 @@ import Foundation
 
 public struct Hood: AAFullStandardCommand {
 
-    public let hoodState: PositionState?
+    public let hoodState: AAPositionState?
 
 
     // MARK: AAFullStandardCommand
@@ -40,7 +40,7 @@ public struct Hood: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        hoodState = PositionState(rawValue: properties.first(for: 0x01)?.monoValue)
+        hoodState = AAPositionState(rawValue: properties.first(for: 0x01)?.monoValue)
 
         // Properties
         self.properties = properties
