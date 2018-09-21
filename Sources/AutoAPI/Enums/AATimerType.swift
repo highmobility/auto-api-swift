@@ -19,31 +19,19 @@
 // licensing@high-mobility.com
 //
 //
-//  ChassisPosition.swift
+//  AATimerType.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 13/12/2017.
+//  Created by Mikk Rätsep on 30/01/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct ChassisPosition {
+public enum AATimerType: UInt8 {
 
-    public let maximum: Int8
-    public let minimum: Int8
-    public let position: UInt8
-}
-
-extension ChassisPosition: Item {
-
-    static var size: Int = 3
-
-
-    init?(bytes: [UInt8]) {
-        position = bytes[0]
-        maximum = bytes[1].int8
-        minimum = bytes[2].int8
-    }
+    case prefferedStartTime = 0x00
+    case prefferedEndTime   = 0x01
+    case departureDate      = 0x02
 }

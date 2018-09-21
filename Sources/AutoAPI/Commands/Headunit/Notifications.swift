@@ -39,7 +39,7 @@ public struct Notifications: InboundCommand, OutboundCommand {
 
     // MARK: InboundCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
     // Needs to override this to parse CUSTOM properties
@@ -48,16 +48,16 @@ public struct Notifications: InboundCommand, OutboundCommand {
             return nil
         }
 
-        guard Identifier(binary) == Notifications.identifier else {
+        guard AACommandIdentifier(binary) == Notifications.identifier else {
             return nil
         }
 
-        let properties: Properties
+        let properties: AAProperties
         let messageType = binary.bytes[2]
 
         switch messageType {
         case 0x00:
-            properties = Properties(binary.dropFirstBytes(3))
+            properties = AAProperties(binary.dropFirstBytes(3))
 
         case 0x01:
             guard binary.count == 4 else {
@@ -65,14 +65,14 @@ public struct Notifications: InboundCommand, OutboundCommand {
             }
 
             // Hack
-            properties = Properties([0x99, 0x00, 0x01, binary.bytes[3]])
+            properties = AAProperties([0x99, 0x00, 0x01, binary.bytes[3]])
 
         case 0x02:
             guard binary.count == 3 else {
                 return nil
             }
 
-            properties = Properties([])
+            properties = AAProperties([])
 
         default:
             return nil
@@ -81,7 +81,7 @@ public struct Notifications: InboundCommand, OutboundCommand {
         self.init(messageType, properties: properties)
     }
 
-    init?(_ messageType: UInt8, properties: Properties) {
+    init?(_ messageType: UInt8, properties: AAProperties) {
         var properties = properties
 
         switch messageType {
@@ -93,7 +93,7 @@ public struct Notifications: InboundCommand, OutboundCommand {
             receivedActionID = properties.value(for: 0x99)
             receivedClearCommand = false
 
-            properties = Properties([])
+            properties = AAProperties([])
 
         case 0x02:
             receivedActionID = nil
@@ -112,12 +112,12 @@ public struct Notifications: InboundCommand, OutboundCommand {
     }
 }
 
-extension Notifications: Identifiable {
+extension Notifications: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0038)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0038)
 }
 
-extension Notifications: MessageTypesGettable {
+extension Notifications: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

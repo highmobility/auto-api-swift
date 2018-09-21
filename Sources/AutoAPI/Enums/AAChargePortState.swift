@@ -19,20 +19,26 @@
 // licensing@high-mobility.com
 //
 //
-//  Identifiable.swift
+//  AAChargePortState.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 27/11/2017.
+//  Created by Mikk Rätsep on 30/11/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public typealias Identifier = UInt16
+public enum AAChargePortState: UInt8 {
+
+    case closed         = 0x00
+    case open           = 0x01
+    case unavailable    = 0xFF
 
 
-public protocol Identifiable {
+    public static let close = AAChargePortState.closed
+}
 
-    static var identifier: Identifier { get }
+extension AAChargePortState: PropertyConvertable {
+
 }

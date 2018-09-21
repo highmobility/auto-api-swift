@@ -29,31 +29,31 @@
 import Foundation
 
 
-public struct Fueling: FullStandardCommand {
+public struct Fueling: AAFullStandardCommand {
 
-    public let gasFlapState: GasFlapState?
-
-
-    // MARK: FullStandardCommand
-
-    public let properties: Properties
+    public let gasFlapState: AAGasFlapState?
 
 
-    init?(properties: Properties) {
+    // MARK: AAFullStandardCommand
+
+    public let properties: AAProperties
+
+
+    init?(properties: AAProperties) {
         // Ordered by the ID
-        gasFlapState = GasFlapState(rawValue: properties.first(for: 0x01)?.monoValue)
+        gasFlapState = AAGasFlapState(rawValue: properties.first(for: 0x01)?.monoValue)
 
         // Properties
         self.properties = properties
     }
 }
 
-extension Fueling: Identifiable {
+extension Fueling: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0040)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0040)
 }
 
-extension Fueling: MessageTypesGettable {
+extension Fueling: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

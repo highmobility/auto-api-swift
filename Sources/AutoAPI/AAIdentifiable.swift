@@ -19,53 +19,17 @@
 // licensing@high-mobility.com
 //
 //
-//  Time.swift
+//  AAIdentifiable.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 30/11/2017.
+//  Created by Mikk Rätsep on 27/11/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct DayTime {
+public protocol AAIdentifiable {
 
-    public let hour: UInt8
-    public let minute: UInt8
-
-
-    // MARK: Type Vars
-
-    public static let zero: DayTime = DayTime(hour: 0, minute: 0)
-
-
-    // MARK: Init
-
-    public init(hour: UInt8, minute: UInt8) {
-        self.hour = hour % 24
-        self.minute = minute % 60
-    }
-}
-
-extension DayTime: BinaryInitable {
-
-    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        guard binary.count >= 2 else {
-            return nil
-        }
-
-        hour = binary.bytes[0]
-        minute = binary.bytes[1]
-    }
-}
-
-extension DayTime: Item {
-
-    static var size: Int = 2
-
-
-    init?(bytes: [UInt8]) {
-        self.init(bytes)
-    }
+    static var identifier: AACommandIdentifier { get }
 }

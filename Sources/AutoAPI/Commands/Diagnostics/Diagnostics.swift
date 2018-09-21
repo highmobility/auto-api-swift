@@ -29,29 +29,26 @@
 import Foundation
 
 
-public struct Diagnostics: FullStandardCommand {
+public struct Diagnostics: AAFullStandardCommand {
 
-    public let absState: ActiveState?
+    public let absState: AAActiveState?
     public let adBlueLevel: Float?
-    public let averageFuelConsumption: Float?   // TODO: Move to Usage
-    public let batteryLevel: PercentageInt?
+    public let batteryLevel: AAPercentageInt?
     public let batteryVoltage: Float?
     public let brakeFluidLevel: FluidLevel?
-    public let brakeFluidChangeDate: Date?  // TODO: Move to Maintenace
     public let checkControlMessages: [CheckControlMessage]?
-    public let currentFuelConsumption: Float?   // TODO: Move to Usage
     public let dieselExhaustFluid: Float?
     public let distanceSinceReset: UInt16?
     public let distanceSinceStart: UInt16?
     public let engineCoolantTemperature: Int16?
-    public let engineLoad: PercentageInt?
+    public let engineLoad: AAPercentageInt?
     public let engineOilTemperature: Int16?
-    public let engineTorque: PercentageInt?
+    public let engineTorque: AAPercentageInt?
     public let engineTotalFuelConsumption: Float?
     public let engineTotalOperatingHours: Float?
     public let engineRPM: UInt16?
     public let estimatedRange: UInt16?
-    public let fuelLevel: PercentageInt?
+    public let fuelLevel: AAPercentageInt?
     public let fuelVolume: Float?
     public let mileage: UInt32?
     public let speed: Int16?
@@ -60,12 +57,19 @@ public struct Diagnostics: FullStandardCommand {
     public let wheelBasedSpeed: Int16?
 
 
-    // MARK: FullStandardCommand
+    @available(*, deprecated, renamed: "Usage.averageFuelConsumption")
+    public let averageFuelConsumption: Float?
 
-    public let properties: Properties
+    @available(*, deprecated, renamed: "Usage.currentFuelConsumption")
+    public let currentFuelConsumption: Float?
 
 
-    init?(properties: Properties) {
+    // MARK: AAFullStandardCommand
+
+    public let properties: AAProperties
+
+
+    init?(properties: AAProperties) {
         // Ordered by the ID
         mileage = properties.value(for: 0x01)
         engineOilTemperature = properties.value(for: 0x02)
@@ -73,8 +77,8 @@ public struct Diagnostics: FullStandardCommand {
         engineRPM = properties.value(for: 0x04)
         fuelLevel = properties.value(for: 0x05)
         estimatedRange = properties.value(for: 0x06)
-        currentFuelConsumption = properties.value(for: 0x07)
-        averageFuelConsumption = properties.value(for: 0x08)
+        currentFuelConsumption = properties.value(for: 0x07)    // Deprecated
+        averageFuelConsumption = properties.value(for: 0x08)    // Deprecated
         washerFluidLevel = properties.value(for: 0x09)
         tires = properties.flatMap(for: 0x0A) { Tire($0.value) }
         batteryVoltage = properties.value(for: 0x0B)
@@ -83,7 +87,7 @@ public struct Diagnostics: FullStandardCommand {
         distanceSinceReset = properties.value(for: 0x0D)
         distanceSinceStart = properties.value(for: 0x0E)
         fuelVolume = properties.value(for: 0x0F)
-        absState = ActiveState(rawValue: properties.first(for: 0x10)?.monoValue)
+        absState = AAActiveState(rawValue: properties.first(for: 0x10)?.monoValue)
         engineCoolantTemperature = properties.value(for: 0x11)
         engineTotalOperatingHours = properties.value(for: 0x12)
         engineTotalFuelConsumption = properties.value(for: 0x13)
@@ -91,21 +95,20 @@ public struct Diagnostics: FullStandardCommand {
         engineTorque = properties.value(for: 0x15)
         engineLoad = properties.value(for: 0x16)
         wheelBasedSpeed = properties.value(for: 0x17)
-        brakeFluidChangeDate = properties.value(for: 0x18)
-        batteryLevel = properties.value(for: 0x19)
-        checkControlMessages = properties.flatMap(for: 0x1A) { CheckControlMessage($0.value) }
+        batteryLevel = properties.value(for: 0x18)
+        checkControlMessages = properties.flatMap(for: 0x19) { CheckControlMessage($0.value) }
 
         // Properties
         self.properties = properties
     }
 }
 
-extension Diagnostics: Identifiable {
+extension Diagnostics: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0033)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0033)
 }
 
-extension Diagnostics: MessageTypesGettable {
+extension Diagnostics: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

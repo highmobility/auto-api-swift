@@ -51,10 +51,10 @@ public struct VehicleStatus: InboundCommand {
 
     // MARK: InboundCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(_ messageType: UInt8, properties: Properties) {
+    init?(_ messageType: UInt8, properties: AAProperties) {
         guard messageType == 0x01 else {
             return nil
         }
@@ -87,12 +87,12 @@ public struct VehicleStatus: InboundCommand {
     }
 }
 
-extension VehicleStatus: Identifiable {
+extension VehicleStatus: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0011)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0011)
 }
 
-extension VehicleStatus: MessageTypesGettable {
+extension VehicleStatus: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

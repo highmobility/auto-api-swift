@@ -29,22 +29,22 @@
 import Foundation
 
 
-public struct Door: Item {
+public struct Door {
 
-    public typealias Location = Position
-
-
+    @available(*, deprecated, message: "Use the new struct Door.Lock or Door.Position")
     public let location: Location
+
+    @available(*, deprecated, message: "Use the new struct Door.Lock")
     public let lock: LockState
+
+    @available(*, deprecated, message: "Use the new struct Door.Position")
     public let position: PositionState
-
-
-    // MARK: Item
-
-    static let size: Int = 3
 }
 
-extension Door: BinaryInitable {
+extension Door: Item {
+
+    static let size: Int = 3
+
 
     init?(bytes: [UInt8]) {
         guard let location = Location(rawValue: bytes[0]),
@@ -56,5 +56,52 @@ extension Door: BinaryInitable {
         self.location = location
         self.lock = lock
         self.position = position
+    }
+}
+
+public extension Door {
+
+    public struct Position: Item {
+
+        public let location: Location
+        public let position: PositionState
+
+
+        // MARK: Item
+
+        static let size: Int = 2
+
+
+        init?(bytes: [UInt8]) {
+            guard let location = Location(rawValue: bytes[0]),
+                let position = PositionState(rawValue: bytes[1]) else {
+                    return nil
+            }
+
+            self.location = location
+            self.position = position
+        }
+    }
+
+    public struct Lock: Item {
+
+        public let location: Location
+        public let lock: LockState
+
+
+        // MARK: Item
+
+        static var size: Int = 2
+
+
+        init?(bytes: [UInt8]) {
+            guard let location = Location(rawValue: bytes[0]),
+                let lock = LockState(rawValue: bytes[1]) else {
+                    return nil
+            }
+
+            self.location = location
+            self.lock = lock
+        }
     }
 }

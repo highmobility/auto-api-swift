@@ -29,9 +29,9 @@
 import Foundation
 
 
-public struct NaviDestination: FullStandardCommand {
+public struct NaviDestination: AAFullStandardCommand {
 
-    public let arrivalTime: DayTime?
+    public let arrivalTime: AADayTime?
     public let coordinate: Coordinate?
     public let distanceTo: UInt16?
     public let name: String?
@@ -39,18 +39,18 @@ public struct NaviDestination: FullStandardCommand {
     public let poiSlotsMax: UInt8?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
         coordinate = Coordinate(properties.first(for: 0x01)?.value ?? [])
         name = properties.value(for: 0x02)
         poiSlotsFree = properties.value(for: 0x03)
         poiSlotsMax = properties.value(for: 0x04)
-        arrivalTime = DayTime(properties.first(for: 0x05)?.value ?? [])
+        arrivalTime = AADayTime(properties.first(for: 0x05)?.value ?? [])
         distanceTo = properties.value(for: 0x06)
 
         // Properties
@@ -58,12 +58,12 @@ public struct NaviDestination: FullStandardCommand {
     }
 }
 
-extension NaviDestination: Identifiable {
+extension NaviDestination: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0031)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0031)
 }
 
-extension NaviDestination: MessageTypesGettable {
+extension NaviDestination: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

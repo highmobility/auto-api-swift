@@ -34,12 +34,12 @@ public struct Browser: OutboundCommand {
 
 }
 
-extension Browser: Identifiable {
+extension Browser: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0049)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0049)
 }
 
-extension Browser: MessageTypesGettable {
+extension Browser: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

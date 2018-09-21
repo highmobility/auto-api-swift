@@ -29,39 +29,39 @@
 import Foundation
 
 
-public struct HomeCharger: FullStandardCommand {
+public struct HomeCharger: AAFullStandardCommand {
 
     public let authenticationMechanism: AuthenticationMechanism?
     public let chargeCurrent: ChargeCurrent?
 
     /// In kilowatts
     public let chargingPower: Float?
-    public let chargingState: ChargingState?
-    public let hotspotState: ActiveState?
+    public let chargingState: AAChargingState?
+    public let hotspotState: AAActiveState?
     public let location: Coordinate?
     public let plugType: PlugType?
     public let pricingTariffs: [PricingTariff]?
-    public let solarChargingState: ActiveState?
+    public let solarChargingState: AAActiveState?
     public let wifiHotspotPassword: String?
     public let wifiHotspotSecurity: NetworkSecurity?
     public let wifiHotspotSSID: String?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
-        chargingState = ChargingState(rawValue: properties.first(for: 0x01)?.monoValue)
+        chargingState = AAChargingState(rawValue: properties.first(for: 0x01)?.monoValue)
         authenticationMechanism = AuthenticationMechanism(rawValue: properties.first(for: 0x02)?.monoValue)
         plugType = PlugType(rawValue: properties.first(for: 0x03)?.monoValue)
         chargingPower = properties.value(for: 0x04)
-        solarChargingState = ActiveState(rawValue: properties.first(for: 0x05)?.monoValue)
+        solarChargingState = AAActiveState(rawValue: properties.first(for: 0x05)?.monoValue)
         location = Coordinate(properties.first(for: 0x06)?.value ?? [])
         chargeCurrent = ChargeCurrent(properties.first(for: 0x07)?.value ?? [])
-        hotspotState = ActiveState(rawValue: properties.first(for: 0x08)?.monoValue)
+        hotspotState = AAActiveState(rawValue: properties.first(for: 0x08)?.monoValue)
         wifiHotspotSSID = properties.value(for: 0x09)
         wifiHotspotSecurity = NetworkSecurity(rawValue: properties.first(for: 0x0A)?.monoValue)
         wifiHotspotPassword = properties.value(for: 0x0B)
@@ -72,12 +72,12 @@ public struct HomeCharger: FullStandardCommand {
     }
 }
 
-extension HomeCharger: Identifiable {
+extension HomeCharger: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0060)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0060)
 }
 
-extension HomeCharger: MessageTypesGettable {
+extension HomeCharger: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -95,13 +95,13 @@ public extension HomeCharger {
     typealias PriceTariff = PricingTariff
 
 
-    static var setSolarChargingState: (ActiveState) -> [UInt8] {
+    static var setSolarChargingState: (AAActiveState) -> [UInt8] {
         return {
             return commandPrefix(for: .setSolarChargingState) + $0.propertyBytes(0x01)
         }
     }
 
-    static var setWifiHotspotState: (ActiveState) -> [UInt8] {
+    static var setWifiHotspotState: (AAActiveState) -> [UInt8] {
         return {
             return commandPrefix(for: .setWifiHotspotState) + $0.propertyBytes(0x01)
         }

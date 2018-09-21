@@ -29,17 +29,17 @@
 import Foundation
 
 
-public struct WeatherConditions: FullStandardCommand {
+public struct WeatherConditions: AAFullStandardCommand {
 
-    public let rainIntensity: PercentageInt?
-
-
-    // MARK: FullStandardCommand
-
-    public let properties: Properties
+    public let rainIntensity: AAPercentageInt?
 
 
-    init?(properties: Properties) {
+    // MARK: AAFullStandardCommand
+
+    public let properties: AAProperties
+
+
+    init?(properties: AAProperties) {
         // Ordered by the ID
         rainIntensity = properties.value(for: 0x01)
 
@@ -48,12 +48,12 @@ public struct WeatherConditions: FullStandardCommand {
     }
 }
 
-extension WeatherConditions: Identifiable {
+extension WeatherConditions: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0055)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0055)
 }
 
-extension WeatherConditions: MessageTypesGettable {
+extension WeatherConditions: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

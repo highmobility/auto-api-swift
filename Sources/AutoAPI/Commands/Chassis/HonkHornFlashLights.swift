@@ -29,17 +29,17 @@
 import Foundation
 
 
-public struct HonkHornFlashFlights: FullStandardCommand {
+public struct HonkHornFlashFlights: AAFullStandardCommand {
 
     public let flasherState: FlasherState?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
         flasherState = FlasherState(rawValue: properties.first(for: 0x01)?.monoValue)
 
@@ -48,12 +48,12 @@ public struct HonkHornFlashFlights: FullStandardCommand {
     }
 }
 
-extension HonkHornFlashFlights: Identifiable {
+extension HonkHornFlashFlights: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0026)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0026)
 }
 
-extension HonkHornFlashFlights: MessageTypesGettable {
+extension HonkHornFlashFlights: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -77,7 +77,7 @@ public extension HonkHornFlashFlights {
     }
 
 
-    static var setEmergencyFlasherState: (ActiveState) -> [UInt8] {
+    static var setEmergencyFlasherState: (AAActiveState) -> [UInt8] {
         return {
             return commandPrefix(for: .activateDeactivateEmergencyFlasher) + $0.propertyBytes(0x01)
         }

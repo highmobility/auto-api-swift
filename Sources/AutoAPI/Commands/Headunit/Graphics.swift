@@ -33,12 +33,12 @@ public struct Graphics: OutboundCommand {
 
 }
 
-extension Graphics: Identifiable {
+extension Graphics: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0051)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0051)
 }
 
-extension Graphics: MessageTypesGettable {
+extension Graphics: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

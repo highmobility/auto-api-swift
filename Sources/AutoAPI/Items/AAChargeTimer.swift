@@ -19,37 +19,61 @@
 // licensing@high-mobility.com
 //
 //
-//  SpringRate.swift
+//  AAChargeTimer.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 13/12/2017.
+//  Created by Mikk Rätsep on 30/01/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct SpringRate {
+public struct AAChargeTimer: Item {
 
-    public let axle: Axle
-    public let maximum: Int8
-    public let minimum: Int8
-    public let rate: UInt8
+    public let type: AATimerType
+    public let time: Date
+
+
+    // MARK: Item
+
+    static var size: Int = 9
+
+
+    // MARK: Init
+
+    public init(type: AATimerType, time: Date) {
+        self.type = type
+        self.time = time
+    }
 }
 
-extension SpringRate: Item {
-
-    static var size: Int = 4
-
+extension AAChargeTimer: BinaryInitable {
 
     init?(bytes: [UInt8]) {
-        guard let axle = Axle(rawValue: bytes[0]) else {
+        guard let timerType = AATimerType(rawValue: bytes[0]) else {
+            return nil
+        }
+        
+        guard let date = Date(bytes.dropFirst().bytes) else {
             return nil
         }
 
-        self.axle = axle
-        self.maximum = bytes[2].int8
-        self.minimum = bytes[3].int8
-        self.rate = bytes[1]
+        type = timerType
+        time = date
+    }
+}
+
+extension AAChargeTimer: Equatable {
+
+    public static func ==(lhs: AAChargeTimer, rhs: AAChargeTimer) -> Bool {
+        return (lhs.type == rhs.type) && (lhs.time == rhs.time)
+    }
+}
+
+extension AAChargeTimer: PropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [type.rawValue] + time.propertyValue
     }
 }

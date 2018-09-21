@@ -29,16 +29,16 @@
 import Foundation
 
 
-public struct Hood: FullStandardCommand {
+public struct Hood: AAFullStandardCommand {
 
     public let hoodState: PositionState?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
         hoodState = PositionState(rawValue: properties.first(for: 0x01)?.monoValue)
 
@@ -47,12 +47,12 @@ public struct Hood: FullStandardCommand {
     }
 }
 
-extension Hood: Identifiable {
+extension Hood: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0067)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0067)
 }
 
-extension Hood: MessageTypesGettable {
+extension Hood: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

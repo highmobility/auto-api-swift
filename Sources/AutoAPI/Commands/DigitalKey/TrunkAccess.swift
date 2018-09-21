@@ -29,18 +29,18 @@
 import Foundation
 
 
-public struct TrunkAccess: FullStandardCommand {
+public struct TrunkAccess: AAFullStandardCommand {
 
     public let lock: LockState?
     public let position: PositionState?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
         lock = LockState(rawValue: properties.first(for: 0x01)?.monoValue)
         position = PositionState(rawValue: properties.first(for: 0x02)?.monoValue)
@@ -50,12 +50,12 @@ public struct TrunkAccess: FullStandardCommand {
     }
 }
 
-extension TrunkAccess: Identifiable {
+extension TrunkAccess: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0021)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0021)
 }
 
-extension TrunkAccess: MessageTypesGettable {
+extension TrunkAccess: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

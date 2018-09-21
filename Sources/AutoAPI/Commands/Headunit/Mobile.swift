@@ -29,17 +29,17 @@
 import Foundation
 
 
-public struct Mobile: FullStandardCommand {
+public struct Mobile: AAFullStandardCommand {
 
     public let mobileConnected: ConnectionState?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
         mobileConnected = ConnectionState(rawValue: properties.first(for: 0x01)?.monoValue)
 
@@ -49,12 +49,12 @@ public struct Mobile: FullStandardCommand {
     }
 }
 
-extension Mobile: Identifiable {
+extension Mobile: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0066)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0066)
 }
 
-extension Mobile: MessageTypesGettable {
+extension Mobile: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

@@ -29,18 +29,18 @@
 import Foundation
 
 
-public struct RemoteControl: FullStandardCommand {
+public struct RemoteControl: AAFullStandardCommand {
 
     public let angle: Int16?
     public let controlMode: ControlMode?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
         controlMode = ControlMode(rawValue: properties.first(for: 0x01)?.monoValue)
         angle = properties.value(for: 0x02)
@@ -50,12 +50,12 @@ public struct RemoteControl: FullStandardCommand {
     }
 }
 
-extension RemoteControl: Identifiable {
+extension RemoteControl: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0027)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0027)
 }
 
-extension RemoteControl: MessageTypesGettable {
+extension RemoteControl: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

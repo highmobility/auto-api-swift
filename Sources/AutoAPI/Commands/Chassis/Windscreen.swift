@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct Windscreen: FullStandardCommand {
+public struct Windscreen: AAFullStandardCommand {
 
     public typealias ZonePosition = Zone
 
@@ -37,7 +37,7 @@ public struct Windscreen: FullStandardCommand {
     // MARK: Properties
 
     public let damage: WindscreenDamage?
-    public let damageConfidence: PercentageInt?
+    public let damageConfidence: AAPercentageInt?
     public let damageDetectionTime: Date?
     /// The *position* of the *damage* on the Windscreen.
     public let damageZone: ZonePosition?
@@ -48,12 +48,12 @@ public struct Windscreen: FullStandardCommand {
     public let wipersState: WipersState?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
         wipersState = WipersState(rawValue: properties.first(for: 0x01)?.monoValue)
         wipersIntensity = WipersLevel(rawValue: properties.first(for: 0x02)?.monoValue)
@@ -69,12 +69,12 @@ public struct Windscreen: FullStandardCommand {
     }
 }
 
-extension Windscreen: Identifiable {
+extension Windscreen: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0042)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0042)
 }
 
-extension Windscreen: MessageTypesGettable {
+extension Windscreen: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

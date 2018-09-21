@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  DrivingMode.swift
+//  AADrivingMode.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 13/12/2017.
@@ -29,10 +29,11 @@
 import Foundation
 
 
-public enum DrivingMode: UInt8 {
+public enum AADrivingMode: UInt8 {
 
-    // Also know as *comfort*
+    /// Also know as *comfort*
     case regular    = 0x00
+
     case eco        = 0x01
     case sport      = 0x02
     case sportPlus  = 0x03
@@ -40,12 +41,16 @@ public enum DrivingMode: UInt8 {
     case ecoPlus    = 0x04
 }
 
-public extension DrivingMode {
+extension AADrivingMode: PropertyConvertable {
+    
+}
+
+public extension AADrivingMode {
 
     struct ActivationPeriod: Item {
 
-        public let mode: DrivingMode
-        public let period: PercentageInt
+        public let mode: AADrivingMode
+        public let period: AAPercentageInt
 
 
         // MARK: Item
@@ -54,7 +59,7 @@ public extension DrivingMode {
 
 
         init?(bytes: [UInt8]) {
-            guard let drivingMode = DrivingMode(rawValue: bytes[0]) else {
+            guard let drivingMode = AADrivingMode(rawValue: bytes[0]) else {
                 return nil
             }
 
@@ -66,7 +71,7 @@ public extension DrivingMode {
 
     struct EnergyConsumption: Item {
 
-        public let mode: DrivingMode
+        public let mode: AADrivingMode
         public let consumption: Float
 
 
@@ -76,7 +81,7 @@ public extension DrivingMode {
 
 
         init?(bytes: [UInt8]) {
-            guard let drivingMode = DrivingMode(rawValue: bytes[0]) else {
+            guard let drivingMode = AADrivingMode(rawValue: bytes[0]) else {
                 return nil
             }
 

@@ -33,12 +33,12 @@ public struct TextInput: OutboundCommand {
 
 }
 
-extension TextInput: Identifiable {
+extension TextInput: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0044)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0044)
 }
 
-extension TextInput: MessageTypesGettable {
+extension TextInput: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

@@ -46,4 +46,12 @@ extension Sequence {
     func flatMapFirst<ElementOfResult>(_ transform: (Self.Element) throws -> ElementOfResult?) rethrows -> ElementOfResult? {
         return try compactMap(transform).first
     }
+
+    func reduceToByteArray(_ nextResult: (Self.Element) throws -> [UInt8]) rethrows -> [UInt8] {
+        return try reduce(Array<UInt8>(), { (result, element) in
+            let next = try nextResult(element)
+
+            return result + next
+        })
+    }
 }

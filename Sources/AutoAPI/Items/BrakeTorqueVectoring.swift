@@ -31,8 +31,8 @@ import Foundation
 
 public struct BrakeTorqueVectoring {
 
-    public let axle: Axle
-    public let state: ActiveState
+    public let axle: AAAxle
+    public let state: AAActiveState
 }
 
 extension BrakeTorqueVectoring: Item {
@@ -41,8 +41,8 @@ extension BrakeTorqueVectoring: Item {
 
 
     init?(bytes: [UInt8]) {
-        guard let axle = Axle(rawValue: bytes[0]),
-            let state = ActiveState(rawValue: bytes[1]) else {
+        guard let axle = AAAxle(rawValue: bytes[0]),
+            let state = AAActiveState(rawValue: bytes[1]) else {
                 return nil
         }
 

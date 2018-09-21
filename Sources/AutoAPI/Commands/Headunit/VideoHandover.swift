@@ -33,12 +33,12 @@ public struct VideoHandover: OutboundCommand {
 
 }
 
-extension VideoHandover: Identifiable {
+extension VideoHandover: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0043)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0043)
 }
 
-extension VideoHandover: MessageTypesGettable {
+extension VideoHandover: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

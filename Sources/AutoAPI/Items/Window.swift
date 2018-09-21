@@ -29,51 +29,85 @@
 import Foundation
 
 
-public struct Window: Item {
+public struct Window {
 
     public typealias OpenClosed = PositionState
 
 
+    @available(*, deprecated, message: "Use the new struct Window.Position")
+    public let position: Location
+
+    @available(*, deprecated, message: "Use the new struct Window.Position")
     public let openClosed: OpenClosed
-    public let position: Position
-
-
-    // MARK: Item
-
-    static let size: Int = 2
 
 
     // MARK: Init
 
-    public init(openClosed: OpenClosed, position: Position) {
+    @available(*, deprecated, message: "Use the new struct Window.Position")
+    public init(openClosed: OpenClosed, position: Location) {
         self.openClosed = openClosed
         self.position = position
     }
 }
 
-extension Window: BinaryInitable {
+extension Window: Item {
+
+    static let size: Int = 2
+
 
     init?(bytes: [UInt8]) {
-        guard let position = Position(rawValue: bytes[0]),
+        guard let location = Location(rawValue: bytes[0]),
             let openClosed = OpenClosed(rawValue: bytes[1]) else {
                 return nil
         }
 
         self.openClosed = openClosed
-        self.position = position
+        self.position = location
     }
 }
 
-extension Window: Equatable {
+public extension Window {
 
-    public static func ==(lhs: Window, rhs: Window) -> Bool {
-        return (lhs.openClosed == rhs.openClosed) && (lhs.position == rhs.position)
+    public struct OpenPercentage: Item {
+
+        public let location: Location
+        public let percentage: AAPercentageInt
+
+
+        // MARK: Item
+
+        static var size: Int = 2
+
+
+        init?(bytes: [UInt8]) {
+            guard let location = Location(rawValue: bytes[0]) else {
+                return nil
+            }
+
+            self.location = location
+            self.percentage = bytes[1]
+        }
     }
-}
 
-extension Window: PropertyConvertable {
+    public struct Position: Item {
 
-    var propertyValue: [UInt8] {
-        return [position.rawValue, openClosed.rawValue]
+        public let location: Location
+        public let position: PositionState
+
+
+        // MARK: Item
+
+        static var size: Int = 2
+
+
+        init?(bytes: [UInt8]) {
+            guard let location = Location(rawValue: bytes[0]),
+                let position = PositionState(rawValue: bytes[1]) else {
+                    return nil
+            }
+
+            self.location = location
+            self.position = position
+        }
     }
 }

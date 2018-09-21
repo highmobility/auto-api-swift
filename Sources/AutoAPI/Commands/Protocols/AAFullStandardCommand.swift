@@ -19,23 +19,28 @@
 // licensing@high-mobility.com
 //
 //
-//  ChargingState.swift
+//  AAFullStandardCommand.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 30/11/2017.
+//  Created by Mikk Rätsep on 14/12/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum ChargingState: UInt8 {
+/// Expects `state` to come in with `0x01` messageType
+protocol AAFullStandardCommand: FullCommand {
 
-    case disconnected   = 0x00
-    case pluggedIn      = 0x01
-    case charging       = 0x02
-    case chargingDone   = 0x03
-    case initialising   = 0x04
-    case chargingPaused = 0x05
-    case chargingError  = 0x06
+}
+
+extension AAFullStandardCommand {
+
+    init?(_ messageType: UInt8, properties: AAProperties) {
+        guard messageType == 0x01 else {
+            return nil
+        }
+
+        self.init(properties: properties)
+    }
 }

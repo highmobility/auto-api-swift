@@ -19,36 +19,40 @@
 // licensing@high-mobility.com
 //
 //
-//  CarSDKVersion.swift
+//  AADepartureTime.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 28/11/2017.
+//  Created by Mikk Rätsep on 18/09/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct CarSDKVersion {
+public struct AADepartureTime {
 
-    public let major: UInt8
-    public let minor: UInt8
-    public let patch: UInt8
-
-    public var string: String {
-        return "\(major).\(minor).\(patch)"
-    }
+    public let state: AAActiveState
+    public let time: AADayTime?
 }
 
-extension CarSDKVersion: BinaryInitable {
+extension AADepartureTime: Item {
 
-    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        guard binary.count == 3 else {
+    static var size: Int = 3
+
+
+    /// 0xFF for "no time"
+    init?(bytes: [UInt8]) {
+        guard let activeState = AAActiveState(rawValue: bytes[0]) else {
             return nil
         }
 
-        major = binary.bytes[0]
-        minor = binary.bytes[1]
-        patch = binary.bytes[2]
+        state = activeState
+
+        if (bytes[1] == 0xFF) || (bytes[2] == 0xFF) {
+            time = nil
+        }
+        else {
+            time = AADayTime(bytes[2...])
+        }
     }
 }

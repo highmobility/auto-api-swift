@@ -29,9 +29,9 @@
 import Foundation
 
 
-protocol InboundCommand: Command, BinaryInitable, MessageTypesGettable, PropertiesCapable {
+protocol InboundCommand: Command, BinaryInitable, AAMessageTypesGettable, PropertiesCapable {
 
-    init?(_ messageType: UInt8, properties: Properties)
+    init?(_ messageType: UInt8, properties: AAProperties)
 }
 
 extension InboundCommand {
@@ -43,12 +43,12 @@ extension InboundCommand {
             return nil
         }
 
-        guard Identifier(binary) == Self.identifier else {
+        guard AACommandIdentifier(binary) == Self.identifier else {
             return nil
         }
 
         let messageType = binary.bytes[2]
-        let properties = Properties(binary.dropFirstBytes(3))
+        let properties = AAProperties(binary.dropFirstBytes(3))
 
         self.init(messageType, properties: properties)
     }
@@ -58,6 +58,10 @@ extension InboundCommand {
 
     public var carSignature: [UInt8]? {
         return properties.carSignature
+    }
+
+    public var milliseconds: TimeInterval? {
+        return properties.milliseconds
     }
 
     public var nonce: [UInt8]? {

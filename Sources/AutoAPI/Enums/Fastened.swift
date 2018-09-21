@@ -19,17 +19,18 @@
 // licensing@high-mobility.com
 //
 //
-//  MessageTypesGettable.swift
+//  Fastened.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 28/12/2017.
+//  Created by Mikk Rätsep on 19/09/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public protocol MessageTypesGettable {
+public enum Fastened: UInt8 {
 
-    associatedtype MessageTypes: RawRepresentable & CaseIterable
+    case notFastened    = 0x00
+    case fastened       = 0x01
 }

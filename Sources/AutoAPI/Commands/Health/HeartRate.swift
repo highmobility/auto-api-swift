@@ -33,12 +33,12 @@ public struct HeartRate: OutboundCommand {
 
 }
 
-extension HeartRate: Identifiable {
+extension HeartRate: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0029)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0029)
 }
 
-extension HeartRate: MessageTypesGettable {
+extension HeartRate: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

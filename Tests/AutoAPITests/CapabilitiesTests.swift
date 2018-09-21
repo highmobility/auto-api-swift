@@ -172,16 +172,16 @@ class CapabilitiesTests: XCTestCase {
         }
 
         // CHARGING
-        if let capability = capabilities.first(where: { $0.command is Charging.Type }) {
-            XCTAssertTrue(capability.supports(Charging.MessageTypes.getChargeState, .chargeState, .startStopCharging, .setChargeLimit))
+        if let capability = capabilities.first(where: { $0.command is AACharging.Type }) {
+            XCTAssertTrue(capability.supports(AACharging.MessageTypes.getChargeState, .chargeState, .startStopCharging, .setChargeLimit))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for Charging")
         }
 
         // CLIMATE
-        if let capability = capabilities.first(where: { $0.command is Climate.Type }) {
-            XCTAssertTrue(capability.supportsAllMessageTypes(for: Climate.self))
+        if let capability = capabilities.first(where: { $0.command is AAClimate.Type }) {
+            XCTAssertTrue(capability.supportsAllMessageTypes(for: AAClimate.self))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for Climate")

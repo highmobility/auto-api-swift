@@ -29,33 +29,41 @@
 import Foundation
 
 
-public struct DoorLocks: FullStandardCommand {
+public struct DoorLocks: AAFullStandardCommand {
 
+    public let insideLocks: [Door.Lock]?
+    public let locks: [Door.Lock]?
+    public let positions: [Door.Position]?
+
+
+    @available(*, deprecated, message: "Use the new .locks or .positions iVars")
     public let doors: [Door]?
-    public let insideLocks: [DoorLock]?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
-        doors = properties.flatMap(for: 0x01) { Door($0.value) }
-        insideLocks = properties.flatMap(for: 0x02) { DoorLock($0.value) }
+        doors = properties.flatMap(for: 0x01) { Door($0.value) }    // Deprecated
+        
+        insideLocks = properties.flatMap(for: 0x02) { Door.Lock($0.value) }
+        locks = properties.flatMap(for: 0x03) { Door.Lock($0.value) }
+        positions = properties.flatMap(for: 0x04) { Door.Position($0.value) }
 
         // Properties
         self.properties = properties
     }
 }
 
-extension DoorLocks: Identifiable {
+extension DoorLocks: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0020)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0020)
 }
 
-extension DoorLocks: MessageTypesGettable {
+extension DoorLocks: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

@@ -29,18 +29,18 @@
 import Foundation
 
 
-public struct Offroad: FullStandardCommand {
+public struct Offroad: AAFullStandardCommand {
 
     public let routeIncline: Int16?
-    public let wheelSuspension: PercentageInt?
+    public let wheelSuspension: AAPercentageInt?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
         routeIncline = properties.value(for: 0x01)
         wheelSuspension = properties.value(for: 0x02)
@@ -50,12 +50,12 @@ public struct Offroad: FullStandardCommand {
     }
 }
 
-extension Offroad: Identifiable {
+extension Offroad: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0052)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0052)
 }
 
-extension Offroad: MessageTypesGettable {
+extension Offroad: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

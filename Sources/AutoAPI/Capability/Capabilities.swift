@@ -36,10 +36,10 @@ public struct Capabilities: InboundCommand, Sequence  {
 
     // MARK: InboundCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(_ messageType: UInt8, properties: Properties) {
+    init?(_ messageType: UInt8, properties: AAProperties) {
         guard messageType == 0x01 else {
             return nil
         }
@@ -48,7 +48,7 @@ public struct Capabilities: InboundCommand, Sequence  {
 
         // Ordered by the ID
         capabilities = properties.filter(for: 0x01).compactMap { property in
-            let identifier = Identifier(property.value.prefix(2))
+            let identifier = AACommandIdentifier(property.value.prefix(2))
 
             guard let command = commandTypes.first(where: { $0.identifier == identifier }) else {
                 return nil
@@ -72,12 +72,12 @@ public struct Capabilities: InboundCommand, Sequence  {
     }
 }
 
-extension Capabilities: Identifiable {
+extension Capabilities: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0010)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0010)
 }
 
-extension Capabilities: MessageTypesGettable {
+extension Capabilities: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -93,7 +93,7 @@ public extension Capabilities {
         return commandPrefix(for: .getCapabilities)
     }
 
-    static var getCapability: (Identifier) -> [UInt8] {
+    static var getCapability: (AACommandIdentifier) -> [UInt8] {
         return {
             return commandPrefix(for: .getCapability) + $0.bytes
         }

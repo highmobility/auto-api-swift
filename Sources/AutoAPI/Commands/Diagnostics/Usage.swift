@@ -29,36 +29,38 @@
 import Foundation
 
 
-public struct Usage: FullStandardCommand {
+public struct Usage: AAFullStandardCommand {
 
-    public let accelerationEvalution: PercentageInt?
+    public let accelerationEvalution: AAPercentageInt?
+    public let averageFuelConsumption: Float?
     public let averageWeeklyDistance: UInt16?
     public let averageWeeklyDistanceLongLife: UInt16?
-    public let drivingModeActivationPeriods: [DrivingMode.ActivationPeriod]?
-    public let drivingStyleEvalution: PercentageInt?
-    public let energyConsumptions: [DrivingMode.EnergyConsumption]?
+    public let currentFuelConsumption: Float?
+    public let drivingModeActivationPeriods: [AADrivingMode.ActivationPeriod]?
+    public let drivingStyleEvalution: AAPercentageInt?
+    public let energyConsumptions: [AADrivingMode.EnergyConsumption]?
     public let lastTripAverageEnergyRecuperation: UInt8?
-    public let lastTripBatteryRemaining: PercentageInt?
-    public let lastTripElectricPortion: PercentageInt?
+    public let lastTripBatteryRemaining: AAPercentageInt?
+    public let lastTripElectricPortion: AAPercentageInt?
     public let lastTripEnergyConsumption: Float?
     public let lastTripFuelConsumption: Float?
     public let lastTripDate: Date?
     public let mileageAfterLastTrip: UInt32?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
         averageWeeklyDistance = properties.value(for: 0x01)
         averageWeeklyDistanceLongLife = properties.value(for: 0x02)
         accelerationEvalution = properties.value(for: 0x03)
         drivingStyleEvalution = properties.value(for: 0x04)
-        drivingModeActivationPeriods = properties.flatMap(for: 0x05) { DrivingMode.ActivationPeriod($0.value) }
-        energyConsumptions = properties.flatMap(for: 0x06) { DrivingMode.EnergyConsumption($0.value) }
+        drivingModeActivationPeriods = properties.flatMap(for: 0x05) { AADrivingMode.ActivationPeriod($0.value) }
+        energyConsumptions = properties.flatMap(for: 0x06) { AADrivingMode.EnergyConsumption($0.value) }
         lastTripEnergyConsumption = properties.value(for: 0x07)
         lastTripFuelConsumption = properties.value(for: 0x08)
         mileageAfterLastTrip = properties.value(for: 0x09)
@@ -66,18 +68,20 @@ public struct Usage: FullStandardCommand {
         lastTripAverageEnergyRecuperation = properties.value(for: 0x0B)
         lastTripBatteryRemaining = properties.value(for: 0x0C)
         lastTripDate = properties.value(for: 0x0D)
+        averageFuelConsumption = properties.value(for: 0x0E)
+        currentFuelConsumption = properties.value(for: 0x0F)
 
         // Properties
         self.properties = properties
     }
 }
 
-extension Usage: Identifiable {
+extension Usage: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0068)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0068)
 }
 
-extension Usage: MessageTypesGettable {
+extension Usage: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

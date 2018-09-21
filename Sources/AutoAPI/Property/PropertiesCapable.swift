@@ -32,8 +32,9 @@ import Foundation
 public protocol PropertiesCapable {
 
     var carSignature: [UInt8]? { get }
+    var milliseconds: TimeInterval? { get }
     var nonce: [UInt8]? { get }
     var timestamp: Date? { get }
 
-    var properties: Properties { get }
+    var properties: AAProperties { get }
 }

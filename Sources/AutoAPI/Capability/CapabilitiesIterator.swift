@@ -44,7 +44,7 @@ public struct CapabilitiesIterator: IteratorProtocol, PropertiesInitable {
             return nil
         }
 
-        let identifier = Identifier(property.value.prefix(2))
+        let identifier = AACommandIdentifier(property.value.prefix(2))
 
         guard let command = commandTypes.first(where: { $0.identifier == identifier }) else {
             return nil

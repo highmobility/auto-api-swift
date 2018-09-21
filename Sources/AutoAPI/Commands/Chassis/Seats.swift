@@ -29,19 +29,27 @@
 import Foundation
 
 
-public struct Seats: FullStandardCommand, Sequence {
+public struct Seats: AAFullStandardCommand, Sequence {
 
+    public let personsDetected: [Seat.PersonDetected]?
+    public let seatbeltsFastened: [Seat.SeatbeltFastened]?
+
+
+    @available(*, deprecated, message: "Use the new .personsDetected or .seatbeltsFastened iVars")
     public let seats: [Seat]?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
-        seats = properties.flatMap(for: 0x01) { Seat($0.value) }
+        seats = properties.flatMap(for: 0x01) { Seat($0.value) }    // Deprecated
+
+        personsDetected = properties.flatMap(for: 0x02) { Seat.PersonDetected($0.value) }
+        seatbeltsFastened = properties.flatMap(for: 0x03) { Seat.SeatbeltFastened($0.value) }
 
         // Properties
         self.properties = properties
@@ -58,12 +66,12 @@ public struct Seats: FullStandardCommand, Sequence {
     }
 }
 
-extension Seats: Identifiable {
+extension Seats: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0056)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0056)
 }
 
-extension Seats: MessageTypesGettable {
+extension Seats: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

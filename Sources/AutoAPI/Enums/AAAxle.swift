@@ -19,14 +19,22 @@
 // licensing@high-mobility.com
 //
 //
-//  ChargingMethod.swift
+//  AAAxle.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 28/08/2018.
+//  Created by Mikk Rätsep on 13/12/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public typealias ChargingMethod = PlugType
+public enum AAAxle: UInt8 {
+
+    case front  = 0x00
+    case rear   = 0x01
+}
+
+extension AAAxle: PropertyConvertable {
+    
+}

@@ -37,10 +37,10 @@ public struct Messaging: InboundCommand, OutboundCommand {
 
     // MARK: InboundCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(_ messageType: UInt8, properties: Properties) {
+    init?(_ messageType: UInt8, properties: AAProperties) {
         guard messageType == 0x01 else {
             return nil
         }
@@ -54,12 +54,12 @@ public struct Messaging: InboundCommand, OutboundCommand {
     }
 }
 
-extension Messaging: Identifiable {
+extension Messaging: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0037)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0037)
 }
 
-extension Messaging: MessageTypesGettable {
+extension Messaging: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

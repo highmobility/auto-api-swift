@@ -19,19 +19,23 @@
 // licensing@high-mobility.com
 //
 //
-//  StartStopChrono.swift
+//  AAChargingState.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 13/12/2017.
+//  Created by Mikk Rätsep on 30/11/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum StartStopChrono: UInt8 {
+public enum AAChargingState: UInt8 {
 
-    case start  = 0x00
-    case stop   = 0x01
-    case reset  = 0x02
+    case disconnected   = 0x00
+    case pluggedIn      = 0x01
+    case charging       = 0x02
+    case chargingDone   = 0x03
+    case initialising   = 0x04
+    case chargingPaused = 0x05
+    case chargingError  = 0x06
 }

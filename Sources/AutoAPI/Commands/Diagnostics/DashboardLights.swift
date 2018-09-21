@@ -29,17 +29,17 @@
 import Foundation
 
 
-public struct DashboardLights: FullStandardCommand {
+public struct DashboardLights: AAFullStandardCommand {
 
     public let lights: [DashboardLight]?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
         lights = properties.flatMap(for: 0x01) { DashboardLight($0.value) }
 
@@ -48,12 +48,12 @@ public struct DashboardLights: FullStandardCommand {
     }
 }
 
-extension DashboardLights: Identifiable {
+extension DashboardLights: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0061)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0061)
 }
 
-extension DashboardLights: MessageTypesGettable {
+extension DashboardLights: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

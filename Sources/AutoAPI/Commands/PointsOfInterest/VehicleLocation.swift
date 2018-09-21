@@ -29,19 +29,19 @@
 import Foundation
 
 
-public struct VehicleLocation: FullStandardCommand {
+public struct VehicleLocation: AAFullStandardCommand {
 
     public let altitude: Double?
     public let heading: Double?
     public let coordinate: Coordinate?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
         coordinate = Coordinate(properties.first(for: 0x01)?.value ?? [])
         heading = properties.value(for: 0x02)
@@ -52,7 +52,7 @@ public struct VehicleLocation: FullStandardCommand {
     }
 }
 
-extension VehicleLocation: MessageTypesGettable {
+extension VehicleLocation: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -61,9 +61,9 @@ extension VehicleLocation: MessageTypesGettable {
     }
 }
 
-extension VehicleLocation: Identifiable {
+extension VehicleLocation: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0030)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0030)
 }
 
 public extension VehicleLocation {

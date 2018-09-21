@@ -29,12 +29,13 @@
 import Foundation
 
 
-public struct Maintenance: FullStandardCommand {
+public struct Maintenance: AAFullStandardCommand {
 
     public typealias Weeks = UInt8
 
 
     public let automaticTeleserviceCallDate: Date?
+    public let brakeFluidChangeDate: Date?
     public let cbsReportsCount: UInt8?
     public let conditionBasedServices: [ConditionBasedService]?
     public let daysToNextService: Int16?
@@ -47,12 +48,12 @@ public struct Maintenance: FullStandardCommand {
     public let teleserviceBatteryCallDate: Date?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
         daysToNextService = properties.value(for: 0x01)
         kmToNextService = properties.value(for: 0x02)
@@ -65,18 +66,19 @@ public struct Maintenance: FullStandardCommand {
         teleserviceBatteryCallDate = properties.value(for: 0x09)
         nextInspectionDate = properties.value(for: 0x0A)
         conditionBasedServices = properties.flatMap(for: 0x0B) { ConditionBasedService($0.value) }
+        brakeFluidChangeDate = properties.value(for: 0x0C)
 
         // Properties
         self.properties = properties
     }
 }
 
-extension Maintenance: Identifiable {
+extension Maintenance: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0034)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0034)
 }
 
-extension Maintenance: MessageTypesGettable {
+extension Maintenance: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

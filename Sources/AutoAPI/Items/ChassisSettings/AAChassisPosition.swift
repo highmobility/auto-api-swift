@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Axle.swift
+//  AAChassisPosition.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 13/12/2017.
@@ -29,8 +29,21 @@
 import Foundation
 
 
-public enum Axle: UInt8 {
+public struct AAChassisPosition {
 
-    case front  = 0x00
-    case rear   = 0x01
+    public let maximum: Int8
+    public let minimum: Int8
+    public let position: UInt8
+}
+
+extension AAChassisPosition: Item {
+
+    static var size: Int = 3
+
+
+    init?(bytes: [UInt8]) {
+        position = bytes[0]
+        maximum = bytes[1].int8
+        minimum = bytes[2].int8
+    }
 }

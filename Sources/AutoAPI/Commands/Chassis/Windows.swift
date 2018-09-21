@@ -29,19 +29,27 @@
 import Foundation
 
 
-public struct Windows: FullStandardCommand, Sequence {
+public struct Windows: AAFullStandardCommand, Sequence {
 
+    public let openPercentages: [Window.OpenPercentage]?
+    public let positions: [Window.Position]?
+
+
+    @available(*, deprecated, message: "Use the new .positions iVar")
     public let windows: [Window]?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
-        windows = properties.flatMap(for: 0x01) { Window($0.value) }
+        windows = properties.flatMap(for: 0x01) { Window($0.value) }    // Deprecated
+
+        openPercentages = properties.flatMap(for: 0x02) { Window.OpenPercentage($0.value) }
+        positions = properties.flatMap(for: 0x03) { Window.Position($0.value) }
 
         // Properties
         self.properties = properties
@@ -58,12 +66,12 @@ public struct Windows: FullStandardCommand, Sequence {
     }
 }
 
-extension Windows: Identifiable {
+extension Windows: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0045)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0045)
 }
 
-extension Windows: MessageTypesGettable {
+extension Windows: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -80,8 +88,9 @@ public extension Windows {
     }
 
     static var openClose: ([Window]) -> [UInt8] {
-        return {
-            return commandPrefix(for: .openCloseWindows) + $0.flatMap { $0.propertyBytes(0x01) }
+        return { _ in
+//            return commandPrefix(for: .openCloseWindows) + $0.flatMap { $0.propertyBytes(0x01) }
+            return []
         }
     }
 }

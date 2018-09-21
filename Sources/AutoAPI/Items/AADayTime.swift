@@ -19,61 +19,53 @@
 // licensing@high-mobility.com
 //
 //
-//  ChargeTimer.swift
+//  AADayTime.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 30/01/2018.
+//  Created by Mikk Rätsep on 30/11/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct ChargeTimer: Item {
+public struct AADayTime {
 
-    public let type: TimerType
-    public let time: Date
+    public let hour: UInt8
+    public let minute: UInt8
 
 
-    // MARK: Item
+    // MARK: Type Vars
 
-    static var size: Int = 9
+    public static let zero: AADayTime = AADayTime(hour: 0, minute: 0)
 
 
     // MARK: Init
 
-    public init(type: TimerType, time: Date) {
-        self.type = type
-        self.time = time
+    public init(hour: UInt8, minute: UInt8) {
+        self.hour = hour % 24
+        self.minute = minute % 60
     }
 }
 
-extension ChargeTimer: BinaryInitable {
+extension AADayTime: BinaryInitable {
+
+    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
+        guard binary.count >= 2 else {
+            return nil
+        }
+
+        hour = binary.bytes[0]
+        minute = binary.bytes[1]
+    }
+}
+
+extension AADayTime: Item {
+
+    static var size: Int = 2
+
 
     init?(bytes: [UInt8]) {
-        guard let timerType = TimerType(rawValue: bytes[0]) else {
-            return nil
-        }
-        
-        guard let date = Date(bytes.dropFirst().bytes) else {
-            return nil
-        }
-
-        type = timerType
-        time = date
-    }
-}
-
-extension ChargeTimer: Equatable {
-
-    public static func ==(lhs: ChargeTimer, rhs: ChargeTimer) -> Bool {
-        return (lhs.type == rhs.type) && (lhs.time == rhs.time)
-    }
-}
-
-extension ChargeTimer: PropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [type.rawValue] + time.propertyValue
+        self.init(bytes)
     }
 }

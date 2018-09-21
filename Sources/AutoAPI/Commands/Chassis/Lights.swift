@@ -33,26 +33,26 @@ import Foundation
 #endif
 
 
-public struct Lights: FullStandardCommand {
+public struct Lights: AAFullStandardCommand {
 
     public let ambientColour: Colour?
-    public let emergencyBrakeState: ActiveState?
+    public let emergencyBrakeState: AAActiveState?
     public let frontExterior: FrontLightState?
-    public let interiorState: ActiveState?
-    public let rearExteriorState: ActiveState?
-    public let reverseState: ActiveState?
+    public let interiorState: AAActiveState?
+    public let rearExteriorState: AAActiveState?
+    public let reverseState: AAActiveState?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
         frontExterior = FrontLightState(rawValue: properties.first(for: 0x01)?.monoValue)
-        rearExteriorState = ActiveState(rawValue: properties.first(for: 0x02)?.monoValue)
-        interiorState = ActiveState(rawValue: properties.first(for: 0x03)?.monoValue)
+        rearExteriorState = AAActiveState(rawValue: properties.first(for: 0x02)?.monoValue)
+        interiorState = AAActiveState(rawValue: properties.first(for: 0x03)?.monoValue)
 
         if let bytes = properties.first(for: 0x04)?.value, bytes.count == 3 {
             let red = CGFloat(bytes[0]) / 255.0
@@ -65,20 +65,20 @@ public struct Lights: FullStandardCommand {
             ambientColour = nil
         }
 
-        reverseState = ActiveState(rawValue: properties.first(for: 0x05)?.monoValue)
-        emergencyBrakeState = ActiveState(rawValue: properties.first(for: 0x06)?.monoValue)
+        reverseState = AAActiveState(rawValue: properties.first(for: 0x05)?.monoValue)
+        emergencyBrakeState = AAActiveState(rawValue: properties.first(for: 0x06)?.monoValue)
 
         // Properties
         self.properties = properties
     }
 }
 
-extension Lights: Identifiable {
+extension Lights: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0036)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0036)
 }
 
-extension Lights: MessageTypesGettable {
+extension Lights: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -92,11 +92,11 @@ public extension Lights {
 
     struct Control {
         public let frontExterior: FrontLightState?
-        public let rearExteriorState: ActiveState?
-        public let interiorState: ActiveState?
+        public let rearExteriorState: AAActiveState?
+        public let interiorState: AAActiveState?
         public let ambientColour: Colour?
 
-        public init(frontExterior: FrontLightState?, rearExteriorState: ActiveState?, interiorState: ActiveState?, ambientColour: Colour?) {
+        public init(frontExterior: FrontLightState?, rearExteriorState: AAActiveState?, interiorState: AAActiveState?, ambientColour: Colour?) {
             self.frontExterior = frontExterior
             self.rearExteriorState = rearExteriorState
             self.interiorState = interiorState

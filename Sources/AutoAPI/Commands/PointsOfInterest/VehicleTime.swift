@@ -29,26 +29,26 @@
 import Foundation
 
 
-public struct VehicleTime: FullStandardCommand {
+public struct VehicleTime: AAFullStandardCommand {
 
-    public let time: Date?
-
-
-    // MARK: FullStandardCommand
-
-    public let properties: Properties
+    public let time: AADayTime?
 
 
-    init?(properties: Properties) {
+    // MARK: AAFullStandardCommand
+
+    public let properties: AAProperties
+
+
+    init?(properties: AAProperties) {
         // Ordered by the ID
-        time = properties.value(for: 0x01)
+        time = AADayTime(bytes: properties.first(for: 0x01)?.value)
 
         // Properties
         self.properties = properties
     }
 }
 
-extension VehicleTime: MessageTypesGettable {
+extension VehicleTime: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -57,9 +57,9 @@ extension VehicleTime: MessageTypesGettable {
     }
 }
 
-extension VehicleTime: Identifiable {
+extension VehicleTime: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0050)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0050)
 }
 
 public extension VehicleTime {

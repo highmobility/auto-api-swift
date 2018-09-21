@@ -19,26 +19,17 @@
 // licensing@high-mobility.com
 //
 //
-//  ActiveState.swift
+//  AAMessageTypesGettable.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 11/09/2018.
+//  Created by Mikk Rätsep on 28/12/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum ActiveState: UInt8 {
+public protocol AAMessageTypesGettable {
 
-    case inactive   = 0x00
-    case active     = 0x01
-
-
-    static let inactivate = ActiveState.inactive
-    static let activate = ActiveState.active
-}
-
-extension ActiveState: PropertyConvertable {
-    
+    associatedtype MessageTypes: RawRepresentable & CaseIterable
 }

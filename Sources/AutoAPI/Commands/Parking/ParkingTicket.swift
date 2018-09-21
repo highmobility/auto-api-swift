@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct ParkingTicket: FullStandardCommand {
+public struct ParkingTicket: AAFullStandardCommand {
 
     public let endTime: Date?
     public let operatorName: String?
@@ -38,12 +38,12 @@ public struct ParkingTicket: FullStandardCommand {
     public let ticketID: String?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
         state = ParkingTicketState(rawValue: properties.first(for: 0x01)?.monoValue)
         operatorName = properties.value(for: 0x02)
@@ -56,12 +56,12 @@ public struct ParkingTicket: FullStandardCommand {
     }
 }
 
-extension ParkingTicket: Identifiable {
+extension ParkingTicket: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0047)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0047)
 }
 
-extension ParkingTicket: MessageTypesGettable {
+extension ParkingTicket: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

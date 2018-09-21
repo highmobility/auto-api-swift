@@ -29,34 +29,34 @@
 import Foundation
 
 
-public struct Race: FullStandardCommand {
+public struct Race: AAFullStandardCommand {
 
     public let accelerations: [Acceleration]?
-    public let acceleratorPedalIdleSwitchState: ActiveState?
-    public let acceleratorPedalKickdownSwitchState: ActiveState?
-    public let brakePedalPosition: PercentageInt?
-    public let brakePedalSwitchState: ActiveState?
+    public let acceleratorPedalIdleSwitchState: AAActiveState?
+    public let acceleratorPedalKickdownSwitchState: AAActiveState?
+    public let brakePedalPosition: AAPercentageInt?
+    public let brakePedalSwitchState: AAActiveState?
     public let brakePressure: Float?
     public let brakeTorqueVectorings: [BrakeTorqueVectoring]?
-    public let clutchPedalSwitchState: ActiveState?
-    public let espState: ActiveState?
-    public let gasPedalPosition: PercentageInt?
+    public let clutchPedalSwitchState: AAActiveState?
+    public let espState: AAActiveState?
+    public let gasPedalPosition: AAPercentageInt?
     public let gearMode: GearMode?
-    public let oversteering: PercentageInt?
+    public let oversteering: AAPercentageInt?
     public let rearSuspensionSteering: Int8?
     public let selectedGear: Int8?
     public let steeringAngle: Int8?
-    public let understeering: PercentageInt?
+    public let understeering: AAPercentageInt?
     public let vehicleMovingState: MovingState?
     public let yawRate: Float?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
         accelerations = properties.flatMap(for: 0x01) { Acceleration($0.value) }
         understeering = properties.value(for: 0x02)
@@ -66,15 +66,15 @@ public struct Race: FullStandardCommand {
         brakePressure = properties.value(for: 0x06)
         yawRate = properties.value(for: 0x07)
         rearSuspensionSteering = properties.value(for: 0x08)
-        espState = ActiveState(rawValue: properties.first(for: 0x09)?.monoValue)
+        espState = AAActiveState(rawValue: properties.first(for: 0x09)?.monoValue)
         brakeTorqueVectorings = properties.flatMap(for: 0x0A) { BrakeTorqueVectoring($0.value) }
         gearMode = GearMode(rawValue: properties.first(for: 0x0B)?.monoValue)
         selectedGear = properties.value(for: 0x0C)
         brakePedalPosition = properties.value(for: 0x0D)
-        brakePedalSwitchState = ActiveState(rawValue: properties.first(for: 0x0E)?.monoValue)
-        clutchPedalSwitchState = ActiveState(rawValue: properties.first(for: 0x0F)?.monoValue)
-        acceleratorPedalIdleSwitchState = ActiveState(rawValue: properties.first(for: 0x10)?.monoValue)
-        acceleratorPedalKickdownSwitchState = ActiveState(rawValue: properties.first(for: 0x11)?.monoValue)
+        brakePedalSwitchState = AAActiveState(rawValue: properties.first(for: 0x0E)?.monoValue)
+        clutchPedalSwitchState = AAActiveState(rawValue: properties.first(for: 0x0F)?.monoValue)
+        acceleratorPedalIdleSwitchState = AAActiveState(rawValue: properties.first(for: 0x10)?.monoValue)
+        acceleratorPedalKickdownSwitchState = AAActiveState(rawValue: properties.first(for: 0x11)?.monoValue)
         vehicleMovingState = MovingState(rawValue: properties.first(for: 0x12)?.monoValue)
 
         // Properties
@@ -82,12 +82,12 @@ public struct Race: FullStandardCommand {
     }
 }
 
-extension Race: Identifiable {
+extension Race: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0057)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0057)
 }
 
-extension Race: MessageTypesGettable {
+extension Race: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

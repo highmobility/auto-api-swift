@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Climate.swift
+//  AAClimate.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 30/11/2017.
@@ -29,49 +29,72 @@
 import Foundation
 
 
-public struct Climate: FullStandardCommand {
+public struct AAClimate: AAFullStandardCommand {
 
     public let climateProfile: AAClimateProfile?
     public let defrostingTemperature: Float?
     public let driverTemperature: Float?
     public let insideTemperature: Float?
-    public let defoggingState: ActiveState?
-    public let defrostingState: ActiveState?
-    public let hvacState: ActiveState?
-    public let ionisingState: ActiveState?
+    public let defoggingState: AAActiveState?
+    public let defrostingState: AAActiveState?
+    public let hvacState: AAActiveState?
+    public let ionisingState: AAActiveState?
     public let outsideTemperature: Float?
     public let passengerTemperature: Float?
 
 
-    // MARK: FullStandardCommand
+    @available(*, deprecated, renamed: "defoggingState")
+    public var isDefoggingActive: Bool? {
+        return defoggingState == .active
+    }
 
-    public let properties: Properties
+    @available(*, deprecated, renamed: "defrostingState")
+    public var isDefrostingActive: Bool? {
+        return defrostingState == .active
+    }
+
+    @available(*, deprecated, renamed: "hvacState")
+    public var isHVACActive: Bool? {
+        return hvacState == .active
+    }
+
+    @available(*, deprecated, renamed: "ionisingState")
+    public var isIonisingActive: Bool? {
+        return ionisingState == .active
+    }
 
 
-    init?(properties: Properties) {
+    // MARK: AAFullStandardCommand
+
+    public let properties: AAProperties
+
+
+    init?(properties: AAProperties) {
         // Ordered by the ID
         insideTemperature = properties.value(for: 0x01)
         outsideTemperature = properties.value(for: 0x02)
         driverTemperature = properties.value(for: 0x03)
         passengerTemperature = properties.value(for: 0x04)
-        hvacState = ActiveState(rawValue: properties.first(for: 0x05)?.monoValue)
-        defoggingState = ActiveState(rawValue: properties.first(for: 0x06)?.monoValue)
-        defrostingState = ActiveState(rawValue: properties.first(for: 0x07)?.monoValue)
-        ionisingState = ActiveState(rawValue: properties.first(for: 0x08)?.monoValue)
+        hvacState = AAActiveState(rawValue: properties.first(for: 0x05)?.monoValue)
+        defoggingState = AAActiveState(rawValue: properties.first(for: 0x06)?.monoValue)
+        defrostingState = AAActiveState(rawValue: properties.first(for: 0x07)?.monoValue)
+        ionisingState = AAActiveState(rawValue: properties.first(for: 0x08)?.monoValue)
         defrostingTemperature = properties.value(for: 0x09)
         climateProfile = AAClimateProfile(bytes: properties.first(for: 0x0A)?.value)
+        /* Level 7 */
+        /* Level 8 */
 
         // Properties
         self.properties = properties
     }
 }
 
-extension Climate: Identifiable {
+extension AAClimate: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0024)
+    public static var identifier: AACommandIdentifier = 0x0024
 }
 
-extension Climate: MessageTypesGettable {
+extension AAClimate: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -85,56 +108,63 @@ extension Climate: MessageTypesGettable {
     }
 }
 
-public extension Climate {
-
-    public struct Settings {
-        public let climateProfile: ClimateProfile?
-        public let driverTemp: Float?
-        public let passengerTemp: Float?
-
-        public init(climateProfile: ClimateProfile?, driverTemp: Float?, passengerTemp: Float?) {
-            self.climateProfile = climateProfile
-            self.driverTemp = driverTemp
-            self.passengerTemp = passengerTemp
-        }
-    }
-
+public extension AAClimate {
 
     static var getClimateState: [UInt8] {
         return commandPrefix(for: .getClimateState)
     }
 
-    static var setClimateProfile: (Settings) -> [UInt8] {
-        return {
-            let profileBytes: [UInt8] = $0.climateProfile?.propertyBytes(0x01) ?? []
-            let driverBytes: [UInt8] = $0.driverTemp?.propertyBytes(0x02) ?? []
-            let passengerBytes: [UInt8] = $0.passengerTemp?.propertyBytes(0x03) ?? []
+    static func setClimateProfile(_ settings: AAClimateSettings) -> [UInt8] {
+        return commandPrefix(for: .setClimateProfile) + settings.propertyValuesCombined
+    }
 
-            return commandPrefix(for: .setClimateProfile) + profileBytes + driverBytes + passengerBytes
+    static func startStopDefogging(_ state: AAActiveState) -> [UInt8] {
+        return commandPrefix(for: .startStopDefogging) + state.propertyBytes(0x01)
+    }
+
+    static func startStopDefrosting(_ state: AAActiveState) -> [UInt8] {
+            return commandPrefix(for: .startStopDefrosting) + state.propertyBytes(0x01)
+    }
+
+    static func startStopHVAC(_ state: AAActiveState) -> [UInt8] {
+        return commandPrefix(for: .startStopHVAC) + state.propertyBytes(0x01)
+    }
+
+    static func startStopIonising(_ state: AAActiveState) -> [UInt8] {
+        return commandPrefix(for: .startStopIonising) + state.propertyBytes(0x01)
+    }
+
+
+    // MARK: Deprecated
+
+    @available(*, deprecated, renamed: "ClimateSettings")
+    typealias Settings = AAClimateSettings
+
+    @available(*, deprecated, renamed: "startStopDefogging")
+    static var startDefogging: (Bool) -> [UInt8] {
+        return {
+            return startStopDefogging($0 ? .activate : .inactivate)
         }
     }
 
-    static var setDefoggingState: (ActiveState) -> [UInt8] {
+    @available(*, deprecated, renamed: "startStopDefrosting")
+    static var startDefrosting: (Bool) -> [UInt8] {
         return {
-            return commandPrefix(for: .startStopDefogging) + $0.propertyBytes(0x01)
+            return startStopDefrosting($0 ? .activate : .inactivate)
         }
     }
 
-    static var setDefrostingState: (ActiveState) -> [UInt8] {
+    @available(*, deprecated, renamed: "startStopHVAC")
+    static var startHVAC: (Bool) -> [UInt8] {
         return {
-            return commandPrefix(for: .startStopDefrosting) + $0.propertyBytes(0x01)
+            return startStopHVAC($0 ? .activate : .inactivate)
         }
     }
 
-    static var setHVACState: (ActiveState) -> [UInt8] {
+    @available(*, deprecated, renamed: "startStopIonising")
+    static var startIonising: (Bool) -> [UInt8] {
         return {
-            return commandPrefix(for: .startStopHVAC) + $0.propertyBytes(0x01)
-        }
-    }
-
-    static var setIonisingState: (ActiveState) -> [UInt8] {
-        return {
-            return commandPrefix(for: .startStopIonising) + $0.propertyBytes(0x01)
+            return startStopIonising($0 ? .activate : .inactivate)
         }
     }
 }

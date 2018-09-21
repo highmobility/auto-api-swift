@@ -29,31 +29,31 @@
 import Foundation
 
 
-public struct ParkingBrake: FullStandardCommand {
+public struct ParkingBrake: AAFullStandardCommand {
 
-    public let state: ActiveState?
-
-
-    // MARK: FullStandardCommand
-
-    public let properties: Properties
+    public let state: AAActiveState?
 
 
-    init?(properties: Properties) {
+    // MARK: AAFullStandardCommand
+
+    public let properties: AAProperties
+
+
+    init?(properties: AAProperties) {
         // Ordered by the ID
-        state = ActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
+        state = AAActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
 
         // Properties
         self.properties = properties
     }
 }
 
-extension ParkingBrake: Identifiable {
+extension ParkingBrake: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0058)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0058)
 }
 
-extension ParkingBrake: MessageTypesGettable {
+extension ParkingBrake: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -69,7 +69,7 @@ public extension ParkingBrake {
         return commandPrefix(for: .getBrakeState)
     }
 
-    static var setBrakeState: (ActiveState) -> [UInt8] {
+    static var setBrakeState: (AAActiveState) -> [UInt8] {
         return {
             return commandPrefix(for: .setBrakeState) + $0.propertyBytes(0x01)
         }

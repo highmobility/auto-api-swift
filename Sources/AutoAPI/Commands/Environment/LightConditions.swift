@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct LightConditions: FullStandardCommand {
+public struct LightConditions: AAFullStandardCommand {
 
     /// Value in *lux*.
     public let insideLight: Float?
@@ -38,12 +38,12 @@ public struct LightConditions: FullStandardCommand {
     public let outsideLight: Float?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
         outsideLight = properties.value(for: 0x01)
         insideLight = properties.value(for: 0x02)
@@ -53,12 +53,12 @@ public struct LightConditions: FullStandardCommand {
     }
 }
 
-extension LightConditions: Identifiable {
+extension LightConditions: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0054)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0054)
 }
 
-extension LightConditions: MessageTypesGettable {
+extension LightConditions: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

@@ -19,19 +19,36 @@
 // licensing@high-mobility.com
 //
 //
-//  TimerType.swift
+//  AAClimateSettings.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 30/01/2018.
+//  Created by Mikk Rätsep on 21/09/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum TimerType: UInt8 {
+public struct AAClimateSettings {
 
-    case prefferedStartTime = 0x00
-    case prefferedEndTime   = 0x01
-    case departureDate      = 0x02
+    public let climateProfile: AAClimateProfile?
+    public let driverTemp: Float?
+    public let passengerTemp: Float?
+
+    var propertyValuesCombined: [UInt8] {
+        return [climateProfile?.propertyBytes(0x01),
+                driverTemp?.propertyBytes(0x02),
+                passengerTemp?.propertyBytes(0x03)]
+            .compactMap { $0 }
+            .reduceToByteArray { $0 }
+    }
+
+
+    // MARK: Init
+
+    public init(climateProfile: AAClimateProfile?, driverTemp: Float?, passengerTemp: Float?) {
+        self.climateProfile = climateProfile
+        self.driverTemp = driverTemp
+        self.passengerTemp = passengerTemp
+    }
 }

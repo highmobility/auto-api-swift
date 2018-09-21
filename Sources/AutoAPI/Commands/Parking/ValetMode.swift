@@ -29,31 +29,31 @@
 import Foundation
 
 
-public struct ValetMode: FullStandardCommand {
+public struct ValetMode: AAFullStandardCommand {
 
-    public let state: ActiveState?
-
-
-    // MARK: FullStandardCommand
-
-    public let properties: Properties
+    public let state: AAActiveState?
 
 
-    init?(properties: Properties) {
+    // MARK: AAFullStandardCommand
+
+    public let properties: AAProperties
+
+
+    init?(properties: AAProperties) {
         // Ordered by the ID
-        state = ActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
+        state = AAActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
 
         // Properties
         self.properties = properties
     }
 }
 
-extension ValetMode: Identifiable {
+extension ValetMode: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0028)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0028)
 }
 
-extension ValetMode: MessageTypesGettable {
+extension ValetMode: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -69,7 +69,7 @@ public extension ValetMode {
         return commandPrefix(for: .getState)
     }
 
-    static var setState: (ActiveState) -> [UInt8] {
+    static var setState: (AAActiveState) -> [UInt8] {
         return {
             return commandPrefix(for: .setState) + $0.propertyBytes(0x01)
         }

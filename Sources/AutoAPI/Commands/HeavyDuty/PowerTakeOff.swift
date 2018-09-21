@@ -29,33 +29,33 @@
 import Foundation
 
 
-public struct PowerTakeOff: FullStandardCommand {
+public struct PowerTakeOff: AAFullStandardCommand {
 
-    public let activeState: ActiveState?
-    public let engagedState: ActiveState?
-
-
-    // MARK: FullStandardCommand
-
-    public let properties: Properties
+    public let activeState: AAActiveState?
+    public let engagedState: AAActiveState?
 
 
-    init?(properties: Properties) {
+    // MARK: AAFullStandardCommand
+
+    public let properties: AAProperties
+
+
+    init?(properties: AAProperties) {
         // Ordered by the ID
-        activeState = ActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
-        engagedState = ActiveState(rawValue: properties.first(for: 0x02)?.monoValue)
+        activeState = AAActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
+        engagedState = AAActiveState(rawValue: properties.first(for: 0x02)?.monoValue)
 
         // Properties
         self.properties = properties
     }
 }
 
-extension PowerTakeOff: Identifiable {
+extension PowerTakeOff: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0065)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0065)
 }
 
-extension PowerTakeOff: MessageTypesGettable {
+extension PowerTakeOff: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -71,7 +71,7 @@ public extension PowerTakeOff {
         return commandPrefix(for: .getState)
     }
 
-    static var setState: (ActiveState) -> [UInt8] {
+    static var setState: (AAActiveState) -> [UInt8] {
         return {
             return commandPrefix(for: .setState) + $0.propertyBytes(0x01)
         }

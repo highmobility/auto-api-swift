@@ -29,17 +29,17 @@
 import Foundation
 
 
-public struct KeyfobPosition: FullStandardCommand {
+public struct KeyfobPosition: AAFullStandardCommand {
 
     public let relativePosition: KeyfobRelativePosition?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
         relativePosition = KeyfobRelativePosition(rawValue: properties.first(for: 0x01)?.monoValue)
 
@@ -48,7 +48,7 @@ public struct KeyfobPosition: FullStandardCommand {
     }
 }
 
-extension KeyfobPosition: MessageTypesGettable {
+extension KeyfobPosition: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -57,9 +57,9 @@ extension KeyfobPosition: MessageTypesGettable {
     }
 }
 
-extension KeyfobPosition: Identifiable {
+extension KeyfobPosition: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0048)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0048)
 }
 
 public extension KeyfobPosition {

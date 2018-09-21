@@ -29,25 +29,25 @@
 import Foundation
 
 
-public struct RooftopControl: FullStandardCommand {
+public struct RooftopControl: AAFullStandardCommand {
 
     public let convertibleState: ConvertibleRoofState?
 
     /// 100% denoting *opaque* and 0% *transparent*.
-    public let dimming: PercentageInt?
+    public let dimming: AAPercentageInt?
 
     /// 100% denoting *fully open*, 50% denoting *intermediate* and 0% *closed*.
-    public let position: PercentageInt?
+    public let position: AAPercentageInt?
 
     public let tiltState: PositionState?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
         dimming = properties.value(for: 0x01)
         position = properties.value(for: 0x02)
@@ -59,12 +59,12 @@ public struct RooftopControl: FullStandardCommand {
     }
 }
 
-extension RooftopControl: Identifiable {
+extension RooftopControl: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0025)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0025)
 }
 
-extension RooftopControl: MessageTypesGettable {
+extension RooftopControl: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -77,10 +77,10 @@ extension RooftopControl: MessageTypesGettable {
 public extension RooftopControl {
 
     struct Control {
-        public let dimming: PercentageInt?
-        public let openClose: PercentageInt?
+        public let dimming: AAPercentageInt?
+        public let openClose: AAPercentageInt?
 
-        public init(dimming: PercentageInt?, openClose: PercentageInt?) {
+        public init(dimming: AAPercentageInt?, openClose: AAPercentageInt?) {
             self.dimming = dimming
             self.openClose = openClose
         }

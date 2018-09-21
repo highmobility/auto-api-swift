@@ -19,25 +19,36 @@
 // licensing@high-mobility.com
 //
 //
-//  ChargePortState.swift
+//  SDKVersion.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 30/11/2017.
+//  Created by Mikk Rätsep on 28/11/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public typealias GasFlapState = ChargePortState
+public struct SDKVersion {
 
+    public let major: UInt8
+    public let minor: UInt8
+    public let patch: UInt8
 
-public enum ChargePortState: UInt8 {
+    public var string: String {
+        return "\(major).\(minor).\(patch)"
+    }
+}
 
-    case closed         = 0x00
-    case open           = 0x01
-    case unavailable    = 0xFF
+extension SDKVersion: BinaryInitable {
 
+    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
+        guard binary.count == 3 else {
+            return nil
+        }
 
-    public static let close = ChargePortState.closed
+        major = binary.bytes[0]
+        minor = binary.bytes[1]
+        patch = binary.bytes[2]
+    }
 }

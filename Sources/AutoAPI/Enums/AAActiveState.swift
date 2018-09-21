@@ -19,39 +19,26 @@
 // licensing@high-mobility.com
 //
 //
-//  DoorLock.swift
+//  AAActiveState.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 30/04/2018.
+//  Created by Mikk Rätsep on 11/09/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct DoorLock: Item {
+public enum AAActiveState: UInt8 {
 
-    public typealias Location = Position
-
-
-    public let location: Location
-    public let lock: LockState
+    case inactive   = 0x00
+    case active     = 0x01
 
 
-    // MARK: Item
-
-    static var size: Int = 2
+    static let inactivate = AAActiveState.inactive
+    static let activate = AAActiveState.active
 }
 
-extension DoorLock: BinaryInitable {
-
-    init?(bytes: [UInt8]) {
-        guard let location = Location(rawValue: bytes[0]),
-            let lock = LockState(rawValue: bytes[1]) else {
-                return nil
-        }
-
-        self.location = location
-        self.lock = lock
-    }
+extension AAActiveState: PropertyConvertable {
+    
 }

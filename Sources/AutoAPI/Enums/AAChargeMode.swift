@@ -12,25 +12,24 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
 //
-// You should have received a copy of the GNU General Public License
-// along with this program. If not, see http://www.gnu.org/licenses/.
 //
-// Please inquire about commercial licensing options at
-// licensing@high-mobility.com
-//
-//
-//  ChosenState.swift
+//  AAChargeMode.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 11/09/2018.
+//  Created by Mikk Rätsep on 30/01/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum ChosenState: UInt8 {
+public enum AAChargeMode: UInt8 {
 
-    case notChosen  = 0x00
-    case chosen     = 0x01
+    case immediate  = 0x00
+    case timerBased = 0x01
+    case inductive  = 0x02
+}
+
+extension AAChargeMode: PropertyConvertable {
+    
 }

@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Properties.swift
+//  AAProperties.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 24/11/2017.
@@ -29,10 +29,14 @@
 import Foundation
 
 
-public struct Properties: Sequence {
+public struct AAProperties: Sequence {
 
     public var carSignature: [UInt8]? {
         return first(for: 0xA1)?.value
+    }
+
+    public var milliseconds: TimeInterval? {
+        return value(for: 0xA3)
     }
 
     public var nonce: [UInt8]? {
@@ -57,14 +61,14 @@ public struct Properties: Sequence {
     }
 }
 
-extension Properties: BinaryInitable {
+extension AAProperties: BinaryInitable {
 
     init<C: Collection>(_ binary: C) where C.Element == UInt8 {
         bytes = binary.bytes
     }
 }
 
-extension Properties {
+extension AAProperties {
 
     func value<ReturnType>(for identifier: UInt8) -> ReturnType? {
         guard let bytes = first(for: identifier)?.value else {
@@ -89,8 +93,8 @@ extension Properties {
 
 
         /*** OTHERs ***/
-        case is ActiveState.Type:
-            return ActiveState(rawValue: firstByte) as? ReturnType
+        case is AAActiveState.Type:
+            return AAActiveState(rawValue: firstByte) as? ReturnType
 
         case is Date.Type:
             return Date(bytes) as? ReturnType
@@ -126,7 +130,7 @@ extension Properties {
     }
 }
 
-public extension Properties {
+public extension AAProperties {
 
     func contains(identifier: UInt8) -> Bool {
         return contains { $0.identifier == identifier }

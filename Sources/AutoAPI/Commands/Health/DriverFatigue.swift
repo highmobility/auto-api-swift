@@ -36,10 +36,10 @@ public struct DriverFatigue: InboundCommand {
 
     // MARK: InboundCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(_ messageType: UInt8, properties: Properties) {
+    init?(_ messageType: UInt8, properties: AAProperties) {
         guard messageType == 0x01 else {
             return nil
         }
@@ -52,7 +52,7 @@ public struct DriverFatigue: InboundCommand {
     }
 }
 
-extension DriverFatigue: MessageTypesGettable {
+extension DriverFatigue: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -60,7 +60,7 @@ extension DriverFatigue: MessageTypesGettable {
     }
 }
 
-extension DriverFatigue: Identifiable {
+extension DriverFatigue: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0041)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0041)
 }

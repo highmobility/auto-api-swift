@@ -33,12 +33,12 @@ public struct WakeUp: OutboundCommand {
 
 }
 
-extension WakeUp: Identifiable {
+extension WakeUp: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0022)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0022)
 }
 
-extension WakeUp: MessageTypesGettable {
+extension WakeUp: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

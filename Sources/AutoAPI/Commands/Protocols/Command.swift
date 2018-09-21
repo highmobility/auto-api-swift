@@ -30,7 +30,7 @@ import Foundation
 import HMUtilities
 
 
-public protocol Command: Identifiable {
+public protocol Command: AAIdentifiable {
 
     // FIXME: Not sure this should be here
     var debugTree: DebugTree { get }
@@ -59,7 +59,7 @@ extension Command {
                     return .node(label: label, nodes: [DebugTree(colour.values, expandProperties: expandProperties)])
                 }
 
-            case let properties as Properties:
+            case let properties as AAProperties:
                 if expandProperties {
                     if properties.all.isEmpty {
                         return .leaf(label: "properties = []")
@@ -81,7 +81,7 @@ extension Command {
     }
 }
 
-extension Command where Self: MessageTypesGettable, Self.MessageTypes.RawValue == UInt8 {
+extension Command where Self: AAMessageTypesGettable, Self.MessageTypes.RawValue == UInt8 {
 
     static func commandPrefix(for messageType: Self.MessageTypes) -> [UInt8] {
         return commandPrefix(for: messageType, additionalBytes: nil)

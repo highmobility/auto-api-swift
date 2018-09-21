@@ -29,26 +29,26 @@
 import Foundation
 
 
-public struct CruiseControl: FullStandardCommand {
+public struct CruiseControl: AAFullStandardCommand {
 
-    public let activeState: ActiveState?
-    public let adaptiveState: ActiveState?
+    public let activeState: AAActiveState?
+    public let adaptiveState: AAActiveState?
     public let adaptiveTargetSpeed: Int16?
     public let limiter: CruiseControlLimiter?
     public let targetSpeed: Int16?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
-        activeState = ActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
+        activeState = AAActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
         limiter = CruiseControlLimiter(rawValue: properties.first(for: 0x02)?.monoValue)
         targetSpeed = properties.value(for: 0x03)
-        adaptiveState = ActiveState(rawValue: properties.first(for: 0x04)?.monoValue)
+        adaptiveState = AAActiveState(rawValue: properties.first(for: 0x04)?.monoValue)
         adaptiveTargetSpeed = properties.value(for: 0x05)
 
         // Properties
@@ -56,12 +56,12 @@ public struct CruiseControl: FullStandardCommand {
     }
 }
 
-extension CruiseControl: Identifiable {
+extension CruiseControl: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0062)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0062)
 }
 
-extension CruiseControl: MessageTypesGettable {
+extension CruiseControl: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -74,10 +74,10 @@ extension CruiseControl: MessageTypesGettable {
 public extension CruiseControl {
 
     struct Control {
-        public let activeState: ActiveState
+        public let activeState: AAActiveState
         public let targetSpeed: Int16?
 
-        public init(activeState: ActiveState, targetSpeed: Int16?) {
+        public init(activeState: AAActiveState, targetSpeed: Int16?) {
             self.activeState = activeState
             self.targetSpeed = targetSpeed
         }

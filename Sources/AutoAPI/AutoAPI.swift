@@ -30,7 +30,11 @@ import Foundation
 import HMUtilities
 
 
-public typealias PercentageInt = UInt8
+// TODO: Move to a file for 'typealias'
+public typealias AAGasFlapState = AAChargePortState
+public typealias AAChargingMethod = PlugType
+public typealias AACommandIdentifier = UInt16
+public typealias AAPercentageInt = UInt8
 
 
 public struct AutoAPI {
@@ -38,9 +42,9 @@ public struct AutoAPI {
     static var commands: [Any] {
         return [Browser.self,
                 Capabilities.self,
-                Charging.self,
-                ChassisSettings.self,
-                Climate.self,
+                AACharging.self,
+                AAChassisSettings.self,
+                AAClimate.self,
                 CruiseControl.self,
                 DashboardLights.self,
                 Diagnostics.self,

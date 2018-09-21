@@ -29,6 +29,6 @@
 import Foundation
 
 
-protocol OutboundCommand: Command, MessageTypesGettable {
+protocol OutboundCommand: Command, AAMessageTypesGettable {
 
 }

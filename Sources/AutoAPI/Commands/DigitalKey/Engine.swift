@@ -29,35 +29,35 @@
 import Foundation
 
 
-public struct Engine: FullStandardCommand {
+public struct Engine: AAFullStandardCommand {
 
-    public let accessoriesPoweredState: ActiveState?
-    public let engineState: ActiveState?
-    public let ignitionState: ActiveState?
-
-
-    // MARK: FullStandardCommand
-
-    public let properties: Properties
+    public let accessoriesPoweredState: AAActiveState?
+    public let engineState: AAActiveState?
+    public let ignitionState: AAActiveState?
 
 
-    init?(properties: Properties) {
+    // MARK: AAFullStandardCommand
+
+    public let properties: AAProperties
+
+
+    init?(properties: AAProperties) {
         // Ordered by the ID
-        ignitionState = ActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
-        accessoriesPoweredState = ActiveState(rawValue: properties.first(for: 0x02)?.monoValue)
-        engineState = ActiveState(rawValue: properties.first(for: 0x03)?.monoValue)
+        ignitionState = AAActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
+        accessoriesPoweredState = AAActiveState(rawValue: properties.first(for: 0x02)?.monoValue)
+        engineState = AAActiveState(rawValue: properties.first(for: 0x03)?.monoValue)
 
         // Properties
         self.properties = properties
     }
 }
 
-extension Engine: Identifiable {
+extension Engine: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0035)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0035)
 }
 
-extension Engine: MessageTypesGettable {
+extension Engine: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -73,7 +73,7 @@ public extension Engine {
         return commandPrefix(for: .getIgnitionState)
     }
 
-    static var setIgnitionState: (ActiveState) -> [UInt8] {
+    static var setIgnitionState: (AAActiveState) -> [UInt8] {
         return {
             return commandPrefix(for: .turnEngineOnOff) + $0.propertyBytes(0x01)
         }

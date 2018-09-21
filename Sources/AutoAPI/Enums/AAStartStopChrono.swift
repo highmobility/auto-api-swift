@@ -12,20 +12,30 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
 //
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see http://www.gnu.org/licenses/.
 //
-//  ChargeMode.swift
+// Please inquire about commercial licensing options at
+// licensing@high-mobility.com
+//
+//
+//  AAStartStopChrono.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 30/01/2018.
+//  Created by Mikk Rätsep on 13/12/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum ChargeMode: UInt8 {
+public enum AAStartStopChrono: UInt8 {
 
-    case immediate  = 0x00
-    case timerBased = 0x01
-    case inductive  = 0x02
+    case start  = 0x00
+    case stop   = 0x01
+    case reset  = 0x02
+}
+
+extension AAStartStopChrono: PropertyConvertable {
+    
 }

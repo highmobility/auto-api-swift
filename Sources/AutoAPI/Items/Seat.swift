@@ -29,19 +29,22 @@
 import Foundation
 
 
-public struct Seat: Item {
+public struct Seat {
 
+    @available(*, deprecated, message: "Use the new struct Seat.PersonDetected")
     public let personDetected: Bool
+
+    @available(*, deprecated, message: "Use the new struct Seat.PersonDetected or Seat.SeatbeltFastened")
     public let position: SeatPosition
+
+    @available(*, deprecated, message: "Use the new struct Seat.SeatbeltFastened")
     public let seatbeltFastened: Bool
-
-
-    // MARK: Item
-
-    static var size: Int = 3
 }
 
-extension Seat: BinaryInitable {
+extension Seat: Item {
+
+    static var size: Int = 3
+
 
     init?(bytes: [UInt8]) {
         guard let position = SeatPosition(rawValue: bytes[0]) else {
@@ -51,5 +54,52 @@ extension Seat: BinaryInitable {
         self.personDetected = bytes[1].bool
         self.position = position
         self.seatbeltFastened = bytes[2].bool
+    }
+}
+
+public extension Seat {
+
+    public struct PersonDetected: Item {
+
+        public let detected: DetectedState
+        public let location: SeatPosition
+
+
+        // MARK: Item
+
+        static var size: Int = 2
+
+
+        init?(bytes: [UInt8]) {
+            guard let location = SeatPosition(rawValue: bytes[0]),
+                let detected = DetectedState(rawValue: bytes[1]) else {
+                    return nil
+            }
+
+            self.location = location
+            self.detected = detected
+        }
+    }
+
+    public struct SeatbeltFastened: Item {
+
+        public let fastened: Fastened
+        public let location: SeatPosition
+
+
+        // MARK: Init
+
+        static var size: Int = 2
+
+
+        init?(bytes: [UInt8]) {
+            guard let location = SeatPosition(rawValue: bytes[0]),
+                let fastened = Fastened(rawValue: bytes[1]) else {
+                    return nil
+            }
+
+            self.location = location
+            self.fastened = fastened
+        }
     }
 }

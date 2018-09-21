@@ -31,7 +31,7 @@ import Foundation
 
 public struct FailureMessage: InboundCommand {
 
-    public let failedMessageIdentifier: Identifier?
+    public let failedMessageIdentifier: AACommandIdentifier?
     public let failedMessageType: UInt8?
     public let failureDescription: String?
     public let failureReason: FailureReason?
@@ -39,10 +39,10 @@ public struct FailureMessage: InboundCommand {
 
     // MARK: InboundCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(_ messageType: UInt8, properties: Properties) {
+    init?(_ messageType: UInt8, properties: AAProperties) {
         guard messageType == 0x01 else {
             return nil
         }
@@ -57,12 +57,12 @@ public struct FailureMessage: InboundCommand {
     }
 }
 
-extension FailureMessage: Identifiable {
+extension FailureMessage: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0002)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0002)
 }
 
-extension FailureMessage: MessageTypesGettable {
+extension FailureMessage: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

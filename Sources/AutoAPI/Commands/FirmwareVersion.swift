@@ -32,23 +32,34 @@ import Foundation
 public struct FirmwareVersion: InboundCommand {
 
     public let applicationVersion: String?
-    public let carSDKVersion: CarSDKVersion?
-    public let carSDKBuildName: String?
+    public let hmkitVersion: SDKVersion?
+    public let hmkitBuildName: String?
+
+
+    @available(*, deprecated, renamed: "hmkitVersion")
+    public var carSDKVersion: SDKVersion? {
+        return hmkitVersion
+    }
+
+    @available(*, deprecated, renamed: "hmkitBuildName")
+    public var carSDKBuildName: String? {
+        return hmkitBuildName
+    }
 
 
     // MARK: InboundCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(_ messageType: UInt8, properties: Properties) {
+    init?(_ messageType: UInt8, properties: AAProperties) {
         guard messageType == 0x01 else {
             return nil
         }
 
         // Ordered by the ID
-        carSDKVersion = CarSDKVersion(properties.first(for: 0x01)?.value ?? [])
-        carSDKBuildName = properties.value(for: 0x02)
+        hmkitVersion = SDKVersion(properties.first(for: 0x01)?.value ?? [])
+        hmkitBuildName = properties.value(for: 0x02)
         applicationVersion = properties.value(for: 0x03)
 
         // Properties
@@ -56,12 +67,12 @@ public struct FirmwareVersion: InboundCommand {
     }
 }
 
-extension FirmwareVersion: Identifiable {
+extension FirmwareVersion: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0003)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0003)
 }
 
-extension FirmwareVersion: MessageTypesGettable {
+extension FirmwareVersion: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

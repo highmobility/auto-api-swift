@@ -19,28 +19,18 @@
 // licensing@high-mobility.com
 //
 //
-//  FullStandardCommand.swift
+//  DetectedState.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 14/12/2017.
+//  Created by Mikk Rätsep on 19/09/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-/// Expects `state` to come in with `0x01` messageType
-protocol FullStandardCommand: FullCommand {
+public enum DetectedState: UInt8 {
 
-}
-
-extension FullStandardCommand {
-
-    init?(_ messageType: UInt8, properties: Properties) {
-        guard messageType == 0x01 else {
-            return nil
-        }
-
-        self.init(properties: properties)
-    }
+    case notDetected    = 0x00
+    case detected       = 0x01
 }

@@ -48,7 +48,7 @@ class ChargingTests: XCTestCase {
             0x00        // Message Type for Get Charge State
         ]
 
-        XCTAssertEqual(Charging.getChargeState, bytes)
+        XCTAssertEqual(AACharging.getChargeState, bytes)
     }
 
     func testOpenClose() {
@@ -58,7 +58,7 @@ class ChargingTests: XCTestCase {
             0x01        // Open charge port
         ]
 
-        XCTAssertEqual(Charging.openCloseChargePort(.open), bytes)
+        XCTAssertEqual(AACharging.openCloseChargePort(.open), bytes)
     }
 
     func testSetChargeLimit() {
@@ -68,7 +68,7 @@ class ChargingTests: XCTestCase {
             0x5A        // 90%
         ]
 
-        XCTAssertEqual(Charging.setChargeLimit(90), bytes)
+        XCTAssertEqual(AACharging.setChargeLimit(90), bytes)
     }
 
     func testSetChargeMode() {
@@ -78,7 +78,7 @@ class ChargingTests: XCTestCase {
             0x02        // Inductive charging
         ]
 
-        XCTAssertEqual(Charging.setChargeMode(.inductive) ?? [], bytes)
+        XCTAssertEqual(AACharging.setChargeMode(.inductive) ?? [], bytes)
     }
 
     func testSetChargeTimer() {
@@ -100,7 +100,10 @@ class ChargingTests: XCTestCase {
 
         let time = YearTime(year: 2018, month: 1, day: 10, hour: 16, minute: 32, second: 5, offset: 0)
 
-        XCTAssertEqual(Charging.setChargeTimer(.init(type: .departureDate, time: time)), bytes)
+        XCTAssertEqual(AACharging.setChargeTimer(.init(type: .departureDate, time: time)), bytes)
+
+
+        
     }
 
     func testStartStopCharging() {
@@ -110,7 +113,7 @@ class ChargingTests: XCTestCase {
             0x01        // Start Charging
         ]
 
-        XCTAssertEqual(Charging.startCharging(true), bytes)
+        XCTAssertEqual(AACharging.startCharging(true), bytes)
     }
 
     func testState() {
@@ -180,7 +183,7 @@ class ChargingTests: XCTestCase {
             0x00, 0x00  // 0 min UTC time offset
         ]
 
-        guard let charging = AutoAPI.parseBinary(bytes) as? Charging else {
+        guard let charging = AutoAPI.parseBinary(bytes) as? AACharging else {
             return XCTFail("Parsed value is not Charging")
         }
 
@@ -199,6 +202,6 @@ class ChargingTests: XCTestCase {
 
         let time = YearTime(year: 2018, month: 1, day: 10, hour: 16, minute: 32, second: 5, offset: 0)
         
-        XCTAssertEqual(charging.chargeTimer, ChargeTimer(type: .departureDate, time: time))
+        XCTAssertEqual(charging.chargeTimer, AAChargeTimer(type: .departureDate, time: time))
     }
 }

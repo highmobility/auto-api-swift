@@ -31,13 +31,13 @@ import Foundation
 
 public struct WeekdaysTimes {
 
-    public let monday: DayTime
-    public let tuesday: DayTime
-    public let wednesday: DayTime
-    public let thursday: DayTime
-    public let friday: DayTime
-    public let saturday: DayTime
-    public let sunday: DayTime
+    public let monday: AADayTime
+    public let tuesday: AADayTime
+    public let wednesday: AADayTime
+    public let thursday: AADayTime
+    public let friday: AADayTime
+    public let saturday: AADayTime
+    public let sunday: AADayTime
 
     var bytes: [UInt8] {
         return [monday.hour, monday.minute,
@@ -52,7 +52,7 @@ public struct WeekdaysTimes {
 
     // MARK: Init
 
-    public init(monday: DayTime, tuesday: DayTime, wednesday: DayTime, thursday: DayTime, friday: DayTime, saturday: DayTime, sunday: DayTime) {
+    public init(monday: AADayTime, tuesday: AADayTime, wednesday: AADayTime, thursday: AADayTime, friday: AADayTime, saturday: AADayTime, sunday: AADayTime) {
         self.monday = monday
         self.tuesday = tuesday
         self.wednesday = wednesday
@@ -72,13 +72,13 @@ extension WeekdaysTimes: BinaryInitable {
 
         let bytes = binary.bytes
 
-        guard let monday = DayTime(bytes),
-            let tuesday = DayTime(bytes.suffix(from: 2)),
-            let wednesday = DayTime(bytes.suffix(from: 4)),
-            let thursday = DayTime(bytes.suffix(from: 6)),
-            let friday = DayTime(bytes.suffix(from: 8)),
-            let saturday = DayTime(bytes.suffix(from: 10)),
-            let sunday = DayTime(bytes.suffix(from: 12)) else {
+        guard let monday = AADayTime(bytes),
+            let tuesday = AADayTime(bytes.suffix(from: 2)),
+            let wednesday = AADayTime(bytes.suffix(from: 4)),
+            let thursday = AADayTime(bytes.suffix(from: 6)),
+            let friday = AADayTime(bytes.suffix(from: 8)),
+            let saturday = AADayTime(bytes.suffix(from: 10)),
+            let sunday = AADayTime(bytes.suffix(from: 12)) else {
                 return nil
         }
 

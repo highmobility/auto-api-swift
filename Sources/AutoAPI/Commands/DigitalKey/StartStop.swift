@@ -29,31 +29,31 @@
 import Foundation
 
 
-public struct StartStop: FullStandardCommand {
+public struct StartStop: AAFullStandardCommand {
 
-    public let activeState: ActiveState?
-
-
-    // MARK: FullStandardCommand
-
-    public let properties: Properties
+    public let activeState: AAActiveState?
 
 
-    init?(properties: Properties) {
+    // MARK: AAFullStandardCommand
+
+    public let properties: AAProperties
+
+
+    init?(properties: AAProperties) {
         // Ordered by the ID
-        activeState = ActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
+        activeState = AAActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
 
         // Properties
         self.properties = properties
     }
 }
 
-extension StartStop: Identifiable {
+extension StartStop: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0063)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0063)
 }
 
-extension StartStop: MessageTypesGettable {
+extension StartStop: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -69,7 +69,7 @@ public extension StartStop {
         return commandPrefix(for: .getState)
     }
 
-    static var setState: (ActiveState) -> [UInt8] {
+    static var setState: (AAActiveState) -> [UInt8] {
         return {
             return commandPrefix(for: .setState) + $0.propertyBytes(0x01)
         }

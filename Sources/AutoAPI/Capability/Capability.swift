@@ -32,7 +32,7 @@ import Foundation
 public struct Capability {
 
     public let command: Command.Type
-    public let identifier: Identifier
+    public let identifier: AACommandIdentifier
     public let supportedMessageTypes: [UInt8]   // TODO: Would be nice if this was an ARRAY of MESSAGE-TYPEs
 
 
@@ -46,7 +46,7 @@ public struct Capability {
         return supports(messageTypes.map { $0.rawValue })
     }
 
-    public func supportsAllMessageTypes<M: MessageTypesGettable>(for command: M.Type) -> Bool where M.MessageTypes.RawValue == UInt8 {
+    public func supportsAllMessageTypes<M: AAMessageTypesGettable>(for command: M.Type) -> Bool where M.MessageTypes.RawValue == UInt8 {
         return supports(command.MessageTypes.allCases.map { $0.rawValue })
     }
 
@@ -59,7 +59,7 @@ public struct Capability {
         }
 
         self.command = command
-        self.identifier = Identifier(binary.bytes.prefix(2))
+        self.identifier = AACommandIdentifier(binary.bytes.prefix(2))
         self.supportedMessageTypes = binary.dropFirstBytes(2)
     }
 }

@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct WiFi: FullStandardCommand {
+public struct WiFi: AAFullStandardCommand {
 
     public typealias NetworkSSID = String
 
@@ -39,12 +39,12 @@ public struct WiFi: FullStandardCommand {
     public let networkSSID: NetworkSSID?
 
 
-    // MARK: FullStandardCommand
+    // MARK: AAFullStandardCommand
 
-    public let properties: Properties
+    public let properties: AAProperties
 
 
-    init?(properties: Properties) {
+    init?(properties: AAProperties) {
         // Ordered by the ID
         enabledState = EnabledState(rawValue: properties.first(for: 0x01)?.monoValue)
         connectedState = ConnectionState(rawValue: properties.first(for: 0x02)?.monoValue)
@@ -56,12 +56,12 @@ public struct WiFi: FullStandardCommand {
     }
 }
 
-extension WiFi: Identifiable {
+extension WiFi: AAIdentifiable {
 
-    public static var identifier: Identifier = Identifier(0x0059)
+    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0059)
 }
 
-extension WiFi: MessageTypesGettable {
+extension WiFi: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -108,7 +108,7 @@ public extension WiFi {
         }
     }
 
-    static var setWifiState: (ActiveState) -> [UInt8] {
+    static var setWifiState: (AAActiveState) -> [UInt8] {
         return {
             return commandPrefix(for: .setWifiState) + $0.propertyBytes(0x04)
         }

@@ -31,5 +31,5 @@ import Foundation
 
 protocol FullCommand: InboundCommand, OutboundCommand, VehicleStateType {
 
-    init?(properties: Properties)
+    init?(properties: AAProperties)
 }

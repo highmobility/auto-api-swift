@@ -29,6 +29,9 @@
 import Foundation
 
 
+public typealias Location = Position
+
+
 public enum Position: UInt8 {
 
     case frontLeft  = 0x00

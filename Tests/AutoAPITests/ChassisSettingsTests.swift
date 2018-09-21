@@ -48,7 +48,7 @@ class ChassisSettingsTests: XCTestCase {
             0x00        // Message Type for Get Chassis Settings
         ]
 
-        XCTAssertEqual(ChassisSettings.getChassisSettings, bytes)
+        XCTAssertEqual(AAChassisSettings.getChassisSettings, bytes)
     }
 
     func testSetChassisPosition() {
@@ -59,7 +59,7 @@ class ChassisSettingsTests: XCTestCase {
             0x32  // Set to +50mm
         ]
 
-        XCTAssertEqual(ChassisSettings.setChassisPosition(50), bytes)
+        XCTAssertEqual(AAChassisSettings.setChassisPosition(50), bytes)
     }
 
     func testSetDrivingMode() {
@@ -70,7 +70,7 @@ class ChassisSettingsTests: XCTestCase {
             0x03  // Set mode to Sport+
         ]
 
-        XCTAssertEqual(ChassisSettings.setDrivingMode(.sportPlus), bytes)
+        XCTAssertEqual(AAChassisSettings.setDrivingMode(.sportPlus), bytes)
     }
 
     func testSetSpringRate() {
@@ -82,7 +82,7 @@ class ChassisSettingsTests: XCTestCase {
             0x19  // Set to 25N/mm
         ]
 
-        XCTAssertEqual(ChassisSettings.setSpringRate(.rear, 25), bytes)
+        XCTAssertEqual(AAChassisSettings.setSpringRate(.rear, 25), bytes)
     }
 
     func testStartStopSportChrono() {
@@ -93,7 +93,7 @@ class ChassisSettingsTests: XCTestCase {
             0x00  // Start Sport Chrono
         ]
 
-        XCTAssertEqual(ChassisSettings.startStopSportChrono(.start), bytes)
+        XCTAssertEqual(AAChassisSettings.startStopSportChrono(.start), bytes)
     }
 
     func testState() {
@@ -130,7 +130,7 @@ class ChassisSettingsTests: XCTestCase {
             0xE4        // Minimum possible position is -28mm
         ]
 
-        guard let chassisSettings = AutoAPI.parseBinary(bytes) as? ChassisSettings else {
+        guard let chassisSettings = AutoAPI.parseBinary(bytes) as? AAChassisSettings else {
             return XCTFail("Parsed value is not ChassisSettings")
         }
 
