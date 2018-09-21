@@ -19,20 +19,26 @@
 // licensing@high-mobility.com
 //
 //
-//  CruiseControlLimiter.swift
+//  AAPropertiesMultiCapable.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 24/04/2018.
+//  Created by Mikk Rätsep on 21/09/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum CruiseControlLimiter: UInt8 {
+// TODO: Rename to -Convertable
+protocol AAPropertiesMultiCapable {
 
-    case inactive               = 0x00
-    case higherSpeedRequested   = 0x01
-    case lowerSpeedRequested    = 0x02
-    case speedFixed             = 0x03
+    var propertiesValues: [[UInt8]?] { get }
+    var propertiesValuesCombined: [UInt8] { get }
+}
+
+extension AAPropertiesMultiCapable {
+
+    var propertiesValuesCombined: [UInt8] {
+        return propertiesValues.compactMap { $0 }.reduceToByteArray { $0 }
+    }
 }

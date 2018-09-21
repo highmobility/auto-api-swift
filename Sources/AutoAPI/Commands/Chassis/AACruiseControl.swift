@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  CruiseControl.swift
+//  AACruiseControl.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 24/04/2018.
@@ -29,13 +29,19 @@
 import Foundation
 
 
-public struct CruiseControl: AAFullStandardCommand {
+public struct AACruiseControl: AAFullStandardCommand {
 
-    public let activeState: AAActiveState?
+    public let state: AAActiveState?
     public let adaptiveState: AAActiveState?
     public let adaptiveTargetSpeed: Int16?
-    public let limiter: CruiseControlLimiter?
+    public let limiter: AACruiseControlLimiter?
     public let targetSpeed: Int16?
+
+
+    @available(*, deprecated, renamed: "state")
+    public var activeState: AAActiveState? {
+        return state
+    }
 
 
     // MARK: AAFullStandardCommand
@@ -45,10 +51,10 @@ public struct CruiseControl: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        activeState = AAActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
-        limiter = CruiseControlLimiter(rawValue: properties.first(for: 0x02)?.monoValue)
+        state = properties.value(for: 0x01)
+        limiter = AACruiseControlLimiter(rawValue: properties.first(for: 0x02)?.monoValue)
         targetSpeed = properties.value(for: 0x03)
-        adaptiveState = AAActiveState(rawValue: properties.first(for: 0x04)?.monoValue)
+        adaptiveState = properties.value(for: 0x04)
         adaptiveTargetSpeed = properties.value(for: 0x05)
 
         // Properties
@@ -56,44 +62,38 @@ public struct CruiseControl: AAFullStandardCommand {
     }
 }
 
-extension CruiseControl: AAIdentifiable {
+extension AACruiseControl: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0062)
+    public static var identifier: AACommandIdentifier = 0x0062
 }
 
-extension CruiseControl: AAMessageTypesGettable {
+extension AACruiseControl: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case getCruiseControlState  = 0x00
-        case cruiseControlState     = 0x01
-        case controlCruiseControl   = 0x02
+        case getControlState        = 0x00
+        case controlState           = 0x01
+        case activateCruiseControl  = 0x02
+
+
+        @available(*, deprecated, renamed: "getControlState")
+        static let getCruiseControlState = MessageTypes.getControlState
+
+        @available(*, deprecated, renamed: "controlState")
+        static let cruiseControlState = MessageTypes.controlState
+
+        @available(*, deprecated, renamed: "activateCruiseControl")
+        static let controlCruiseControl = MessageTypes.activateCruiseControl
     }
 }
 
-public extension CruiseControl {
+public extension AACruiseControl {
 
-    struct Control {
-        public let activeState: AAActiveState
-        public let targetSpeed: Int16?
-
-        public init(activeState: AAActiveState, targetSpeed: Int16?) {
-            self.activeState = activeState
-            self.targetSpeed = targetSpeed
-        }
-    }
-
-
-    static var activateCruiseControl: (Control) -> [UInt8] {
-        return {
-            let activationBytes = $0.activeState.propertyBytes(0x01)
-            let speedBytes: [UInt8] = $0.targetSpeed?.propertyBytes(0x02) ?? []
-
-            return commandPrefix(for: .controlCruiseControl) + activationBytes + speedBytes
-        }
+    static func activateCruiseControl(_ settings: AACruiseControlSettings) -> [UInt8] {
+        return commandPrefix(for: .activateCruiseControl) + settings.propertiesValuesCombined
     }
 
     static var getCruiseControlState: [UInt8] {
-        return commandPrefix(for: .getCruiseControlState)
+        return commandPrefix(for: .getControlState)
     }
 }

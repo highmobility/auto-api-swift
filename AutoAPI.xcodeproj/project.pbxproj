@@ -22,6 +22,8 @@
 
 /* Begin PBXBuildFile section */
 		2024BBF42154CFA400AA5261 /* AAClimateSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2024BBF32154CFA400AA5261 /* AAClimateSettings.swift */; };
+		2024BBF62154D7B000AA5261 /* AACruiseControlSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2024BBF52154D7B000AA5261 /* AACruiseControlSettings.swift */; };
+		2024BBF82154D95200AA5261 /* AAPropertiesMultiCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2024BBF72154D95200AA5261 /* AAPropertiesMultiCapable.swift */; };
 		2028370B2150D17E0001724A /* AADepartureTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2028370A2150D17E0001724A /* AADepartureTime.swift */; };
 		205C5169208F154900B55ACE /* PropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5168208F154900B55ACE /* PropertiesTests.swift */; };
 		205C516B208F26CE00B55ACE /* DashboardLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C516A208F26CE00B55ACE /* DashboardLights.swift */; };
@@ -31,8 +33,8 @@
 		205C5173208F319900B55ACE /* DashboardLightState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5172208F319900B55ACE /* DashboardLightState.swift */; };
 		205C5175208F3E6400B55ACE /* StartStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5174208F3E6400B55ACE /* StartStop.swift */; };
 		205C5177208F3FFD00B55ACE /* StartStopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5176208F3FFD00B55ACE /* StartStopTests.swift */; };
-		205C5179208F41C700B55ACE /* CruiseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5178208F41C700B55ACE /* CruiseControl.swift */; };
-		205C517B208F430100B55ACE /* CruiseControlLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517A208F430100B55ACE /* CruiseControlLimiter.swift */; };
+		205C5179208F41C700B55ACE /* AACruiseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5178208F41C700B55ACE /* AACruiseControl.swift */; };
+		205C517B208F430100B55ACE /* AACruiseControlLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517A208F430100B55ACE /* AACruiseControlLimiter.swift */; };
 		205C517D208F451300B55ACE /* CruiseControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517C208F451300B55ACE /* CruiseControlTests.swift */; };
 		20896EE4214799C1003A7A63 /* AAChosenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EE3214799C1003A7A63 /* AAChosenState.swift */; };
 		20896EE621479A8F003A7A63 /* AAActiveState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EE521479A8F003A7A63 /* AAActiveState.swift */; };
@@ -219,10 +221,10 @@
 		OBJ_425 /* AAChargeTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_131 /* AAChargeTimer.swift */; };
 		OBJ_426 /* AAChassisPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_133 /* AAChassisPosition.swift */; };
 		OBJ_427 /* AASpringRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_134 /* AASpringRate.swift */; };
-		OBJ_428 /* ActivatedDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_136 /* ActivatedDays.swift */; };
+		OBJ_428 /* AAActivatedDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_136 /* AAActivatedDays.swift */; };
 		OBJ_429 /* AAClimateProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_137 /* AAClimateProfile.swift */; };
 		OBJ_430 /* AADayTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_138 /* AADayTime.swift */; };
-		OBJ_431 /* WeekdaysTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_139 /* WeekdaysTimes.swift */; };
+		OBJ_431 /* AAWeekdaysTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_139 /* AAWeekdaysTimes.swift */; };
 		OBJ_432 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_140 /* Colour.swift */; };
 		OBJ_433 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_141 /* Coordinate.swift */; };
 		OBJ_434 /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_142 /* Door.swift */; };
@@ -293,6 +295,8 @@
 
 /* Begin PBXFileReference section */
 		2024BBF32154CFA400AA5261 /* AAClimateSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAClimateSettings.swift; sourceTree = "<group>"; };
+		2024BBF52154D7B000AA5261 /* AACruiseControlSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACruiseControlSettings.swift; sourceTree = "<group>"; };
+		2024BBF72154D95200AA5261 /* AAPropertiesMultiCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertiesMultiCapable.swift; sourceTree = "<group>"; };
 		2028370A2150D17E0001724A /* AADepartureTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADepartureTime.swift; sourceTree = "<group>"; };
 		205C5168208F154900B55ACE /* PropertiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesTests.swift; sourceTree = "<group>"; };
 		205C516A208F26CE00B55ACE /* DashboardLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLights.swift; sourceTree = "<group>"; };
@@ -302,8 +306,8 @@
 		205C5172208F319900B55ACE /* DashboardLightState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLightState.swift; sourceTree = "<group>"; };
 		205C5174208F3E6400B55ACE /* StartStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStop.swift; sourceTree = "<group>"; };
 		205C5176208F3FFD00B55ACE /* StartStopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStopTests.swift; sourceTree = "<group>"; };
-		205C5178208F41C700B55ACE /* CruiseControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruiseControl.swift; sourceTree = "<group>"; };
-		205C517A208F430100B55ACE /* CruiseControlLimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruiseControlLimiter.swift; sourceTree = "<group>"; };
+		205C5178208F41C700B55ACE /* AACruiseControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACruiseControl.swift; sourceTree = "<group>"; };
+		205C517A208F430100B55ACE /* AACruiseControlLimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACruiseControlLimiter.swift; sourceTree = "<group>"; };
 		205C517C208F451300B55ACE /* CruiseControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruiseControlTests.swift; sourceTree = "<group>"; };
 		206ED7D02060FD7000D7761E /* UniversalBuildScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = UniversalBuildScript.sh; sourceTree = "<group>"; };
 		206ED7D12060FD7000D7761E /* AppStoreCompatible.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppStoreCompatible.sh; sourceTree = "<group>"; };
@@ -375,10 +379,10 @@
 		OBJ_131 /* AAChargeTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChargeTimer.swift; sourceTree = "<group>"; };
 		OBJ_133 /* AAChassisPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChassisPosition.swift; sourceTree = "<group>"; };
 		OBJ_134 /* AASpringRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASpringRate.swift; sourceTree = "<group>"; };
-		OBJ_136 /* ActivatedDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivatedDays.swift; sourceTree = "<group>"; };
+		OBJ_136 /* AAActivatedDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAActivatedDays.swift; sourceTree = "<group>"; };
 		OBJ_137 /* AAClimateProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAClimateProfile.swift; sourceTree = "<group>"; };
 		OBJ_138 /* AADayTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADayTime.swift; sourceTree = "<group>"; };
-		OBJ_139 /* WeekdaysTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdaysTimes.swift; sourceTree = "<group>"; };
+		OBJ_139 /* AAWeekdaysTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWeekdaysTimes.swift; sourceTree = "<group>"; };
 		OBJ_14 /* Capability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capability.swift; sourceTree = "<group>"; };
 		OBJ_140 /* Colour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
 		OBJ_141 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
@@ -626,6 +630,7 @@
 				OBJ_140 /* Colour.swift */,
 				20F7903821356F54003BDFA2 /* ConditionBasedService.swift */,
 				OBJ_141 /* Coordinate.swift */,
+				2024BBF52154D7B000AA5261 /* AACruiseControlSettings.swift */,
 				205C516C208F28FF00B55ACE /* DashboardLight.swift */,
 				OBJ_138 /* AADayTime.swift */,
 				2028370A2150D17E0001724A /* AADepartureTime.swift */,
@@ -655,10 +660,10 @@
 		OBJ_135 /* Climate */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_136 /* ActivatedDays.swift */,
+				OBJ_136 /* AAActivatedDays.swift */,
 				OBJ_137 /* AAClimateProfile.swift */,
 				2024BBF32154CFA400AA5261 /* AAClimateSettings.swift */,
-				OBJ_139 /* WeekdaysTimes.swift */,
+				OBJ_139 /* AAWeekdaysTimes.swift */,
 			);
 			path = Climate;
 			sourceTree = "<group>";
@@ -680,6 +685,7 @@
 				OBJ_157 /* PropertiesCapable.swift */,
 				OBJ_158 /* PropertiesInitable.swift */,
 				OBJ_159 /* PropertiesIterator.swift */,
+				2024BBF72154D95200AA5261 /* AAPropertiesMultiCapable.swift */,
 				OBJ_160 /* Property.swift */,
 				OBJ_161 /* PropertyConvertable.swift */,
 			);
@@ -732,7 +738,7 @@
 				OBJ_18 /* AACharging.swift */,
 				OBJ_19 /* AAChassisSettings.swift */,
 				OBJ_20 /* AAClimate.swift */,
-				205C5178208F41C700B55ACE /* CruiseControl.swift */,
+				205C5178208F41C700B55ACE /* AACruiseControl.swift */,
 				OBJ_21 /* HonkHornFlashLights.swift */,
 				OBJ_22 /* KeyfobPosition.swift */,
 				OBJ_23 /* Lights.swift */,
@@ -1000,7 +1006,7 @@
 				20896EE921479F4A003A7A63 /* ConnectionState.swift */,
 				OBJ_83 /* ControlMode.swift */,
 				20F7903C2135713A003BDFA2 /* ConvertibleRoofState.swift */,
-				205C517A208F430100B55ACE /* CruiseControlLimiter.swift */,
+				205C517A208F430100B55ACE /* AACruiseControlLimiter.swift */,
 				205C5170208F315C00B55ACE /* DashboardLightName.swift */,
 				205C5172208F319900B55ACE /* DashboardLightState.swift */,
 				20CDFAA6215264F300402BF6 /* DetectedState.swift */,
@@ -1329,13 +1335,13 @@
 				OBJ_376 /* AAChargeMode.swift in Sources */,
 				OBJ_377 /* AAChargePortState.swift in Sources */,
 				OBJ_378 /* AAChargingState.swift in Sources */,
-				205C517B208F430100B55ACE /* CruiseControlLimiter.swift in Sources */,
+				205C517B208F430100B55ACE /* AACruiseControlLimiter.swift in Sources */,
 				OBJ_379 /* ControlMode.swift in Sources */,
 				OBJ_380 /* AADrivingMode.swift in Sources */,
 				OBJ_381 /* FailureReason.swift in Sources */,
 				OBJ_382 /* FatigueLevel.swift in Sources */,
 				OBJ_383 /* FlasherState.swift in Sources */,
-				205C5179208F41C700B55ACE /* CruiseControl.swift in Sources */,
+				205C5179208F41C700B55ACE /* AACruiseControl.swift in Sources */,
 				OBJ_384 /* GearMode.swift in Sources */,
 				OBJ_386 /* KeyfobRelativePosition.swift in Sources */,
 				OBJ_387 /* LightState.swift in Sources */,
@@ -1388,10 +1394,10 @@
 				OBJ_426 /* AAChassisPosition.swift in Sources */,
 				205C5171208F315D00B55ACE /* DashboardLightName.swift in Sources */,
 				OBJ_427 /* AASpringRate.swift in Sources */,
-				OBJ_428 /* ActivatedDays.swift in Sources */,
+				OBJ_428 /* AAActivatedDays.swift in Sources */,
 				OBJ_429 /* AAClimateProfile.swift in Sources */,
 				OBJ_430 /* AADayTime.swift in Sources */,
-				OBJ_431 /* WeekdaysTimes.swift in Sources */,
+				OBJ_431 /* AAWeekdaysTimes.swift in Sources */,
 				OBJ_432 /* Colour.swift in Sources */,
 				20896EE821479DC5003A7A63 /* MovingState.swift in Sources */,
 				OBJ_433 /* Coordinate.swift in Sources */,
@@ -1404,6 +1410,7 @@
 				20DB15442097166200A1658B /* Tachograph.swift in Sources */,
 				205C5173208F319900B55ACE /* DashboardLightState.swift in Sources */,
 				OBJ_438 /* SeatsIterator.swift in Sources */,
+				2024BBF62154D7B000AA5261 /* AACruiseControlSettings.swift in Sources */,
 				OBJ_439 /* WindowsIterator.swift in Sources */,
 				OBJ_440 /* PricingTariff.swift in Sources */,
 				OBJ_441 /* Seat.swift in Sources */,
@@ -1412,6 +1419,7 @@
 				20F7903B21356F94003BDFA2 /* DueStatus.swift in Sources */,
 				OBJ_445 /* AAMessageTypesGettable.swift in Sources */,
 				OBJ_446 /* AAProperties.swift in Sources */,
+				2024BBF82154D95200AA5261 /* AAPropertiesMultiCapable.swift in Sources */,
 				OBJ_447 /* PropertiesCapable.swift in Sources */,
 				OBJ_448 /* PropertiesInitable.swift in Sources */,
 				20896EE621479A8F003A7A63 /* AAActiveState.swift in Sources */,

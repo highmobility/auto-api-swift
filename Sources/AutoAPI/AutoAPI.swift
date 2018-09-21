@@ -36,6 +36,8 @@ public typealias AAChargingMethod = PlugType
 public typealias AACommandIdentifier = UInt16
 public typealias AAPercentageInt = UInt8
 
+typealias AAPropertyIdentifier = UInt8
+
 
 public struct AutoAPI {
 
@@ -45,7 +47,7 @@ public struct AutoAPI {
                 AACharging.self,
                 AAChassisSettings.self,
                 AAClimate.self,
-                CruiseControl.self,
+                AACruiseControl.self,
                 DashboardLights.self,
                 Diagnostics.self,
                 DoorLocks.self,

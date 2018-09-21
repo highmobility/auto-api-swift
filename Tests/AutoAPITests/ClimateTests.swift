@@ -79,7 +79,7 @@ class ClimateTests: XCTestCase {
         ]
 
         let sevenThirty = AADayTime(hour: 7, minute: 30)
-        let weekdays = WeekdaysTimes(monday: AADayTime.zero, tuesday: AADayTime.zero, wednesday: AADayTime.zero, thursday: AADayTime.zero, friday: AADayTime.zero, saturday: sevenThirty, sunday: sevenThirty)
+        let weekdays = AAWeekdaysTimes(monday: AADayTime.zero, tuesday: AADayTime.zero, wednesday: AADayTime.zero, thursday: AADayTime.zero, friday: AADayTime.zero, saturday: sevenThirty, sunday: sevenThirty)
         let climateProfile = AAClimateProfile(activatedDays: [.saturday, .sunday], weekdaysStartingTimes: weekdays)
         let settings = AAClimate.ClimateSettings(climateProfile: climateProfile, driverTemp: 21.5, passengerTemp: 21.5)
 

@@ -73,7 +73,7 @@ public struct AACharging: AAFullStandardCommand {
         chargePortState = AAChargePortState(rawValue: properties.first(for: 0x0B)?.monoValue)
         chargeMode = AAChargeMode(rawValue: properties.first(for: 0x0C)?.monoValue)
         chargeTimer = AAChargeTimer(bytes: properties.first(for: 0x0D)?.value)
-        /* Level 7 */
+        /* Level 8 */
         maxChargingCurrentAC = properties.value(for: 0x0E)
         chargingMethod = AAChargingMethod(rawValue: properties.first(for: 0x0F)?.monoValue)
         chargingWindowChosen = AAChosenState(rawValue: properties.first(for: 0x10)?.monoValue)
@@ -81,7 +81,6 @@ public struct AACharging: AAFullStandardCommand {
         climatisationActive = properties.value(for: 0x12)
         reductionOfChargingCurrentTimes = properties.flatMap(for: 0x13) { AADayTime($0.value) }
         batteryTemperature = properties.value(for: 0x14)
-        /* Level 8 */
 
         // Properties
         self.properties = properties

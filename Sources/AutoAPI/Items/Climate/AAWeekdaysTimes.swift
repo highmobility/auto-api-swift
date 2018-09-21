@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  WeekdaysTimes.swift
+//  AAWeekdaysTimes.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 30/11/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct WeekdaysTimes {
+public struct AAWeekdaysTimes {
 
     public let monday: AADayTime
     public let tuesday: AADayTime
@@ -38,16 +38,6 @@ public struct WeekdaysTimes {
     public let friday: AADayTime
     public let saturday: AADayTime
     public let sunday: AADayTime
-
-    var bytes: [UInt8] {
-        return [monday.hour, monday.minute,
-                tuesday.hour, tuesday.minute,
-                wednesday.hour, wednesday.minute,
-                thursday.hour, thursday.minute,
-                friday.hour, friday.minute,
-                saturday.hour, saturday.minute,
-                sunday.hour, sunday.minute]
-    }
 
 
     // MARK: Init
@@ -63,7 +53,7 @@ public struct WeekdaysTimes {
     }
 }
 
-extension WeekdaysTimes: BinaryInitable {
+extension AAWeekdaysTimes: BinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
         guard binary.count == 14 else {
@@ -89,5 +79,18 @@ extension WeekdaysTimes: BinaryInitable {
         self.friday = friday
         self.saturday = saturday
         self.sunday = sunday
+    }
+}
+
+extension AAWeekdaysTimes: PropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [monday.hour, monday.minute,
+                tuesday.hour, tuesday.minute,
+                wednesday.hour, wednesday.minute,
+                thursday.hour, thursday.minute,
+                friday.hour, friday.minute,
+                saturday.hour, saturday.minute,
+                sunday.hour, sunday.minute]
     }
 }

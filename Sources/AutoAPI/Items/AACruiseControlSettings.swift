@@ -19,35 +19,34 @@
 // licensing@high-mobility.com
 //
 //
-//  PropertyConvertable.swift
+//  AACruiseControlSettings.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 01/12/2017.
+//  Created by Mikk Rätsep on 21/09/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-protocol PropertyConvertable {
+public struct AACruiseControlSettings {
 
-    var propertyValue: [UInt8] { get }
+    public var state: AAActiveState
+    public var targetSpeed: Int16?
 
-    func propertyBytes(_ id: AAPropertyIdentifier) -> [UInt8]
-}
 
-extension PropertyConvertable {
+    // MARK: Init
 
-    func propertyBytes(_ id: AAPropertyIdentifier) -> [UInt8] {
-        let size = propertyValue.count
-
-        return [id, UInt8((size >> 8) & 0xFF), UInt8(size & 0xFF)] + propertyValue
+    public init(state: AAActiveState, targetSpeed: Int16?) {
+        self.state = state
+        self.targetSpeed = targetSpeed
     }
 }
 
-extension PropertyConvertable where Self: RawRepresentable, Self.RawValue == UInt8 {
+extension AACruiseControlSettings: AAPropertiesMultiCapable {
 
-    var propertyValue: [UInt8] {
-        return [rawValue]
+    var propertiesValues: [[UInt8]?] {
+        return [state.propertyBytes(0x01),
+                targetSpeed?.propertyBytes(0x02)]
     }
 }

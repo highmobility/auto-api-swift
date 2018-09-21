@@ -35,14 +35,6 @@ public struct AAClimateSettings {
     public let driverTemp: Float?
     public let passengerTemp: Float?
 
-    var propertyValuesCombined: [UInt8] {
-        return [climateProfile?.propertyBytes(0x01),
-                driverTemp?.propertyBytes(0x02),
-                passengerTemp?.propertyBytes(0x03)]
-            .compactMap { $0 }
-            .reduceToByteArray { $0 }
-    }
-
 
     // MARK: Init
 
@@ -50,5 +42,14 @@ public struct AAClimateSettings {
         self.climateProfile = climateProfile
         self.driverTemp = driverTemp
         self.passengerTemp = passengerTemp
+    }
+}
+
+extension AAClimateSettings: AAPropertiesMultiCapable {
+
+    var propertiesValues: [[UInt8]?] {
+        return [climateProfile?.propertyBytes(0x01),
+                driverTemp?.propertyBytes(0x02),
+                passengerTemp?.propertyBytes(0x03)]
     }
 }

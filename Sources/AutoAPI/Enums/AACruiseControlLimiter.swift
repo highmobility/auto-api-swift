@@ -19,35 +19,20 @@
 // licensing@high-mobility.com
 //
 //
-//  PropertyConvertable.swift
+//  AACruiseControlLimiter.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 01/12/2017.
+//  Created by Mikk Rätsep on 24/04/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-protocol PropertyConvertable {
+public enum AACruiseControlLimiter: UInt8 {
 
-    var propertyValue: [UInt8] { get }
-
-    func propertyBytes(_ id: AAPropertyIdentifier) -> [UInt8]
-}
-
-extension PropertyConvertable {
-
-    func propertyBytes(_ id: AAPropertyIdentifier) -> [UInt8] {
-        let size = propertyValue.count
-
-        return [id, UInt8((size >> 8) & 0xFF), UInt8(size & 0xFF)] + propertyValue
-    }
-}
-
-extension PropertyConvertable where Self: RawRepresentable, Self.RawValue == UInt8 {
-
-    var propertyValue: [UInt8] {
-        return [rawValue]
-    }
+    case inactive               = 0x00
+    case higherSpeedRequested   = 0x01
+    case lowerSpeedRequested    = 0x02
+    case speedFixed             = 0x03
 }

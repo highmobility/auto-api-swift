@@ -19,8 +19,8 @@
 // licensing@high-mobility.com
 //
 //
-//  ActivatedDays.swift
-//  AutoAPI
+//  AAActivatedDays.swift
+//  AutoAPIm
 //
 //  Created by Mikk Rätsep on 30/11/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
@@ -29,16 +29,16 @@
 import Foundation
 
 
-public struct ActivatedDays: OptionSet {
+public struct AAActivatedDays: OptionSet {
 
-    public static let monday    = ActivatedDays(rawValue: 1 << 0)
-    public static let tuesday   = ActivatedDays(rawValue: 1 << 1)
-    public static let wednesday = ActivatedDays(rawValue: 1 << 2)
-    public static let thursday  = ActivatedDays(rawValue: 1 << 3)
-    public static let friday    = ActivatedDays(rawValue: 1 << 4)
-    public static let saturday  = ActivatedDays(rawValue: 1 << 5)
-    public static let sunday    = ActivatedDays(rawValue: 1 << 6)
-    public static let automatic = ActivatedDays(rawValue: 1 << 7)
+    public static let monday    = AAActivatedDays(rawValue: 1 << 0)
+    public static let tuesday   = AAActivatedDays(rawValue: 1 << 1)
+    public static let wednesday = AAActivatedDays(rawValue: 1 << 2)
+    public static let thursday  = AAActivatedDays(rawValue: 1 << 3)
+    public static let friday    = AAActivatedDays(rawValue: 1 << 4)
+    public static let saturday  = AAActivatedDays(rawValue: 1 << 5)
+    public static let sunday    = AAActivatedDays(rawValue: 1 << 6)
+    public static let automatic = AAActivatedDays(rawValue: 1 << 7)
 
 
     // MARK: RawRepresentable
@@ -56,7 +56,7 @@ public struct ActivatedDays: OptionSet {
     }
 }
 
-extension ActivatedDays: CustomStringConvertible {
+extension AAActivatedDays: CustomStringConvertible {
 
     public var description: String {
         var values: [String] = []
@@ -72,4 +72,8 @@ extension ActivatedDays: CustomStringConvertible {
 
         return "[" + values.joined(separator: ", ") + "]"
     }
+}
+
+extension AAActivatedDays: PropertyConvertable {
+
 }

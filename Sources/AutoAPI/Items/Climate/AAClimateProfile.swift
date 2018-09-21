@@ -31,8 +31,8 @@ import Foundation
 
 public struct AAClimateProfile: Item {
 
-    public let activatedDays: ActivatedDays
-    public let weekdaysStartingTimes: WeekdaysTimes
+    public let activatedDays: AAActivatedDays
+    public let weekdaysStartingTimes: AAWeekdaysTimes
 
 
     // MARK: Item
@@ -42,7 +42,7 @@ public struct AAClimateProfile: Item {
 
     // MARK: Init
 
-    public init(activatedDays: ActivatedDays, weekdaysStartingTimes: WeekdaysTimes) {
+    public init(activatedDays: AAActivatedDays, weekdaysStartingTimes: AAWeekdaysTimes) {
         self.activatedDays = activatedDays
         self.weekdaysStartingTimes = weekdaysStartingTimes
     }
@@ -51,11 +51,11 @@ public struct AAClimateProfile: Item {
 extension AAClimateProfile: BinaryInitable {
 
     init?(bytes: [UInt8]) {
-        guard let startingTimes = WeekdaysTimes(bytes.dropFirstBytes(1)) else {
+        guard let startingTimes = AAWeekdaysTimes(bytes.dropFirstBytes(1)) else {
             return nil
         }
 
-        activatedDays = ActivatedDays(rawValue: bytes[0])
+        activatedDays = AAActivatedDays(rawValue: bytes[0])
         weekdaysStartingTimes = startingTimes
     }
 }
@@ -63,6 +63,14 @@ extension AAClimateProfile: BinaryInitable {
 extension AAClimateProfile: PropertyConvertable {
 
     var propertyValue: [UInt8] {
-        return [activatedDays.rawValue] + weekdaysStartingTimes.bytes
+        return [activatedDays.rawValue] + weekdaysStartingTimes.propertyValue
+    }
+}
+
+extension AAClimateProfile: AAPropertiesMultiCapable {
+
+    var propertiesValues: [[UInt8]?] {
+        return [activatedDays.propertyBytes(0x01),
+                weekdaysStartingTimes.propertyBytes(0x02)]
     }
 }

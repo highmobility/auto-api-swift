@@ -75,14 +75,12 @@ public struct AAClimate: AAFullStandardCommand {
         outsideTemperature = properties.value(for: 0x02)
         driverTemperature = properties.value(for: 0x03)
         passengerTemperature = properties.value(for: 0x04)
-        hvacState = AAActiveState(rawValue: properties.first(for: 0x05)?.monoValue)
-        defoggingState = AAActiveState(rawValue: properties.first(for: 0x06)?.monoValue)
-        defrostingState = AAActiveState(rawValue: properties.first(for: 0x07)?.monoValue)
-        ionisingState = AAActiveState(rawValue: properties.first(for: 0x08)?.monoValue)
+        hvacState = properties.value(for: 0x05)
+        defoggingState = properties.value(for: 0x06)
+        defrostingState = properties.value(for: 0x07)
+        ionisingState = properties.value(for: 0x08)
         defrostingTemperature = properties.value(for: 0x09)
         climateProfile = AAClimateProfile(bytes: properties.first(for: 0x0A)?.value)
-        /* Level 7 */
-        /* Level 8 */
 
         // Properties
         self.properties = properties
@@ -105,6 +103,8 @@ extension AAClimate: AAMessageTypesGettable {
         case startStopDefogging     = 0x04
         case startStopDefrosting    = 0x05
         case startStopIonising      = 0x06
+        /* Level 8 */
+        case changeTemperatures     = 0x07
     }
 }
 
@@ -114,8 +114,8 @@ public extension AAClimate {
         return commandPrefix(for: .getClimateState)
     }
 
-    static func setClimateProfile(_ settings: AAClimateSettings) -> [UInt8] {
-        return commandPrefix(for: .setClimateProfile) + settings.propertyValuesCombined
+    static func setClimateProfile(_ profile: AAClimateProfile) -> [UInt8] {
+        return commandPrefix(for: .setClimateProfile) + profile.propertiesValuesCombined
     }
 
     static func startStopDefogging(_ state: AAActiveState) -> [UInt8] {
@@ -132,6 +132,12 @@ public extension AAClimate {
 
     static func startStopIonising(_ state: AAActiveState) -> [UInt8] {
         return commandPrefix(for: .startStopIonising) + state.propertyBytes(0x01)
+    }
+
+    static func changeTemperatures(driver: Float?, passenger: Float?, rear: Float?) -> [UInt8] {
+        return commandPrefix(for: .changeTemperatures) + [driver?.propertyBytes(0x01),
+                                                          passenger?.propertyBytes(0x02),
+                                                          rear?.propertyBytes(0x03)].compactMap { $0 }.reduceToByteArray { $0 }
     }
 
 

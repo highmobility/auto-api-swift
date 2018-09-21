@@ -61,17 +61,16 @@ public struct AAChassisSettings: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         drivingMode = AADrivingMode(rawValue: properties.first(for: 0x01)?.monoValue)
-        sportChronoState = AAActiveState(rawValue: properties.first(for: 0x02)?.monoValue)
+        sportChronoState = properties.value(for: 0x02)
         springRates = properties.flatMap(for: 0x03) { AASpringRate($0.value) }  // Deprecated
         chassisPosition = AAChassisPosition(bytes: properties.first(for: 0x04)?.value)    // Deprecated
-        /* Level 7 */
+        /* Level 8 */
         currentChassisPosition = properties.value(for: 0x05)
         maximumChassisPosition = properties.value(for: 0x06)
         minimumChassisPosition = properties.value(for: 0x07)
         currentSpringRates = properties.flatMap(for: 0x08) { AASpringRate.Value($0.value) }
         maximumSpringRates = properties.flatMap(for: 0x09) { AASpringRate.Value($0.value) }
         minimumSpringRates = properties.flatMap(for: 0x0A) { AASpringRate.Value($0.value) }
-        /* Level 8 */
 
         // Properties
         self.properties = properties
