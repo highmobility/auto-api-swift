@@ -35,10 +35,6 @@ public struct AASeats: AAFullStandardCommand {
     public let seatbeltsFastened: [AASeat.SeatbeltFastened]?
 
 
-    @available(*, deprecated, message: "Use the new .personsDetected or .seatbeltsFastened iVars")
-    public let seats: [AASeat]?
-
-
     // MARK: AAFullStandardCommand
 
     public let properties: AAProperties
@@ -46,7 +42,6 @@ public struct AASeats: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        seats = properties.flatMap(for: 0x01) { AASeat($0.value) }    // Deprecated
         /* Level 8 */
         personsDetected = properties.flatMap(for: 0x02) { AASeat.PersonDetected($0.value) }
         seatbeltsFastened = properties.flatMap(for: 0x03) { AASeat.SeatbeltFastened($0.value) }
@@ -59,6 +54,28 @@ public struct AASeats: AAFullStandardCommand {
 extension AASeats: AAIdentifiable {
 
     public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0056)
+}
+
+extension AASeats: AALegacyGettable {
+
+    public struct Legacy: AALegacyType {
+
+        public let seats: [AASeat]?
+
+
+        // MARK: AALegacyType
+
+        public enum MessageTypes: UInt8, CaseIterable {
+
+            case getSeatsState  = 0x00
+            case seatsState     = 0x01
+        }
+
+
+        public init(properties: AAProperties) {
+            seats = properties.flatMap(for: 0x01) { AASeat($0.value) }
+        }
+    }
 }
 
 extension AASeats: AAMessageTypesGettable {
@@ -74,5 +91,12 @@ public extension AASeats {
 
     static var getSeatsState: [UInt8] {
         return commandPrefix(for: .getSeatsState)
+    }
+}
+
+public extension AASeats.Legacy {
+
+    static var getSeatsState: [UInt8] {
+        return commandPrefix(for: AASeats.self, messageType: .getSeatsState)
     }
 }

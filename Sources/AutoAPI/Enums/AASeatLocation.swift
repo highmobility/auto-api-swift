@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  AASeatPosition.swift
+//  AASeatLocation.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 07/12/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public enum AASeatPosition: UInt8 {
+public enum AASeatLocation: UInt8 {
 
     case frontLeft  = 0x00
     case frontRight = 0x01

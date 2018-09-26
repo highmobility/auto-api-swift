@@ -32,7 +32,7 @@ import Foundation
 public struct AASeat {
 
     public let personDetected: Bool
-    public let position: AASeatPosition
+    public let position: AASeatLocation
     public let seatbeltFastened: Bool
 }
 
@@ -42,7 +42,7 @@ extension AASeat: AAItem {
 
 
     init?(bytes: [UInt8]) {
-        guard let position = AASeatPosition(rawValue: bytes[0]) else {
+        guard let position = AASeatLocation(rawValue: bytes[0]) else {
             return nil
         }
 
@@ -57,7 +57,7 @@ public extension AASeat {
     public struct PersonDetected: AAItem {
 
         public let detected: AADetectedState
-        public let location: AASeatPosition
+        public let location: AASeatLocation
 
 
         // MARK: AAItem
@@ -66,7 +66,7 @@ public extension AASeat {
 
 
         init?(bytes: [UInt8]) {
-            guard let location = AASeatPosition(rawValue: bytes[0]),
+            guard let location = AASeatLocation(rawValue: bytes[0]),
                 let detected = AADetectedState(rawValue: bytes[1]) else {
                     return nil
             }
@@ -79,7 +79,7 @@ public extension AASeat {
     public struct SeatbeltFastened: AAItem {
 
         public let fastened: AAFastened
-        public let location: AASeatPosition
+        public let location: AASeatLocation
 
 
         // MARK: Init
@@ -88,7 +88,7 @@ public extension AASeat {
 
 
         init?(bytes: [UInt8]) {
-            guard let location = AASeatPosition(rawValue: bytes[0]),
+            guard let location = AASeatLocation(rawValue: bytes[0]),
                 let fastened = AAFastened(rawValue: bytes[1]) else {
                     return nil
             }

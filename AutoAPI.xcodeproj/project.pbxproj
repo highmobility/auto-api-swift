@@ -197,7 +197,7 @@
 		OBJ_395 /* PowerTrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* PowerTrain.swift */; };
 		OBJ_396 /* PricingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_100 /* PricingType.swift */; };
 		OBJ_397 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_101 /* Screen.swift */; };
-		OBJ_398 /* AASeatPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_102 /* AASeatPosition.swift */; };
+		OBJ_398 /* AASeatLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_102 /* AASeatLocation.swift */; };
 		OBJ_400 /* AAStartStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_104 /* AAStartStop.swift */; };
 		OBJ_401 /* TheftAlarmState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_105 /* TheftAlarmState.swift */; };
 		OBJ_402 /* AATimerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_106 /* AATimerType.swift */; };
@@ -356,7 +356,7 @@
 		OBJ_10 /* BinaryInitable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryInitable.swift; sourceTree = "<group>"; };
 		OBJ_100 /* PricingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingType.swift; sourceTree = "<group>"; };
 		OBJ_101 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
-		OBJ_102 /* AASeatPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASeatPosition.swift; sourceTree = "<group>"; };
+		OBJ_102 /* AASeatLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASeatLocation.swift; sourceTree = "<group>"; };
 		OBJ_104 /* AAStartStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAStartStop.swift; sourceTree = "<group>"; };
 		OBJ_105 /* TheftAlarmState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheftAlarmState.swift; sourceTree = "<group>"; };
 		OBJ_106 /* AATimerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATimerType.swift; sourceTree = "<group>"; };
@@ -1042,7 +1042,7 @@
 				OBJ_99 /* PowerTrain.swift */,
 				OBJ_100 /* PricingType.swift */,
 				OBJ_101 /* Screen.swift */,
-				OBJ_102 /* AASeatPosition.swift */,
+				OBJ_102 /* AASeatLocation.swift */,
 				OBJ_104 /* AAStartStop.swift */,
 				OBJ_105 /* TheftAlarmState.swift */,
 				OBJ_106 /* AATimerType.swift */,
@@ -1374,7 +1374,7 @@
 				OBJ_397 /* Screen.swift in Sources */,
 				20CDFAA92152657100402BF6 /* AAFastened.swift in Sources */,
 				2093A32421395362009E43A0 /* Usage.swift in Sources */,
-				OBJ_398 /* AASeatPosition.swift in Sources */,
+				OBJ_398 /* AASeatLocation.swift in Sources */,
 				OBJ_400 /* AAStartStop.swift in Sources */,
 				OBJ_401 /* TheftAlarmState.swift in Sources */,
 				OBJ_402 /* AATimerType.swift in Sources */,
