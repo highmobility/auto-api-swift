@@ -31,14 +31,11 @@ import Foundation
 
 public struct AARooftopControl: AAFullStandardCommand {
 
+    // TODO: These properties aren't final
+
     public let convertibleRoofState: AAConvertibleRoofState?
-
-    /// 100% denoting *opaque* and 0% *transparent*.
     public let dimming: AAPercentageInt?
-
-    /// 100% denoting *fully open*, 50% denoting *intermediate* and 0% *closed*.
     public let position: AAPercentageInt?
-
     public let sunroofTiltState: AAPositionState?
 
 
@@ -65,15 +62,36 @@ extension AARooftopControl: AAIdentifiable {
     public static var identifier: AACommandIdentifier = 0x0025
 }
 
+extension AARooftopControl: AALegacyGettable {
+
+    public struct Legacy: AALegacyType {
+
+        public enum MessageTypes: UInt8, CaseIterable {
+
+            case getRooftopState    = 0x00
+            case rooftopState       = 0x01
+            case controlRooftop     = 0x02
+        }
+
+
+        public init(properties: AAProperties) {
+
+        }
+    }
+}
+
 extension AARooftopControl: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
         case getRooftopState    = 0x00
         case rooftopState       = 0x01
-        case controlRooftop     = 0x02
+        case controlRooftop     = 0x12
     }
 }
+
+
+// MARK: Commands
 
 public extension AARooftopControl {
 
@@ -85,17 +103,31 @@ public extension AARooftopControl {
         return commandPrefix(for: .controlRooftop) + [dimming?.propertyBytes(0x01),
                                                       openClose?.propertyBytes(0x02)].propertiesValuesCombined
     }
+}
+
+public extension AARooftopControl.Legacy {
+
+    struct Control {
+        public let dimming: AAPercentageInt?
+        public let openClose: AAPercentageInt?
+
+        public init(dimming: AAPercentageInt?, openClose: AAPercentageInt?) {
+            self.dimming = dimming
+            self.openClose = openClose
+        }
+    }
 
 
-    // MARK: Deprecated
-
-    @available(*, deprecated, message: "Use the method .control(dimming:openClose:)")
-    typealias Control = (dimming: AAPercentageInt?, openClose: AAPercentageInt?)
-
-    @available(*, deprecated, renamed: "control(dimming:openClose:)")
     static var controlRooftop: (Control) -> [UInt8] {
         return {
-            return controlRooftop(dimming: $0.dimming, openClose: $0.openClose)
+            let dimmingBytes: [UInt8] = $0.dimming?.propertyBytes(0x01) ?? []
+            let openCloseBytes: [UInt8] = $0.openClose?.propertyBytes(0x02) ?? []
+
+            return commandPrefix(for: AARooftopControl.self, messageType: .controlRooftop) + dimmingBytes + openCloseBytes
         }
+    }
+
+    static var getRooftopState: [UInt8] {
+        return commandPrefix(for: AARooftopControl.self, messageType: .getRooftopState)
     }
 }

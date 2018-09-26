@@ -469,7 +469,7 @@
 		OBJ_225 /* SignedInteger+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignedInteger+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_226 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_227 /* UInt8Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt8Collection+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_228 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/mikk/Desktop/Workspace/Source/hm-auto-api-swift/.build/checkouts/hm-utilities-swift--9129260329164589395/Package.swift"; sourceTree = "<group>"; };
+		OBJ_228 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = ".build/checkouts/hm-utilities-swift-8476438079168975013/Package.swift"; sourceTree = "<group>"; };
 		OBJ_23 /* AALights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALights.swift; sourceTree = "<group>"; };
 		OBJ_24 /* AARooftopControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AARooftopControl.swift; sourceTree = "<group>"; };
 		OBJ_25 /* AASeats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASeats.swift; sourceTree = "<group>"; };
@@ -860,7 +860,7 @@
 				OBJ_227 /* UInt8Collection+Extensions.swift */,
 			);
 			name = HMUtilities;
-			path = ".build/checkouts/hm-utilities-swift--9129260329164589395/Sources/HMUtilities";
+			path = ".build/checkouts/hm-utilities-swift-8476438079168975013/Sources/HMUtilities";
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_229 /* Products */ = {
