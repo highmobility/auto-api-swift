@@ -19,22 +19,34 @@
 // licensing@high-mobility.com
 //
 //
-//  PropertiesCapable.swift
+//  AACruiseControlSettings.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 01/12/2017.
+//  Created by Mikk Rätsep on 21/09/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public protocol PropertiesCapable {
+public struct AACruiseControlSettings {
 
-    var carSignature: [UInt8]? { get }
-    var milliseconds: TimeInterval? { get }
-    var nonce: [UInt8]? { get }
-    var timestamp: Date? { get }
+    public var state: AAActiveState
+    public var targetSpeed: Int16?
 
-    var properties: AAProperties { get }
+
+    // MARK: Init
+
+    public init(state: AAActiveState, targetSpeed: Int16?) {
+        self.state = state
+        self.targetSpeed = targetSpeed
+    }
+}
+
+extension AACruiseControlSettings: AAPropertiesMultiConvertable {
+
+    var propertiesValues: [[UInt8]?] {
+        return [state.propertyBytes(0x01),
+                targetSpeed?.propertyBytes(0x02)]
+    }
 }

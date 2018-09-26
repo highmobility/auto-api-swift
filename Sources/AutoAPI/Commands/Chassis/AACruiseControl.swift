@@ -54,24 +54,29 @@ public struct AACruiseControl: AAFullStandardCommand {
         // Properties
         self.properties = properties
     }
-
-
-    // MARK: Deprecated
-
-    @available(*, deprecated, renamed: "state")
-    public var isActive: Bool? {
-        return state == .active
-    }
-
-    @available(*, deprecated, renamed: "adaptiveState")
-    public var isAdaptiveActive: Bool? {
-        return adaptiveState == .active
-    }
 }
 
 extension AACruiseControl: AAIdentifiable {
 
     public static var identifier: AACommandIdentifier = 0x0062
+}
+
+extension AACruiseControl: AALegacyGettable {
+
+    public struct Legacy: AALegacyType {
+
+        public enum MessageTypes: UInt8, CaseIterable {
+
+            case getCruiseControlState  = 0x00
+            case cruiseControlState     = 0x01
+            case controlCruiseControl   = 0x02
+        }
+
+
+        public init(properties: AAProperties) {
+
+        }
+    }
 }
 
 extension AACruiseControl: AAMessageTypesGettable {
@@ -80,19 +85,12 @@ extension AACruiseControl: AAMessageTypesGettable {
 
         case getControlState        = 0x00
         case controlState           = 0x01
-        case activateCruiseControl  = 0x02
-
-
-        @available(*, deprecated, renamed: "getControlState")
-        static let getCruiseControlState = MessageTypes.getControlState
-
-        @available(*, deprecated, renamed: "controlState")
-        static let cruiseControlState = MessageTypes.controlState
-
-        @available(*, deprecated, renamed: "activateCruiseControl")
-        static let controlCruiseControl = MessageTypes.activateCruiseControl
+        case activateCruiseControl  = 0x12
     }
 }
+
+
+// MARK: Commands
 
 public extension AACruiseControl {
 
@@ -108,19 +106,31 @@ public extension AACruiseControl {
         return commandPrefix(for: .activateCruiseControl) + [state.propertyBytes(0x01),
                                                              targetSpeedBytes].propertiesValuesCombined
     }
+}
+
+public extension AACruiseControl.Legacy {
+
+    struct Control {
+        public let isActive: Bool
+        public let targetSpeed: Int16?
+
+        public init(isActive: Bool, targetSpeed: Int16?) {
+            self.isActive = isActive
+            self.targetSpeed = targetSpeed
+        }
+    }
 
 
-    // MARK: Deprecated
-
-    @available(*, deprecated, message: "Use the new method .activateCruiseControl(state:targetSpeed) instead.")
-    typealias Control = (isActive: Bool, targetSpeed: Int16?)
-
-    @available(*, deprecated, message: "Use the new method .activateCruiseControl(state:targetSpeed) instead.")
     static var activateCruiseControl: (Control) -> [UInt8] {
         return {
-            let state: AAActiveState = $0.isActive ? .activate : .inactivate
+            let activationBytes = $0.isActive.propertyBytes(0x01)
+            let speedBytes: [UInt8] = $0.targetSpeed?.propertyBytes(0x02) ?? []
 
-            return activateCruiseControl(state: state, targetSpeed: $0.targetSpeed)
+            return commandPrefix(for: AACruiseControl.self, messageType: .controlCruiseControl) + activationBytes + speedBytes
         }
+    }
+
+    static var getCruiseControlState: [UInt8] {
+        return commandPrefix(for: AACruiseControl.self, messageType: .getCruiseControlState)
     }
 }

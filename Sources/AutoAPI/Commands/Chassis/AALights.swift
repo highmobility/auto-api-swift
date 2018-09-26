@@ -51,11 +51,11 @@ public struct AALights: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         frontExterior = AAFrontLightState(rawValue: properties.first(for: 0x01)?.monoValue)
-        rearExteriorState = AAActiveState(rawValue: properties.first(for: 0x02)?.monoValue)
-        interiorState = AAActiveState(rawValue: properties.first(for: 0x03)?.monoValue)
+        rearExteriorState = properties.value(for: 0x02)
+        interiorState = properties.value(for: 0x03)
         ambientColour = properties.first(for: 0x04)?.value.colour
-        reverseState = AAActiveState(rawValue: properties.first(for: 0x05)?.monoValue)
-        emergencyBrakeState = AAActiveState(rawValue: properties.first(for: 0x06)?.monoValue)
+        reverseState = properties.value(for: 0x05)
+        emergencyBrakeState = properties.value(for: 0x06)
 
         // Properties
         self.properties = properties
@@ -64,7 +64,25 @@ public struct AALights: AAFullStandardCommand {
 
 extension AALights: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0036)
+    public static var identifier: AACommandIdentifier = 0x0036
+}
+
+extension AALights: AALegacyGettable {
+
+    public struct Legacy: AALegacyType {
+
+        public enum MessageTypes: UInt8, CaseIterable {
+
+            case getLightsState = 0x00
+            case lightsState    = 0x01
+            case controlLights  = 0x02
+        }
+
+
+        public init(properties: AAProperties) {
+
+        }
+    }
 }
 
 extension AALights: AAMessageTypesGettable {
@@ -73,9 +91,12 @@ extension AALights: AAMessageTypesGettable {
 
         case getLightsState = 0x00
         case lightsState    = 0x01
-        case controlLights  = 0x02
+        case controlLights  = 0x12
     }
 }
+
+
+// MARK: Commands
 
 public extension AALights {
 
@@ -83,33 +104,56 @@ public extension AALights {
         return commandPrefix(for: .getLightsState)
     }
 
+
+    /// At least *one* value needs to be entered, instead of all being `nil`.
     static func controlLights(frontExterior: AAFrontLightState? = nil,
                               rearExterior: AAActiveState? = nil,
                               interior: AAActiveState? = nil,
-                              ambientColour: AAColour? = nil) -> [UInt8] {
+                              ambientColour: AAColour? = nil) -> [UInt8]? {
+        guard (frontExterior != nil) || (rearExterior != nil) || (interior != nil) || (ambientColour != nil) else {
+            return nil
+        }
 
         return commandPrefix(for: .controlLights) + [frontExterior?.propertyBytes(0x01),
                                                      rearExterior?.propertyBytes(0x02),
                                                      interior?.propertyBytes(0x03),
                                                      ambientColour?.propertyBytes(0x04)].propertiesValuesCombined
     }
+}
 
+public extension AALights.Legacy {
 
-    // MARK: Deprecated
+    struct Control {
+        public let frontExterior: AAFrontLightState?
+        public let isRearExteriorActive: Bool?
+        public let isInteriorActive: Bool?
+        public let ambientColour: AAColour?
 
-    @available(*, deprecated, message: "Use the method .controlLights(frontExterior:rearExterior:interior:ambientColour:)")
-    typealias Control = (frontExterior: AAFrontLightState?, rearExteriorState: AAActiveState?, interiorState: AAActiveState, ambientColour: AAColour?)
-
-    @available(*, deprecated, renamed: "controlLights(frontExterior:rearExterior:interior:ambientColour:)")
-    static var controlLights: (Control) -> [UInt8] {
-        return {
-            return controlLights(frontExterior: $0.frontExterior,
-                                 rearExterior: $0.rearExteriorState,
-                                 interior: $0.interiorState,
-                                 ambientColour: $0.ambientColour)
+        public init(frontExterior: AAFrontLightState?, isRearExteriorActive: Bool?, isInteriorActive: Bool?, ambientColour: AAColour?) {
+            self.frontExterior = frontExterior
+            self.isRearExteriorActive = isRearExteriorActive
+            self.isInteriorActive = isInteriorActive
+            self.ambientColour = ambientColour
         }
     }
+
+
+    static var controlLights: (Control) -> [UInt8] {
+        return {
+            let frontBytes: [UInt8] = $0.frontExterior?.propertyBytes(0x01) ?? []
+            let rearBytes: [UInt8] = $0.isRearExteriorActive?.propertyBytes(0x02) ?? []
+            let interiorBytes: [UInt8] = $0.isInteriorActive?.propertyBytes(0x03) ?? []
+            let ambientBytes: [UInt8] = $0.ambientColour?.propertyBytes(0x04) ?? []
+
+            return commandPrefix(for: AALights.self, messageType: .controlLights) + frontBytes + rearBytes + interiorBytes + ambientBytes
+        }
+    }
+
+    static var getLightsState: [UInt8] {
+        return commandPrefix(for: AALights.self, messageType: .getLightsState)
+    }
 }
+
 
 private extension Collection where Element == UInt8 {
 

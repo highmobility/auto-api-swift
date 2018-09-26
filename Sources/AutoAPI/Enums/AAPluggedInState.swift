@@ -19,48 +19,18 @@
 // licensing@high-mobility.com
 //
 //
-//  DriverFatigue.swift
+//  AAPluggedInState.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 12/12/2017.
+//  Created by Mikk Rätsep on 26/09/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct DriverFatigue: AAInboundCommand {
+public enum AAPluggedInState: UInt8 {
 
-    public let fatigueLevel: FatigueLevel?
-
-
-    // MARK: AAInboundCommand
-
-    public let properties: AAProperties
-
-
-    init?(_ messageType: UInt8, properties: AAProperties) {
-        guard messageType == 0x01 else {
-            return nil
-        }
-
-        // Ordered by the ID
-        fatigueLevel = FatigueLevel(rawValue: properties.first(for: 0x01)?.monoValue)
-
-        // Properties
-        self.properties = properties
-    }
-}
-
-extension DriverFatigue: AAMessageTypesGettable {
-
-    public enum MessageTypes: UInt8, CaseIterable {
-
-        case fatigueDetected  = 0x01
-    }
-}
-
-extension DriverFatigue: AAIdentifiable {
-
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0041)
+    case disconnected   = 0x00
+    case pluggedIn      = 0x01
 }

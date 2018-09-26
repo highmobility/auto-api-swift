@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Command.swift
+//  AACommand.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 14/12/2017.
@@ -30,13 +30,13 @@ import Foundation
 import HMUtilities
 
 
-public protocol Command: AAIdentifiable {
+public protocol AACommand: AAIdentifiable {
 
     // FIXME: Not sure this should be here
     var debugTree: DebugTree { get }
 }
 
-extension Command {
+extension AACommand {
 
     public var debugTree: DebugTree {
         return DebugTree(self, label: nil, expandProperties: false) { (anything, label, expandProperties) -> DebugTree? in
@@ -78,16 +78,5 @@ extension Command {
                 return nil
             }
         }
-    }
-}
-
-extension Command where Self: AAMessageTypesGettable, Self.MessageTypes.RawValue == UInt8 {
-
-    static func commandPrefix(for messageType: Self.MessageTypes) -> [UInt8] {
-        return commandPrefix(for: messageType, additionalBytes: nil)
-    }
-
-    static func commandPrefix(for messageType: Self.MessageTypes, additionalBytes bytes: UInt8?...) -> [UInt8] {
-        return Self.identifier.bytes + [messageType.rawValue] + bytes.compactMap { $0 }
     }
 }

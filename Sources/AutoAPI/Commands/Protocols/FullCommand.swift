@@ -29,7 +29,7 @@
 import Foundation
 
 
-protocol FullCommand: InboundCommand, OutboundCommand, VehicleStateType {
+protocol FullCommand: AAInboundCommand, OutboundCommand, VehicleStateType {
 
     init?(properties: AAProperties)
 }

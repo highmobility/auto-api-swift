@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct Notifications: InboundCommand, OutboundCommand {
+public struct Notifications: AAInboundCommand, OutboundCommand {
 
     public let actionItems: [ActionItem]?
     public let receivedActionID: UInt8?
@@ -37,7 +37,7 @@ public struct Notifications: InboundCommand, OutboundCommand {
     public let text: String?
 
 
-    // MARK: InboundCommand
+    // MARK: AAInboundCommand
 
     public let properties: AAProperties
 

@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  InboundCommand.swift
+//  AAInboundCommand.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 14/12/2017.
@@ -29,12 +29,12 @@
 import Foundation
 
 
-protocol InboundCommand: Command, BinaryInitable, AAMessageTypesGettable, PropertiesCapable {
+protocol AAInboundCommand: AACommand, BinaryInitable, AAMessageTypesGettable, AAPropertiesCapable {
 
     init?(_ messageType: UInt8, properties: AAProperties)
 }
 
-extension InboundCommand {
+extension AAInboundCommand {
 
     // MARK: BinaryInitable
 
@@ -54,7 +54,7 @@ extension InboundCommand {
     }
 
 
-    // MARK: PropertiesCapable
+    // MARK: AAPropertiesCapable
 
     public var carSignature: [UInt8]? {
         return properties.carSignature

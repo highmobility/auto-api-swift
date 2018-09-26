@@ -29,12 +29,12 @@
 import Foundation
 
 
-public struct Capabilities: InboundCommand, Sequence  {
+public struct Capabilities: AAInboundCommand, Sequence  {
 
     public let capabilities: [Capability]
 
 
-    // MARK: InboundCommand
+    // MARK: AAInboundCommand
 
     public let properties: AAProperties
 
@@ -44,7 +44,7 @@ public struct Capabilities: InboundCommand, Sequence  {
             return nil
         }
 
-        let commandTypes = AutoAPI.commands.compactMap { $0 as? Command.Type }
+        let commandTypes = AutoAPI.commands.compactMap { $0 as? AACommand.Type }
 
         // Ordered by the ID
         capabilities = properties.filter(for: 0x01).compactMap { property in

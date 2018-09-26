@@ -19,48 +19,44 @@
 // licensing@high-mobility.com
 //
 //
-//  DriverFatigue.swift
+//  DoorLock.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 12/12/2017.
+//  Created by Mikk Rätsep on 30/04/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct DriverFatigue: AAInboundCommand {
+public struct Door {
 
-    public let fatigueLevel: FatigueLevel?
+    
+}
+
+public struct DoorLock: Item {
+
+    public typealias Location = Position
 
 
-    // MARK: AAInboundCommand
+    public let location: Location
+    public let lock: LockState
 
-    public let properties: AAProperties
 
+    // MARK: Item
 
-    init?(_ messageType: UInt8, properties: AAProperties) {
-        guard messageType == 0x01 else {
-            return nil
+    static var size: Int = 2
+}
+
+extension DoorLock: BinaryInitable {
+
+    init?(bytes: [UInt8]) {
+        guard let location = Location(rawValue: bytes[0]),
+            let lock = LockState(rawValue: bytes[1]) else {
+                return nil
         }
 
-        // Ordered by the ID
-        fatigueLevel = FatigueLevel(rawValue: properties.first(for: 0x01)?.monoValue)
-
-        // Properties
-        self.properties = properties
+        self.location = location
+        self.lock = lock
     }
-}
-
-extension DriverFatigue: AAMessageTypesGettable {
-
-    public enum MessageTypes: UInt8, CaseIterable {
-
-        case fatigueDetected  = 0x01
-    }
-}
-
-extension DriverFatigue: AAIdentifiable {
-
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0041)
 }

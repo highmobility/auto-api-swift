@@ -31,7 +31,7 @@ import Foundation
 
 public struct Capability {
 
-    public let command: Command.Type
+    public let command: AACommand.Type
     public let identifier: AACommandIdentifier
     public let supportedMessageTypes: [UInt8]   // TODO: Would be nice if this was an ARRAY of MESSAGE-TYPEs
 
@@ -53,7 +53,7 @@ public struct Capability {
 
     // MARK: Init
 
-    init?<C: Collection>(binary: C, command: Command.Type) where C.Element == UInt8 {
+    init?<C: Collection>(binary: C, command: AACommand.Type) where C.Element == UInt8 {
         guard binary.count >= 2 else {
             return nil
         }

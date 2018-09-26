@@ -48,19 +48,29 @@ public struct AAKeyfobPosition: AAFullStandardCommand {
     }
 }
 
+extension AAKeyfobPosition: AALegacyGettable {
+
+    public struct Legacy: AALegacyType {
+
+        public enum MessageTypes: UInt8, CaseIterable {
+
+            case getKeyfobPosition  = 0x00
+            case keyfobPosition     = 0x01
+        }
+
+
+        public init(properties: AAProperties) {
+
+        }
+    }
+}
+
 extension AAKeyfobPosition: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
         case getPosition  = 0x00
         case position     = 0x01
-
-
-        @available(*, deprecated, renamed: "getPosition")
-        static let getKeyfobPosition = MessageTypes.getPosition
-
-        @available(*, deprecated, renamed: "position")
-        static let keyfobPosition = MessageTypes.position
     }
 }
 
@@ -69,9 +79,19 @@ extension AAKeyfobPosition: AAIdentifiable {
     public static var identifier: AACommandIdentifier = 0x0048
 }
 
+
+// MARK: Commands
+
 public extension AAKeyfobPosition {
 
     static var getKeyfobPosition: [UInt8] {
         return commandPrefix(for: .getPosition)
+    }
+}
+
+public extension AAKeyfobPosition.Legacy {
+
+    static var getKeyfobPosition: [UInt8] {
+        return commandPrefix(for: AAKeyfobPosition.self, messageType: .getKeyfobPosition)
     }
 }

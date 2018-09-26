@@ -62,7 +62,7 @@ public struct AARooftopControl: AAFullStandardCommand {
 
 extension AARooftopControl: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0025)
+    public static var identifier: AACommandIdentifier = 0x0025
 }
 
 extension AARooftopControl: AAMessageTypesGettable {

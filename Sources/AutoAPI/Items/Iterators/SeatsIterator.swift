@@ -19,48 +19,27 @@
 // licensing@high-mobility.com
 //
 //
-//  DriverFatigue.swift
+//  SeatsIterator.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 12/12/2017.
+//  Created by Mikk Rätsep on 07/12/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct DriverFatigue: AAInboundCommand {
+public struct SeatsIterator: ItemIterator {
 
-    public let fatigueLevel: FatigueLevel?
-
-
-    // MARK: AAInboundCommand
-
-    public let properties: AAProperties
+    public typealias Element = Seat
 
 
-    init?(_ messageType: UInt8, properties: AAProperties) {
-        guard messageType == 0x01 else {
-            return nil
-        }
-
-        // Ordered by the ID
-        fatigueLevel = FatigueLevel(rawValue: properties.first(for: 0x01)?.monoValue)
-
-        // Properties
-        self.properties = properties
-    }
+    var bytes: [UInt8]
 }
 
-extension DriverFatigue: AAMessageTypesGettable {
+extension SeatsIterator: BinaryInitable {
 
-    public enum MessageTypes: UInt8, CaseIterable {
-
-        case fatigueDetected  = 0x01
+    init<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
+        bytes = binary.bytes
     }
-}
-
-extension DriverFatigue: AAIdentifiable {
-
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0041)
 }

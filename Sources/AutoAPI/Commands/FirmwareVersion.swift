@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct FirmwareVersion: InboundCommand {
+public struct FirmwareVersion: AAInboundCommand {
 
     public let applicationVersion: String?
     public let hmkitVersion: SDKVersion?
@@ -47,7 +47,7 @@ public struct FirmwareVersion: InboundCommand {
     }
 
 
-    // MARK: InboundCommand
+    // MARK: AAInboundCommand
 
     public let properties: AAProperties
 

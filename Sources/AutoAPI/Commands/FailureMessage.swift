@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct FailureMessage: InboundCommand {
+public struct FailureMessage: AAInboundCommand {
 
     public let failedMessageIdentifier: AACommandIdentifier?
     public let failedMessageType: UInt8?
@@ -37,7 +37,7 @@ public struct FailureMessage: InboundCommand {
     public let failureReason: FailureReason?
 
 
-    // MARK: InboundCommand
+    // MARK: AAInboundCommand
 
     public let properties: AAProperties
 

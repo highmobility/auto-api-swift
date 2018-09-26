@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct VehicleStatus: InboundCommand {
+public struct VehicleStatus: AAInboundCommand {
 
     public let colourName: String?
     public let displayUnit: DisplayUnit?
@@ -49,7 +49,7 @@ public struct VehicleStatus: InboundCommand {
     public let vin: String?
 
 
-    // MARK: InboundCommand
+    // MARK: AAInboundCommand
 
     public let properties: AAProperties
 
