@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  WindscreenDamage.swift
+//  AAWipersState.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 05/12/2017.
@@ -29,18 +29,9 @@
 import Foundation
 
 
-public enum WindscreenDamage: UInt8 {
+public enum AAWipersState: UInt8 {
 
-    case noImpactDetected           = 0x00
-    case impactButNoDamageDetected  = 0x01
-    case damageSmallerThan_1in      = 0x02
-    case damageLargerThan_1in       = 0x03
-
-
-    public static let small = WindscreenDamage.damageSmallerThan_1in
-    public static let big = WindscreenDamage.damageLargerThan_1in
-}
-
-extension WindscreenDamage: AAPropertyConvertable {
-    
+    case inactive   = 0x00
+    case active     = 0x01
+    case automatic  = 0x02
 }

@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  WipersLevel.swift
+//  AANeedsReplacement.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 05/12/2017.
@@ -29,14 +29,17 @@
 import Foundation
 
 
-public enum WipersLevel: UInt8 {
+public enum AANeedsReplacement: UInt8 {
 
-    case level0 = 0x00
-    case level1 = 0x01
-    case level2 = 0x02
-    case level3 = 0x03
+    case unknown    = 0x00
+    case no         = 0x01
+    case yes        = 0x02
 
 
-    public static let inactive = WipersLevel.level0
-    public static let highest = WipersLevel.level3
+    public static let noReplacementNeeded = AANeedsReplacement.no
+    public static let replacementNeeded = AANeedsReplacement.yes
+}
+
+extension AANeedsReplacement: AAPropertyConvertable {
+    
 }

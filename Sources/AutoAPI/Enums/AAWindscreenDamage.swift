@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  NeedsReplacement.swift
+//  AAWindscreenDamage.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 05/12/2017.
@@ -29,17 +29,18 @@
 import Foundation
 
 
-public enum NeedsReplacement: UInt8 {
+public enum AAWindscreenDamage: UInt8 {
 
-    case unknown    = 0x00
-    case no         = 0x01
-    case yes        = 0x02
+    case noImpactDetected           = 0x00
+    case impactButNoDamageDetected  = 0x01
+    case damageSmallerThan_1in      = 0x02
+    case damageLargerThan_1in       = 0x03
 
 
-    public static let noReplacementNeeded = NeedsReplacement.no
-    public static let replacementNeeded = NeedsReplacement.yes
+    public static let small = AAWindscreenDamage.damageSmallerThan_1in
+    public static let big = AAWindscreenDamage.damageLargerThan_1in
 }
 
-extension NeedsReplacement: AAPropertyConvertable {
+extension AAWindscreenDamage: AAPropertyConvertable {
     
 }

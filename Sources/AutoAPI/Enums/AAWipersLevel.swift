@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  WiperState.swift
+//  AAWipersLevel.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 05/12/2017.
@@ -29,9 +29,14 @@
 import Foundation
 
 
-public enum WipersState: UInt8 {
+public enum AAWipersLevel: UInt8 {
 
-    case inactive   = 0x00
-    case active     = 0x01
-    case automatic  = 0x02
+    case level0 = 0x00
+    case level1 = 0x01
+    case level2 = 0x02
+    case level3 = 0x03
+
+
+    public static let inactive = AAWipersLevel.level0
+    public static let highest = AAWipersLevel.level3
 }

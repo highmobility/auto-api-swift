@@ -92,7 +92,7 @@ public struct AutoAPI {
                 WeatherConditions.self,
                 WiFi.self,
                 AAWindows.self,
-                Windscreen.self]
+                AAWindscreen.self]
     }
 
 

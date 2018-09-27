@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Zone.swift
+//  AAZone.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 05/12/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public enum Zone: RawRepresentable {
+public enum AAZone: RawRepresentable {
 
     case unavailable
     case matrix(UInt8)
@@ -37,7 +37,7 @@ public enum Zone: RawRepresentable {
 
     // MARK: Type Vars
 
-    public static let unknown = Zone.unavailable
+    public static let unknown = AAZone.unavailable
 
 
     // MARK: Vars
@@ -94,7 +94,7 @@ public enum Zone: RawRepresentable {
     }
 }
 
-extension Zone: CustomStringConvertible {
+extension AAZone: CustomStringConvertible {
 
     public var description: String {
         if case .matrix(let value) = self {
@@ -106,6 +106,6 @@ extension Zone: CustomStringConvertible {
     }
 }
 
-extension Zone: AAPropertyConvertable {
+extension AAZone: AAPropertyConvertable {
     
 }
