@@ -29,7 +29,7 @@
 import Foundation
 
 
-public typealias Location = Position
+public typealias AALocation = Position
 
 
 public enum Position: UInt8 {

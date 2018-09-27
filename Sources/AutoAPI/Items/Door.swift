@@ -31,7 +31,7 @@ import Foundation
 
 public struct Door {
 
-    public let location: Location
+    public let location: AALocation
     public let lock: LockState
     public let position: AAPositionState
 }
@@ -42,7 +42,7 @@ extension Door: AAItem {
 
 
     init?(bytes: [UInt8]) {
-        guard let location = Location(rawValue: bytes[0]),
+        guard let location = AALocation(rawValue: bytes[0]),
             let position = AAPositionState(rawValue: bytes[1]),
             let lock = LockState(rawValue: bytes[2]) else {
                 return nil
@@ -58,7 +58,7 @@ public extension Door {
 
     public struct Position: AAItem {
 
-        public let location: Location
+        public let location: AALocation
         public let position: AAPositionState
 
 
@@ -68,7 +68,7 @@ public extension Door {
 
 
         init?(bytes: [UInt8]) {
-            guard let location = Location(rawValue: bytes[0]),
+            guard let location = AALocation(rawValue: bytes[0]),
                 let position = AAPositionState(rawValue: bytes[1]) else {
                     return nil
             }
@@ -80,7 +80,7 @@ public extension Door {
 
     public struct Lock: AAItem {
 
-        public let location: Location
+        public let location: AALocation
         public let lock: LockState
 
 
@@ -90,7 +90,7 @@ public extension Door {
 
 
         init?(bytes: [UInt8]) {
-            guard let location = Location(rawValue: bytes[0]),
+            guard let location = AALocation(rawValue: bytes[0]),
                 let lock = LockState(rawValue: bytes[1]) else {
                     return nil
             }

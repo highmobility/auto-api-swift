@@ -87,6 +87,9 @@ extension AASeats: AAMessageTypesGettable {
     }
 }
 
+
+// MARK: Commands
+
 public extension AASeats {
 
     static var getSeatsState: [UInt8] {

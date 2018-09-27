@@ -34,17 +34,13 @@ public struct Window {
     public typealias OpenClosed = AAPositionState
 
 
-    @available(*, deprecated, message: "Use the new struct Window.Position")
-    public let position: Location
-
-    @available(*, deprecated, message: "Use the new struct Window.Position")
+    public let position: AALocation
     public let openClosed: OpenClosed
 
 
     // MARK: Init
 
-    @available(*, deprecated, message: "Use the new struct Window.Position")
-    public init(openClosed: OpenClosed, position: Location) {
+    public init(openClosed: OpenClosed, position: AALocation) {
         self.openClosed = openClosed
         self.position = position
     }
@@ -56,7 +52,7 @@ extension Window: AAItem {
 
 
     init?(bytes: [UInt8]) {
-        guard let location = Location(rawValue: bytes[0]),
+        guard let location = AALocation(rawValue: bytes[0]),
             let openClosed = OpenClosed(rawValue: bytes[1]) else {
                 return nil
         }
@@ -70,7 +66,7 @@ public extension Window {
 
     public struct OpenPercentage: AAItem {
 
-        public let location: Location
+        public let location: AALocation
         public let percentage: AAPercentageInt
 
 
@@ -80,7 +76,7 @@ public extension Window {
 
 
         init?(bytes: [UInt8]) {
-            guard let location = Location(rawValue: bytes[0]) else {
+            guard let location = AALocation(rawValue: bytes[0]) else {
                 return nil
             }
 
@@ -91,7 +87,7 @@ public extension Window {
 
     public struct Position: AAItem {
 
-        public let location: Location
+        public let location: AALocation
         public let position: AAPositionState
 
 
@@ -101,7 +97,7 @@ public extension Window {
 
 
         init?(bytes: [UInt8]) {
-            guard let location = Location(rawValue: bytes[0]),
+            guard let location = AALocation(rawValue: bytes[0]),
                 let position = AAPositionState(rawValue: bytes[1]) else {
                     return nil
             }
