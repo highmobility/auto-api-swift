@@ -44,7 +44,7 @@ class OffroadTests: XCTestCase {
             0x00        // Message Type for Get Offroad State
         ]
 
-        XCTAssertEqual(Offroad.getOffroadState, bytes)
+        XCTAssertEqual(AAOffroad.getOffroadState, bytes)
     }
 
     func testState() {
@@ -61,7 +61,7 @@ class OffroadTests: XCTestCase {
             0x32        // 50% wheel suspension level
         ]
 
-        guard let offroad = AutoAPI.parseBinary(bytes) as? Offroad else {
+        guard let offroad = AutoAPI.parseBinary(bytes) as? AAOffroad else {
             return XCTFail("Parsed value is not Offroad")
         }
 

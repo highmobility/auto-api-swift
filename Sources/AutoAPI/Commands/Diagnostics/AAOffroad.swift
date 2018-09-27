@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Offroad.swift
+//  AAOffroad.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 06/12/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct Offroad: AAFullStandardCommand {
+public struct AAOffroad: AAFullStandardCommand {
 
     public let routeIncline: Int16?
     public let wheelSuspension: AAPercentageInt?
@@ -50,12 +50,12 @@ public struct Offroad: AAFullStandardCommand {
     }
 }
 
-extension Offroad: AAIdentifiable {
+extension AAOffroad: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0052)
+    public static var identifier: AACommandIdentifier = 0x0052
 }
 
-extension Offroad: AAMessageTypesGettable {
+extension AAOffroad: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -64,7 +64,10 @@ extension Offroad: AAMessageTypesGettable {
     }
 }
 
-public extension Offroad {
+
+// MARK: Commands
+
+public extension AAOffroad {
 
     static var getOffroadState: [UInt8] {
         return commandPrefix(for: .getOffroadState)
