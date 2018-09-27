@@ -53,7 +53,7 @@ public struct AAWeekdaysStartingTimes {
     }
 }
 
-extension AAWeekdaysStartingTimes: BinaryInitable {
+extension AAWeekdaysStartingTimes: AABinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
         guard binary.count == 14 else {

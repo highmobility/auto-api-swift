@@ -60,7 +60,7 @@ public struct AAPropertiesIterator: IteratorProtocol {
     }
 }
 
-extension AAPropertiesIterator: BinaryInitable {
+extension AAPropertiesIterator: AABinaryInitable {
 
     init<C: Collection>(_ binary: C) where C.Element == UInt8 {
         bytes = binary.bytes

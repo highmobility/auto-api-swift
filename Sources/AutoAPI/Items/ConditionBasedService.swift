@@ -38,7 +38,7 @@ public struct ConditionBasedService {
     public let text: String
 }
 
-extension ConditionBasedService: BinaryInitable {
+extension ConditionBasedService: AABinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
         guard binary.count >= 7 else {

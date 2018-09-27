@@ -19,18 +19,17 @@
 // licensing@high-mobility.com
 //
 //
-//  FluidLevel.swift
+//  AABinaryInitable.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 28/11/2017.
+//  Created by Mikk Rätsep on 27/11/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum FluidLevel: UInt8 {
-
-    case low    = 0x00
-    case filled = 0x01
+protocol AABinaryInitable {
+    
+    init?<C: Collection>(_ binary: C) where C.Element == UInt8
 }

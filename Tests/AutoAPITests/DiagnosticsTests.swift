@@ -44,7 +44,7 @@ class DiagnosticsTests: XCTestCase {
             0x00        // Message Type for Get Diagnostics State
         ]
 
-        XCTAssertEqual(Diagnostics.getDiagnosticsState, bytes)
+        XCTAssertEqual(AADiagnostics.getDiagnosticsState, bytes)
     }
 
     func testState() {
@@ -169,7 +169,7 @@ class DiagnosticsTests: XCTestCase {
             0x00, 0x41  // The wheel base speed is 65km/h
         ]
 
-        guard let diagnostics = AutoAPI.parseBinary(bytes) as? Diagnostics else {
+        guard let diagnostics = AutoAPI.parseBinary(bytes) as? AADiagnostics else {
             return XCTFail("Parsed value is not Diagnostics")
         }
 

@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Tire.swift
+//  AAFluidLevel.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 28/11/2017.
@@ -29,27 +29,8 @@
 import Foundation
 
 
-public struct Tire {
+public enum AAFluidLevel: UInt8 {
 
-    public let position: Position
-    public let pressure: Float
-    public let temperature: Float
-    public let wheelRPM: UInt16
-}
-
-extension Tire: AAItem {
-
-    static let size: Int = 11
-
-
-    init?(bytes: [UInt8]) {
-        guard let tirePosition = Position(rawValue: bytes[0]) else {
-            return nil
-        }
-
-        position = tirePosition
-        pressure = Float(bytes.dropFirstBytes(1))
-        temperature = Float(bytes.dropFirstBytes(5))
-        wheelRPM = UInt16(bytes.dropFirstBytes(9))
-    }
+    case low    = 0x00
+    case filled = 0x01
 }

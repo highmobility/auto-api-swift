@@ -19,17 +19,37 @@
 // licensing@high-mobility.com
 //
 //
-//  BinaryInitable.swift
+//  AATire.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 27/11/2017.
+//  Created by Mikk Rätsep on 28/11/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-protocol BinaryInitable {
-    
-    init?<C: Collection>(_ binary: C) where C.Element == UInt8
+public struct AATire {
+
+    public let position: Position
+    public let pressure: Float
+    public let temperature: Float
+    public let wheelRPM: UInt16
+}
+
+extension AATire: AAItem {
+
+    static let size: Int = 11
+
+
+    init?(bytes: [UInt8]) {
+        guard let tirePosition = Position(rawValue: bytes[0]) else {
+            return nil
+        }
+
+        position = tirePosition
+        pressure = Float(bytes.dropFirstBytes(1))
+        temperature = Float(bytes.dropFirstBytes(5))
+        wheelRPM = UInt16(bytes.dropFirstBytes(9))
+    }
 }

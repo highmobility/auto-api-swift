@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Diagnostics.swift
+//  AADiagnostics.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 28/11/2017.
@@ -29,14 +29,14 @@
 import Foundation
 
 
-public struct Diagnostics: AAFullStandardCommand {
+public struct AADiagnostics: AAFullStandardCommand {
 
     public let absState: AAActiveState?
     public let adBlueLevel: Float?
     public let batteryLevel: AAPercentageInt?
     public let batteryVoltage: Float?
-    public let brakeFluidLevel: FluidLevel?
-    public let checkControlMessages: [CheckControlMessage]?
+    public let brakeFluidLevel: AAFluidLevel?
+    public let checkControlMessages: [AACheckControlMessage]?
     public let dieselExhaustFluid: Float?
     public let distanceSinceReset: UInt16?
     public let distanceSinceStart: UInt16?
@@ -52,16 +52,9 @@ public struct Diagnostics: AAFullStandardCommand {
     public let fuelVolume: Float?
     public let mileage: UInt32?
     public let speed: Int16?
-    public let tires: [Tire]?
-    public let washerFluidLevel: FluidLevel?
+    public let tires: [AATire]?
+    public let washerFluidLevel: AAFluidLevel?
     public let wheelBasedSpeed: Int16?
-
-
-    @available(*, deprecated, renamed: "Usage.averageFuelConsumption")
-    public let averageFuelConsumption: Float?
-
-    @available(*, deprecated, renamed: "Usage.currentFuelConsumption")
-    public let currentFuelConsumption: Float?
 
 
     // MARK: AAFullStandardCommand
@@ -77,17 +70,15 @@ public struct Diagnostics: AAFullStandardCommand {
         engineRPM = properties.value(for: 0x04)
         fuelLevel = properties.value(for: 0x05)
         estimatedRange = properties.value(for: 0x06)
-        currentFuelConsumption = properties.value(for: 0x07)    // Deprecated
-        averageFuelConsumption = properties.value(for: 0x08)    // Deprecated
         washerFluidLevel = properties.value(for: 0x09)
-        tires = properties.flatMap(for: 0x0A) { Tire($0.value) }
+        tires = properties.flatMap(for: 0x0A) { AATire($0.value) }
         batteryVoltage = properties.value(for: 0x0B)
         adBlueLevel = properties.value(for: 0x0C)
         dieselExhaustFluid = adBlueLevel
         distanceSinceReset = properties.value(for: 0x0D)
         distanceSinceStart = properties.value(for: 0x0E)
         fuelVolume = properties.value(for: 0x0F)
-        absState = AAActiveState(rawValue: properties.first(for: 0x10)?.monoValue)
+        absState = properties.value(for: 0x10)
         engineCoolantTemperature = properties.value(for: 0x11)
         engineTotalOperatingHours = properties.value(for: 0x12)
         engineTotalFuelConsumption = properties.value(for: 0x13)
@@ -95,20 +86,45 @@ public struct Diagnostics: AAFullStandardCommand {
         engineTorque = properties.value(for: 0x15)
         engineLoad = properties.value(for: 0x16)
         wheelBasedSpeed = properties.value(for: 0x17)
+        /* Level 8 */
         batteryLevel = properties.value(for: 0x18)
-        checkControlMessages = properties.flatMap(for: 0x19) { CheckControlMessage($0.value) }
+        checkControlMessages = properties.flatMap(for: 0x19) { AACheckControlMessage($0.value) }
 
         // Properties
         self.properties = properties
     }
 }
 
-extension Diagnostics: AAIdentifiable {
+extension AADiagnostics: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0033)
+    public static var identifier: AACommandIdentifier = 0x0033
 }
 
-extension Diagnostics: AAMessageTypesGettable {
+extension AADiagnostics: AALegacyGettable {
+
+    public struct Legacy: AALegacyType {
+
+        public let currentFuelConsumption: Float?
+        public let averageFuelConsumption: Float?
+
+
+        // MARK: AALegacyType
+
+        public enum MessageTypes: UInt8, CaseIterable {
+
+            case getDiagnosticsState    = 0x00
+            case diagnosticsState       = 0x01
+        }
+
+
+        public init(properties: AAProperties) {
+            currentFuelConsumption = properties.value(for: 0x07)
+            averageFuelConsumption = properties.value(for: 0x08)
+        }
+    }
+}
+
+extension AADiagnostics: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -117,7 +133,10 @@ extension Diagnostics: AAMessageTypesGettable {
     }
 }
 
-public extension Diagnostics {
+
+// MARK: Commands
+
+public extension AADiagnostics {
 
     static var getDiagnosticsState: [UInt8] {
         return commandPrefix(for: .getDiagnosticsState)

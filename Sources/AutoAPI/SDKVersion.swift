@@ -40,7 +40,7 @@ public struct SDKVersion {
     }
 }
 
-extension SDKVersion: BinaryInitable {
+extension SDKVersion: AABinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
         guard binary.count == 3 else {

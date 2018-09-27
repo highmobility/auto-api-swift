@@ -29,7 +29,7 @@
 import Foundation
 
 
-extension Date: BinaryInitable {
+extension Date: AABinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
         guard let string = String(bytes: binary, encoding: .utf8) else {

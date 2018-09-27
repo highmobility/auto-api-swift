@@ -41,7 +41,7 @@ public struct ChargeCurrent: AAItem {
     static var size: Int = 12
 }
 
-extension ChargeCurrent: BinaryInitable {
+extension ChargeCurrent: AABinaryInitable {
 
     init?(bytes: [UInt8]) {
         chargeCurrentDC = Float(bytes.prefix(upTo: 4))

@@ -30,7 +30,7 @@ import Foundation
 import HMUtilities
 
 
-extension Float: BinaryInitable {
+extension Float: AABinaryInitable {
 
     init<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
         self = Float(bitPattern: UInt32(binary))

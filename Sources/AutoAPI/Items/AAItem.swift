@@ -29,7 +29,7 @@
 import Foundation
 
 
-protocol AAItem: BinaryInitable {
+protocol AAItem: AABinaryInitable {
 
     static var size: Int { get }
 

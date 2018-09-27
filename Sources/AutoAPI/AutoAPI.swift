@@ -49,7 +49,7 @@ public struct AutoAPI {
                 AAClimate.self,
                 AACruiseControl.self,
                 AADashboardLights.self,
-                Diagnostics.self,
+                AADiagnostics.self,
                 DoorLocks.self,
                 DriverFatigue.self,
                 Engine.self,
@@ -99,6 +99,6 @@ public struct AutoAPI {
     // MARK: Type Methods
 
     public static func parseBinary<C: Collection>(_ binary: C) -> AACommand? where C.Element == UInt8 {
-        return commands.compactMap { $0 as? BinaryInitable.Type }.flatMapFirst { $0.init(binary) as? AACommand }
+        return commands.compactMap { $0 as? AABinaryInitable.Type }.flatMapFirst { $0.init(binary) as? AACommand }
     }
 }

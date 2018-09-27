@@ -41,7 +41,7 @@ public struct ActionItem {
     }
 }
 
-extension ActionItem: BinaryInitable {
+extension ActionItem: AABinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
         guard binary.count >= 1 else {

@@ -61,7 +61,7 @@ public struct AAProperties: Sequence {
     }
 }
 
-extension AAProperties: BinaryInitable {
+extension AAProperties: AABinaryInitable {
 
     init<C: Collection>(_ binary: C) where C.Element == UInt8 {
         bytes = binary.bytes
@@ -105,8 +105,8 @@ extension AAProperties {
         case is Float.Type:
             return Float(bytes) as? ReturnType
 
-        case is FluidLevel.Type:
-            return FluidLevel(rawValue: firstByte) as? ReturnType
+        case is AAFluidLevel.Type:
+            return AAFluidLevel(rawValue: firstByte) as? ReturnType
 
         case is String.Type:
             return String(bytes: bytes, encoding: .utf8) as? ReturnType

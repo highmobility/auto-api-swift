@@ -50,7 +50,7 @@ public struct PricingTariff: AAItem {
     }
 }
 
-extension PricingTariff: BinaryInitable {
+extension PricingTariff: AABinaryInitable {
 
     init?(bytes: [UInt8]) {
         guard let type = PricingType(rawValue: bytes[0]) else {

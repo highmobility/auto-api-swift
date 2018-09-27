@@ -29,6 +29,6 @@
 import Foundation
 
 
-protocol VehicleStateType: BinaryInitable, VehicleState {
+protocol VehicleStateType: AABinaryInitable, VehicleState {
 
 }

@@ -29,7 +29,7 @@
 import Foundation
 
 
-extension Int16: BinaryInitable {
+extension Int16: AABinaryInitable {
 
     init<C: Collection>(_ binary: C) where C.Element == UInt8 {
         self = binary.bytes.prefix(2).reduce(Int16(0)) { ($0 << 8) + $1.int16 }

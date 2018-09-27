@@ -43,7 +43,7 @@ public struct AAChargingTimer {
     }
 }
 
-extension AAChargingTimer: BinaryInitable {
+extension AAChargingTimer: AABinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
         guard !binary.isEmpty else {

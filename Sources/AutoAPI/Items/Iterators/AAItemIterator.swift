@@ -30,7 +30,7 @@ import Foundation
 
 
 // TODO: Remove this protocol
-protocol AAItemIterator: BinaryInitable, IteratorProtocol where Element: AAItem {
+protocol AAItemIterator: AABinaryInitable, IteratorProtocol where Element: AAItem {
 
     var bytes: [UInt8] { get set }
 }

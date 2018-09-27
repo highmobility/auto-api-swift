@@ -48,7 +48,7 @@ public struct AAClimateProfile: AAItem {
     }
 }
 
-extension AAClimateProfile: BinaryInitable {
+extension AAClimateProfile: AABinaryInitable {
 
     init?(bytes: [UInt8]) {
         guard let startingTimes = AAWeekdaysStartingTimes(bytes.dropFirstBytes(1)) else {

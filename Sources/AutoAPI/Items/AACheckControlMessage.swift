@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  CheckControlMessage.swift
+//  AACheckControlMessage.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 28/08/2018.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct CheckControlMessage {
+public struct AACheckControlMessage {
 
     public let id: UInt16
     public let remainingLength: UInt32
@@ -37,7 +37,7 @@ public struct CheckControlMessage {
     public let text: String
 }
 
-extension CheckControlMessage: BinaryInitable {
+extension AACheckControlMessage: AABinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
         guard binary.count >= 8 else {

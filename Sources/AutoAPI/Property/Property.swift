@@ -45,7 +45,7 @@ public struct Property {
     }
 }
 
-extension Property: BinaryInitable {
+extension Property: AABinaryInitable {
 
     init?<C: Collection>(_ binary: C) where C.Element == UInt8 {
         guard binary.count >= 3 else {

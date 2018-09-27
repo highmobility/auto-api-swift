@@ -30,7 +30,7 @@ import Foundation
 import HMUtilities
 
 
-extension Double: BinaryInitable {
+extension Double: AABinaryInitable {
 
     init<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
         self = Double(bitPattern: UInt64(binary))

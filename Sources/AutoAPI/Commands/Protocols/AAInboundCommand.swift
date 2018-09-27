@@ -29,14 +29,14 @@
 import Foundation
 
 
-protocol AAInboundCommand: AACommand, BinaryInitable, AAMessageTypesGettable, AAPropertiesCapable {
+protocol AAInboundCommand: AACommand, AABinaryInitable, AAMessageTypesGettable, AAPropertiesCapable {
 
     init?(_ messageType: UInt8, properties: AAProperties)
 }
 
 extension AAInboundCommand {
 
-    // MARK: BinaryInitable
+    // MARK: AABinaryInitable
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
         guard binary.count >= 3 else {

@@ -62,7 +62,7 @@ extension Coordinate {
     }
 }
 
-extension Coordinate: BinaryInitable {
+extension Coordinate: AABinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
         guard binary.count >= 16 else {
