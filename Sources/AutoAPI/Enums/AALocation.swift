@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  AATire.swift
+//  AALocation.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 28/11/2017.
@@ -29,27 +29,12 @@
 import Foundation
 
 
-public struct AATire {
+public enum AALocation: UInt8 {
 
-    public let position: AALocation
-    public let pressure: Float
-    public let temperature: Float
-    public let wheelRPM: UInt16
-}
+    case frontLeft  = 0x00
+    case frontRight = 0x01
+    case rearRight  = 0x02
+    case rearLeft   = 0x03
 
-extension AATire: AAItem {
-
-    static let size: Int = 11
-
-
-    init?(bytes: [UInt8]) {
-        guard let tirePosition = AALocation(rawValue: bytes[0]) else {
-            return nil
-        }
-
-        position = tirePosition
-        pressure = Float(bytes.dropFirstBytes(1))
-        temperature = Float(bytes.dropFirstBytes(5))
-        wheelRPM = UInt16(bytes.dropFirstBytes(9))
-    }
+    case hatch      = 0x04
 }

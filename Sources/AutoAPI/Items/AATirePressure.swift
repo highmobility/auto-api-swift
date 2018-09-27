@@ -19,24 +19,33 @@
 // licensing@high-mobility.com
 //
 //
-//  Position.swift
-//  AutoAPI
+//  AATirePressure.swift
+//  AutoAPICLT
 //
-//  Created by Mikk Rätsep on 28/11/2017.
+//  Created by Mikk Rätsep on 27/09/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public typealias AALocation = Position
+public struct AATirePressure {
+
+    public let location: AALocation
+    public let pressure: Float
+}
+
+extension AATirePressure: AAItem {
+
+    static let size: Int = 5
 
 
-public enum Position: UInt8 {
+    init?(bytes: [UInt8]) {
+        guard let location = AALocation(rawValue: bytes[0]) else {
+            return nil
+        }
 
-    case frontLeft  = 0x00
-    case frontRight = 0x01
-    case rearRight  = 0x02
-    case rearLeft   = 0x03
-    case hatch      = 0x04
+        self.location = location
+        self.pressure = Float(bytes.dropFirst())
+    }
 }

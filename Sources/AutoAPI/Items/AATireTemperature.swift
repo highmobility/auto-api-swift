@@ -19,37 +19,33 @@
 // licensing@high-mobility.com
 //
 //
-//  AATire.swift
+//  AATireTemperature.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 28/11/2017.
+//  Created by Mikk Rätsep on 27/09/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct AATire {
+public struct AATireTemperature {
 
-    public let position: AALocation
-    public let pressure: Float
+    public let location: AALocation
     public let temperature: Float
-    public let wheelRPM: UInt16
 }
 
-extension AATire: AAItem {
+extension AATireTemperature: AAItem {
 
-    static let size: Int = 11
+    static var size: Int = 5
 
 
     init?(bytes: [UInt8]) {
-        guard let tirePosition = AALocation(rawValue: bytes[0]) else {
+        guard let location = AALocation(rawValue: bytes[0]) else {
             return nil
         }
 
-        position = tirePosition
-        pressure = Float(bytes.dropFirstBytes(1))
-        temperature = Float(bytes.dropFirstBytes(5))
-        wheelRPM = UInt16(bytes.dropFirstBytes(9))
+        self.location = location
+        self.temperature = Float(bytes.dropFirst())
     }
 }

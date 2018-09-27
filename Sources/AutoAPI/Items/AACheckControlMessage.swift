@@ -47,8 +47,8 @@ extension AACheckControlMessage: AABinaryInitable {
         // Gather some values
         let bytes = binary.bytes
         let id = UInt16(bytes[0...1])
-        let remainingLength = UInt32(bytes[2...6])
-        let textSize = UInt16(bytes[7...8]).int
+        let remainingLength = UInt32(bytes[2...5])
+        let textSize = UInt16(bytes[6...7]).int
 
         // Check for enough bytes
         guard bytes.count >= (8 + textSize) else {

@@ -50,6 +50,9 @@
 		2093A32221394EF8009E43A0 /* Hood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A32121394EF8009E43A0 /* Hood.swift */; };
 		2093A32421395362009E43A0 /* Usage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A32321395362009E43A0 /* Usage.swift */; };
 		2095DD6D20A45B81004DDB6C /* DebugTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2095DD6C20A45B81004DDB6C /* DebugTree.swift */; };
+		20B0C143215D1EA7005FA699 /* AATirePressure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7C958215D1C8F00C9C9A7 /* AATirePressure.swift */; };
+		20B0C145215D1ECE005FA699 /* AATireTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B0C144215D1ECE005FA699 /* AATireTemperature.swift */; };
+		20B0C147215D1F23005FA699 /* AAWheelRPM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B0C146215D1F23005FA699 /* AAWheelRPM.swift */; };
 		20BB171D2142604100A3FDB5 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BB171B2142603A00A3FDB5 /* Date+Extensions.swift */; };
 		20CDFAA7215264F300402BF6 /* AADetectedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDFAA6215264F300402BF6 /* AADetectedState.swift */; };
 		20CDFAA92152657100402BF6 /* AAFastened.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDFAA82152657100402BF6 /* AAFastened.swift */; };
@@ -192,7 +195,7 @@
 		OBJ_390 /* NetworkSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_94 /* NetworkSecurity.swift */; };
 		OBJ_391 /* ParkingTicketState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_95 /* ParkingTicketState.swift */; };
 		OBJ_392 /* PlugType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_96 /* PlugType.swift */; };
-		OBJ_393 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_97 /* Position.swift */; };
+		OBJ_393 /* AALocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_97 /* AALocation.swift */; };
 		OBJ_394 /* AAPositionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_98 /* AAPositionState.swift */; };
 		OBJ_395 /* PowerTrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* PowerTrain.swift */; };
 		OBJ_396 /* PricingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_100 /* PricingType.swift */; };
@@ -327,6 +330,9 @@
 		2093A32121394EF8009E43A0 /* Hood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hood.swift; sourceTree = "<group>"; };
 		2093A32321395362009E43A0 /* Usage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usage.swift; sourceTree = "<group>"; };
 		2095DD6C20A45B81004DDB6C /* DebugTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugTree.swift; sourceTree = "<group>"; };
+		20B0C144215D1ECE005FA699 /* AATireTemperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATireTemperature.swift; sourceTree = "<group>"; };
+		20B0C146215D1F23005FA699 /* AAWheelRPM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWheelRPM.swift; sourceTree = "<group>"; };
+		20B7C958215D1C8F00C9C9A7 /* AATirePressure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATirePressure.swift; sourceTree = "<group>"; };
 		20BB171B2142603A00A3FDB5 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		20CDFAA6215264F300402BF6 /* AADetectedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADetectedState.swift; sourceTree = "<group>"; };
 		20CDFAA82152657100402BF6 /* AAFastened.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFastened.swift; sourceTree = "<group>"; };
@@ -530,7 +536,7 @@
 		OBJ_94 /* NetworkSecurity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSecurity.swift; sourceTree = "<group>"; };
 		OBJ_95 /* ParkingTicketState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTicketState.swift; sourceTree = "<group>"; };
 		OBJ_96 /* PlugType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlugType.swift; sourceTree = "<group>"; };
-		OBJ_97 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		OBJ_97 /* AALocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALocation.swift; sourceTree = "<group>"; };
 		OBJ_98 /* AAPositionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPositionState.swift; sourceTree = "<group>"; };
 		OBJ_99 /* PowerTrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerTrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -648,6 +654,9 @@
 				OBJ_149 /* PricingTariff.swift */,
 				OBJ_150 /* AASeat.swift */,
 				OBJ_151 /* AATire.swift */,
+				20B7C958215D1C8F00C9C9A7 /* AATirePressure.swift */,
+				20B0C144215D1ECE005FA699 /* AATireTemperature.swift */,
+				20B0C146215D1F23005FA699 /* AAWheelRPM.swift */,
 				OBJ_152 /* AAWindow.swift */,
 			);
 			path = Items;
@@ -1027,6 +1036,7 @@
 				20DB153A2096F7DA00A1658B /* Gearbox.swift */,
 				OBJ_88 /* GearMode.swift */,
 				OBJ_90 /* AAKeyfobRelativePosition.swift */,
+				OBJ_97 /* AALocation.swift */,
 				OBJ_92 /* LockState.swift */,
 				20896EE721479DC5003A7A63 /* MovingState.swift */,
 				OBJ_93 /* AANeedsReplacement.swift */,
@@ -1034,7 +1044,6 @@
 				OBJ_95 /* ParkingTicketState.swift */,
 				20DC7513215B5EDE009B2B24 /* AAPluggedInState.swift */,
 				OBJ_96 /* PlugType.swift */,
-				OBJ_97 /* Position.swift */,
 				OBJ_98 /* AAPositionState.swift */,
 				OBJ_99 /* PowerTrain.swift */,
 				OBJ_100 /* PricingType.swift */,
@@ -1317,6 +1326,7 @@
 				20DC7514215B5EDE009B2B24 /* AAPluggedInState.swift in Sources */,
 				20F7903F2135732D003BDFA2 /* DisplayUnit.swift in Sources */,
 				OBJ_352 /* WiFi.swift in Sources */,
+				20B0C143215D1EA7005FA699 /* AATirePressure.swift in Sources */,
 				OBJ_353 /* DriverFatigue.swift in Sources */,
 				OBJ_354 /* HeartRate.swift in Sources */,
 				OBJ_355 /* HomeCharger.swift in Sources */,
@@ -1364,7 +1374,7 @@
 				20F7903721356C54003BDFA2 /* AACheckControlMessage.swift in Sources */,
 				OBJ_391 /* ParkingTicketState.swift in Sources */,
 				OBJ_392 /* PlugType.swift in Sources */,
-				OBJ_393 /* Position.swift in Sources */,
+				OBJ_393 /* AALocation.swift in Sources */,
 				OBJ_394 /* AAPositionState.swift in Sources */,
 				OBJ_395 /* PowerTrain.swift in Sources */,
 				OBJ_396 /* PricingType.swift in Sources */,
@@ -1413,6 +1423,7 @@
 				20896EE821479DC5003A7A63 /* MovingState.swift in Sources */,
 				OBJ_433 /* Coordinate.swift in Sources */,
 				2024BBF42154CFA400AA5261 /* AAClimateSettings.swift in Sources */,
+				20B0C145215D1ECE005FA699 /* AATireTemperature.swift in Sources */,
 				20896EEA21479F4A003A7A63 /* ConnectionState.swift in Sources */,
 				OBJ_434 /* Door.swift in Sources */,
 				OBJ_435 /* AAItem.swift in Sources */,
@@ -1434,6 +1445,7 @@
 				20F7903921356F54003BDFA2 /* ConditionBasedService.swift in Sources */,
 				OBJ_449 /* AAPropertiesIterator.swift in Sources */,
 				OBJ_450 /* Property.swift in Sources */,
+				20B0C147215D1F23005FA699 /* AAWheelRPM.swift in Sources */,
 				OBJ_451 /* AAPropertyConvertable.swift in Sources */,
 				OBJ_454 /* VehicleState.swift in Sources */,
 				OBJ_455 /* VehicleStateType.swift in Sources */,

@@ -52,9 +52,11 @@ public struct AADiagnostics: AAFullStandardCommand {
     public let fuelVolume: Float?
     public let mileage: UInt32?
     public let speed: Int16?
-    public let tires: [AATire]?
+    public let tirePressures: [AATirePressure]?
+    public let tireTemperatures: [AATireTemperature]?
     public let washerFluidLevel: AAFluidLevel?
     public let wheelBasedSpeed: Int16?
+    public let wheelRPMs: [AAWheelRPM]?
 
 
     // MARK: AAFullStandardCommand
@@ -71,7 +73,6 @@ public struct AADiagnostics: AAFullStandardCommand {
         fuelLevel = properties.value(for: 0x05)
         estimatedRange = properties.value(for: 0x06)
         washerFluidLevel = properties.value(for: 0x09)
-        tires = properties.flatMap(for: 0x0A) { AATire($0.value) }
         batteryVoltage = properties.value(for: 0x0B)
         adBlueLevel = properties.value(for: 0x0C)
         dieselExhaustFluid = adBlueLevel
@@ -89,6 +90,9 @@ public struct AADiagnostics: AAFullStandardCommand {
         /* Level 8 */
         batteryLevel = properties.value(for: 0x18)
         checkControlMessages = properties.flatMap(for: 0x19) { AACheckControlMessage($0.value) }
+        tirePressures = properties.flatMap(for: 0x1A) { AATirePressure($0.value) }
+        tireTemperatures = properties.flatMap(for: 0x1B) { AATireTemperature($0.value) }
+        wheelRPMs = properties.flatMap(for: 0x1C) { AAWheelRPM($0.value) }
 
         // Properties
         self.properties = properties
@@ -106,6 +110,7 @@ extension AADiagnostics: AALegacyGettable {
 
         public let currentFuelConsumption: Float?
         public let averageFuelConsumption: Float?
+        public let tires: [AATire]?
 
 
         // MARK: AALegacyType
@@ -120,6 +125,7 @@ extension AADiagnostics: AALegacyGettable {
         public init(properties: AAProperties) {
             currentFuelConsumption = properties.value(for: 0x07)
             averageFuelConsumption = properties.value(for: 0x08)
+            tires = properties.flatMap(for: 0x0A) { AATire($0.value) }
         }
     }
 }
