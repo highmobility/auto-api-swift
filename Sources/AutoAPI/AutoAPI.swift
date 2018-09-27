@@ -48,7 +48,7 @@ public struct AutoAPI {
                 AAChassisSettings.self,
                 AAClimate.self,
                 AACruiseControl.self,
-                DashboardLights.self,
+                AADashboardLights.self,
                 Diagnostics.self,
                 DoorLocks.self,
                 DriverFatigue.self,

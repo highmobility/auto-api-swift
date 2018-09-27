@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  DashboardLights.swift
+//  AADashboardLights.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 24/04/2018.
@@ -29,9 +29,9 @@
 import Foundation
 
 
-public struct DashboardLights: AAFullStandardCommand {
+public struct AADashboardLights: AAFullStandardCommand {
 
-    public let lights: [DashboardLight]?
+    public let lights: [AADashboardLight]?
 
 
     // MARK: AAFullStandardCommand
@@ -41,19 +41,19 @@ public struct DashboardLights: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        lights = properties.flatMap(for: 0x01) { DashboardLight($0.value) }
+        lights = properties.flatMap(for: 0x01) { AADashboardLight($0.value) }
 
         // Properties
         self.properties = properties
     }
 }
 
-extension DashboardLights: AAIdentifiable {
+extension AADashboardLights: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0061)
+    public static var identifier: AACommandIdentifier = 0x0061
 }
 
-extension DashboardLights: AAMessageTypesGettable {
+extension AADashboardLights: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -62,7 +62,7 @@ extension DashboardLights: AAMessageTypesGettable {
     }
 }
 
-public extension DashboardLights {
+public extension AADashboardLights {
 
     static var getDashboardLights: [UInt8] {
         return commandPrefix(for: .getDashboardLights)

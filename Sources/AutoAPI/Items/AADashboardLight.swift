@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  DashboardLight.swift
+//  AADashboardLight.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 24/04/2018.
@@ -29,20 +29,20 @@
 import Foundation
 
 
-public struct DashboardLight {
+public struct AADashboardLight {
 
-    public let name: DashboardLightName
-    public let state: DashboardLightState
+    public let name: AADashboardLightName
+    public let state: AADashboardLightState
 }
 
-extension DashboardLight: AAItem {
+extension AADashboardLight: AAItem {
 
     static var size: Int = 2
 
 
     init?(bytes: [UInt8]) {
-        guard let name = DashboardLightName(rawValue: bytes[0]),
-            let state = DashboardLightState(rawValue: bytes[1]) else {
+        guard let name = AADashboardLightName(rawValue: bytes[0]),
+            let state = AADashboardLightState(rawValue: bytes[1]) else {
                 return nil
         }
 

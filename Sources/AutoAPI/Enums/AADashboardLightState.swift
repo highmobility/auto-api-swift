@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  DashboardLightState.swift
+//  AADashboardLightState.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 24/04/2018.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public enum DashboardLightState: UInt8 {
+public enum AADashboardLightState: UInt8 {
 
     case inactive   = 0x00
     case info       = 0x01

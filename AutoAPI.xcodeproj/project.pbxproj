@@ -28,11 +28,11 @@
 		2024BBFE21553D8A00AA5261 /* AAClimateWeekdayTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2024BBFD21553D8A00AA5261 /* AAClimateWeekdayTime.swift */; };
 		2028370B2150D17E0001724A /* AADepartureTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2028370A2150D17E0001724A /* AADepartureTime.swift */; };
 		205C5169208F154900B55ACE /* PropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5168208F154900B55ACE /* PropertiesTests.swift */; };
-		205C516B208F26CE00B55ACE /* DashboardLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C516A208F26CE00B55ACE /* DashboardLights.swift */; };
-		205C516D208F28FF00B55ACE /* DashboardLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C516C208F28FF00B55ACE /* DashboardLight.swift */; };
+		205C516B208F26CE00B55ACE /* AADashboardLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C516A208F26CE00B55ACE /* AADashboardLights.swift */; };
+		205C516D208F28FF00B55ACE /* AADashboardLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C516C208F28FF00B55ACE /* AADashboardLight.swift */; };
 		205C516F208F2EF700B55ACE /* DashboardLightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C516E208F2EF700B55ACE /* DashboardLightsTests.swift */; };
-		205C5171208F315D00B55ACE /* DashboardLightName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5170208F315C00B55ACE /* DashboardLightName.swift */; };
-		205C5173208F319900B55ACE /* DashboardLightState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5172208F319900B55ACE /* DashboardLightState.swift */; };
+		205C5171208F315D00B55ACE /* AADashboardLightName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5170208F315C00B55ACE /* AADashboardLightName.swift */; };
+		205C5173208F319900B55ACE /* AADashboardLightState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5172208F319900B55ACE /* AADashboardLightState.swift */; };
 		205C5175208F3E6400B55ACE /* StartStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5174208F3E6400B55ACE /* StartStop.swift */; };
 		205C5177208F3FFD00B55ACE /* StartStopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5176208F3FFD00B55ACE /* StartStopTests.swift */; };
 		205C5179208F41C700B55ACE /* AACruiseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5178208F41C700B55ACE /* AACruiseControl.swift */; };
@@ -303,11 +303,11 @@
 		2024BBFD21553D8A00AA5261 /* AAClimateWeekdayTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAClimateWeekdayTime.swift; sourceTree = "<group>"; };
 		2028370A2150D17E0001724A /* AADepartureTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADepartureTime.swift; sourceTree = "<group>"; };
 		205C5168208F154900B55ACE /* PropertiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesTests.swift; sourceTree = "<group>"; };
-		205C516A208F26CE00B55ACE /* DashboardLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLights.swift; sourceTree = "<group>"; };
-		205C516C208F28FF00B55ACE /* DashboardLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLight.swift; sourceTree = "<group>"; };
+		205C516A208F26CE00B55ACE /* AADashboardLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADashboardLights.swift; sourceTree = "<group>"; };
+		205C516C208F28FF00B55ACE /* AADashboardLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADashboardLight.swift; sourceTree = "<group>"; };
 		205C516E208F2EF700B55ACE /* DashboardLightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLightsTests.swift; sourceTree = "<group>"; };
-		205C5170208F315C00B55ACE /* DashboardLightName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLightName.swift; sourceTree = "<group>"; };
-		205C5172208F319900B55ACE /* DashboardLightState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLightState.swift; sourceTree = "<group>"; };
+		205C5170208F315C00B55ACE /* AADashboardLightName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADashboardLightName.swift; sourceTree = "<group>"; };
+		205C5172208F319900B55ACE /* AADashboardLightState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADashboardLightState.swift; sourceTree = "<group>"; };
 		205C5174208F3E6400B55ACE /* StartStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStop.swift; sourceTree = "<group>"; };
 		205C5176208F3FFD00B55ACE /* StartStopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStopTests.swift; sourceTree = "<group>"; };
 		205C5178208F41C700B55ACE /* AACruiseControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACruiseControl.swift; sourceTree = "<group>"; };
@@ -636,7 +636,7 @@
 				OBJ_140 /* AAColour.swift */,
 				20F7903821356F54003BDFA2 /* ConditionBasedService.swift */,
 				OBJ_141 /* Coordinate.swift */,
-				205C516C208F28FF00B55ACE /* DashboardLight.swift */,
+				205C516C208F28FF00B55ACE /* AADashboardLight.swift */,
 				OBJ_138 /* AATime.swift */,
 				2028370A2150D17E0001724A /* AADepartureTime.swift */,
 				OBJ_142 /* Door.swift */,
@@ -874,7 +874,7 @@
 		OBJ_28 /* Diagnostics */ = {
 			isa = PBXGroup;
 			children = (
-				205C516A208F26CE00B55ACE /* DashboardLights.swift */,
+				205C516A208F26CE00B55ACE /* AADashboardLights.swift */,
 				OBJ_29 /* Diagnostics.swift */,
 				OBJ_30 /* Maintenance.swift */,
 				OBJ_31 /* Offroad.swift */,
@@ -1010,8 +1010,8 @@
 				OBJ_83 /* ControlMode.swift */,
 				20F7903C2135713A003BDFA2 /* AAConvertibleRoofState.swift */,
 				205C517A208F430100B55ACE /* AACruiseControlLimiter.swift */,
-				205C5170208F315C00B55ACE /* DashboardLightName.swift */,
-				205C5172208F319900B55ACE /* DashboardLightState.swift */,
+				205C5170208F315C00B55ACE /* AADashboardLightName.swift */,
+				205C5172208F319900B55ACE /* AADashboardLightState.swift */,
 				20CDFAA6215264F300402BF6 /* AADetectedState.swift */,
 				20DB154F209727C700A1658B /* Direction.swift */,
 				20F7903E2135732D003BDFA2 /* DisplayUnit.swift */,
@@ -1403,7 +1403,7 @@
 				2024BBFC21553A3200AA5261 /* AAWeekday.swift in Sources */,
 				OBJ_425 /* AAChargingTimer.swift in Sources */,
 				OBJ_426 /* AAChassisPosition.swift in Sources */,
-				205C5171208F315D00B55ACE /* DashboardLightName.swift in Sources */,
+				205C5171208F315D00B55ACE /* AADashboardLightName.swift in Sources */,
 				OBJ_427 /* AASpringRate.swift in Sources */,
 				OBJ_428 /* AAActivatedDays.swift in Sources */,
 				OBJ_429 /* AAClimateProfile.swift in Sources */,
@@ -1416,10 +1416,10 @@
 				20896EEA21479F4A003A7A63 /* ConnectionState.swift in Sources */,
 				OBJ_434 /* Door.swift in Sources */,
 				OBJ_435 /* AAItem.swift in Sources */,
-				205C516B208F26CE00B55ACE /* DashboardLights.swift in Sources */,
+				205C516B208F26CE00B55ACE /* AADashboardLights.swift in Sources */,
 				OBJ_437 /* AAItemIterator.swift in Sources */,
 				20DB15442097166200A1658B /* Tachograph.swift in Sources */,
-				205C5173208F319900B55ACE /* DashboardLightState.swift in Sources */,
+				205C5173208F319900B55ACE /* AADashboardLightState.swift in Sources */,
 				OBJ_440 /* PricingTariff.swift in Sources */,
 				OBJ_441 /* AASeat.swift in Sources */,
 				OBJ_442 /* Tire.swift in Sources */,
@@ -1439,7 +1439,7 @@
 				OBJ_455 /* VehicleStateType.swift in Sources */,
 				20CDFAA7215264F300402BF6 /* AADetectedState.swift in Sources */,
 				OBJ_456 /* VehicleStatus.swift in Sources */,
-				205C516D208F28FF00B55ACE /* DashboardLight.swift in Sources */,
+				205C516D208F28FF00B55ACE /* AADashboardLight.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

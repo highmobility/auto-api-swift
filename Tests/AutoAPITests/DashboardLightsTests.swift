@@ -44,7 +44,7 @@ class DashboardLightsTests: XCTestCase {
             0x00        // Message Type for Get Dashboard Lights
         ]
 
-        XCTAssertEqual(DashboardLights.getDashboardLights, bytes)
+        XCTAssertEqual(AADashboardLights.getDashboardLights, bytes)
     }
 
     func testLights() {
@@ -73,7 +73,7 @@ class DashboardLightsTests: XCTestCase {
             0x00        // Inactive
         ]
 
-        guard let dashboardLights = AutoAPI.parseBinary(bytes) as? DashboardLights else {
+        guard let dashboardLights = AutoAPI.parseBinary(bytes) as? AADashboardLights else {
             return XCTFail("Parsed value is not DashboardLights")
         }
 

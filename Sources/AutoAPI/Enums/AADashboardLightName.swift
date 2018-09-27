@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  DashboardLightName.swift
+//  AADashboardLightName.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 24/04/2018.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public enum DashboardLightName: UInt8 {
+public enum AADashboardLightName: UInt8 {
 
     case highMainBeam                       = 0x00
     case lowDippedBeam                      = 0x01
