@@ -58,7 +58,7 @@ extension AATime: AAItem {
     }
 }
 
-extension AATime: PropertyConvertable {
+extension AATime: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         return [hour, minute]

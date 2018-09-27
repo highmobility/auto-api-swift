@@ -39,6 +39,6 @@ public enum AAChargePortState: UInt8 {
     public static let close = AAChargePortState.closed
 }
 
-extension AAChargePortState: PropertyConvertable {
+extension AAChargePortState: AAPropertyConvertable {
 
 }

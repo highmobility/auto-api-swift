@@ -29,7 +29,7 @@
 import Foundation
 
 
-extension URL: PropertyConvertable {
+extension URL: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         return absoluteString.data(using: .utf8)?.bytes ?? []

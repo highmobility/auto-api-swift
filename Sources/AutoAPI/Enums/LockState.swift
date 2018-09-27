@@ -55,6 +55,6 @@ public enum LockState: UInt8 {
     public static let lock = LockState.locked
 }
 
-extension LockState: PropertyConvertable {
+extension LockState: AAPropertyConvertable {
 
 }

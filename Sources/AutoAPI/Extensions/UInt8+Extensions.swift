@@ -56,7 +56,7 @@ extension UInt8 {
     }
 }
 
-extension UInt8: PropertyConvertable {
+extension UInt8: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         return [self]

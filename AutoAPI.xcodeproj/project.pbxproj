@@ -135,7 +135,7 @@
 		OBJ_329 /* AALights.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* AALights.swift */; };
 		OBJ_330 /* AARooftopControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* AARooftopControl.swift */; };
 		OBJ_331 /* AASeats.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* AASeats.swift */; };
-		OBJ_332 /* Windows.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* Windows.swift */; };
+		OBJ_332 /* AAWindows.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* AAWindows.swift */; };
 		OBJ_333 /* Windscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* Windscreen.swift */; };
 		OBJ_334 /* Diagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Diagnostics.swift */; };
 		OBJ_335 /* Maintenance.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* Maintenance.swift */; };
@@ -234,18 +234,17 @@
 		OBJ_434 /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_142 /* Door.swift */; };
 		OBJ_435 /* AAItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_143 /* AAItem.swift */; };
 		OBJ_437 /* AAItemIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_146 /* AAItemIterator.swift */; };
-		OBJ_439 /* WindowsIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_148 /* WindowsIterator.swift */; };
 		OBJ_440 /* PricingTariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_149 /* PricingTariff.swift */; };
 		OBJ_441 /* AASeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_150 /* AASeat.swift */; };
 		OBJ_442 /* Tire.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_151 /* Tire.swift */; };
-		OBJ_443 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_152 /* Window.swift */; };
+		OBJ_443 /* AAWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_152 /* AAWindow.swift */; };
 		OBJ_445 /* AAMessageTypesGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_154 /* AAMessageTypesGettable.swift */; };
 		OBJ_446 /* AAProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_156 /* AAProperties.swift */; };
 		OBJ_447 /* AAPropertiesCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_157 /* AAPropertiesCapable.swift */; };
 		OBJ_448 /* PropertiesInitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_158 /* PropertiesInitable.swift */; };
 		OBJ_449 /* AAPropertiesIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_159 /* AAPropertiesIterator.swift */; };
 		OBJ_450 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_160 /* Property.swift */; };
-		OBJ_451 /* PropertyConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_161 /* PropertyConvertable.swift */; };
+		OBJ_451 /* AAPropertyConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_161 /* AAPropertyConvertable.swift */; };
 		OBJ_454 /* VehicleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_165 /* VehicleState.swift */; };
 		OBJ_455 /* VehicleStateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_166 /* VehicleStateType.swift */; };
 		OBJ_456 /* VehicleStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_167 /* VehicleStatus.swift */; };
@@ -396,19 +395,18 @@
 		OBJ_142 /* Door.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Door.swift; sourceTree = "<group>"; };
 		OBJ_143 /* AAItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAItem.swift; sourceTree = "<group>"; };
 		OBJ_146 /* AAItemIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAItemIterator.swift; sourceTree = "<group>"; };
-		OBJ_148 /* WindowsIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsIterator.swift; sourceTree = "<group>"; };
 		OBJ_149 /* PricingTariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingTariff.swift; sourceTree = "<group>"; };
 		OBJ_15 /* SDKVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKVersion.swift; sourceTree = "<group>"; };
 		OBJ_150 /* AASeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASeat.swift; sourceTree = "<group>"; };
 		OBJ_151 /* Tire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tire.swift; sourceTree = "<group>"; };
-		OBJ_152 /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
+		OBJ_152 /* AAWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWindow.swift; sourceTree = "<group>"; };
 		OBJ_154 /* AAMessageTypesGettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAMessageTypesGettable.swift; sourceTree = "<group>"; };
 		OBJ_156 /* AAProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAProperties.swift; sourceTree = "<group>"; };
 		OBJ_157 /* AAPropertiesCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertiesCapable.swift; sourceTree = "<group>"; };
 		OBJ_158 /* PropertiesInitable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesInitable.swift; sourceTree = "<group>"; };
 		OBJ_159 /* AAPropertiesIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertiesIterator.swift; sourceTree = "<group>"; };
 		OBJ_160 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
-		OBJ_161 /* PropertyConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyConvertable.swift; sourceTree = "<group>"; };
+		OBJ_161 /* AAPropertyConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertyConvertable.swift; sourceTree = "<group>"; };
 		OBJ_165 /* VehicleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleState.swift; sourceTree = "<group>"; };
 		OBJ_166 /* VehicleStateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleStateType.swift; sourceTree = "<group>"; };
 		OBJ_167 /* VehicleStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleStatus.swift; sourceTree = "<group>"; };
@@ -469,11 +467,11 @@
 		OBJ_225 /* SignedInteger+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignedInteger+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_226 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_227 /* UInt8Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt8Collection+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_228 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = ".build/checkouts/hm-utilities-swift-8476438079168975013/Package.swift"; sourceTree = "<group>"; };
+		OBJ_228 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = ".build/checkouts/hm-utilities-swift--4925748151244125410/Package.swift"; sourceTree = "<group>"; };
 		OBJ_23 /* AALights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALights.swift; sourceTree = "<group>"; };
 		OBJ_24 /* AARooftopControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AARooftopControl.swift; sourceTree = "<group>"; };
 		OBJ_25 /* AASeats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASeats.swift; sourceTree = "<group>"; };
-		OBJ_26 /* Windows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Windows.swift; sourceTree = "<group>"; };
+		OBJ_26 /* AAWindows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWindows.swift; sourceTree = "<group>"; };
 		OBJ_27 /* Windscreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Windscreen.swift; sourceTree = "<group>"; };
 		OBJ_29 /* Diagnostics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diagnostics.swift; sourceTree = "<group>"; };
 		OBJ_30 /* Maintenance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maintenance.swift; sourceTree = "<group>"; };
@@ -650,7 +648,7 @@
 				OBJ_149 /* PricingTariff.swift */,
 				OBJ_150 /* AASeat.swift */,
 				OBJ_151 /* Tire.swift */,
-				OBJ_152 /* Window.swift */,
+				OBJ_152 /* AAWindow.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -679,7 +677,6 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_146 /* AAItemIterator.swift */,
-				OBJ_148 /* WindowsIterator.swift */,
 			);
 			path = Iterators;
 			sourceTree = "<group>";
@@ -693,7 +690,7 @@
 				OBJ_159 /* AAPropertiesIterator.swift */,
 				2024BBF72154D95200AA5261 /* AAPropertiesMultiConvertable.swift */,
 				OBJ_160 /* Property.swift */,
-				OBJ_161 /* PropertyConvertable.swift */,
+				OBJ_161 /* AAPropertyConvertable.swift */,
 			);
 			path = Property;
 			sourceTree = "<group>";
@@ -750,7 +747,7 @@
 				OBJ_23 /* AALights.swift */,
 				OBJ_24 /* AARooftopControl.swift */,
 				OBJ_25 /* AASeats.swift */,
-				OBJ_26 /* Windows.swift */,
+				OBJ_26 /* AAWindows.swift */,
 				OBJ_27 /* Windscreen.swift */,
 			);
 			path = Chassis;
@@ -860,7 +857,7 @@
 				OBJ_227 /* UInt8Collection+Extensions.swift */,
 			);
 			name = HMUtilities;
-			path = ".build/checkouts/hm-utilities-swift-8476438079168975013/Sources/HMUtilities";
+			path = ".build/checkouts/hm-utilities-swift--4925748151244125410/Sources/HMUtilities";
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_229 /* Products */ = {
@@ -1292,7 +1289,7 @@
 				OBJ_329 /* AALights.swift in Sources */,
 				OBJ_330 /* AARooftopControl.swift in Sources */,
 				OBJ_331 /* AASeats.swift in Sources */,
-				OBJ_332 /* Windows.swift in Sources */,
+				OBJ_332 /* AAWindows.swift in Sources */,
 				OBJ_333 /* Windscreen.swift in Sources */,
 				OBJ_334 /* Diagnostics.swift in Sources */,
 				OBJ_335 /* Maintenance.swift in Sources */,
@@ -1423,11 +1420,10 @@
 				OBJ_437 /* AAItemIterator.swift in Sources */,
 				20DB15442097166200A1658B /* Tachograph.swift in Sources */,
 				205C5173208F319900B55ACE /* DashboardLightState.swift in Sources */,
-				OBJ_439 /* WindowsIterator.swift in Sources */,
 				OBJ_440 /* PricingTariff.swift in Sources */,
 				OBJ_441 /* AASeat.swift in Sources */,
 				OBJ_442 /* Tire.swift in Sources */,
-				OBJ_443 /* Window.swift in Sources */,
+				OBJ_443 /* AAWindow.swift in Sources */,
 				20F7903B21356F94003BDFA2 /* DueStatus.swift in Sources */,
 				OBJ_445 /* AAMessageTypesGettable.swift in Sources */,
 				OBJ_446 /* AAProperties.swift in Sources */,
@@ -1438,7 +1434,7 @@
 				20F7903921356F54003BDFA2 /* ConditionBasedService.swift in Sources */,
 				OBJ_449 /* AAPropertiesIterator.swift in Sources */,
 				OBJ_450 /* Property.swift in Sources */,
-				OBJ_451 /* PropertyConvertable.swift in Sources */,
+				OBJ_451 /* AAPropertyConvertable.swift in Sources */,
 				OBJ_454 /* VehicleState.swift in Sources */,
 				OBJ_455 /* VehicleStateType.swift in Sources */,
 				20CDFAA7215264F300402BF6 /* AADetectedState.swift in Sources */,

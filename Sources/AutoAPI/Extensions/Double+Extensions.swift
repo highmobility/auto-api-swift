@@ -37,7 +37,7 @@ extension Double: BinaryInitable {
     }
 }
 
-extension Double: PropertyConvertable {
+extension Double: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         return bytes

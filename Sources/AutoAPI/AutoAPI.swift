@@ -91,7 +91,7 @@ public struct AutoAPI {
                 WakeUp.self,
                 WeatherConditions.self,
                 WiFi.self,
-                Windows.self,
+                AAWindows.self,
                 Windscreen.self]
     }
 

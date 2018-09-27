@@ -60,7 +60,7 @@ extension AAClimateProfile: BinaryInitable {
     }
 }
 
-extension AAClimateProfile: PropertyConvertable {
+extension AAClimateProfile: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         return [activatedDays.rawValue] + weekdaysStartingTimes.propertyValue

@@ -66,7 +66,7 @@ extension AAClimateWeekdayTime: AAItem {
     }
 }
 
-extension AAClimateWeekdayTime: PropertyConvertable {
+extension AAClimateWeekdayTime: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         let timeBytes = time?.propertyValue ?? [0xFF, 0xFF]

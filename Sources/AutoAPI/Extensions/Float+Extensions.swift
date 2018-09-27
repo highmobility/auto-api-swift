@@ -37,7 +37,7 @@ extension Float: BinaryInitable {
     }
 }
 
-extension Float: PropertyConvertable {
+extension Float: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         return bytes

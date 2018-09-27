@@ -82,7 +82,7 @@ extension AASpringRateValue: AAItem {
     }
 }
 
-extension AASpringRateValue: PropertyConvertable {
+extension AASpringRateValue: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         return axle.propertyValue + value.propertyValue

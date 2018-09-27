@@ -41,6 +41,6 @@ public enum TheftAlarmState: UInt8 {
     public static let trigger = TheftAlarmState.triggered
 }
 
-extension TheftAlarmState: PropertyConvertable {
+extension TheftAlarmState: AAPropertyConvertable {
     
 }

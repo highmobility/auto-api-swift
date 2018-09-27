@@ -30,6 +30,6 @@ public enum AAChargeMode: UInt8 {
     case inductive  = 0x02
 }
 
-extension AAChargeMode: PropertyConvertable {
+extension AAChargeMode: AAPropertyConvertable {
     
 }

@@ -49,7 +49,7 @@ extension String {
     }
 }
 
-extension String: PropertyConvertable {
+extension String: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         return data(using: .utf8)?.bytes ?? []

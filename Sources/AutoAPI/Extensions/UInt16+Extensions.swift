@@ -43,7 +43,7 @@ extension UInt16: BinaryInitable {
     }
 }
 
-extension UInt16: PropertyConvertable {
+extension UInt16: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         return bytes

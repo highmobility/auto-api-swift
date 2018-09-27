@@ -36,6 +36,6 @@ public enum AAStartStop: UInt8 {
     case reset  = 0x02
 }
 
-extension AAStartStop: PropertyConvertable {
+extension AAStartStop: AAPropertyConvertable {
     
 }

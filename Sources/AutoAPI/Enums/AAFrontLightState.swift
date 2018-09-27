@@ -36,6 +36,6 @@ public enum AAFrontLightState: UInt8 {
     case activeFullBeam = 0x02
 }
 
-extension AAFrontLightState: PropertyConvertable {
+extension AAFrontLightState: AAPropertyConvertable {
 
 }

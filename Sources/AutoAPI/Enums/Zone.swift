@@ -106,6 +106,6 @@ extension Zone: CustomStringConvertible {
     }
 }
 
-extension Zone: PropertyConvertable {
+extension Zone: AAPropertyConvertable {
     
 }

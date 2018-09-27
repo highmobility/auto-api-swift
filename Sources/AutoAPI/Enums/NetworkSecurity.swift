@@ -37,6 +37,6 @@ public enum NetworkSecurity: UInt8 {
     case WPA2Personal       = 0x03
 }
 
-extension NetworkSecurity: PropertyConvertable {
+extension NetworkSecurity: AAPropertyConvertable {
     
 }

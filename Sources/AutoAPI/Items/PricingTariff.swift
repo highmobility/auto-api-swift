@@ -76,7 +76,7 @@ extension PricingTariff: Equatable {
     }
 }
 
-extension PricingTariff: PropertyConvertable {
+extension PricingTariff: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         return [type.rawValue] + currency.propertyValue + price.propertyValue

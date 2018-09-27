@@ -76,7 +76,7 @@ extension Coordinate: BinaryInitable {
     }
 }
 
-extension Coordinate: PropertyConvertable {
+extension Coordinate: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         return bytes

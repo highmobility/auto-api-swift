@@ -41,7 +41,7 @@ public enum AADrivingMode: UInt8 {
     case ecoPlus    = 0x04
 }
 
-extension AADrivingMode: PropertyConvertable {
+extension AADrivingMode: AAPropertyConvertable {
     
 }
 

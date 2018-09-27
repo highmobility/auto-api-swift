@@ -35,6 +35,6 @@ public enum Screen: UInt8 {
     case rear   = 0x01
 }
 
-extension Screen: PropertyConvertable {
+extension Screen: AAPropertyConvertable {
     
 }

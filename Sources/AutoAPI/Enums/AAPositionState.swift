@@ -41,6 +41,6 @@ public enum AAPositionState: UInt8 {
     public static let open = AAPositionState.opened
 }
 
-extension AAPositionState: PropertyConvertable {
+extension AAPositionState: AAPropertyConvertable {
 
 }

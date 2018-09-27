@@ -49,7 +49,7 @@ extension Date: BinaryInitable {
     }
 }
 
-extension Date: PropertyConvertable {
+extension Date: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         // TODO: Make the propertyValue Optional to avoid this stuff

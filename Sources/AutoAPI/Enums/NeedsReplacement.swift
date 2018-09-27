@@ -40,6 +40,6 @@ public enum NeedsReplacement: UInt8 {
     public static let replacementNeeded = NeedsReplacement.yes
 }
 
-extension NeedsReplacement: PropertyConvertable {
+extension NeedsReplacement: AAPropertyConvertable {
     
 }

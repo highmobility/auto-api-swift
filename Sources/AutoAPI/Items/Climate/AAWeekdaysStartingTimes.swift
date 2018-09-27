@@ -82,7 +82,7 @@ extension AAWeekdaysStartingTimes: BinaryInitable {
     }
 }
 
-extension AAWeekdaysStartingTimes: PropertyConvertable {
+extension AAWeekdaysStartingTimes: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         return [monday.hour, monday.minute,

@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  WindowsIterator.swift
+//  AAPropertyConvertable.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 01/12/2017.
@@ -29,17 +29,25 @@
 import Foundation
 
 
-public struct WindowsIterator: AAItemIterator {
+protocol AAPropertyConvertable {
 
-    public typealias Element = Window
+    var propertyValue: [UInt8] { get }
 
-
-    var bytes: [UInt8]
+    func propertyBytes(_ id: AAPropertyIdentifier) -> [UInt8]
 }
 
-extension WindowsIterator: BinaryInitable {
+extension AAPropertyConvertable {
 
-    init<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        bytes = binary.bytes
+    func propertyBytes(_ id: AAPropertyIdentifier) -> [UInt8] {
+        let size = propertyValue.count
+
+        return [id, UInt8((size >> 8) & 0xFF), UInt8(size & 0xFF)] + propertyValue
+    }
+}
+
+extension AAPropertyConvertable where Self: RawRepresentable, Self.RawValue == UInt8 {
+
+    var propertyValue: [UInt8] {
+        return [rawValue]
     }
 }

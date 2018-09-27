@@ -41,6 +41,6 @@ public enum WindscreenDamage: UInt8 {
     public static let big = WindscreenDamage.damageLargerThan_1in
 }
 
-extension WindscreenDamage: PropertyConvertable {
+extension WindscreenDamage: AAPropertyConvertable {
     
 }

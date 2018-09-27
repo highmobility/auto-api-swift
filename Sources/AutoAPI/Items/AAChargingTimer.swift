@@ -70,7 +70,7 @@ extension AAChargingTimer: Equatable {
     }
 }
 
-extension AAChargingTimer: PropertyConvertable {
+extension AAChargingTimer: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         return [type.rawValue] + time.propertyValue

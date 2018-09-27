@@ -57,7 +57,7 @@ extension ActionItem: BinaryInitable {
     }
 }
 
-extension ActionItem: PropertyConvertable {
+extension ActionItem: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         let nameBytes: [UInt8] = name.data(using: .utf8)?.bytes ?? []

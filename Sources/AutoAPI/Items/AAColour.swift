@@ -62,7 +62,7 @@ import Foundation
     }
 #endif
 
-extension AAColour: PropertyConvertable {
+extension AAColour: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         let values = self.values

@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Window.swift
+//  AAWindow.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 01/12/2017.
@@ -29,31 +29,31 @@
 import Foundation
 
 
-public struct Window {
+public struct AAWindow {
 
-    public typealias OpenClosed = AAPositionState
+    public typealias AAOpenClosed = AAPositionState
 
 
     public let position: AALocation
-    public let openClosed: OpenClosed
+    public let openClosed: AAOpenClosed
 
 
     // MARK: Init
 
-    public init(openClosed: OpenClosed, position: AALocation) {
+    public init(openClosed: AAOpenClosed, position: AALocation) {
         self.openClosed = openClosed
         self.position = position
     }
 }
 
-extension Window: AAItem {
+extension AAWindow: AAItem {
 
     static let size: Int = 2
 
 
     init?(bytes: [UInt8]) {
         guard let location = AALocation(rawValue: bytes[0]),
-            let openClosed = OpenClosed(rawValue: bytes[1]) else {
+            let openClosed = AAOpenClosed(rawValue: bytes[1]) else {
                 return nil
         }
 
@@ -62,9 +62,17 @@ extension Window: AAItem {
     }
 }
 
-public extension Window {
+extension AAWindow: AAPropertyConvertable {
 
-    public struct OpenPercentage: AAItem {
+    var propertyValue: [UInt8] {
+        return [position.rawValue, openClosed.rawValue]
+    }
+}
+
+
+public extension AAWindow {
+
+    public struct OpenPercentage: AAItem, AAPropertyConvertable {
 
         public let location: AALocation
         public let percentage: AAPercentageInt
@@ -83,9 +91,24 @@ public extension Window {
             self.location = location
             self.percentage = bytes[1]
         }
+
+
+        // MARK: AAPropertyConvertable
+
+        var propertyValue: [UInt8] {
+            return [location.rawValue, percentage]
+        }
+
+
+        // MARK: Init
+
+        public init(location: AALocation, percentage: AAPercentageInt) {
+            self.location = location
+            self.percentage = percentage
+        }
     }
 
-    public struct Position: AAItem {
+    public struct Position: AAItem, AAPropertyConvertable {
 
         public let location: AALocation
         public let position: AAPositionState
@@ -102,6 +125,21 @@ public extension Window {
                     return nil
             }
 
+            self.location = location
+            self.position = position
+        }
+
+
+        // MARK: AAPropertyConvertable
+
+        var propertyValue: [UInt8] {
+            return [location.rawValue, position.rawValue]
+        }
+
+
+        // MARK: Init
+
+        public init(location: AALocation, position: AAPositionState) {
             self.location = location
             self.position = position
         }
