@@ -19,20 +19,23 @@
 // licensing@high-mobility.com
 //
 //
-//  AccelerationType.swift
+//  AAGearMode.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 07/12/2017.
+//  Created by Mikk Rätsep on 21/12/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum AccelerationType: UInt8 {
+public enum AAGearMode: UInt8 {
 
-    case longitudinal   = 0x00
-    case lateral        = 0x01
-    case frontLateral   = 0x02
-    case rearLateral    = 0x03
+    case manual     = 0x00
+    case park       = 0x01
+    case reverse    = 0x02
+    case neutral    = 0x03
+    case drive      = 0x04
+    case lowGear    = 0x05
+    case sport      = 0x06
 }

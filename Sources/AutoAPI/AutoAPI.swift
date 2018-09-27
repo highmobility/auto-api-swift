@@ -73,7 +73,7 @@ public struct AutoAPI {
                 ParkingBrake.self,
                 ParkingTicket.self,
                 PowerTakeOff.self,
-                Race.self,
+                AARace.self,
                 RemoteControl.self,
                 AARooftopControl.self,
                 AASeats.self,

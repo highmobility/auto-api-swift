@@ -19,33 +19,18 @@
 // licensing@high-mobility.com
 //
 //
-//  Acceleration.swift
+//  AAMovingState.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 07/12/2017.
+//  Created by Mikk Rätsep on 11/09/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct Acceleration {
+public enum AAMovingState: UInt8 {
 
-    public let type: AccelerationType
-    public let value: Float
-}
-
-extension Acceleration: AAItem {
-
-    static var size: Int = 5
-
-
-    init?(bytes: [UInt8]) {
-        guard let accelerationType = AccelerationType(rawValue: bytes[0]) else {
-            return nil
-        }
-
-        type = accelerationType
-        value = Float(bytes.dropFirstBytes(1))
-    }
+    case notMoving  = 0x00
+    case moving     = 0x01
 }

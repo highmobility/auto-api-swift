@@ -35,7 +35,7 @@ public struct Tachograph: AAFullStandardCommand {
     public let driversTimeStates: [DriverTimeState]?
     public let driversWorkingStates: [DriverWorkingState]?
     public let vehicleDirection: Direction?
-    public let vehicleMotionState: MovingState?
+    public let vehicleMotionState: AAMovingState?
     public let vehicleOverspeedActive: AAActiveState?
     public let vehicleSpeed: Int16?
 
@@ -51,7 +51,7 @@ public struct Tachograph: AAFullStandardCommand {
         driversTimeStates = properties.flatMap(for: 0x02) { DriverTimeState($0.value) }
         driversCards = properties.flatMap(for: 0x03) { DriverCard($0.value) }
         vehicleDirection = Direction(rawValue: properties.first(for: 0x06)?.monoValue)
-        vehicleMotionState = MovingState(rawValue: properties.first(for: 0x04)?.monoValue)
+        vehicleMotionState = AAMovingState(rawValue: properties.first(for: 0x04)?.monoValue)
         vehicleOverspeedActive = AAActiveState(rawValue: properties.first(for: 0x05)?.monoValue)
         vehicleSpeed = properties.value(for: 0x07)
 

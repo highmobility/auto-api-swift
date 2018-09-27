@@ -19,34 +19,33 @@
 // licensing@high-mobility.com
 //
 //
-//  BrakeTorqueVectoring.swift
+//  AAAcceleration.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 14/12/2017.
+//  Created by Mikk Rätsep on 07/12/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct BrakeTorqueVectoring {
+public struct AAAcceleration {
 
-    public let axle: AAAxle
-    public let state: AAActiveState
+    public let type: AAAccelerationType
+    public let value: Float
 }
 
-extension BrakeTorqueVectoring: AAItem {
+extension AAAcceleration: AAItem {
 
-    static var size: Int = 2
+    static var size: Int = 5
 
 
     init?(bytes: [UInt8]) {
-        guard let axle = AAAxle(rawValue: bytes[0]),
-            let state = AAActiveState(rawValue: bytes[1]) else {
-                return nil
+        guard let accelerationType = AAAccelerationType(rawValue: bytes[0]) else {
+            return nil
         }
 
-        self.axle = axle
-        self.state = state
+        type = accelerationType
+        value = Float(bytes.dropFirstBytes(1))
     }
 }

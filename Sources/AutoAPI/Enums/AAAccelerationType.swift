@@ -19,18 +19,20 @@
 // licensing@high-mobility.com
 //
 //
-//  MovingState.swift
+//  AAAccelerationType.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 11/09/2018.
+//  Created by Mikk Rätsep on 07/12/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum MovingState: UInt8 {
+public enum AAAccelerationType: UInt8 {
 
-    case notMoving  = 0x00
-    case moving     = 0x01
+    case longitudinal   = 0x00
+    case lateral        = 0x01
+    case frontLateral   = 0x02
+    case rearLateral    = 0x03
 }

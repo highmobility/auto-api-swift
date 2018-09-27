@@ -19,23 +19,34 @@
 // licensing@high-mobility.com
 //
 //
-//  GearMode.swift
+//  AABrakeTorqueVectoring.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 21/12/2017.
+//  Created by Mikk Rätsep on 14/12/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum GearMode: UInt8 {
+public struct AABrakeTorqueVectoring {
 
-    case manual     = 0x00
-    case park       = 0x01
-    case reverse    = 0x02
-    case neutral    = 0x03
-    case drive      = 0x04
-    case lowGear    = 0x05
-    case sport      = 0x06
+    public let axle: AAAxle
+    public let state: AAActiveState
+}
+
+extension AABrakeTorqueVectoring: AAItem {
+
+    static var size: Int = 2
+
+
+    init?(bytes: [UInt8]) {
+        guard let axle = AAAxle(rawValue: bytes[0]),
+            let state = AAActiveState(rawValue: bytes[1]) else {
+                return nil
+        }
+
+        self.axle = axle
+        self.state = state
+    }
 }
