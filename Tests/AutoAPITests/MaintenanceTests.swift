@@ -44,7 +44,7 @@ class MaintenanceTests: XCTestCase {
             0x00        // Message Type for Get Maintenance State
         ]
 
-        XCTAssertEqual(Maintenance.getMaintenanceState, bytes)
+        XCTAssertEqual(AAMaintenance.getMaintenanceState, bytes)
     }
 
     func testState() {
@@ -61,7 +61,7 @@ class MaintenanceTests: XCTestCase {
             0x00, 0x0E, 0x61    // 3'681 km until servicing
         ]
 
-        guard let maintenance = AutoAPI.parseBinary(bytes) as? Maintenance else {
+        guard let maintenance = AutoAPI.parseBinary(bytes) as? AAMaintenance else {
             return XCTFail("Parsed value is not Maintenance")
         }
 

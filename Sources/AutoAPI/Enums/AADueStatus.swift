@@ -19,20 +19,24 @@
 // licensing@high-mobility.com
 //
 //
-//  Availability.swift
+//  AADueStatus.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 31/08/2018.
+//  Created by Mikk Rätsep on 28/08/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum Availability: UInt8 {
+public enum AADueStatus: UInt8 {
 
-    case pending    = 0x00
-    case idle       = 0x01
-    case successful = 0x02
-    case error      = 0x03
+    /// Service not due
+    case ok         = 0x00
+
+    /// Service imminently due
+    case pending    = 0x01
+
+    /// Service overdue
+    case overdue    = 0x02
 }

@@ -64,7 +64,7 @@ public struct AutoAPI {
                 AAKeyfobPosition.self,
                 LightConditions.self,
                 AALights.self,
-                Maintenance.self,
+                AAMaintenance.self,
                 Messaging.self,
                 Mobile.self,
                 NaviDestination.self,

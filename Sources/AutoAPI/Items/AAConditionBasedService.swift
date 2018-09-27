@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  ConditionBasedService.swift
+//  AAConditionBasedService.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 28/08/2018.
@@ -29,16 +29,16 @@
 import Foundation
 
 
-public struct ConditionBasedService {
+public struct AAConditionBasedService {
 
     public let date: Date
     public let description: String
     public let id: UInt16
-    public let status: DueStatus
+    public let status: AADueStatus
     public let text: String
 }
 
-extension ConditionBasedService: AABinaryInitable {
+extension AAConditionBasedService: AABinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
         guard binary.count >= 7 else {
@@ -53,7 +53,7 @@ extension ConditionBasedService: AABinaryInitable {
         let textSize = UInt16(bytes[5...6]).int
 
         guard let date = DateComponents(year: year, month: month).date,
-            let status = DueStatus(rawValue: bytes[4]) else {
+            let status = AADueStatus(rawValue: bytes[4]) else {
                 return nil
         }
 
