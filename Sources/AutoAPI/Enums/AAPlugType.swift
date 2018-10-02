@@ -19,18 +19,20 @@
 // licensing@high-mobility.com
 //
 //
-//  EnabledState.swift
+//  AAPlugType.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 11/09/2018.
+//  Created by Mikk Rätsep on 30/01/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum EnabledState: UInt8 {
+public enum AAPlugType: UInt8 {
 
-    case disabled   = 0x00
-    case enabled    = 0x01
+    case type1                  = 0x00
+    case type2                  = 0x01
+    case combinedChargingSystem = 0x02
+    case CHAdeMO                = 0x03
 }

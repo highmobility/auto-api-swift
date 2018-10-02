@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct Graphics: OutboundCommand {
+public struct Graphics: AAOutboundCommand {
 
 }
 

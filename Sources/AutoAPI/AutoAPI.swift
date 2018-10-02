@@ -32,7 +32,7 @@ import HMUtilities
 
 // TODO: Move to a file for 'typealias'
 public typealias AAGasFlapState = AAChargePortState
-public typealias AAChargingMethod = PlugType
+public typealias AAChargingMethod = AAPlugType
 public typealias AACommandIdentifier = UInt16
 public typealias AAPercentageInt = UInt8
 
@@ -58,7 +58,8 @@ public struct AutoAPI {
                 Fueling.self,
                 Graphics.self,
                 HeartRate.self,
-                HomeCharger.self,
+                AAHistorical.self,
+                AAHomeCharger.self,
                 AAHonkHornFlashLights.self,
                 Hood.self,
                 AAKeyfobPosition.self,

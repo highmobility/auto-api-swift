@@ -33,7 +33,7 @@ public struct VehicleLocation: AAFullStandardCommand {
 
     public let altitude: Double?
     public let heading: Double?
-    public let coordinate: Coordinate?
+    public let coordinate: AACoordinate?
 
 
     // MARK: AAFullStandardCommand
@@ -43,7 +43,7 @@ public struct VehicleLocation: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        coordinate = Coordinate(properties.first(for: 0x01)?.value ?? [])
+        coordinate = AACoordinate(properties.first(for: 0x01)?.value ?? [])
         heading = properties.value(for: 0x02)
         altitude = properties.value(for: 0x03)
 

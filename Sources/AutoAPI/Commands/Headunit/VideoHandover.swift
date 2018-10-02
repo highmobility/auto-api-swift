@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct VideoHandover: OutboundCommand {
+public struct VideoHandover: AAOutboundCommand {
 
 }
 

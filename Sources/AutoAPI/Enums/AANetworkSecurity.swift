@@ -19,16 +19,24 @@
 // licensing@high-mobility.com
 //
 //
-//  OutboundCommand.swift
+//  AANetworkSecurity.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 14/12/2017.
+//  Created by Mikk Rätsep on 30/01/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-protocol OutboundCommand: AACommand, AAMessageTypesGettable {
+public enum AANetworkSecurity: UInt8 {
 
+    case none               = 0x00
+    case WEP                = 0x01
+    case WPA_WPA2Personal   = 0x02
+    case WPA2Personal       = 0x03
+}
+
+extension AANetworkSecurity: AAPropertyConvertable {
+    
 }

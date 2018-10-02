@@ -34,8 +34,8 @@ public struct WiFi: AAFullStandardCommand {
     public typealias NetworkSSID = String
 
     public let connectedState: ConnectionState?
-    public let enabledState: EnabledState?
-    public let networkSecurity: NetworkSecurity?
+    public let enabledState: AAEnabledState?
+    public let networkSecurity: AANetworkSecurity?
     public let networkSSID: NetworkSSID?
 
 
@@ -46,10 +46,10 @@ public struct WiFi: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        enabledState = EnabledState(rawValue: properties.first(for: 0x01)?.monoValue)
+        enabledState = AAEnabledState(rawValue: properties.first(for: 0x01)?.monoValue)
         connectedState = ConnectionState(rawValue: properties.first(for: 0x02)?.monoValue)
         networkSSID = properties.value(for: 0x03)
-        networkSecurity = NetworkSecurity(rawValue: properties.first(for: 0x04)?.monoValue)
+        networkSecurity = AANetworkSecurity(rawValue: properties.first(for: 0x04)?.monoValue)
 
         // Properties
         self.properties = properties
@@ -76,11 +76,11 @@ extension WiFi: AAMessageTypesGettable {
 public extension WiFi {
 
     struct Network {
-        public let networkSecurity: NetworkSecurity
+        public let networkSecurity: AANetworkSecurity
         public let networkSSID: NetworkSSID
         public let password: String
 
-        public init(networkSecurity: NetworkSecurity, networkSSID: NetworkSSID, password: String) {
+        public init(networkSecurity: AANetworkSecurity, networkSSID: NetworkSSID, password: String) {
             self.networkSecurity = networkSecurity
             self.networkSSID = networkSSID
             self.password = password

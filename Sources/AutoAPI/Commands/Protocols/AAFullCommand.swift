@@ -19,19 +19,17 @@
 // licensing@high-mobility.com
 //
 //
-//  PricingType.swift
+//  AAFullCommand.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 30/01/2018.
+//  Created by Mikk Rätsep on 14/12/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum PricingType: UInt8 {
+protocol AAFullCommand: AAInboundCommand, AAOutboundCommand, AAVehicleState {
 
-    case startingFee    = 0x00
-    case perMinute      = 0x01
-    case per_kWh        = 0x02
+    init?(properties: AAProperties)
 }

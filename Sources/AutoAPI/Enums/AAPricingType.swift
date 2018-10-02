@@ -19,16 +19,19 @@
 // licensing@high-mobility.com
 //
 //
-//  VehicleStateType.swift
+//  AAPricingType.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 29/11/2017.
+//  Created by Mikk Rätsep on 30/01/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-protocol VehicleStateType: AABinaryInitable, VehicleState {
+public enum AAPricingType: UInt8 {
 
+    case startingFee    = 0x00
+    case perMinute      = 0x01
+    case perKWh         = 0x02
 }

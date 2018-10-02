@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  PricingTariff.swift
+//  AAPricingTariff.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 30/01/2018.
@@ -29,56 +29,51 @@
 import Foundation
 
 
-public struct PricingTariff: AAItem {
+public struct AAPricingTariff {
 
-    public let type: PricingType
     public let currency: String
     public let price: Float
-
-
-    // MARK: AAItem
-
-    static var size: Int = 8
+    public let type: AAPricingType
 
 
     // MARK: Init
 
-    public init(type: PricingType, currency: String, price: Float) {
-        self.type = type
+    public init(currency: String, price: Float, type: AAPricingType) {
         self.currency = currency
         self.price = price
+        self.type = type
     }
 }
 
-extension PricingTariff: AABinaryInitable {
+extension AAPricingTariff: AAItemDynamicSize {
+
+    static var greaterOrEqualSize: Int = 8
+    
 
     init?(bytes: [UInt8]) {
-        guard let type = PricingType(rawValue: bytes[0]) else {
-            return nil
-        }
-
-        guard let currency = String(bytes: bytes[1..<4], encoding: .utf8) else {
-            return nil
+        guard let type = AAPricingType(rawValue: bytes[0]),
+            let currency = String(bytes: bytes.suffix(from: 5), encoding: .utf8) else {
+                return nil
         }
 
         self.type = type
+        self.price = Float(bytes[1 ... 4])
         self.currency = currency
-        self.price = Float(bytes.suffix(from: 4))
     }
 }
 
-extension PricingTariff: Equatable {
+extension AAPricingTariff: Equatable {
 
-    public static func ==(lhs: PricingTariff, rhs: PricingTariff) -> Bool {
+    public static func ==(lhs: AAPricingTariff, rhs: AAPricingTariff) -> Bool {
         return (lhs.type == rhs.type) &&
             (lhs.currency == rhs.currency) &&
             (lhs.price == rhs.price)
     }
 }
 
-extension PricingTariff: AAPropertyConvertable {
+extension AAPricingTariff: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
-        return [type.rawValue] + currency.propertyValue + price.propertyValue
+        return [type.rawValue] + price.propertyValue + currency.propertyValue
     }
 }

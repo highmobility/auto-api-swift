@@ -63,7 +63,7 @@ class NaviDestinationTests: XCTestCase {
             0x42, 0x65, 0x72, 0x6c, 0x69, 0x6e  // Berlin
         ]
 
-        let coordinate = Coordinate(latitude: 52.520008, longitude: 13.404954)
+        let coordinate = AACoordinate(latitude: 52.520008, longitude: 13.404954)
         let destination = NaviDestination.Destination(coordinate: coordinate, name: "Berlin")
 
         XCTAssertEqual(NaviDestination.setDestination(destination), bytes)

@@ -19,20 +19,23 @@
 // licensing@high-mobility.com
 //
 //
-//  PlugType.swift
+//  AAAuthenticationState.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 30/01/2018.
+//  Created by Mikk Rätsep on 02/10/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum PlugType: UInt8 {
+public enum AAAuthenticationState: UInt8 {
 
-    case type1                  = 0x00
-    case type2                  = 0x01
-    case combinedChargingSystem = 0x02
-    case CHAdeMO                = 0x03
+    case unauthenticated    = 0x00
+    case authenticated      = 0x01
+    case expired            = 0x02
+}
+
+extension AAAuthenticationState: AAPropertyConvertable {
+    
 }

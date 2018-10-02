@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct TextInput: OutboundCommand {
+public struct TextInput: AAOutboundCommand {
 
 }
 

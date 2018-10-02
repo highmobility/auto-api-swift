@@ -19,17 +19,22 @@
 // licensing@high-mobility.com
 //
 //
-//  FullCommand.swift
+//  AAEnabledState.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 14/12/2017.
+//  Created by Mikk Rätsep on 11/09/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-protocol FullCommand: AAInboundCommand, OutboundCommand, VehicleStateType {
+public enum AAEnabledState: UInt8 {
 
-    init?(properties: AAProperties)
+    case disabled   = 0x00
+    case enabled    = 0x01
+}
+
+extension AAEnabledState: AAPropertyConvertable {
+
 }

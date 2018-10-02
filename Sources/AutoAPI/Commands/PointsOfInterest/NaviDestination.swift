@@ -32,7 +32,7 @@ import Foundation
 public struct NaviDestination: AAFullStandardCommand {
 
     public let arrivalTime: AATime?
-    public let coordinate: Coordinate?
+    public let coordinate: AACoordinate?
     public let distanceTo: UInt16?
     public let name: String?
     public let poiSlotsFree: UInt8?
@@ -46,7 +46,7 @@ public struct NaviDestination: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        coordinate = Coordinate(properties.first(for: 0x01)?.value ?? [])
+        coordinate = AACoordinate(properties.first(for: 0x01)?.value ?? [])
         name = properties.value(for: 0x02)
         poiSlotsFree = properties.value(for: 0x03)
         poiSlotsMax = properties.value(for: 0x04)
@@ -76,10 +76,10 @@ extension NaviDestination: AAMessageTypesGettable {
 public extension NaviDestination {
 
     struct Destination {
-        public let coordinate: Coordinate
+        public let coordinate: AACoordinate
         public let name: String?
 
-        public init(coordinate: Coordinate, name: String?) {
+        public init(coordinate: AACoordinate, name: String?) {
             self.coordinate = coordinate
             self.name = name
         }

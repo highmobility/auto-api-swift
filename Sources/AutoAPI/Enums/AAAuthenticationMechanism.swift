@@ -19,16 +19,18 @@
 // licensing@high-mobility.com
 //
 //
-//  VehicleState.swift
+//  AAAuthenticationMechanism.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 27/11/2017.
+//  Created by Mikk Rätsep on 30/01/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public protocol VehicleState {
+public enum AAAuthenticationMechanism: UInt8 {
 
+    case pin    = 0x00
+    case app    = 0x01
 }

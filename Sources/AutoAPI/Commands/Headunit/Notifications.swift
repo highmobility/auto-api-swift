@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct Notifications: AAInboundCommand, OutboundCommand {
+public struct Notifications: AAInboundCommand, AAOutboundCommand {
 
     public let actionItems: [ActionItem]?
     public let receivedActionID: UInt8?

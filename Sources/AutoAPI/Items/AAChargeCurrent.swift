@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  AuthenticationMechanism.swift
+//  AAChargeCurrent.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 30/01/2018.
@@ -29,8 +29,32 @@
 import Foundation
 
 
-public enum AuthenticationMechanism: UInt8 {
+public struct AAChargeCurrent: AAItem {
 
-    case pin    = 0x00
-    case app    = 0x01
+    public let chargeCurrentDC: Float
+    public let maximumValue: Float
+    public let minimumValue: Float
+
+
+    // MARK: AAItem
+
+    static var size: Int = 12
+}
+
+extension AAChargeCurrent: AABinaryInitable {
+
+    init?(bytes: [UInt8]) {
+        chargeCurrentDC = Float(bytes.prefix(upTo: 4))
+        maximumValue = Float(bytes[4..<8])
+        minimumValue = Float(bytes.suffix(from: 8))
+    }
+}
+
+extension AAChargeCurrent: Equatable {
+
+    public static func ==(lhs: AAChargeCurrent, rhs: AAChargeCurrent) -> Bool {
+        return (lhs.chargeCurrentDC == rhs.chargeCurrentDC) &&
+            (lhs.maximumValue == rhs.maximumValue) &&
+            (lhs.minimumValue == rhs.minimumValue)
+    }
 }

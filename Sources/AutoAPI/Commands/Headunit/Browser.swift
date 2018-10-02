@@ -30,7 +30,7 @@ import Foundation
 
 
 
-public struct Browser: OutboundCommand {
+public struct Browser: AAOutboundCommand {
 
 }
 

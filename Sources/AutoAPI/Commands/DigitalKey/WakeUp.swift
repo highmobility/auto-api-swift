@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct WakeUp: OutboundCommand {
+public struct WakeUp: AAOutboundCommand {
 
 }
 

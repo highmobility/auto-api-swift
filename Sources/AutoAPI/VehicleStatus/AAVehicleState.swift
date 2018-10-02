@@ -19,24 +19,16 @@
 // licensing@high-mobility.com
 //
 //
-//  NetworkSecurity.swift
+//  AAVehicleState.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 30/01/2018.
+//  Created by Mikk Rätsep on 27/11/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum NetworkSecurity: UInt8 {
+public protocol AAVehicleState {
 
-    case none               = 0x00
-    case WEP                = 0x01
-    case WPA_WPA2Personal   = 0x02
-    case WPA2Personal       = 0x03
-}
-
-extension NetworkSecurity: AAPropertyConvertable {
-    
 }

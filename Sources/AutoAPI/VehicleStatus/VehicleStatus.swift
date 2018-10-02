@@ -45,7 +45,7 @@ public struct VehicleStatus: AAInboundCommand {
     public let powerKW: UInt16?
     public let powerTrain: PowerTrain?
     public let salesDesignation: String?
-    public let states: [VehicleState]?
+    public let states: [AAVehicleState]?
     public let vin: String?
 
 
@@ -59,7 +59,7 @@ public struct VehicleStatus: AAInboundCommand {
             return nil
         }
 
-        let stateTypes = AutoAPI.commands.compactMap { $0 as? VehicleStateType.Type }
+        let binaryTypes = AutoAPI.commands.compactMap { $0 as? AABinaryInitable.Type }
 
         // Ordered by the ID
         vin = String(bytes: properties.first(for: 0x01)?.value, encoding: .ascii)
@@ -79,7 +79,7 @@ public struct VehicleStatus: AAInboundCommand {
         displayUnit = DisplayUnit(rawValue: properties.first(for: 0x0F)?.monoValue)
 
         states = properties.flatMap(for: 0x99) { property in
-            stateTypes.flatMapFirst { $0.init(property.value) }
+            binaryTypes.flatMapFirst { $0.init(property.value) as? AAVehicleState }
         }
 
         // Properties

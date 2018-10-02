@@ -56,3 +56,25 @@ extension AAItem {
         self.init(bytes: bytes)
     }
 }
+
+
+protocol AAItemDynamicSize: AAItem {
+
+    static var greaterOrEqualSize: Int { get }
+}
+
+extension AAItemDynamicSize {
+
+    static var size: Int {
+        return greaterOrEqualSize
+    }
+
+
+    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
+        guard binary.count >= Self.size else {
+            return nil
+        }
+
+        self.init(bytes: binary.bytes)
+    }
+}

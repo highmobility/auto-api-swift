@@ -19,42 +19,16 @@
 // licensing@high-mobility.com
 //
 //
-//  ChargeCurrent.swift
+//  AAOutboundCommand.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 30/01/2018.
+//  Created by Mikk Rätsep on 14/12/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct ChargeCurrent: AAItem {
+protocol AAOutboundCommand: AACommand, AAMessageTypesGettable {
 
-    public let chargeCurrentDC: Float
-    public let maximumValue: Float
-    public let minimumValue: Float
-
-
-    // MARK: AAItem
-
-    static var size: Int = 12
-}
-
-extension ChargeCurrent: AABinaryInitable {
-
-    init?(bytes: [UInt8]) {
-        chargeCurrentDC = Float(bytes.prefix(upTo: 4))
-        maximumValue = Float(bytes[4..<8])
-        minimumValue = Float(bytes.suffix(from: 8))
-    }
-}
-
-extension ChargeCurrent: Equatable {
-
-    public static func ==(lhs: ChargeCurrent, rhs: ChargeCurrent) -> Bool {
-        return (lhs.chargeCurrentDC == rhs.chargeCurrentDC) &&
-            (lhs.maximumValue == rhs.maximumValue) &&
-            (lhs.minimumValue == rhs.minimumValue)
-    }
 }

@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct Messaging: AAInboundCommand, OutboundCommand {
+public struct Messaging: AAInboundCommand, AAOutboundCommand {
 
     public let recipientHandle: String?
     public let text: String?

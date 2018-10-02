@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct HeartRate: OutboundCommand {
+public struct HeartRate: AAOutboundCommand {
 
 }
 
