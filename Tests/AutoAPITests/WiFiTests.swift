@@ -59,9 +59,9 @@ class WiFiTests: XCTestCase {
             0x52, 0x4e, 0x55, 0x42, 0x65    // Netork password "ZW3vARNUBe"
         ]
 
-        let network = WiFi.Network(networkSecurity: .WPA2Personal, networkSSID: "HOME", password: "ZW3vARNUBe")
+        let network = AAWiFi.Network(networkSecurity: .WPA2Personal, networkSSID: "HOME", password: "ZW3vARNUBe")
 
-        XCTAssertEqual(WiFi.connectToNetwork(network), bytes)
+        XCTAssertEqual(AAWiFi.connectToNetwork(network), bytes)
     }
 
     func testForgetNetwork() {
@@ -74,7 +74,7 @@ class WiFiTests: XCTestCase {
             0x48, 0x4f, 0x4d, 0x45  // Network name "HOME"
         ]
 
-        XCTAssertEqual(WiFi.forgetNetwork("HOME"), bytes)
+        XCTAssertEqual(AAWiFi.forgetNetwork("HOME"), bytes)
     }
 
     func testGetState() {
@@ -83,7 +83,7 @@ class WiFiTests: XCTestCase {
             0x00        // Message Type for Get Wi Fi State
         ]
 
-        XCTAssertEqual(WiFi.getWifiState, bytes)
+        XCTAssertEqual(AAWiFi.getWifiState, bytes)
     }
 
     func testState() {
@@ -108,7 +108,7 @@ class WiFiTests: XCTestCase {
             0x03        // WPA2 Personal
         ]
 
-        guard let wifi = AutoAPI.parseBinary(bytes) as? WiFi else {
+        guard let wifi = AutoAPI.parseBinary(bytes) as? AAWiFi else {
             return XCTFail("Parsed value is not WiFi")
         }
 

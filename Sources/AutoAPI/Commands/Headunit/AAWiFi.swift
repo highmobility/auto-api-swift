@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  WiFi.swift
+//  AAWiFi.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 30/01/2018.
@@ -29,14 +29,12 @@
 import Foundation
 
 
-public struct WiFi: AAFullStandardCommand {
-
-    public typealias NetworkSSID = String
+public struct AAWiFi: AAFullStandardCommand {
 
     public let connectedState: AAConnectionState?
     public let enabledState: AAEnabledState?
     public let networkSecurity: AANetworkSecurity?
-    public let networkSSID: NetworkSSID?
+    public let networkSSID: AANetworkSSID?
 
 
     // MARK: AAFullStandardCommand
@@ -56,12 +54,32 @@ public struct WiFi: AAFullStandardCommand {
     }
 }
 
-extension WiFi: AAIdentifiable {
+extension AAWiFi: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0059)
+    public static var identifier: AACommandIdentifier = 0x0059
 }
 
-extension WiFi: AAMessageTypesGettable {
+extension AAWiFi: AALegacyGettable {
+
+    public struct Legacy: AALegacyType {
+
+        public enum MessageTypes: UInt8, CaseIterable {
+
+            case getState           = 0x00
+            case state              = 0x01
+            case connectToNetwork   = 0x02
+            case forgetNetwork      = 0x03
+            case setWifiState       = 0x04
+        }
+
+
+        public init(properties: AAProperties) {
+
+        }
+    }
+}
+
+extension AAWiFi: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -69,18 +87,43 @@ extension WiFi: AAMessageTypesGettable {
         case state              = 0x01
         case connectToNetwork   = 0x02
         case forgetNetwork      = 0x03
-        case setWifiState       = 0x04
+        case enableDisable      = 0x04
     }
 }
 
-public extension WiFi {
+
+// MARK: Commands
+
+public extension AAWiFi {
+
+    static var getWifiState: [UInt8] {
+        return commandPrefix(for: .getState)
+    }
+
+
+    static func connectToNetwork(ssid: AANetworkSSID, password: String, security: AANetworkSecurity) -> [UInt8] {
+        return commandPrefix(for: .connectToNetwork) + [ssid.propertyBytes(0x03),
+                                                        password.propertyBytes(0x05),
+                                                        security.propertyBytes(0x04)].propertiesValuesCombined
+    }
+
+    static func enableDisalbe(_ state: AAEnabledState) -> [UInt8] {
+        return commandPrefix(for: .enableDisable) + state.propertyBytes(0x04)
+    }
+
+    static func forgetNetwork(ssid: AANetworkSSID) -> [UInt8] {
+        return commandPrefix(for: .forgetNetwork) + ssid.propertyBytes(0x03)
+    }
+}
+
+public extension AAWiFi.Legacy {
 
     struct Network {
         public let networkSecurity: AANetworkSecurity
-        public let networkSSID: NetworkSSID
+        public let networkSSID: AANetworkSSID
         public let password: String
 
-        public init(networkSecurity: AANetworkSecurity, networkSSID: NetworkSSID, password: String) {
+        public init(networkSecurity: AANetworkSecurity, networkSSID: AANetworkSSID, password: String) {
             self.networkSecurity = networkSecurity
             self.networkSSID = networkSSID
             self.password = password
@@ -94,23 +137,23 @@ public extension WiFi {
             let securityBytes = $0.networkSecurity.propertyBytes(0x04)
             let passwordBytes = $0.password.propertyBytes(0x05)
 
-            return commandPrefix(for: .connectToNetwork) + ssidBytes + securityBytes + passwordBytes
+            return commandPrefix(for: AAWiFi.self, messageType: .connectToNetwork) + ssidBytes + securityBytes + passwordBytes
         }
     }
 
     static var getWifiState: [UInt8] {
-        return commandPrefix(for: .getState)
+        return commandPrefix(for: AAWiFi.self, messageType: .getState)
     }
 
-    static var forgetNetwork: (NetworkSSID) -> [UInt8] {
+    static var forgetNetwork: (AANetworkSSID) -> [UInt8] {
         return {
-            commandPrefix(for: .forgetNetwork) + $0.propertyBytes(0x03)
+            commandPrefix(for: AAWiFi.self, messageType: .forgetNetwork) + $0.propertyBytes(0x03)
         }
     }
 
     static var setWifiState: (AAActiveState) -> [UInt8] {
         return {
-            return commandPrefix(for: .setWifiState) + $0.propertyBytes(0x04)
+            return commandPrefix(for: AAWiFi.self, messageType: .setWifiState) + $0.propertyBytes(0x04)
         }
     }
 }

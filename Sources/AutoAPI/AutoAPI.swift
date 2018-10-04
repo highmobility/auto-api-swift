@@ -34,6 +34,7 @@ import HMUtilities
 public typealias AAGasFlapState = AAChargePortState
 public typealias AAChargingMethod = AAPlugType
 public typealias AACommandIdentifier = UInt16
+public typealias AANetworkSSID = String
 public typealias AAPercentageInt = UInt8
 
 typealias AAPropertyIdentifier = UInt8
@@ -91,7 +92,7 @@ public struct AutoAPI {
                 AAVideoHandover.self,
                 AAWakeUp.self,
                 AAWeatherConditions.self,
-                WiFi.self,
+                AAWiFi.self,
                 AAWindows.self,
                 AAWindscreen.self]
     }
