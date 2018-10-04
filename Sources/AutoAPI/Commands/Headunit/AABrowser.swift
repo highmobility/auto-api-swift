@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Browser.swift
+//  AABrowser.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 13/12/2017.
@@ -30,16 +30,16 @@ import Foundation
 
 
 
-public struct Browser: AAOutboundCommand {
+public struct AABrowser: AAOutboundCommand {
 
 }
 
-extension Browser: AAIdentifiable {
+extension AABrowser: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0049)
+    public static var identifier: AACommandIdentifier = 0x0049
 }
 
-extension Browser: AAMessageTypesGettable {
+extension AABrowser: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -47,11 +47,9 @@ extension Browser: AAMessageTypesGettable {
     }
 }
 
-public extension Browser {
+public extension AABrowser {
 
-    static var loadURL: (URL) -> [UInt8] {
-        return {
-            return commandPrefix(for: .loadURL) + $0.propertyBytes(0x01)
-        }
+    static func loadURL(_ url: URL) -> [UInt8] {
+        return commandPrefix(for: .loadURL) + url.propertyBytes(0x01)
     }
 }

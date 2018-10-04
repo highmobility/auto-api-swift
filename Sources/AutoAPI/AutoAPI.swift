@@ -42,7 +42,7 @@ typealias AAPropertyIdentifier = UInt8
 public struct AutoAPI {
 
     static var commands: [Any] {
-        return [Browser.self,
+        return [AABrowser.self,
                 Capabilities.self,
                 AACharging.self,
                 AAChassisSettings.self,

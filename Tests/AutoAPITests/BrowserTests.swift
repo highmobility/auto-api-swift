@@ -53,6 +53,6 @@ class BrowserTests: XCTestCase {
             return XCTFail("Failed to generate a URL")
         }
 
-        XCTAssertEqual(Browser.loadURL(url), bytes)
+        XCTAssertEqual(AABrowser.loadURL(url), bytes)
     }
 }

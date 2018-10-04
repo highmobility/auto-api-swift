@@ -155,7 +155,7 @@
 		OBJ_343 /* AAWeatherConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* AAWeatherConditions.swift */; };
 		OBJ_344 /* FailureMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* FailureMessage.swift */; };
 		OBJ_345 /* FirmwareVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* FirmwareVersion.swift */; };
-		OBJ_346 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* Browser.swift */; };
+		OBJ_346 /* AABrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* AABrowser.swift */; };
 		OBJ_347 /* Graphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* Graphics.swift */; };
 		OBJ_348 /* Messaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* Messaging.swift */; };
 		OBJ_349 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* Notifications.swift */; };
@@ -495,7 +495,7 @@
 		OBJ_40 /* AAWeatherConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWeatherConditions.swift; sourceTree = "<group>"; };
 		OBJ_41 /* FailureMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureMessage.swift; sourceTree = "<group>"; };
 		OBJ_42 /* FirmwareVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirmwareVersion.swift; sourceTree = "<group>"; };
-		OBJ_44 /* Browser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Browser.swift; sourceTree = "<group>"; };
+		OBJ_44 /* AABrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AABrowser.swift; sourceTree = "<group>"; };
 		OBJ_45 /* Graphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphics.swift; sourceTree = "<group>"; };
 		OBJ_46 /* Messaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messaging.swift; sourceTree = "<group>"; };
 		OBJ_47 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
@@ -923,7 +923,7 @@
 		OBJ_43 /* Headunit */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_44 /* Browser.swift */,
+				OBJ_44 /* AABrowser.swift */,
 				OBJ_45 /* Graphics.swift */,
 				OBJ_46 /* Messaging.swift */,
 				2093A31F213945E1009E43A0 /* Mobile.swift */,
@@ -1321,7 +1321,7 @@
 				20DB154E2097265400A1658B /* DriverCard.swift in Sources */,
 				OBJ_344 /* FailureMessage.swift in Sources */,
 				OBJ_345 /* FirmwareVersion.swift in Sources */,
-				OBJ_346 /* Browser.swift in Sources */,
+				OBJ_346 /* AABrowser.swift in Sources */,
 				OBJ_347 /* Graphics.swift in Sources */,
 				OBJ_348 /* Messaging.swift in Sources */,
 				OBJ_349 /* Notifications.swift in Sources */,
