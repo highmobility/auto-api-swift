@@ -65,7 +65,7 @@ class SeatsTests: XCTestCase {
             0x00        // Seatbelt not fastened
         ]
 
-        guard let seats = AutoAPI.parseBinary(bytes) as? AASeats else {
+        guard let seats = AAAutoAPI.parseBinary(bytes) as? AASeats else {
             return XCTFail("Parsed value is not Seats")
         }
 

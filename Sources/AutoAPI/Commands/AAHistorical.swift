@@ -68,7 +68,7 @@ public struct AAHistorical: AAInboundCommand, AAOutboundCommand {
             return nil
         }
 
-        let binaryTypes = AutoAPI.commands.compactMap { $0 as? AABinaryInitable.Type }
+        let binaryTypes = AAAutoAPI.commands.compactMap { $0 as? AABinaryInitable.Type }
 
         /* Level 8 */
         states = properties.flatMap(for: 0x01) { property in

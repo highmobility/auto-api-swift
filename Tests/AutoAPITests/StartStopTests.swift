@@ -71,7 +71,7 @@ class StartStopTests: XCTestCase {
             0x01        // Automatic engine start-stop system active
         ]
 
-        guard let startStop = AutoAPI.parseBinary(bytes) as? AAStartStop else {
+        guard let startStop = AAAutoAPI.parseBinary(bytes) as? AAStartStop else {
             return XCTFail("Parsed value is not StartStop")
         }
 

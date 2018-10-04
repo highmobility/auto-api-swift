@@ -129,12 +129,12 @@
 		OBJ_308 /* WindscreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_217 /* WindscreenTests.swift */; };
 		OBJ_310 /* AutoAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "AutoAPI::AutoAPI::Product" /* AutoAPI.framework */; };
 		OBJ_311 /* HMUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "HMUtilities::HMUtilities::Product" /* HMUtilities.framework */; };
-		OBJ_318 /* AutoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* AutoAPI.swift */; };
+		OBJ_318 /* AAAutoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* AAAutoAPI.swift */; };
 		OBJ_319 /* AABinaryInitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AABinaryInitable.swift */; };
 		OBJ_320 /* Capabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Capabilities.swift */; };
 		OBJ_321 /* CapabilitiesIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* CapabilitiesIterator.swift */; };
 		OBJ_322 /* Capability.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* Capability.swift */; };
-		OBJ_323 /* SDKVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* SDKVersion.swift */; };
+		OBJ_323 /* AASDKVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* AASDKVersion.swift */; };
 		OBJ_324 /* AACharging.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* AACharging.swift */; };
 		OBJ_325 /* AAChassisSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* AAChassisSettings.swift */; };
 		OBJ_326 /* AAClimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* AAClimate.swift */; };
@@ -156,7 +156,7 @@
 		OBJ_342 /* AALightConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* AALightConditions.swift */; };
 		OBJ_343 /* AAWeatherConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* AAWeatherConditions.swift */; };
 		OBJ_344 /* AAFailureMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* AAFailureMessage.swift */; };
-		OBJ_345 /* FirmwareVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* FirmwareVersion.swift */; };
+		OBJ_345 /* AAFirmwareVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* AAFirmwareVersion.swift */; };
 		OBJ_346 /* AABrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* AABrowser.swift */; };
 		OBJ_347 /* AAGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* AAGraphics.swift */; };
 		OBJ_348 /* AAMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* AAMessaging.swift */; };
@@ -409,7 +409,7 @@
 		OBJ_142 /* AADoor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADoor.swift; sourceTree = "<group>"; };
 		OBJ_143 /* AAItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAItem.swift; sourceTree = "<group>"; };
 		OBJ_149 /* AAPricingTariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPricingTariff.swift; sourceTree = "<group>"; };
-		OBJ_15 /* SDKVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKVersion.swift; sourceTree = "<group>"; };
+		OBJ_15 /* AASDKVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASDKVersion.swift; sourceTree = "<group>"; };
 		OBJ_150 /* AASeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASeat.swift; sourceTree = "<group>"; };
 		OBJ_151 /* AATire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATire.swift; sourceTree = "<group>"; };
 		OBJ_152 /* AAWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWindow.swift; sourceTree = "<group>"; };
@@ -496,7 +496,7 @@
 		OBJ_39 /* AALightConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALightConditions.swift; sourceTree = "<group>"; };
 		OBJ_40 /* AAWeatherConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWeatherConditions.swift; sourceTree = "<group>"; };
 		OBJ_41 /* AAFailureMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFailureMessage.swift; sourceTree = "<group>"; };
-		OBJ_42 /* FirmwareVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirmwareVersion.swift; sourceTree = "<group>"; };
+		OBJ_42 /* AAFirmwareVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFirmwareVersion.swift; sourceTree = "<group>"; };
 		OBJ_44 /* AABrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AABrowser.swift; sourceTree = "<group>"; };
 		OBJ_45 /* AAGraphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAGraphics.swift; sourceTree = "<group>"; };
 		OBJ_46 /* AAMessaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAMessaging.swift; sourceTree = "<group>"; };
@@ -534,7 +534,7 @@
 		OBJ_86 /* AAFatigueLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFatigueLevel.swift; sourceTree = "<group>"; };
 		OBJ_87 /* AAFlasherState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFlasherState.swift; sourceTree = "<group>"; };
 		OBJ_88 /* AAGearMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAGearMode.swift; sourceTree = "<group>"; };
-		OBJ_9 /* AutoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoAPI.swift; sourceTree = "<group>"; };
+		OBJ_9 /* AAAutoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAAutoAPI.swift; sourceTree = "<group>"; };
 		OBJ_90 /* AAKeyfobRelativePosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAKeyfobRelativePosition.swift; sourceTree = "<group>"; };
 		OBJ_91 /* AAFrontLightState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFrontLightState.swift; sourceTree = "<group>"; };
 		OBJ_92 /* AALockState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALockState.swift; sourceTree = "<group>"; };
@@ -712,7 +712,7 @@
 				OBJ_33 /* DigitalKey */,
 				OBJ_38 /* Environment */,
 				OBJ_41 /* AAFailureMessage.swift */,
-				OBJ_42 /* FirmwareVersion.swift */,
+				OBJ_42 /* AAFirmwareVersion.swift */,
 				OBJ_43 /* Headunit */,
 				OBJ_51 /* Health */,
 				20DB153E20970F3700A1658B /* HeavyDuty */,
@@ -1067,10 +1067,10 @@
 		OBJ_8 /* AutoAPI */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_9 /* AutoAPI.swift */,
+				OBJ_9 /* AAAutoAPI.swift */,
 				OBJ_10 /* AABinaryInitable.swift */,
 				OBJ_11 /* Capability */,
-				OBJ_15 /* SDKVersion.swift */,
+				OBJ_15 /* AASDKVersion.swift */,
 				OBJ_16 /* Commands */,
 				OBJ_75 /* Enums */,
 				OBJ_112 /* Extensions */,
@@ -1281,14 +1281,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_318 /* AutoAPI.swift in Sources */,
+				OBJ_318 /* AAAutoAPI.swift in Sources */,
 				OBJ_319 /* AABinaryInitable.swift in Sources */,
 				OBJ_320 /* Capabilities.swift in Sources */,
 				20DB1548209718DB00A1658B /* AAWorkingState.swift in Sources */,
 				OBJ_321 /* CapabilitiesIterator.swift in Sources */,
 				20896EEC2147A024003A7A63 /* AAEnabledState.swift in Sources */,
 				OBJ_322 /* Capability.swift in Sources */,
-				OBJ_323 /* SDKVersion.swift in Sources */,
+				OBJ_323 /* AASDKVersion.swift in Sources */,
 				20896EEE2147DE32003A7A63 /* Double+Extensions.swift in Sources */,
 				OBJ_324 /* AACharging.swift in Sources */,
 				OBJ_325 /* AAChassisSettings.swift in Sources */,
@@ -1316,7 +1316,7 @@
 				OBJ_343 /* AAWeatherConditions.swift in Sources */,
 				20DB154E2097265400A1658B /* AADriverCard.swift in Sources */,
 				OBJ_344 /* AAFailureMessage.swift in Sources */,
-				OBJ_345 /* FirmwareVersion.swift in Sources */,
+				OBJ_345 /* AAFirmwareVersion.swift in Sources */,
 				OBJ_346 /* AABrowser.swift in Sources */,
 				OBJ_347 /* AAGraphics.swift in Sources */,
 				OBJ_348 /* AAMessaging.swift in Sources */,

@@ -128,7 +128,7 @@ class RaceTests: XCTestCase {
             0x01        // Accelerator pedal switch active, pedal fully depressed
         ]
 
-        guard let race = AutoAPI.parseBinary(bytes) as? AARace else {
+        guard let race = AAAutoAPI.parseBinary(bytes) as? AARace else {
             return XCTFail("Parsed value is not Race")
         }
 

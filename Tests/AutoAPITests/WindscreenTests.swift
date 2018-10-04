@@ -113,7 +113,7 @@ class WindscreenTests: XCTestCase {
             0x00, 0x78  // 0 min UTC time offset
         ]
 
-        guard let windscreen = AutoAPI.parseBinary(bytes) as? AAWindscreen else {
+        guard let windscreen = AAAutoAPI.parseBinary(bytes) as? AAWindscreen else {
             return XCTFail("Parsed value is not Windscreen")
         }
 

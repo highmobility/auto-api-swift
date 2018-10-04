@@ -59,7 +59,7 @@ public struct VehicleStatus: AAInboundCommand {
             return nil
         }
 
-        let binaryTypes = AutoAPI.commands.compactMap { $0 as? AABinaryInitable.Type }
+        let binaryTypes = AAAutoAPI.commands.compactMap { $0 as? AABinaryInitable.Type }
 
         // Ordered by the ID
         vin = String(bytes: properties.first(for: 0x01)?.value, encoding: .ascii)

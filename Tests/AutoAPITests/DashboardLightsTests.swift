@@ -73,7 +73,7 @@ class DashboardLightsTests: XCTestCase {
             0x00        // Inactive
         ]
 
-        guard let dashboardLights = AutoAPI.parseBinary(bytes) as? AADashboardLights else {
+        guard let dashboardLights = AAAutoAPI.parseBinary(bytes) as? AADashboardLights else {
             return XCTFail("Parsed value is not DashboardLights")
         }
 

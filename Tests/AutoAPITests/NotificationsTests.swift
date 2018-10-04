@@ -48,7 +48,7 @@ class NotificationsTests: XCTestCase {
             0x02        // Message Type for Clear Notification
         ]
 
-        guard let notifications = AutoAPI.parseBinary(bytes) as? AANotifications else {
+        guard let notifications = AAAutoAPI.parseBinary(bytes) as? AANotifications else {
             return XCTFail("Parsed value is not Notifications")
         }
 
@@ -91,7 +91,7 @@ class NotificationsTests: XCTestCase {
             0x59, 0x65, 0x73    // Name is "Yes"
         ]
 
-        guard let notifications = AutoAPI.parseBinary(bytes) as? AANotifications else {
+        guard let notifications = AAAutoAPI.parseBinary(bytes) as? AANotifications else {
             return XCTFail("Parsed value is not Notifications")
         }
 
@@ -156,7 +156,7 @@ class NotificationsTests: XCTestCase {
             0xfe  // Action Item identifier selected by user
         ]
 
-        guard let notifications = AutoAPI.parseBinary(bytes) as? AANotifications else {
+        guard let notifications = AAAutoAPI.parseBinary(bytes) as? AANotifications else {
             return XCTFail("Parsed value is not Notifications")
         }
 

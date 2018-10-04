@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  FirmwareVersion.swift
+//  AAFirmwareVersion.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 28/11/2017.
@@ -29,15 +29,15 @@
 import Foundation
 
 
-public struct FirmwareVersion: AAInboundCommand {
+public struct AAFirmwareVersion: AAInboundCommand {
 
     public let applicationVersion: String?
-    public let hmkitVersion: SDKVersion?
+    public let hmkitVersion: AASDKVersion?
     public let hmkitBuildName: String?
 
 
     @available(*, deprecated, renamed: "hmkitVersion")
-    public var carSDKVersion: SDKVersion? {
+    public var carSDKVersion: AASDKVersion? {
         return hmkitVersion
     }
 
@@ -58,7 +58,7 @@ public struct FirmwareVersion: AAInboundCommand {
         }
 
         // Ordered by the ID
-        hmkitVersion = SDKVersion(properties.first(for: 0x01)?.value ?? [])
+        hmkitVersion = AASDKVersion(properties.first(for: 0x01)?.value ?? [])
         hmkitBuildName = properties.value(for: 0x02)
         applicationVersion = properties.value(for: 0x03)
 
@@ -67,12 +67,12 @@ public struct FirmwareVersion: AAInboundCommand {
     }
 }
 
-extension FirmwareVersion: AAIdentifiable {
+extension AAFirmwareVersion: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0003)
+    public static var identifier: AACommandIdentifier = 0x0003
 }
 
-extension FirmwareVersion: AAMessageTypesGettable {
+extension AAFirmwareVersion: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -81,7 +81,10 @@ extension FirmwareVersion: AAMessageTypesGettable {
     }
 }
 
-public extension FirmwareVersion {
+
+// MARK: Commands
+
+public extension AAFirmwareVersion {
 
     static var getVersion: [UInt8] {
         return commandPrefix(for: .getVersion)

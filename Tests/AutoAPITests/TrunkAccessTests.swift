@@ -81,7 +81,7 @@ class TrunkAccessTests: XCTestCase {
             0x01        // Open
         ]
 
-        guard let trunkAccess = AutoAPI.parseBinary(bytes) as? AATrunkAccess else {
+        guard let trunkAccess = AAAutoAPI.parseBinary(bytes) as? AATrunkAccess else {
             return XCTFail("Parsed value is not TrunkAccess")
         }
 

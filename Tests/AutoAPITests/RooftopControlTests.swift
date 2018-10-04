@@ -81,7 +81,7 @@ class RooftopControlTests: XCTestCase {
             0x00        // Rooftop is fully closed
         ]
 
-        guard let rooftopControl = AutoAPI.parseBinary(bytes) as? AARooftopControl else {
+        guard let rooftopControl = AAAutoAPI.parseBinary(bytes) as? AARooftopControl else {
             return XCTFail("Parsed value is not RooftopControl")
         }
 

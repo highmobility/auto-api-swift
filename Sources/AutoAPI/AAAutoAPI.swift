@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  AutoAPI.swift
+//  AAAutoAPI.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 23/11/2017.
@@ -30,7 +30,7 @@ import Foundation
 import HMUtilities
 
 
-public typealias AAAutoAPI = AutoAPI
+public typealias AutoAPI = AAAutoAPI
 public typealias AAGasFlapState = AAChargePortState
 public typealias AAChargingMethod = AAPlugType
 public typealias AACommandIdentifier = UInt16
@@ -40,7 +40,7 @@ public typealias AAPercentageInt = UInt8
 typealias AAPropertyIdentifier = UInt8
 
 
-public struct AutoAPI {
+public struct AAAutoAPI {
 
     static var commands: [Any] {
         return [AABrowser.self,
@@ -55,7 +55,7 @@ public struct AutoAPI {
                 AADriverFatigue.self,
                 AAEngine.self,
                 AAFailureMessage.self,
-                FirmwareVersion.self,
+                AAFirmwareVersion.self,
                 AAFueling.self,
                 AAGraphics.self,
                 AAHeartRate.self,

@@ -66,7 +66,7 @@ class VehicleLocationTests: XCTestCase {
             0x43, 0x05, 0x80, 0x00  // 133.5 meters above the WGS 84 reference ellipsoid point
         ]
 
-        guard let vehicleLocation = AutoAPI.parseBinary(bytes) as? AAVehicleLocation else {
+        guard let vehicleLocation = AAAutoAPI.parseBinary(bytes) as? AAVehicleLocation else {
             return XCTFail("Parsed value is not VehicleLocation")
         }
 

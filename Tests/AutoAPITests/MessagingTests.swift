@@ -74,7 +74,7 @@ class MessagingTests: XCTestCase {
             0x79, 0x6f, 0x75, 0x20, 0x74, 0x6f, 0x6f    // "Hello you too"
         ]
 
-        guard let messaging = AutoAPI.parseBinary(bytes) as? AAMessaging else {
+        guard let messaging = AAAutoAPI.parseBinary(bytes) as? AAMessaging else {
             return XCTFail("Parsed value is not Messaging")
         }
 

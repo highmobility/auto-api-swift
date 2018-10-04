@@ -88,7 +88,7 @@ class HonkHornFlashLightsTests: XCTestCase {
             0x02        // Left flasher active
         ]
 
-        guard let honkHornFlashLights = AutoAPI.parseBinary(bytes) as? AAHonkHornFlashFlights else {
+        guard let honkHornFlashLights = AAAutoAPI.parseBinary(bytes) as? AAHonkHornFlashFlights else {
             return XCTFail("Parsed value is not HonkHornFlashFlights")
         }
 

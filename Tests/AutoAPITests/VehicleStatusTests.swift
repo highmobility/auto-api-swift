@@ -133,7 +133,7 @@ class VehicleStatusTests: XCTestCase {
             0x02        // Remote Control Started
         ]
 
-        guard let vehicleStatus = AutoAPI.parseBinary(bytes) as? VehicleStatus else {
+        guard let vehicleStatus = AAAutoAPI.parseBinary(bytes) as? VehicleStatus else {
             return XCTFail("Parsed value is not VehicleStatus")
         }
 

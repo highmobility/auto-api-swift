@@ -31,7 +31,7 @@ import Foundation
 
 public struct CapabilitiesIterator: IteratorProtocol, AAPropertiesInitable {
 
-    private let commandTypes = AutoAPI.commands.compactMap { $0 as? AACommand.Type }
+    private let commandTypes = AAAutoAPI.commands.compactMap { $0 as? AACommand.Type }
 
 
     // MARK: IteratorProtocol

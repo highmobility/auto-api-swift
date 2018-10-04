@@ -111,7 +111,7 @@ class DoorLocksTests: XCTestCase {
             0x01,       // Lock locked
         ]
 
-        guard let doorLocks = AutoAPI.parseBinary(bytes) as? AADoorLocks else {
+        guard let doorLocks = AAAutoAPI.parseBinary(bytes) as? AADoorLocks else {
             return XCTFail("Parsed value is not DoorLocks")
         }
 

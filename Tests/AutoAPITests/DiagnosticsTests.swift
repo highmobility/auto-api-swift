@@ -169,7 +169,7 @@ class DiagnosticsTests: XCTestCase {
             0x00, 0x41  // The wheel base speed is 65km/h
         ]
 
-        guard let diagnostics = AutoAPI.parseBinary(bytes) as? AADiagnostics else {
+        guard let diagnostics = AAAutoAPI.parseBinary(bytes) as? AADiagnostics else {
             return XCTFail("Parsed value is not Diagnostics")
         }
 

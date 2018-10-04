@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  SDKVersion.swift
+//  AASDKVersion.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 28/11/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct SDKVersion {
+public struct AASDKVersion {
 
     public let major: UInt8
     public let minor: UInt8
@@ -40,7 +40,7 @@ public struct SDKVersion {
     }
 }
 
-extension SDKVersion: AABinaryInitable {
+extension AASDKVersion: AABinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
         guard binary.count == 3 else {

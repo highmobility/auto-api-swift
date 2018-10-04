@@ -183,7 +183,7 @@ class ChargingTests: XCTestCase {
             0x00, 0x00  // 0 min UTC time offset
         ]
 
-        guard let charging = AutoAPI.parseBinary(bytes) as? AACharging else {
+        guard let charging = AAAutoAPI.parseBinary(bytes) as? AACharging else {
             return XCTFail("Parsed value is not Charging")
         }
 

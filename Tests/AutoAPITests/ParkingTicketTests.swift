@@ -134,7 +134,7 @@ class ParkingTicketTests: XCTestCase {
             0x00, 0x00  // 0min UTF time offset
         ]
 
-        guard let parkingTicket = AutoAPI.parseBinary(bytes) as? AAParkingTicket else {
+        guard let parkingTicket = AAAutoAPI.parseBinary(bytes) as? AAParkingTicket else {
             return XCTFail("Parsed value is not ParkingTicket")
         }
 
