@@ -46,6 +46,9 @@ extension AAWakeUp: AAMessageTypesGettable {
     }
 }
 
+
+// MARK: Commands
+
 public extension AAWakeUp {
 
     static var wakeUp: [UInt8] {

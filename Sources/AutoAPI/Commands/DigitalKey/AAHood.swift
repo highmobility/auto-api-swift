@@ -61,6 +61,9 @@ extension AAHood: AAMessageTypesGettable {
     }
 }
 
+
+// MARK: Commands
+
 public extension AAHood {
 
     static var getHoodState: [UInt8] {

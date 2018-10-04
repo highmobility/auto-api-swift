@@ -43,12 +43,12 @@
 		20896EE4214799C1003A7A63 /* AAChosenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EE3214799C1003A7A63 /* AAChosenState.swift */; };
 		20896EE621479A8F003A7A63 /* AAActiveState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EE521479A8F003A7A63 /* AAActiveState.swift */; };
 		20896EE821479DC5003A7A63 /* AAMovingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EE721479DC5003A7A63 /* AAMovingState.swift */; };
-		20896EEA21479F4A003A7A63 /* ConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EE921479F4A003A7A63 /* ConnectionState.swift */; };
+		20896EEA21479F4A003A7A63 /* AAConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EE921479F4A003A7A63 /* AAConnectionState.swift */; };
 		20896EEC2147A024003A7A63 /* AAEnabledState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EEB2147A024003A7A63 /* AAEnabledState.swift */; };
 		20896EEE2147DE32003A7A63 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EED2147DE32003A7A63 /* Double+Extensions.swift */; };
 		20896EF02147DEC9003A7A63 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EEF2147DEC9003A7A63 /* Double+Extensions.swift */; };
 		2093A31E213941E7009E43A0 /* AAAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A31D213941E7009E43A0 /* AAAvailability.swift */; };
-		2093A320213945E1009E43A0 /* Mobile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A31F213945E1009E43A0 /* Mobile.swift */; };
+		2093A320213945E1009E43A0 /* AAMobile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A31F213945E1009E43A0 /* AAMobile.swift */; };
 		2093A32221394EF8009E43A0 /* AAHood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A32121394EF8009E43A0 /* AAHood.swift */; };
 		2093A32421395362009E43A0 /* AAUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A32321395362009E43A0 /* AAUsage.swift */; };
 		209462632162489F0009E9AD /* AAHistorical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209462622162489F0009E9AD /* AAHistorical.swift */; };
@@ -325,12 +325,12 @@
 		20896EE3214799C1003A7A63 /* AAChosenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChosenState.swift; sourceTree = "<group>"; };
 		20896EE521479A8F003A7A63 /* AAActiveState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAActiveState.swift; sourceTree = "<group>"; };
 		20896EE721479DC5003A7A63 /* AAMovingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAMovingState.swift; sourceTree = "<group>"; };
-		20896EE921479F4A003A7A63 /* ConnectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionState.swift; sourceTree = "<group>"; };
+		20896EE921479F4A003A7A63 /* AAConnectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAConnectionState.swift; sourceTree = "<group>"; };
 		20896EEB2147A024003A7A63 /* AAEnabledState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAEnabledState.swift; sourceTree = "<group>"; };
 		20896EED2147DE32003A7A63 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		20896EEF2147DEC9003A7A63 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		2093A31D213941E7009E43A0 /* AAAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAAvailability.swift; sourceTree = "<group>"; };
-		2093A31F213945E1009E43A0 /* Mobile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mobile.swift; sourceTree = "<group>"; };
+		2093A31F213945E1009E43A0 /* AAMobile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAMobile.swift; sourceTree = "<group>"; };
 		2093A32121394EF8009E43A0 /* AAHood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHood.swift; sourceTree = "<group>"; };
 		2093A32321395362009E43A0 /* AAUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAUsage.swift; sourceTree = "<group>"; };
 		209462622162489F0009E9AD /* AAHistorical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHistorical.swift; sourceTree = "<group>"; };
@@ -926,7 +926,7 @@
 				OBJ_44 /* AABrowser.swift */,
 				OBJ_45 /* AAGraphics.swift */,
 				OBJ_46 /* AAMessaging.swift */,
-				2093A31F213945E1009E43A0 /* Mobile.swift */,
+				2093A31F213945E1009E43A0 /* AAMobile.swift */,
 				OBJ_47 /* Notifications.swift */,
 				OBJ_48 /* TextInput.swift */,
 				OBJ_49 /* VideoHandover.swift */,
@@ -1021,7 +1021,7 @@
 				OBJ_81 /* AAChargePortState.swift */,
 				OBJ_82 /* AAChargingState.swift */,
 				20896EE3214799C1003A7A63 /* AAChosenState.swift */,
-				20896EE921479F4A003A7A63 /* ConnectionState.swift */,
+				20896EE921479F4A003A7A63 /* AAConnectionState.swift */,
 				OBJ_83 /* ControlMode.swift */,
 				20F7903C2135713A003BDFA2 /* AAConvertibleRoofState.swift */,
 				205C517A208F430100B55ACE /* AACruiseControlLimiter.swift */,
@@ -1376,7 +1376,7 @@
 				OBJ_388 /* AALockState.swift in Sources */,
 				20BB171D2142604100A3FDB5 /* Date+Extensions.swift in Sources */,
 				20DB153B2096F7DA00A1658B /* Gearbox.swift in Sources */,
-				2093A320213945E1009E43A0 /* Mobile.swift in Sources */,
+				2093A320213945E1009E43A0 /* AAMobile.swift in Sources */,
 				OBJ_389 /* AANeedsReplacement.swift in Sources */,
 				OBJ_390 /* AANetworkSecurity.swift in Sources */,
 				20F7903721356C54003BDFA2 /* AACheckControlMessage.swift in Sources */,
@@ -1432,7 +1432,7 @@
 				OBJ_433 /* AACoordinate.swift in Sources */,
 				2024BBF42154CFA400AA5261 /* AAClimateSettings.swift in Sources */,
 				20B0C145215D1ECE005FA699 /* AATireTemperature.swift in Sources */,
-				20896EEA21479F4A003A7A63 /* ConnectionState.swift in Sources */,
+				20896EEA21479F4A003A7A63 /* AAConnectionState.swift in Sources */,
 				OBJ_434 /* AADoor.swift in Sources */,
 				OBJ_435 /* AAItem.swift in Sources */,
 				205C516B208F26CE00B55ACE /* AADashboardLights.swift in Sources */,

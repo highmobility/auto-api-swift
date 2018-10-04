@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Mobile.swift
+//  AAMobile.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 31/08/2018.
@@ -29,9 +29,9 @@
 import Foundation
 
 
-public struct Mobile: AAFullStandardCommand {
+public struct AAMobile: AAFullStandardCommand {
 
-    public let mobileConnected: ConnectionState?
+    public let mobileConnected: AAConnectionState?
 
 
     // MARK: AAFullStandardCommand
@@ -41,7 +41,7 @@ public struct Mobile: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        mobileConnected = ConnectionState(rawValue: properties.first(for: 0x01)?.monoValue)
+        mobileConnected = AAConnectionState(rawValue: properties.first(for: 0x01)?.monoValue)
 
 
         // Properties
@@ -49,12 +49,12 @@ public struct Mobile: AAFullStandardCommand {
     }
 }
 
-extension Mobile: AAIdentifiable {
+extension AAMobile: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0066)
+    public static var identifier: AACommandIdentifier = 0x0066
 }
 
-extension Mobile: AAMessageTypesGettable {
+extension AAMobile: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -63,7 +63,10 @@ extension Mobile: AAMessageTypesGettable {
     }
 }
 
-public extension Mobile {
+
+// MARK: Commands
+
+public extension AAMobile {
 
     static var getConnectionState: [UInt8] {
         return commandPrefix(for: .getConnectionState)

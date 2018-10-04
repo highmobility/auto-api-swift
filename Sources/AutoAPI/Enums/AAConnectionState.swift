@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  ConnectionState.swift
+//  AAConnectionState.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 11/09/2018.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public enum ConnectionState: UInt8 {
+public enum AAConnectionState: UInt8 {
 
     case disconnected   = 0x00
     case connected      = 0x01

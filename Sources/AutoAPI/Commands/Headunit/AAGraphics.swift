@@ -46,6 +46,9 @@ extension AAGraphics: AAMessageTypesGettable {
     }
 }
 
+
+// MARK: Commands
+
 public extension AAGraphics {
 
     static func displayImage(_ url: URL) -> [UInt8] {

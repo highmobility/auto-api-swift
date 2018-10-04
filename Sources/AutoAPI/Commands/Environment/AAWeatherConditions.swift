@@ -62,6 +62,9 @@ extension AAWeatherConditions: AAMessageTypesGettable {
     }
 }
 
+
+// MARK: Commands
+
 public extension AAWeatherConditions {
 
     static var getConditions: [UInt8] {

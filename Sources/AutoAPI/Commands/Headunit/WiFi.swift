@@ -33,7 +33,7 @@ public struct WiFi: AAFullStandardCommand {
 
     public typealias NetworkSSID = String
 
-    public let connectedState: ConnectionState?
+    public let connectedState: AAConnectionState?
     public let enabledState: AAEnabledState?
     public let networkSecurity: AANetworkSecurity?
     public let networkSSID: NetworkSSID?
@@ -47,7 +47,7 @@ public struct WiFi: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         enabledState = AAEnabledState(rawValue: properties.first(for: 0x01)?.monoValue)
-        connectedState = ConnectionState(rawValue: properties.first(for: 0x02)?.monoValue)
+        connectedState = AAConnectionState(rawValue: properties.first(for: 0x02)?.monoValue)
         networkSSID = properties.value(for: 0x03)
         networkSecurity = AANetworkSecurity(rawValue: properties.first(for: 0x04)?.monoValue)
 

@@ -67,7 +67,7 @@ public struct AutoAPI {
                 AALights.self,
                 AAMaintenance.self,
                 AAMessaging.self,
-                Mobile.self,
+                AAMobile.self,
                 NaviDestination.self,
                 Notifications.self,
                 AAOffroad.self,
