@@ -43,7 +43,7 @@ class FuelingTests: XCTestCase {
             0x00 // Message Type for Get Gas Flap State
         ]
 
-        XCTAssertEqual(Fueling.getGasFlapState, bytes)
+        XCTAssertEqual(AAFueling.getGasFlapState, bytes)
     }
 
     func testState() {
@@ -56,7 +56,7 @@ class FuelingTests: XCTestCase {
             0x01        // Gas flap open
         ]
 
-        guard let fueling = AutoAPI.parseBinary(bytes) as? Fueling else {
+        guard let fueling = AutoAPI.parseBinary(bytes) as? AAFueling else {
             return XCTFail("Parsed value is not Fueling")
         }
 
@@ -69,6 +69,6 @@ class FuelingTests: XCTestCase {
             0x02        // Message Type for Open Gas Flap
         ]
 
-        XCTAssertEqual(Fueling.openGasFlap, bytes)
+        XCTAssertEqual(AAFueling.openGasFlap, bytes)
     }
 }

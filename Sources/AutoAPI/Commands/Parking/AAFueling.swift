@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Fueling.swift
+//  AAFueling.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 12/12/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct Fueling: AAFullStandardCommand {
+public struct AAFueling: AAFullStandardCommand {
 
     public let gasFlapState: AAGasFlapState?
 
@@ -48,12 +48,12 @@ public struct Fueling: AAFullStandardCommand {
     }
 }
 
-extension Fueling: AAIdentifiable {
+extension AAFueling: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0040)
+    public static var identifier: AACommandIdentifier = 0x0040
 }
 
-extension Fueling: AAMessageTypesGettable {
+extension AAFueling: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -63,7 +63,10 @@ extension Fueling: AAMessageTypesGettable {
     }
 }
 
-public extension Fueling {
+
+// MARK: Commands
+
+public extension AAFueling {
 
     static var getGasFlapState: [UInt8] {
         return commandPrefix(for: .getGasFlapState)
