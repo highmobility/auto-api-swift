@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  NaviDestination.swift
+//  AANaviDestination.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 12/12/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct NaviDestination: AAFullStandardCommand {
+public struct AANaviDestination: AAFullStandardCommand {
 
     public let arrivalTime: AATime?
     public let coordinate: AACoordinate?
@@ -58,12 +58,12 @@ public struct NaviDestination: AAFullStandardCommand {
     }
 }
 
-extension NaviDestination: AAIdentifiable {
+extension AANaviDestination: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0031)
+    public static var identifier: AACommandIdentifier = 0x0031
 }
 
-extension NaviDestination: AAMessageTypesGettable {
+extension AANaviDestination: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -73,29 +73,50 @@ extension NaviDestination: AAMessageTypesGettable {
     }
 }
 
-public extension NaviDestination {
 
-    struct Destination {
-        public let coordinate: AACoordinate
-        public let name: String?
+// MARK: Commands
 
-        public init(coordinate: AACoordinate, name: String?) {
-            self.coordinate = coordinate
-            self.name = name
-        }
-    }
-
+public extension AANaviDestination {
 
     static var getDestination: [UInt8] {
         return commandPrefix(for: .getDestination)
     }
 
-    static var setDestination: (Destination) -> [UInt8] {
-        return {
-            let coordinateBytes = $0.coordinate.propertyBytes(0x01)
-            let nameBytes: [UInt8] = $0.name?.propertyBytes(0x02) ?? []
 
-            return commandPrefix(for: .setDestination) + coordinateBytes + nameBytes
+    static func setDestination(coordinate: AACoordinate, name: String?) -> [UInt8] {
+        return commandPrefix(for: .setDestination) + [coordinate.propertyBytes(0x01),
+                                                      name?.propertyBytes(0x02)].propertiesValuesCombined
+    }
+}
+
+public extension AANaviDestination {
+
+    struct Legacy {
+
+        typealias MessageTypes = AANaviDestination.MessageTypes
+
+        struct Destination {
+            public let coordinate: AACoordinate
+            public let name: String?
+
+            public init(coordinate: AACoordinate, name: String?) {
+                self.coordinate = coordinate
+                self.name = name
+            }
+        }
+
+
+        static var getDestination: [UInt8] {
+            return commandPrefix(for: AANaviDestination.self, messageType: .getDestination)
+        }
+
+        static var setDestination: (Destination) -> [UInt8] {
+            return {
+                let coordinateBytes = $0.coordinate.propertyBytes(0x01)
+                let nameBytes: [UInt8] = $0.name?.propertyBytes(0x02) ?? []
+
+                return commandPrefix(for: AANaviDestination.self, messageType: .setDestination) + coordinateBytes + nameBytes
+            }
         }
     }
 }

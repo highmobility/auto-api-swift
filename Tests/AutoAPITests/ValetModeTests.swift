@@ -46,7 +46,7 @@ class ValetModeTests: XCTestCase {
             0x01        // Activate
         ]
 
-        XCTAssertEqual(ValetMode.activateValetMode(true), bytes)
+        XCTAssertEqual(AAValetMode.activateValetMode(true), bytes)
     }
 
     func testGetState() {
@@ -55,7 +55,7 @@ class ValetModeTests: XCTestCase {
             0x00        // Message Type for Get Valet Mode
         ]
 
-        XCTAssertEqual(ValetMode.getValetMode, bytes)
+        XCTAssertEqual(AAValetMode.getValetMode, bytes)
     }
 
     func testState() {
@@ -68,7 +68,7 @@ class ValetModeTests: XCTestCase {
             0x01        // Activated
         ]
 
-        guard let valetMode = AutoAPI.parseBinary(bytes) as? ValetMode else {
+        guard let valetMode = AutoAPI.parseBinary(bytes) as? AAValetMode else {
             return XCTFail("Parsed value is not ValetMode")
         }
 

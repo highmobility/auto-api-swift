@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  ValetMode.swift
+//  AAValetMode.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 12/12/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct ValetMode: AAFullStandardCommand {
+public struct AAValetMode: AAFullStandardCommand {
 
     public let state: AAActiveState?
 
@@ -41,37 +41,39 @@ public struct ValetMode: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        state = AAActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
+        state = properties.value(for: 0x01)
 
         // Properties
         self.properties = properties
     }
 }
 
-extension ValetMode: AAIdentifiable {
+extension AAValetMode: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0028)
+    public static var identifier: AACommandIdentifier = 0x0028
 }
 
-extension ValetMode: AAMessageTypesGettable {
+extension AAValetMode: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
         case getState   = 0x00
         case state      = 0x01
-        case setState   = 0x02
+        case activate   = 0x02
     }
 }
 
-public extension ValetMode {
+
+// MARK: Commands
+
+public extension AAValetMode {
 
     static var getState: [UInt8] {
         return commandPrefix(for: .getState)
     }
 
-    static var setState: (AAActiveState) -> [UInt8] {
-        return {
-            return commandPrefix(for: .setState) + $0.propertyBytes(0x01)
-        }
+
+    static func activate(_ state: AAActiveState) -> [UInt8] {
+        return commandPrefix(for: .activate) + state.propertyBytes(0x01)
     }
 }

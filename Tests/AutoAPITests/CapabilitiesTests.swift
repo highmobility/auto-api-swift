@@ -212,8 +212,8 @@ class CapabilitiesTests: XCTestCase {
         }
 
         // VALET MODE
-        if let capability = capabilities.first(where: { $0.command is ValetMode.Type }) {
-            XCTAssertTrue(capability.supportsAllMessageTypes(for: ValetMode.self))
+        if let capability = capabilities.first(where: { $0.command is AAValetMode.Type }) {
+            XCTAssertTrue(capability.supportsAllMessageTypes(for: AAValetMode.self))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for ValetMode")
@@ -236,8 +236,8 @@ class CapabilitiesTests: XCTestCase {
         }
 
         // NAVI DESTINATION
-        if let capability = capabilities.first(where: { $0.command is NaviDestination.Type }) {
-            XCTAssertTrue(capability.supportsAllMessageTypes(for: NaviDestination.self))
+        if let capability = capabilities.first(where: { $0.command is AANaviDestination.Type }) {
+            XCTAssertTrue(capability.supportsAllMessageTypes(for: AANaviDestination.self))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for NaviDestination")
