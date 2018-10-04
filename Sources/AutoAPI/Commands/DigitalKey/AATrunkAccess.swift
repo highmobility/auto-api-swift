@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  TrunkAccess.swift
+//  AATrunkAccess.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 24/11/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct TrunkAccess: AAFullStandardCommand {
+public struct AATrunkAccess: AAFullStandardCommand {
 
     public let lock: AALockState?
     public let position: AAPositionState?
@@ -50,22 +50,56 @@ public struct TrunkAccess: AAFullStandardCommand {
     }
 }
 
-extension TrunkAccess: AAIdentifiable {
+extension AATrunkAccess: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0021)
+    public static var identifier: AACommandIdentifier = 0x0021
 }
 
-extension TrunkAccess: AAMessageTypesGettable {
+extension AATrunkAccess: AALegacyGettable {
+
+    public struct Legacy: AALegacyType {
+
+        public enum MessageTypes: UInt8, CaseIterable {
+
+            case getState   = 0x00
+            case state      = 0x01
+            case setState   = 0x02
+        }
+
+
+        public init(properties: AAProperties) {
+
+        }
+    }
+}
+
+extension AATrunkAccess: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
         case getState   = 0x00
         case state      = 0x01
-        case setState   = 0x02
+        case lockOpen   = 0x12
     }
 }
 
-public extension TrunkAccess {
+
+// MARK: Commands
+
+public extension AATrunkAccess {
+
+    static var getState: [UInt8] {
+        return commandPrefix(for: .getState)
+    }
+
+
+    static func lockUnlock(_ lockUnlock: AALockState?, changePosition position: AAPositionState?) -> [UInt8] {
+        return commandPrefix(for: .lockOpen) + [lockUnlock?.propertyBytes(0x01),
+                                                position?.propertyBytes(0x02)].propertiesValuesCombined
+    }
+}
+
+public extension AATrunkAccess.Legacy {
 
     struct Settings {
         public let lock: AALockState?
@@ -79,7 +113,7 @@ public extension TrunkAccess {
 
 
     static var getState: [UInt8] {
-        return commandPrefix(for: .getState)
+        return commandPrefix(for: AATrunkAccess.self, messageType: .getState)
     }
 
     static var openClose: (Settings) -> [UInt8] {
@@ -87,7 +121,7 @@ public extension TrunkAccess {
             let lockBytes: [UInt8] = $0.lock?.propertyBytes(0x01) ?? []
             let positionBytes: [UInt8] = $0.position?.propertyBytes(0x02) ?? []
 
-            return commandPrefix(for: .setState) + lockBytes + positionBytes
+            return commandPrefix(for: AATrunkAccess.self, messageType: .setState) + lockBytes + positionBytes
         }
     }
 }

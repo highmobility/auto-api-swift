@@ -158,7 +158,7 @@ class VehicleStatusTests: XCTestCase {
         XCTAssertEqual(states?.count, 2)
 
         // TRUNK ACCESS
-        if let trunkAccessState = states?.flatMapFirst({ $0 as? TrunkAccess }) {
+        if let trunkAccessState = states?.flatMapFirst({ $0 as? AATrunkAccess }) {
             XCTAssertEqual(trunkAccessState.lock, .unlocked)
             XCTAssertEqual(trunkAccessState.position, .open)
         }

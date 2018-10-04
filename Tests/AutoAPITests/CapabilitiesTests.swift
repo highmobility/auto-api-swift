@@ -164,8 +164,8 @@ class CapabilitiesTests: XCTestCase {
         }
 
         // TRUNK ACCESS
-        if let capability = capabilities.first(where: { $0.command is TrunkAccess.Type }) {
-            XCTAssertTrue(capability.supportsAllMessageTypes(for: TrunkAccess.self))
+        if let capability = capabilities.first(where: { $0.command is AATrunkAccess.Type }) {
+            XCTAssertTrue(capability.supportsAllMessageTypes(for: AATrunkAccess.self))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for TrunkAccess")
@@ -263,7 +263,7 @@ class CapabilitiesTests: XCTestCase {
 
         XCTAssertEqual(capabilities.all.count, 1)
 
-        guard let trunkAccess = capabilities.first(where: { $0.command is TrunkAccess.Type }) else {
+        guard let trunkAccess = capabilities.first(where: { $0.command is AATrunkAccess.Type }) else {
             return XCTFail("Capabilities doesn't contain capability for TrunkAccess")
         }
 

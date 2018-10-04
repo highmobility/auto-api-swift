@@ -63,8 +63,8 @@ class FailureMessageTests: XCTestCase {
             return XCTFail("Parsed value is not FailureMessage")
         }
 
-        XCTAssertEqual(failureMessage.failedMessageIdentifier, TrunkAccess.identifier)
-        XCTAssertEqual(failureMessage.failedMessageType, TrunkAccess.MessageTypes.getTrunkState.rawValue)
+        XCTAssertEqual(failureMessage.failedMessageIdentifier, AATrunkAccess.identifier)
+        XCTAssertEqual(failureMessage.failedMessageType, AATrunkAccess.MessageTypes.getTrunkState.rawValue)
         XCTAssertEqual(failureMessage.failureReason, .unauthorised)
         XCTAssertEqual(failureMessage.failureDescription, "Try again")
     }

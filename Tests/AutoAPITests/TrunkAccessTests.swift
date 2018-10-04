@@ -45,7 +45,7 @@ class TrunkAccessTests: XCTestCase {
             0x00        // Message Type for Get Trunk State
         ]
 
-        XCTAssertEqual(TrunkAccess.getTrunkState, bytes)
+        XCTAssertEqual(AATrunkAccess.getTrunkState, bytes)
     }
 
     func testOpenClose() {
@@ -62,9 +62,9 @@ class TrunkAccessTests: XCTestCase {
             0x01        // Open
         ]
 
-        let settings = TrunkAccess.Settings(lock: .unlock, position: .open)
+        let settings = AATrunkAccess.Settings(lock: .unlock, position: .open)
 
-        XCTAssertEqual(TrunkAccess.openClose(settings), bytes)
+        XCTAssertEqual(AATrunkAccess.openClose(settings), bytes)
     }
 
     func testState() {
@@ -81,7 +81,7 @@ class TrunkAccessTests: XCTestCase {
             0x01        // Open
         ]
 
-        guard let trunkAccess = AutoAPI.parseBinary(bytes) as? TrunkAccess else {
+        guard let trunkAccess = AutoAPI.parseBinary(bytes) as? AATrunkAccess else {
             return XCTFail("Parsed value is not TrunkAccess")
         }
 
