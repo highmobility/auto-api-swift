@@ -641,10 +641,8 @@
 				OBJ_129 /* AABrakeTorqueVectoring.swift */,
 				OBJ_130 /* AAChargeCurrent.swift */,
 				OBJ_131 /* AAChargingTimer.swift */,
-				OBJ_132 /* ChassisSettings */,
 				20F7903621356C54003BDFA2 /* AACheckControlMessage.swift */,
 				2024BBFD21553D8A00AA5261 /* AAClimateWeekdayTime.swift */,
-				OBJ_135 /* Climate */,
 				OBJ_140 /* AAColour.swift */,
 				20F7903821356F54003BDFA2 /* AAConditionBasedService.swift */,
 				OBJ_141 /* AACoordinate.swift */,
@@ -664,6 +662,8 @@
 				20B0C144215D1ECE005FA699 /* AATireTemperature.swift */,
 				20B0C146215D1F23005FA699 /* AAWheelRPM.swift */,
 				OBJ_152 /* AAWindow.swift */,
+				OBJ_132 /* ChassisSettings */,
+				OBJ_135 /* Climate */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -706,13 +706,13 @@
 		OBJ_16 /* Commands */ = {
 			isa = PBXGroup;
 			children = (
+				OBJ_41 /* AAFailureMessage.swift */,
+				OBJ_42 /* AAFirmwareVersion.swift */,
 				209462622162489F0009E9AD /* AAHistorical.swift */,
 				OBJ_17 /* Chassis */,
 				OBJ_28 /* Diagnostics */,
 				OBJ_33 /* DigitalKey */,
 				OBJ_38 /* Environment */,
-				OBJ_41 /* AAFailureMessage.swift */,
-				OBJ_42 /* AAFirmwareVersion.swift */,
 				OBJ_43 /* Headunit */,
 				OBJ_51 /* Health */,
 				20DB153E20970F3700A1658B /* HeavyDuty */,
@@ -1069,15 +1069,15 @@
 			children = (
 				OBJ_9 /* AAAutoAPI.swift */,
 				OBJ_10 /* AABinaryInitable.swift */,
-				OBJ_11 /* Capability */,
+				OBJ_125 /* AAIdentifiable.swift */,
+				20DC7519215BC021009B2B24 /* AALegacy.swift */,
+				OBJ_154 /* AAMessageTypesGettable.swift */,
 				OBJ_15 /* AASDKVersion.swift */,
+				OBJ_11 /* Capability */,
 				OBJ_16 /* Commands */,
 				OBJ_75 /* Enums */,
 				OBJ_112 /* Extensions */,
-				OBJ_125 /* AAIdentifiable.swift */,
 				OBJ_126 /* Items */,
-				20DC7519215BC021009B2B24 /* AALegacy.swift */,
-				OBJ_154 /* AAMessageTypesGettable.swift */,
 				OBJ_155 /* Property */,
 				OBJ_164 /* VehicleStatus */,
 			);
