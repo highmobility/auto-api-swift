@@ -62,8 +62,8 @@ class VideoHandoverTests: XCTestCase {
             return XCTFail("Failed to generate a URL")
         }
 
-        let details = VideoHandover.Details(videoURL: url, startingSecond: 90, screen: .front)
+        let details = AAVideoHandover.Details(videoURL: url, startingSecond: 90, screen: .front)
 
-        XCTAssertEqual(VideoHandover.videoHandover(details), bytes)
+        XCTAssertEqual(AAVideoHandover.videoHandover(details), bytes)
     }
 }

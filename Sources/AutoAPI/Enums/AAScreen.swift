@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Screen.swift
+//  AAScreen.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 13/12/2017.
@@ -29,12 +29,12 @@
 import Foundation
 
 
-public enum Screen: UInt8 {
+public enum AAScreen: UInt8 {
 
     case front  = 0x00
     case rear   = 0x01
 }
 
-extension Screen: AAPropertyConvertable {
+extension AAScreen: AAPropertyConvertable {
     
 }
