@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  LightConditions.swift
+//  AALightConditions.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 07/12/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct LightConditions: AAFullStandardCommand {
+public struct AALightConditions: AAFullStandardCommand {
 
     /// Value in *lux*.
     public let insideLight: Float?
@@ -53,12 +53,12 @@ public struct LightConditions: AAFullStandardCommand {
     }
 }
 
-extension LightConditions: AAIdentifiable {
+extension AALightConditions: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0054)
+    public static var identifier: AACommandIdentifier = 0x0054
 }
 
-extension LightConditions: AAMessageTypesGettable {
+extension AALightConditions: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -67,7 +67,7 @@ extension LightConditions: AAMessageTypesGettable {
     }
 }
 
-public extension LightConditions {
+public extension AALightConditions {
 
     static var getConditions: [UInt8] {
         return commandPrefix(for: .getConditions)

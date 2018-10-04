@@ -151,7 +151,7 @@
 		OBJ_339 /* AAEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* AAEngine.swift */; };
 		OBJ_340 /* AATrunkAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* AATrunkAccess.swift */; };
 		OBJ_341 /* AAWakeUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* AAWakeUp.swift */; };
-		OBJ_342 /* LightConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* LightConditions.swift */; };
+		OBJ_342 /* AALightConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* AALightConditions.swift */; };
 		OBJ_343 /* WeatherConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* WeatherConditions.swift */; };
 		OBJ_344 /* FailureMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* FailureMessage.swift */; };
 		OBJ_345 /* FirmwareVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* FirmwareVersion.swift */; };
@@ -491,7 +491,7 @@
 		OBJ_35 /* AAEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAEngine.swift; sourceTree = "<group>"; };
 		OBJ_36 /* AATrunkAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATrunkAccess.swift; sourceTree = "<group>"; };
 		OBJ_37 /* AAWakeUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWakeUp.swift; sourceTree = "<group>"; };
-		OBJ_39 /* LightConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightConditions.swift; sourceTree = "<group>"; };
+		OBJ_39 /* AALightConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALightConditions.swift; sourceTree = "<group>"; };
 		OBJ_40 /* WeatherConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherConditions.swift; sourceTree = "<group>"; };
 		OBJ_41 /* FailureMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureMessage.swift; sourceTree = "<group>"; };
 		OBJ_42 /* FirmwareVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirmwareVersion.swift; sourceTree = "<group>"; };
@@ -914,7 +914,7 @@
 		OBJ_38 /* Environment */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_39 /* LightConditions.swift */,
+				OBJ_39 /* AALightConditions.swift */,
 				OBJ_40 /* WeatherConditions.swift */,
 			);
 			path = Environment;
@@ -1316,7 +1316,7 @@
 				OBJ_339 /* AAEngine.swift in Sources */,
 				OBJ_340 /* AATrunkAccess.swift in Sources */,
 				OBJ_341 /* AAWakeUp.swift in Sources */,
-				OBJ_342 /* LightConditions.swift in Sources */,
+				OBJ_342 /* AALightConditions.swift in Sources */,
 				OBJ_343 /* WeatherConditions.swift in Sources */,
 				20DB154E2097265400A1658B /* DriverCard.swift in Sources */,
 				OBJ_344 /* FailureMessage.swift in Sources */,
