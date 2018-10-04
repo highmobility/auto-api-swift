@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Messaging.swift
+//  AAMessaging.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 13/12/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct Messaging: AAInboundCommand, AAOutboundCommand {
+public struct AAMessaging: AAInboundCommand, AAOutboundCommand {
 
     public let recipientHandle: String?
     public let text: String?
@@ -54,12 +54,25 @@ public struct Messaging: AAInboundCommand, AAOutboundCommand {
     }
 }
 
-extension Messaging: AAIdentifiable {
+extension AAMessaging: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0037)
+    public static var identifier: AACommandIdentifier = 0x0037
 }
 
-extension Messaging: AAMessageTypesGettable {
+extension AAMessaging: AALegacyGettable {
+
+    public struct Legacy: AALegacyType {
+
+        public typealias MessageTypes = AAMessaging.MessageTypes
+
+
+        public init(properties: AAProperties) {
+
+        }
+    }
+}
+
+extension AAMessaging: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -68,7 +81,18 @@ extension Messaging: AAMessageTypesGettable {
     }
 }
 
-public extension Messaging {
+
+// MARK: Commands
+
+public extension AAMessaging {
+
+    static func received(message text: String, senderHandle handle: String?) -> [UInt8] {
+        return commandPrefix(for: .received) + [text.propertyBytes(0x02),
+                                                handle?.propertyBytes(0x02)].propertiesValuesCombined
+    }
+}
+
+public extension AAMessaging.Legacy {
 
     struct Message {
         public let senderHandle: String?
@@ -86,7 +110,7 @@ public extension Messaging {
             let handleBytes: [UInt8] = $0.senderHandle?.propertyBytes(0x01) ?? []
             let textBytes: [UInt8] = $0.text.propertyBytes(0x02)
 
-            return commandPrefix(for: .received) + handleBytes + textBytes
+            return commandPrefix(for: AAMessaging.self, messageType: .received) + handleBytes + textBytes
         }
     }
 }

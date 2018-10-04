@@ -115,11 +115,7 @@ extension AADiagnostics: AALegacyGettable {
 
         // MARK: AALegacyType
 
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case getDiagnosticsState    = 0x00
-            case diagnosticsState       = 0x01
-        }
+        public typealias MessageTypes = AADiagnostics.MessageTypes
 
 
         public init(properties: AAProperties) {

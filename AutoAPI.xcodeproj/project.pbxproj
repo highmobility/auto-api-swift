@@ -157,7 +157,7 @@
 		OBJ_345 /* FirmwareVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* FirmwareVersion.swift */; };
 		OBJ_346 /* AABrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* AABrowser.swift */; };
 		OBJ_347 /* AAGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* AAGraphics.swift */; };
-		OBJ_348 /* Messaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* Messaging.swift */; };
+		OBJ_348 /* AAMessaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* AAMessaging.swift */; };
 		OBJ_349 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* Notifications.swift */; };
 		OBJ_350 /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* TextInput.swift */; };
 		OBJ_351 /* VideoHandover.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* VideoHandover.swift */; };
@@ -497,7 +497,7 @@
 		OBJ_42 /* FirmwareVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirmwareVersion.swift; sourceTree = "<group>"; };
 		OBJ_44 /* AABrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AABrowser.swift; sourceTree = "<group>"; };
 		OBJ_45 /* AAGraphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAGraphics.swift; sourceTree = "<group>"; };
-		OBJ_46 /* Messaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messaging.swift; sourceTree = "<group>"; };
+		OBJ_46 /* AAMessaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAMessaging.swift; sourceTree = "<group>"; };
 		OBJ_47 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		OBJ_48 /* TextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
 		OBJ_49 /* VideoHandover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoHandover.swift; sourceTree = "<group>"; };
@@ -925,7 +925,7 @@
 			children = (
 				OBJ_44 /* AABrowser.swift */,
 				OBJ_45 /* AAGraphics.swift */,
-				OBJ_46 /* Messaging.swift */,
+				OBJ_46 /* AAMessaging.swift */,
 				2093A31F213945E1009E43A0 /* Mobile.swift */,
 				OBJ_47 /* Notifications.swift */,
 				OBJ_48 /* TextInput.swift */,
@@ -1323,7 +1323,7 @@
 				OBJ_345 /* FirmwareVersion.swift in Sources */,
 				OBJ_346 /* AABrowser.swift in Sources */,
 				OBJ_347 /* AAGraphics.swift in Sources */,
-				OBJ_348 /* Messaging.swift in Sources */,
+				OBJ_348 /* AAMessaging.swift in Sources */,
 				OBJ_349 /* Notifications.swift in Sources */,
 				OBJ_350 /* TextInput.swift in Sources */,
 				20896EE4214799C1003A7A63 /* AAChosenState.swift in Sources */,
