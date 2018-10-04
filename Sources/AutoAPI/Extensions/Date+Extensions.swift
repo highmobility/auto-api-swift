@@ -52,6 +52,7 @@ extension Date: AABinaryInitable {
 
 extension Date: AAPropertyConvertable {
 
+    // TODO: Convert to our own byte-implementation
     var propertyValue: [UInt8] {
         // TODO: Make the propertyValue Optional to avoid this stuff
         return ISO8601DateFormatter().string(from: self).data(using: .utf8)?.bytes ?? []

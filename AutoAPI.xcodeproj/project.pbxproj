@@ -168,7 +168,7 @@
 		OBJ_355 /* AAHomeCharger.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_55 /* AAHomeCharger.swift */; };
 		OBJ_356 /* AAFueling.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_57 /* AAFueling.swift */; };
 		OBJ_357 /* AAParkingBrake.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_58 /* AAParkingBrake.swift */; };
-		OBJ_358 /* ParkingTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* ParkingTicket.swift */; };
+		OBJ_358 /* AAParkingTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* AAParkingTicket.swift */; };
 		OBJ_359 /* RemoteControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_60 /* RemoteControl.swift */; };
 		OBJ_360 /* TheftAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_61 /* TheftAlarm.swift */; };
 		OBJ_361 /* ValetMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_62 /* ValetMode.swift */; };
@@ -197,7 +197,7 @@
 		OBJ_388 /* AALockState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_92 /* AALockState.swift */; };
 		OBJ_389 /* AANeedsReplacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_93 /* AANeedsReplacement.swift */; };
 		OBJ_390 /* AANetworkSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_94 /* AANetworkSecurity.swift */; };
-		OBJ_391 /* ParkingTicketState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_95 /* ParkingTicketState.swift */; };
+		OBJ_391 /* AAParkingTicketState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_95 /* AAParkingTicketState.swift */; };
 		OBJ_392 /* AAPlugType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_96 /* AAPlugType.swift */; };
 		OBJ_393 /* AALocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_97 /* AALocation.swift */; };
 		OBJ_394 /* AAPositionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_98 /* AAPositionState.swift */; };
@@ -509,7 +509,7 @@
 		OBJ_55 /* AAHomeCharger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHomeCharger.swift; sourceTree = "<group>"; };
 		OBJ_57 /* AAFueling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFueling.swift; sourceTree = "<group>"; };
 		OBJ_58 /* AAParkingBrake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAParkingBrake.swift; sourceTree = "<group>"; };
-		OBJ_59 /* ParkingTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTicket.swift; sourceTree = "<group>"; };
+		OBJ_59 /* AAParkingTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAParkingTicket.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_60 /* RemoteControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControl.swift; sourceTree = "<group>"; };
 		OBJ_61 /* TheftAlarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheftAlarm.swift; sourceTree = "<group>"; };
@@ -540,7 +540,7 @@
 		OBJ_92 /* AALockState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALockState.swift; sourceTree = "<group>"; };
 		OBJ_93 /* AANeedsReplacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AANeedsReplacement.swift; sourceTree = "<group>"; };
 		OBJ_94 /* AANetworkSecurity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AANetworkSecurity.swift; sourceTree = "<group>"; };
-		OBJ_95 /* ParkingTicketState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTicketState.swift; sourceTree = "<group>"; };
+		OBJ_95 /* AAParkingTicketState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAParkingTicketState.swift; sourceTree = "<group>"; };
 		OBJ_96 /* AAPlugType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPlugType.swift; sourceTree = "<group>"; };
 		OBJ_97 /* AALocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALocation.swift; sourceTree = "<group>"; };
 		OBJ_98 /* AAPositionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPositionState.swift; sourceTree = "<group>"; };
@@ -971,7 +971,7 @@
 			children = (
 				OBJ_57 /* AAFueling.swift */,
 				OBJ_58 /* AAParkingBrake.swift */,
-				OBJ_59 /* ParkingTicket.swift */,
+				OBJ_59 /* AAParkingTicket.swift */,
 				OBJ_60 /* RemoteControl.swift */,
 				OBJ_61 /* TheftAlarm.swift */,
 				OBJ_62 /* ValetMode.swift */,
@@ -1049,7 +1049,7 @@
 				20896EE721479DC5003A7A63 /* AAMovingState.swift */,
 				OBJ_93 /* AANeedsReplacement.swift */,
 				OBJ_94 /* AANetworkSecurity.swift */,
-				OBJ_95 /* ParkingTicketState.swift */,
+				OBJ_95 /* AAParkingTicketState.swift */,
 				209124B32166321800C15CDA /* AAPresentState.swift */,
 				20DC7513215B5EDE009B2B24 /* AAPluggedInState.swift */,
 				OBJ_96 /* AAPlugType.swift */,
@@ -1343,7 +1343,7 @@
 				OBJ_355 /* AAHomeCharger.swift in Sources */,
 				OBJ_356 /* AAFueling.swift in Sources */,
 				OBJ_357 /* AAParkingBrake.swift in Sources */,
-				OBJ_358 /* ParkingTicket.swift in Sources */,
+				OBJ_358 /* AAParkingTicket.swift in Sources */,
 				OBJ_359 /* RemoteControl.swift in Sources */,
 				20DB15402097112D00A1658B /* AAPowerTakeoff.swift in Sources */,
 				OBJ_360 /* TheftAlarm.swift in Sources */,
@@ -1384,7 +1384,7 @@
 				OBJ_389 /* AANeedsReplacement.swift in Sources */,
 				OBJ_390 /* AANetworkSecurity.swift in Sources */,
 				20F7903721356C54003BDFA2 /* AACheckControlMessage.swift in Sources */,
-				OBJ_391 /* ParkingTicketState.swift in Sources */,
+				OBJ_391 /* AAParkingTicketState.swift in Sources */,
 				OBJ_392 /* AAPlugType.swift in Sources */,
 				OBJ_393 /* AALocation.swift in Sources */,
 				OBJ_394 /* AAPositionState.swift in Sources */,

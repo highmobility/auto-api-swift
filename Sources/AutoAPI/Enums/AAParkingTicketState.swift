@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  ParkingTicketState.swift
+//  AAParkingTicketState.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 12/12/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public enum ParkingTicketState: UInt8 {
+public enum AAParkingTicketState: UInt8 {
 
     case ended      = 0x00
     case started    = 0x01
