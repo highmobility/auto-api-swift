@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Graphics.swift
+//  AAGraphics.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 13/12/2017.
@@ -29,16 +29,16 @@
 import Foundation
 
 
-public struct Graphics: AAOutboundCommand {
+public struct AAGraphics: AAOutboundCommand {
 
 }
 
-extension Graphics: AAIdentifiable {
+extension AAGraphics: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0051)
+    public static var identifier: AACommandIdentifier = 0x0051
 }
 
-extension Graphics: AAMessageTypesGettable {
+extension AAGraphics: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -46,11 +46,9 @@ extension Graphics: AAMessageTypesGettable {
     }
 }
 
-public extension Graphics {
+public extension AAGraphics {
 
-    static var displayImage: (URL) -> [UInt8] {
-        return {
-            return commandPrefix(for: .displayImage) + $0.propertyBytes(0x01)
-        }
+    static func displayImage(_ url: URL) -> [UInt8] {
+        return commandPrefix(for: .displayImage) + url.propertyBytes(0x01)
     }
 }
