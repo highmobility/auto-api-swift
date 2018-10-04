@@ -46,12 +46,13 @@ public struct AANaviDestination: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        coordinate = AACoordinate(properties.first(for: 0x01)?.value ?? [])
         name = properties.value(for: 0x02)
         poiSlotsFree = properties.value(for: 0x03)
         poiSlotsMax = properties.value(for: 0x04)
         arrivalTime = AATime(properties.first(for: 0x05)?.value ?? [])
         distanceTo = properties.value(for: 0x06)
+        /* Level 8 */
+        coordinate = AACoordinate(properties.first(for: 0x07)?.value ?? [])
 
         // Properties
         self.properties = properties
@@ -61,6 +62,34 @@ public struct AANaviDestination: AAFullStandardCommand {
 extension AANaviDestination: AAIdentifiable {
 
     public static var identifier: AACommandIdentifier = 0x0031
+}
+
+extension AANaviDestination: AALegacyGettable {
+
+    public struct Legacy: AALegacyType {
+
+        public typealias Coordinate = (latitude: Float, longitude: Float)
+
+
+        public let coordinate: Coordinate?
+
+
+        // MARK: AALegacyType
+
+        public typealias MessageTypes = AANaviDestination.MessageTypes
+
+
+        public init(properties: AAProperties) {
+            coordinate = properties.first(for: 0x01).flatMap { property -> Coordinate? in
+                guard property.value.count == 8 else {
+                    return nil
+                }
+
+                return (latitude: Float(property.value.prefix(upTo: 4)),
+                        longitude: Float(property.value.dropFirst(4)))
+            }
+        }
+    }
 }
 
 extension AANaviDestination: AAMessageTypesGettable {
@@ -89,34 +118,29 @@ public extension AANaviDestination {
     }
 }
 
-public extension AANaviDestination {
+public extension AANaviDestination.Legacy {
 
-    struct Legacy {
+    struct Destination {
+        public let coordinate: AACoordinate
+        public let name: String?
 
-        typealias MessageTypes = AANaviDestination.MessageTypes
-
-        struct Destination {
-            public let coordinate: AACoordinate
-            public let name: String?
-
-            public init(coordinate: AACoordinate, name: String?) {
-                self.coordinate = coordinate
-                self.name = name
-            }
+        public init(coordinate: AACoordinate, name: String?) {
+            self.coordinate = coordinate
+            self.name = name
         }
+    }
 
 
-        static var getDestination: [UInt8] {
-            return commandPrefix(for: AANaviDestination.self, messageType: .getDestination)
-        }
+    static var getDestination: [UInt8] {
+        return commandPrefix(for: AANaviDestination.self, messageType: .getDestination)
+    }
 
-        static var setDestination: (Destination) -> [UInt8] {
-            return {
-                let coordinateBytes = $0.coordinate.propertyBytes(0x01)
-                let nameBytes: [UInt8] = $0.name?.propertyBytes(0x02) ?? []
+    static var setDestination: (Destination) -> [UInt8] {
+        return {
+            let coordinateBytes = $0.coordinate.propertyBytes(0x01)
+            let nameBytes: [UInt8] = $0.name?.propertyBytes(0x02) ?? []
 
-                return commandPrefix(for: AANaviDestination.self, messageType: .setDestination) + coordinateBytes + nameBytes
-            }
+            return commandPrefix(for: AANaviDestination.self, messageType: .setDestination) + coordinateBytes + nameBytes
         }
     }
 }

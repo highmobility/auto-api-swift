@@ -65,7 +65,7 @@ extension AACoordinate {
 extension AACoordinate: AABinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        guard binary.count >= 16 else {
+        guard binary.count == 16 else {
             return nil
         }
 
