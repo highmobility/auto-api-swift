@@ -173,7 +173,7 @@
 		OBJ_360 /* AATheftAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_61 /* AATheftAlarm.swift */; };
 		OBJ_361 /* AAValetMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_62 /* AAValetMode.swift */; };
 		OBJ_362 /* AANaviDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_64 /* AANaviDestination.swift */; };
-		OBJ_363 /* VehicleLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_65 /* VehicleLocation.swift */; };
+		OBJ_363 /* AAVehicleLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_65 /* AAVehicleLocation.swift */; };
 		OBJ_364 /* VehicleTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_66 /* VehicleTime.swift */; };
 		OBJ_366 /* AACommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_69 /* AACommand.swift */; };
 		OBJ_367 /* AAFullCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_70 /* AAFullCommand.swift */; };
@@ -515,7 +515,7 @@
 		OBJ_61 /* AATheftAlarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATheftAlarm.swift; sourceTree = "<group>"; };
 		OBJ_62 /* AAValetMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAValetMode.swift; sourceTree = "<group>"; };
 		OBJ_64 /* AANaviDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AANaviDestination.swift; sourceTree = "<group>"; };
-		OBJ_65 /* VehicleLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleLocation.swift; sourceTree = "<group>"; };
+		OBJ_65 /* AAVehicleLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAVehicleLocation.swift; sourceTree = "<group>"; };
 		OBJ_66 /* VehicleTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleTime.swift; sourceTree = "<group>"; };
 		OBJ_69 /* AACommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACommand.swift; sourceTree = "<group>"; };
 		OBJ_70 /* AAFullCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFullCommand.swift; sourceTree = "<group>"; };
@@ -983,7 +983,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_64 /* AANaviDestination.swift */,
-				OBJ_65 /* VehicleLocation.swift */,
+				OBJ_65 /* AAVehicleLocation.swift */,
 				OBJ_66 /* VehicleTime.swift */,
 			);
 			path = PointsOfInterest;
@@ -1351,7 +1351,7 @@
 				20DB154A20971B9F00A1658B /* AATimeState.swift in Sources */,
 				OBJ_361 /* AAValetMode.swift in Sources */,
 				OBJ_362 /* AANaviDestination.swift in Sources */,
-				OBJ_363 /* VehicleLocation.swift in Sources */,
+				OBJ_363 /* AAVehicleLocation.swift in Sources */,
 				OBJ_364 /* VehicleTime.swift in Sources */,
 				OBJ_366 /* AACommand.swift in Sources */,
 				OBJ_367 /* AAFullCommand.swift in Sources */,

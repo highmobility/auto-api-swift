@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  VehicleLocation.swift
+//  AAVehicleLocation.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 04/12/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct VehicleLocation: AAFullStandardCommand {
+public struct AAVehicleLocation: AAFullStandardCommand {
 
     public let altitude: Double?
     public let heading: Double?
@@ -43,16 +43,17 @@ public struct VehicleLocation: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        coordinate = AACoordinate(properties.first(for: 0x01)?.value ?? [])
-        heading = properties.value(for: 0x02)
-        altitude = properties.value(for: 0x03)
+        /* Level 8 */
+        coordinate = AACoordinate(properties.first(for: 0x04)?.value ?? [])
+        heading = properties.value(for: 0x05)
+        altitude = properties.value(for: 0x06)
 
         // Properties
         self.properties = properties
     }
 }
 
-extension VehicleLocation: AAMessageTypesGettable {
+extension AAVehicleLocation: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -61,12 +62,47 @@ extension VehicleLocation: AAMessageTypesGettable {
     }
 }
 
-extension VehicleLocation: AAIdentifiable {
+extension AAVehicleLocation: AALegacyGettable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0030)
+    public struct Legacy: AALegacyType {
+
+        public typealias Coordinate = (latitude: Float, longitude: Float)
+
+        public let altitude: Float?
+        public let heading: Float?
+        public let coordinate: Coordinate?
+
+
+        // MARK: AALegacyType
+
+        public typealias MessageTypes = AAVehicleLocation.MessageTypes
+
+
+        public init(properties: AAProperties) {
+            coordinate = properties.first(for: 0x01).flatMap { property -> Coordinate? in
+                guard property.value.count == 8 else {
+                    return nil
+                }
+
+                return (latitude: Float(property.value.prefix(upTo: 4)),
+                        longitude: Float(property.value.dropFirst(4)))
+            }
+
+            heading = properties.value(for: 0x02)
+            altitude = properties.value(for: 0x03)
+        }
+    }
 }
 
-public extension VehicleLocation {
+extension AAVehicleLocation: AAIdentifiable {
+
+    public static var identifier: AACommandIdentifier = 0x0030
+}
+
+
+// MARK: Commands
+
+public extension AAVehicleLocation {
 
     static var getLocation: [UInt8] {
         return commandPrefix(for: .getLocation)

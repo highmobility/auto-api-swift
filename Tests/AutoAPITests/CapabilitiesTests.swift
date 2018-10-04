@@ -228,8 +228,8 @@ class CapabilitiesTests: XCTestCase {
         }
 
         // VEHICLE LOCATION
-        if let capability = capabilities.first(where: { $0.command is VehicleLocation.Type }) {
-            XCTAssertTrue(capability.supportsAllMessageTypes(for: VehicleLocation.self))
+        if let capability = capabilities.first(where: { $0.command is AAVehicleLocation.Type }) {
+            XCTAssertTrue(capability.supportsAllMessageTypes(for: AAVehicleLocation.self))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for VehicleLocation")
