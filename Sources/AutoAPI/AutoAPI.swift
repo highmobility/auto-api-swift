@@ -61,7 +61,7 @@ public struct AutoAPI {
                 AAHistorical.self,
                 AAHomeCharger.self,
                 AAHonkHornFlashLights.self,
-                Hood.self,
+                AAHood.self,
                 AAKeyfobPosition.self,
                 LightConditions.self,
                 AALights.self,

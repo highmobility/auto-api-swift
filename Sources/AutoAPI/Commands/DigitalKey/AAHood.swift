@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Hood.swift
+//  AAHood.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 31/08/2018.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct Hood: AAFullStandardCommand {
+public struct AAHood: AAFullStandardCommand {
 
     public let hoodState: AAPositionState?
 
@@ -47,12 +47,12 @@ public struct Hood: AAFullStandardCommand {
     }
 }
 
-extension Hood: AAIdentifiable {
+extension AAHood: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0067)
+    public static var identifier: AACommandIdentifier = 0x0067
 }
 
-extension Hood: AAMessageTypesGettable {
+extension AAHood: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -61,7 +61,7 @@ extension Hood: AAMessageTypesGettable {
     }
 }
 
-public extension Hood {
+public extension AAHood {
 
     static var getHoodState: [UInt8] {
         return commandPrefix(for: .getHoodState)
