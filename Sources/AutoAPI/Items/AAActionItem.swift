@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  ActionItem.swift
+//  AAActionItem.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 13/12/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct ActionItem {
+public struct AAActionItem {
 
     public let identifier: UInt8
     public let name: String
@@ -41,7 +41,7 @@ public struct ActionItem {
     }
 }
 
-extension ActionItem: AABinaryInitable {
+extension AAActionItem: AABinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
         guard binary.count >= 1 else {
@@ -57,7 +57,7 @@ extension ActionItem: AABinaryInitable {
     }
 }
 
-extension ActionItem: AAPropertyConvertable {
+extension AAActionItem: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         let nameBytes: [UInt8] = name.data(using: .utf8)?.bytes ?? []

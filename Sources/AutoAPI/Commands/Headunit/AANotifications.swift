@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Notifications.swift
+//  AANotifications.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 13/12/2017.
@@ -29,9 +29,9 @@
 import Foundation
 
 
-public struct Notifications: AAInboundCommand, AAOutboundCommand {
+public struct AANotifications: AAInboundCommand, AAOutboundCommand {
 
-    public let actionItems: [ActionItem]?
+    public let actionItems: [AAActionItem]?
     public let receivedActionID: UInt8?
     public let receivedClearCommand: Bool
     public let text: String?
@@ -48,7 +48,7 @@ public struct Notifications: AAInboundCommand, AAOutboundCommand {
             return nil
         }
 
-        guard AACommandIdentifier(binary) == Notifications.identifier else {
+        guard AACommandIdentifier(binary) == AANotifications.identifier else {
             return nil
         }
 
@@ -56,10 +56,10 @@ public struct Notifications: AAInboundCommand, AAOutboundCommand {
         let messageType = binary.bytes[2]
 
         switch messageType {
-        case 0x00:
+        case MessageTypes.notification.rawValue:
             properties = AAProperties(binary.dropFirstBytes(3))
 
-        case 0x01:
+        case MessageTypes.action.rawValue:
             guard binary.count == 4 else {
                 return nil
             }
@@ -67,7 +67,7 @@ public struct Notifications: AAInboundCommand, AAOutboundCommand {
             // Hack
             properties = AAProperties([0x99, 0x00, 0x01, binary.bytes[3]])
 
-        case 0x02:
+        case MessageTypes.clear.rawValue:
             guard binary.count == 3 else {
                 return nil
             }
@@ -85,17 +85,17 @@ public struct Notifications: AAInboundCommand, AAOutboundCommand {
         var properties = properties
 
         switch messageType {
-        case 0x00:
+        case MessageTypes.notification.rawValue:
             receivedActionID = nil
             receivedClearCommand = false
 
-        case 0x01:
+        case MessageTypes.action.rawValue:
             receivedActionID = properties.value(for: 0x99)
             receivedClearCommand = false
 
             properties = AAProperties([])
 
-        case 0x02:
+        case MessageTypes.clear.rawValue:
             receivedActionID = nil
             receivedClearCommand = true
 
@@ -105,35 +105,74 @@ public struct Notifications: AAInboundCommand, AAOutboundCommand {
 
         // Ordered by the ID
         text = properties.value(for: 0x01)
-        actionItems = properties.flatMap(for: 0x02) { ActionItem($0.value) }
+        actionItems = properties.flatMap(for: 0x02) { AAActionItem($0.value) }
 
         // Properties
         self.properties = properties
     }
 }
 
-extension Notifications: AAIdentifiable {
+extension AANotifications: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0038)
+    public static var identifier: AACommandIdentifier = 0x0038
 }
 
-extension Notifications: AAMessageTypesGettable {
+extension AANotifications: AALegacyGettable {
 
-    public enum MessageTypes: UInt8, CaseIterable {
+    public struct Legacy: AALegacyType {
 
-        case notification       = 0x00
-        case notificationAction = 0x01
-        case clearNotification  = 0x02
+        public enum MessageTypes: UInt8, CaseIterable {
+
+            case notification       = 0x00
+            case notificationAction = 0x01
+            case clearNotification  = 0x02
+        }
+
+
+        public init(properties: AAProperties) {
+
+        }
     }
 }
 
-public extension Notifications {
+extension AANotifications: AAMessageTypesGettable {
+
+    public enum MessageTypes: UInt8, CaseIterable {
+
+        case notification   = 0x00
+        case action         = 0x01
+        case clear          = 0x02
+    }
+}
+
+
+// MARK: Commands
+
+public extension AANotifications {
+
+    static var clearNotification: [UInt8] {
+        return commandPrefix(for: .clear)
+    }
+
+
+    static func activatedAction(_ action: UInt8) -> [UInt8] {
+        // TODO: This isn't in L8 format (would break incoming commands)
+        return commandPrefix(for: .action, additionalBytes: action)
+    }
+
+    static func received(text: String, actionItems items: [AAActionItem]?) -> [UInt8] {
+        return commandPrefix(for: .notification) + text.propertyBytes(0x01)
+                                                 + (items?.reduceToByteArray { $0.propertyBytes(0x02) } ?? [])
+    }
+}
+
+public extension AANotifications.Legacy {
 
     struct Notification {
         public let text: String
-        public let actionItems: [ActionItem]?
+        public let actionItems: [AAActionItem]?
 
-        public init(text: String, actionItems: [ActionItem]?) {
+        public init(text: String, actionItems: [AAActionItem]?) {
             self.text = text
             self.actionItems = actionItems
         }
@@ -141,7 +180,7 @@ public extension Notifications {
 
 
     static var clearNotification: [UInt8] {
-        return commandPrefix(for: .clearNotification)
+        return commandPrefix(for: AANotifications.self, messageType: .clearNotification)
     }
 
     static var notification: (Notification) -> [UInt8] {
@@ -149,13 +188,13 @@ public extension Notifications {
             let textBytes = $0.text.propertyBytes(0x01)
             let actionsBytes: [UInt8] = $0.actionItems?.flatMap { $0.propertyBytes(0x02) } ?? []
 
-            return commandPrefix(for: .notification) + textBytes + actionsBytes
+            return commandPrefix(for: AANotifications.self, messageType: .notification) + textBytes + actionsBytes
         }
     }
 
     static var notificationAction: (UInt8) -> [UInt8] {
         return {
-            return commandPrefix(for: .notificationAction, additionalBytes: $0)
+            return commandPrefix(for: AANotifications.self, messageType: .notificationAction, additionalBytes: $0)
         }
     }
 }
