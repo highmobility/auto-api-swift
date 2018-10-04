@@ -30,7 +30,7 @@ import Foundation
 import HMUtilities
 
 
-// TODO: Move to a file for 'typealias'
+public typealias AAAutoAPI = AutoAPI
 public typealias AAGasFlapState = AAChargePortState
 public typealias AAChargingMethod = AAPlugType
 public typealias AACommandIdentifier = UInt16

@@ -31,8 +31,6 @@ import Foundation
 
 public struct AARooftopControl: AAFullStandardCommand {
 
-    // TODO: These properties aren't final
-
     public let convertibleRoofState: AAConvertibleRoofState?
     public let dimming: AAPercentageInt?
     public let position: AAPercentageInt?
