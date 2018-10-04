@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  ParkingBrake.swift
+//  AAParkingBrake.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 07/12/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct ParkingBrake: AAFullStandardCommand {
+public struct AAParkingBrake: AAFullStandardCommand {
 
     public let state: AAActiveState?
 
@@ -41,37 +41,64 @@ public struct ParkingBrake: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        state = AAActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
+        state = properties.value(for: 0x01)
 
         // Properties
         self.properties = properties
     }
 }
 
-extension ParkingBrake: AAIdentifiable {
+extension AAParkingBrake: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0058)
+    public static var identifier: AACommandIdentifier = 0x0058
 }
 
-extension ParkingBrake: AAMessageTypesGettable {
+extension AAParkingBrake: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
         case getBrakeState  = 0x00
         case brakeState     = 0x01
-        case setBrakeState  = 0x02
+        case activate       = 0x12
     }
 }
 
-public extension ParkingBrake {
+
+// MARK: Commands
+
+public extension AAParkingBrake {
 
     static var getBrakeState: [UInt8] {
         return commandPrefix(for: .getBrakeState)
     }
 
-    static var setBrakeState: (AAActiveState) -> [UInt8] {
-        return {
-            return commandPrefix(for: .setBrakeState) + $0.propertyBytes(0x01)
+
+    static func activate(_ state: AAActiveState) -> [UInt8] {
+        return commandPrefix(for: .activate) + state.propertyBytes(0x01)
+    }
+}
+
+public extension AAParkingBrake {
+
+    struct Legacy: AAMessageTypesGettable {
+
+        public enum MessageTypes: UInt8, CaseIterable {
+
+            case getBrakeState  = 0x00
+            case brakeState     = 0x01
+            case setBrakeState  = 0x02
+        }
+
+
+        /// Use `false` to *inactivate*.
+        static var activate: (Bool) -> [UInt8] {
+            return {
+                return commandPrefix(for: AAParkingBrake.self, messageType: .setBrakeState) + [$0 ? 0x01 : 0x00]
+            }
+        }
+
+        static var getBrakeState: [UInt8] {
+            return commandPrefix(for: AAParkingBrake.self, messageType: .getBrakeState)
         }
     }
 }

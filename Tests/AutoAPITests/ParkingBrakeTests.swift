@@ -46,7 +46,7 @@ class ParkingBrakeTests: XCTestCase {
             0x00        // Inactivate
         ]
 
-        XCTAssertEqual(ParkingBrake.activate(false), bytes)
+        XCTAssertEqual(AAParkingBrake.activate(false), bytes)
     }
 
     func testGetState() {
@@ -55,7 +55,7 @@ class ParkingBrakeTests: XCTestCase {
             0x00        // Message Type for Get Parking Brake State
         ]
 
-        XCTAssertEqual(ParkingBrake.getParkingBrakeState, bytes)
+        XCTAssertEqual(AAParkingBrake.getParkingBrakeState, bytes)
     }
 
     func testState() {
@@ -68,7 +68,7 @@ class ParkingBrakeTests: XCTestCase {
             0x01        // Parking brake active
         ]
 
-        guard let parkingBrake = AutoAPI.parseBinary(bytes) as? ParkingBrake else {
+        guard let parkingBrake = AutoAPI.parseBinary(bytes) as? AAParkingBrake else {
             return XCTFail("Parsed value is not ParkingBrake")
         }
 

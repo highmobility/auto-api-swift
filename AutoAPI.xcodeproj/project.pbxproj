@@ -167,7 +167,7 @@
 		OBJ_354 /* AAHeartRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* AAHeartRate.swift */; };
 		OBJ_355 /* AAHomeCharger.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_55 /* AAHomeCharger.swift */; };
 		OBJ_356 /* AAFueling.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_57 /* AAFueling.swift */; };
-		OBJ_357 /* ParkingBrake.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_58 /* ParkingBrake.swift */; };
+		OBJ_357 /* AAParkingBrake.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_58 /* AAParkingBrake.swift */; };
 		OBJ_358 /* ParkingTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* ParkingTicket.swift */; };
 		OBJ_359 /* RemoteControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_60 /* RemoteControl.swift */; };
 		OBJ_360 /* TheftAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_61 /* TheftAlarm.swift */; };
@@ -508,7 +508,7 @@
 		OBJ_53 /* AAHeartRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHeartRate.swift; sourceTree = "<group>"; };
 		OBJ_55 /* AAHomeCharger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHomeCharger.swift; sourceTree = "<group>"; };
 		OBJ_57 /* AAFueling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFueling.swift; sourceTree = "<group>"; };
-		OBJ_58 /* ParkingBrake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingBrake.swift; sourceTree = "<group>"; };
+		OBJ_58 /* AAParkingBrake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAParkingBrake.swift; sourceTree = "<group>"; };
 		OBJ_59 /* ParkingTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTicket.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_60 /* RemoteControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControl.swift; sourceTree = "<group>"; };
@@ -970,7 +970,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_57 /* AAFueling.swift */,
-				OBJ_58 /* ParkingBrake.swift */,
+				OBJ_58 /* AAParkingBrake.swift */,
 				OBJ_59 /* ParkingTicket.swift */,
 				OBJ_60 /* RemoteControl.swift */,
 				OBJ_61 /* TheftAlarm.swift */,
@@ -1342,7 +1342,7 @@
 				OBJ_354 /* AAHeartRate.swift in Sources */,
 				OBJ_355 /* AAHomeCharger.swift in Sources */,
 				OBJ_356 /* AAFueling.swift in Sources */,
-				OBJ_357 /* ParkingBrake.swift in Sources */,
+				OBJ_357 /* AAParkingBrake.swift in Sources */,
 				OBJ_358 /* ParkingTicket.swift in Sources */,
 				OBJ_359 /* RemoteControl.swift in Sources */,
 				20DB15402097112D00A1658B /* AAPowerTakeoff.swift in Sources */,
