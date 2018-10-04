@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  VehicleTime.swift
+//  AAVehicleTime.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 12/12/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct VehicleTime: AAFullStandardCommand {
+public struct AAVehicleTime: AAFullStandardCommand {
 
     public let time: AATime?
 
@@ -48,7 +48,7 @@ public struct VehicleTime: AAFullStandardCommand {
     }
 }
 
-extension VehicleTime: AAMessageTypesGettable {
+extension AAVehicleTime: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -57,12 +57,15 @@ extension VehicleTime: AAMessageTypesGettable {
     }
 }
 
-extension VehicleTime: AAIdentifiable {
+extension AAVehicleTime: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0050)
+    public static var identifier: AACommandIdentifier = 0x0050
 }
 
-public extension VehicleTime {
+
+// MARK: Commands
+
+public extension AAVehicleTime {
 
     static var getTime: [UInt8] {
         return commandPrefix(for: .getTime)

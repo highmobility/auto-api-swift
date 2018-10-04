@@ -88,7 +88,7 @@ public struct AutoAPI {
                 AAValetMode.self,
                 AAVehicleLocation.self,
                 VehicleStatus.self,
-                VehicleTime.self,
+                AAVehicleTime.self,
                 AAVideoHandover.self,
                 AAWakeUp.self,
                 AAWeatherConditions.self,
