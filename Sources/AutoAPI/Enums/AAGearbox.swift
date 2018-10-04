@@ -19,18 +19,19 @@
 // licensing@high-mobility.com
 //
 //
-//  DisplayUnit.swift
+//  AAGearbox.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 28/08/2018.
+//  Created by Mikk Rätsep on 30/04/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum DisplayUnit: UInt8 {
+public enum AAGearbox: UInt8 {
 
-    case km     = 0x00
-    case miles  = 0x01
+    case manual         = 0x00
+    case automatic      = 0x01
+    case semiAutomatic  = 0x02
 }

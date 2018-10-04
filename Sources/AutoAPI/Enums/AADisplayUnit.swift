@@ -19,22 +19,18 @@
 // licensing@high-mobility.com
 //
 //
-//  PowerTrain.swift
+//  AADisplayUnit.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 27/11/2017.
+//  Created by Mikk Rätsep on 28/08/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum PowerTrain: UInt8 {
+public enum AADisplayUnit: UInt8 {
 
-    case unknown            = 0x00
-    case allElectric        = 0x01
-    case combustionEngine   = 0x02
-    case plugInHybrid       = 0x03
-    case hydrogen           = 0x04
-    case hydrogenHybrid     = 0x05
+    case km     = 0x00
+    case miles  = 0x01
 }

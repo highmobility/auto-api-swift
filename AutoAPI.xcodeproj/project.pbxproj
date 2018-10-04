@@ -61,7 +61,7 @@
 		20BB171D2142604100A3FDB5 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BB171B2142603A00A3FDB5 /* Date+Extensions.swift */; };
 		20CDFAA7215264F300402BF6 /* AADetectedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDFAA6215264F300402BF6 /* AADetectedState.swift */; };
 		20CDFAA92152657100402BF6 /* AAFastened.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDFAA82152657100402BF6 /* AAFastened.swift */; };
-		20DB153B2096F7DA00A1658B /* Gearbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB153A2096F7DA00A1658B /* Gearbox.swift */; };
+		20DB153B2096F7DA00A1658B /* AAGearbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB153A2096F7DA00A1658B /* AAGearbox.swift */; };
 		20DB15402097112D00A1658B /* AAPowerTakeoff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB153F2097112D00A1658B /* AAPowerTakeoff.swift */; };
 		20DB15422097154D00A1658B /* PowerTakeOffTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15412097154D00A1658B /* PowerTakeOffTests.swift */; };
 		20DB15442097166200A1658B /* AATachograph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15432097166200A1658B /* AATachograph.swift */; };
@@ -78,7 +78,7 @@
 		20F7903921356F54003BDFA2 /* AAConditionBasedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903821356F54003BDFA2 /* AAConditionBasedService.swift */; };
 		20F7903B21356F94003BDFA2 /* AADueStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903A21356F94003BDFA2 /* AADueStatus.swift */; };
 		20F7903D2135713A003BDFA2 /* AAConvertibleRoofState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903C2135713A003BDFA2 /* AAConvertibleRoofState.swift */; };
-		20F7903F2135732D003BDFA2 /* DisplayUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903E2135732D003BDFA2 /* DisplayUnit.swift */; };
+		20F7903F2135732D003BDFA2 /* AADisplayUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903E2135732D003BDFA2 /* AADisplayUnit.swift */; };
 		OBJ_251 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_169 /* Misc.swift */; };
 		OBJ_252 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_170 /* main.swift */; };
 		OBJ_254 /* AutoAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "AutoAPI::AutoAPI::Product" /* AutoAPI.framework */; };
@@ -202,7 +202,7 @@
 		OBJ_392 /* AAPlugType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_96 /* AAPlugType.swift */; };
 		OBJ_393 /* AALocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_97 /* AALocation.swift */; };
 		OBJ_394 /* AAPositionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_98 /* AAPositionState.swift */; };
-		OBJ_395 /* PowerTrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* PowerTrain.swift */; };
+		OBJ_395 /* AAPowerTrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* AAPowerTrain.swift */; };
 		OBJ_396 /* AAPricingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_100 /* AAPricingType.swift */; };
 		OBJ_397 /* AAScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_101 /* AAScreen.swift */; };
 		OBJ_398 /* AASeatLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_102 /* AASeatLocation.swift */; };
@@ -253,7 +253,7 @@
 		OBJ_450 /* AAProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_160 /* AAProperty.swift */; };
 		OBJ_451 /* AAPropertyConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_161 /* AAPropertyConvertable.swift */; };
 		OBJ_454 /* AAVehicleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_165 /* AAVehicleState.swift */; };
-		OBJ_456 /* VehicleStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_167 /* VehicleStatus.swift */; };
+		OBJ_456 /* AAVehicleStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_167 /* AAVehicleStatus.swift */; };
 		OBJ_458 /* HMUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "HMUtilities::HMUtilities::Product" /* HMUtilities.framework */; };
 		OBJ_464 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_222 /* Bool+Extensions.swift */; };
 		OBJ_465 /* FixedWidthInteger+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_223 /* FixedWidthInteger+Extensions.swift */; };
@@ -344,7 +344,7 @@
 		20BB171B2142603A00A3FDB5 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		20CDFAA6215264F300402BF6 /* AADetectedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADetectedState.swift; sourceTree = "<group>"; };
 		20CDFAA82152657100402BF6 /* AAFastened.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFastened.swift; sourceTree = "<group>"; };
-		20DB153A2096F7DA00A1658B /* Gearbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gearbox.swift; sourceTree = "<group>"; };
+		20DB153A2096F7DA00A1658B /* AAGearbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAGearbox.swift; sourceTree = "<group>"; };
 		20DB153F2097112D00A1658B /* AAPowerTakeoff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPowerTakeoff.swift; sourceTree = "<group>"; };
 		20DB15412097154D00A1658B /* PowerTakeOffTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerTakeOffTests.swift; sourceTree = "<group>"; };
 		20DB15432097166200A1658B /* AATachograph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATachograph.swift; sourceTree = "<group>"; };
@@ -361,7 +361,7 @@
 		20F7903821356F54003BDFA2 /* AAConditionBasedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAConditionBasedService.swift; sourceTree = "<group>"; };
 		20F7903A21356F94003BDFA2 /* AADueStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADueStatus.swift; sourceTree = "<group>"; };
 		20F7903C2135713A003BDFA2 /* AAConvertibleRoofState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAConvertibleRoofState.swift; sourceTree = "<group>"; };
-		20F7903E2135732D003BDFA2 /* DisplayUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayUnit.swift; sourceTree = "<group>"; };
+		20F7903E2135732D003BDFA2 /* AADisplayUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADisplayUnit.swift; sourceTree = "<group>"; };
 		"AutoAPI::AutoAPI::Product" /* AutoAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AutoAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"AutoAPI::AutoAPICLT::Product" /* AutoAPICLT */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = AutoAPICLT; sourceTree = BUILT_PRODUCTS_DIR; };
 		"AutoAPI::AutoAPITests::Product" /* AutoAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = AutoAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -421,7 +421,7 @@
 		OBJ_160 /* AAProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAProperty.swift; sourceTree = "<group>"; };
 		OBJ_161 /* AAPropertyConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertyConvertable.swift; sourceTree = "<group>"; };
 		OBJ_165 /* AAVehicleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAVehicleState.swift; sourceTree = "<group>"; };
-		OBJ_167 /* VehicleStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleStatus.swift; sourceTree = "<group>"; };
+		OBJ_167 /* AAVehicleStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAVehicleStatus.swift; sourceTree = "<group>"; };
 		OBJ_169 /* Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
 		OBJ_170 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		OBJ_173 /* BrowserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTests.swift; sourceTree = "<group>"; };
@@ -544,7 +544,7 @@
 		OBJ_96 /* AAPlugType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPlugType.swift; sourceTree = "<group>"; };
 		OBJ_97 /* AALocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALocation.swift; sourceTree = "<group>"; };
 		OBJ_98 /* AAPositionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPositionState.swift; sourceTree = "<group>"; };
-		OBJ_99 /* PowerTrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerTrain.swift; sourceTree = "<group>"; };
+		OBJ_99 /* AAPowerTrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPowerTrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -728,7 +728,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_165 /* AAVehicleState.swift */,
-				OBJ_167 /* VehicleStatus.swift */,
+				OBJ_167 /* AAVehicleStatus.swift */,
 			);
 			path = VehicleStatus;
 			sourceTree = "<group>";
@@ -1023,7 +1023,7 @@
 				205C5172208F319900B55ACE /* AADashboardLightState.swift */,
 				20CDFAA6215264F300402BF6 /* AADetectedState.swift */,
 				20DB154F209727C700A1658B /* AADirection.swift */,
-				20F7903E2135732D003BDFA2 /* DisplayUnit.swift */,
+				20F7903E2135732D003BDFA2 /* AADisplayUnit.swift */,
 				OBJ_84 /* AADrivingMode.swift */,
 				20F7903A21356F94003BDFA2 /* AADueStatus.swift */,
 				20896EEB2147A024003A7A63 /* AAEnabledState.swift */,
@@ -1033,7 +1033,7 @@
 				OBJ_87 /* AAFlasherState.swift */,
 				OBJ_107 /* AAFluidLevel.swift */,
 				OBJ_91 /* AAFrontLightState.swift */,
-				20DB153A2096F7DA00A1658B /* Gearbox.swift */,
+				20DB153A2096F7DA00A1658B /* AAGearbox.swift */,
 				OBJ_88 /* AAGearMode.swift */,
 				OBJ_90 /* AAKeyfobRelativePosition.swift */,
 				OBJ_97 /* AALocation.swift */,
@@ -1046,7 +1046,7 @@
 				20DC7513215B5EDE009B2B24 /* AAPluggedInState.swift */,
 				OBJ_96 /* AAPlugType.swift */,
 				OBJ_98 /* AAPositionState.swift */,
-				OBJ_99 /* PowerTrain.swift */,
+				OBJ_99 /* AAPowerTrain.swift */,
 				OBJ_100 /* AAPricingType.swift */,
 				OBJ_101 /* AAScreen.swift */,
 				OBJ_102 /* AASeatLocation.swift */,
@@ -1327,7 +1327,7 @@
 				OBJ_351 /* AAVideoHandover.swift in Sources */,
 				2024BBFE21553D8A00AA5261 /* AAClimateWeekdayTime.swift in Sources */,
 				20DC7514215B5EDE009B2B24 /* AAPluggedInState.swift in Sources */,
-				20F7903F2135732D003BDFA2 /* DisplayUnit.swift in Sources */,
+				20F7903F2135732D003BDFA2 /* AADisplayUnit.swift in Sources */,
 				OBJ_352 /* AAWiFi.swift in Sources */,
 				20B0C143215D1EA7005FA699 /* AATirePressure.swift in Sources */,
 				OBJ_353 /* AADriverFatigue.swift in Sources */,
@@ -1371,7 +1371,7 @@
 				OBJ_387 /* AAFrontLightState.swift in Sources */,
 				OBJ_388 /* AALockState.swift in Sources */,
 				20BB171D2142604100A3FDB5 /* Date+Extensions.swift in Sources */,
-				20DB153B2096F7DA00A1658B /* Gearbox.swift in Sources */,
+				20DB153B2096F7DA00A1658B /* AAGearbox.swift in Sources */,
 				2093A320213945E1009E43A0 /* AAMobile.swift in Sources */,
 				OBJ_389 /* AANeedsReplacement.swift in Sources */,
 				OBJ_390 /* AANetworkSecurity.swift in Sources */,
@@ -1380,7 +1380,7 @@
 				OBJ_392 /* AAPlugType.swift in Sources */,
 				OBJ_393 /* AALocation.swift in Sources */,
 				OBJ_394 /* AAPositionState.swift in Sources */,
-				OBJ_395 /* PowerTrain.swift in Sources */,
+				OBJ_395 /* AAPowerTrain.swift in Sources */,
 				OBJ_396 /* AAPricingType.swift in Sources */,
 				OBJ_397 /* AAScreen.swift in Sources */,
 				20CDFAA92152657100402BF6 /* AAFastened.swift in Sources */,
@@ -1454,7 +1454,7 @@
 				OBJ_451 /* AAPropertyConvertable.swift in Sources */,
 				OBJ_454 /* AAVehicleState.swift in Sources */,
 				20CDFAA7215264F300402BF6 /* AADetectedState.swift in Sources */,
-				OBJ_456 /* VehicleStatus.swift in Sources */,
+				OBJ_456 /* AAVehicleStatus.swift in Sources */,
 				205C516D208F28FF00B55ACE /* AADashboardLight.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

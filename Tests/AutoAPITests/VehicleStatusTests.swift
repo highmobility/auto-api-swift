@@ -44,7 +44,7 @@ class VehicleStatusTests: XCTestCase {
             0x00        // Message Type for Get Vehicle Status
         ]
 
-        XCTAssertEqual(VehicleStatus.getVehicleStatus, bytes)
+        XCTAssertEqual(AAVehicleStatus.getVehicleStatus, bytes)
     }
 
     func testState() {
@@ -133,7 +133,7 @@ class VehicleStatusTests: XCTestCase {
             0x02        // Remote Control Started
         ]
 
-        guard let vehicleStatus = AAAutoAPI.parseBinary(bytes) as? VehicleStatus else {
+        guard let vehicleStatus = AAAutoAPI.parseBinary(bytes) as? AAVehicleStatus else {
             return XCTFail("Parsed value is not VehicleStatus")
         }
 

@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  VehicleStatus.swift
+//  AAVehicleStatus.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 27/11/2017.
@@ -29,13 +29,13 @@
 import Foundation
 
 
-public struct VehicleStatus: AAInboundCommand {
+public struct AAVehicleStatus: AAInboundCommand {
 
     public let colourName: String?
-    public let displayUnit: DisplayUnit?
+    public let displayUnit: AADisplayUnit?
     public let engineVolume: Float?
     public let engineMaxTorque: UInt16?
-    public let gearbox: Gearbox?
+    public let gearbox: AAGearbox?
     public let licensePlate: String?
     public let modelName: String?
     public let modelYear: UInt16?
@@ -43,7 +43,7 @@ public struct VehicleStatus: AAInboundCommand {
     public let numberOfDoors: UInt8?
     public let numberOfSeats: UInt8?
     public let powerKW: UInt16?
-    public let powerTrain: PowerTrain?
+    public let powerTrain: AAPowerTrain?
     public let salesDesignation: String?
     public let states: [AAVehicleState]?
     public let vin: String?
@@ -63,7 +63,7 @@ public struct VehicleStatus: AAInboundCommand {
 
         // Ordered by the ID
         vin = String(bytes: properties.first(for: 0x01)?.value, encoding: .ascii)
-        powerTrain = PowerTrain(rawValue: properties.first(for: 0x02)?.monoValue)
+        powerTrain = AAPowerTrain(rawValue: properties.first(for: 0x02)?.monoValue)
         modelName = properties.value(for: 0x03)
         name = properties.value(for: 0x04)
         licensePlate = properties.value(for: 0x05)
@@ -75,8 +75,9 @@ public struct VehicleStatus: AAInboundCommand {
         numberOfSeats = properties.value(for: 0x0B)
         engineVolume = properties.value(for: 0x0C)
         engineMaxTorque = properties.value(for: 0x0D)
-        gearbox = Gearbox(rawValue: properties.first(for: 0x0E)?.monoValue)
-        displayUnit = DisplayUnit(rawValue: properties.first(for: 0x0F)?.monoValue)
+        gearbox = AAGearbox(rawValue: properties.first(for: 0x0E)?.monoValue)
+        /* Level 8 */
+        displayUnit = AADisplayUnit(rawValue: properties.first(for: 0x0F)?.monoValue)
 
         states = properties.flatMap(for: 0x99) { property in
             binaryTypes.flatMapFirst { $0.init(property.value) as? AAVehicleState }
@@ -87,12 +88,12 @@ public struct VehicleStatus: AAInboundCommand {
     }
 }
 
-extension VehicleStatus: AAIdentifiable {
+extension AAVehicleStatus: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0011)
+    public static var identifier: AACommandIdentifier = 0x0011
 }
 
-extension VehicleStatus: AAMessageTypesGettable {
+extension AAVehicleStatus: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -101,7 +102,10 @@ extension VehicleStatus: AAMessageTypesGettable {
     }
 }
 
-public extension VehicleStatus {
+
+// MARK: Commands
+
+public extension AAVehicleStatus {
 
     static var getVehicleStatus: [UInt8] {
         return commandPrefix(for: .getVehicleStatus)

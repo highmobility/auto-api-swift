@@ -19,19 +19,22 @@
 // licensing@high-mobility.com
 //
 //
-//  Gearbox.swift
+//  AAPowerTrain.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 30/04/2018.
+//  Created by Mikk Rätsep on 27/11/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum Gearbox: UInt8 {
+public enum AAPowerTrain: UInt8 {
 
-    case manual         = 0x00
-    case automatic      = 0x01
-    case semiAutomatic  = 0x02
+    case unknown            = 0x00
+    case allElectric        = 0x01
+    case combustionEngine   = 0x02
+    case plugInHybrid       = 0x03
+    case hydrogen           = 0x04
+    case hydrogenHybrid     = 0x05
 }
