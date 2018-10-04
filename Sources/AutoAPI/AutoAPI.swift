@@ -52,7 +52,7 @@ public struct AutoAPI {
                 AADashboardLights.self,
                 AADiagnostics.self,
                 AADoorLocks.self,
-                DriverFatigue.self,
+                AADriverFatigue.self,
                 AAEngine.self,
                 FailureMessage.self,
                 FirmwareVersion.self,

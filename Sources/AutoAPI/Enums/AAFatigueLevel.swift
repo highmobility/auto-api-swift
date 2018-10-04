@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  DriverFatigue.swift
+//  AAFatigueLevel.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 12/12/2017.
@@ -29,38 +29,14 @@
 import Foundation
 
 
-public struct DriverFatigue: AAInboundCommand {
+public enum AAFatigueLevel: UInt8 {
 
-    public let fatigueLevel: FatigueLevel?
-
-
-    // MARK: AAInboundCommand
-
-    public let properties: AAProperties
+    case light              = 0x00
+    case pauseRecommended   = 0x01
+    case actionNeeded       = 0x02
+    case carReadToTakeOver  = 0x03
 
 
-    init?(_ messageType: UInt8, properties: AAProperties) {
-        guard messageType == 0x01 else {
-            return nil
-        }
-
-        // Ordered by the ID
-        fatigueLevel = FatigueLevel(rawValue: properties.first(for: 0x01)?.monoValue)
-
-        // Properties
-        self.properties = properties
-    }
-}
-
-extension DriverFatigue: AAMessageTypesGettable {
-
-    public enum MessageTypes: UInt8, CaseIterable {
-
-        case fatigueDetected  = 0x01
-    }
-}
-
-extension DriverFatigue: AAIdentifiable {
-
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0041)
+    /// Same as *.actionNeeded*
+    public static let driverNeedsRest = AAFatigueLevel.actionNeeded
 }

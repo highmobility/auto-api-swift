@@ -162,7 +162,7 @@
 		OBJ_350 /* AATextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* AATextInput.swift */; };
 		OBJ_351 /* AAVideoHandover.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* AAVideoHandover.swift */; };
 		OBJ_352 /* AAWiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* AAWiFi.swift */; };
-		OBJ_353 /* DriverFatigue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_52 /* DriverFatigue.swift */; };
+		OBJ_353 /* AADriverFatigue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_52 /* AADriverFatigue.swift */; };
 		OBJ_354 /* HeartRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* HeartRate.swift */; };
 		OBJ_355 /* AAHomeCharger.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_55 /* AAHomeCharger.swift */; };
 		OBJ_356 /* Fueling.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_57 /* Fueling.swift */; };
@@ -188,7 +188,7 @@
 		OBJ_379 /* ControlMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_83 /* ControlMode.swift */; };
 		OBJ_380 /* AADrivingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_84 /* AADrivingMode.swift */; };
 		OBJ_381 /* FailureReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_85 /* FailureReason.swift */; };
-		OBJ_382 /* FatigueLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_86 /* FatigueLevel.swift */; };
+		OBJ_382 /* AAFatigueLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_86 /* AAFatigueLevel.swift */; };
 		OBJ_383 /* AAFlasherState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_87 /* AAFlasherState.swift */; };
 		OBJ_384 /* AAGearMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_88 /* AAGearMode.swift */; };
 		OBJ_386 /* AAKeyfobRelativePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_90 /* AAKeyfobRelativePosition.swift */; };
@@ -502,7 +502,7 @@
 		OBJ_48 /* AATextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATextInput.swift; sourceTree = "<group>"; };
 		OBJ_49 /* AAVideoHandover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAVideoHandover.swift; sourceTree = "<group>"; };
 		OBJ_50 /* AAWiFi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWiFi.swift; sourceTree = "<group>"; };
-		OBJ_52 /* DriverFatigue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverFatigue.swift; sourceTree = "<group>"; };
+		OBJ_52 /* AADriverFatigue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADriverFatigue.swift; sourceTree = "<group>"; };
 		OBJ_53 /* HeartRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRate.swift; sourceTree = "<group>"; };
 		OBJ_55 /* AAHomeCharger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHomeCharger.swift; sourceTree = "<group>"; };
 		OBJ_57 /* Fueling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fueling.swift; sourceTree = "<group>"; };
@@ -529,7 +529,7 @@
 		OBJ_83 /* ControlMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlMode.swift; sourceTree = "<group>"; };
 		OBJ_84 /* AADrivingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADrivingMode.swift; sourceTree = "<group>"; };
 		OBJ_85 /* FailureReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureReason.swift; sourceTree = "<group>"; };
-		OBJ_86 /* FatigueLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatigueLevel.swift; sourceTree = "<group>"; };
+		OBJ_86 /* AAFatigueLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFatigueLevel.swift; sourceTree = "<group>"; };
 		OBJ_87 /* AAFlasherState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFlasherState.swift; sourceTree = "<group>"; };
 		OBJ_88 /* AAGearMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAGearMode.swift; sourceTree = "<group>"; };
 		OBJ_9 /* AutoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoAPI.swift; sourceTree = "<group>"; };
@@ -950,7 +950,7 @@
 		OBJ_51 /* Health */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_52 /* DriverFatigue.swift */,
+				OBJ_52 /* AADriverFatigue.swift */,
 				OBJ_53 /* HeartRate.swift */,
 			);
 			path = Health;
@@ -1035,7 +1035,7 @@
 				20896EEB2147A024003A7A63 /* AAEnabledState.swift */,
 				OBJ_85 /* FailureReason.swift */,
 				20CDFAA82152657100402BF6 /* AAFastened.swift */,
-				OBJ_86 /* FatigueLevel.swift */,
+				OBJ_86 /* AAFatigueLevel.swift */,
 				OBJ_87 /* AAFlasherState.swift */,
 				OBJ_107 /* AAFluidLevel.swift */,
 				OBJ_91 /* AAFrontLightState.swift */,
@@ -1334,7 +1334,7 @@
 				20F7903F2135732D003BDFA2 /* DisplayUnit.swift in Sources */,
 				OBJ_352 /* AAWiFi.swift in Sources */,
 				20B0C143215D1EA7005FA699 /* AATirePressure.swift in Sources */,
-				OBJ_353 /* DriverFatigue.swift in Sources */,
+				OBJ_353 /* AADriverFatigue.swift in Sources */,
 				OBJ_354 /* HeartRate.swift in Sources */,
 				OBJ_355 /* AAHomeCharger.swift in Sources */,
 				OBJ_356 /* Fueling.swift in Sources */,
@@ -1367,7 +1367,7 @@
 				OBJ_379 /* ControlMode.swift in Sources */,
 				OBJ_380 /* AADrivingMode.swift in Sources */,
 				OBJ_381 /* FailureReason.swift in Sources */,
-				OBJ_382 /* FatigueLevel.swift in Sources */,
+				OBJ_382 /* AAFatigueLevel.swift in Sources */,
 				OBJ_383 /* AAFlasherState.swift in Sources */,
 				205C5179208F41C700B55ACE /* AACruiseControl.swift in Sources */,
 				OBJ_384 /* AAGearMode.swift in Sources */,
