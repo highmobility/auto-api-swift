@@ -43,6 +43,6 @@ class WakeUpTests: XCTestCase {
             0x02        // Message Type for Wake Up
         ]
 
-        XCTAssertEqual(WakeUp.wakeUp, bytes)
+        XCTAssertEqual(AAWakeUp.wakeUp, bytes)
     }
 }

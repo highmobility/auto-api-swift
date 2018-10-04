@@ -89,7 +89,7 @@ public struct AutoAPI {
                 VehicleStatus.self,
                 VehicleTime.self,
                 VideoHandover.self,
-                WakeUp.self,
+                AAWakeUp.self,
                 WeatherConditions.self,
                 WiFi.self,
                 AAWindows.self,

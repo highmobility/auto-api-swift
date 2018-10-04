@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  WakeUp.swift
+//  AAWakeUp.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 29/11/2017.
@@ -29,16 +29,16 @@
 import Foundation
 
 
-public struct WakeUp: AAOutboundCommand {
+public struct AAWakeUp: AAOutboundCommand {
 
 }
 
-extension WakeUp: AAIdentifiable {
+extension AAWakeUp: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0022)
+    public static var identifier: AACommandIdentifier = 0x0022
 }
 
-extension WakeUp: AAMessageTypesGettable {
+extension AAWakeUp: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -46,7 +46,7 @@ extension WakeUp: AAMessageTypesGettable {
     }
 }
 
-public extension WakeUp {
+public extension AAWakeUp {
 
     static var wakeUp: [UInt8] {
         return commandPrefix(for: .wakeUp)
