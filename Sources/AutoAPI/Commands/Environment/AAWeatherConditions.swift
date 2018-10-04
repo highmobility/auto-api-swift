@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  WeatherConditions.swift
+//  AAWeatherConditions.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 07/12/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct WeatherConditions: AAFullStandardCommand {
+public struct AAWeatherConditions: AAFullStandardCommand {
 
     public let rainIntensity: AAPercentageInt?
 
@@ -48,12 +48,12 @@ public struct WeatherConditions: AAFullStandardCommand {
     }
 }
 
-extension WeatherConditions: AAIdentifiable {
+extension AAWeatherConditions: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0055)
+    public static var identifier: AACommandIdentifier = 0x0055
 }
 
-extension WeatherConditions: AAMessageTypesGettable {
+extension AAWeatherConditions: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -62,7 +62,7 @@ extension WeatherConditions: AAMessageTypesGettable {
     }
 }
 
-public extension WeatherConditions {
+public extension AAWeatherConditions {
 
     static var getConditions: [UInt8] {
         return commandPrefix(for: .getConditions)

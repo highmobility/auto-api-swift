@@ -44,7 +44,7 @@ class WeatherConditionsTests: XCTestCase {
             0x00        // Message Type for Get Weather Conditions
         ]
 
-        XCTAssertEqual(WeatherConditions.getWeatherConditions, bytes)
+        XCTAssertEqual(AAWeatherConditions.getWeatherConditions, bytes)
     }
 
     func testState() {
@@ -57,7 +57,7 @@ class WeatherConditionsTests: XCTestCase {
             0x64        // 100% (maximum rain)
         ]
 
-        guard let weatherConditions = AutoAPI.parseBinary(bytes) as? WeatherConditions else {
+        guard let weatherConditions = AutoAPI.parseBinary(bytes) as? AAWeatherConditions else {
             return XCTFail("Parsed value is not WeatherConditions")
         }
 
