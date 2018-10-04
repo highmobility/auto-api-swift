@@ -155,7 +155,7 @@
 		OBJ_341 /* AAWakeUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* AAWakeUp.swift */; };
 		OBJ_342 /* AALightConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* AALightConditions.swift */; };
 		OBJ_343 /* AAWeatherConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* AAWeatherConditions.swift */; };
-		OBJ_344 /* FailureMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* FailureMessage.swift */; };
+		OBJ_344 /* AAFailureMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* AAFailureMessage.swift */; };
 		OBJ_345 /* FirmwareVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* FirmwareVersion.swift */; };
 		OBJ_346 /* AABrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* AABrowser.swift */; };
 		OBJ_347 /* AAGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* AAGraphics.swift */; };
@@ -189,7 +189,7 @@
 		OBJ_378 /* AAChargingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_82 /* AAChargingState.swift */; };
 		OBJ_379 /* AAControlMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_83 /* AAControlMode.swift */; };
 		OBJ_380 /* AADrivingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_84 /* AADrivingMode.swift */; };
-		OBJ_381 /* FailureReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_85 /* FailureReason.swift */; };
+		OBJ_381 /* AAFailureReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_85 /* AAFailureReason.swift */; };
 		OBJ_382 /* AAFatigueLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_86 /* AAFatigueLevel.swift */; };
 		OBJ_383 /* AAFlasherState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_87 /* AAFlasherState.swift */; };
 		OBJ_384 /* AAGearMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_88 /* AAGearMode.swift */; };
@@ -495,7 +495,7 @@
 		OBJ_37 /* AAWakeUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWakeUp.swift; sourceTree = "<group>"; };
 		OBJ_39 /* AALightConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALightConditions.swift; sourceTree = "<group>"; };
 		OBJ_40 /* AAWeatherConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWeatherConditions.swift; sourceTree = "<group>"; };
-		OBJ_41 /* FailureMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureMessage.swift; sourceTree = "<group>"; };
+		OBJ_41 /* AAFailureMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFailureMessage.swift; sourceTree = "<group>"; };
 		OBJ_42 /* FirmwareVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirmwareVersion.swift; sourceTree = "<group>"; };
 		OBJ_44 /* AABrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AABrowser.swift; sourceTree = "<group>"; };
 		OBJ_45 /* AAGraphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAGraphics.swift; sourceTree = "<group>"; };
@@ -530,7 +530,7 @@
 		OBJ_82 /* AAChargingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChargingState.swift; sourceTree = "<group>"; };
 		OBJ_83 /* AAControlMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAControlMode.swift; sourceTree = "<group>"; };
 		OBJ_84 /* AADrivingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADrivingMode.swift; sourceTree = "<group>"; };
-		OBJ_85 /* FailureReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureReason.swift; sourceTree = "<group>"; };
+		OBJ_85 /* AAFailureReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFailureReason.swift; sourceTree = "<group>"; };
 		OBJ_86 /* AAFatigueLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFatigueLevel.swift; sourceTree = "<group>"; };
 		OBJ_87 /* AAFlasherState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFlasherState.swift; sourceTree = "<group>"; };
 		OBJ_88 /* AAGearMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAGearMode.swift; sourceTree = "<group>"; };
@@ -711,7 +711,7 @@
 				OBJ_28 /* Diagnostics */,
 				OBJ_33 /* DigitalKey */,
 				OBJ_38 /* Environment */,
-				OBJ_41 /* FailureMessage.swift */,
+				OBJ_41 /* AAFailureMessage.swift */,
 				OBJ_42 /* FirmwareVersion.swift */,
 				OBJ_43 /* Headunit */,
 				OBJ_51 /* Health */,
@@ -1027,7 +1027,7 @@
 				OBJ_84 /* AADrivingMode.swift */,
 				20F7903A21356F94003BDFA2 /* AADueStatus.swift */,
 				20896EEB2147A024003A7A63 /* AAEnabledState.swift */,
-				OBJ_85 /* FailureReason.swift */,
+				OBJ_85 /* AAFailureReason.swift */,
 				20CDFAA82152657100402BF6 /* AAFastened.swift */,
 				OBJ_86 /* AAFatigueLevel.swift */,
 				OBJ_87 /* AAFlasherState.swift */,
@@ -1315,7 +1315,7 @@
 				OBJ_342 /* AALightConditions.swift in Sources */,
 				OBJ_343 /* AAWeatherConditions.swift in Sources */,
 				20DB154E2097265400A1658B /* AADriverCard.swift in Sources */,
-				OBJ_344 /* FailureMessage.swift in Sources */,
+				OBJ_344 /* AAFailureMessage.swift in Sources */,
 				OBJ_345 /* FirmwareVersion.swift in Sources */,
 				OBJ_346 /* AABrowser.swift in Sources */,
 				OBJ_347 /* AAGraphics.swift in Sources */,
@@ -1362,7 +1362,7 @@
 				205C517B208F430100B55ACE /* AACruiseControlLimiter.swift in Sources */,
 				OBJ_379 /* AAControlMode.swift in Sources */,
 				OBJ_380 /* AADrivingMode.swift in Sources */,
-				OBJ_381 /* FailureReason.swift in Sources */,
+				OBJ_381 /* AAFailureReason.swift in Sources */,
 				OBJ_382 /* AAFatigueLevel.swift in Sources */,
 				OBJ_383 /* AAFlasherState.swift in Sources */,
 				205C5179208F41C700B55ACE /* AACruiseControl.swift in Sources */,

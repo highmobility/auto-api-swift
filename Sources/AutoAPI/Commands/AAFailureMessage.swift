@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  FailureMessage.swift
+//  AAFailureMessage.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 28/11/2017.
@@ -29,12 +29,12 @@
 import Foundation
 
 
-public struct FailureMessage: AAInboundCommand {
+public struct AAFailureMessage: AAInboundCommand {
 
     public let failedMessageIdentifier: AACommandIdentifier?
     public let failedMessageType: UInt8?
     public let failureDescription: String?
-    public let failureReason: FailureReason?
+    public let failureReason: AAFailureReason?
 
 
     // MARK: AAInboundCommand
@@ -49,7 +49,7 @@ public struct FailureMessage: AAInboundCommand {
 
         failedMessageIdentifier = properties.value(for: 0x01)
         failedMessageType = properties.value(for: 0x02)
-        failureReason = FailureReason(rawValue: properties.first(for: 0x03)?.monoValue)
+        failureReason = AAFailureReason(rawValue: properties.first(for: 0x03)?.monoValue)
         failureDescription = properties.value(for: 0x04)
 
         // Properties
@@ -57,12 +57,12 @@ public struct FailureMessage: AAInboundCommand {
     }
 }
 
-extension FailureMessage: AAIdentifiable {
+extension AAFailureMessage: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0002)
+    public static var identifier: AACommandIdentifier = 0x0002
 }
 
-extension FailureMessage: AAMessageTypesGettable {
+extension AAFailureMessage: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 

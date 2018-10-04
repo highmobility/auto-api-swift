@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  FailureReason.swift
+//  AAFailureReason.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 28/11/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public enum FailureReason: UInt8 {
+public enum AAFailureReason: UInt8 {
 
     case unsupportedCapability  = 0x00
     case unauthorised           = 0x01
