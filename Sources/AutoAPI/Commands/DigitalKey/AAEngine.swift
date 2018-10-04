@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Engine.swift
+//  AAEngine.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 28/11/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct Engine: AAFullStandardCommand {
+public struct AAEngine: AAFullStandardCommand {
 
     public let accessoriesPoweredState: AAActiveState?
     public let engineState: AAActiveState?
@@ -43,39 +43,72 @@ public struct Engine: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        ignitionState = AAActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
-        accessoriesPoweredState = AAActiveState(rawValue: properties.first(for: 0x02)?.monoValue)
-        engineState = AAActiveState(rawValue: properties.first(for: 0x03)?.monoValue)
+        ignitionState = properties.value(for: 0x01)
+        accessoriesPoweredState = properties.value(for: 0x02)
+        engineState = properties.value(for: 0x03)
 
         // Properties
         self.properties = properties
     }
 }
 
-extension Engine: AAIdentifiable {
+extension AAEngine: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0035)
+    public static var identifier: AACommandIdentifier = 0x0035
 }
 
-extension Engine: AAMessageTypesGettable {
+extension AAEngine: AALegacyGettable {
 
-    public enum MessageTypes: UInt8, CaseIterable {
+    public struct Legacy: AALegacyType {
 
-        case getIgnitionState   = 0x00
-        case ignitionState      = 0x01
-        case turnEngineOnOff    = 0x02
+        public enum MessageTypes: UInt8, CaseIterable {
+
+            case getIgnitionState   = 0x00
+            case ignitionState      = 0x01
+            case turnEngineOnOff    = 0x02
+        }
+
+
+        public init(properties: AAProperties) {
+
+        }
     }
 }
 
-public extension Engine {
+extension AAEngine: AAMessageTypesGettable {
+
+    public enum MessageTypes: UInt8, CaseIterable {
+
+        case getEngineState = 0x00
+        case engineState    = 0x01
+        case turnOnOff      = 0x12
+    }
+}
+
+
+// MARK: Commands
+
+public extension AAEngine {
+
+    static var getEngineState: [UInt8] {
+        return commandPrefix(for: .getEngineState)
+    }
+
+
+    static func turnIgnitionOnOff(_ state: AAActiveState) -> [UInt8] {
+        return commandPrefix(for: .turnOnOff) + state.propertyBytes(0x01)
+    }
+}
+
+public extension AAEngine.Legacy {
 
     static var getIgnitionState: [UInt8] {
-        return commandPrefix(for: .getIgnitionState)
+        return commandPrefix(for: AAEngine.self, messageType: .getIgnitionState)
     }
 
     static var setIgnitionState: (AAActiveState) -> [UInt8] {
         return {
-            return commandPrefix(for: .turnEngineOnOff) + $0.propertyBytes(0x01)
+            return commandPrefix(for: AAEngine.self, messageType: .turnEngineOnOff) + $0.propertyBytes(0x01)
         }
     }
 }
