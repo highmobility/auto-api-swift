@@ -44,6 +44,6 @@ class HeartRateTests: XCTestCase {
             0x46        // 70 beats per minute
         ]
 
-        XCTAssertEqual(HeartRate.sendHeartRate(70), bytes)
+        XCTAssertEqual(AAHeartRate.sendHeartRate(70), bytes)
     }
 }

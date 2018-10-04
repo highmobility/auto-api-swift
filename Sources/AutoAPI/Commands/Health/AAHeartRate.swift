@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  HeartRate.swift
+//  AAHeartRate.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 12/12/2017.
@@ -29,28 +29,47 @@
 import Foundation
 
 
-public struct HeartRate: AAOutboundCommand {
+public struct AAHeartRate: AAOutboundCommand {
 
 }
 
-extension HeartRate: AAIdentifiable {
+extension AAHeartRate: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0029)
+    public static var identifier: AACommandIdentifier = 0x0029
 }
 
-extension HeartRate: AAMessageTypesGettable {
+extension AAHeartRate: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case sendRate = 0x02
+        case sendRate = 0x12
     }
 }
 
-public extension HeartRate {
 
-    static var sendRate: (UInt8) -> [UInt8] {
-        return {
-            return commandPrefix(for: .sendRate, additionalBytes: $0)
+// MARK: Commands
+
+public extension AAHeartRate {
+
+    static func sendRate(_ rate: UInt8) -> [UInt8] {
+        return commandPrefix(for: .sendRate) + rate.propertyBytes(0x01)
+    }
+}
+
+public extension AAHeartRate {
+
+    public struct Legacy: AAMessageTypesGettable {
+
+        public enum MessageTypes: UInt8, CaseIterable {
+
+            case sendRate = 0x02
+        }
+
+
+        static var sendRate: (UInt8) -> [UInt8] {
+            return {
+                return commandPrefix(for: AAHeartRate.self, messageType: .sendRate, additionalBytes: $0)
+            }
         }
     }
 }

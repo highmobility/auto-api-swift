@@ -163,7 +163,7 @@
 		OBJ_351 /* AAVideoHandover.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* AAVideoHandover.swift */; };
 		OBJ_352 /* AAWiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* AAWiFi.swift */; };
 		OBJ_353 /* AADriverFatigue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_52 /* AADriverFatigue.swift */; };
-		OBJ_354 /* HeartRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* HeartRate.swift */; };
+		OBJ_354 /* AAHeartRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* AAHeartRate.swift */; };
 		OBJ_355 /* AAHomeCharger.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_55 /* AAHomeCharger.swift */; };
 		OBJ_356 /* Fueling.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_57 /* Fueling.swift */; };
 		OBJ_357 /* ParkingBrake.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_58 /* ParkingBrake.swift */; };
@@ -503,7 +503,7 @@
 		OBJ_49 /* AAVideoHandover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAVideoHandover.swift; sourceTree = "<group>"; };
 		OBJ_50 /* AAWiFi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWiFi.swift; sourceTree = "<group>"; };
 		OBJ_52 /* AADriverFatigue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADriverFatigue.swift; sourceTree = "<group>"; };
-		OBJ_53 /* HeartRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRate.swift; sourceTree = "<group>"; };
+		OBJ_53 /* AAHeartRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHeartRate.swift; sourceTree = "<group>"; };
 		OBJ_55 /* AAHomeCharger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHomeCharger.swift; sourceTree = "<group>"; };
 		OBJ_57 /* Fueling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fueling.swift; sourceTree = "<group>"; };
 		OBJ_58 /* ParkingBrake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingBrake.swift; sourceTree = "<group>"; };
@@ -951,7 +951,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_52 /* AADriverFatigue.swift */,
-				OBJ_53 /* HeartRate.swift */,
+				OBJ_53 /* AAHeartRate.swift */,
 			);
 			path = Health;
 			sourceTree = "<group>";
@@ -1335,7 +1335,7 @@
 				OBJ_352 /* AAWiFi.swift in Sources */,
 				20B0C143215D1EA7005FA699 /* AATirePressure.swift in Sources */,
 				OBJ_353 /* AADriverFatigue.swift in Sources */,
-				OBJ_354 /* HeartRate.swift in Sources */,
+				OBJ_354 /* AAHeartRate.swift in Sources */,
 				OBJ_355 /* AAHomeCharger.swift in Sources */,
 				OBJ_356 /* Fueling.swift in Sources */,
 				OBJ_357 /* ParkingBrake.swift in Sources */,

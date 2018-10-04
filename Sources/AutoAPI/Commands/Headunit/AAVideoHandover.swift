@@ -60,7 +60,13 @@ public extension AAVideoHandover {
 
 public extension AAVideoHandover {
 
-    struct Legacy {
+    struct Legacy: AAMessageTypesGettable {
+
+        public enum MessageTypes: UInt8, CaseIterable {
+
+            case handover  = 0x00
+        }
+        
 
         struct Details {
             public let videoURL: URL

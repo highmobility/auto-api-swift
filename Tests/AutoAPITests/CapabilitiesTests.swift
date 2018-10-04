@@ -56,7 +56,7 @@ class CapabilitiesTests: XCTestCase {
             0x00, 0x29  // MSB, LSB Idenfitier for Heart Rate
         ]
 
-        XCTAssertEqual(Capabilities.getCapability(HeartRate.identifier), bytes)
+        XCTAssertEqual(Capabilities.getCapability(AAHeartRate.identifier), bytes)
     }
 
     func testMultiple() {
@@ -220,8 +220,8 @@ class CapabilitiesTests: XCTestCase {
         }
 
         // HEART RATE
-        if let capability = capabilities.first(where: { $0.command is HeartRate.Type }) {
-            XCTAssertTrue(capability.supportsAllMessageTypes(for: HeartRate.self))
+        if let capability = capabilities.first(where: { $0.command is AAHeartRate.Type }) {
+            XCTAssertTrue(capability.supportsAllMessageTypes(for: AAHeartRate.self))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for HeartRate")
