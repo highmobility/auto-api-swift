@@ -60,7 +60,6 @@ public struct AAHomeCharger: AAFullStandardCommand {
         plugType = AAPlugType(rawValue: properties.first(for: 0x03)?.monoValue)
         chargingPower = properties.value(for: 0x04)
         solarChargingState = AAActiveState(rawValue: properties.first(for: 0x05)?.monoValue)
-        location = AACoordinate(properties.first(for: 0x06)?.value ?? [])
         hotspotState = AAActiveState(rawValue: properties.first(for: 0x08)?.monoValue)
         wifiHotspotSSID = properties.value(for: 0x09)
         wifiHotspotSecurity = AANetworkSecurity(rawValue: properties.first(for: 0x0A)?.monoValue)
@@ -71,6 +70,7 @@ public struct AAHomeCharger: AAFullStandardCommand {
         chargeCurrentDC = properties.value(for: 0x0E)
         maximumChargeCurrent = properties.value(for: 0x0F)
         minimumChargeCurrent = properties.value(for: 0x10)
+        location = AACoordinate(properties.first(for: 0x11)?.value ?? [])
 
         // Properties
         self.properties = properties
@@ -86,7 +86,10 @@ extension AAHomeCharger: AALegacyGettable {
 
     public struct Legacy: AALegacyType {
 
+        public typealias Coordinate = (latitude: Float, longitude: Float)
+
         public let chargeCurrent: AAChargeCurrent?
+        public let location: Coordinate?
 
 
         // MARK: AALegacyType
@@ -103,6 +106,15 @@ extension AAHomeCharger: AALegacyGettable {
 
 
         public init(properties: AAProperties) {
+            location = properties.first(for: 0x06).flatMap { property -> Coordinate? in
+                guard property.value.count == 8 else {
+                    return nil
+                }
+
+                return (latitude: Float(property.value.prefix(upTo: 4)),
+                        longitude: Float(property.value.dropFirst(4)))
+            }
+
             chargeCurrent = AAChargeCurrent(properties.first(for: 0x07)?.value ?? [])
         }
     }
