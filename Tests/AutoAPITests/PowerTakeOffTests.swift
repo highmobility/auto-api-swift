@@ -49,7 +49,7 @@ class PowerTakeOffTests: XCTestCase {
             0x01        // Activate power take-off
         ]
 
-        XCTAssertEqual(PowerTakeOff.activatePowerTakeOff(true), bytes)
+        XCTAssertEqual(AAPowerTakeoff.activatePowerTakeOff(true), bytes)
     }
 
     func testGetState() {
@@ -58,7 +58,7 @@ class PowerTakeOffTests: XCTestCase {
             0x00        // Message Type for Get Power Takeoff State
         ]
 
-        XCTAssertEqual(PowerTakeOff.getPowerTakeOffState, bytes)
+        XCTAssertEqual(AAPowerTakeoff.getPowerTakeOffState, bytes)
     }
 
     func testState() {
@@ -75,7 +75,7 @@ class PowerTakeOffTests: XCTestCase {
             0x01        // At least one Power Take-Off drive is engaged
         ]
 
-        guard let powerTakeOff = AutoAPI.parseBinary(bytes) as? PowerTakeOff else {
+        guard let powerTakeOff = AutoAPI.parseBinary(bytes) as? AAPowerTakeoff else {
             return XCTFail("Parsed value is not PowerTakeOff")
         }
 

@@ -74,7 +74,7 @@ public struct AutoAPI {
                 AAOffroad.self,
                 ParkingBrake.self,
                 ParkingTicket.self,
-                PowerTakeOff.self,
+                AAPowerTakeoff.self,
                 AARace.self,
                 RemoteControl.self,
                 AARooftopControl.self,

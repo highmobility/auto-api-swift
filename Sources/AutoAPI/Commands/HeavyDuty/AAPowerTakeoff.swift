@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  PowerTakeOff.swift
+//  AAPowerTakeoff.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 30/04/2018.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct PowerTakeOff: AAFullStandardCommand {
+public struct AAPowerTakeoff: AAFullStandardCommand {
 
     public let activeState: AAActiveState?
     public let engagedState: AAActiveState?
@@ -42,38 +42,40 @@ public struct PowerTakeOff: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        activeState = AAActiveState(rawValue: properties.first(for: 0x01)?.monoValue)
-        engagedState = AAActiveState(rawValue: properties.first(for: 0x02)?.monoValue)
+        activeState = properties.value(for: 0x01)
+        engagedState = properties.value(for: 0x02)
 
         // Properties
         self.properties = properties
     }
 }
 
-extension PowerTakeOff: AAIdentifiable {
+extension AAPowerTakeoff: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0065)
+    public static var identifier: AACommandIdentifier = 0x0065
 }
 
-extension PowerTakeOff: AAMessageTypesGettable {
+extension AAPowerTakeoff: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
         case getState   = 0x00
         case state      = 0x01
-        case setState   = 0x02
+        case activate   = 0x02
     }
 }
 
-public extension PowerTakeOff {
+
+// MARK: Commands
+
+public extension AAPowerTakeoff {
 
     static var getState: [UInt8] {
         return commandPrefix(for: .getState)
     }
 
-    static var setState: (AAActiveState) -> [UInt8] {
-        return {
-            return commandPrefix(for: .setState) + $0.propertyBytes(0x01)
-        }
+
+    static func activate(_ state: AAActiveState) -> [UInt8] {
+        return commandPrefix(for: .activate) + state.propertyBytes(0x01)
     }
 }
