@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Capabilities.swift
+//  AACapabilities.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 27/11/2017.
@@ -29,9 +29,9 @@
 import Foundation
 
 
-public struct Capabilities: AAInboundCommand, Sequence  {
+public struct AACapabilities: AAInboundCommand, Sequence  {
 
-    public let capabilities: [Capability]
+    public let capabilities: [AACapability]
 
 
     // MARK: AAInboundCommand
@@ -54,7 +54,7 @@ public struct Capabilities: AAInboundCommand, Sequence  {
                 return nil
             }
 
-            return Capability(binary: property.value, command: command)
+            return AACapability(binary: property.value, command: command)
         }
 
         // Properties
@@ -64,20 +64,20 @@ public struct Capabilities: AAInboundCommand, Sequence  {
 
     // MARK: Sequence
 
-    public typealias Iterator = CapabilitiesIterator
+    public typealias Iterator = AACapabilitiesIterator
 
 
-    public func makeIterator() -> CapabilitiesIterator {
-        return CapabilitiesIterator(propertiesArray: properties.filter(for: 0x01))
+    public func makeIterator() -> AACapabilitiesIterator {
+        return AACapabilitiesIterator(propertiesArray: properties.filter(for: 0x01))
     }
 }
 
-extension Capabilities: AAIdentifiable {
+extension AACapabilities: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0010)
+    public static var identifier: AACommandIdentifier = 0x0010
 }
 
-extension Capabilities: AAMessageTypesGettable {
+extension AACapabilities: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -87,15 +87,17 @@ extension Capabilities: AAMessageTypesGettable {
     }
 }
 
-public extension Capabilities {
+
+// MARK: Commands
+
+public extension AACapabilities {
 
     static var getCapabilities: [UInt8] {
         return commandPrefix(for: .getCapabilities)
     }
 
-    static var getCapability: (AACommandIdentifier) -> [UInt8] {
-        return {
-            return commandPrefix(for: .getCapability) + $0.bytes
-        }
+
+    static func getCapability(_ commandID: AACommandIdentifier) -> [UInt8] {
+        return commandPrefix(for: .getCapability) + commandID.bytes
     }
 }

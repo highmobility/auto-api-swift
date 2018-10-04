@@ -131,9 +131,9 @@
 		OBJ_311 /* HMUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "HMUtilities::HMUtilities::Product" /* HMUtilities.framework */; };
 		OBJ_318 /* AAAutoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* AAAutoAPI.swift */; };
 		OBJ_319 /* AABinaryInitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AABinaryInitable.swift */; };
-		OBJ_320 /* Capabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Capabilities.swift */; };
-		OBJ_321 /* CapabilitiesIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* CapabilitiesIterator.swift */; };
-		OBJ_322 /* Capability.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* Capability.swift */; };
+		OBJ_320 /* AACapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* AACapabilities.swift */; };
+		OBJ_321 /* AACapabilitiesIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* AACapabilitiesIterator.swift */; };
+		OBJ_322 /* AACapability.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* AACapability.swift */; };
 		OBJ_323 /* AASDKVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* AASDKVersion.swift */; };
 		OBJ_324 /* AACharging.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* AACharging.swift */; };
 		OBJ_325 /* AAChassisSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* AAChassisSettings.swift */; };
@@ -385,7 +385,7 @@
 		OBJ_117 /* RawRepresentable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RawRepresentable+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_118 /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_119 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_12 /* Capabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capabilities.swift; sourceTree = "<group>"; };
+		OBJ_12 /* AACapabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACapabilities.swift; sourceTree = "<group>"; };
 		OBJ_120 /* UInt16+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt16+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_122 /* UInt8+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt8+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_123 /* UInt8Collection+Binary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt8Collection+Binary.swift"; sourceTree = "<group>"; };
@@ -394,7 +394,7 @@
 		OBJ_127 /* AAAcceleration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAAcceleration.swift; sourceTree = "<group>"; };
 		OBJ_128 /* AAActionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAActionItem.swift; sourceTree = "<group>"; };
 		OBJ_129 /* AABrakeTorqueVectoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AABrakeTorqueVectoring.swift; sourceTree = "<group>"; };
-		OBJ_13 /* CapabilitiesIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapabilitiesIterator.swift; sourceTree = "<group>"; };
+		OBJ_13 /* AACapabilitiesIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACapabilitiesIterator.swift; sourceTree = "<group>"; };
 		OBJ_130 /* AAChargeCurrent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChargeCurrent.swift; sourceTree = "<group>"; };
 		OBJ_131 /* AAChargingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChargingTimer.swift; sourceTree = "<group>"; };
 		OBJ_133 /* AAChassisPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChassisPosition.swift; sourceTree = "<group>"; };
@@ -403,7 +403,7 @@
 		OBJ_137 /* AAClimateProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAClimateProfile.swift; sourceTree = "<group>"; };
 		OBJ_138 /* AATime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATime.swift; sourceTree = "<group>"; };
 		OBJ_139 /* AAWeekdaysStartingTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWeekdaysStartingTimes.swift; sourceTree = "<group>"; };
-		OBJ_14 /* Capability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capability.swift; sourceTree = "<group>"; };
+		OBJ_14 /* AACapability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACapability.swift; sourceTree = "<group>"; };
 		OBJ_140 /* AAColour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAColour.swift; sourceTree = "<group>"; };
 		OBJ_141 /* AACoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACoordinate.swift; sourceTree = "<group>"; };
 		OBJ_142 /* AADoor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADoor.swift; sourceTree = "<group>"; };
@@ -605,9 +605,9 @@
 		OBJ_11 /* Capability */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_12 /* Capabilities.swift */,
-				OBJ_13 /* CapabilitiesIterator.swift */,
-				OBJ_14 /* Capability.swift */,
+				OBJ_12 /* AACapabilities.swift */,
+				OBJ_13 /* AACapabilitiesIterator.swift */,
+				OBJ_14 /* AACapability.swift */,
 			);
 			path = Capability;
 			sourceTree = "<group>";
@@ -1283,11 +1283,11 @@
 			files = (
 				OBJ_318 /* AAAutoAPI.swift in Sources */,
 				OBJ_319 /* AABinaryInitable.swift in Sources */,
-				OBJ_320 /* Capabilities.swift in Sources */,
+				OBJ_320 /* AACapabilities.swift in Sources */,
 				20DB1548209718DB00A1658B /* AAWorkingState.swift in Sources */,
-				OBJ_321 /* CapabilitiesIterator.swift in Sources */,
+				OBJ_321 /* AACapabilitiesIterator.swift in Sources */,
 				20896EEC2147A024003A7A63 /* AAEnabledState.swift in Sources */,
-				OBJ_322 /* Capability.swift in Sources */,
+				OBJ_322 /* AACapability.swift in Sources */,
 				OBJ_323 /* AASDKVersion.swift in Sources */,
 				20896EEE2147DE32003A7A63 /* Double+Extensions.swift in Sources */,
 				OBJ_324 /* AACharging.swift in Sources */,

@@ -46,7 +46,7 @@ class CapabilitiesTests: XCTestCase {
             0x00        // Message Type for Get Capabilities
         ]
 
-        XCTAssertEqual(Capabilities.getCapabilities, bytes)
+        XCTAssertEqual(AACapabilities.getCapabilities, bytes)
     }
 
     func testGetCapability() {
@@ -56,7 +56,7 @@ class CapabilitiesTests: XCTestCase {
             0x00, 0x29  // MSB, LSB Idenfitier for Heart Rate
         ]
 
-        XCTAssertEqual(Capabilities.getCapability(AAHeartRate.identifier), bytes)
+        XCTAssertEqual(AACapabilities.getCapability(AAHeartRate.identifier), bytes)
     }
 
     func testMultiple() {
@@ -147,7 +147,7 @@ class CapabilitiesTests: XCTestCase {
             0x02        // Set Navi Destination
         ]
 
-        guard let capabilities = AAAutoAPI.parseBinary(bytes) as? Capabilities else {
+        guard let capabilities = AAAutoAPI.parseBinary(bytes) as? AACapabilities else {
             return XCTFail("Parsed value is not Capabilities")
         }
 
@@ -257,7 +257,7 @@ class CapabilitiesTests: XCTestCase {
             0x02,       // Supports Open/Close Trunk
         ]
 
-        guard let capabilities = AAAutoAPI.parseBinary(bytes) as? Capabilities else {
+        guard let capabilities = AAAutoAPI.parseBinary(bytes) as? AACapabilities else {
             return XCTFail("Parsed value is not Capabilities")
         }
 

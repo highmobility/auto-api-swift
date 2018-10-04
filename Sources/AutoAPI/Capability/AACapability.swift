@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Capability.swift
+//  AACapability.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 20/12/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct Capability {
+public struct AACapability {
 
     public let command: AACommand.Type
     public let identifier: AACommandIdentifier
@@ -64,9 +64,9 @@ public struct Capability {
     }
 }
 
-extension Capability: Equatable {
+extension AACapability: Equatable {
 
-    public static func ==(lhs: Capability, rhs: Capability) -> Bool {
+    public static func ==(lhs: AACapability, rhs: AACapability) -> Bool {
         // If the command matches, the 'identifier' must be the same
         return (lhs.command == rhs.command) && (lhs.supportedMessageTypes == rhs.supportedMessageTypes)
     }

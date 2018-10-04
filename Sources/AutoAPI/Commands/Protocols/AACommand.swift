@@ -41,7 +41,7 @@ extension AACommand {
     public var debugTree: DebugTree {
         return DebugTree(self, label: nil, expandProperties: false) { (anything, label, expandProperties) -> DebugTree? in
             switch anything {
-            case let capabilities as Capabilities:
+            case let capabilities as AACapabilities:
                 let nodes: [DebugTree] = capabilities.map {
                     let idLeaf: DebugTree = .leaf(label: "identifier = " + String(format: "0x%04X", $0.identifier))
                     let msgTypesLeaf: DebugTree = .leaf(label: "supportedMessageTypes = " + $0.supportedMessageTypes.map { String(format: "0x%02X", $0) }.joined(separator: ", "))

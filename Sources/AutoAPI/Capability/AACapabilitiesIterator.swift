@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  CapabilitiesIterator.swift
+//  AACapabilitiesIterator.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 27/11/2017.
@@ -29,17 +29,17 @@
 import Foundation
 
 
-public struct CapabilitiesIterator: IteratorProtocol, AAPropertiesInitable {
+public struct AACapabilitiesIterator: IteratorProtocol, AAPropertiesInitable {
 
     private let commandTypes = AAAutoAPI.commands.compactMap { $0 as? AACommand.Type }
 
 
     // MARK: IteratorProtocol
 
-    public typealias Element = Capability
+    public typealias Element = AACapability
 
 
-    public mutating func next() -> Capability? {
+    public mutating func next() -> AACapability? {
         guard let property = propertiesIterator.next() else {
             return nil
         }
@@ -50,7 +50,7 @@ public struct CapabilitiesIterator: IteratorProtocol, AAPropertiesInitable {
             return nil
         }
 
-        return Capability(binary: property.value, command: command)
+        return AACapability(binary: property.value, command: command)
     }
 
 

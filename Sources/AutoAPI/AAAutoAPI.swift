@@ -44,7 +44,7 @@ public struct AAAutoAPI {
 
     static var commands: [Any] {
         return [AABrowser.self,
-                Capabilities.self,
+                AACapabilities.self,
                 AACharging.self,
                 AAChassisSettings.self,
                 AAClimate.self,
