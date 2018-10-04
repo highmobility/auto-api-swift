@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Door.swift
+//  AADoor.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 29/11/2017.
@@ -29,14 +29,14 @@
 import Foundation
 
 
-public struct Door {
+public struct AADoor {
 
     public let location: AALocation
-    public let lock: LockState
+    public let lock: AALockState
     public let position: AAPositionState
 }
 
-extension Door: AAItem {
+extension AADoor: AAItem {
 
     static let size: Int = 3
 
@@ -44,7 +44,7 @@ extension Door: AAItem {
     init?(bytes: [UInt8]) {
         guard let location = AALocation(rawValue: bytes[0]),
             let position = AAPositionState(rawValue: bytes[1]),
-            let lock = LockState(rawValue: bytes[2]) else {
+            let lock = AALockState(rawValue: bytes[2]) else {
                 return nil
         }
 
@@ -54,7 +54,7 @@ extension Door: AAItem {
     }
 }
 
-public extension Door {
+public extension AADoor {
 
     public struct Position: AAItem {
 
@@ -81,7 +81,7 @@ public extension Door {
     public struct Lock: AAItem {
 
         public let location: AALocation
-        public let lock: LockState
+        public let lock: AALockState
 
 
         // MARK: AAItem
@@ -91,7 +91,7 @@ public extension Door {
 
         init?(bytes: [UInt8]) {
             guard let location = AALocation(rawValue: bytes[0]),
-                let lock = LockState(rawValue: bytes[1]) else {
+                let lock = AALockState(rawValue: bytes[1]) else {
                     return nil
             }
 

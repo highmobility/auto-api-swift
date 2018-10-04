@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  LockState.swift
+//  AALockState.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 27/11/2017.
@@ -39,7 +39,7 @@ import Foundation
  SECURED = vehicle has been secured = all doors locked and alarm system activated"
 
  */
-public enum LockState: UInt8 {
+public enum AALockState: UInt8 {
 
     case unlocked   = 0x00
     case locked     = 0x01
@@ -51,10 +51,10 @@ public enum LockState: UInt8 {
     case selectiveLocked    = 0x03
 
 
-    public static let unlock = LockState.unlocked
-    public static let lock = LockState.locked
+    public static let unlock = AALockState.unlocked
+    public static let lock = AALockState.locked
 }
 
-extension LockState: AAPropertyConvertable {
+extension AALockState: AAPropertyConvertable {
 
 }

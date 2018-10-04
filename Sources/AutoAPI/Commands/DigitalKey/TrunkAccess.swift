@@ -31,7 +31,7 @@ import Foundation
 
 public struct TrunkAccess: AAFullStandardCommand {
 
-    public let lock: LockState?
+    public let lock: AALockState?
     public let position: AAPositionState?
 
 
@@ -42,7 +42,7 @@ public struct TrunkAccess: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        lock = LockState(rawValue: properties.first(for: 0x01)?.monoValue)
+        lock = AALockState(rawValue: properties.first(for: 0x01)?.monoValue)
         position = AAPositionState(rawValue: properties.first(for: 0x02)?.monoValue)
 
         // Properties
@@ -68,10 +68,10 @@ extension TrunkAccess: AAMessageTypesGettable {
 public extension TrunkAccess {
 
     struct Settings {
-        public let lock: LockState?
+        public let lock: AALockState?
         public let position: AAPositionState?
 
-        public init(lock: LockState?, position: AAPositionState?) {
+        public init(lock: AALockState?, position: AAPositionState?) {
             self.lock = lock
             self.position = position
         }

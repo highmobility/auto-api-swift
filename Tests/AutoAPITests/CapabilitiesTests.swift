@@ -156,8 +156,8 @@ class CapabilitiesTests: XCTestCase {
         XCTAssertEqual(all.count, 11)
 
         // DOOR LOCKS
-        if let capability = capabilities.first(where: { $0.command is DoorLocks.Type }) {
-            XCTAssertTrue(capability.supportsAllMessageTypes(for: DoorLocks.self))
+        if let capability = capabilities.first(where: { $0.command is AADoorLocks.Type }) {
+            XCTAssertTrue(capability.supportsAllMessageTypes(for: AADoorLocks.self))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for DoorLocks")

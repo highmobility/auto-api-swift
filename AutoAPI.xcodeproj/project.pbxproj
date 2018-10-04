@@ -147,7 +147,7 @@
 		OBJ_335 /* AAMaintenance.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* AAMaintenance.swift */; };
 		OBJ_336 /* AAOffroad.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* AAOffroad.swift */; };
 		OBJ_337 /* AARace.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* AARace.swift */; };
-		OBJ_338 /* DoorLocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* DoorLocks.swift */; };
+		OBJ_338 /* AADoorLocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* AADoorLocks.swift */; };
 		OBJ_339 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* Engine.swift */; };
 		OBJ_340 /* TrunkAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* TrunkAccess.swift */; };
 		OBJ_341 /* WakeUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* WakeUp.swift */; };
@@ -193,7 +193,7 @@
 		OBJ_384 /* AAGearMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_88 /* AAGearMode.swift */; };
 		OBJ_386 /* AAKeyfobRelativePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_90 /* AAKeyfobRelativePosition.swift */; };
 		OBJ_387 /* AAFrontLightState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_91 /* AAFrontLightState.swift */; };
-		OBJ_388 /* LockState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_92 /* LockState.swift */; };
+		OBJ_388 /* AALockState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_92 /* AALockState.swift */; };
 		OBJ_389 /* AANeedsReplacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_93 /* AANeedsReplacement.swift */; };
 		OBJ_390 /* AANetworkSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_94 /* AANetworkSecurity.swift */; };
 		OBJ_391 /* ParkingTicketState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_95 /* ParkingTicketState.swift */; };
@@ -237,7 +237,7 @@
 		OBJ_431 /* AAWeekdaysStartingTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_139 /* AAWeekdaysStartingTimes.swift */; };
 		OBJ_432 /* AAColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_140 /* AAColour.swift */; };
 		OBJ_433 /* AACoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_141 /* AACoordinate.swift */; };
-		OBJ_434 /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_142 /* Door.swift */; };
+		OBJ_434 /* AADoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_142 /* AADoor.swift */; };
 		OBJ_435 /* AAItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_143 /* AAItem.swift */; };
 		OBJ_437 /* AAItemIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_146 /* AAItemIterator.swift */; };
 		OBJ_440 /* AAPricingTariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_149 /* AAPricingTariff.swift */; };
@@ -403,7 +403,7 @@
 		OBJ_14 /* Capability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capability.swift; sourceTree = "<group>"; };
 		OBJ_140 /* AAColour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAColour.swift; sourceTree = "<group>"; };
 		OBJ_141 /* AACoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACoordinate.swift; sourceTree = "<group>"; };
-		OBJ_142 /* Door.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Door.swift; sourceTree = "<group>"; };
+		OBJ_142 /* AADoor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADoor.swift; sourceTree = "<group>"; };
 		OBJ_143 /* AAItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAItem.swift; sourceTree = "<group>"; };
 		OBJ_146 /* AAItemIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAItemIterator.swift; sourceTree = "<group>"; };
 		OBJ_149 /* AAPricingTariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPricingTariff.swift; sourceTree = "<group>"; };
@@ -487,7 +487,7 @@
 		OBJ_30 /* AAMaintenance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAMaintenance.swift; sourceTree = "<group>"; };
 		OBJ_31 /* AAOffroad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOffroad.swift; sourceTree = "<group>"; };
 		OBJ_32 /* AARace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AARace.swift; sourceTree = "<group>"; };
-		OBJ_34 /* DoorLocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorLocks.swift; sourceTree = "<group>"; };
+		OBJ_34 /* AADoorLocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADoorLocks.swift; sourceTree = "<group>"; };
 		OBJ_35 /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		OBJ_36 /* TrunkAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrunkAccess.swift; sourceTree = "<group>"; };
 		OBJ_37 /* WakeUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUp.swift; sourceTree = "<group>"; };
@@ -535,7 +535,7 @@
 		OBJ_9 /* AutoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoAPI.swift; sourceTree = "<group>"; };
 		OBJ_90 /* AAKeyfobRelativePosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAKeyfobRelativePosition.swift; sourceTree = "<group>"; };
 		OBJ_91 /* AAFrontLightState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFrontLightState.swift; sourceTree = "<group>"; };
-		OBJ_92 /* LockState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockState.swift; sourceTree = "<group>"; };
+		OBJ_92 /* AALockState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALockState.swift; sourceTree = "<group>"; };
 		OBJ_93 /* AANeedsReplacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AANeedsReplacement.swift; sourceTree = "<group>"; };
 		OBJ_94 /* AANetworkSecurity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AANetworkSecurity.swift; sourceTree = "<group>"; };
 		OBJ_95 /* ParkingTicketState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTicketState.swift; sourceTree = "<group>"; };
@@ -649,7 +649,7 @@
 				205C516C208F28FF00B55ACE /* AADashboardLight.swift */,
 				OBJ_138 /* AATime.swift */,
 				2028370A2150D17E0001724A /* AADepartureTime.swift */,
-				OBJ_142 /* Door.swift */,
+				OBJ_142 /* AADoor.swift */,
 				20DB154D2097265400A1658B /* DriverCard.swift */,
 				20DB154B20971CD700A1658B /* DriverTimeState.swift */,
 				20DB15452097176600A1658B /* DriverWorkingState.swift */,
@@ -901,7 +901,7 @@
 		OBJ_33 /* DigitalKey */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_34 /* DoorLocks.swift */,
+				OBJ_34 /* AADoorLocks.swift */,
 				OBJ_35 /* Engine.swift */,
 				2093A32121394EF8009E43A0 /* Hood.swift */,
 				205C5174208F3E6400B55ACE /* StartStop.swift */,
@@ -1043,7 +1043,7 @@
 				OBJ_88 /* AAGearMode.swift */,
 				OBJ_90 /* AAKeyfobRelativePosition.swift */,
 				OBJ_97 /* AALocation.swift */,
-				OBJ_92 /* LockState.swift */,
+				OBJ_92 /* AALockState.swift */,
 				20896EE721479DC5003A7A63 /* AAMovingState.swift */,
 				OBJ_93 /* AANeedsReplacement.swift */,
 				OBJ_94 /* AANetworkSecurity.swift */,
@@ -1311,7 +1311,7 @@
 				OBJ_335 /* AAMaintenance.swift in Sources */,
 				OBJ_336 /* AAOffroad.swift in Sources */,
 				OBJ_337 /* AARace.swift in Sources */,
-				OBJ_338 /* DoorLocks.swift in Sources */,
+				OBJ_338 /* AADoorLocks.swift in Sources */,
 				20DB1550209727C700A1658B /* Direction.swift in Sources */,
 				OBJ_339 /* Engine.swift in Sources */,
 				OBJ_340 /* TrunkAccess.swift in Sources */,
@@ -1373,7 +1373,7 @@
 				OBJ_384 /* AAGearMode.swift in Sources */,
 				OBJ_386 /* AAKeyfobRelativePosition.swift in Sources */,
 				OBJ_387 /* AAFrontLightState.swift in Sources */,
-				OBJ_388 /* LockState.swift in Sources */,
+				OBJ_388 /* AALockState.swift in Sources */,
 				20BB171D2142604100A3FDB5 /* Date+Extensions.swift in Sources */,
 				20DB153B2096F7DA00A1658B /* Gearbox.swift in Sources */,
 				2093A320213945E1009E43A0 /* Mobile.swift in Sources */,
@@ -1433,7 +1433,7 @@
 				2024BBF42154CFA400AA5261 /* AAClimateSettings.swift in Sources */,
 				20B0C145215D1ECE005FA699 /* AATireTemperature.swift in Sources */,
 				20896EEA21479F4A003A7A63 /* ConnectionState.swift in Sources */,
-				OBJ_434 /* Door.swift in Sources */,
+				OBJ_434 /* AADoor.swift in Sources */,
 				OBJ_435 /* AAItem.swift in Sources */,
 				205C516B208F26CE00B55ACE /* AADashboardLights.swift in Sources */,
 				OBJ_437 /* AAItemIterator.swift in Sources */,

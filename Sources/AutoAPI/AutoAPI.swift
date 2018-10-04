@@ -50,7 +50,7 @@ public struct AutoAPI {
                 AACruiseControl.self,
                 AADashboardLights.self,
                 AADiagnostics.self,
-                DoorLocks.self,
+                AADoorLocks.self,
                 DriverFatigue.self,
                 Engine.self,
                 FailureMessage.self,

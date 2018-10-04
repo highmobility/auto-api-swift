@@ -45,7 +45,7 @@ class DoorLocksTests: XCTestCase {
             0x00        // Message Type for Get Lock State
         ]
 
-        XCTAssertEqual(DoorLocks.getLockState, bytes)
+        XCTAssertEqual(AADoorLocks.getLockState, bytes)
     }
 
     func testLockUnlock() {
@@ -55,7 +55,7 @@ class DoorLocksTests: XCTestCase {
             0x00        // Unlock
         ]
 
-        XCTAssertEqual(DoorLocks.lockUnlock(.unlock), bytes)
+        XCTAssertEqual(AADoorLocks.lockUnlock(.unlock), bytes)
     }
     
     func testState() {
@@ -111,7 +111,7 @@ class DoorLocksTests: XCTestCase {
             0x01,       // Lock locked
         ]
 
-        guard let doorLocks = AutoAPI.parseBinary(bytes) as? DoorLocks else {
+        guard let doorLocks = AutoAPI.parseBinary(bytes) as? AADoorLocks else {
             return XCTFail("Parsed value is not DoorLocks")
         }
 
