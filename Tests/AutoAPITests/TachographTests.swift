@@ -44,7 +44,7 @@ class TachographTests: XCTestCase {
             0x00        // Message Type for Get Tachograph State
         ]
 
-        XCTAssertEqual(Tachograph.getTachographState, bytes)
+        XCTAssertEqual(AATachograph.getTachographState, bytes)
     }
 
     func testState() {
@@ -103,7 +103,7 @@ class TachographTests: XCTestCase {
             0x00, 0x50  // Vehicle speed is 80 km/h
         ]
 
-        guard let tachograph = AutoAPI.parseBinary(bytes) as? Tachograph else {
+        guard let tachograph = AutoAPI.parseBinary(bytes) as? AATachograph else {
             return XCTFail("Parsed value is not Tachograph")
         }
 

@@ -80,7 +80,7 @@ public struct AutoAPI {
                 AARooftopControl.self,
                 AASeats.self,
                 AAStartStop.self,
-                Tachograph.self,
+                AATachograph.self,
                 AATextInput.self,
                 TheftAlarm.self,
                 AATrunkAccess.self,

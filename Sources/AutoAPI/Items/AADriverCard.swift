@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  DriverWorkingState.swift
+//  AADriverCard.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 30/04/2018.
@@ -29,23 +29,23 @@
 import Foundation
 
 
-public struct DriverWorkingState: Equatable {
+public struct AADriverCard: Equatable {
 
     public let driverNumber: UInt8
-    public let state: WorkingState
+    public let present: AAPresentState
 }
 
-extension DriverWorkingState: AAItem {
+extension AADriverCard: AAItem {
 
     static var size: Int = 2
 
 
     init?(bytes: [UInt8]) {
-        guard let state = WorkingState(rawValue: bytes[1]) else {
+        guard let present = AAPresentState(rawValue: bytes[1]) else {
             return nil
         }
 
         self.driverNumber = bytes[0]
-        self.state = state
+        self.present = present
     }
 }

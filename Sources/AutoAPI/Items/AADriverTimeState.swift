@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  DriverTimeState.swift
+//  AADriverTimeState.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 30/04/2018.
@@ -29,19 +29,19 @@
 import Foundation
 
 
-public struct DriverTimeState: Equatable {
+public struct AADriverTimeState: Equatable {
 
     public let driverNumber: UInt8
-    public let state: TimeState
+    public let state: AATimeState
 }
 
-extension DriverTimeState: AAItem {
+extension AADriverTimeState: AAItem {
 
     static var size: Int = 2
 
 
     init?(bytes: [UInt8]) {
-        guard let state = TimeState(rawValue: bytes[1]) else {
+        guard let state = AATimeState(rawValue: bytes[1]) else {
             return nil
         }
 

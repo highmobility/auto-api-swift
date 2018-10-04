@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  TimeState.swift
+//  AATimeState.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 30/04/2018.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public enum TimeState: UInt8 {
+public enum AATimeState: UInt8 {
 
     case normal                 = 0x00
     case quarterBefore4½Hours   = 0x01

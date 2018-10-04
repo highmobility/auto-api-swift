@@ -47,6 +47,7 @@
 		20896EEC2147A024003A7A63 /* AAEnabledState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EEB2147A024003A7A63 /* AAEnabledState.swift */; };
 		20896EEE2147DE32003A7A63 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EED2147DE32003A7A63 /* Double+Extensions.swift */; };
 		20896EF02147DEC9003A7A63 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EEF2147DEC9003A7A63 /* Double+Extensions.swift */; };
+		209124B42166321800C15CDA /* AAPresentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209124B32166321800C15CDA /* AAPresentState.swift */; };
 		2093A31E213941E7009E43A0 /* AAAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A31D213941E7009E43A0 /* AAAvailability.swift */; };
 		2093A320213945E1009E43A0 /* AAMobile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A31F213945E1009E43A0 /* AAMobile.swift */; };
 		2093A32221394EF8009E43A0 /* AAHood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A32121394EF8009E43A0 /* AAHood.swift */; };
@@ -62,13 +63,13 @@
 		20DB153B2096F7DA00A1658B /* Gearbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB153A2096F7DA00A1658B /* Gearbox.swift */; };
 		20DB15402097112D00A1658B /* AAPowerTakeoff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB153F2097112D00A1658B /* AAPowerTakeoff.swift */; };
 		20DB15422097154D00A1658B /* PowerTakeOffTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15412097154D00A1658B /* PowerTakeOffTests.swift */; };
-		20DB15442097166200A1658B /* Tachograph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15432097166200A1658B /* Tachograph.swift */; };
-		20DB15462097176600A1658B /* DriverWorkingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15452097176600A1658B /* DriverWorkingState.swift */; };
-		20DB1548209718DB00A1658B /* WorkingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB1547209718DB00A1658B /* WorkingState.swift */; };
-		20DB154A20971B9F00A1658B /* TimeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB154920971B9F00A1658B /* TimeState.swift */; };
-		20DB154C20971CD700A1658B /* DriverTimeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB154B20971CD700A1658B /* DriverTimeState.swift */; };
-		20DB154E2097265400A1658B /* DriverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB154D2097265400A1658B /* DriverCard.swift */; };
-		20DB1550209727C700A1658B /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB154F209727C700A1658B /* Direction.swift */; };
+		20DB15442097166200A1658B /* AATachograph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15432097166200A1658B /* AATachograph.swift */; };
+		20DB15462097176600A1658B /* AADriverWorkingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15452097176600A1658B /* AADriverWorkingState.swift */; };
+		20DB1548209718DB00A1658B /* AAWorkingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB1547209718DB00A1658B /* AAWorkingState.swift */; };
+		20DB154A20971B9F00A1658B /* AATimeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB154920971B9F00A1658B /* AATimeState.swift */; };
+		20DB154C20971CD700A1658B /* AADriverTimeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB154B20971CD700A1658B /* AADriverTimeState.swift */; };
+		20DB154E2097265400A1658B /* AADriverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB154D2097265400A1658B /* AADriverCard.swift */; };
+		20DB1550209727C700A1658B /* AADirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB154F209727C700A1658B /* AADirection.swift */; };
 		20DB15522097286200A1658B /* TachographTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15512097286200A1658B /* TachographTests.swift */; };
 		20DC7514215B5EDE009B2B24 /* AAPluggedInState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DC7513215B5EDE009B2B24 /* AAPluggedInState.swift */; };
 		20DC751A215BC021009B2B24 /* AALegacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DC7519215BC021009B2B24 /* AALegacy.swift */; };
@@ -329,6 +330,7 @@
 		20896EEB2147A024003A7A63 /* AAEnabledState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAEnabledState.swift; sourceTree = "<group>"; };
 		20896EED2147DE32003A7A63 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		20896EEF2147DEC9003A7A63 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		209124B32166321800C15CDA /* AAPresentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPresentState.swift; sourceTree = "<group>"; };
 		2093A31D213941E7009E43A0 /* AAAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAAvailability.swift; sourceTree = "<group>"; };
 		2093A31F213945E1009E43A0 /* AAMobile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAMobile.swift; sourceTree = "<group>"; };
 		2093A32121394EF8009E43A0 /* AAHood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHood.swift; sourceTree = "<group>"; };
@@ -344,13 +346,13 @@
 		20DB153A2096F7DA00A1658B /* Gearbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gearbox.swift; sourceTree = "<group>"; };
 		20DB153F2097112D00A1658B /* AAPowerTakeoff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPowerTakeoff.swift; sourceTree = "<group>"; };
 		20DB15412097154D00A1658B /* PowerTakeOffTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerTakeOffTests.swift; sourceTree = "<group>"; };
-		20DB15432097166200A1658B /* Tachograph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tachograph.swift; sourceTree = "<group>"; };
-		20DB15452097176600A1658B /* DriverWorkingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverWorkingState.swift; sourceTree = "<group>"; };
-		20DB1547209718DB00A1658B /* WorkingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingState.swift; sourceTree = "<group>"; };
-		20DB154920971B9F00A1658B /* TimeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeState.swift; sourceTree = "<group>"; };
-		20DB154B20971CD700A1658B /* DriverTimeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverTimeState.swift; sourceTree = "<group>"; };
-		20DB154D2097265400A1658B /* DriverCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverCard.swift; sourceTree = "<group>"; };
-		20DB154F209727C700A1658B /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		20DB15432097166200A1658B /* AATachograph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATachograph.swift; sourceTree = "<group>"; };
+		20DB15452097176600A1658B /* AADriverWorkingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADriverWorkingState.swift; sourceTree = "<group>"; };
+		20DB1547209718DB00A1658B /* AAWorkingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWorkingState.swift; sourceTree = "<group>"; };
+		20DB154920971B9F00A1658B /* AATimeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATimeState.swift; sourceTree = "<group>"; };
+		20DB154B20971CD700A1658B /* AADriverTimeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADriverTimeState.swift; sourceTree = "<group>"; };
+		20DB154D2097265400A1658B /* AADriverCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADriverCard.swift; sourceTree = "<group>"; };
+		20DB154F209727C700A1658B /* AADirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADirection.swift; sourceTree = "<group>"; };
 		20DB15512097286200A1658B /* TachographTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TachographTests.swift; sourceTree = "<group>"; };
 		20DC7513215B5EDE009B2B24 /* AAPluggedInState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPluggedInState.swift; sourceTree = "<group>"; };
 		20DC7519215BC021009B2B24 /* AALegacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALegacy.swift; sourceTree = "<group>"; };
@@ -595,7 +597,7 @@
 			isa = PBXGroup;
 			children = (
 				20DB153F2097112D00A1658B /* AAPowerTakeoff.swift */,
-				20DB15432097166200A1658B /* Tachograph.swift */,
+				20DB15432097166200A1658B /* AATachograph.swift */,
 			);
 			path = HeavyDuty;
 			sourceTree = "<group>";
@@ -650,9 +652,9 @@
 				OBJ_138 /* AATime.swift */,
 				2028370A2150D17E0001724A /* AADepartureTime.swift */,
 				OBJ_142 /* AADoor.swift */,
-				20DB154D2097265400A1658B /* DriverCard.swift */,
-				20DB154B20971CD700A1658B /* DriverTimeState.swift */,
-				20DB15452097176600A1658B /* DriverWorkingState.swift */,
+				20DB154D2097265400A1658B /* AADriverCard.swift */,
+				20DB154B20971CD700A1658B /* AADriverTimeState.swift */,
+				20DB15452097176600A1658B /* AADriverWorkingState.swift */,
 				OBJ_143 /* AAItem.swift */,
 				OBJ_144 /* Iterators */,
 				OBJ_149 /* AAPricingTariff.swift */,
@@ -1028,7 +1030,7 @@
 				205C5170208F315C00B55ACE /* AADashboardLightName.swift */,
 				205C5172208F319900B55ACE /* AADashboardLightState.swift */,
 				20CDFAA6215264F300402BF6 /* AADetectedState.swift */,
-				20DB154F209727C700A1658B /* Direction.swift */,
+				20DB154F209727C700A1658B /* AADirection.swift */,
 				20F7903E2135732D003BDFA2 /* DisplayUnit.swift */,
 				OBJ_84 /* AADrivingMode.swift */,
 				20F7903A21356F94003BDFA2 /* AADueStatus.swift */,
@@ -1048,6 +1050,7 @@
 				OBJ_93 /* AANeedsReplacement.swift */,
 				OBJ_94 /* AANetworkSecurity.swift */,
 				OBJ_95 /* ParkingTicketState.swift */,
+				209124B32166321800C15CDA /* AAPresentState.swift */,
 				20DC7513215B5EDE009B2B24 /* AAPluggedInState.swift */,
 				OBJ_96 /* AAPlugType.swift */,
 				OBJ_98 /* AAPositionState.swift */,
@@ -1058,12 +1061,12 @@
 				OBJ_104 /* AAStartStopState.swift */,
 				OBJ_105 /* TheftAlarmState.swift */,
 				OBJ_106 /* AATimerType.swift */,
-				20DB154920971B9F00A1658B /* TimeState.swift */,
+				20DB154920971B9F00A1658B /* AATimeState.swift */,
 				2024BBFB21553A3200AA5261 /* AAWeekday.swift */,
 				OBJ_108 /* AAWindscreenDamage.swift */,
 				OBJ_109 /* AAWipersLevel.swift */,
 				OBJ_110 /* AAWipersState.swift */,
-				20DB1547209718DB00A1658B /* WorkingState.swift */,
+				20DB1547209718DB00A1658B /* AAWorkingState.swift */,
 				OBJ_111 /* AAZone.swift */,
 			);
 			path = Enums;
@@ -1289,7 +1292,7 @@
 				OBJ_318 /* AutoAPI.swift in Sources */,
 				OBJ_319 /* AABinaryInitable.swift in Sources */,
 				OBJ_320 /* Capabilities.swift in Sources */,
-				20DB1548209718DB00A1658B /* WorkingState.swift in Sources */,
+				20DB1548209718DB00A1658B /* AAWorkingState.swift in Sources */,
 				OBJ_321 /* CapabilitiesIterator.swift in Sources */,
 				20896EEC2147A024003A7A63 /* AAEnabledState.swift in Sources */,
 				OBJ_322 /* Capability.swift in Sources */,
@@ -1298,6 +1301,7 @@
 				OBJ_324 /* AACharging.swift in Sources */,
 				OBJ_325 /* AAChassisSettings.swift in Sources */,
 				2093A32221394EF8009E43A0 /* AAHood.swift in Sources */,
+				209124B42166321800C15CDA /* AAPresentState.swift in Sources */,
 				OBJ_326 /* AAClimate.swift in Sources */,
 				OBJ_327 /* AAHonkHornFlashLights.swift in Sources */,
 				OBJ_328 /* AAKeyfobPosition.swift in Sources */,
@@ -1312,13 +1316,13 @@
 				OBJ_336 /* AAOffroad.swift in Sources */,
 				OBJ_337 /* AARace.swift in Sources */,
 				OBJ_338 /* AADoorLocks.swift in Sources */,
-				20DB1550209727C700A1658B /* Direction.swift in Sources */,
+				20DB1550209727C700A1658B /* AADirection.swift in Sources */,
 				OBJ_339 /* AAEngine.swift in Sources */,
 				OBJ_340 /* AATrunkAccess.swift in Sources */,
 				OBJ_341 /* AAWakeUp.swift in Sources */,
 				OBJ_342 /* AALightConditions.swift in Sources */,
 				OBJ_343 /* AAWeatherConditions.swift in Sources */,
-				20DB154E2097265400A1658B /* DriverCard.swift in Sources */,
+				20DB154E2097265400A1658B /* AADriverCard.swift in Sources */,
 				OBJ_344 /* FailureMessage.swift in Sources */,
 				OBJ_345 /* FirmwareVersion.swift in Sources */,
 				OBJ_346 /* AABrowser.swift in Sources */,
@@ -1344,7 +1348,7 @@
 				20DB15402097112D00A1658B /* AAPowerTakeoff.swift in Sources */,
 				OBJ_360 /* TheftAlarm.swift in Sources */,
 				205C5175208F3E6400B55ACE /* AAStartStop.swift in Sources */,
-				20DB154A20971B9F00A1658B /* TimeState.swift in Sources */,
+				20DB154A20971B9F00A1658B /* AATimeState.swift in Sources */,
 				OBJ_361 /* ValetMode.swift in Sources */,
 				OBJ_362 /* NaviDestination.swift in Sources */,
 				OBJ_363 /* VehicleLocation.swift in Sources */,
@@ -1413,10 +1417,10 @@
 				OBJ_419 /* URL+Extensions.swift in Sources */,
 				OBJ_420 /* AAIdentifiable.swift in Sources */,
 				OBJ_421 /* AAAcceleration.swift in Sources */,
-				20DB15462097176600A1658B /* DriverWorkingState.swift in Sources */,
+				20DB15462097176600A1658B /* AADriverWorkingState.swift in Sources */,
 				OBJ_422 /* AAActionItem.swift in Sources */,
 				OBJ_423 /* AABrakeTorqueVectoring.swift in Sources */,
-				20DB154C20971CD700A1658B /* DriverTimeState.swift in Sources */,
+				20DB154C20971CD700A1658B /* AADriverTimeState.swift in Sources */,
 				OBJ_424 /* AAChargeCurrent.swift in Sources */,
 				2024BBFC21553A3200AA5261 /* AAWeekday.swift in Sources */,
 				OBJ_425 /* AAChargingTimer.swift in Sources */,
@@ -1438,7 +1442,7 @@
 				205C516B208F26CE00B55ACE /* AADashboardLights.swift in Sources */,
 				OBJ_437 /* AAItemIterator.swift in Sources */,
 				209462632162489F0009E9AD /* AAHistorical.swift in Sources */,
-				20DB15442097166200A1658B /* Tachograph.swift in Sources */,
+				20DB15442097166200A1658B /* AATachograph.swift in Sources */,
 				205C5173208F319900B55ACE /* AADashboardLightState.swift in Sources */,
 				OBJ_440 /* AAPricingTariff.swift in Sources */,
 				OBJ_441 /* AASeat.swift in Sources */,

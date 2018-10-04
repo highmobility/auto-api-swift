@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Tachograph.swift
+//  AATachograph.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 30/04/2018.
@@ -29,12 +29,12 @@
 import Foundation
 
 
-public struct Tachograph: AAFullStandardCommand {
+public struct AATachograph: AAFullStandardCommand {
 
-    public let driversCards: [DriverCard]?
-    public let driversTimeStates: [DriverTimeState]?
-    public let driversWorkingStates: [DriverWorkingState]?
-    public let vehicleDirection: Direction?
+    public let driversCards: [AADriverCard]?
+    public let driversTimeStates: [AADriverTimeState]?
+    public let driversWorkingStates: [AADriverWorkingState]?
+    public let vehicleDirection: AADirection?
     public let vehicleMotionState: AAMovingState?
     public let vehicleOverspeedActive: AAActiveState?
     public let vehicleSpeed: Int16?
@@ -47,12 +47,12 @@ public struct Tachograph: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        driversWorkingStates = properties.flatMap(for: 0x01) { DriverWorkingState($0.value) }
-        driversTimeStates = properties.flatMap(for: 0x02) { DriverTimeState($0.value) }
-        driversCards = properties.flatMap(for: 0x03) { DriverCard($0.value) }
-        vehicleDirection = Direction(rawValue: properties.first(for: 0x06)?.monoValue)
+        driversWorkingStates = properties.flatMap(for: 0x01) { AADriverWorkingState($0.value) }
+        driversTimeStates = properties.flatMap(for: 0x02) { AADriverTimeState($0.value) }
+        driversCards = properties.flatMap(for: 0x03) { AADriverCard($0.value) }
+        vehicleDirection = AADirection(rawValue: properties.first(for: 0x06)?.monoValue)
         vehicleMotionState = AAMovingState(rawValue: properties.first(for: 0x04)?.monoValue)
-        vehicleOverspeedActive = AAActiveState(rawValue: properties.first(for: 0x05)?.monoValue)
+        vehicleOverspeedActive = properties.value(for: 0x05)
         vehicleSpeed = properties.value(for: 0x07)
 
         // Properties
@@ -60,12 +60,12 @@ public struct Tachograph: AAFullStandardCommand {
     }
 }
 
-extension Tachograph: AAIdentifiable {
+extension AATachograph: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0064)
+    public static var identifier: AACommandIdentifier = 0x0064
 }
 
-extension Tachograph: AAMessageTypesGettable {
+extension AATachograph: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -74,7 +74,10 @@ extension Tachograph: AAMessageTypesGettable {
     }
 }
 
-public extension Tachograph {
+
+// MARK: Commands
+
+public extension AATachograph {
 
     static var getState: [UInt8] {
         return commandPrefix(for: .getState)

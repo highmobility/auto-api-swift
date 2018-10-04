@@ -19,18 +19,18 @@
 // licensing@high-mobility.com
 //
 //
-//  Direction.swift
+//  AAPresentState.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 30/04/2018.
+//  Created by Mikk Rätsep on 04/10/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum Direction: UInt8 {
+public enum AAPresentState: UInt8 {
 
-    case forward    = 0x00
-    case reverse    = 0x01
+    case notPresent = 0x00
+    case present    = 0x01
 }

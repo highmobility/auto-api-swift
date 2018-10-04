@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  WorkingState.swift
+//  AADirection.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 30/04/2018.
@@ -29,10 +29,8 @@
 import Foundation
 
 
-public enum WorkingState: UInt8 {
+public enum AADirection: UInt8 {
 
-    case resting            = 0x00
-    case driverAvailable    = 0x01
-    case working            = 0x02
-    case driving            = 0x03
+    case forward    = 0x00
+    case reverse    = 0x01
 }
