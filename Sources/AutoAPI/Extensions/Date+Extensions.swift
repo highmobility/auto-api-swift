@@ -29,32 +29,45 @@
 import Foundation
 
 
-extension Date: AABinaryInitable {
+extension Date: AAItem {
 
-    // TODO: Convert to our own byte-implementation
-    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        guard let string = String(bytes: binary, encoding: .utf8) else {
+    static var size: Int = 8
+
+
+    init?(bytes: [UInt8]) {
+        guard let date = AADate(bytes) else {
             return nil
         }
 
-        // TODO: create a Linux implementation (probably not implemented there yet)
-        #if os(Linux)
-            return nil
-        #endif
-
-        guard let date = ISO8601DateFormatter().date(from: string) else {
+        guard let convertedDate = DateComponents(timeZone: TimeZone(secondsFromGMT: Int(date.offset * 60)), year: date.yearFull, month: date.month.int, day: date.day.int, hour: date.hour.int, minute: date.minute.int, second: date.second.int).date else {
             return nil
         }
 
-        self = date
+        self = convertedDate
     }
 }
 
 extension Date: AAPropertyConvertable {
 
-    // TODO: Convert to our own byte-implementation
     var propertyValue: [UInt8] {
-        // TODO: Make the propertyValue Optional to avoid this stuff
-        return ISO8601DateFormatter().string(from: self).data(using: .utf8)?.bytes ?? []
+        let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second, .timeZone], from: self)
+
+        guard let year = components.year,
+            let month = components.month,
+            let day = components.day,
+            let hour = components.hour,
+            let minute = components.minute,
+            let second = components.second,
+            let timeZone = components.timeZone else {
+                return []
+        }
+
+        return [(year - 2000).uint8,
+                month.uint8,
+                day.uint8,
+                hour.uint8,
+                minute.uint8,
+                second.uint8] +
+            Int16(timeZone.secondsFromGMT() / 60).bytes
     }
 }
