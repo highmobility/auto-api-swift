@@ -78,7 +78,7 @@ public struct AutoAPI {
                 RemoteControl.self,
                 AARooftopControl.self,
                 AASeats.self,
-                StartStop.self,
+                AAStartStop.self,
                 Tachograph.self,
                 TextInput.self,
                 TheftAlarm.self,

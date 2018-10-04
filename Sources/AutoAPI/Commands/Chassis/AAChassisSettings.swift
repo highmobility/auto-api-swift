@@ -130,7 +130,7 @@ public extension AAChassisSettings {
         return commandPrefix(for: .setSpringRates) + rates.reduceToByteArray { $0.propertyBytes(0x01) }
     }
 
-    static func startStopSportChrono(_ startStop: AAStartStop) -> [UInt8] {
+    static func startStopSportChrono(_ startStop: AAStartStopState) -> [UInt8] {
         return commandPrefix(for: .startStopSportChrono) + startStop.propertyBytes(0x01)
     }
 }
@@ -159,7 +159,7 @@ public extension AAChassisSettings.Legacy {
         }
     }
 
-    static var startStopSportChrono: (AAStartStop) -> [UInt8] {
+    static var startStopSportChrono: (AAStartStopState) -> [UInt8] {
         return {
             return commandPrefix(for: AAChassisSettings.self, messageType: .startStopSportChrono, additionalBytes: $0.rawValue)
         }

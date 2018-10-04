@@ -49,7 +49,7 @@ class StartStopTests: XCTestCase {
             0x00        // Deactivate
         ]
 
-        XCTAssertEqual(StartStop.activateStartStop(false), bytes)
+        XCTAssertEqual(AAStartStop.activateStartStop(false), bytes)
     }
 
     func testGetState() {
@@ -58,7 +58,7 @@ class StartStopTests: XCTestCase {
             0x00        // Message Type for Get Start Stop State
         ]
 
-        XCTAssertEqual(StartStop.getStartStopState, bytes)
+        XCTAssertEqual(AAStartStop.getStartStopState, bytes)
     }
 
     func testState() {
@@ -71,7 +71,7 @@ class StartStopTests: XCTestCase {
             0x01        // Automatic engine start-stop system active
         ]
 
-        guard let startStop = AutoAPI.parseBinary(bytes) as? StartStop else {
+        guard let startStop = AutoAPI.parseBinary(bytes) as? AAStartStop else {
             return XCTFail("Parsed value is not StartStop")
         }
 

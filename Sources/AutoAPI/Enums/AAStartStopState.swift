@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  AAStartStop.swift
+//  AAStartStopState.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 13/12/2017.
@@ -29,13 +29,13 @@
 import Foundation
 
 
-public enum AAStartStop: UInt8 {
+public enum AAStartStopState: UInt8 {
 
     case start  = 0x00
     case stop   = 0x01
     case reset  = 0x02
 }
 
-extension AAStartStop: AAPropertyConvertable {
+extension AAStartStopState: AAPropertyConvertable {
     
 }

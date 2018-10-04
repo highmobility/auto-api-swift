@@ -34,7 +34,7 @@
 		205C516F208F2EF700B55ACE /* DashboardLightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C516E208F2EF700B55ACE /* DashboardLightsTests.swift */; };
 		205C5171208F315D00B55ACE /* AADashboardLightName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5170208F315C00B55ACE /* AADashboardLightName.swift */; };
 		205C5173208F319900B55ACE /* AADashboardLightState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5172208F319900B55ACE /* AADashboardLightState.swift */; };
-		205C5175208F3E6400B55ACE /* StartStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5174208F3E6400B55ACE /* StartStop.swift */; };
+		205C5175208F3E6400B55ACE /* AAStartStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5174208F3E6400B55ACE /* AAStartStop.swift */; };
 		205C5177208F3FFD00B55ACE /* StartStopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5176208F3FFD00B55ACE /* StartStopTests.swift */; };
 		205C5179208F41C700B55ACE /* AACruiseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5178208F41C700B55ACE /* AACruiseControl.swift */; };
 		205C517B208F430100B55ACE /* AACruiseControlLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517A208F430100B55ACE /* AACruiseControlLimiter.swift */; };
@@ -204,7 +204,7 @@
 		OBJ_396 /* AAPricingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_100 /* AAPricingType.swift */; };
 		OBJ_397 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_101 /* Screen.swift */; };
 		OBJ_398 /* AASeatLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_102 /* AASeatLocation.swift */; };
-		OBJ_400 /* AAStartStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_104 /* AAStartStop.swift */; };
+		OBJ_400 /* AAStartStopState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_104 /* AAStartStopState.swift */; };
 		OBJ_401 /* TheftAlarmState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_105 /* TheftAlarmState.swift */; };
 		OBJ_402 /* AATimerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_106 /* AATimerType.swift */; };
 		OBJ_403 /* AAFluidLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_107 /* AAFluidLevel.swift */; };
@@ -314,7 +314,7 @@
 		205C516E208F2EF700B55ACE /* DashboardLightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLightsTests.swift; sourceTree = "<group>"; };
 		205C5170208F315C00B55ACE /* AADashboardLightName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADashboardLightName.swift; sourceTree = "<group>"; };
 		205C5172208F319900B55ACE /* AADashboardLightState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADashboardLightState.swift; sourceTree = "<group>"; };
-		205C5174208F3E6400B55ACE /* StartStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStop.swift; sourceTree = "<group>"; };
+		205C5174208F3E6400B55ACE /* AAStartStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAStartStop.swift; sourceTree = "<group>"; };
 		205C5176208F3FFD00B55ACE /* StartStopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStopTests.swift; sourceTree = "<group>"; };
 		205C5178208F41C700B55ACE /* AACruiseControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACruiseControl.swift; sourceTree = "<group>"; };
 		205C517A208F430100B55ACE /* AACruiseControlLimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACruiseControlLimiter.swift; sourceTree = "<group>"; };
@@ -367,7 +367,7 @@
 		OBJ_100 /* AAPricingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPricingType.swift; sourceTree = "<group>"; };
 		OBJ_101 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		OBJ_102 /* AASeatLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASeatLocation.swift; sourceTree = "<group>"; };
-		OBJ_104 /* AAStartStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAStartStop.swift; sourceTree = "<group>"; };
+		OBJ_104 /* AAStartStopState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAStartStopState.swift; sourceTree = "<group>"; };
 		OBJ_105 /* TheftAlarmState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheftAlarmState.swift; sourceTree = "<group>"; };
 		OBJ_106 /* AATimerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATimerType.swift; sourceTree = "<group>"; };
 		OBJ_107 /* AAFluidLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFluidLevel.swift; sourceTree = "<group>"; };
@@ -904,7 +904,7 @@
 				OBJ_34 /* AADoorLocks.swift */,
 				OBJ_35 /* AAEngine.swift */,
 				2093A32121394EF8009E43A0 /* AAHood.swift */,
-				205C5174208F3E6400B55ACE /* StartStop.swift */,
+				205C5174208F3E6400B55ACE /* AAStartStop.swift */,
 				OBJ_36 /* TrunkAccess.swift */,
 				OBJ_37 /* WakeUp.swift */,
 			);
@@ -1055,7 +1055,7 @@
 				OBJ_100 /* AAPricingType.swift */,
 				OBJ_101 /* Screen.swift */,
 				OBJ_102 /* AASeatLocation.swift */,
-				OBJ_104 /* AAStartStop.swift */,
+				OBJ_104 /* AAStartStopState.swift */,
 				OBJ_105 /* TheftAlarmState.swift */,
 				OBJ_106 /* AATimerType.swift */,
 				20DB154920971B9F00A1658B /* TimeState.swift */,
@@ -1343,7 +1343,7 @@
 				OBJ_359 /* RemoteControl.swift in Sources */,
 				20DB15402097112D00A1658B /* PowerTakeOff.swift in Sources */,
 				OBJ_360 /* TheftAlarm.swift in Sources */,
-				205C5175208F3E6400B55ACE /* StartStop.swift in Sources */,
+				205C5175208F3E6400B55ACE /* AAStartStop.swift in Sources */,
 				20DB154A20971B9F00A1658B /* TimeState.swift in Sources */,
 				OBJ_361 /* ValetMode.swift in Sources */,
 				OBJ_362 /* NaviDestination.swift in Sources */,
@@ -1390,7 +1390,7 @@
 				20CDFAA92152657100402BF6 /* AAFastened.swift in Sources */,
 				2093A32421395362009E43A0 /* AAUsage.swift in Sources */,
 				OBJ_398 /* AASeatLocation.swift in Sources */,
-				OBJ_400 /* AAStartStop.swift in Sources */,
+				OBJ_400 /* AAStartStopState.swift in Sources */,
 				OBJ_401 /* TheftAlarmState.swift in Sources */,
 				OBJ_402 /* AATimerType.swift in Sources */,
 				OBJ_403 /* AAFluidLevel.swift in Sources */,
