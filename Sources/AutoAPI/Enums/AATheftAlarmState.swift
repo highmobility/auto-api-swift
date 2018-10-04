@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  TheftAlarmState.swift
+//  AATheftAlarmState.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 01/12/2017.
@@ -29,18 +29,18 @@
 import Foundation
 
 
-public enum TheftAlarmState: UInt8 {
+public enum AATheftAlarmState: UInt8 {
 
     case notArmed   = 0x00
     case armed      = 0x01
     case triggered  = 0x02
 
 
-    public static let disarm = TheftAlarmState.notArmed
-    public static let arm = TheftAlarmState.armed
-    public static let trigger = TheftAlarmState.triggered
+    public static let disarm = AATheftAlarmState.notArmed
+    public static let arm = AATheftAlarmState.armed
+    public static let trigger = AATheftAlarmState.triggered
 }
 
-extension TheftAlarmState: AAPropertyConvertable {
+extension AATheftAlarmState: AAPropertyConvertable {
     
 }

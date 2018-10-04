@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  TheftAlarm.swift
+//  AATheftAlarm.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 01/12/2017.
@@ -29,9 +29,9 @@
 import Foundation
 
 
-public struct TheftAlarm: AAFullStandardCommand {
+public struct AATheftAlarm: AAFullStandardCommand {
 
-    public let state: TheftAlarmState?
+    public let state: AATheftAlarmState?
 
 
     // MARK: AAFullStandardCommand
@@ -41,19 +41,19 @@ public struct TheftAlarm: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        state = TheftAlarmState(rawValue: properties.first(for: 0x01)?.monoValue)
+        state = AATheftAlarmState(rawValue: properties.first(for: 0x01)?.monoValue)
 
         // Properties
         self.properties = properties
     }
 }
 
-extension TheftAlarm: AAIdentifiable {
+extension AATheftAlarm: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0046)
+    public static var identifier: AACommandIdentifier = 0x0046
 }
 
-extension TheftAlarm: AAMessageTypesGettable {
+extension AATheftAlarm: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -63,15 +63,17 @@ extension TheftAlarm: AAMessageTypesGettable {
     }
 }
 
-public extension TheftAlarm {
+
+// MARK: Commands
+
+public extension AATheftAlarm {
 
     static var getAlarmState: [UInt8] {
         return commandPrefix(for: .getAlarmState)
     }
 
-    static var setAlarmState: (TheftAlarmState) -> [UInt8] {
-        return {
-            return commandPrefix(for: .setAlarmState) + $0.propertyBytes(0x01)
-        }
+    
+    static func setAlarmState(_ state: AATheftAlarmState) -> [UInt8] {
+        return commandPrefix(for: .setAlarmState) + state.propertyBytes(0x01)
     }
 }
