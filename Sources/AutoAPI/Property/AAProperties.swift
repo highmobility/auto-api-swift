@@ -136,15 +136,15 @@ public extension AAProperties {
         return contains { $0.identifier == identifier }
     }
 
-    func filter(for identifier: UInt8) -> [Property] {
+    func filter(for identifier: UInt8) -> [AAProperty] {
         return filter { $0.identifier == identifier }
     }
 
-    func first(for identifier: UInt8) -> Property? {
+    func first(for identifier: UInt8) -> AAProperty? {
         return first(where: { $0.identifier == identifier })
     }
 
-    func flatMap<T>(for identifier: UInt8, transform: (Property) throws -> T?) rethrows -> [T]? {
+    func flatMap<T>(for identifier: UInt8, transform: (AAProperty) throws -> T?) rethrows -> [T]? {
         let filtered = filter(for: identifier)
 
         guard filtered.count > 0 else {

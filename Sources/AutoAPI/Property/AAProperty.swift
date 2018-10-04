@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Property.swift
+//  AAProperty.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 23/11/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct Property {
+public struct AAProperty {
 
     public let identifier: UInt8
     public let size: UInt16
@@ -45,7 +45,7 @@ public struct Property {
     }
 }
 
-extension Property: AABinaryInitable {
+extension AAProperty: AABinaryInitable {
 
     init?<C: Collection>(_ binary: C) where C.Element == UInt8 {
         guard binary.count >= 3 else {
@@ -69,7 +69,7 @@ extension Property: AABinaryInitable {
     }
 }
 
-extension Property: CustomStringConvertible {
+extension AAProperty: CustomStringConvertible {
 
     public var description: String {
         let id = String(format: "0x%02X", identifier)

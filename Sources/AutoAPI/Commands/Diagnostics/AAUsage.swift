@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  Usage.swift
+//  AAUsage.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 31/08/2018.
@@ -29,16 +29,16 @@
 import Foundation
 
 
-public struct Usage: AAFullStandardCommand {
+public struct AAUsage: AAFullStandardCommand {
 
     public let accelerationEvalution: AAPercentageInt?
     public let averageFuelConsumption: Float?
     public let averageWeeklyDistance: UInt16?
-    public let averageWeeklyDistanceLongLife: UInt16?
+    public let averageWeeklyDistanceLongTerm: UInt16?
     public let currentFuelConsumption: Float?
     public let drivingModeActivationPeriods: [AADrivingMode.ActivationPeriod]?
+    public let drivingModeEnergyConsumptions: [AADrivingMode.EnergyConsumption]?
     public let drivingStyleEvalution: AAPercentageInt?
-    public let energyConsumptions: [AADrivingMode.EnergyConsumption]?
     public let lastTripAverageEnergyRecuperation: UInt8?
     public let lastTripBatteryRemaining: AAPercentageInt?
     public let lastTripElectricPortion: AAPercentageInt?
@@ -55,12 +55,13 @@ public struct Usage: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
+        /* Level 8 */
         averageWeeklyDistance = properties.value(for: 0x01)
-        averageWeeklyDistanceLongLife = properties.value(for: 0x02)
+        averageWeeklyDistanceLongTerm = properties.value(for: 0x02)
         accelerationEvalution = properties.value(for: 0x03)
         drivingStyleEvalution = properties.value(for: 0x04)
         drivingModeActivationPeriods = properties.flatMap(for: 0x05) { AADrivingMode.ActivationPeriod($0.value) }
-        energyConsumptions = properties.flatMap(for: 0x06) { AADrivingMode.EnergyConsumption($0.value) }
+        drivingModeEnergyConsumptions = properties.flatMap(for: 0x06) { AADrivingMode.EnergyConsumption($0.value) }
         lastTripEnergyConsumption = properties.value(for: 0x07)
         lastTripFuelConsumption = properties.value(for: 0x08)
         mileageAfterLastTrip = properties.value(for: 0x09)
@@ -76,12 +77,12 @@ public struct Usage: AAFullStandardCommand {
     }
 }
 
-extension Usage: AAIdentifiable {
+extension AAUsage: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0068)
+    public static var identifier: AACommandIdentifier = 0x0068
 }
 
-extension Usage: AAMessageTypesGettable {
+extension AAUsage: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -90,7 +91,10 @@ extension Usage: AAMessageTypesGettable {
     }
 }
 
-public extension Usage {
+
+// MARK: Commands
+
+public extension AAUsage {
 
     static var getUsage: [UInt8] {
         return commandPrefix(for: .getUsage)

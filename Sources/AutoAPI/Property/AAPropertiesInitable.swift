@@ -19,42 +19,28 @@
 // licensing@high-mobility.com
 //
 //
-//  CapabilitiesIterator.swift
+//  AAPropertiesInitable.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 27/11/2017.
+//  Created by Mikk Rätsep on 20/12/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct CapabilitiesIterator: IteratorProtocol, AAPropertiesInitable {
+protocol AAPropertiesInitable {
 
-    private let commandTypes = AutoAPI.commands.compactMap { $0 as? AACommand.Type }
-
-
-    // MARK: IteratorProtocol
-
-    public typealias Element = Capability
+    var propertiesIterator: AAPropertiesIterator { get }
 
 
-    public mutating func next() -> Capability? {
-        guard let property = propertiesIterator.next() else {
-            return nil
-        }
+    init(propertiesArray properties: [AAProperty])
+    init(propertiesIterator iterator: AAPropertiesIterator)
+}
 
-        let identifier = AACommandIdentifier(property.value.prefix(2))
+extension AAPropertiesInitable {
 
-        guard let command = commandTypes.first(where: { $0.identifier == identifier }) else {
-            return nil
-        }
-
-        return Capability(binary: property.value, command: command)
+    init(propertiesArray properties: [AAProperty]) {
+        self.init(propertiesIterator: AAPropertiesIterator(properties.flatMap { $0.bytes }))
     }
-
-
-    // MARK: AAPropertiesInitable
-
-    var propertiesIterator: AAPropertiesIterator
 }

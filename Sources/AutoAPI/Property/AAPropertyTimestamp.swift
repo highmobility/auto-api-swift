@@ -19,28 +19,19 @@
 // licensing@high-mobility.com
 //
 //
-//  PropertiesInitable.swift
+//  AAPropertyTimestamp.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 20/12/2017.
+//  Created by Mikk Rätsep on 04/10/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-protocol PropertiesInitable {
+// TODO: This (would be nice, if the "timestamp" would be accessible from the property itself)
+public struct AAPropertyTimestamp {
 
-    var propertiesIterator: AAPropertiesIterator { get }
-
-
-    init(propertiesArray properties: [Property])
-    init(propertiesIterator iterator: AAPropertiesIterator)
-}
-
-extension PropertiesInitable {
-
-    init(propertiesArray properties: [Property]) {
-        self.init(propertiesIterator: AAPropertiesIterator(properties.flatMap { $0.bytes }))
-    }
+    public let date: Date
+    public let property: Any
 }

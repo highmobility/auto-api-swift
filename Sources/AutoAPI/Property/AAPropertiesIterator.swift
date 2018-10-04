@@ -36,10 +36,10 @@ public struct AAPropertiesIterator: IteratorProtocol {
 
     // MARK: IteratorProtocol
 
-    public typealias Element = Property
+    public typealias Element = AAProperty
 
 
-    public mutating func next() -> Property? {
+    public mutating func next() -> AAProperty? {
         guard bytes.count >= 3 else {
             return nil
         }
@@ -50,7 +50,7 @@ public struct AAPropertiesIterator: IteratorProtocol {
             return nil
         }
 
-        guard let property = Property(bytes.prefix(upTo: size)) else {
+        guard let property = AAProperty(bytes.prefix(upTo: size)) else {
             return nil
         }
 

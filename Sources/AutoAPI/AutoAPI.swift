@@ -83,7 +83,7 @@ public struct AutoAPI {
                 TextInput.self,
                 TheftAlarm.self,
                 TrunkAccess.self,
-                Usage.self,
+                AAUsage.self,
                 ValetMode.self,
                 VehicleLocation.self,
                 VehicleStatus.self,
