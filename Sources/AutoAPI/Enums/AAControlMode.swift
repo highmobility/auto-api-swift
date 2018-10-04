@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  ControlMode.swift
+//  AAControlMode.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 12/12/2017.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public enum ControlMode: UInt8 {
+public enum AAControlMode: UInt8 {
 
     case unavailable    = 0x00
     case available      = 0x01

@@ -98,7 +98,7 @@ public extension AAParkingTicket {
 
     struct Legacy {
 
-        public typealias MessageTypes = AAParkingTicket.MessageTypes
+        typealias MessageTypes = AAParkingTicket.MessageTypes
 
 
         struct Settings {

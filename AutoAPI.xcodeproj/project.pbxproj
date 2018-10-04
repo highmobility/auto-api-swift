@@ -169,7 +169,7 @@
 		OBJ_356 /* AAFueling.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_57 /* AAFueling.swift */; };
 		OBJ_357 /* AAParkingBrake.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_58 /* AAParkingBrake.swift */; };
 		OBJ_358 /* AAParkingTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* AAParkingTicket.swift */; };
-		OBJ_359 /* RemoteControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_60 /* RemoteControl.swift */; };
+		OBJ_359 /* AARemoteControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_60 /* AARemoteControl.swift */; };
 		OBJ_360 /* TheftAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_61 /* TheftAlarm.swift */; };
 		OBJ_361 /* ValetMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_62 /* ValetMode.swift */; };
 		OBJ_362 /* NaviDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_64 /* NaviDestination.swift */; };
@@ -186,7 +186,7 @@
 		OBJ_376 /* AAChargeMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_80 /* AAChargeMode.swift */; };
 		OBJ_377 /* AAChargePortState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_81 /* AAChargePortState.swift */; };
 		OBJ_378 /* AAChargingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_82 /* AAChargingState.swift */; };
-		OBJ_379 /* ControlMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_83 /* ControlMode.swift */; };
+		OBJ_379 /* AAControlMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_83 /* AAControlMode.swift */; };
 		OBJ_380 /* AADrivingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_84 /* AADrivingMode.swift */; };
 		OBJ_381 /* FailureReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_85 /* FailureReason.swift */; };
 		OBJ_382 /* AAFatigueLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_86 /* AAFatigueLevel.swift */; };
@@ -511,7 +511,7 @@
 		OBJ_58 /* AAParkingBrake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAParkingBrake.swift; sourceTree = "<group>"; };
 		OBJ_59 /* AAParkingTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAParkingTicket.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_60 /* RemoteControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControl.swift; sourceTree = "<group>"; };
+		OBJ_60 /* AARemoteControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AARemoteControl.swift; sourceTree = "<group>"; };
 		OBJ_61 /* TheftAlarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheftAlarm.swift; sourceTree = "<group>"; };
 		OBJ_62 /* ValetMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValetMode.swift; sourceTree = "<group>"; };
 		OBJ_64 /* NaviDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviDestination.swift; sourceTree = "<group>"; };
@@ -528,7 +528,7 @@
 		OBJ_80 /* AAChargeMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChargeMode.swift; sourceTree = "<group>"; };
 		OBJ_81 /* AAChargePortState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChargePortState.swift; sourceTree = "<group>"; };
 		OBJ_82 /* AAChargingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChargingState.swift; sourceTree = "<group>"; };
-		OBJ_83 /* ControlMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlMode.swift; sourceTree = "<group>"; };
+		OBJ_83 /* AAControlMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAControlMode.swift; sourceTree = "<group>"; };
 		OBJ_84 /* AADrivingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADrivingMode.swift; sourceTree = "<group>"; };
 		OBJ_85 /* FailureReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureReason.swift; sourceTree = "<group>"; };
 		OBJ_86 /* AAFatigueLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFatigueLevel.swift; sourceTree = "<group>"; };
@@ -972,7 +972,7 @@
 				OBJ_57 /* AAFueling.swift */,
 				OBJ_58 /* AAParkingBrake.swift */,
 				OBJ_59 /* AAParkingTicket.swift */,
-				OBJ_60 /* RemoteControl.swift */,
+				OBJ_60 /* AARemoteControl.swift */,
 				OBJ_61 /* TheftAlarm.swift */,
 				OBJ_62 /* ValetMode.swift */,
 			);
@@ -1024,7 +1024,7 @@
 				OBJ_82 /* AAChargingState.swift */,
 				20896EE3214799C1003A7A63 /* AAChosenState.swift */,
 				20896EE921479F4A003A7A63 /* AAConnectionState.swift */,
-				OBJ_83 /* ControlMode.swift */,
+				OBJ_83 /* AAControlMode.swift */,
 				20F7903C2135713A003BDFA2 /* AAConvertibleRoofState.swift */,
 				205C517A208F430100B55ACE /* AACruiseControlLimiter.swift */,
 				205C5170208F315C00B55ACE /* AADashboardLightName.swift */,
@@ -1344,7 +1344,7 @@
 				OBJ_356 /* AAFueling.swift in Sources */,
 				OBJ_357 /* AAParkingBrake.swift in Sources */,
 				OBJ_358 /* AAParkingTicket.swift in Sources */,
-				OBJ_359 /* RemoteControl.swift in Sources */,
+				OBJ_359 /* AARemoteControl.swift in Sources */,
 				20DB15402097112D00A1658B /* AAPowerTakeoff.swift in Sources */,
 				OBJ_360 /* TheftAlarm.swift in Sources */,
 				205C5175208F3E6400B55ACE /* AAStartStop.swift in Sources */,
@@ -1368,7 +1368,7 @@
 				OBJ_377 /* AAChargePortState.swift in Sources */,
 				OBJ_378 /* AAChargingState.swift in Sources */,
 				205C517B208F430100B55ACE /* AACruiseControlLimiter.swift in Sources */,
-				OBJ_379 /* ControlMode.swift in Sources */,
+				OBJ_379 /* AAControlMode.swift in Sources */,
 				OBJ_380 /* AADrivingMode.swift in Sources */,
 				OBJ_381 /* FailureReason.swift in Sources */,
 				OBJ_382 /* AAFatigueLevel.swift in Sources */,

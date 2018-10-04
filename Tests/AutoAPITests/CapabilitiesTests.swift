@@ -204,8 +204,8 @@ class CapabilitiesTests: XCTestCase {
         }
 
         // REMOTE CONTROL
-        if let capability = capabilities.first(where: { $0.command is RemoteControl.Type }) {
-            XCTAssertTrue(capability.supportsAllMessageTypes(for: RemoteControl.self))
+        if let capability = capabilities.first(where: { $0.command is AARemoteControl.Type }) {
+            XCTAssertTrue(capability.supportsAllMessageTypes(for: AARemoteControl.self))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for RemoteControl")

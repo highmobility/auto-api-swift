@@ -167,7 +167,7 @@ class VehicleStatusTests: XCTestCase {
         }
 
         // REMOTE CONTROL
-        if let remoteControl = states?.flatMapFirst({ $0 as? RemoteControl }) {
+        if let remoteControl = states?.flatMapFirst({ $0 as? AARemoteControl }) {
             XCTAssertEqual(remoteControl.controlMode, .started)
         }
         else {
