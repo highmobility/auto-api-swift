@@ -47,6 +47,6 @@ class TextInputTests: XCTestCase {
             0x79, 0x65, 0x73    // "yes"
         ]
 
-        XCTAssertEqual(TextInput.textInput("yes"), bytes)
+        XCTAssertEqual(AATextInput.textInput("yes"), bytes)
     }
 }

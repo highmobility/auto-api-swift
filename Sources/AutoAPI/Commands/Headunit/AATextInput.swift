@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  TextInput.swift
+//  AATextInput.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 13/12/2017.
@@ -29,16 +29,16 @@
 import Foundation
 
 
-public struct TextInput: AAOutboundCommand {
+public struct AATextInput: AAOutboundCommand {
 
 }
 
-extension TextInput: AAIdentifiable {
+extension AATextInput: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0044)
+    public static var identifier: AACommandIdentifier = 0x0044
 }
 
-extension TextInput: AAMessageTypesGettable {
+extension AATextInput: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
@@ -46,11 +46,12 @@ extension TextInput: AAMessageTypesGettable {
     }
 }
 
-public extension TextInput {
 
-    static var textInput: (String) -> [UInt8] {
-        return {
-            return commandPrefix(for: .input) + $0.propertyBytes(0x01)
-        }
+// MARK: Commands
+
+public extension AATextInput {
+
+    static func textInput(_ text: String) -> [UInt8] {
+        return commandPrefix(for: .input) + text.propertyBytes(0x01)
     }
 }
