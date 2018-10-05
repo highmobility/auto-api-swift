@@ -49,3 +49,10 @@ extension AADriverWorkingState: AAItem {
         self.state = state
     }
 }
+
+extension AADriverWorkingState: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [driverNumber, state.rawValue]
+    }
+}

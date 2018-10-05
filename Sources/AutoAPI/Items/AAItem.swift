@@ -29,7 +29,7 @@
 import Foundation
 
 
-protocol AAItem: AABinaryInitable {
+protocol AAItem: AABinaryInitable, AAPropertyConvertable {
 
     static var size: Int { get }
 
@@ -56,6 +56,7 @@ extension AAItem {
         self.init(bytes: bytes)
     }
 }
+
 
 
 protocol AAItemDynamicSize: AAItem {

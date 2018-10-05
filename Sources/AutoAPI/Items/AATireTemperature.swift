@@ -49,3 +49,10 @@ extension AATireTemperature: AAItem {
         self.temperature = Float(bytes.dropFirst())
     }
 }
+
+extension AATireTemperature: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [location.rawValue] + temperature.bytes
+    }
+}

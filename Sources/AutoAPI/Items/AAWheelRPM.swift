@@ -49,3 +49,10 @@ extension AAWheelRPM: AAItem {
         self.rpm = UInt16(bytes.dropFirst())
     }
 }
+
+extension AAWheelRPM: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [location.rawValue] + rpm.bytes
+    }
+}

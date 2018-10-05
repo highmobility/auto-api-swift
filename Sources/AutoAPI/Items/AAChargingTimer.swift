@@ -43,18 +43,17 @@ public struct AAChargingTimer {
     }
 }
 
-extension AAChargingTimer: AABinaryInitable {
+extension AAChargingTimer: AAItem {
 
-    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        guard !binary.isEmpty else {
-            return nil
-        }
+    static var size: Int = 9
 
-        guard let timerType = AATimerType(rawValue: binary.bytes[0]) else {
+
+    init?(bytes: [UInt8]) {
+        guard let timerType = AATimerType(rawValue: bytes[0]) else {
             return nil
         }
         
-        guard let date = Date(binary.dropFirst().bytes) else {
+        guard let date = Date(bytes.dropFirst()) else {
             return nil
         }
 
@@ -63,16 +62,16 @@ extension AAChargingTimer: AABinaryInitable {
     }
 }
 
-extension AAChargingTimer: Equatable {
-
-    public static func ==(lhs: AAChargingTimer, rhs: AAChargingTimer) -> Bool {
-        return (lhs.type == rhs.type) && (lhs.time == rhs.time)
-    }
-}
-
 extension AAChargingTimer: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         return [type.rawValue] + time.propertyValue
+    }
+}
+
+extension AAChargingTimer: Equatable {
+
+    public static func ==(lhs: AAChargingTimer, rhs: AAChargingTimer) -> Bool {
+        return (lhs.type == rhs.type) && (lhs.time == rhs.time)
     }
 }

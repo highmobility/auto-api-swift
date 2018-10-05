@@ -48,7 +48,6 @@
 		20896EEE2147DE32003A7A63 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EED2147DE32003A7A63 /* Double+Extensions.swift */; };
 		20896EF02147DEC9003A7A63 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EEF2147DEC9003A7A63 /* Double+Extensions.swift */; };
 		209124B42166321800C15CDA /* AAPresentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209124B32166321800C15CDA /* AAPresentState.swift */; };
-		209124B62166613000C15CDA /* AADate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209124B52166613000C15CDA /* AADate.swift */; };
 		2093A31E213941E7009E43A0 /* AAAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A31D213941E7009E43A0 /* AAAvailability.swift */; };
 		2093A320213945E1009E43A0 /* AAMobile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A31F213945E1009E43A0 /* AAMobile.swift */; };
 		2093A32221394EF8009E43A0 /* AAHood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A32121394EF8009E43A0 /* AAHood.swift */; };
@@ -331,7 +330,6 @@
 		20896EED2147DE32003A7A63 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		20896EEF2147DEC9003A7A63 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		209124B32166321800C15CDA /* AAPresentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPresentState.swift; sourceTree = "<group>"; };
-		209124B52166613000C15CDA /* AADate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADate.swift; sourceTree = "<group>"; };
 		2093A31D213941E7009E43A0 /* AAAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAAvailability.swift; sourceTree = "<group>"; };
 		2093A31F213945E1009E43A0 /* AAMobile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAMobile.swift; sourceTree = "<group>"; };
 		2093A32121394EF8009E43A0 /* AAHood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHood.swift; sourceTree = "<group>"; };
@@ -646,7 +644,6 @@
 				OBJ_140 /* AAColour.swift */,
 				20F7903821356F54003BDFA2 /* AAConditionBasedService.swift */,
 				OBJ_141 /* AACoordinate.swift */,
-				209124B52166613000C15CDA /* AADate.swift */,
 				205C516C208F28FF00B55ACE /* AADashboardLight.swift */,
 				2028370A2150D17E0001724A /* AADepartureTime.swift */,
 				OBJ_142 /* AADoor.swift */,
@@ -1384,7 +1381,6 @@
 				OBJ_396 /* AAPricingType.swift in Sources */,
 				OBJ_397 /* AAScreen.swift in Sources */,
 				20CDFAA92152657100402BF6 /* AAFastened.swift in Sources */,
-				209124B62166613000C15CDA /* AADate.swift in Sources */,
 				2093A32421395362009E43A0 /* AAUsage.swift in Sources */,
 				OBJ_398 /* AASeatLocation.swift in Sources */,
 				OBJ_400 /* AAStartStopState.swift in Sources */,

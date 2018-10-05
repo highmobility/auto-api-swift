@@ -49,3 +49,10 @@ extension AAAcceleration: AAItem {
         value = Float(bytes.dropFirstBytes(1))
     }
 }
+
+extension AAAcceleration: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [type.rawValue] + value.bytes
+    }
+}

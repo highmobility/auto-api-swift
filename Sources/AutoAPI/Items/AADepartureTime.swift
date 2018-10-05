@@ -56,3 +56,10 @@ extension AADepartureTime: AAItem {
         }
     }
 }
+
+extension AADepartureTime: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [state.rawValue] + (time?.propertyValue ?? [])
+    }
+}

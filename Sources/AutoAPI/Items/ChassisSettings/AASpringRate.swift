@@ -54,6 +54,13 @@ extension AASpringRate: AAItem {
     }
 }
 
+extension AASpringRate: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [axle.rawValue, rate, maximum, minimum]
+    }
+}
+
 
 public struct AASpringRateValue {
 

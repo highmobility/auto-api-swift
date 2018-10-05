@@ -49,3 +49,10 @@ extension AADriverCard: AAItem {
         self.present = present
     }
 }
+extension AADriverCard: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [driverNumber, present.rawValue]
+    }
+}
+

@@ -50,3 +50,10 @@ extension AABrakeTorqueVectoring: AAItem {
         self.state = state
     }
 }
+
+extension AABrakeTorqueVectoring: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [axle.rawValue, state.rawValue]
+    }
+}

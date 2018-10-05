@@ -52,6 +52,14 @@ extension AASeat: AAItem {
     }
 }
 
+extension AASeat: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [position.rawValue, personDetected.byte, seatbeltFastened.byte]
+    }
+}
+
+// TODO: Move to 2 different files with "full" struct
 public extension AASeat {
 
     public struct PersonDetected: AAItem {
@@ -74,6 +82,13 @@ public extension AASeat {
             self.location = location
             self.detected = detected
         }
+
+
+        // MARK: AAPropertyConvertable
+
+        var propertyValue: [UInt8] {
+            return [location.rawValue, detected.rawValue]
+        }
     }
 
     public struct SeatbeltFastened: AAItem {
@@ -95,6 +110,13 @@ public extension AASeat {
 
             self.location = location
             self.fastened = fastened
+        }
+
+
+        // MARK: AAPropertyConvertable
+
+        var propertyValue: [UInt8] {
+            return [location.rawValue, fastened.rawValue]
         }
     }
 }

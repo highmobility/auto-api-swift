@@ -50,6 +50,13 @@ extension AAChargeCurrent: AABinaryInitable {
     }
 }
 
+extension AAChargeCurrent: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return chargeCurrentDC.bytes + maximumValue.bytes + minimumValue.bytes
+    }
+}
+
 extension AAChargeCurrent: Equatable {
 
     public static func ==(lhs: AAChargeCurrent, rhs: AAChargeCurrent) -> Bool {

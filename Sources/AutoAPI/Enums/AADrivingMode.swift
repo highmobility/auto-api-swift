@@ -47,7 +47,7 @@ extension AADrivingMode: AAPropertyConvertable {
 
 public extension AADrivingMode {
 
-    struct ActivationPeriod: AAItem {
+    struct ActivationPeriod: AAItem, AAPropertyConvertable {
 
         public let mode: AADrivingMode
         public let period: AAPercentageInt
@@ -66,10 +66,17 @@ public extension AADrivingMode {
             mode = drivingMode
             period = bytes[1]
         }
+
+
+        // MARK: AAPropertyConvertable
+
+        var propertyValue: [UInt8] {
+            return [mode.rawValue, period]
+        }
     }
 
 
-    struct EnergyConsumption: AAItem {
+    struct EnergyConsumption: AAItem, AAPropertyConvertable {
 
         public let mode: AADrivingMode
         public let consumption: Float
@@ -87,6 +94,13 @@ public extension AADrivingMode {
 
             mode = drivingMode
             consumption = Float(bytes.dropFirstBytes(1))
+        }
+
+
+        // MARK: AAPropertyConvertable
+
+        var propertyValue: [UInt8] {
+            return [mode.rawValue] + consumption.bytes
         }
     }
 }

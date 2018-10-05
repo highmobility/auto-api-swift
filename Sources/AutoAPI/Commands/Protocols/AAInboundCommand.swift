@@ -71,4 +71,8 @@ extension AAInboundCommand {
     public var timestamp: Date? {
         return properties.timestamp
     }
+
+    public var propertiesTimestamps: [AAPropertyTimestamp]? {
+        return properties.propertiesTimestamps
+    }
 }

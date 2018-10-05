@@ -33,5 +33,34 @@ import Foundation
 public struct AAPropertyTimestamp {
 
     public let date: Date
-    public let property: Any
+    public let propertyID: AAPropertyIdentifier
+    public let propertyFullValue: [UInt8]
+}
+
+extension AAPropertyTimestamp: AAItemDynamicSize {
+
+    static var greaterOrEqualSize: Int = 9
+
+
+    var bytes: [UInt8] {
+        return date.propertyValue + [propertyID] + propertyFullValue
+    }
+
+
+    init?(bytes: [UInt8]) {
+        guard let date = Date(bytes[0...7]) else {
+            return nil
+        }
+
+        self.date = date
+        self.propertyID = bytes[8]
+        self.propertyFullValue = bytes.suffix(from: 9).bytes
+    }
+}
+
+extension AAPropertyTimestamp: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return date.propertyValue + [propertyID] + propertyFullValue
+    }
 }

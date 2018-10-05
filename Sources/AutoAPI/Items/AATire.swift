@@ -53,3 +53,10 @@ extension AATire: AAItem {
         wheelRPM = UInt16(bytes.dropFirstBytes(9))
     }
 }
+
+extension AATire: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [position.rawValue] + pressure.bytes + temperature.bytes + wheelRPM.bytes
+    }
+}

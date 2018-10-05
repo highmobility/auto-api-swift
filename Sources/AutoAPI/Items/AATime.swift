@@ -64,3 +64,7 @@ extension AATime: AAPropertyConvertable {
         return [hour, minute]
     }
 }
+
+extension AATime: Equatable {
+
+}

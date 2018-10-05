@@ -50,3 +50,10 @@ extension AADashboardLight: AAItem {
         self.state = state
     }
 }
+
+extension AADashboardLight: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [name.rawValue, state.rawValue]
+    }
+}

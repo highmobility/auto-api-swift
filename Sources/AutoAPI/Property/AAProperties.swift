@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct AAProperties: Sequence {
+public struct AAProperties: Sequence, AAPropertiesCapable {
 
     public var carSignature: [UInt8]? {
         return first(for: 0xA1)?.value
@@ -45,6 +45,14 @@ public struct AAProperties: Sequence {
 
     public var timestamp: Date? {
         return value(for: 0xA2)
+    }
+
+    public var properties: AAProperties {
+        return self
+    }
+
+    public var propertiesTimestamps: [AAPropertyTimestamp]? {
+        return flatMap(for: 0xA4) { AAPropertyTimestamp($0.value) }
     }
 
 
@@ -70,7 +78,7 @@ extension AAProperties: AABinaryInitable {
 
 extension AAProperties {
 
-    func value<ReturnType>(for identifier: UInt8) -> ReturnType? {
+    func value<ReturnType>(for identifier: AAPropertyIdentifier) -> ReturnType? {
         guard let bytes = first(for: identifier)?.value else {
             return nil
         }
@@ -132,19 +140,19 @@ extension AAProperties {
 
 public extension AAProperties {
 
-    func contains(identifier: UInt8) -> Bool {
+    func contains(identifier: AAPropertyIdentifier) -> Bool {
         return contains { $0.identifier == identifier }
     }
 
-    func filter(for identifier: UInt8) -> [AAProperty] {
+    func filter(for identifier: AAPropertyIdentifier) -> [AAProperty] {
         return filter { $0.identifier == identifier }
     }
 
-    func first(for identifier: UInt8) -> AAProperty? {
+    func first(for identifier: AAPropertyIdentifier) -> AAProperty? {
         return first(where: { $0.identifier == identifier })
     }
 
-    func flatMap<T>(for identifier: UInt8, transform: (AAProperty) throws -> T?) rethrows -> [T]? {
+    func flatMap<T>(for identifier: AAPropertyIdentifier, transform: (AAProperty) throws -> T?) rethrows -> [T]? {
         let filtered = filter(for: identifier)
 
         guard filtered.count > 0 else {

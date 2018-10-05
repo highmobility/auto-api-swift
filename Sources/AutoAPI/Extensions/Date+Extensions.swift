@@ -35,12 +35,22 @@ extension Date: AAItem {
 
 
     init?(bytes: [UInt8]) {
-        guard let date = AADate(bytes) else {
-            return nil
-        }
+        let year = bytes[0].int + 2000
+        let month = bytes[1].int
+        let day = bytes[2].int
+        let hour = bytes[3].int
+        let minute = bytes[4].int
+        let second = bytes[5].int
+        let offset = Int(Int16(bytes[6...7]))
 
-        guard let convertedDate = DateComponents(timeZone: TimeZone(secondsFromGMT: Int(date.offset * 60)), year: date.yearFull, month: date.month.int, day: date.day.int, hour: date.hour.int, minute: date.minute.int, second: date.second.int).date else {
-            return nil
+        guard let convertedDate = DateComponents(timeZone: TimeZone(secondsFromGMT: offset * 60),
+                                                 year: year,
+                                                 month: month,
+                                                 day: day,
+                                                 hour: hour,
+                                                 minute: minute,
+                                                 second: second).date else {
+                                                    return nil
         }
 
         self = convertedDate

@@ -47,3 +47,10 @@ extension AAChassisPosition: AAItem {
         minimum = bytes[2].int8
     }
 }
+
+extension AAChassisPosition: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [position, maximum.uint8, minimum.uint8]
+    }
+}

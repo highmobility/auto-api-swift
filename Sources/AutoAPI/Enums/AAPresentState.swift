@@ -29,6 +29,7 @@
 import Foundation
 
 
+// TODO: Rename to smth "not a gift"
 public enum AAPresentState: UInt8 {
 
     case notPresent = 0x00

@@ -54,6 +54,14 @@ extension AADoor: AAItem {
     }
 }
 
+extension AADoor: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [location.rawValue, position.rawValue, location.rawValue]
+    }
+}
+
+// TODO: Separate to 2 files and "full" structs
 public extension AADoor {
 
     public struct Position: AAItem {
@@ -76,6 +84,13 @@ public extension AADoor {
             self.location = location
             self.position = position
         }
+
+
+        // MARK: AAPropertyConvertable
+
+        var propertyValue: [UInt8] {
+            return [location.rawValue, position.rawValue]
+        }
     }
 
     public struct Lock: AAItem {
@@ -97,6 +112,13 @@ public extension AADoor {
 
             self.location = location
             self.lock = lock
+        }
+
+
+        // MARK: AAPropertyConvertable
+
+        var propertyValue: [UInt8] {
+            return [location.rawValue, lock.rawValue]
         }
     }
 }

@@ -36,8 +36,7 @@ public typealias AAChargingMethod = AAPlugType
 public typealias AACommandIdentifier = UInt16
 public typealias AANetworkSSID = String
 public typealias AAPercentageInt = UInt8
-
-typealias AAPropertyIdentifier = UInt8
+public typealias AAPropertyIdentifier = UInt8
 
 
 public struct AAAutoAPI {

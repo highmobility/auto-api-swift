@@ -49,3 +49,10 @@ extension AATirePressure: AAItem {
         self.pressure = Float(bytes.dropFirst())
     }
 }
+
+extension AATirePressure: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [location.rawValue] + pressure.bytes
+    }
+}
