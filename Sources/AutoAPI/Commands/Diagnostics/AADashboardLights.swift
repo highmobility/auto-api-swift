@@ -41,7 +41,7 @@ public struct AADashboardLights: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        lights = properties.flatMap(for: 0x01) { AADashboardLight($0.value) }
+        lights = properties.flatMap(for: \AADashboardLights.lights) { AADashboardLight($0.value) }
 
         // Properties
         self.properties = properties
@@ -61,6 +61,21 @@ extension AADashboardLights: AAMessageTypesGettable {
         case dashboardLights    = 0x01
     }
 }
+
+extension AADashboardLights: AAPropertyIdentifierGettable {
+
+    static func propertyID(for keyPath: PartialKeyPath<AADashboardLights>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AADashboardLights.lights: return 0x01
+
+        default:
+            return 0x00
+        }
+    }
+}
+
+
+// MARK: Commands
 
 public extension AADashboardLights {
 

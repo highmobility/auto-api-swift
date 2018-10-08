@@ -43,8 +43,8 @@ public struct AASeats: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         /* Level 8 */
-        personsDetected = properties.flatMap(for: 0x02) { AASeat.PersonDetected($0.value) }
-        seatbeltsFastened = properties.flatMap(for: 0x03) { AASeat.SeatbeltFastened($0.value) }
+        personsDetected = properties.flatMap(for: \AASeats.personsDetected) { AASeat.PersonDetected($0.value) }
+        seatbeltsFastened = properties.flatMap(for: \AASeats.seatbeltsFastened) { AASeat.SeatbeltFastened($0.value) }
 
         // Properties
         self.properties = properties
@@ -53,7 +53,7 @@ public struct AASeats: AAFullStandardCommand {
 
 extension AASeats: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = AACommandIdentifier(0x0056)
+    public static var identifier: AACommandIdentifier = 0x0056
 }
 
 extension AASeats: AALegacyGettable {
@@ -84,6 +84,19 @@ extension AASeats: AAMessageTypesGettable {
 
         case getSeatsState  = 0x00
         case seatsState     = 0x01
+    }
+}
+
+extension AASeats: AAPropertyIdentifierGettable {
+
+    static func propertyID(for keyPath: PartialKeyPath<AASeats>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AASeats.personsDetected:      return 0x02
+        case \AASeats.seatbeltsFastened:    return 0x03
+
+        default:
+            return 0x00
+        }
     }
 }
 

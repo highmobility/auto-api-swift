@@ -50,14 +50,14 @@ public struct AAWindscreen: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        wipersState = AAWipersState(rawValue: properties.first(for: 0x01)?.monoValue)
-        wipersIntensity = AAWipersLevel(rawValue: properties.first(for: 0x02)?.monoValue)
-        damage = AAWindscreenDamage(rawValue: properties.first(for: 0x03)?.monoValue)
-        zoneMatrix = AAZone(rawValue: properties.first(for: 0x04)?.monoValue)
-        damageZone = AAZone(rawValue: properties.first(for: 0x05)?.monoValue)
-        needsReplacement = AANeedsReplacement(rawValue: properties.first(for: 0x06)?.monoValue)
-        damageConfidence = properties.value(for: 0x07)
-        damageDetectionTime = properties.value(for: 0x08)
+        wipersState = AAWipersState(properties: properties, keyPath: \AAWindscreen.wipersState)
+        wipersIntensity = AAWipersLevel(properties: properties, keyPath: \AAWindscreen.wipersIntensity)
+        damage = AAWindscreenDamage(properties: properties, keyPath: \AAWindscreen.damage)
+        zoneMatrix = AAZone(properties: properties, keyPath: \AAWindscreen.zoneMatrix)
+        damageZone = AAZone(properties: properties, keyPath: \AAWindscreen.damageZone)
+        needsReplacement = AANeedsReplacement(properties: properties, keyPath: \AAWindscreen.needsReplacement)
+        damageConfidence = properties.value(for: \AAWindscreen.damageConfidence)
+        damageDetectionTime = properties.value(for: \AAWindscreen.damageDetectionTime)
 
         // Properties
         self.properties = properties
@@ -95,6 +95,25 @@ extension AAWindscreen: AAMessageTypesGettable {
         case windscreenState        = 0x01
         case setDamage              = 0x12
         case setNeedsReplacement    = 0x13
+    }
+}
+
+extension AAWindscreen: AAPropertyIdentifierGettable {
+
+    static func propertyID(for keyPath: PartialKeyPath<AAWindscreen>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AAWindscreen.wipersState:         return 0x01
+        case \AAWindscreen.wipersIntensity:     return 0x02
+        case \AAWindscreen.damage:              return 0x03
+        case \AAWindscreen.zoneMatrix:          return 0x04
+        case \AAWindscreen.damageZone:          return 0x05
+        case \AAWindscreen.needsReplacement:    return 0x06
+        case \AAWindscreen.damageConfidence:    return 0x07
+        case \AAWindscreen.damageDetectionTime: return 0x08
+
+        default:
+            return 0x00
+        }
     }
 }
 

@@ -33,8 +33,10 @@ public struct AAVehicleStatus: AAInboundCommand {
 
     public let colourName: String?
     public let displayUnit: AADisplayUnit?
+    public let driverSeatPosition: AADriverSeatLocation?
     public let engineVolume: Float?
     public let engineMaxTorque: UInt16?
+    public let equipment: [String]?
     public let gearbox: AAGearbox?
     public let licensePlate: String?
     public let modelName: String?
@@ -78,6 +80,8 @@ public struct AAVehicleStatus: AAInboundCommand {
         gearbox = AAGearbox(rawValue: properties.first(for: 0x0E)?.monoValue)
         /* Level 8 */
         displayUnit = AADisplayUnit(rawValue: properties.first(for: 0x0F)?.monoValue)
+        driverSeatPosition = AADriverSeatLocation(rawValue: properties.first(for: 0x10)?.monoValue)
+        equipment = properties.flatMap(for: 0x11) { String(bytes: $0.value, encoding: .utf8)  }
 
         states = properties.flatMap(for: 0x99) { property in
             binaryTypes.flatMapFirst { $0.init(property.value) as? AAVehicleState }

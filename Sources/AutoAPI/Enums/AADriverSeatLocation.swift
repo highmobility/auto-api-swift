@@ -19,30 +19,23 @@
 // licensing@high-mobility.com
 //
 //
-//  RawRepresentable+Extensions.swift
+//  AADriverSeatLocation.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 08/01/2018.
+//  Created by Mikk Rätsep on 08/10/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-extension RawRepresentable {
+public enum AADriverSeatLocation: UInt8 {
 
-    init?(rawValue: Self.RawValue?) {
-        guard let rawValue = rawValue else {
-            return nil
-        }
-
-        self.init(rawValue: rawValue)
-    }
+    case left   = 0x00
+    case right  = 0x01
+    case center = 0x02
 }
 
-extension RawRepresentable where RawValue == UInt8 {
-
-    init?<Type: AAPropertyIdentifierGettable>(properties: AAProperties, keyPath: PartialKeyPath<Type>) {
-        self.init(rawValue: properties.first(for: keyPath)?.monoValue)
-    }
+extension AADriverSeatLocation: AAPropertyConvertable {
+    
 }

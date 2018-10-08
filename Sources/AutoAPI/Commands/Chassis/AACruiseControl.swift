@@ -45,11 +45,11 @@ public struct AACruiseControl: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        state = properties.value(for: 0x01)
-        limiter = AACruiseControlLimiter(rawValue: properties.first(for: 0x02)?.monoValue)
-        targetSpeed = properties.value(for: 0x03)
-        adaptiveState = properties.value(for: 0x04)
-        adaptiveTargetSpeed = properties.value(for: 0x05)
+        state = properties.value(for: \AACruiseControl.state)
+        limiter = AACruiseControlLimiter(properties: properties, keyPath: \AACruiseControl.limiter)
+        targetSpeed = properties.value(for: \AACruiseControl.targetSpeed)
+        adaptiveState = properties.value(for: \AACruiseControl.adaptiveState)
+        adaptiveTargetSpeed = properties.value(for: \AACruiseControl.adaptiveTargetSpeed)
 
         // Properties
         self.properties = properties
@@ -86,6 +86,22 @@ extension AACruiseControl: AAMessageTypesGettable {
         case getControlState        = 0x00
         case controlState           = 0x01
         case activateCruiseControl  = 0x12
+    }
+}
+
+extension AACruiseControl: AAPropertyIdentifierGettable {
+
+    static func propertyID(for keyPath: PartialKeyPath<AACruiseControl>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AACruiseControl.state:                    return 0x01
+        case \AACruiseControl.limiter:               return 0x02
+        case \AACruiseControl.targetSpeed:           return 0x03
+        case \AACruiseControl.adaptiveState:         return 0x04
+        case \AACruiseControl.adaptiveTargetSpeed:   return 0x05
+
+        default:
+            return 0x00
+        }
     }
 }
 

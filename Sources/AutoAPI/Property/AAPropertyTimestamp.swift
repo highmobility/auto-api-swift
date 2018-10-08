@@ -34,7 +34,8 @@ public struct AAPropertyTimestamp {
 
     public let date: Date
     public let propertyID: AAPropertyIdentifier
-    public let propertyFullValue: [UInt8]
+
+    let propertyFullValue: [UInt8]
 }
 
 extension AAPropertyTimestamp: AAItemDynamicSize {

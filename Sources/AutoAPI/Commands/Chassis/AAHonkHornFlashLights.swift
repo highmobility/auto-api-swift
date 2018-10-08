@@ -41,7 +41,7 @@ public struct AAHonkHornFlashLights: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        flasherState = AAFlasherState(rawValue: properties.first(for: 0x01)?.monoValue)
+        flasherState = AAFlasherState(properties: properties, keyPath: \AAHonkHornFlashLights.flasherState)
 
         // Properties
         self.properties = properties
@@ -80,6 +80,18 @@ extension AAHonkHornFlashLights: AAMessageTypesGettable {
         case flasherState       = 0x01
         case honkFlash          = 0x12
         case emergencyFlasher   = 0x13
+    }
+}
+
+extension AAHonkHornFlashLights: AAPropertyIdentifierGettable {
+
+    static func propertyID(for keyPath: PartialKeyPath<AAHonkHornFlashLights>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AAHonkHornFlashLights.flasherState:   return 0x01
+
+        default:
+            return 0x00
+        }
     }
 }
 

@@ -55,6 +55,10 @@ public struct AAProperties: Sequence, AAPropertiesCapable {
         return flatMap(for: 0xA4) { AAPropertyTimestamp($0.value) }
     }
 
+    public func propertyTimestamp(for keyPath: PartialKeyPath<AAProperties>, specificProperty property: Any? = nil) -> AAPropertyTimestamp? {
+        return nil
+    }
+
 
     private let bytes: [UInt8]
 
@@ -136,9 +140,19 @@ extension AAProperties {
             return nil
         }
     }
+
+    func value<Type: AAPropertyIdentifierGettable, ReturnType>(for propertyKeyPath: PartialKeyPath<Type>) -> ReturnType? {
+        let identifier = Type.propertyID(for: propertyKeyPath)
+
+        guard identifier != 0x00 else {
+            return nil
+        }
+
+        return value(for: identifier)
+    }
 }
 
-public extension AAProperties {
+extension AAProperties {
 
     func contains(identifier: AAPropertyIdentifier) -> Bool {
         return contains { $0.identifier == identifier }
@@ -152,6 +166,16 @@ public extension AAProperties {
         return first(where: { $0.identifier == identifier })
     }
 
+    func first<Type: AAPropertyIdentifierGettable>(for propertyKeyPath: PartialKeyPath<Type>) -> AAProperty? {
+        let identifier = Type.propertyID(for: propertyKeyPath)
+
+        guard identifier != 0x00 else {
+            return nil
+        }
+
+        return first(for: identifier)
+    }
+
     func flatMap<T>(for identifier: AAPropertyIdentifier, transform: (AAProperty) throws -> T?) rethrows -> [T]? {
         let filtered = filter(for: identifier)
 
@@ -160,5 +184,15 @@ public extension AAProperties {
         }
 
         return try filtered.compactMap(transform)
+    }
+
+    func flatMap<T, Type: AAPropertyIdentifierGettable>(for propertyKeyPath: PartialKeyPath<Type>, transform: (AAProperty) throws -> T?) rethrows -> [T]? {
+        let identifier = Type.propertyID(for: propertyKeyPath)
+
+        guard identifier != 0x00 else {
+            return nil
+        }
+
+        return try flatMap(for: identifier, transform: transform)
     }
 }

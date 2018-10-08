@@ -37,7 +37,6 @@ public struct AADiagnostics: AAFullStandardCommand {
     public let batteryVoltage: Float?
     public let brakeFluidLevel: AAFluidLevel?
     public let checkControlMessages: [AACheckControlMessage]?
-    public let dieselExhaustFluid: Float?
     public let distanceSinceReset: UInt16?
     public let distanceSinceStart: UInt16?
     public let engineCoolantTemperature: Int16?
@@ -58,6 +57,10 @@ public struct AADiagnostics: AAFullStandardCommand {
     public let wheelBasedSpeed: Int16?
     public let wheelRPMs: [AAWheelRPM]?
 
+    public var dieselExhaustFluid: Float? {
+        return adBlueLevel
+    }
+
 
     // MARK: AAFullStandardCommand
 
@@ -66,33 +69,32 @@ public struct AADiagnostics: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        mileage = properties.value(for: 0x01)
-        engineOilTemperature = properties.value(for: 0x02)
-        speed = properties.value(for: 0x03)
-        engineRPM = properties.value(for: 0x04)
-        fuelLevel = properties.value(for: 0x05)
-        estimatedRange = properties.value(for: 0x06)
-        washerFluidLevel = properties.value(for: 0x09)
-        batteryVoltage = properties.value(for: 0x0B)
-        adBlueLevel = properties.value(for: 0x0C)
-        dieselExhaustFluid = adBlueLevel
-        distanceSinceReset = properties.value(for: 0x0D)
-        distanceSinceStart = properties.value(for: 0x0E)
-        fuelVolume = properties.value(for: 0x0F)
-        absState = properties.value(for: 0x10)
-        engineCoolantTemperature = properties.value(for: 0x11)
-        engineTotalOperatingHours = properties.value(for: 0x12)
-        engineTotalFuelConsumption = properties.value(for: 0x13)
-        brakeFluidLevel = properties.value(for: 0x14)
-        engineTorque = properties.value(for: 0x15)
-        engineLoad = properties.value(for: 0x16)
-        wheelBasedSpeed = properties.value(for: 0x17)
+        mileage = properties.value(for: \AADiagnostics.mileage)
+        engineOilTemperature = properties.value(for: \AADiagnostics.engineOilTemperature)
+        speed = properties.value(for: \AADiagnostics.speed)
+        engineRPM = properties.value(for: \AADiagnostics.engineRPM)
+        fuelLevel = properties.value(for: \AADiagnostics.fuelLevel)
+        estimatedRange = properties.value(for: \AADiagnostics.estimatedRange)
+        washerFluidLevel = properties.value(for: \AADiagnostics.washerFluidLevel)
+        batteryVoltage = properties.value(for: \AADiagnostics.batteryVoltage)
+        adBlueLevel = properties.value(for: \AADiagnostics.adBlueLevel)
+        distanceSinceReset = properties.value(for: \AADiagnostics.distanceSinceReset)
+        distanceSinceStart = properties.value(for: \AADiagnostics.distanceSinceStart)
+        fuelVolume = properties.value(for: \AADiagnostics.fuelVolume)
+        absState = properties.value(for: \AADiagnostics.absState)
+        engineCoolantTemperature = properties.value(for: \AADiagnostics.engineCoolantTemperature)
+        engineTotalOperatingHours = properties.value(for: \AADiagnostics.engineTotalOperatingHours)
+        engineTotalFuelConsumption = properties.value(for: \AADiagnostics.engineTotalFuelConsumption)
+        brakeFluidLevel = properties.value(for: \AADiagnostics.brakeFluidLevel)
+        engineTorque = properties.value(for: \AADiagnostics.engineTorque)
+        engineLoad = properties.value(for: \AADiagnostics.engineLoad)
+        wheelBasedSpeed = properties.value(for: \AADiagnostics.wheelBasedSpeed)
         /* Level 8 */
-        batteryLevel = properties.value(for: 0x18)
-        checkControlMessages = properties.flatMap(for: 0x19) { AACheckControlMessage($0.value) }
-        tirePressures = properties.flatMap(for: 0x1A) { AATirePressure($0.value) }
-        tireTemperatures = properties.flatMap(for: 0x1B) { AATireTemperature($0.value) }
-        wheelRPMs = properties.flatMap(for: 0x1C) { AAWheelRPM($0.value) }
+        batteryLevel = properties.value(for: \AADiagnostics.batteryLevel)
+        checkControlMessages = properties.flatMap(for: \AADiagnostics.checkControlMessages) { AACheckControlMessage($0.value) }
+        tirePressures = properties.flatMap(for: \AADiagnostics.tirePressures) { AATirePressure($0.value) }
+        tireTemperatures = properties.flatMap(for: \AADiagnostics.tireTemperatures) { AATireTemperature($0.value) }
+        wheelRPMs = properties.flatMap(for: \AADiagnostics.wheelRPMs) { AAWheelRPM($0.value) }
 
         // Properties
         self.properties = properties
@@ -132,6 +134,43 @@ extension AADiagnostics: AAMessageTypesGettable {
 
         case getDiagnosticsState    = 0x00
         case diagnosticsState       = 0x01
+    }
+}
+
+extension AADiagnostics: AAPropertyIdentifierGettable {
+
+    static func propertyID(for keyPath: PartialKeyPath<AADiagnostics>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AADiagnostics.mileage:                    return 0x01
+        case \AADiagnostics.engineOilTemperature:       return 0x02
+        case \AADiagnostics.speed:                      return 0x03
+        case \AADiagnostics.engineRPM:                  return 0x04
+        case \AADiagnostics.fuelLevel:                  return 0x05
+        case \AADiagnostics.estimatedRange:             return 0x06
+        case \AADiagnostics.washerFluidLevel:           return 0x09
+        case \AADiagnostics.batteryVoltage:             return 0x0B
+        case \AADiagnostics.adBlueLevel:                return 0x0C
+        case \AADiagnostics.distanceSinceReset:         return 0x0D
+        case \AADiagnostics.distanceSinceStart:         return 0x0E
+        case \AADiagnostics.fuelVolume:                 return 0x0F
+        case \AADiagnostics.absState:                   return 0x10
+        case \AADiagnostics.engineCoolantTemperature:   return 0x11
+        case \AADiagnostics.engineTotalOperatingHours:  return 0x12
+        case \AADiagnostics.engineTotalFuelConsumption: return 0x13
+        case \AADiagnostics.brakeFluidLevel:            return 0x14
+        case \AADiagnostics.engineTorque:               return 0x15
+        case \AADiagnostics.engineLoad:                 return 0x16
+        case \AADiagnostics.wheelBasedSpeed:            return 0x17
+            /* Level 8 */
+        case \AADiagnostics.batteryLevel:           return 0x18
+        case \AADiagnostics.checkControlMessages:   return 0x19
+        case \AADiagnostics.tirePressures:          return 0x1A
+        case \AADiagnostics.tireTemperatures:       return 0x1B
+        case \AADiagnostics.wheelRPMs:              return 0x1C
+
+        default:
+            return 0x00
+        }
     }
 }
 

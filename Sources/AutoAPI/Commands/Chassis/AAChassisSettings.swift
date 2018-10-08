@@ -48,15 +48,15 @@ public struct AAChassisSettings: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        drivingMode = AADrivingMode(rawValue: properties.first(for: 0x01)?.monoValue)
-        sportChronoState = properties.value(for: 0x02)
+        drivingMode = AADrivingMode(rawValue: properties.first(for: \AAChassisSettings.drivingMode)?.monoValue)
+        sportChronoState = properties.value(for: \AAChassisSettings.sportChronoState)
         /* Level 8 */
-        currentSpringRates = properties.flatMap(for: 0x05) { AASpringRateValue($0.value) }
-        maximumSpringRates = properties.flatMap(for: 0x06) { AASpringRateValue($0.value) }
-        minimumSpringRates = properties.flatMap(for: 0x07) { AASpringRateValue($0.value) }
-        currentChassisPosition = properties.value(for: 0x08)
-        maximumChassisPosition = properties.value(for: 0x09)
-        minimumChassisPosition = properties.value(for: 0x0A)
+        currentSpringRates = properties.flatMap(for: \AAChassisSettings.currentSpringRates) { AASpringRateValue($0.value) }
+        maximumSpringRates = properties.flatMap(for: \AAChassisSettings.maximumSpringRates) { AASpringRateValue($0.value) }
+        minimumSpringRates = properties.flatMap(for: \AAChassisSettings.minimumSpringRates) { AASpringRateValue($0.value) }
+        currentChassisPosition = properties.value(for: \AAChassisSettings.currentChassisPosition)
+        maximumChassisPosition = properties.value(for: \AAChassisSettings.maximumChassisPosition)
+        minimumChassisPosition = properties.value(for: \AAChassisSettings.minimumChassisPosition)
 
         // Properties
         self.properties = properties
@@ -106,6 +106,26 @@ extension AAChassisSettings: AAMessageTypesGettable {
         case startStopSportChrono   = 0x13
         case setSpringRates         = 0x14
         case setChassisPosition     = 0x15
+    }
+}
+
+extension AAChassisSettings: AAPropertyIdentifierGettable {
+
+    static func propertyID(for keyPath: PartialKeyPath<AAChassisSettings>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AAChassisSettings.drivingMode:            return 0x01
+        case \AAChassisSettings.sportChronoState:    return 0x02
+            /* Level 8 */
+        case \AAChassisSettings.currentSpringRates:      return 0x05
+        case \AAChassisSettings.maximumSpringRates:      return 0x06
+        case \AAChassisSettings.minimumSpringRates:      return 0x07
+        case \AAChassisSettings.currentChassisPosition:  return 0x08
+        case \AAChassisSettings.maximumChassisPosition:  return 0x09
+        case \AAChassisSettings.minimumChassisPosition:  return 0x0A
+
+        default:
+            return 0x00
+        }
     }
 }
 

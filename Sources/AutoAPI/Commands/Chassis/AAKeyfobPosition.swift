@@ -41,7 +41,7 @@ public struct AAKeyfobPosition: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        relativePosition = AAKeyfobRelativePosition(rawValue: properties.first(for: 0x01)?.monoValue)
+        relativePosition = AAKeyfobRelativePosition(properties: properties, keyPath: \AAKeyfobPosition.relativePosition)
 
         // Properties
         self.properties = properties
@@ -77,6 +77,18 @@ extension AAKeyfobPosition: AAMessageTypesGettable {
 extension AAKeyfobPosition: AAIdentifiable {
 
     public static var identifier: AACommandIdentifier = 0x0048
+}
+
+extension AAKeyfobPosition: AAPropertyIdentifierGettable {
+
+    static func propertyID(for keyPath: PartialKeyPath<AAKeyfobPosition>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AAKeyfobPosition.relativePosition:    return 0x01
+
+        default:
+            return 0x00
+        }
+    }
 }
 
 

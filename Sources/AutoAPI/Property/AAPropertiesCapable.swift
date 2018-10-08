@@ -38,4 +38,7 @@ public protocol AAPropertiesCapable {
 
     var properties: AAProperties { get }
     var propertiesTimestamps: [AAPropertyTimestamp]? { get }
+
+
+    func propertyTimestamp(for keyPath: PartialKeyPath<Self>, specificProperty property: Any?) -> AAPropertyTimestamp?
 }

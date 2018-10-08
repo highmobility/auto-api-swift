@@ -40,14 +40,13 @@ public struct AACharging: AAFullStandardCommand {
     public let chargePortState: AAChargePortState?
     public let chargerVoltageAC: Float?
     public let chargerVoltageDC: Float?
-    public let chargingMethod: AAChargingMethod?
     public let chargingRate: Float?
     public let chargingWindowChosen: AAChosenState?
-    public let climatisationActive: AAActiveState?
     public let departureTimes: [AADepartureTime]?
     public let estimatedRange: UInt16?
     public let maxChargingCurrentAC: Float?
     public let pluggedIn: AAPluggedInState?
+    public let plugType: AAPlugType?
     public let reductionOfChargingCurrentTimes: [AATime]?
     public let state: AAChargingState?
     public let timers: [AAChargingTimer]?

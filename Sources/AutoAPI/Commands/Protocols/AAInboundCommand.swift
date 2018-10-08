@@ -29,7 +29,7 @@
 import Foundation
 
 
-protocol AAInboundCommand: AACommand, AABinaryInitable, AAMessageTypesGettable, AAPropertiesCapable {
+protocol AAInboundCommand: AACommand, AABinaryInitable, AAMessageTypesGettable, AAPropertiesCapable, AAPropertyIdentifierGettable {
 
     init?(_ messageType: UInt8, properties: AAProperties)
 }
@@ -74,5 +74,27 @@ extension AAInboundCommand {
 
     public var propertiesTimestamps: [AAPropertyTimestamp]? {
         return properties.propertiesTimestamps
+    }
+
+    /// Retrieve the `AAPropertyTimestamp` value for a specific property,
+    /// if there is one.
+    ///
+    /// To retrieve a timestamp for a property in an *array*,
+    /// the specific *value* needs to be supplied as well.
+    ///
+    /// - Parameters:
+    ///   - keyPath: The property's (variable's) `PartialKeyPath`
+    ///   - property: If the property (variable) represent an *array*, this needs to include the **specific** value (i.e. a specific door).
+    /// - Returns: `AAPropertyTimestamp` that has the *date* for a given property.
+    public func propertyTimestamp(for keyPath: PartialKeyPath<Self>, specificProperty property: Any? = nil) -> AAPropertyTimestamp? {
+        if let property = property as? AAPropertyConvertable {
+            return propertiesTimestamps?.first {
+                ($0.propertyID == Self.propertyID(for: keyPath)) &&
+                ($0.propertyFullValue == property.propertyValue)
+            }
+        }
+        else {
+            return propertiesTimestamps?.first(for: Self.propertyID(for: keyPath))
+        }
     }
 }

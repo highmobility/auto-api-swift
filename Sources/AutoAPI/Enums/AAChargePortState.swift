@@ -33,7 +33,6 @@ public enum AAChargePortState: UInt8 {
 
     case closed         = 0x00
     case open           = 0x01
-    case unavailable    = 0xFF
 
 
     public static let close = AAChargePortState.closed

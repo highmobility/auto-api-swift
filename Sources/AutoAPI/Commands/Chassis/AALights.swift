@@ -50,12 +50,12 @@ public struct AALights: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        frontExterior = AAFrontLightState(rawValue: properties.first(for: 0x01)?.monoValue)
-        rearExteriorState = properties.value(for: 0x02)
-        interiorState = properties.value(for: 0x03)
-        ambientColour = properties.first(for: 0x04)?.value.colour
-        reverseState = properties.value(for: 0x05)
-        emergencyBrakeState = properties.value(for: 0x06)
+        frontExterior = AAFrontLightState(properties: properties, keyPath: \AALights.frontExterior)
+        rearExteriorState = properties.value(for: \AALights.rearExteriorState)
+        interiorState = properties.value(for: \AALights.interiorState)
+        ambientColour = properties.first(for: \AALights.ambientColour)?.value.colour
+        reverseState = properties.value(for: \AALights.reverseState)
+        emergencyBrakeState = properties.value(for: \AALights.emergencyBrakeState)
 
         // Properties
         self.properties = properties
@@ -92,6 +92,23 @@ extension AALights: AAMessageTypesGettable {
         case getLightsState = 0x00
         case lightsState    = 0x01
         case controlLights  = 0x12
+    }
+}
+
+extension AALights: AAPropertyIdentifierGettable {
+
+    static func propertyID(for keyPath: PartialKeyPath<AALights>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AALights.frontExterior:       return 0x01
+        case \AALights.rearExteriorState:   return 0x02
+        case \AALights.interiorState:       return 0x03
+        case \AALights.ambientColour:       return 0x04
+        case \AALights.reverseState:        return 0x05
+        case \AALights.emergencyBrakeState: return 0x06
+
+        default:
+            return 0x00
+        }
     }
 }
 

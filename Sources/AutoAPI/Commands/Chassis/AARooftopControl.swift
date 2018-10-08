@@ -44,11 +44,11 @@ public struct AARooftopControl: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        dimming = properties.value(for: 0x01)
-        position = properties.value(for: 0x02)
+        dimming = properties.value(for: \AARooftopControl.dimming)
+        position = properties.value(for: \AARooftopControl.position)
         /* Level 8 */
-        convertibleRoofState = AAConvertibleRoofState(rawValue: properties.first(for: 0x03)?.monoValue)
-        sunroofTiltState = AAPositionState(rawValue: properties.first(for: 0x04)?.monoValue)
+        convertibleRoofState = AAConvertibleRoofState(properties: properties, keyPath: \AARooftopControl.convertibleRoofState)
+        sunroofTiltState = AAPositionState(properties: properties, keyPath: \AARooftopControl.sunroofTiltState)
 
         // Properties
         self.properties = properties
@@ -85,6 +85,22 @@ extension AARooftopControl: AAMessageTypesGettable {
         case getRooftopState    = 0x00
         case rooftopState       = 0x01
         case controlRooftop     = 0x12
+    }
+}
+
+extension AARooftopControl: AAPropertyIdentifierGettable {
+
+    static func propertyID(for keyPath: PartialKeyPath<AARooftopControl>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AARooftopControl.dimming:     return 0x01
+        case \AARooftopControl.position:    return 0x02
+            /* Level 8 */
+        case \AARooftopControl.convertibleRoofState:    return 0x03
+        case \AARooftopControl.sunroofTiltState:        return 0x04
+
+        default:
+            return 0x00
+        }
     }
 }
 

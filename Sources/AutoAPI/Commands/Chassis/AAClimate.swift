@@ -50,17 +50,17 @@ public struct AAClimate: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        insideTemperature = properties.value(for: 0x01)
-        outsideTemperature = properties.value(for: 0x02)
-        driverTemperature = properties.value(for: 0x03)
-        passengerTemperature = properties.value(for: 0x04)
-        hvacState = properties.value(for: 0x05)
-        defoggingState = properties.value(for: 0x06)
-        defrostingState = properties.value(for: 0x07)
-        ionisingState = properties.value(for: 0x08)
-        defrostingTemperature = properties.value(for: 0x09)
+        insideTemperature = properties.value(for: \AAClimate.insideTemperature)
+        outsideTemperature = properties.value(for: \AAClimate.outsideTemperature)
+        driverTemperature = properties.value(for: \AAClimate.driverTemperature)
+        passengerTemperature = properties.value(for: \AAClimate.passengerTemperature)
+        hvacState = properties.value(for: \AAClimate.hvacState)
+        defoggingState = properties.value(for: \AAClimate.defoggingState)
+        defrostingState = properties.value(for: \AAClimate.defrostingState)
+        ionisingState = properties.value(for: \AAClimate.ionisingState)
+        defrostingTemperature = properties.value(for: \AAClimate.defrostingTemperature)
         /* Level 8 */
-        weekdaysStartingTimes = properties.flatMap(for: 0x0B) { AAClimateWeekdayTime($0.value) }
+        weekdaysStartingTimes = properties.flatMap(for: \AAClimate.weekdaysStartingTimes) { AAClimateWeekdayTime($0.value) }
 
         // Properties
         self.properties = properties
@@ -111,6 +111,28 @@ extension AAClimate: AAMessageTypesGettable {
         case startStopDefrosting    = 0x15
         case startStopIonising      = 0x16
         case changeTemperatures     = 0x17
+    }
+}
+
+extension AAClimate: AAPropertyIdentifierGettable {
+
+    static func propertyID(for keyPath: PartialKeyPath<AAClimate>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AAClimate.insideTemperature:      return 0x01
+        case \AAClimate.outsideTemperature:     return 0x02
+        case \AAClimate.driverTemperature:      return 0x03
+        case \AAClimate.passengerTemperature:   return 0x04
+        case \AAClimate.hvacState:              return 0x05
+        case \AAClimate.defoggingState:         return 0x06
+        case \AAClimate.defrostingState:        return 0x07
+        case \AAClimate.ionisingState:          return 0x08
+        case \AAClimate.defrostingTemperature:  return 0x09
+            /* Level 8 */
+        case \AAClimate.weekdaysStartingTimes:  return 0x0B
+
+        default:
+            return 0x00
+        }
     }
 }
 
