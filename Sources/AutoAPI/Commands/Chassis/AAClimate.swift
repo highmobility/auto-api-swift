@@ -116,7 +116,7 @@ extension AAClimate: AAMessageTypesGettable {
 
 extension AAClimate: AAPropertyIdentifierGettable {
 
-    static func propertyID(for keyPath: PartialKeyPath<AAClimate>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAClimate, Type>) -> AAPropertyIdentifier {
         switch keyPath {
         case \AAClimate.insideTemperature:      return 0x01
         case \AAClimate.outsideTemperature:     return 0x02

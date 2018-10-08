@@ -91,7 +91,7 @@ extension AACruiseControl: AAMessageTypesGettable {
 
 extension AACruiseControl: AAPropertyIdentifierGettable {
 
-    static func propertyID(for keyPath: PartialKeyPath<AACruiseControl>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AACruiseControl, Type>) -> AAPropertyIdentifier {
         switch keyPath {
         case \AACruiseControl.state:                    return 0x01
         case \AACruiseControl.limiter:               return 0x02

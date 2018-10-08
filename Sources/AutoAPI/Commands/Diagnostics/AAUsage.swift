@@ -56,21 +56,21 @@ public struct AAUsage: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         /* Level 8 */
-        averageWeeklyDistance = properties.value(for: 0x01)
-        averageWeeklyDistanceLongTerm = properties.value(for: 0x02)
-        accelerationEvalution = properties.value(for: 0x03)
-        drivingStyleEvalution = properties.value(for: 0x04)
-        drivingModeActivationPeriods = properties.flatMap(for: 0x05) { AADrivingMode.ActivationPeriod($0.value) }
-        drivingModeEnergyConsumptions = properties.flatMap(for: 0x06) { AADrivingMode.EnergyConsumption($0.value) }
-        lastTripEnergyConsumption = properties.value(for: 0x07)
-        lastTripFuelConsumption = properties.value(for: 0x08)
-        mileageAfterLastTrip = properties.value(for: 0x09)
-        lastTripElectricPortion = properties.value(for: 0x0A)
-        lastTripAverageEnergyRecuperation = properties.value(for: 0x0B)
-        lastTripBatteryRemaining = properties.value(for: 0x0C)
-        lastTripDate = properties.value(for: 0x0D)
-        averageFuelConsumption = properties.value(for: 0x0E)
-        currentFuelConsumption = properties.value(for: 0x0F)
+        averageWeeklyDistance = properties.value(for: \AAUsage.averageWeeklyDistance)
+        averageWeeklyDistanceLongTerm = properties.value(for: \AAUsage.averageWeeklyDistanceLongTerm)
+        accelerationEvalution = properties.value(for: \AAUsage.accelerationEvalution)
+        drivingStyleEvalution = properties.value(for: \AAUsage.drivingStyleEvalution)
+        drivingModeActivationPeriods = properties.flatMap(for: \AAUsage.drivingModeActivationPeriods) { AADrivingMode.ActivationPeriod($0.value) }
+        drivingModeEnergyConsumptions = properties.flatMap(for: \AAUsage.drivingModeEnergyConsumptions) { AADrivingMode.EnergyConsumption($0.value) }
+        lastTripEnergyConsumption = properties.value(for: \AAUsage.lastTripEnergyConsumption)
+        lastTripFuelConsumption = properties.value(for: \AAUsage.lastTripFuelConsumption)
+        mileageAfterLastTrip = properties.value(for: \AAUsage.mileageAfterLastTrip)
+        lastTripElectricPortion = properties.value(for: \AAUsage.lastTripElectricPortion)
+        lastTripAverageEnergyRecuperation = properties.value(for: \AAUsage.lastTripAverageEnergyRecuperation)
+        lastTripBatteryRemaining = properties.value(for: \AAUsage.lastTripBatteryRemaining)
+        lastTripDate = properties.value(for: \AAUsage.lastTripDate)
+        averageFuelConsumption = properties.value(for: \AAUsage.averageFuelConsumption)
+        currentFuelConsumption = properties.value(for: \AAUsage.currentFuelConsumption)
 
         // Properties
         self.properties = properties
@@ -88,6 +88,33 @@ extension AAUsage: AAMessageTypesGettable {
 
         case getUsage   = 0x00
         case usageState = 0x01
+    }
+}
+
+extension AAUsage: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AAUsage, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+            /* Level 8 */
+        case \AAUsage.averageWeeklyDistance:                return 0x01
+        case \AAUsage.averageWeeklyDistanceLongTerm:        return 0x02
+        case \AAUsage.accelerationEvalution:                return 0x03
+        case \AAUsage.drivingStyleEvalution:                return 0x04
+        case \AAUsage.drivingModeActivationPeriods:         return 0x05
+        case \AAUsage.drivingModeEnergyConsumptions:        return 0x06
+        case \AAUsage.lastTripEnergyConsumption:            return 0x07
+        case \AAUsage.lastTripFuelConsumption:              return 0x08
+        case \AAUsage.mileageAfterLastTrip:                 return 0x09
+        case \AAUsage.lastTripElectricPortion:              return 0x0A
+        case \AAUsage.lastTripAverageEnergyRecuperation:    return 0x0B
+        case \AAUsage.lastTripBatteryRemaining:             return 0x0C
+        case \AAUsage.lastTripDate:                         return 0x0D
+        case \AAUsage.averageFuelConsumption:               return 0x0E
+        case \AAUsage.currentFuelConsumption:               return 0x0F
+
+        default:
+            return 0x00
+        }
     }
 }
 

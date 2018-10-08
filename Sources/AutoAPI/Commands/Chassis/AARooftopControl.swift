@@ -90,7 +90,7 @@ extension AARooftopControl: AAMessageTypesGettable {
 
 extension AARooftopControl: AAPropertyIdentifierGettable {
 
-    static func propertyID(for keyPath: PartialKeyPath<AARooftopControl>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AARooftopControl, Type>) -> AAPropertyIdentifier {
         switch keyPath {
         case \AARooftopControl.dimming:     return 0x01
         case \AARooftopControl.position:    return 0x02

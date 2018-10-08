@@ -41,7 +41,7 @@ public struct AAFueling: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        gasFlapState = AAGasFlapState(rawValue: properties.first(for: 0x01)?.monoValue)
+        gasFlapState = AAGasFlapState(properties: properties, keyPath: \AAFueling.gasFlapState)
 
         // Properties
         self.properties = properties
@@ -60,6 +60,18 @@ extension AAFueling: AAMessageTypesGettable {
         case getGasFlapState    = 0x00
         case gasFlapState       = 0x01
         case openGasFlap        = 0x02
+    }
+}
+
+extension AAFueling: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AAFueling, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AAFueling.gasFlapState: return 0x01
+
+        default:
+            return 0x00
+        }
     }
 }
 

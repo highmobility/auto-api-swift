@@ -58,9 +58,9 @@ public struct AAFirmwareVersion: AAInboundCommand {
         }
 
         // Ordered by the ID
-        hmkitVersion = AASDKVersion(properties.first(for: 0x01)?.value ?? [])
-        hmkitBuildName = properties.value(for: 0x02)
-        applicationVersion = properties.value(for: 0x03)
+        hmkitVersion = AASDKVersion(properties.first(for: \AAFirmwareVersion.hmkitVersion)?.value ?? [])
+        hmkitBuildName = properties.value(for: \AAFirmwareVersion.hmkitBuildName)
+        applicationVersion = properties.value(for: \AAFirmwareVersion.applicationVersion)
 
         // Properties
         self.properties = properties
@@ -78,6 +78,20 @@ extension AAFirmwareVersion: AAMessageTypesGettable {
 
         case getVersion = 0x00
         case version    = 0x01
+    }
+}
+
+extension AAFirmwareVersion: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AAFirmwareVersion, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AAFirmwareVersion.hmkitVersion:       return 0x01
+        case \AAFirmwareVersion.hmkitBuildName:     return 0x02
+        case \AAFirmwareVersion.applicationVersion: return 0x03
+
+        default:
+            return 0x00
+        }
     }
 }
 

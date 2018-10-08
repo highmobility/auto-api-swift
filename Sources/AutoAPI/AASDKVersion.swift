@@ -40,15 +40,21 @@ public struct AASDKVersion {
     }
 }
 
-extension AASDKVersion: AABinaryInitable {
+extension AASDKVersion: AAItem {
 
-    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        guard binary.count == 3 else {
-            return nil
-        }
+    static var size: Int = 3
 
-        major = binary.bytes[0]
-        minor = binary.bytes[1]
-        patch = binary.bytes[2]
+
+    init?(bytes: [UInt8]) {
+        major = bytes.bytes[0]
+        minor = bytes.bytes[1]
+        patch = bytes.bytes[2]
+    }
+}
+
+extension AASDKVersion: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [major, minor, patch]
     }
 }

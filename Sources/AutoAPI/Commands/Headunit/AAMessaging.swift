@@ -46,8 +46,8 @@ public struct AAMessaging: AAInboundCommand, AAOutboundCommand {
         }
 
         // Ordered by the ID
-        recipientHandle = properties.value(for: 0x01)
-        text = properties.value(for: 0x02)
+        recipientHandle = properties.value(for: \AAMessaging.recipientHandle)
+        text = properties.value(for: \AAMessaging.text)
 
         // Properties
         self.properties = properties
@@ -78,6 +78,19 @@ extension AAMessaging: AAMessageTypesGettable {
 
         case received   = 0x00
         case send       = 0x01
+    }
+}
+
+extension AAMessaging: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AAMessaging, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AAMessaging.recipientHandle:  return 0x01
+        case \AAMessaging.text:             return 0x02
+
+        default:
+            return 0x00
+        }
     }
 }
 

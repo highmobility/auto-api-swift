@@ -47,7 +47,7 @@ public struct AACapabilities: AAInboundCommand, Sequence  {
         let commandTypes = AAAutoAPI.commands.compactMap { $0 as? AACommand.Type }
 
         // Ordered by the ID
-        capabilities = properties.filter(for: 0x01).compactMap { property in
+        capabilities = properties.filter(for: \AACapabilities.capabilities).compactMap { property in
             let identifier = AACommandIdentifier(property.value.prefix(2))
 
             guard let command = commandTypes.first(where: { $0.identifier == identifier }) else {
@@ -68,7 +68,7 @@ public struct AACapabilities: AAInboundCommand, Sequence  {
 
 
     public func makeIterator() -> AACapabilitiesIterator {
-        return AACapabilitiesIterator(propertiesArray: properties.filter(for: 0x01))
+        return AACapabilitiesIterator(propertiesArray: properties.filter(for: \AACapabilities.capabilities))
     }
 }
 
@@ -84,6 +84,18 @@ extension AACapabilities: AAMessageTypesGettable {
         case getCapabilities    = 0x00
         case capabilities       = 0x01
         case getCapability      = 0x02
+    }
+}
+
+extension AACapabilities: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AACapabilities, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AACapabilities.capabilities: return 0x01
+
+        default:
+            return 0x00
+        }
     }
 }
 

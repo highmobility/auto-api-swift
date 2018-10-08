@@ -19,30 +19,22 @@
 // licensing@high-mobility.com
 //
 //
-//  RawRepresentable+Extensions.swift
+//  AAPropertiesCapable.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 08/01/2018.
+//  Created by Mikk Rätsep on 01/12/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-extension RawRepresentable {
+public protocol AAPropertiesCapable {
 
-    init?(rawValue: Self.RawValue?) {
-        guard let rawValue = rawValue else {
-            return nil
-        }
+    var carSignature: [UInt8]? { get }
+    var milliseconds: TimeInterval? { get }
+    var nonce: [UInt8]? { get }
+    var timestamp: Date? { get }
 
-        self.init(rawValue: rawValue)
-    }
-}
-
-extension RawRepresentable where RawValue == UInt8 {
-
-    init?<Type: AAPropertyIdentifierGettable>(properties: AAProperties, keyPath: KeyPath<Type, Self?>) {
-        self.init(rawValue: properties.first(for: keyPath)?.monoValue)
-    }
+    var properties: AAProperties { get }
 }

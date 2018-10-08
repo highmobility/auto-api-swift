@@ -64,7 +64,7 @@ extension AADashboardLights: AAMessageTypesGettable {
 
 extension AADashboardLights: AAPropertyIdentifierGettable {
 
-    static func propertyID(for keyPath: PartialKeyPath<AADashboardLights>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AADashboardLights, Type>) -> AAPropertyIdentifier {
         switch keyPath {
         case \AADashboardLights.lights: return 0x01
 

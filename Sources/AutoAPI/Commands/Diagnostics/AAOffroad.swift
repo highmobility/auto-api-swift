@@ -42,8 +42,8 @@ public struct AAOffroad: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        routeIncline = properties.value(for: 0x01)
-        wheelSuspension = properties.value(for: 0x02)
+        routeIncline = properties.value(for: \AAOffroad.routeIncline)
+        wheelSuspension = properties.value(for: \AAOffroad.wheelSuspension)
 
         // Properties
         self.properties = properties
@@ -61,6 +61,19 @@ extension AAOffroad: AAMessageTypesGettable {
 
         case getOffroadState    = 0x00
         case offroadState       = 0x01
+    }
+}
+
+extension AAOffroad: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AAOffroad, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AAOffroad.routeIncline:       return 0x01
+        case \AAOffroad.wheelSuspension:    return 0x02
+
+        default:
+            return 0x00
+        }
     }
 }
 

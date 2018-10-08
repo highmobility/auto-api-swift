@@ -55,22 +55,22 @@ public struct AAHomeCharger: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        chargingState = AAChargingState(rawValue: properties.first(for: 0x01)?.monoValue)
-        authenticationMechanism = AAAuthenticationMechanism(rawValue: properties.first(for: 0x02)?.monoValue)
-        plugType = AAPlugType(rawValue: properties.first(for: 0x03)?.monoValue)
-        chargingPower = properties.value(for: 0x04)
-        solarChargingState = AAActiveState(rawValue: properties.first(for: 0x05)?.monoValue)
-        hotspotState = AAActiveState(rawValue: properties.first(for: 0x08)?.monoValue)
-        wifiHotspotSSID = properties.value(for: 0x09)
-        wifiHotspotSecurity = AANetworkSecurity(rawValue: properties.first(for: 0x0A)?.monoValue)
-        wifiHotspotPassword = properties.value(for: 0x0B)
-        pricingTariffs = properties.flatMap(for: 0x0C) { AAPricingTariff($0.value) }
+        chargingState = AAChargingState(properties: properties, keyPath: \AAHomeCharger.chargingState)
+        authenticationMechanism = AAAuthenticationMechanism(properties: properties, keyPath: \AAHomeCharger.authenticationMechanism)
+        plugType = AAPlugType(properties: properties, keyPath: \AAHomeCharger.plugType)
+        chargingPower = properties.value(for: \AAHomeCharger.chargingPower)
+        solarChargingState = AAActiveState(properties: properties, keyPath: \AAHomeCharger.solarChargingState)
+        hotspotState = AAActiveState(properties: properties, keyPath: \AAHomeCharger.hotspotState)
+        wifiHotspotSSID = properties.value(for: \AAHomeCharger.wifiHotspotSSID)
+        wifiHotspotSecurity = AANetworkSecurity(properties: properties, keyPath: \AAHomeCharger.wifiHotspotSecurity)
+        wifiHotspotPassword = properties.value(for: \AAHomeCharger.wifiHotspotPassword)
+        pricingTariffs = properties.flatMap(for: \AAHomeCharger.pricingTariffs) { AAPricingTariff($0.value) }
         /* Level 8 */
-        authenticationState = AAAuthenticationState(rawValue: properties.first(for: 0x0D)?.monoValue)
-        chargeCurrentDC = properties.value(for: 0x0E)
-        maximumChargeCurrent = properties.value(for: 0x0F)
-        minimumChargeCurrent = properties.value(for: 0x10)
-        location = AACoordinate(properties.first(for: 0x11)?.value ?? [])
+        authenticationState = AAAuthenticationState(properties: properties, keyPath: \AAHomeCharger.authenticationState)
+        chargeCurrentDC = properties.value(for: \AAHomeCharger.chargeCurrentDC)
+        maximumChargeCurrent = properties.value(for: \AAHomeCharger.maximumChargeCurrent)
+        minimumChargeCurrent = properties.value(for: \AAHomeCharger.minimumChargeCurrent)
+        location = AACoordinate(properties.first(for: \AAHomeCharger.location)?.value ?? [])
 
         // Properties
         self.properties = properties
@@ -131,6 +131,33 @@ extension AAHomeCharger: AAMessageTypesGettable {
         case activateSolarCharging  = 0x14
         case enableWifiHotspot      = 0x15
         case authenticateExpire     = 0x16
+    }
+}
+
+extension AAHomeCharger: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AAHomeCharger, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AAHomeCharger.chargingState:              return 0x01
+        case \AAHomeCharger.authenticationMechanism:    return 0x02
+        case \AAHomeCharger.plugType:                   return 0x03
+        case \AAHomeCharger.chargingPower:              return 0x04
+        case \AAHomeCharger.solarChargingState:         return 0x05
+        case \AAHomeCharger.hotspotState:               return 0x08
+        case \AAHomeCharger.wifiHotspotSSID:            return 0x09
+        case \AAHomeCharger.wifiHotspotSecurity:        return 0x0A
+        case \AAHomeCharger.wifiHotspotPassword:        return 0x0B
+        case \AAHomeCharger.pricingTariffs:             return 0x0C
+            /* Level 8 */
+        case \AAHomeCharger.authenticationState:    return 0x0D
+        case \AAHomeCharger.chargeCurrentDC:        return 0x0E
+        case \AAHomeCharger.maximumChargeCurrent:   return 0x0F
+        case \AAHomeCharger.minimumChargeCurrent:   return 0x10
+        case \AAHomeCharger.location:               return 0x11
+
+        default:
+            return 0x00
+        }
     }
 }
 

@@ -45,11 +45,11 @@ public struct AAParkingTicket: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        state = AAParkingTicketState(rawValue: properties.first(for: 0x01)?.monoValue)
-        operatorName = properties.value(for: 0x02)
-        ticketID = properties.value(for: 0x03)
-        startTime = properties.value(for: 0x04)
-        endTime = properties.value(for: 0x05)
+        state = AAParkingTicketState(properties: properties, keyPath: \AAParkingTicket.state)
+        operatorName = properties.value(for: \AAParkingTicket.operatorName)
+        ticketID = properties.value(for: \AAParkingTicket.ticketID)
+        startTime = properties.value(for: \AAParkingTicket.startTime)
+        endTime = properties.value(for: \AAParkingTicket.endTime)
 
         // Properties
         self.properties = properties
@@ -69,6 +69,22 @@ extension AAParkingTicket: AAMessageTypesGettable {
         case parkingTicket  = 0x01
         case startParking   = 0x02
         case endParking     = 0x03
+    }
+}
+
+extension AAParkingTicket: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AAParkingTicket, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AAParkingTicket.state:        return 0x01
+        case \AAParkingTicket.operatorName: return 0x02
+        case \AAParkingTicket.ticketID:     return 0x03
+        case \AAParkingTicket.startTime:    return 0x04
+        case \AAParkingTicket.endTime:      return 0x05
+
+        default:
+            return 0x00
+        }
     }
 }
 

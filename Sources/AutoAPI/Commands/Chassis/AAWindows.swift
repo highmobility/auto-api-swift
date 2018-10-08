@@ -92,7 +92,7 @@ extension AAWindows: AAMessageTypesGettable {
 
 extension AAWindows: AAPropertyIdentifierGettable {
 
-    static func propertyID(for keyPath: PartialKeyPath<AAWindows>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAWindows, Type>) -> AAPropertyIdentifier {
         switch keyPath {
         case \AAWindows.openPercentages:    return 0x02
         case \AAWindows.positions:          return 0x03

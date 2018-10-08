@@ -44,9 +44,9 @@ public struct AAVehicleLocation: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         /* Level 8 */
-        coordinate = AACoordinate(properties.first(for: 0x04)?.value ?? [])
-        heading = properties.value(for: 0x05)
-        altitude = properties.value(for: 0x06)
+        coordinate = AACoordinate(properties.first(for: \AAVehicleLocation.coordinate)?.value ?? [])
+        heading = properties.value(for: \AAVehicleLocation.heading)
+        altitude = properties.value(for: \AAVehicleLocation.altitude)
 
         // Properties
         self.properties = properties
@@ -97,6 +97,21 @@ extension AAVehicleLocation: AALegacyGettable {
 extension AAVehicleLocation: AAIdentifiable {
 
     public static var identifier: AACommandIdentifier = 0x0030
+}
+
+extension AAVehicleLocation: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AAVehicleLocation, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+            /* Level 8 */
+        case \AAVehicleLocation.coordinate: return 0x04
+        case \AAVehicleLocation.heading:    return 0x05
+        case \AAVehicleLocation.altitude:   return 0x06
+
+        default:
+            return 0x00
+        }
+    }
 }
 
 

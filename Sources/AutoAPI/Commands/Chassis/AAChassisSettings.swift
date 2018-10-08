@@ -111,7 +111,7 @@ extension AAChassisSettings: AAMessageTypesGettable {
 
 extension AAChassisSettings: AAPropertyIdentifierGettable {
 
-    static func propertyID(for keyPath: PartialKeyPath<AAChassisSettings>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAChassisSettings, Type>) -> AAPropertyIdentifier {
         switch keyPath {
         case \AAChassisSettings.drivingMode:            return 0x01
         case \AAChassisSettings.sportChronoState:    return 0x02

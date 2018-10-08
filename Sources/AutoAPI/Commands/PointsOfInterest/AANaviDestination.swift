@@ -46,13 +46,13 @@ public struct AANaviDestination: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        name = properties.value(for: 0x02)
-        poiSlotsFree = properties.value(for: 0x03)
-        poiSlotsMax = properties.value(for: 0x04)
-        arrivalTime = AATime(properties.first(for: 0x05)?.value ?? [])
-        distanceTo = properties.value(for: 0x06)
+        name = properties.value(for: \AANaviDestination.name)
+        poiSlotsFree = properties.value(for: \AANaviDestination.poiSlotsFree)
+        poiSlotsMax = properties.value(for: \AANaviDestination.poiSlotsMax)
+        arrivalTime = AATime(properties.first(for: \AANaviDestination.arrivalTime)?.value ?? [])
+        distanceTo = properties.value(for: \AANaviDestination.distanceTo)
         /* Level 8 */
-        coordinate = AACoordinate(properties.first(for: 0x07)?.value ?? [])
+        coordinate = AACoordinate(properties.first(for: \AANaviDestination.coordinate)?.value ?? [])
 
         // Properties
         self.properties = properties
@@ -99,6 +99,24 @@ extension AANaviDestination: AAMessageTypesGettable {
         case getDestination = 0x00
         case destination    = 0x01
         case setDestination = 0x02
+    }
+}
+
+extension AANaviDestination: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AANaviDestination, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AANaviDestination.name:           return 0x02
+        case \AANaviDestination.poiSlotsFree:   return 0x03
+        case \AANaviDestination.poiSlotsMax:    return 0x04
+        case \AANaviDestination.distanceTo:     return 0x06
+        case \AANaviDestination.arrivalTime:    return 0x05
+            /* Level 8 */
+        case \AANaviDestination.coordinate: return 0x07
+
+        default:
+            return 0x00
+        }
     }
 }
 

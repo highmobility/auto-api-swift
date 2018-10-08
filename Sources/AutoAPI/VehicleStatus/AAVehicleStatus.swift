@@ -83,6 +83,7 @@ public struct AAVehicleStatus: AAInboundCommand {
         driverSeatPosition = AADriverSeatLocation(rawValue: properties.first(for: 0x10)?.monoValue)
         equipment = properties.flatMap(for: 0x11) { String(bytes: $0.value, encoding: .utf8)  }
 
+        /* Special */
         states = properties.flatMap(for: 0x99) { property in
             binaryTypes.flatMapFirst { $0.init(property.value) as? AAVehicleState }
         }
@@ -103,6 +104,38 @@ extension AAVehicleStatus: AAMessageTypesGettable {
 
         case getVehicleStatus   = 0x00
         case vehicleStatus      = 0x01
+    }
+}
+
+extension AAVehicleStatus: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AAVehicleStatus, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AAVehicleStatus.vin:              return 0x01
+        case \AAVehicleStatus.powerTrain:       return 0x02
+        case \AAVehicleStatus.modelName:        return 0x03
+        case \AAVehicleStatus.name:             return 0x04
+        case \AAVehicleStatus.licensePlate:     return 0x05
+        case \AAVehicleStatus.salesDesignation: return 0x06
+        case \AAVehicleStatus.modelYear:        return 0x07
+        case \AAVehicleStatus.colourName:       return 0x08
+        case \AAVehicleStatus.powerKW:          return 0x09
+        case \AAVehicleStatus.numberOfDoors:    return 0x0A
+        case \AAVehicleStatus.numberOfSeats:    return 0x0B
+        case \AAVehicleStatus.engineVolume:     return 0x0C
+        case \AAVehicleStatus.engineMaxTorque:  return 0x0D
+        case \AAVehicleStatus.gearbox:          return 0x0E
+            /* Level 8 */
+        case \AAVehicleStatus.displayUnit:          return 0x0F
+        case \AAVehicleStatus.driverSeatPosition:   return 0x10
+        case \AAVehicleStatus.equipment:            return 0x11
+
+            /* Special */
+        case \AAVehicleStatus.states: return 0x99
+
+        default:
+            return 0x00
+        }
     }
 }
 

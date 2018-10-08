@@ -89,7 +89,7 @@ extension AASeats: AAMessageTypesGettable {
 
 extension AASeats: AAPropertyIdentifierGettable {
 
-    static func propertyID(for keyPath: PartialKeyPath<AASeats>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AASeats, Type>) -> AAPropertyIdentifier {
         switch keyPath {
         case \AASeats.personsDetected:      return 0x02
         case \AASeats.seatbeltsFastened:    return 0x03

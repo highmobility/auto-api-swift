@@ -65,7 +65,10 @@ public struct AANotifications: AAInboundCommand, AAOutboundCommand {
             }
 
             // Hack
-            properties = AAProperties([0x99, 0x00, 0x01, binary.bytes[3]])
+            properties = AAProperties([AANotifications.propertyID(for: \AANotifications.receivedActionID),
+                                       0x00,
+                                       0x01,
+                                       binary.bytes[3]])
 
         case MessageTypes.clear.rawValue:
             guard binary.count == 3 else {
@@ -90,7 +93,7 @@ public struct AANotifications: AAInboundCommand, AAOutboundCommand {
             receivedClearCommand = false
 
         case MessageTypes.action.rawValue:
-            receivedActionID = properties.value(for: 0x99)
+            receivedActionID = properties.value(for: \AANotifications.receivedActionID)
             receivedClearCommand = false
 
             properties = AAProperties([])
@@ -104,8 +107,8 @@ public struct AANotifications: AAInboundCommand, AAOutboundCommand {
         }
 
         // Ordered by the ID
-        text = properties.value(for: 0x01)
-        actionItems = properties.flatMap(for: 0x02) { AAActionItem($0.value) }
+        text = properties.value(for: \AANotifications.text)
+        actionItems = properties.flatMap(for: \AANotifications.actionItems) { AAActionItem($0.value) }
 
         // Properties
         self.properties = properties
@@ -142,6 +145,21 @@ extension AANotifications: AAMessageTypesGettable {
         case notification   = 0x00
         case action         = 0x01
         case clear          = 0x02
+    }
+}
+
+extension AANotifications: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AANotifications, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AANotifications.text:         return 0x01
+        case \AANotifications.actionItems:  return 0x02
+
+        case \AANotifications.receivedActionID: return 0x10
+
+        default:
+            return 0x00
+        }
     }
 }
 

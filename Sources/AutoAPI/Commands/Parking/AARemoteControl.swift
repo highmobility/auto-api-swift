@@ -42,8 +42,8 @@ public struct AARemoteControl: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        controlMode = AAControlMode(rawValue: properties.first(for: 0x01)?.monoValue)
-        angle = properties.value(for: 0x02)
+        controlMode = AAControlMode(properties: properties, keyPath: \AARemoteControl.controlMode)
+        angle = properties.value(for: \AARemoteControl.angle)
 
         // Properties
         self.properties = properties
@@ -64,6 +64,19 @@ extension AARemoteControl: AAMessageTypesGettable {
         case startControl       = 0x02
         case stopControl        = 0x03
         case controlCommand     = 0x04
+    }
+}
+
+extension AARemoteControl: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AARemoteControl, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AARemoteControl.controlMode:  return 0x01
+        case \AARemoteControl.angle:        return 0x02
+
+        default:
+            return 0x00
+        }
     }
 }
 

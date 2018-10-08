@@ -41,7 +41,7 @@ public struct AAParkingBrake: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        state = properties.value(for: 0x01)
+        state = properties.value(for: \AAParkingBrake.state)
 
         // Properties
         self.properties = properties
@@ -60,6 +60,18 @@ extension AAParkingBrake: AAMessageTypesGettable {
         case getBrakeState  = 0x00
         case brakeState     = 0x01
         case activate       = 0x12
+    }
+}
+
+extension AAParkingBrake: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AAParkingBrake, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AAParkingBrake.state: return 0x01
+
+        default:
+            return 0x00
+        }
     }
 }
 

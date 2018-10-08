@@ -85,7 +85,7 @@ extension AAHonkHornFlashLights: AAMessageTypesGettable {
 
 extension AAHonkHornFlashLights: AAPropertyIdentifierGettable {
 
-    static func propertyID(for keyPath: PartialKeyPath<AAHonkHornFlashLights>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAHonkHornFlashLights, Type>) -> AAPropertyIdentifier {
         switch keyPath {
         case \AAHonkHornFlashLights.flasherState:   return 0x01
 

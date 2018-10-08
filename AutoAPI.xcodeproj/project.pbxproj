@@ -39,6 +39,9 @@
 		205C5179208F41C700B55ACE /* AACruiseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5178208F41C700B55ACE /* AACruiseControl.swift */; };
 		205C517B208F430100B55ACE /* AACruiseControlLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517A208F430100B55ACE /* AACruiseControlLimiter.swift */; };
 		205C517D208F451300B55ACE /* CruiseControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517C208F451300B55ACE /* CruiseControlTests.swift */; };
+		20646B94216B96910000824D /* AAHistoryCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20646B93216B96910000824D /* AAHistoryCapable.swift */; };
+		20646B96216B96CD0000824D /* AAHistoricalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20646B95216B96CD0000824D /* AAHistoricalState.swift */; };
+		20646B98216B97620000824D /* AAPropertiesTimestampGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20646B97216B97620000824D /* AAPropertiesTimestampGettable.swift */; };
 		2085E9F3216615170013AE57 /* AAPropertyTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2085E9F2216615170013AE57 /* AAPropertyTimestamp.swift */; };
 		20896EE4214799C1003A7A63 /* AAChosenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EE3214799C1003A7A63 /* AAChosenState.swift */; };
 		20896EE621479A8F003A7A63 /* AAActiveState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EE521479A8F003A7A63 /* AAActiveState.swift */; };
@@ -321,6 +324,9 @@
 		205C5178208F41C700B55ACE /* AACruiseControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACruiseControl.swift; sourceTree = "<group>"; };
 		205C517A208F430100B55ACE /* AACruiseControlLimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACruiseControlLimiter.swift; sourceTree = "<group>"; };
 		205C517C208F451300B55ACE /* CruiseControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruiseControlTests.swift; sourceTree = "<group>"; };
+		20646B93216B96910000824D /* AAHistoryCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHistoryCapable.swift; sourceTree = "<group>"; };
+		20646B95216B96CD0000824D /* AAHistoricalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHistoricalState.swift; sourceTree = "<group>"; };
+		20646B97216B97620000824D /* AAPropertiesTimestampGettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertiesTimestampGettable.swift; sourceTree = "<group>"; };
 		206ED7D02060FD7000D7761E /* UniversalBuildScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = UniversalBuildScript.sh; sourceTree = "<group>"; };
 		206ED7D12060FD7000D7761E /* AppStoreCompatible.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppStoreCompatible.sh; sourceTree = "<group>"; };
 		2085E9F2216615170013AE57 /* AAPropertyTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertyTimestamp.swift; sourceTree = "<group>"; };
@@ -586,6 +592,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20646B99216B97B10000824D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_157 /* AAPropertiesCapable.swift */,
+				OBJ_158 /* AAPropertiesInitable.swift */,
+				2024BBF72154D95200AA5261 /* AAPropertiesMultiConvertable.swift */,
+				20646B97216B97620000824D /* AAPropertiesTimestampGettable.swift */,
+				OBJ_161 /* AAPropertyConvertable.swift */,
+				20EF4C372167F4A00077BFE4 /* AAPropertyIdentifierGettable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		206ED7CF2060FD7000D7761E /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
@@ -693,14 +712,10 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_156 /* AAProperties.swift */,
-				OBJ_157 /* AAPropertiesCapable.swift */,
-				20EF4C372167F4A00077BFE4 /* AAPropertyIdentifierGettable.swift */,
-				OBJ_158 /* AAPropertiesInitable.swift */,
 				OBJ_159 /* AAPropertiesIterator.swift */,
-				2024BBF72154D95200AA5261 /* AAPropertiesMultiConvertable.swift */,
 				OBJ_160 /* AAProperty.swift */,
-				OBJ_161 /* AAPropertyConvertable.swift */,
 				2085E9F2216615170013AE57 /* AAPropertyTimestamp.swift */,
+				20646B99216B97B10000824D /* Protocols */,
 			);
 			path = Property;
 			sourceTree = "<group>";
@@ -1072,6 +1087,8 @@
 			children = (
 				OBJ_9 /* AAAutoAPI.swift */,
 				OBJ_10 /* AABinaryInitable.swift */,
+				20646B95216B96CD0000824D /* AAHistoricalState.swift */,
+				20646B93216B96910000824D /* AAHistoryCapable.swift */,
 				OBJ_125 /* AAIdentifiable.swift */,
 				20DC7519215BC021009B2B24 /* AALegacy.swift */,
 				OBJ_154 /* AAMessageTypesGettable.swift */,
@@ -1330,11 +1347,13 @@
 				20896EE4214799C1003A7A63 /* AAChosenState.swift in Sources */,
 				20DC751A215BC021009B2B24 /* AALegacy.swift in Sources */,
 				OBJ_351 /* AAVideoHandover.swift in Sources */,
+				20646B94216B96910000824D /* AAHistoryCapable.swift in Sources */,
 				2024BBFE21553D8A00AA5261 /* AAClimateWeekdayTime.swift in Sources */,
 				20DC7514215B5EDE009B2B24 /* AAPluggedInState.swift in Sources */,
 				20F7903F2135732D003BDFA2 /* AADisplayUnit.swift in Sources */,
 				OBJ_352 /* AAWiFi.swift in Sources */,
 				20B0C143215D1EA7005FA699 /* AATirePressure.swift in Sources */,
+				20646B98216B97620000824D /* AAPropertiesTimestampGettable.swift in Sources */,
 				OBJ_353 /* AADriverFatigue.swift in Sources */,
 				OBJ_354 /* AAHeartRate.swift in Sources */,
 				OBJ_355 /* AAHomeCharger.swift in Sources */,
@@ -1360,6 +1379,7 @@
 				OBJ_372 /* AAAccelerationType.swift in Sources */,
 				OBJ_374 /* AAAuthenticationMechanism.swift in Sources */,
 				OBJ_375 /* AAAxle.swift in Sources */,
+				20646B96216B96CD0000824D /* AAHistoricalState.swift in Sources */,
 				2028370B2150D17E0001724A /* AADepartureTime.swift in Sources */,
 				OBJ_376 /* AAChargeMode.swift in Sources */,
 				OBJ_377 /* AAChargePortState.swift in Sources */,

@@ -37,6 +37,7 @@ public typealias AANetworkSSID = String
 public typealias AAPercentageInt = UInt8
 public typealias AAPropertyIdentifier = UInt8
 
+// TODO: Go over the `Sequence`-d types
 
 public struct AAAutoAPI {
 

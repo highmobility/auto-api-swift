@@ -44,10 +44,10 @@ public struct AAWiFi: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        enabledState = AAEnabledState(rawValue: properties.first(for: 0x01)?.monoValue)
-        connectedState = AAConnectionState(rawValue: properties.first(for: 0x02)?.monoValue)
-        networkSSID = properties.value(for: 0x03)
-        networkSecurity = AANetworkSecurity(rawValue: properties.first(for: 0x04)?.monoValue)
+        enabledState = AAEnabledState(properties: properties, keyPath: \AAWiFi.enabledState)
+        connectedState = AAConnectionState(properties: properties, keyPath: \AAWiFi.connectedState)
+        networkSSID = properties.value(for: \AAWiFi.networkSSID)
+        networkSecurity = AANetworkSecurity(properties: properties, keyPath: \AAWiFi.networkSecurity)
 
         // Properties
         self.properties = properties
@@ -88,6 +88,21 @@ extension AAWiFi: AAMessageTypesGettable {
         case connectToNetwork   = 0x02
         case forgetNetwork      = 0x03
         case enableDisable      = 0x04
+    }
+}
+
+extension AAWiFi: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AAWiFi, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AAWiFi.enabledState:      return 0x01
+        case \AAWiFi.connectedState:    return 0x02
+        case \AAWiFi.networkSSID:       return 0x03
+        case \AAWiFi.networkSecurity:   return 0x04
+
+        default:
+            return 0x00
+        }
     }
 }
 

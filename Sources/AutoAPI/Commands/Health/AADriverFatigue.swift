@@ -45,7 +45,7 @@ public struct AADriverFatigue: AAInboundCommand {
         }
 
         // Ordered by the ID
-        fatigueLevel = AAFatigueLevel(rawValue: properties.first(for: 0x01)?.monoValue)
+        fatigueLevel = AAFatigueLevel(properties: properties, keyPath: \AADriverFatigue.fatigueLevel)
 
         // Properties
         self.properties = properties
@@ -64,3 +64,16 @@ extension AADriverFatigue: AAIdentifiable {
 
     public static var identifier: AACommandIdentifier = 0x0041
 }
+
+extension AADriverFatigue: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AADriverFatigue, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AADriverFatigue.fatigueLevel: return 0x01
+
+        default:
+            return 0x00
+        }
+    }
+}
+

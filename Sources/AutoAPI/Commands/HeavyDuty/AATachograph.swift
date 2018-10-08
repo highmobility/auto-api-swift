@@ -47,13 +47,13 @@ public struct AATachograph: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        driversWorkingStates = properties.flatMap(for: 0x01) { AADriverWorkingState($0.value) }
-        driversTimeStates = properties.flatMap(for: 0x02) { AADriverTimeState($0.value) }
-        driversCards = properties.flatMap(for: 0x03) { AADriverCard($0.value) }
-        vehicleDirection = AADirection(rawValue: properties.first(for: 0x06)?.monoValue)
-        vehicleMotionState = AAMovingState(rawValue: properties.first(for: 0x04)?.monoValue)
-        vehicleOverspeedActive = properties.value(for: 0x05)
-        vehicleSpeed = properties.value(for: 0x07)
+        driversWorkingStates = properties.flatMap(for: \AATachograph.driversWorkingStates) { AADriverWorkingState($0.value) }
+        driversTimeStates = properties.flatMap(for: \AATachograph.driversTimeStates) { AADriverTimeState($0.value) }
+        driversCards = properties.flatMap(for: \AATachograph.driversCards) { AADriverCard($0.value) }
+        vehicleDirection = AADirection(properties: properties, keyPath: \AATachograph.vehicleDirection)
+        vehicleMotionState = AAMovingState(properties: properties, keyPath: \AATachograph.vehicleMotionState)
+        vehicleOverspeedActive = properties.value(for: \AATachograph.vehicleOverspeedActive)
+        vehicleSpeed = properties.value(for: \AATachograph.vehicleSpeed)
 
         // Properties
         self.properties = properties
@@ -71,6 +71,24 @@ extension AATachograph: AAMessageTypesGettable {
 
         case getState = 0x00
         case state    = 0x01
+    }
+}
+
+extension AATachograph: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AATachograph, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AATachograph.driversWorkingStates:    return 0x01
+        case \AATachograph.driversTimeStates:       return 0x02
+        case \AATachograph.driversCards:            return 0x03
+        case \AATachograph.vehicleDirection:        return 0x06
+        case \AATachograph.vehicleMotionState:      return 0x04
+        case \AATachograph.vehicleOverspeedActive:  return 0x05
+        case \AATachograph.vehicleSpeed:            return 0x07
+
+        default:
+            return 0x00
+        }
     }
 }
 

@@ -41,7 +41,7 @@ public struct AAVehicleTime: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        time = AATime(bytes: properties.first(for: 0x01)?.value)
+        time = AATime(bytes: properties.first(for: \AAVehicleTime.time)?.value)
 
         // Properties
         self.properties = properties
@@ -60,6 +60,18 @@ extension AAVehicleTime: AAMessageTypesGettable {
 extension AAVehicleTime: AAIdentifiable {
 
     public static var identifier: AACommandIdentifier = 0x0050
+}
+
+extension AAVehicleTime: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AAVehicleTime, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AAVehicleTime.time: return 0x01
+
+        default:
+            return 0x00
+        }
+    }
 }
 
 

@@ -139,7 +139,7 @@ extension AADiagnostics: AAMessageTypesGettable {
 
 extension AADiagnostics: AAPropertyIdentifierGettable {
 
-    static func propertyID(for keyPath: PartialKeyPath<AADiagnostics>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AADiagnostics, Type>) -> AAPropertyIdentifier {
         switch keyPath {
         case \AADiagnostics.mileage:                    return 0x01
         case \AADiagnostics.engineOilTemperature:       return 0x02

@@ -19,30 +19,17 @@
 // licensing@high-mobility.com
 //
 //
-//  RawRepresentable+Extensions.swift
+//  AAPropertyIdentifierGettable.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 08/01/2018.
+//  Created by Mikk Rätsep on 05/10/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-extension RawRepresentable {
+protocol AAPropertyIdentifierGettable {
 
-    init?(rawValue: Self.RawValue?) {
-        guard let rawValue = rawValue else {
-            return nil
-        }
-
-        self.init(rawValue: rawValue)
-    }
-}
-
-extension RawRepresentable where RawValue == UInt8 {
-
-    init?<Type: AAPropertyIdentifierGettable>(properties: AAProperties, keyPath: KeyPath<Type, Self?>) {
-        self.init(rawValue: properties.first(for: keyPath)?.monoValue)
-    }
+    static func propertyID<Type>(for keyPath: KeyPath<Self, Type>) -> AAPropertyIdentifier
 }

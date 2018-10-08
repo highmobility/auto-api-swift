@@ -29,7 +29,6 @@
 import Foundation
 
 
-// TODO: This (would be nice, if the "timestamp" would be accessible from the property itself)
 public struct AAPropertyTimestamp {
 
     public let date: Date

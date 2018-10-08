@@ -19,17 +19,16 @@
 // licensing@high-mobility.com
 //
 //
-//  AAPropertyIdentifierGettable.swift
+//  AAHistoricalState.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 05/10/2018.
+//  Created by Mikk Rätsep on 08/10/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-protocol AAPropertyIdentifierGettable {
+public protocol AAHistoricalState: AAPropertiesCapable {
 
-    static func propertyID(for keyPath: PartialKeyPath<Self>) -> AAPropertyIdentifier
 }

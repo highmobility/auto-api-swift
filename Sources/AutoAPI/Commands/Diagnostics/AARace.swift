@@ -58,25 +58,25 @@ public struct AARace: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        accelerations = properties.flatMap(for: 0x01) { AAAcceleration($0.value) }
-        understeering = properties.value(for: 0x02)
-        oversteering = properties.value(for: 0x03)
-        gasPedalPosition = properties.value(for: 0x04)
-        steeringAngle = properties.value(for: 0x05)
-        brakePressure = properties.value(for: 0x06)
-        yawRate = properties.value(for: 0x07)
-        rearSuspensionSteering = properties.value(for: 0x08)
-        espState = properties.value(for: 0x09)
-        brakeTorqueVectorings = properties.flatMap(for: 0x0A) { AABrakeTorqueVectoring($0.value) }
-        gearMode = AAGearMode(rawValue: properties.first(for: 0x0B)?.monoValue)
-        selectedGear = properties.value(for: 0x0C)
-        brakePedalPosition = properties.value(for: 0x0D)
-        brakePedalSwitchState = properties.value(for: 0x0E)
-        clutchPedalSwitchState = properties.value(for: 0x0F)
-        acceleratorPedalIdleSwitchState = properties.value(for: 0x10)
-        acceleratorPedalKickdownSwitchState = properties.value(for: 0x11)
+        accelerations = properties.flatMap(for: \AARace.accelerations) { AAAcceleration($0.value) }
+        understeering = properties.value(for: \AARace.understeering)
+        oversteering = properties.value(for: \AARace.oversteering)
+        gasPedalPosition = properties.value(for: \AARace.gasPedalPosition)
+        steeringAngle = properties.value(for: \AARace.steeringAngle)
+        brakePressure = properties.value(for: \AARace.brakePressure)
+        yawRate = properties.value(for: \AARace.yawRate)
+        rearSuspensionSteering = properties.value(for: \AARace.rearSuspensionSteering)
+        espState = properties.value(for: \AARace.espState)
+        brakeTorqueVectorings = properties.flatMap(for: \AARace.brakeTorqueVectorings) { AABrakeTorqueVectoring($0.value) }
+        gearMode = AAGearMode(properties: properties, keyPath: \AARace.gearMode)
+        selectedGear = properties.value(for: \AARace.selectedGear)
+        brakePedalPosition = properties.value(for: \AARace.brakePedalPosition)
+        brakePedalSwitchState = properties.value(for: \AARace.brakePedalSwitchState)
+        clutchPedalSwitchState = properties.value(for: \AARace.clutchPedalSwitchState)
+        acceleratorPedalIdleSwitchState = properties.value(for: \AARace.acceleratorPedalIdleSwitchState)
+        acceleratorPedalKickdownSwitchState = properties.value(for: \AARace.acceleratorPedalKickdownSwitchState)
         /* Level 8 */
-        vehicleMoving = AAMovingState(rawValue: properties.first(for: 0x12)?.monoValue)
+        vehicleMoving = AAMovingState(properties: properties, keyPath: \AARace.vehicleMoving)
 
         // Properties
         self.properties = properties
@@ -94,6 +94,36 @@ extension AARace: AAMessageTypesGettable {
 
         case getRaceState   = 0x00
         case raceState      = 0x01
+    }
+}
+
+extension AARace: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AARace, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AARace.accelerations:                         return 0x01
+        case \AARace.understeering:                         return 0x02
+        case \AARace.oversteering:                          return 0x03
+        case \AARace.gasPedalPosition:                      return 0x04
+        case \AARace.steeringAngle:                         return 0x05
+        case \AARace.brakePressure:                         return 0x06
+        case \AARace.yawRate:                               return 0x07
+        case \AARace.rearSuspensionSteering:                return 0x08
+        case \AARace.espState:                              return 0x09
+        case \AARace.brakeTorqueVectorings:                 return 0x0A
+        case \AARace.gearMode:                              return 0x0B
+        case \AARace.selectedGear:                          return 0x0C
+        case \AARace.brakePedalPosition:                    return 0x0D
+        case \AARace.brakePedalSwitchState:                 return 0x0E
+        case \AARace.clutchPedalSwitchState:                return 0x0F
+        case \AARace.acceleratorPedalIdleSwitchState:       return 0x10
+        case \AARace.acceleratorPedalKickdownSwitchState:   return 0x11
+            /* Level: 8 */
+        case \AARace.vehicleMoving: return 0x12
+
+        default:
+            return 0x00
+        }
     }
 }
 

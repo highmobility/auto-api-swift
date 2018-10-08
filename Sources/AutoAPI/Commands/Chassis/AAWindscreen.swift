@@ -100,7 +100,7 @@ extension AAWindscreen: AAMessageTypesGettable {
 
 extension AAWindscreen: AAPropertyIdentifierGettable {
 
-    static func propertyID(for keyPath: PartialKeyPath<AAWindscreen>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAWindscreen, Type>) -> AAPropertyIdentifier {
         switch keyPath {
         case \AAWindscreen.wipersState:         return 0x01
         case \AAWindscreen.wipersIntensity:     return 0x02

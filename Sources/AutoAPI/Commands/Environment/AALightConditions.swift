@@ -45,8 +45,8 @@ public struct AALightConditions: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        outsideLight = properties.value(for: 0x01)
-        insideLight = properties.value(for: 0x02)
+        outsideLight = properties.value(for: \AALightConditions.outsideLight)
+        insideLight = properties.value(for: \AALightConditions.insideLight)
 
         // Properties
         self.properties = properties
@@ -64,6 +64,19 @@ extension AALightConditions: AAMessageTypesGettable {
 
         case getConditions  = 0x00
         case conditions     = 0x01
+    }
+}
+
+extension AALightConditions: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AALightConditions, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AALightConditions.outsideLight:   return 0x01
+        case \AALightConditions.insideLight:    return 0x02
+
+        default:
+            return 0x00
+        }
     }
 }
 

@@ -19,26 +19,23 @@
 // licensing@high-mobility.com
 //
 //
-//  AAPropertiesCapable.swift
+//  AAHistoryCapable.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 01/12/2017.
+//  Created by Mikk Rätsep on 08/10/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public protocol AAPropertiesCapable {
+public protocol AAHistoryCapable: AAIdentifiable, AAPropertiesCapable, AAVehicleState {
 
-    var carSignature: [UInt8]? { get }
-    var milliseconds: TimeInterval? { get }
-    var nonce: [UInt8]? { get }
-    var timestamp: Date? { get }
+}
 
-    var properties: AAProperties { get }
-    var propertiesTimestamps: [AAPropertyTimestamp]? { get }
+extension AAHistoryCapable {
 
-
-    func propertyTimestamp(for keyPath: PartialKeyPath<Self>, specificProperty property: Any?) -> AAPropertyTimestamp?
+    func propertyBytes(_ id: AAPropertyIdentifier) -> [UInt8] {
+        return [id, 0x00, 0x02, UInt8((Self.identifier >> 8) & 0xFF), UInt8(Self.identifier & 0xFF)]
+    }
 }

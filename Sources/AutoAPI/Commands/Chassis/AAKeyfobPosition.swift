@@ -81,9 +81,9 @@ extension AAKeyfobPosition: AAIdentifiable {
 
 extension AAKeyfobPosition: AAPropertyIdentifierGettable {
 
-    static func propertyID(for keyPath: PartialKeyPath<AAKeyfobPosition>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAKeyfobPosition, Type>) -> AAPropertyIdentifier {
         switch keyPath {
-        case \AAKeyfobPosition.relativePosition:    return 0x01
+        case \AAKeyfobPosition.relativePosition: return 0x01
 
         default:
             return 0x00

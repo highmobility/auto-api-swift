@@ -31,10 +31,10 @@ import Foundation
 
 public struct AAFailureMessage: AAInboundCommand {
 
-    public let failedMessageIdentifier: AACommandIdentifier?
-    public let failedMessageType: UInt8?
-    public let failureDescription: String?
-    public let failureReason: AAFailureReason?
+    public let description: String?
+    public let messageIdentifier: AACommandIdentifier?
+    public let messageType: UInt8?
+    public let reason: AAFailureReason?
 
 
     // MARK: AAInboundCommand
@@ -47,10 +47,10 @@ public struct AAFailureMessage: AAInboundCommand {
             return nil
         }
 
-        failedMessageIdentifier = properties.value(for: 0x01)
-        failedMessageType = properties.value(for: 0x02)
-        failureReason = AAFailureReason(rawValue: properties.first(for: 0x03)?.monoValue)
-        failureDescription = properties.value(for: 0x04)
+        messageIdentifier = properties.value(for: \AAFailureMessage.messageIdentifier)
+        self.messageType = properties.value(for: \AAFailureMessage.messageType)
+        reason = AAFailureReason(properties: properties, keyPath: \AAFailureMessage.reason)
+        description = properties.value(for: \AAFailureMessage.description)
 
         // Properties
         self.properties = properties
@@ -67,5 +67,20 @@ extension AAFailureMessage: AAMessageTypesGettable {
     public enum MessageTypes: UInt8, CaseIterable {
 
         case failure = 0x01
+    }
+}
+
+extension AAFailureMessage: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AAFailureMessage, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AAFailureMessage.messageIdentifier:   return 0x01
+        case \AAFailureMessage.messageType:         return 0x02
+        case \AAFailureMessage.reason:              return 0x03
+        case \AAFailureMessage.description:         return 0x04
+
+        default:
+            return 0x00
+        }
     }
 }

@@ -60,28 +60,27 @@ public struct AACharging: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        estimatedRange = properties.value(for: 0x02)
-        batteryLevel = properties.value(for: 0x03)
-        batteryCurrentAC = properties.value(for: 0x04)
-        batteryCurrentDC = properties.value(for: 0x05)
-        chargerVoltageAC = properties.value(for: 0x06)
-        chargerVoltageDC = properties.value(for: 0x07)
-        chargeLimit = properties.value(for: 0x08)
-        timeToCompleteCharge = properties.value(for: 0x09)
-        chargingRate = properties.value(for: 0x0A)
-        chargePortState = AAChargePortState(rawValue: properties.first(for: 0x0B)?.monoValue)
-        chargeMode = AAChargeMode(rawValue: properties.first(for: 0x0C)?.monoValue)
+        estimatedRange = properties.value(for: \AACharging.estimatedRange)
+        batteryLevel = properties.value(for: \AACharging.batteryLevel)
+        batteryCurrentAC = properties.value(for: \AACharging.batteryCurrentAC)
+        batteryCurrentDC = properties.value(for: \AACharging.batteryCurrentDC)
+        chargerVoltageAC = properties.value(for: \AACharging.chargerVoltageAC)
+        chargerVoltageDC = properties.value(for: \AACharging.chargerVoltageDC)
+        chargeLimit = properties.value(for: \AACharging.chargeLimit)
+        timeToCompleteCharge = properties.value(for: \AACharging.timeToCompleteCharge)
+        chargingRate = properties.value(for: \AACharging.chargingRate)
+        chargePortState = AAChargePortState(properties: properties, keyPath: \AACharging.chargePortState)
+        chargeMode = AAChargeMode(properties: properties, keyPath: \AACharging.chargeMode)
         /* Level 8 */
-        maxChargingCurrentAC = properties.value(for: 0x0E)
-        chargingMethod = AAChargingMethod(rawValue: properties.first(for: 0x0F)?.monoValue)
-        chargingWindowChosen = AAChosenState(rawValue: properties.first(for: 0x10)?.monoValue)
-        departureTimes = properties.flatMap(for: 0x11) { AADepartureTime($0.value) }
-        climatisationActive = properties.value(for: 0x12)
-        reductionOfChargingCurrentTimes = properties.flatMap(for: 0x13) { AATime($0.value) }
-        batteryTemperature = properties.value(for: 0x14)
-        timers = properties.flatMap(for: 0x15) { AAChargingTimer($0.value) }
-        pluggedIn = AAPluggedInState(rawValue: properties.first(for: 0x16)?.monoValue)
-        state = AAChargingState(rawValue: properties.first(for: 0x17)?.monoValue)
+        maxChargingCurrentAC = properties.value(for: \AACharging.maxChargingCurrentAC)
+        plugType = AAPlugType(properties: properties, keyPath: \AACharging.plugType)
+        chargingWindowChosen = AAChosenState(properties: properties, keyPath: \AACharging.chargingWindowChosen)
+        departureTimes = properties.flatMap(for: \AACharging.departureTimes) { AADepartureTime($0.value) }
+        reductionOfChargingCurrentTimes = properties.flatMap(for: \AACharging.reductionOfChargingCurrentTimes) { AATime($0.value) }
+        batteryTemperature = properties.value(for: \AACharging.batteryTemperature)
+        timers = properties.flatMap(for: \AACharging.timers) { AAChargingTimer($0.value) }
+        pluggedIn = AAPluggedInState(properties: properties, keyPath: \AACharging.pluggedIn)
+        state = AAChargingState(properties: properties, keyPath: \AACharging.state)
 
         // Properties
         self.properties = properties
@@ -133,6 +132,38 @@ extension AACharging: AAMessageTypesGettable {
         case openCloseChargePort    = 0x14
         case setChargeMode          = 0x15
         case setChargingTimers      = 0x16
+    }
+}
+
+extension AACharging: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AACharging, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AACharging.estimatedRange:        return 0x02
+        case \AACharging.batteryLevel:          return 0x03
+        case \AACharging.batteryCurrentAC:      return 0x04
+        case \AACharging.batteryCurrentDC:      return 0x05
+        case \AACharging.chargerVoltageAC:      return 0x06
+        case \AACharging.chargerVoltageDC:      return 0x07
+        case \AACharging.chargeLimit:           return 0x08
+        case \AACharging.timeToCompleteCharge:  return 0x09
+        case \AACharging.chargingRate:          return 0x0A
+        case \AACharging.chargePortState:       return 0x0B
+        case \AACharging.chargeMode:            return 0x0C
+            /* Level 8 */
+        case \AACharging.maxChargingCurrentAC:              return 0x0E
+        case \AACharging.plugType:                          return 0x0F
+        case \AACharging.chargingWindowChosen:              return 0x10
+        case \AACharging.departureTimes:                    return 0x11
+        case \AACharging.reductionOfChargingCurrentTimes:   return 0x13
+        case \AACharging.batteryTemperature:                return 0x14
+        case \AACharging.timers:                            return 0x15
+        case \AACharging.pluggedIn:                         return 0x16
+        case \AACharging.state:                             return 0x17
+
+        default:
+            return 0x00
+        }
     }
 }
 

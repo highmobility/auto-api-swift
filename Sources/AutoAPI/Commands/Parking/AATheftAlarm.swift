@@ -41,7 +41,7 @@ public struct AATheftAlarm: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        state = AATheftAlarmState(rawValue: properties.first(for: 0x01)?.monoValue)
+        state = AATheftAlarmState(properties: properties, keyPath: \AATheftAlarm.state)
 
         // Properties
         self.properties = properties
@@ -60,6 +60,18 @@ extension AATheftAlarm: AAMessageTypesGettable {
         case getAlarmState  = 0x00
         case alarmState     = 0x01
         case setAlarmState  = 0x02
+    }
+}
+
+extension AATheftAlarm: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AATheftAlarm, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AATheftAlarm.state: return 0x01
+
+        default:
+            return 0x00
+        }
     }
 }
 

@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct AAProperties: Sequence, AAPropertiesCapable {
+public struct AAProperties: Sequence, AAPropertiesCapable, AAPropertiesTimestampGettable {
 
     public var carSignature: [UInt8]? {
         return first(for: 0xA1)?.value
@@ -55,7 +55,7 @@ public struct AAProperties: Sequence, AAPropertiesCapable {
         return flatMap(for: 0xA4) { AAPropertyTimestamp($0.value) }
     }
 
-    public func propertyTimestamp(for keyPath: PartialKeyPath<AAProperties>, specificProperty property: Any? = nil) -> AAPropertyTimestamp? {
+    public func propertyTimestamp<Type>(for keyPath: KeyPath<AAProperties, Type>, specificProperty property: Any?) -> AAPropertyTimestamp? {
         return nil
     }
 
@@ -141,7 +141,7 @@ extension AAProperties {
         }
     }
 
-    func value<Type: AAPropertyIdentifierGettable, ReturnType>(for propertyKeyPath: PartialKeyPath<Type>) -> ReturnType? {
+    func value<Type: AAPropertyIdentifierGettable, ReturnType>(for propertyKeyPath: KeyPath<Type, ReturnType?>) -> ReturnType? {
         let identifier = Type.propertyID(for: propertyKeyPath)
 
         guard identifier != 0x00 else {
@@ -158,15 +158,27 @@ extension AAProperties {
         return contains { $0.identifier == identifier }
     }
 
+
     func filter(for identifier: AAPropertyIdentifier) -> [AAProperty] {
         return filter { $0.identifier == identifier }
     }
+
+    func filter<Type: AAPropertyIdentifierGettable, ReturnType>(for propertyKeyPath: KeyPath<Type, ReturnType>) -> [AAProperty] {
+        let identifer = Type.propertyID(for: propertyKeyPath)
+
+        guard identifer != 0x00 else {
+            return []
+        }
+
+        return filter(for: identifer)
+    }
+
 
     func first(for identifier: AAPropertyIdentifier) -> AAProperty? {
         return first(where: { $0.identifier == identifier })
     }
 
-    func first<Type: AAPropertyIdentifierGettable>(for propertyKeyPath: PartialKeyPath<Type>) -> AAProperty? {
+    func first<Type: AAPropertyIdentifierGettable, ReturnType>(for propertyKeyPath: KeyPath<Type, ReturnType>) -> AAProperty? {
         let identifier = Type.propertyID(for: propertyKeyPath)
 
         guard identifier != 0x00 else {
@@ -175,6 +187,7 @@ extension AAProperties {
 
         return first(for: identifier)
     }
+
 
     func flatMap<T>(for identifier: AAPropertyIdentifier, transform: (AAProperty) throws -> T?) rethrows -> [T]? {
         let filtered = filter(for: identifier)
@@ -186,7 +199,7 @@ extension AAProperties {
         return try filtered.compactMap(transform)
     }
 
-    func flatMap<T, Type: AAPropertyIdentifierGettable>(for propertyKeyPath: PartialKeyPath<Type>, transform: (AAProperty) throws -> T?) rethrows -> [T]? {
+    func flatMap<T, Type: AAPropertyIdentifierGettable, ReturnType>(for propertyKeyPath: KeyPath<Type, ReturnType>, transform: (AAProperty) throws -> T?) rethrows -> [T]? {
         let identifier = Type.propertyID(for: propertyKeyPath)
 
         guard identifier != 0x00 else {

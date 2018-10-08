@@ -29,30 +29,6 @@
 import Foundation
 
 
-
-
-public protocol AAHistoricalState: AAPropertiesCapable {
-
-}
-
-
-
-public protocol AAHistoryCapable: AAIdentifiable, AAPropertiesCapable, AAVehicleState {
-
-}
-
-extension AAHistoryCapable {
-
-    func propertyBytes(_ id: AAPropertyIdentifier) -> [UInt8] {
-        return [id, 0x00, 0x02, UInt8((Self.identifier >> 8) & 0xFF), UInt8(Self.identifier & 0xFF)]
-    }
-}
-
-
-
-
-
-
 public struct AAHistorical: AAInboundCommand, AAOutboundCommand {
 
     public let states: [AAHistoricalState]?
@@ -71,7 +47,7 @@ public struct AAHistorical: AAInboundCommand, AAOutboundCommand {
         let binaryTypes = AAAutoAPI.commands.compactMap { $0 as? AABinaryInitable.Type }
 
         /* Level 8 */
-        states = properties.flatMap(for: 0x01) { property in
+        states = properties.flatMap(for: \AAHistorical.states) { property in
             binaryTypes.flatMapFirst { $0.init(property.value) as? AAHistoricalState }
         }
 
@@ -91,6 +67,18 @@ extension AAHistorical: AAMessageTypesGettable {
 
         case getHistoricalStates    = 0x00
         case states                 = 0x01
+    }
+}
+
+extension AAHistorical: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AAHistorical, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AAHistorical.states: return 0x01
+
+        default:
+            return 0x00
+        }
     }
 }
 

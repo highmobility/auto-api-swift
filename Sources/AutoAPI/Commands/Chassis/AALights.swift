@@ -97,7 +97,7 @@ extension AALights: AAMessageTypesGettable {
 
 extension AALights: AAPropertyIdentifierGettable {
 
-    static func propertyID(for keyPath: PartialKeyPath<AALights>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AALights, Type>) -> AAPropertyIdentifier {
         switch keyPath {
         case \AALights.frontExterior:       return 0x01
         case \AALights.rearExteriorState:   return 0x02

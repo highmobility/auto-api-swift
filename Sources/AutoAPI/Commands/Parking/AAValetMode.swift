@@ -41,7 +41,7 @@ public struct AAValetMode: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        state = properties.value(for: 0x01)
+        state = properties.value(for: \AAValetMode.state)
 
         // Properties
         self.properties = properties
@@ -60,6 +60,18 @@ extension AAValetMode: AAMessageTypesGettable {
         case getState   = 0x00
         case state      = 0x01
         case activate   = 0x02
+    }
+}
+
+extension AAValetMode: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AAValetMode, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AAValetMode.state: return 0x01
+
+        default:
+            return 0x00
+        }
     }
 }
 

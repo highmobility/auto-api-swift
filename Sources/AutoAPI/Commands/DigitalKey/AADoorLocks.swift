@@ -44,9 +44,9 @@ public struct AADoorLocks: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         /* Level 8 */
-        insideLocks = properties.flatMap(for: 0x02) { AADoor.Lock($0.value) }
-        locks = properties.flatMap(for: 0x03) { AADoor.Lock($0.value) }
-        positions = properties.flatMap(for: 0x04) { AADoor.Position($0.value) }
+        insideLocks = properties.flatMap(for: \AADoorLocks.insideLocks) { AADoor.Lock($0.value) }
+        locks = properties.flatMap(for: \AADoorLocks.locks) { AADoor.Lock($0.value) }
+        positions = properties.flatMap(for: \AADoorLocks.positions) { AADoor.Position($0.value) }
 
         // Properties
         self.properties = properties
@@ -88,6 +88,21 @@ extension AADoorLocks: AAMessageTypesGettable {
         case getLocksState  = 0x00
         case locksState     = 0x01
         case lockUnlock     = 0x12
+    }
+}
+
+extension AADoorLocks: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AADoorLocks, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+            /* Level 8 */
+        case \AADoorLocks.insideLocks:  return 0x02
+        case \AADoorLocks.locks:        return 0x03
+        case \AADoorLocks.positions:    return 0x04
+
+        default:
+            return 0x00
+        }
     }
 }
 
