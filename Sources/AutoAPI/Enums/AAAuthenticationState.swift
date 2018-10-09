@@ -33,7 +33,6 @@ public enum AAAuthenticationState: UInt8 {
 
     case unauthenticated    = 0x00
     case authenticated      = 0x01
-    case expired            = 0x02
 }
 
 extension AAAuthenticationState: AAPropertyConvertable {

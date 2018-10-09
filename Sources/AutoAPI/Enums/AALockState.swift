@@ -29,28 +29,13 @@
 import Foundation
 
 
-/*
-
- "This indicates whether the vehicle's doors were locked (LOCKED)
- or unlocked (UNLOCKED) at the time of data collection.
-
- Other possible values are:
- SELECTIVELOCKED = vehicle locked with the exception of the left front door (state after a remote service door unlock was first performed) 
- SECURED = vehicle has been secured = all doors locked and alarm system activated"
-
- */
 public enum AALockState: UInt8 {
 
     case unlocked   = 0x00
     case locked     = 0x01
 
-    /// Vehicle has been secured = all doors locked and alarm system activated
-    case secured            = 0x02
 
-    /// Vehicle locked with the exception of the left front door (state after a remote service door unlock was first performed)
-    case selectiveLocked    = 0x03
-
-
+    // TODO: Is there any point in these?
     public static let unlock = AALockState.unlocked
     public static let lock = AALockState.locked
 }
