@@ -112,9 +112,15 @@ public extension AAParkingTicket {
 
 public extension AAParkingTicket {
 
-    struct Legacy {
+    struct Legacy: AAMessageTypesGettable {
 
-        typealias MessageTypes = AAParkingTicket.MessageTypes
+        public enum MessageTypes: UInt8, CaseIterable {
+
+            case getTicket      = 0x00
+            case parkingTicket  = 0x01
+            case startParking   = 0x02
+            case endParking     = 0x03
+        }
 
 
         struct Settings {
