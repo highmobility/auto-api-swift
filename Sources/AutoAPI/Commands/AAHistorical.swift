@@ -87,7 +87,7 @@ extension AAHistorical: AAPropertyIdentifierGettable {
 
 public extension AAHistorical {
 
-    static func getStates(for capability: AAHistoryCapable, startDate: Date, endDate: Date) -> [UInt8] {
+    static func getHistoricalStates(for capability: AAHistoryCapable, startDate: Date, endDate: Date) -> [UInt8] {
         return commandPrefix(for: .getHistoricalStates) + [capability.propertyBytes(0x01),
                                                            startDate.propertyBytes(0x02),
                                                            endDate.propertyBytes(0x03)].propertiesValuesCombined
