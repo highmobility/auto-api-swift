@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  AAChargePortState.swift
+//  AAOpenClose.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 30/11/2017.
@@ -29,15 +29,15 @@
 import Foundation
 
 
-public enum AAChargePortState: UInt8 {
+public enum AAOpenClose: UInt8 {
 
     case closed         = 0x00
     case open           = 0x01
 
 
-    public static let close = AAChargePortState.closed
+    public static let close = AAOpenClose.closed
 }
 
-extension AAChargePortState: AAPropertyConvertable {
+extension AAOpenClose: AAPropertyConvertable {
 
 }

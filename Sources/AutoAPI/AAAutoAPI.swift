@@ -31,7 +31,7 @@ import HMUtilities
 
 
 public typealias AutoAPI = AAAutoAPI
-public typealias AAGasFlapState = AAChargePortState
+public typealias AAGasFlapState = AAOpenClose
 public typealias AACommandIdentifier = UInt16
 public typealias AANetworkSSID = String
 public typealias AAPercentageInt = UInt8

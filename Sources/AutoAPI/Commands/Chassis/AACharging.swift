@@ -37,7 +37,7 @@ public struct AACharging: AAFullStandardCommand {
     public let batteryTemperature: Float?
     public let chargeLimit: AAPercentageInt?
     public let chargeMode: AAChargeMode?
-    public let chargePortState: AAChargePortState?
+    public let chargePortState: AAOpenClose?
     public let chargerVoltageAC: Float?
     public let chargerVoltageDC: Float?
     public let chargingRate: Float?
@@ -69,7 +69,7 @@ public struct AACharging: AAFullStandardCommand {
         chargeLimit = properties.value(for: \AACharging.chargeLimit)
         timeToCompleteCharge = properties.value(for: \AACharging.timeToCompleteCharge)
         chargingRate = properties.value(for: \AACharging.chargingRate)
-        chargePortState = AAChargePortState(properties: properties, keyPath: \AACharging.chargePortState)
+        chargePortState = AAOpenClose(properties: properties, keyPath: \AACharging.chargePortState)
         chargeMode = AAChargeMode(properties: properties, keyPath: \AACharging.chargeMode)
         /* Level 8 */
         maxChargingCurrentAC = properties.value(for: \AACharging.maxChargingCurrentAC)
@@ -177,7 +177,7 @@ public extension AACharging {
     }
 
 
-    static func openCloseChargePort(_ state: AAChargePortState) -> [UInt8] {
+    static func openCloseChargePort(_ state: AAOpenClose) -> [UInt8] {
         return commandPrefix(for: .openCloseChargePort) + state.propertyBytes(0x01)
     }
 
@@ -209,7 +209,7 @@ public extension AACharging.Legacy {
         return commandPrefix(for: AACharging.self, messageType: .getChargeState)
     }
 
-    static var openCloseChargePort: (AAChargePortState) -> [UInt8] {
+    static var openCloseChargePort: (AAOpenClose) -> [UInt8] {
         return {
             return commandPrefix(for: AACharging.self, messageType: .openCloseChargePort, additionalBytes: $0.rawValue)
         }

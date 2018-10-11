@@ -59,7 +59,7 @@ extension AAValetMode: AAMessageTypesGettable {
 
         case getState   = 0x00
         case state      = 0x01
-        case activate   = 0x02
+        case activate   = 0x12
     }
 }
 
@@ -87,5 +87,30 @@ public extension AAValetMode {
 
     static func activate(_ state: AAActiveState) -> [UInt8] {
         return commandPrefix(for: .activate) + state.propertyBytes(0x01)
+    }
+}
+
+public extension AAValetMode {
+
+    struct Legacy: AAMessageTypesGettable {
+
+        public enum MessageTypes: UInt8, CaseIterable {
+
+            case getValetMode                   = 0x00
+            case valetMode                      = 0x01
+            case activateDeactivateValetMode    = 0x02
+        }
+
+
+        /// Use `false` to *deactivate*.
+        static var activateValetMode: (Bool) -> [UInt8] {
+            return {
+                return commandPrefix(for: AAValetMode.self, messageType: .activateDeactivateValetMode) + $0.propertyValue
+            }
+        }
+
+        static var getValetMode: [UInt8] {
+            return commandPrefix(for: AAValetMode.self, messageType: .getValetMode)
+        }
     }
 }

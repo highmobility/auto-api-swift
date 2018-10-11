@@ -59,7 +59,7 @@ extension AAFueling: AAMessageTypesGettable {
 
         case getGasFlapState    = 0x00
         case gasFlapState       = 0x01
-        case openGasFlap        = 0x02
+        case opencloseGasFlap   = 0x12
     }
 }
 
@@ -84,7 +84,30 @@ public extension AAFueling {
         return commandPrefix(for: .getGasFlapState)
     }
 
-    static var openGasFlap: [UInt8] {
-        return commandPrefix(for: .openGasFlap)
+
+    static func openCloseGasFlap(_ state: AAOpenClose) -> [UInt8] {
+        return commandPrefix(for: .opencloseGasFlap) + state.propertyBytes(0x01)
+    }
+}
+
+public extension AAFueling {
+
+    struct Legacy: AAMessageTypesGettable {
+
+        public enum MessageTypes: UInt8, CaseIterable {
+
+            case getGasFlapState    = 0x00
+            case gasFlapState       = 0x01
+            case openGasFlap        = 0x02
+        }
+
+
+        static var getGasFlapState: [UInt8] {
+            return commandPrefix(for: AAFueling.self, messageType: .getGasFlapState)
+        }
+
+        static var openGasFlap: [UInt8] {
+            return commandPrefix(for: AAFueling.self, messageType: .openGasFlap)
+        }
     }
 }

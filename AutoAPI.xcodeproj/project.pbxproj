@@ -189,7 +189,7 @@
 		OBJ_374 /* AAAuthenticationMechanism.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_78 /* AAAuthenticationMechanism.swift */; };
 		OBJ_375 /* AAAxle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_79 /* AAAxle.swift */; };
 		OBJ_376 /* AAChargeMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_80 /* AAChargeMode.swift */; };
-		OBJ_377 /* AAChargePortState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_81 /* AAChargePortState.swift */; };
+		OBJ_377 /* AAOpenClose.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_81 /* AAOpenClose.swift */; };
 		OBJ_378 /* AAChargingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_82 /* AAChargingState.swift */; };
 		OBJ_379 /* AAControlMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_83 /* AAControlMode.swift */; };
 		OBJ_380 /* AADrivingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_84 /* AADrivingMode.swift */; };
@@ -534,7 +534,7 @@
 		OBJ_78 /* AAAuthenticationMechanism.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAAuthenticationMechanism.swift; sourceTree = "<group>"; };
 		OBJ_79 /* AAAxle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAAxle.swift; sourceTree = "<group>"; };
 		OBJ_80 /* AAChargeMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChargeMode.swift; sourceTree = "<group>"; };
-		OBJ_81 /* AAChargePortState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChargePortState.swift; sourceTree = "<group>"; };
+		OBJ_81 /* AAOpenClose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOpenClose.swift; sourceTree = "<group>"; };
 		OBJ_82 /* AAChargingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChargingState.swift; sourceTree = "<group>"; };
 		OBJ_83 /* AAControlMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAControlMode.swift; sourceTree = "<group>"; };
 		OBJ_84 /* AADrivingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADrivingMode.swift; sourceTree = "<group>"; };
@@ -1029,7 +1029,6 @@
 				2093A31D213941E7009E43A0 /* AAAvailability.swift */,
 				OBJ_79 /* AAAxle.swift */,
 				OBJ_80 /* AAChargeMode.swift */,
-				OBJ_81 /* AAChargePortState.swift */,
 				OBJ_82 /* AAChargingState.swift */,
 				20896EE3214799C1003A7A63 /* AAChosenState.swift */,
 				20896EE921479F4A003A7A63 /* AAConnectionState.swift */,
@@ -1059,6 +1058,7 @@
 				20896EE721479DC5003A7A63 /* AAMovingState.swift */,
 				OBJ_93 /* AANeedsReplacement.swift */,
 				OBJ_94 /* AANetworkSecurity.swift */,
+				OBJ_81 /* AAOpenClose.swift */,
 				OBJ_95 /* AAParkingTicketState.swift */,
 				209124B32166321800C15CDA /* AAPresentState.swift */,
 				20DC7513215B5EDE009B2B24 /* AAPluggedInState.swift */,
@@ -1382,7 +1382,7 @@
 				20646B96216B96CD0000824D /* AAHistoricalState.swift in Sources */,
 				2028370B2150D17E0001724A /* AADepartureTime.swift in Sources */,
 				OBJ_376 /* AAChargeMode.swift in Sources */,
-				OBJ_377 /* AAChargePortState.swift in Sources */,
+				OBJ_377 /* AAOpenClose.swift in Sources */,
 				OBJ_378 /* AAChargingState.swift in Sources */,
 				205C517B208F430100B55ACE /* AACruiseControlLimiter.swift in Sources */,
 				OBJ_379 /* AAControlMode.swift in Sources */,
