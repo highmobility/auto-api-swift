@@ -34,11 +34,6 @@ public enum AATheftAlarmState: UInt8 {
     case notArmed   = 0x00
     case armed      = 0x01
     case triggered  = 0x02
-
-
-    public static let disarm = AATheftAlarmState.notArmed
-    public static let arm = AATheftAlarmState.armed
-    public static let trigger = AATheftAlarmState.triggered
 }
 
 extension AATheftAlarmState: AAPropertyConvertable {
