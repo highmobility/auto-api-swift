@@ -59,22 +59,8 @@ public struct AANotifications: AAInboundCommand, AAOutboundCommand {
         case MessageTypes.notification.rawValue:
             properties = AAProperties(binary.dropFirstBytes(3))
 
-        case MessageTypes.action.rawValue, Legacy.MessageTypes.notificationAction.rawValue:
-            if binary.count == 4 {
-                // Hack
-                properties = AAProperties([AANotifications.propertyID(for: \AANotifications.receivedActionID),
-                                           0x00, 0x01,  // Property size
-                                           binary.bytes[3]])
-            }
-            else if binary.count == 7 {
-                // Hack
-                properties = AAProperties([AANotifications.propertyID(for: \AANotifications.receivedActionID),
-                                           0x00, 0x01,  // Property size
-                                           binary.bytes[6]])
-            }
-            else {
-                return nil
-            }
+        case MessageTypes.action.rawValue:
+            properties = AAProperties(binary.dropFirstBytes(3))
 
         case MessageTypes.clear.rawValue:
             guard binary.count == 3 else {
@@ -82,6 +68,16 @@ public struct AANotifications: AAInboundCommand, AAOutboundCommand {
             }
 
             properties = AAProperties([])
+
+        case Legacy.MessageTypes.notificationAction.rawValue:
+            guard binary.count == 4 else {
+                return nil
+            }
+
+            // Hack
+            properties = AAProperties([AANotifications.propertyID(for: \AANotifications.receivedActionID),
+                                       0x00, 0x01,  // Property size
+                                       binary.bytes[3]])
 
         default:
             return nil
