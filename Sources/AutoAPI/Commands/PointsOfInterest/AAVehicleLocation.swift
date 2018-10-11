@@ -33,7 +33,7 @@ public struct AAVehicleLocation: AAFullStandardCommand {
 
     public let altitude: Double?
     public let heading: Double?
-    public let coordinate: AACoordinate?
+    public let coordinates: AACoordinates?
 
 
     // MARK: AAFullStandardCommand
@@ -44,7 +44,7 @@ public struct AAVehicleLocation: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         /* Level 8 */
-        coordinate = AACoordinate(properties.first(for: \AAVehicleLocation.coordinate)?.value ?? [])
+        coordinates = AACoordinates(properties.first(for: \AAVehicleLocation.coordinates)?.value ?? [])
         heading = properties.value(for: \AAVehicleLocation.heading)
         altitude = properties.value(for: \AAVehicleLocation.altitude)
 
@@ -66,11 +66,11 @@ extension AAVehicleLocation: AALegacyGettable {
 
     public struct Legacy: AALegacyType {
 
-        public typealias Coordinate = (latitude: Float, longitude: Float)
+        public typealias Coordinates = (latitude: Float, longitude: Float)
 
         public let altitude: Float?
         public let heading: Float?
-        public let coordinate: Coordinate?
+        public let coordinates: Coordinates?
 
 
         // MARK: AALegacyType
@@ -79,7 +79,7 @@ extension AAVehicleLocation: AALegacyGettable {
 
 
         public init(properties: AAProperties) {
-            coordinate = properties.first(for: 0x01).flatMap { property -> Coordinate? in
+            coordinates = properties.first(for: 0x01).flatMap { property -> Coordinates? in
                 guard property.value.count == 8 else {
                     return nil
                 }
@@ -104,7 +104,7 @@ extension AAVehicleLocation: AAPropertyIdentifierGettable {
     static func propertyID<Type>(for keyPath: KeyPath<AAVehicleLocation, Type>) -> AAPropertyIdentifier {
         switch keyPath {
             /* Level 8 */
-        case \AAVehicleLocation.coordinate: return 0x04
+        case \AAVehicleLocation.coordinates: return 0x04
         case \AAVehicleLocation.heading:    return 0x05
         case \AAVehicleLocation.altitude:   return 0x06
 

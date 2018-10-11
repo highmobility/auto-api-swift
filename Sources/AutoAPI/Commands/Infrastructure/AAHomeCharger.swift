@@ -37,7 +37,7 @@ public struct AAHomeCharger: AAFullStandardCommand {
     public let chargingPower: Float?
     public let chargingState: AAChargingState?
     public let hotspotState: AAActiveState?
-    public let location: AACoordinate?
+    public let location: AACoordinates?
     public let maximumChargeCurrent: Float?
     public let minimumChargeCurrent: Float?
     public let plugType: AAPlugType?
@@ -70,7 +70,7 @@ public struct AAHomeCharger: AAFullStandardCommand {
         chargeCurrentDC = properties.value(for: \AAHomeCharger.chargeCurrentDC)
         maximumChargeCurrent = properties.value(for: \AAHomeCharger.maximumChargeCurrent)
         minimumChargeCurrent = properties.value(for: \AAHomeCharger.minimumChargeCurrent)
-        location = AACoordinate(properties.first(for: \AAHomeCharger.location)?.value ?? [])
+        location = AACoordinates(properties.first(for: \AAHomeCharger.location)?.value ?? [])
 
         // Properties
         self.properties = properties

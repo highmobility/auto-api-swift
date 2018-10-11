@@ -34,7 +34,7 @@ public enum AASeatLocation: UInt8 {
     case frontLeft  = 0x00
     case frontRight = 0x01
 
-    case rearLeft   = 0x02
-    case rearRight  = 0x03
+    case rearRight  = 0x02
+    case rearLeft   = 0x03
     case rearCenter = 0x04
 }

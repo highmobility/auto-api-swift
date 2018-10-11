@@ -154,7 +154,7 @@ extension AANotifications: AAPropertyIdentifierGettable {
         switch keyPath {
         case \AANotifications.text:         return 0x01
         case \AANotifications.actionItems:  return 0x02
-
+            /* Level 8 */
         case \AANotifications.receivedActionID: return 0x10
 
         default:

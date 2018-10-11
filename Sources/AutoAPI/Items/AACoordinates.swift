@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  AACoordinate.swift
+//  AACoordinates.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 20/12/2017.
@@ -32,9 +32,9 @@ import Foundation
 #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     import CoreLocation
 
-    public typealias AACoordinate = CLLocationCoordinate2D
+    public typealias AACoordinates = CLLocationCoordinate2D
 #else
-    public struct AACoordinate {
+    public struct AACoordinates {
 
         public var latitude: Double
         public var longitude: Double
@@ -46,23 +46,23 @@ import Foundation
         }
     }
 
-    extension AACoordinate: Equatable {
+    extension AACoordinates: Equatable {
 
-        public static func ==(lhs: AACoordinate, rhs: AACoordinate) -> Bool {
+        public static func ==(lhs: AACoordinates, rhs: AACoordinates) -> Bool {
             return (lhs.latitude == rhs.latitude) && (lhs.longitude == rhs.longitude)
         }
     }
 #endif
 
 
-extension AACoordinate {
+extension AACoordinates {
 
     var bytes: [UInt8] {
         return latitude.bytes + longitude.bytes
     }
 }
 
-extension AACoordinate: AABinaryInitable {
+extension AACoordinates: AABinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
         guard binary.count == 16 else {
@@ -76,7 +76,7 @@ extension AACoordinate: AABinaryInitable {
     }
 }
 
-extension AACoordinate: AAPropertyConvertable {
+extension AACoordinates: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         return bytes

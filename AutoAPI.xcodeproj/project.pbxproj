@@ -242,7 +242,7 @@
 		OBJ_430 /* AATime.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_138 /* AATime.swift */; };
 		OBJ_431 /* AAWeekdaysStartingTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_139 /* AAWeekdaysStartingTimes.swift */; };
 		OBJ_432 /* AAColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_140 /* AAColour.swift */; };
-		OBJ_433 /* AACoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_141 /* AACoordinate.swift */; };
+		OBJ_433 /* AACoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_141 /* AACoordinates.swift */; };
 		OBJ_434 /* AADoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_142 /* AADoor.swift */; };
 		OBJ_435 /* AAItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_143 /* AAItem.swift */; };
 		OBJ_440 /* AAPricingTariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_149 /* AAPricingTariff.swift */; };
@@ -413,7 +413,7 @@
 		OBJ_139 /* AAWeekdaysStartingTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWeekdaysStartingTimes.swift; sourceTree = "<group>"; };
 		OBJ_14 /* AACapability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACapability.swift; sourceTree = "<group>"; };
 		OBJ_140 /* AAColour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAColour.swift; sourceTree = "<group>"; };
-		OBJ_141 /* AACoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACoordinate.swift; sourceTree = "<group>"; };
+		OBJ_141 /* AACoordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACoordinates.swift; sourceTree = "<group>"; };
 		OBJ_142 /* AADoor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADoor.swift; sourceTree = "<group>"; };
 		OBJ_143 /* AAItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAItem.swift; sourceTree = "<group>"; };
 		OBJ_149 /* AAPricingTariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPricingTariff.swift; sourceTree = "<group>"; };
@@ -666,7 +666,7 @@
 				2024BBFD21553D8A00AA5261 /* AAClimateWeekdayTime.swift */,
 				OBJ_140 /* AAColour.swift */,
 				20F7903821356F54003BDFA2 /* AAConditionBasedService.swift */,
-				OBJ_141 /* AACoordinate.swift */,
+				OBJ_141 /* AACoordinates.swift */,
 				205C516C208F28FF00B55ACE /* AADashboardLight.swift */,
 				2028370A2150D17E0001724A /* AADepartureTime.swift */,
 				OBJ_142 /* AADoor.swift */,
@@ -1450,7 +1450,7 @@
 				OBJ_431 /* AAWeekdaysStartingTimes.swift in Sources */,
 				OBJ_432 /* AAColour.swift in Sources */,
 				20896EE821479DC5003A7A63 /* AAMovingState.swift in Sources */,
-				OBJ_433 /* AACoordinate.swift in Sources */,
+				OBJ_433 /* AACoordinates.swift in Sources */,
 				2024BBF42154CFA400AA5261 /* AAClimateSettings.swift in Sources */,
 				20B0C145215D1ECE005FA699 /* AATireTemperature.swift in Sources */,
 				20896EEA21479F4A003A7A63 /* AAConnectionState.swift in Sources */,

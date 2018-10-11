@@ -32,7 +32,7 @@ import Foundation
 public struct AANaviDestination: AAFullStandardCommand {
 
     public let arrivalTime: AATime?
-    public let coordinate: AACoordinate?
+    public let coordinates: AACoordinates?
     public let distanceTo: UInt16?
     public let name: String?
     public let poiSlotsFree: UInt8?
@@ -52,7 +52,7 @@ public struct AANaviDestination: AAFullStandardCommand {
         arrivalTime = AATime(properties.first(for: \AANaviDestination.arrivalTime)?.value ?? [])
         distanceTo = properties.value(for: \AANaviDestination.distanceTo)
         /* Level 8 */
-        coordinate = AACoordinate(properties.first(for: \AANaviDestination.coordinate)?.value ?? [])
+        coordinates = AACoordinates(properties.first(for: \AANaviDestination.coordinates)?.value ?? [])
 
         // Properties
         self.properties = properties
@@ -68,19 +68,24 @@ extension AANaviDestination: AALegacyGettable {
 
     public struct Legacy: AALegacyType {
 
-        public typealias Coordinate = (latitude: Float, longitude: Float)
+        public typealias Coordinates = (latitude: Float, longitude: Float)
 
 
-        public let coordinate: Coordinate?
+        public let coordinates: Coordinates?
 
 
         // MARK: AALegacyType
 
-        public typealias MessageTypes = AANaviDestination.MessageTypes
+        public enum MessageTypes: UInt8, CaseIterable {
+
+            case getDestination = 0x00
+            case destination    = 0x01
+            case setDestination = 0x02
+        }
 
 
         public init(properties: AAProperties) {
-            coordinate = properties.first(for: 0x01).flatMap { property -> Coordinate? in
+            coordinates = properties.first(for: 0x01).flatMap { property -> Coordinates? in
                 guard property.value.count == 8 else {
                     return nil
                 }
@@ -98,7 +103,7 @@ extension AANaviDestination: AAMessageTypesGettable {
 
         case getDestination = 0x00
         case destination    = 0x01
-        case setDestination = 0x02
+        case setDestination = 0x12
     }
 }
 
@@ -112,7 +117,7 @@ extension AANaviDestination: AAPropertyIdentifierGettable {
         case \AANaviDestination.distanceTo:     return 0x06
         case \AANaviDestination.arrivalTime:    return 0x05
             /* Level 8 */
-        case \AANaviDestination.coordinate: return 0x07
+        case \AANaviDestination.coordinates: return 0x07
 
         default:
             return 0x00
@@ -130,7 +135,7 @@ public extension AANaviDestination {
     }
 
 
-    static func setDestination(coordinate: AACoordinate, name: String?) -> [UInt8] {
+    static func setDestination(coordinate: AACoordinates, name: String?) -> [UInt8] {
         return commandPrefix(for: .setDestination) + [coordinate.propertyBytes(0x01),
                                                       name?.propertyBytes(0x02)].propertiesValuesCombined
     }
@@ -139,10 +144,10 @@ public extension AANaviDestination {
 public extension AANaviDestination.Legacy {
 
     struct Destination {
-        public let coordinate: AACoordinate
+        public let coordinate: AACoordinates
         public let name: String?
 
-        public init(coordinate: AACoordinate, name: String?) {
+        public init(coordinate: AACoordinates, name: String?) {
             self.coordinate = coordinate
             self.name = name
         }
