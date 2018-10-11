@@ -59,16 +59,22 @@ public struct AANotifications: AAInboundCommand, AAOutboundCommand {
         case MessageTypes.notification.rawValue:
             properties = AAProperties(binary.dropFirstBytes(3))
 
-        case MessageTypes.action.rawValue:
-            guard binary.count == 4 else {
+        case MessageTypes.action.rawValue, Legacy.MessageTypes.notificationAction.rawValue:
+            if binary.count == 4 {
+                // Hack
+                properties = AAProperties([AANotifications.propertyID(for: \AANotifications.receivedActionID),
+                                           0x00, 0x01,  // Property size
+                                           binary.bytes[3]])
+            }
+            else if binary.count == 7 {
+                // Hack
+                properties = AAProperties([AANotifications.propertyID(for: \AANotifications.receivedActionID),
+                                           0x00, 0x01,  // Property size
+                                           binary.bytes[6]])
+            }
+            else {
                 return nil
             }
-
-            // Hack
-            properties = AAProperties([AANotifications.propertyID(for: \AANotifications.receivedActionID),
-                                       0x00,
-                                       0x01,
-                                       binary.bytes[3]])
 
         case MessageTypes.clear.rawValue:
             guard binary.count == 3 else {
@@ -92,7 +98,7 @@ public struct AANotifications: AAInboundCommand, AAOutboundCommand {
             receivedActionID = nil
             receivedClearCommand = false
 
-        case MessageTypes.action.rawValue:
+        case MessageTypes.action.rawValue, Legacy.MessageTypes.notificationAction.rawValue:
             receivedActionID = properties.value(for: \AANotifications.receivedActionID)
             receivedClearCommand = false
 
@@ -143,7 +149,7 @@ extension AANotifications: AAMessageTypesGettable {
     public enum MessageTypes: UInt8, CaseIterable {
 
         case notification   = 0x00
-        case action         = 0x01
+        case action         = 0x11
         case clear          = 0x02
     }
 }
@@ -174,8 +180,7 @@ public extension AANotifications {
 
 
     static func activatedAction(_ action: UInt8) -> [UInt8] {
-        // TODO: This isn't in L8 format (would break incoming commands)
-        return commandPrefix(for: .action, additionalBytes: action)
+        return commandPrefix(for: .action) + action.propertyBytes(0x01)
     }
 
     static func received(text: String, actionItems items: [AAActionItem]?) -> [UInt8] {
