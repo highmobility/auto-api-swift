@@ -61,9 +61,8 @@ extension AARemoteControl: AAMessageTypesGettable {
 
         case getControlState    = 0x00
         case controlMode        = 0x01
-        case startControl       = 0x02
-        case stopControl        = 0x03
         case controlCommand     = 0x04
+        case startStopControl   = 0x12
     }
 }
 
@@ -95,20 +94,21 @@ public extension AARemoteControl {
                                                       speed?.propertyBytes(0x01)].propertiesValuesCombined
     }
 
-    static func startControl() -> [UInt8] {
-        return commandPrefix(for: .startControl)
-    }
+    /// `.reset` is not supported
+    static func startStopControl(_ startStop: AAStartStopState) -> [UInt8]? {
+        guard startStop != .reset else {
+            return nil
+        }
 
-    static func stopControl() -> [UInt8] {
-        return commandPrefix(for: .stopControl)
+        return commandPrefix(for: .startStopControl) + startStop.propertyBytes(0x01)
     }
 }
 
 public extension AARemoteControl {
 
-    struct Legacy {
+    struct Legacy: AAMessageTypesGettable {
 
-        enum MessageTypes: UInt8, CaseIterable {
+        public enum MessageTypes: UInt8, CaseIterable {
 
             case getControlMode     = 0x00
             case controlMode        = 0x01
@@ -139,15 +139,15 @@ public extension AARemoteControl {
         }
 
         static var getControlMode: [UInt8] {
-            return commandPrefix(for: AARemoteControl.self, messageType: .getControlState)
+            return commandPrefix(for: AARemoteControl.self, messageType: .getControlMode)
         }
 
         static var startControlMode: [UInt8] {
-            return commandPrefix(for: AARemoteControl.self, messageType: .startControl)
+            return commandPrefix(for: AARemoteControl.self, messageType: .startControlMode)
         }
 
         static var stopControlMode: [UInt8] {
-            return commandPrefix(for: AARemoteControl.self, messageType: .stopControl)
+            return commandPrefix(for: AARemoteControl.self, messageType: .stopControlMode)
         }
     }
 }
