@@ -32,13 +32,9 @@ import Foundation
 public enum AAPositionState: UInt8 {
 
     case closed = 0x00
-    case opened = 0x01
+    case open   = 0x01
 
     case intermediate   = 0x02
-
-
-    public static let close = AAPositionState.closed
-    public static let open = AAPositionState.opened
 }
 
 extension AAPositionState: AAPropertyConvertable {

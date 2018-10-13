@@ -37,7 +37,7 @@ public struct AAHomeCharger: AAFullStandardCommand {
     public let chargingPower: Float?
     public let chargingState: AAChargingState?
     public let hotspotState: AAActiveState?
-    public let location: AACoordinates?
+    public let coordinates: AACoordinates?
     public let maximumChargeCurrent: Float?
     public let minimumChargeCurrent: Float?
     public let plugType: AAPlugType?
@@ -64,13 +64,13 @@ public struct AAHomeCharger: AAFullStandardCommand {
         wifiHotspotSSID = properties.value(for: \AAHomeCharger.wifiHotspotSSID)
         wifiHotspotSecurity = AANetworkSecurity(properties: properties, keyPath: \AAHomeCharger.wifiHotspotSecurity)
         wifiHotspotPassword = properties.value(for: \AAHomeCharger.wifiHotspotPassword)
-        pricingTariffs = properties.flatMap(for: \AAHomeCharger.pricingTariffs) { AAPricingTariff($0.value) }
         /* Level 8 */
         authenticationState = AAAuthenticationState(properties: properties, keyPath: \AAHomeCharger.authenticationState)
         chargeCurrentDC = properties.value(for: \AAHomeCharger.chargeCurrentDC)
         maximumChargeCurrent = properties.value(for: \AAHomeCharger.maximumChargeCurrent)
         minimumChargeCurrent = properties.value(for: \AAHomeCharger.minimumChargeCurrent)
-        location = AACoordinates(properties.first(for: \AAHomeCharger.location)?.value ?? [])
+        coordinates = AACoordinates(properties.first(for: \AAHomeCharger.coordinates)?.value ?? [])
+        pricingTariffs = properties.flatMap(for: \AAHomeCharger.pricingTariffs) { AAPricingTariff($0.value) }
 
         // Properties
         self.properties = properties
@@ -90,6 +90,7 @@ extension AAHomeCharger: AALegacyGettable {
 
         public let chargeCurrent: AAChargeCurrent?
         public let location: Coordinate?
+        public let pricingTariffs: [AALegacyPricingTariff]?
 
 
         // MARK: AALegacyType
@@ -116,6 +117,7 @@ extension AAHomeCharger: AALegacyGettable {
             }
 
             chargeCurrent = AAChargeCurrent(properties.first(for: 0x07)?.value ?? [])
+            pricingTariffs = properties.flatMap(for: 0x0C) { AALegacyPricingTariff($0.value) }
         }
     }
 }
@@ -147,13 +149,13 @@ extension AAHomeCharger: AAPropertyIdentifierGettable {
         case \AAHomeCharger.wifiHotspotSSID:            return 0x09
         case \AAHomeCharger.wifiHotspotSecurity:        return 0x0A
         case \AAHomeCharger.wifiHotspotPassword:        return 0x0B
-        case \AAHomeCharger.pricingTariffs:             return 0x0C
             /* Level 8 */
         case \AAHomeCharger.authenticationState:    return 0x0D
         case \AAHomeCharger.chargeCurrentDC:        return 0x0E
         case \AAHomeCharger.maximumChargeCurrent:   return 0x0F
         case \AAHomeCharger.minimumChargeCurrent:   return 0x10
-        case \AAHomeCharger.location:               return 0x11
+        case \AAHomeCharger.coordinates:            return 0x11
+        case \AAHomeCharger.pricingTariffs:         return 0x12
 
         default:
             return 0x00

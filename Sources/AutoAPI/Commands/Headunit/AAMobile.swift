@@ -58,8 +58,8 @@ extension AAMobile: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case getConnectionState   = 0x00
-        case connectionState      = 0x01
+        case getMobileState = 0x00
+        case state          = 0x01
     }
 }
 
@@ -81,6 +81,6 @@ extension AAMobile: AAPropertyIdentifierGettable {
 public extension AAMobile {
 
     static var getConnectionState: [UInt8] {
-        return commandPrefix(for: .getConnectionState)
+        return commandPrefix(for: .getMobileState)
     }
 }

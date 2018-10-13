@@ -64,8 +64,8 @@ class WindowsTests: XCTestCase {
             0x01        // To be opened
         ]
 
-        let frontLeft = AAWindow(openClosed: .opened, position: .frontLeft)
-        let frontRight = AAWindow(openClosed: .opened, position: .frontRight)
+        let frontLeft = AAWindow(openClosed: .open, position: .frontLeft)
+        let frontRight = AAWindow(openClosed: .open, position: .frontRight)
 
         XCTAssertEqual(AAWindows.openClose([frontLeft, frontRight]), bytes)
     }

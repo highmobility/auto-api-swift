@@ -77,3 +77,58 @@ extension AAPricingTariff: AAPropertyConvertable {
         return [type.rawValue] + price.propertyValue + currency.propertyValue
     }
 }
+
+
+public struct AALegacyPricingTariff: AAItem {
+
+    public let type: AAPricingType
+    public let currency: String
+    public let price: Float
+
+
+    // MARK: Item
+
+    static var size: Int = 8
+
+
+    // MARK: Init
+
+    public init(type: AAPricingType, currency: String, price: Float) {
+        self.type = type
+        self.currency = currency
+        self.price = price
+    }
+}
+
+extension AALegacyPricingTariff: AABinaryInitable {
+
+    init?(bytes: [UInt8]) {
+        guard let type = AAPricingType(rawValue: bytes[0]) else {
+            return nil
+        }
+
+        guard let currency = String(bytes: bytes[1..<4], encoding: .utf8) else {
+            return nil
+        }
+
+        self.type = type
+        self.currency = currency
+        self.price = Float(bytes.suffix(from: 4))
+    }
+}
+
+extension AALegacyPricingTariff: Equatable {
+
+    public static func ==(lhs: AALegacyPricingTariff, rhs: AALegacyPricingTariff) -> Bool {
+        return (lhs.type == rhs.type) &&
+            (lhs.currency == rhs.currency) &&
+            (lhs.price == rhs.price)
+    }
+}
+
+extension AALegacyPricingTariff: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [type.rawValue] + currency.propertyValue + price.propertyValue
+    }
+}

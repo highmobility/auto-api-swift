@@ -31,7 +31,7 @@ import Foundation
 
 public struct AAHood: AAFullStandardCommand {
 
-    public let hoodState: AAPositionState?
+    public let position: AAPositionState?
 
 
     // MARK: AAFullStandardCommand
@@ -40,7 +40,7 @@ public struct AAHood: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        hoodState = AAPositionState(properties: properties, keyPath: \AAHood.hoodState)
+        position = AAPositionState(properties: properties, keyPath: \AAHood.position)
 
         // Properties
         self.properties = properties
@@ -65,7 +65,7 @@ extension AAHood: AAPropertyIdentifierGettable {
 
     static func propertyID<Type>(for keyPath: KeyPath<AAHood, Type>) -> AAPropertyIdentifier {
         switch keyPath {
-        case \AAHood.hoodState: return 0x01
+        case \AAHood.position: return 0x01
 
         default:
             return 0x00
