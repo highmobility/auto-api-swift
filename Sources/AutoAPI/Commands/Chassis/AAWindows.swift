@@ -85,8 +85,7 @@ extension AAWindows: AAMessageTypesGettable {
 
         case getWindowsState    = 0x00
         case windowsState       = 0x01
-        case openCloseWindows   = 0x12
-        case moveWindows        = 0x13
+        case control            = 0x12
     }
 }
 
@@ -113,12 +112,9 @@ public extension AAWindows {
     }
 
 
-    static func moveWindows(_ windows: [AAWindow.OpenPercentage]) -> [UInt8] {
-        return commandPrefix(for: .moveWindows) + windows.reduceToByteArray { $0.propertyBytes(0x01) }
-    }
-
-    static func openCloseWindows(_ windows: [AAWindow.Position]) -> [UInt8] {
-        return commandPrefix(for: .openCloseWindows) + windows.reduceToByteArray { $0.propertyBytes(0x01) }
+    static func controlWindows(openPercentages: [AAWindow.OpenPercentage]?, positions: [AAWindow.Position]?) -> [UInt8] {
+        return commandPrefix(for: .control) + [openPercentages?.reduceToByteArray { $0.propertyBytes(0x01) },
+                                               positions?.reduceToByteArray { $0.propertyBytes(0x02) }].propertiesValuesCombined
     }
 }
 
