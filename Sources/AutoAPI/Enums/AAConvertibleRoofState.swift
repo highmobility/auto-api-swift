@@ -58,3 +58,7 @@ public enum AAConvertibleRoofState: UInt8 {
     /// Roof is in a position that allows for easy loading of the boot.
     case loadingPositionImmediate   = 0x08
 }
+
+extension AAConvertibleRoofState: AAPropertyConvertable {
+
+}

@@ -78,6 +78,7 @@
 		20DC7514215B5EDE009B2B24 /* AAPluggedInState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DC7513215B5EDE009B2B24 /* AAPluggedInState.swift */; };
 		20DC751A215BC021009B2B24 /* AALegacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DC7519215BC021009B2B24 /* AALegacy.swift */; };
 		20EF4C382167F4A00077BFE4 /* AAPropertyIdentifierGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EF4C372167F4A00077BFE4 /* AAPropertyIdentifierGettable.swift */; };
+		20F57D782174C64E0099B921 /* AATiltState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F57D772174C64E0099B921 /* AATiltState.swift */; };
 		20F7903721356C54003BDFA2 /* AACheckControlMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903621356C54003BDFA2 /* AACheckControlMessage.swift */; };
 		20F7903921356F54003BDFA2 /* AAConditionBasedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903821356F54003BDFA2 /* AAConditionBasedService.swift */; };
 		20F7903B21356F94003BDFA2 /* AADueStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903A21356F94003BDFA2 /* AADueStatus.swift */; };
@@ -365,6 +366,7 @@
 		20DC7513215B5EDE009B2B24 /* AAPluggedInState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPluggedInState.swift; sourceTree = "<group>"; };
 		20DC7519215BC021009B2B24 /* AALegacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALegacy.swift; sourceTree = "<group>"; };
 		20EF4C372167F4A00077BFE4 /* AAPropertyIdentifierGettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertyIdentifierGettable.swift; sourceTree = "<group>"; };
+		20F57D772174C64E0099B921 /* AATiltState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATiltState.swift; sourceTree = "<group>"; };
 		20F7903621356C54003BDFA2 /* AACheckControlMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACheckControlMessage.swift; sourceTree = "<group>"; };
 		20F7903821356F54003BDFA2 /* AAConditionBasedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAConditionBasedService.swift; sourceTree = "<group>"; };
 		20F7903A21356F94003BDFA2 /* AADueStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADueStatus.swift; sourceTree = "<group>"; };
@@ -1070,6 +1072,7 @@
 				OBJ_102 /* AASeatLocation.swift */,
 				OBJ_104 /* AAStartStopState.swift */,
 				OBJ_105 /* AATheftAlarmState.swift */,
+				20F57D772174C64E0099B921 /* AATiltState.swift */,
 				OBJ_106 /* AATimerType.swift */,
 				20DB154920971B9F00A1658B /* AATimeState.swift */,
 				2024BBFB21553A3200AA5261 /* AAWeekday.swift */,
@@ -1326,6 +1329,7 @@
 				OBJ_334 /* AADiagnostics.swift in Sources */,
 				2085E9F3216615170013AE57 /* AAPropertyTimestamp.swift in Sources */,
 				OBJ_335 /* AAMaintenance.swift in Sources */,
+				20F57D782174C64E0099B921 /* AATiltState.swift in Sources */,
 				OBJ_336 /* AAOffroad.swift in Sources */,
 				OBJ_337 /* AARace.swift in Sources */,
 				OBJ_338 /* AADoorLocks.swift in Sources */,

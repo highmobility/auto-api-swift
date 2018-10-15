@@ -34,7 +34,7 @@ public struct AARooftopControl: AAFullStandardCommand {
     public let convertibleRoofState: AAConvertibleRoofState?
     public let dimming: AAPercentageInt?
     public let position: AAPercentageInt?
-    public let sunroofTiltState: AAPositionState?
+    public let sunroofTiltState: AATiltState?
 
 
     // MARK: AAFullStandardCommand
@@ -48,7 +48,7 @@ public struct AARooftopControl: AAFullStandardCommand {
         position = properties.value(for: \AARooftopControl.position)
         /* Level 8 */
         convertibleRoofState = AAConvertibleRoofState(properties: properties, keyPath: \AARooftopControl.convertibleRoofState)
-        sunroofTiltState = AAPositionState(properties: properties, keyPath: \AARooftopControl.sunroofTiltState)
+        sunroofTiltState = AATiltState(properties: properties, keyPath: \AARooftopControl.sunroofTiltState)
 
         // Properties
         self.properties = properties
@@ -113,9 +113,14 @@ public extension AARooftopControl {
         return commandPrefix(for: .getRooftopState)
     }
 
-    static func controlRooftop(dimming: AAPercentageInt?, openClose: AAPercentageInt?) -> [UInt8] {
+    static func controlRooftop(dimming: AAPercentageInt?,
+                               open: AAPercentageInt?,
+                               convertibleRoof: AAConvertibleRoofState?,
+                               sunroofTilt: AATiltState?) -> [UInt8] {
         return commandPrefix(for: .controlRooftop) + [dimming?.propertyBytes(0x01),
-                                                      openClose?.propertyBytes(0x02)].propertiesValuesCombined
+                                                      open?.propertyBytes(0x02),
+                                                      convertibleRoof?.propertyBytes(0x03),
+                                                      sunroofTilt?.propertyBytes(0x04)].propertiesValuesCombined
     }
 }
 
