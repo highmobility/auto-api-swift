@@ -100,7 +100,7 @@ extension AAMessaging: AAPropertyIdentifierGettable {
 public extension AAMessaging {
 
     static func received(message text: String, senderHandle handle: String?) -> [UInt8] {
-        return commandPrefix(for: .received) + [text.propertyBytes(0x02),
+        return commandPrefix(for: .received) + [text.propertyBytes(0x01),
                                                 handle?.propertyBytes(0x02)].propertiesValuesCombined
     }
 }
