@@ -177,10 +177,6 @@ public extension AAHomeCharger {
         return commandPrefix(for: .activateSolarCharging) + state.propertyBytes(0x01)
     }
 
-    static func authenticateExpire(_ state: AAAuthenticationState) -> [UInt8] {
-        return commandPrefix(for: .authenticateExpire) + state.propertyBytes(0x01)
-    }
-
     static func enableWifiHotspot(_ enable: AAEnabledState) -> [UInt8] {
         return commandPrefix(for: .enableWifiHotspot) + enable.propertyBytes(0x01)
     }
