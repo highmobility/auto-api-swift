@@ -39,7 +39,7 @@ public struct AAWindscreen: AAFullStandardCommand {
     public let needsReplacement: AANeedsReplacement?
     /// The *size* of *zones* on the Windscreen.
     public let zoneMatrix: AAZone?
-    public let wipersIntensity: AAWipersLevel?
+    public let wipersIntensity: AAWipersIntensity?
     public let wipersState: AAWipersState?
 
 
@@ -51,7 +51,7 @@ public struct AAWindscreen: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         wipersState = AAWipersState(properties: properties, keyPath: \AAWindscreen.wipersState)
-        wipersIntensity = AAWipersLevel(properties: properties, keyPath: \AAWindscreen.wipersIntensity)
+        wipersIntensity = AAWipersIntensity(properties: properties, keyPath: \AAWindscreen.wipersIntensity)
         damage = AAWindscreenDamage(properties: properties, keyPath: \AAWindscreen.damage)
         zoneMatrix = AAZone(properties: properties, keyPath: \AAWindscreen.zoneMatrix)
         damageZone = AAZone(properties: properties, keyPath: \AAWindscreen.damageZone)
@@ -128,9 +128,9 @@ public extension AAWindscreen {
     }
 
 
-    static func activateWipers(_ state: AAWipersState, level: AAWipersLevel?) -> [UInt8] {
+    static func activateWipers(_ state: AAWipersState, intensity: AAWipersIntensity?) -> [UInt8] {
         return commandPrefix(for: .activateWipers) + [state.propertyBytes(0x01),
-                                                      level?.propertyBytes(0x02)].propertiesValuesCombined
+                                                      intensity?.propertyBytes(0x02)].propertiesValuesCombined
     }
 
     static func setDamage(_ damage: AAWindscreenDamage, in zone: AAZone) -> [UInt8] {

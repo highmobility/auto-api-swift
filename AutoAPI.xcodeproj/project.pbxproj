@@ -216,7 +216,7 @@
 		OBJ_402 /* AATimerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_106 /* AATimerType.swift */; };
 		OBJ_403 /* AAFluidLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_107 /* AAFluidLevel.swift */; };
 		OBJ_404 /* AAWindscreenDamage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_108 /* AAWindscreenDamage.swift */; };
-		OBJ_405 /* AAWipersLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_109 /* AAWipersLevel.swift */; };
+		OBJ_405 /* AAWipersIntensity.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_109 /* AAWipersIntensity.swift */; };
 		OBJ_406 /* AAWipersState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_110 /* AAWipersState.swift */; };
 		OBJ_407 /* AAZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_111 /* AAZone.swift */; };
 		OBJ_408 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_113 /* Bool+Extensions.swift */; };
@@ -385,7 +385,7 @@
 		OBJ_106 /* AATimerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATimerType.swift; sourceTree = "<group>"; };
 		OBJ_107 /* AAFluidLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFluidLevel.swift; sourceTree = "<group>"; };
 		OBJ_108 /* AAWindscreenDamage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWindscreenDamage.swift; sourceTree = "<group>"; };
-		OBJ_109 /* AAWipersLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWipersLevel.swift; sourceTree = "<group>"; };
+		OBJ_109 /* AAWipersIntensity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWipersIntensity.swift; sourceTree = "<group>"; };
 		OBJ_110 /* AAWipersState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWipersState.swift; sourceTree = "<group>"; };
 		OBJ_111 /* AAZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAZone.swift; sourceTree = "<group>"; };
 		OBJ_113 /* Bool+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
@@ -1077,7 +1077,7 @@
 				20DB154920971B9F00A1658B /* AATimeState.swift */,
 				2024BBFB21553A3200AA5261 /* AAWeekday.swift */,
 				OBJ_108 /* AAWindscreenDamage.swift */,
-				OBJ_109 /* AAWipersLevel.swift */,
+				OBJ_109 /* AAWipersIntensity.swift */,
 				OBJ_110 /* AAWipersState.swift */,
 				20DB1547209718DB00A1658B /* AAWorkingState.swift */,
 				OBJ_111 /* AAZone.swift */,
@@ -1420,7 +1420,7 @@
 				OBJ_402 /* AATimerType.swift in Sources */,
 				OBJ_403 /* AAFluidLevel.swift in Sources */,
 				OBJ_404 /* AAWindscreenDamage.swift in Sources */,
-				OBJ_405 /* AAWipersLevel.swift in Sources */,
+				OBJ_405 /* AAWipersIntensity.swift in Sources */,
 				OBJ_406 /* AAWipersState.swift in Sources */,
 				OBJ_407 /* AAZone.swift in Sources */,
 				OBJ_408 /* Bool+Extensions.swift in Sources */,
