@@ -40,3 +40,7 @@ public enum AAWipersLevel: UInt8 {
     public static let inactive = AAWipersLevel.level0
     public static let highest = AAWipersLevel.level3
 }
+
+extension AAWipersLevel: AAPropertyConvertable {
+    
+}

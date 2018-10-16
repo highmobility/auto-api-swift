@@ -35,3 +35,7 @@ public enum AAWipersState: UInt8 {
     case active     = 0x01
     case automatic  = 0x02
 }
+
+extension AAWipersState: AAPropertyConvertable {
+    
+}

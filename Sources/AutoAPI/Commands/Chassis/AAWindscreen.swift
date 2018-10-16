@@ -95,6 +95,7 @@ extension AAWindscreen: AAMessageTypesGettable {
         case windscreenState        = 0x01
         case setDamage              = 0x12
         case setNeedsReplacement    = 0x13
+        case activateWipers         = 0x14
     }
 }
 
@@ -126,6 +127,11 @@ public extension AAWindscreen {
         return commandPrefix(for: .getWindscreenState)
     }
 
+
+    static func activateWipers(_ state: AAWipersState, level: AAWipersLevel?) -> [UInt8] {
+        return commandPrefix(for: .activateWipers) + [state.propertyBytes(0x01),
+                                                      level?.propertyBytes(0x02)].propertiesValuesCombined
+    }
 
     static func setDamage(_ damage: AAWindscreenDamage, in zone: AAZone) -> [UInt8] {
         return commandPrefix(for: .setDamage) + [damage.propertyBytes(0x01),
