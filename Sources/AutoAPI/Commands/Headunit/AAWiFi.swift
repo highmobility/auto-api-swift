@@ -116,10 +116,10 @@ public extension AAWiFi {
     }
 
 
-    static func connectToNetwork(ssid: AANetworkSSID, password: String?, security: AANetworkSecurity) -> [UInt8] {
+    static func connectToNetwork(ssid: AANetworkSSID, security: AANetworkSecurity, password: String?) -> [UInt8] {
         return commandPrefix(for: .connectToNetwork) + [ssid.propertyBytes(0x03),
-                                                        password?.propertyBytes(0x05),
-                                                        security.propertyBytes(0x04)].propertiesValuesCombined
+                                                        security.propertyBytes(0x04),
+                                                        password?.propertyBytes(0x05)].propertiesValuesCombined
     }
 
     static func enableDisalbe(_ state: AAEnabledState) -> [UInt8] {
