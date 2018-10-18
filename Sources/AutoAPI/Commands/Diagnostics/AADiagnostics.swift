@@ -53,6 +53,7 @@ public struct AADiagnostics: AAFullStandardCommand {
     public let speed: Int16?
     public let tirePressures: [AATirePressure]?
     public let tireTemperatures: [AATireTemperature]?
+    public let troubleCodes: [AADiagnosticTroubleCode]?
     public let washerFluidLevel: AAFluidLevel?
     public let wheelBasedSpeed: Int16?
     public let wheelRPMs: [AAWheelRPM]?
@@ -95,6 +96,7 @@ public struct AADiagnostics: AAFullStandardCommand {
         tirePressures = properties.flatMap(for: \AADiagnostics.tirePressures) { AATirePressure($0.value) }
         tireTemperatures = properties.flatMap(for: \AADiagnostics.tireTemperatures) { AATireTemperature($0.value) }
         wheelRPMs = properties.flatMap(for: \AADiagnostics.wheelRPMs) { AAWheelRPM($0.value) }
+        troubleCodes = properties.flatMap(for: \AADiagnostics.troubleCodes) { AADiagnosticTroubleCode($0.value) }
 
         // Properties
         self.properties = properties
@@ -167,6 +169,7 @@ extension AADiagnostics: AAPropertyIdentifierGettable {
         case \AADiagnostics.tirePressures:          return 0x1A
         case \AADiagnostics.tireTemperatures:       return 0x1B
         case \AADiagnostics.wheelRPMs:              return 0x1C
+        case \AADiagnostics.troubleCodes:           return 0x1D
 
         default:
             return 0x00

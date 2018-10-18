@@ -37,15 +37,12 @@ public struct AACheckControlMessage {
     public let text: String
 }
 
-extension AACheckControlMessage: AABinaryInitable {
+extension AACheckControlMessage: AAItemDynamicSize {
 
-    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        guard binary.count >= 8 else {
-            return nil
-        }
+    static var greaterOrEqualSize: Int = 8
 
-        // Gather some values
-        let bytes = binary.bytes
+
+    init?(bytes: [UInt8]) {
         let id = UInt16(bytes[0...1])
         let remainingLength = UInt32(bytes[2...5])
         let textSize = UInt16(bytes[6...7]).int
@@ -69,5 +66,18 @@ extension AACheckControlMessage: AABinaryInitable {
         self.remainingLength = remainingLength
         self.status = status
         self.text = text
+    }
+}
+
+extension AACheckControlMessage: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        let textBytes = text.propertyValue
+
+        return id.bytes +
+            remainingLength.bytes +
+            UInt16(textBytes.count).bytes +
+            textBytes +
+            status.propertyValue
     }
 }

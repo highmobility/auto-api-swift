@@ -64,6 +64,7 @@
 		20BB171D2142604100A3FDB5 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BB171B2142603A00A3FDB5 /* Date+Extensions.swift */; };
 		20CDFAA7215264F300402BF6 /* AADetectedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDFAA6215264F300402BF6 /* AADetectedState.swift */; };
 		20CDFAA92152657100402BF6 /* AAFastened.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDFAA82152657100402BF6 /* AAFastened.swift */; };
+		20D2FCC7217874F3005ECE96 /* AADiagnosticTroubleCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D2FCC6217874F3005ECE96 /* AADiagnosticTroubleCode.swift */; };
 		20DB153B2096F7DA00A1658B /* AAGearbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB153A2096F7DA00A1658B /* AAGearbox.swift */; };
 		20DB15402097112D00A1658B /* AAPowerTakeoff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB153F2097112D00A1658B /* AAPowerTakeoff.swift */; };
 		20DB15422097154D00A1658B /* PowerTakeOffTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15412097154D00A1658B /* PowerTakeOffTests.swift */; };
@@ -352,6 +353,7 @@
 		20BB171B2142603A00A3FDB5 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		20CDFAA6215264F300402BF6 /* AADetectedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADetectedState.swift; sourceTree = "<group>"; };
 		20CDFAA82152657100402BF6 /* AAFastened.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFastened.swift; sourceTree = "<group>"; };
+		20D2FCC6217874F3005ECE96 /* AADiagnosticTroubleCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADiagnosticTroubleCode.swift; sourceTree = "<group>"; };
 		20DB153A2096F7DA00A1658B /* AAGearbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAGearbox.swift; sourceTree = "<group>"; };
 		20DB153F2097112D00A1658B /* AAPowerTakeoff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPowerTakeoff.swift; sourceTree = "<group>"; };
 		20DB15412097154D00A1658B /* PowerTakeOffTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerTakeOffTests.swift; sourceTree = "<group>"; };
@@ -671,6 +673,7 @@
 				OBJ_141 /* AACoordinates.swift */,
 				205C516C208F28FF00B55ACE /* AADashboardLight.swift */,
 				2028370A2150D17E0001724A /* AADepartureTime.swift */,
+				20D2FCC6217874F3005ECE96 /* AADiagnosticTroubleCode.swift */,
 				OBJ_142 /* AADoor.swift */,
 				20DB154D2097265400A1658B /* AADriverCard.swift */,
 				20DB154B20971CD700A1658B /* AADriverTimeState.swift */,
@@ -1420,6 +1423,7 @@
 				OBJ_402 /* AATimerType.swift in Sources */,
 				OBJ_403 /* AAFluidLevel.swift in Sources */,
 				OBJ_404 /* AAWindscreenDamage.swift in Sources */,
+				20D2FCC7217874F3005ECE96 /* AADiagnosticTroubleCode.swift in Sources */,
 				OBJ_405 /* AAWipersIntensity.swift in Sources */,
 				OBJ_406 /* AAWipersState.swift in Sources */,
 				OBJ_407 /* AAZone.swift in Sources */,
