@@ -47,7 +47,7 @@ public struct AACharging: AAFullStandardCommand {
     public let maxChargingCurrentAC: Float?
     public let pluggedIn: AAPluggedInState?
     public let plugType: AAPlugType?
-    public let reductionOfChargingCurrentTimes: [AATime]?
+    public let reductionOfChargingCurrentTimes: [AAReductionTime]?
     public let state: AAChargingState?
     public let timers: [AAChargingTimer]?
     public let timeToCompleteCharge: UInt16?
@@ -76,7 +76,7 @@ public struct AACharging: AAFullStandardCommand {
         plugType = AAPlugType(properties: properties, keyPath: \AACharging.plugType)
         chargingWindowChosen = AAChosenState(properties: properties, keyPath: \AACharging.chargingWindowChosen)
         departureTimes = properties.flatMap(for: \AACharging.departureTimes) { AADepartureTime($0.value) }
-        reductionOfChargingCurrentTimes = properties.flatMap(for: \AACharging.reductionOfChargingCurrentTimes) { AATime($0.value) }
+        reductionOfChargingCurrentTimes = properties.flatMap(for: \AACharging.reductionOfChargingCurrentTimes) { AAReductionTime($0.value) }
         batteryTemperature = properties.value(for: \AACharging.batteryTemperature)
         timers = properties.flatMap(for: \AACharging.timers) { AAChargingTimer($0.value) }
         pluggedIn = AAPluggedInState(properties: properties, keyPath: \AACharging.pluggedIn)
@@ -132,6 +132,7 @@ extension AACharging: AAMessageTypesGettable {
         case openCloseChargePort    = 0x14
         case setChargeMode          = 0x15
         case setChargingTimers      = 0x16
+        case setReductionTimes      = 0x17
     }
 }
 
@@ -196,6 +197,10 @@ public extension AACharging {
 
     static func setChargingTimers(_ timers: [AAChargingTimer]) -> [UInt8] {
         return commandPrefix(for: .setChargingTimers) + timers.reduceToByteArray { $0.propertyBytes(0x0D) }
+    }
+
+    static func setReductionOfChargingCurrentTimes(_ times: [AAReductionTime]) -> [UInt8] {
+        return commandPrefix(for: .setReductionTimes) + times.reduceToByteArray { $0.propertyBytes(0x01) }
     }
 
     static func startStopCharging(_ state: AAActiveState) -> [UInt8] {
