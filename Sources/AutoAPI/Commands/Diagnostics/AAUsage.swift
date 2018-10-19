@@ -39,7 +39,7 @@ public struct AAUsage: AAFullStandardCommand {
     public let drivingModeActivationPeriods: [AADrivingMode.ActivationPeriod]?
     public let drivingModeEnergyConsumptions: [AADrivingMode.EnergyConsumption]?
     public let drivingStyleEvalution: AAPercentageInt?
-    public let lastTripAverageEnergyRecuperation: UInt8?
+    public let lastTripAverageEnergyRecuperation: Float?
     public let lastTripBatteryRemaining: AAPercentageInt?
     public let lastTripElectricPortion: AAPercentageInt?
     public let lastTripEnergyConsumption: Float?
