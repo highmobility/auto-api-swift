@@ -40,6 +40,7 @@ public struct AAClimate: AAFullStandardCommand {
     public let ionisingState: AAActiveState?
     public let outsideTemperature: Float?
     public let passengerTemperature: Float?
+    public let rearTemperature: Float?
     public let weekdaysStartingTimes: [AAClimateWeekdayTime]?
 
 
@@ -61,6 +62,7 @@ public struct AAClimate: AAFullStandardCommand {
         defrostingTemperature = properties.value(for: \AAClimate.defrostingTemperature)
         /* Level 8 */
         weekdaysStartingTimes = properties.flatMap(for: \AAClimate.weekdaysStartingTimes) { AAClimateWeekdayTime($0.value) }
+        rearTemperature = properties.value(for: \AAClimate.rearTemperature)
 
         // Properties
         self.properties = properties
@@ -129,6 +131,7 @@ extension AAClimate: AAPropertyIdentifierGettable {
         case \AAClimate.defrostingTemperature:  return 0x09
             /* Level 8 */
         case \AAClimate.weekdaysStartingTimes:  return 0x0B
+        case \AAClimate.rearTemperature:        return 0x0C
 
         default:
             return 0x00

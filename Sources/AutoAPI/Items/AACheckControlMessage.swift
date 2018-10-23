@@ -32,7 +32,7 @@ import Foundation
 public struct AACheckControlMessage {
 
     public let id: UInt16
-    public let remainingLength: UInt32
+    public let remainingMinutes: UInt32
     public let status: String
     public let text: String
 }
@@ -63,7 +63,7 @@ extension AACheckControlMessage: AAItemDynamicSize {
 
         // Set the iVars
         self.id = id
-        self.remainingLength = remainingLength
+        self.remainingMinutes = remainingLength
         self.status = status
         self.text = text
     }
@@ -75,7 +75,7 @@ extension AACheckControlMessage: AAPropertyConvertable {
         let textBytes = text.propertyValue
 
         return id.bytes +
-            remainingLength.bytes +
+            remainingMinutes.bytes +
             UInt16(textBytes.count).bytes +
             textBytes +
             status.propertyValue
