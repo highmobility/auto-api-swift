@@ -34,7 +34,7 @@ public enum AAFatigueLevel: UInt8 {
     case light              = 0x00
     case pauseRecommended   = 0x01
     case actionNeeded       = 0x02
-    case carReadToTakeOver  = 0x03
+    case carReadyToTakeOver = 0x03
 
 
     /// Same as *.actionNeeded*
