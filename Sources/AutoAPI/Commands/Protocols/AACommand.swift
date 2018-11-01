@@ -39,12 +39,12 @@ public protocol AACommand: AAIdentifiable {
 extension AACommand {
 
     public var debugTree: HMDebugTree {
-        return DebugTree(self, label: nil, expandProperties: false) { (anything, label, expandProperties) -> HMDebugTree? in
+        return HMDebugTree(self, label: nil, expandProperties: false) { (anything, label, expandProperties) -> HMDebugTree? in
             switch anything {
             case let capabilities as AACapabilities:
-                let nodes: [DebugTree] = capabilities.map {
-                    let idLeaf: DebugTree = .leaf(label: "identifier = " + String(format: "0x%04X", $0.identifier))
-                    let msgTypesLeaf: DebugTree = .leaf(label: "supportedMessageTypes = " + $0.supportedMessageTypes.map { String(format: "0x%02X", $0) }.joined(separator: ", "))
+                let nodes: [HMDebugTree] = capabilities.map {
+                    let idLeaf: HMDebugTree = .leaf(label: "identifier = " + String(format: "0x%04X", $0.identifier))
+                    let msgTypesLeaf: HMDebugTree = .leaf(label: "supportedMessageTypes = " + $0.supportedMessageTypes.map { String(format: "0x%02X", $0) }.joined(separator: ", "))
 
                     return .node(label: "\($0.command)", nodes: [idLeaf, msgTypesLeaf])
                 }
@@ -52,11 +52,11 @@ extension AACommand {
                 return .node(label: label, nodes: nodes)
 
             case let colour as AAColour:
-                if case .node(_, let nodes) = DebugTree(colour.values, expandProperties: expandProperties) {
+                if case .node(_, let nodes) = HMDebugTree(colour.values, expandProperties: expandProperties) {
                     return .node(label: label, nodes: nodes)
                 }
                 else {
-                    return .node(label: label, nodes: [DebugTree(colour.values, expandProperties: expandProperties)])
+                    return .node(label: label, nodes: [HMDebugTree(colour.values, expandProperties: expandProperties)])
                 }
 
             case let properties as AAProperties:
@@ -65,7 +65,7 @@ extension AACommand {
                         return .leaf(label: "properties = []")
                     }
                     else {
-                        let nodes = properties.map { DebugTree.leaf(label: "\($0)") }
+                        let nodes = properties.map { HMDebugTree.leaf(label: "\($0)") }
 
                         return .node(label: label, nodes: nodes)
                     }
