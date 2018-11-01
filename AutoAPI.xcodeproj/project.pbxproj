@@ -57,7 +57,7 @@
 		2093A32221394EF8009E43A0 /* AAHood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A32121394EF8009E43A0 /* AAHood.swift */; };
 		2093A32421395362009E43A0 /* AAUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A32321395362009E43A0 /* AAUsage.swift */; };
 		209462632162489F0009E9AD /* AAHistorical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209462622162489F0009E9AD /* AAHistorical.swift */; };
-		2095DD6D20A45B81004DDB6C /* DebugTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2095DD6C20A45B81004DDB6C /* DebugTree.swift */; };
+		2095DD6D20A45B81004DDB6C /* HMDebugTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2095DD6C20A45B81004DDB6C /* HMDebugTree.swift */; };
 		20B0C143215D1EA7005FA699 /* AATirePressure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7C958215D1C8F00C9C9A7 /* AATirePressure.swift */; };
 		20B0C145215D1ECE005FA699 /* AATireTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B0C144215D1ECE005FA699 /* AATireTemperature.swift */; };
 		20B0C147215D1F23005FA699 /* AAWheelRPM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B0C146215D1F23005FA699 /* AAWheelRPM.swift */; };
@@ -347,7 +347,7 @@
 		2093A32121394EF8009E43A0 /* AAHood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHood.swift; sourceTree = "<group>"; };
 		2093A32321395362009E43A0 /* AAUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAUsage.swift; sourceTree = "<group>"; };
 		209462622162489F0009E9AD /* AAHistorical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHistorical.swift; sourceTree = "<group>"; };
-		2095DD6C20A45B81004DDB6C /* DebugTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugTree.swift; sourceTree = "<group>"; };
+		2095DD6C20A45B81004DDB6C /* HMDebugTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDebugTree.swift; sourceTree = "<group>"; };
 		20B0C144215D1ECE005FA699 /* AATireTemperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATireTemperature.swift; sourceTree = "<group>"; };
 		20B0C146215D1F23005FA699 /* AAWheelRPM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWheelRPM.swift; sourceTree = "<group>"; };
 		20B7C958215D1C8F00C9C9A7 /* AATirePressure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATirePressure.swift; sourceTree = "<group>"; };
@@ -881,7 +881,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_222 /* Bool+Extensions.swift */,
-				2095DD6C20A45B81004DDB6C /* DebugTree.swift */,
+				2095DD6C20A45B81004DDB6C /* HMDebugTree.swift */,
 				20896EEF2147DEC9003A7A63 /* Double+Extensions.swift */,
 				OBJ_223 /* FixedWidthInteger+Extensions.swift */,
 				OBJ_224 /* Float+Extensions.swift */,
@@ -1504,7 +1504,7 @@
 				OBJ_465 /* FixedWidthInteger+Extensions.swift in Sources */,
 				OBJ_466 /* Float+Extensions.swift in Sources */,
 				OBJ_467 /* SignedInteger+Extensions.swift in Sources */,
-				2095DD6D20A45B81004DDB6C /* DebugTree.swift in Sources */,
+				2095DD6D20A45B81004DDB6C /* HMDebugTree.swift in Sources */,
 				OBJ_468 /* String+Extensions.swift in Sources */,
 				OBJ_469 /* UInt8Collection+Extensions.swift in Sources */,
 			);

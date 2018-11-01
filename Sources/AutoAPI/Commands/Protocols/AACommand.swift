@@ -33,13 +33,13 @@ import HMUtilities
 public protocol AACommand: AAIdentifiable {
 
     // FIXME: Not sure this should be here
-    var debugTree: DebugTree { get }
+    var debugTree: HMDebugTree { get }
 }
 
 extension AACommand {
 
-    public var debugTree: DebugTree {
-        return DebugTree(self, label: nil, expandProperties: false) { (anything, label, expandProperties) -> DebugTree? in
+    public var debugTree: HMDebugTree {
+        return DebugTree(self, label: nil, expandProperties: false) { (anything, label, expandProperties) -> HMDebugTree? in
             switch anything {
             case let capabilities as AACapabilities:
                 let nodes: [DebugTree] = capabilities.map {
