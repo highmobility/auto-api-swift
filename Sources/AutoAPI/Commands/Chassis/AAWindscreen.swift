@@ -128,7 +128,7 @@ public extension AAWindscreen {
     }
 
 
-    static func activateWipers(_ state: AAWipersState, intensity: AAWipersIntensity?) -> [UInt8] {
+    static func controlWipers(_ state: AAWipersState, intensity: AAWipersIntensity?) -> [UInt8] {
         return commandPrefix(for: .activateWipers) + [state.propertyBytes(0x01),
                                                       intensity?.propertyBytes(0x02)].propertiesValuesCombined
     }

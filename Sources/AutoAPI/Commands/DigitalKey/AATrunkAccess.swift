@@ -106,7 +106,7 @@ public extension AATrunkAccess {
     }
 
 
-    static func lockUnlock(_ lockUnlock: AALockState?, changePosition position: AAPositionState?) -> [UInt8] {
+    static func controlTrunk(_ lockUnlock: AALockState?, changePosition position: AAPositionState?) -> [UInt8] {
         return commandPrefix(for: .lockOpen) + [lockUnlock?.propertyBytes(0x01),
                                                 position?.propertyBytes(0x02)].propertiesValuesCombined
     }

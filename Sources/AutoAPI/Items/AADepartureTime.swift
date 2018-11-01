@@ -40,7 +40,6 @@ extension AADepartureTime: AAItem {
     static var size: Int = 3
 
 
-    /// 0xFF for "no time"
     init?(bytes: [UInt8]) {
         guard let activeState = AAActiveState(rawValue: bytes[0]) else {
             return nil

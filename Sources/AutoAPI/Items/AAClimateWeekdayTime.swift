@@ -32,9 +32,7 @@ import Foundation
 public struct AAClimateWeekdayTime {
 
     public var weekday: AAWeekday
-
-    /// Removed from the connected vehicle if `nil`.
-    public var time: AATime?
+    public var time: AATime
 
 
     // MARK: Init
@@ -43,8 +41,8 @@ public struct AAClimateWeekdayTime {
     ///
     /// - Parameters:
     ///   - weekday: Day of the week, or *automatic*.
-    ///   - time: Time of the day, use `nil` to remove.
-    public init(weekday: AAWeekday, time: AATime?) {
+    ///   - time: Time of the day.
+    public init(weekday: AAWeekday, time: AATime) {
         self.weekday = weekday
         self.time = time
     }
@@ -62,14 +60,14 @@ extension AAClimateWeekdayTime: AAItem {
         }
 
         self.weekday = weekday
-        self.time = time.isNil ? nil : time
+        self.time = time
     }
 }
 
 extension AAClimateWeekdayTime: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
-        let timeBytes = time?.propertyValue ?? [0xFF, 0xFF]
+        let timeBytes = time.propertyValue
 
         return [weekday.rawValue] + timeBytes
     }

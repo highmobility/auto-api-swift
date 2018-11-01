@@ -34,10 +34,6 @@ public struct AATime {
     public var hour: UInt8
     public var minute: UInt8
 
-    var isNil: Bool {
-        return (hour == 0xFF) || (minute == 0xFF)
-    }
-
 
     // MARK: Init
 
