@@ -41,7 +41,7 @@ public struct AAHomeCharger: AAFullStandardCommand {
     public let maximumChargeCurrent: Float?
     public let minimumChargeCurrent: Float?
     public let plugType: AAPlugType?
-    public let pricingTariffs: [AAPricingTariff]?
+    public let priceTariffs: [AAPriceTariff]?
     public let solarChargingState: AAActiveState?
     public let wifiHotspotPassword: String?
     public let wifiHotspotSecurity: AANetworkSecurity?
@@ -70,7 +70,7 @@ public struct AAHomeCharger: AAFullStandardCommand {
         maximumChargeCurrent = properties.value(for: \AAHomeCharger.maximumChargeCurrent)
         minimumChargeCurrent = properties.value(for: \AAHomeCharger.minimumChargeCurrent)
         coordinates = AACoordinates(properties.first(for: \AAHomeCharger.coordinates)?.value ?? [])
-        pricingTariffs = properties.flatMap(for: \AAHomeCharger.pricingTariffs) { AAPricingTariff($0.value) }
+        priceTariffs = properties.flatMap(for: \AAHomeCharger.priceTariffs) { AAPriceTariff($0.value) }
 
         // Properties
         self.properties = properties
@@ -155,7 +155,7 @@ extension AAHomeCharger: AAPropertyIdentifierGettable {
         case \AAHomeCharger.maximumChargeCurrent:   return 0x0F
         case \AAHomeCharger.minimumChargeCurrent:   return 0x10
         case \AAHomeCharger.coordinates:            return 0x11
-        case \AAHomeCharger.pricingTariffs:         return 0x12
+        case \AAHomeCharger.priceTariffs:         return 0x12
 
         default:
             return 0x00
@@ -189,14 +189,14 @@ public extension AAHomeCharger {
         return commandPrefix(for: .setChargingCurrent) + current.propertyBytes(0x01)
     }
 
-    static func setPriceTariffs(_ tariffs: [AAPricingTariff]) -> [UInt8] {
+    static func setPriceTariffs(_ tariffs: [AAPriceTariff]) -> [UInt8] {
         return commandPrefix(for: .setPriceTariffs) + tariffs.reduceToByteArray { $0.propertyBytes(0x0C) }
     }
 }
 
 public extension AAHomeCharger.Legacy {
 
-    typealias PriceTariff = AAPricingTariff
+    typealias PriceTariff = AAPriceTariff
 
 
     static var setSolarChargingState: (AAActiveState) -> [UInt8] {

@@ -39,21 +39,22 @@ public struct AACheckControlMessage {
 
 extension AACheckControlMessage: AAItemDynamicSize {
 
-    static var greaterOrEqualSize: Int = 8
+    static var greaterOrEqualSize: Int = 10
 
 
     init?(bytes: [UInt8]) {
         let id = UInt16(bytes[0...1])
         let remainingLength = UInt32(bytes[2...5])
         let textSize = UInt16(bytes[6...7]).int
+        let statusSize = bytes[8 + textSize].int
 
         // Check for enough bytes
-        guard bytes.count >= (8 + textSize) else {
+        guard bytes.count == (10 + textSize + statusSize) else {
             return nil
         }
 
-        let textBytes = bytes.dropFirstBytes(8).prefix(textSize)
-        let statusBytes = bytes.dropFirstBytes(8 + textSize)
+        let textBytes = bytes[8 ..< (8 + textSize)]
+        let statusBytes = bytes[(9 + textSize) ..< (9 + textSize + statusSize)]
 
         // Create strings
         guard let text = String(bytes: textBytes, encoding: .utf8),
@@ -72,12 +73,12 @@ extension AACheckControlMessage: AAItemDynamicSize {
 extension AACheckControlMessage: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
-        let textBytes = text.propertyValue
+        var textBytes = text.propertyValue
+        var statusBytes = status.propertyValue
 
-        return id.bytes +
-            remainingMinutes.bytes +
-            UInt16(textBytes.count).bytes +
-            textBytes +
-            status.propertyValue
+        textBytes.insert(contentsOf: UInt16(textBytes.count).bytes, at: 0)
+        statusBytes.insert(statusBytes.count.uint8, at: 0)
+
+        return id.bytes + remainingMinutes.bytes + textBytes + statusBytes
     }
 }

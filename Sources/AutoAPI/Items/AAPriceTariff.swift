@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  AAPricingTariff.swift
+//  AAPriceTariff.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 30/01/2018.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public struct AAPricingTariff {
+public struct AAPriceTariff {
 
     public let currency: String
     public let price: Float
@@ -45,14 +45,21 @@ public struct AAPricingTariff {
     }
 }
 
-extension AAPricingTariff: AAItemDynamicSize {
+extension AAPriceTariff: AAItemDynamicSize {
 
-    static var greaterOrEqualSize: Int = 8
+    static var greaterOrEqualSize: Int = 6
     
 
     init?(bytes: [UInt8]) {
+        let currencySize = bytes[5].int
+
+        // Check the byte count
+        guard bytes.count == (6 + currencySize) else {
+            return nil
+        }
+
         guard let type = AAPricingType(rawValue: bytes[0]),
-            let currency = String(bytes: bytes.suffix(from: 5), encoding: .utf8) else {
+            let currency = String(bytes: bytes[6 ..< (6 + currencySize)], encoding: .utf8) else {
                 return nil
         }
 
@@ -62,19 +69,19 @@ extension AAPricingTariff: AAItemDynamicSize {
     }
 }
 
-extension AAPricingTariff: Equatable {
+extension AAPriceTariff: Equatable {
 
-    public static func ==(lhs: AAPricingTariff, rhs: AAPricingTariff) -> Bool {
+    public static func ==(lhs: AAPriceTariff, rhs: AAPriceTariff) -> Bool {
         return (lhs.type == rhs.type) &&
             (lhs.currency == rhs.currency) &&
             (lhs.price == rhs.price)
     }
 }
 
-extension AAPricingTariff: AAPropertyConvertable {
+extension AAPriceTariff: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
-        return [type.rawValue] + price.propertyValue + currency.propertyValue
+        return [type.rawValue] + price.propertyValue + [currency.propertyValue.count.uint8] + currency.propertyValue
     }
 }
 

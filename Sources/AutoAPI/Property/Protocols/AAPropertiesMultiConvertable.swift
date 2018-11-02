@@ -37,6 +37,7 @@ protocol AAPropertiesMultiConvertable {
 
 extension AAPropertiesMultiConvertable {
 
+    // TODO: Redo this, currently can be misunderstood
     var propertiesValuesCombined: [UInt8] {
         return propertiesValues.propertiesValuesCombined
     }

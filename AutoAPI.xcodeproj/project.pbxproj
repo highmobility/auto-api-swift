@@ -248,7 +248,7 @@
 		OBJ_433 /* AACoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_141 /* AACoordinates.swift */; };
 		OBJ_434 /* AADoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_142 /* AADoor.swift */; };
 		OBJ_435 /* AAItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_143 /* AAItem.swift */; };
-		OBJ_440 /* AAPricingTariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_149 /* AAPricingTariff.swift */; };
+		OBJ_440 /* AAPriceTariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_149 /* AAPriceTariff.swift */; };
 		OBJ_441 /* AASeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_150 /* AASeat.swift */; };
 		OBJ_442 /* AATire.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_151 /* AATire.swift */; };
 		OBJ_443 /* AAWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_152 /* AAWindow.swift */; };
@@ -422,7 +422,7 @@
 		OBJ_141 /* AACoordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACoordinates.swift; sourceTree = "<group>"; };
 		OBJ_142 /* AADoor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADoor.swift; sourceTree = "<group>"; };
 		OBJ_143 /* AAItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAItem.swift; sourceTree = "<group>"; };
-		OBJ_149 /* AAPricingTariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPricingTariff.swift; sourceTree = "<group>"; };
+		OBJ_149 /* AAPriceTariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPriceTariff.swift; sourceTree = "<group>"; };
 		OBJ_15 /* AASDKVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASDKVersion.swift; sourceTree = "<group>"; };
 		OBJ_150 /* AASeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASeat.swift; sourceTree = "<group>"; };
 		OBJ_151 /* AATire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATire.swift; sourceTree = "<group>"; };
@@ -681,7 +681,7 @@
 				20DB154B20971CD700A1658B /* AADriverTimeState.swift */,
 				20DB15452097176600A1658B /* AADriverWorkingState.swift */,
 				OBJ_143 /* AAItem.swift */,
-				OBJ_149 /* AAPricingTariff.swift */,
+				OBJ_149 /* AAPriceTariff.swift */,
 				20D2FCC82179C881005ECE96 /* AAReductionTime.swift */,
 				OBJ_150 /* AASeat.swift */,
 				OBJ_138 /* AATime.swift */,
@@ -1472,7 +1472,7 @@
 				209462632162489F0009E9AD /* AAHistorical.swift in Sources */,
 				20DB15442097166200A1658B /* AATachograph.swift in Sources */,
 				205C5173208F319900B55ACE /* AADashboardLightState.swift in Sources */,
-				OBJ_440 /* AAPricingTariff.swift in Sources */,
+				OBJ_440 /* AAPriceTariff.swift in Sources */,
 				OBJ_441 /* AASeat.swift in Sources */,
 				OBJ_442 /* AATire.swift in Sources */,
 				OBJ_443 /* AAWindow.swift in Sources */,

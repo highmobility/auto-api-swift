@@ -41,7 +41,7 @@ public struct AAConditionBasedService {
 extension AAConditionBasedService: AABinaryInitable {
 
     init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        guard binary.count >= 7 else {
+        guard binary.count >= 9 else {
             return nil
         }
 
@@ -51,20 +51,21 @@ extension AAConditionBasedService: AABinaryInitable {
         let month = bytes[1].int
         let id = UInt16(bytes[2...3])
         let textSize = UInt16(bytes[5...6]).int
+        let descSize = UInt16(bytes[(7 + textSize) ... (8 + textSize)]).int
 
         guard let date = DateComponents(year: year, month: month).date,
             let status = AADueStatus(rawValue: bytes[4]) else {
                 return nil
         }
 
-        // Check there's enough bytes (for text)
-        guard bytes.count >= (7 + textSize) else {
+        // Check there's enough bytes
+        guard bytes.count == (9 + textSize + descSize) else {
             return nil
         }
 
         // Create strings
-        let textBytes = bytes.dropFirstBytes(7).prefix(textSize)
-        let descBytes = bytes.dropFirstBytes(7 + textSize)
+        let textBytes = bytes[7 ..< (7 + textSize)]
+        let descBytes = bytes[(9 + textSize) ..< (9 + textSize + descSize)]
 
         guard let text = String(bytes: textBytes, encoding: .utf8),
             let description = String(bytes: descBytes, encoding: .utf8) else {
