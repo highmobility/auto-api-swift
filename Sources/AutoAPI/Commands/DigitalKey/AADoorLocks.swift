@@ -31,9 +31,9 @@ import Foundation
 
 public struct AADoorLocks: AAFullStandardCommand {
 
-    public let insideLocks: [AADoor.Lock]?
-    public let locks: [AADoor.Lock]?
-    public let positions: [AADoor.Position]?
+    public let insideLocks: [AADoorLock]?
+    public let locks: [AADoorLock]?
+    public let positions: [AADoorPosition]?
 
 
     // MARK: AAFullStandardCommand
@@ -44,9 +44,9 @@ public struct AADoorLocks: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         /* Level 8 */
-        insideLocks = properties.flatMap(for: \AADoorLocks.insideLocks) { AADoor.Lock($0.value) }
-        locks = properties.flatMap(for: \AADoorLocks.locks) { AADoor.Lock($0.value) }
-        positions = properties.flatMap(for: \AADoorLocks.positions) { AADoor.Position($0.value) }
+        insideLocks = properties.flatMap(for: \AADoorLocks.insideLocks) { AADoorLock($0.value) }
+        locks = properties.flatMap(for: \AADoorLocks.locks) { AADoorLock($0.value) }
+        positions = properties.flatMap(for: \AADoorLocks.positions) { AADoorPosition($0.value) }
 
         // Properties
         self.properties = properties

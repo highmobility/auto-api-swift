@@ -19,42 +19,18 @@
 // licensing@high-mobility.com
 //
 //
-//  AASeat.swift
+//  AAPresenceState.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 07/12/2017.
+//  Created by Mikk Rätsep on 04/10/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct AASeat {
+public enum AAPresenceState: UInt8 {
 
-    public let personDetected: Bool
-    public let position: AASeatLocation
-    public let seatbeltFastened: Bool
-}
-
-extension AASeat: AAItem {
-
-    static var size: Int = 3
-
-
-    init?(bytes: [UInt8]) {
-        guard let position = AASeatLocation(rawValue: bytes[0]) else {
-            return nil
-        }
-
-        self.personDetected = bytes[1].bool
-        self.position = position
-        self.seatbeltFastened = bytes[2].bool
-    }
-}
-
-extension AASeat: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [position.rawValue, personDetected.byte, seatbeltFastened.byte]
-    }
+    case notPresent = 0x00
+    case present    = 0x01
 }

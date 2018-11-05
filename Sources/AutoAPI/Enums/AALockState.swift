@@ -33,11 +33,6 @@ public enum AALockState: UInt8 {
 
     case unlocked   = 0x00
     case locked     = 0x01
-
-
-    // TODO: Is there any point in these?
-    public static let unlock = AALockState.unlocked
-    public static let lock = AALockState.locked
 }
 
 extension AALockState: AAPropertyConvertable {

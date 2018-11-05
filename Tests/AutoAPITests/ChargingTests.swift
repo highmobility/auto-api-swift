@@ -101,9 +101,6 @@ class ChargingTests: XCTestCase {
         let time = YearTime(year: 2018, month: 1, day: 10, hour: 16, minute: 32, second: 5, offset: 0)
 
         XCTAssertEqual(AACharging.setChargeTimer(.init(type: .departureDate, time: time)), bytes)
-
-
-        
     }
 
     func testStartStopCharging() {
@@ -201,7 +198,7 @@ class ChargingTests: XCTestCase {
         XCTAssertEqual(charging.chargeMode, .immediate)
 
         let time = YearTime(year: 2018, month: 1, day: 10, hour: 16, minute: 32, second: 5, offset: 0)
-        
+
         XCTAssertEqual(charging.chargeTimer, AAChargingTimer(type: .departureDate, time: time))
     }
 }

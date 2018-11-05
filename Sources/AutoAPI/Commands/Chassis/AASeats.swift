@@ -31,8 +31,8 @@ import Foundation
 
 public struct AASeats: AAFullStandardCommand {
 
-    public let personsDetected: [AASeat.PersonDetected]?
-    public let seatbeltsFastened: [AASeat.SeatbeltFastened]?
+    public let personsDetected: [AASeatPersonDetected]?
+    public let seatbeltsFastened: [AASeatbeltFastened]?
 
 
     // MARK: AAFullStandardCommand
@@ -43,8 +43,8 @@ public struct AASeats: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         /* Level 8 */
-        personsDetected = properties.flatMap(for: \AASeats.personsDetected) { AASeat.PersonDetected($0.value) }
-        seatbeltsFastened = properties.flatMap(for: \AASeats.seatbeltsFastened) { AASeat.SeatbeltFastened($0.value) }
+        personsDetected = properties.flatMap(for: \AASeats.personsDetected) { AASeatPersonDetected($0.value) }
+        seatbeltsFastened = properties.flatMap(for: \AASeats.seatbeltsFastened) { AASeatbeltFastened($0.value) }
 
         // Properties
         self.properties = properties

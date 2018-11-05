@@ -72,6 +72,9 @@ extension AAInboundCommand {
         return properties.timestamp
     }
 
+
+    // MARK: AAPropertiesTimestampGettable
+
     public var propertiesTimestamps: [AAPropertyTimestamp]? {
         return properties.propertiesTimestamps
     }
@@ -83,7 +86,7 @@ extension AAInboundCommand {
     /// the specific *value* needs to be supplied as well.
     ///
     /// - Parameters:
-    ///   - keyPath: The property's (variable's) `PartialKeyPath`
+    ///   - keyPath: The property's (variable's) `KeyPath`
     ///   - property: If the property (variable) represent an *array*, this needs to include the **specific** value (i.e. a specific door).
     /// - Returns: `AAPropertyTimestamp` that has the *date* for a given property.
     public func propertyTimestamp<Type>(for keyPath: KeyPath<Self, Type>, specificProperty property: Any?) -> AAPropertyTimestamp? {

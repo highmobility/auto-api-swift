@@ -19,42 +19,49 @@
 // licensing@high-mobility.com
 //
 //
-//  AASeat.swift
-//  AutoAPI
+//  AAWindowPosition.swift
+//  AutoAPICLT
 //
-//  Created by Mikk Rätsep on 07/12/2017.
+//  Created by Mikk Rätsep on 02/11/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct AASeat {
+public struct AAWindowPosition {
 
-    public let personDetected: Bool
-    public let position: AASeatLocation
-    public let seatbeltFastened: Bool
-}
-
-extension AASeat: AAItem {
-
-    static var size: Int = 3
+    public let location: AALocation
+    public let position: AAPositionState
 
 
-    init?(bytes: [UInt8]) {
-        guard let position = AASeatLocation(rawValue: bytes[0]) else {
-            return nil
-        }
+    // MARK: Init
 
-        self.personDetected = bytes[1].bool
+    public init(location: AALocation, position: AAPositionState) {
+        self.location = location
         self.position = position
-        self.seatbeltFastened = bytes[2].bool
     }
 }
 
-extension AASeat: AAPropertyConvertable {
+extension AAWindowPosition: AAItem {
+
+    static var size: Int = 2
+
+
+    init?(bytes: [UInt8]) {
+        guard let location = AALocation(rawValue: bytes[0]),
+            let position = AAPositionState(rawValue: bytes[1]) else {
+                return nil
+        }
+
+        self.location = location
+        self.position = position
+    }
+}
+
+extension AAWindowPosition: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
-        return [position.rawValue, personDetected.byte, seatbeltFastened.byte]
+        return [location.rawValue, position.rawValue]
     }
 }

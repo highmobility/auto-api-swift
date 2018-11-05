@@ -19,19 +19,41 @@
 // licensing@high-mobility.com
 //
 //
-//  AAPresentState.swift
+//  AADoorLock.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 04/10/2018.
+//  Created by Mikk Rätsep on 02/11/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-// TODO: Rename to smth "not a gift"
-public enum AAPresentState: UInt8 {
+public struct AADoorLock {
 
-    case notPresent = 0x00
-    case present    = 0x01
+    public let location: AALocation
+    public let lock: AALockState
+}
+
+extension AADoorLock: AAItem {
+
+    static var size: Int = 2
+
+
+    init?(bytes: [UInt8]) {
+        guard let location = AALocation(rawValue: bytes[0]),
+            let lock = AALockState(rawValue: bytes[1]) else {
+                return nil
+        }
+
+        self.location = location
+        self.lock = lock
+    }
+}
+
+extension AADoorLock: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [location.rawValue, lock.rawValue]
+    }
 }

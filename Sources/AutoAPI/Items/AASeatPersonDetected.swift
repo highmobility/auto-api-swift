@@ -19,42 +19,41 @@
 // licensing@high-mobility.com
 //
 //
-//  AASeat.swift
+//  AASeatPersonDetected.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 07/12/2017.
+//  Created by Mikk Rätsep on 02/11/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct AASeat {
+public struct AASeatPersonDetected {
 
-    public let personDetected: Bool
-    public let position: AASeatLocation
-    public let seatbeltFastened: Bool
+    public let detected: AADetectedState
+    public let location: AASeatLocation
 }
 
-extension AASeat: AAItem {
+extension AASeatPersonDetected: AAItem {
 
-    static var size: Int = 3
+    static var size: Int = 2
 
 
     init?(bytes: [UInt8]) {
-        guard let position = AASeatLocation(rawValue: bytes[0]) else {
-            return nil
+        guard let location = AASeatLocation(rawValue: bytes[0]),
+            let detected = AADetectedState(rawValue: bytes[1]) else {
+                return nil
         }
 
-        self.personDetected = bytes[1].bool
-        self.position = position
-        self.seatbeltFastened = bytes[2].bool
+        self.location = location
+        self.detected = detected
     }
 }
 
-extension AASeat: AAPropertyConvertable {
+extension AASeatPersonDetected: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
-        return [position.rawValue, personDetected.byte, seatbeltFastened.byte]
+        return [location.rawValue, detected.rawValue]
     }
 }

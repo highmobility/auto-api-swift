@@ -32,7 +32,7 @@ import Foundation
 public struct AADriverCard: Equatable {
 
     public let driverNumber: UInt8
-    public let present: AAPresentState
+    public let present: AAPresenceState
 }
 
 extension AADriverCard: AAItem {
@@ -41,7 +41,7 @@ extension AADriverCard: AAItem {
 
 
     init?(bytes: [UInt8]) {
-        guard let present = AAPresentState(rawValue: bytes[1]) else {
+        guard let present = AAPresenceState(rawValue: bytes[1]) else {
             return nil
         }
 
@@ -55,4 +55,3 @@ extension AADriverCard: AAPropertyConvertable {
         return [driverNumber, present.rawValue]
     }
 }
-
