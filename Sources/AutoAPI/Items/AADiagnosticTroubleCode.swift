@@ -45,7 +45,19 @@ extension AADiagnosticTroubleCode: AAItemDynamicSize {
     init?(bytes: [UInt8]) {
         let occurences = bytes[0]
         let idSize = bytes[1].int
+
+        // Need to check to prevent a crash
+        guard bytes.count >= (2 + idSize) else {
+            return nil
+        }
+
         let ecuIDSize = bytes[2 + idSize].int
+
+        // Need to check to prevent a crash
+        guard bytes.count >= (3 + idSize + ecuIDSize) else {
+            return nil
+        }
+
         let statusSize = bytes[3 + idSize + ecuIDSize].int
 
         // Check the byte count

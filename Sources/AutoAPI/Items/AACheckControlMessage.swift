@@ -46,6 +46,12 @@ extension AACheckControlMessage: AAItemDynamicSize {
         let id = UInt16(bytes[0...1])
         let remainingLength = UInt32(bytes[2...5])
         let textSize = UInt16(bytes[6...7]).int
+
+        // Need to check to prevent a crash
+        guard bytes.count >= (8 + textSize) else {
+            return nil
+        }
+
         let statusSize = bytes[8 + textSize].int
 
         // Check for enough bytes

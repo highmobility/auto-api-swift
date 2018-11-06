@@ -51,6 +51,12 @@ extension AAConditionBasedService: AABinaryInitable {
         let month = bytes[1].int
         let id = UInt16(bytes[2...3])
         let textSize = UInt16(bytes[5...6]).int
+
+        // Need to check to prevent a crash
+        guard bytes.count >= (8 + textSize) else {
+            return nil
+        }
+
         let descSize = UInt16(bytes[(7 + textSize) ... (8 + textSize)]).int
 
         guard let date = DateComponents(year: year, month: month).date,
