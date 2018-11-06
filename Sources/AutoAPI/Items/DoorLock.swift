@@ -29,13 +29,18 @@
 import Foundation
 
 
+public struct Door {
+
+    
+}
+
 public struct DoorLock: Item {
 
     public typealias Location = Position
 
 
     public let location: Location
-    public let lock: LockState  // TODO: I would prefer `public let isLocked: Bool`
+    public let lock: LockState
 
 
     // MARK: Item

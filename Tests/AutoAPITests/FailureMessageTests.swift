@@ -59,12 +59,12 @@ class FailureMessageTests: XCTestCase {
             0x54, 0x72, 0x79, 0x20, 0x61, 0x67, 0x61, 0x69, 0x6e // Try again
         ]
 
-        guard let failureMessage = AutoAPI.parseBinary(bytes) as? FailureMessage else {
+        guard let failureMessage = AAAutoAPI.parseBinary(bytes) as? AAFailureMessage else {
             return XCTFail("Parsed value is not FailureMessage")
         }
 
-        XCTAssertEqual(failureMessage.failedMessageIdentifier, TrunkAccess.identifier)
-        XCTAssertEqual(failureMessage.failedMessageType, TrunkAccess.MessageTypes.getTrunkState.rawValue)
+        XCTAssertEqual(failureMessage.failedMessageIdentifier, AATrunkAccess.identifier)
+        XCTAssertEqual(failureMessage.failedMessageType, AATrunkAccess.MessageTypes.getTrunkState.rawValue)
         XCTAssertEqual(failureMessage.failureReason, .unauthorised)
         XCTAssertEqual(failureMessage.failureDescription, "Try again")
     }

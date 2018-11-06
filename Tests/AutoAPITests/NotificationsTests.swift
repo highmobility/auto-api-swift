@@ -48,7 +48,7 @@ class NotificationsTests: XCTestCase {
             0x02        // Message Type for Clear Notification
         ]
 
-        guard let notifications = AutoAPI.parseBinary(bytes) as? Notifications else {
+        guard let notifications = AAAutoAPI.parseBinary(bytes) as? AANotifications else {
             return XCTFail("Parsed value is not Notifications")
         }
 
@@ -65,7 +65,7 @@ class NotificationsTests: XCTestCase {
             0x02        // Message Type for Clear Notification
         ]
 
-        XCTAssertEqual(Notifications.clearNotification, bytes)
+        XCTAssertEqual(AANotifications.clearNotification, bytes)
     }
 
     func testNotificationReceive() {
@@ -91,7 +91,7 @@ class NotificationsTests: XCTestCase {
             0x59, 0x65, 0x73    // Name is "Yes"
         ]
 
-        guard let notifications = AutoAPI.parseBinary(bytes) as? Notifications else {
+        guard let notifications = AAAutoAPI.parseBinary(bytes) as? AANotifications else {
             return XCTFail("Parsed value is not Notifications")
         }
 
@@ -141,11 +141,11 @@ class NotificationsTests: XCTestCase {
             0x59, 0x65, 0x73    // Name is "Yes"
         ]
 
-        let actionItem0 = ActionItem(identifier: 0x00, name: "No")
-        let actionItem1 = ActionItem(identifier: 0x01, name: "Yes")
-        let notification = Notifications.Notification(text: "Start navigation?", actionItems: [actionItem0, actionItem1])
+        let actionItem0 = AAActionItem(identifier: 0x00, name: "No")
+        let actionItem1 = AAActionItem(identifier: 0x01, name: "Yes")
+        let notification = AANotifications.Notification(text: "Start navigation?", actionItems: [actionItem0, actionItem1])
 
-        XCTAssertEqual(Notifications.notification(notification), bytes)
+        XCTAssertEqual(AANotifications.notification(notification), bytes)
     }
 
     func testNotificationActionReceive() {
@@ -156,7 +156,7 @@ class NotificationsTests: XCTestCase {
             0xfe  // Action Item identifier selected by user
         ]
 
-        guard let notifications = AutoAPI.parseBinary(bytes) as? Notifications else {
+        guard let notifications = AAAutoAPI.parseBinary(bytes) as? AANotifications else {
             return XCTFail("Parsed value is not Notifications")
         }
 
@@ -175,6 +175,6 @@ class NotificationsTests: XCTestCase {
             0xfe  // Action Item identifier selected by user
         ]
 
-        XCTAssertEqual(Notifications.notificationAction(0xFE), bytes)
+        XCTAssertEqual(AANotifications.notificationAction(0xFE), bytes)
     }
 }

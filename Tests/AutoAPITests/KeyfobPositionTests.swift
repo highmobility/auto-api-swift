@@ -44,7 +44,7 @@ class KeyfobPositionTests: XCTestCase {
             0x00        // Message Type for Get Keyfob Position
         ]
 
-        XCTAssertEqual(KeyfobPosition.getKeyfobPosition, bytes)
+        XCTAssertEqual(AAKeyfobPosition.getKeyfobPosition, bytes)
     }
 
     func testState() {
@@ -57,7 +57,7 @@ class KeyfobPositionTests: XCTestCase {
             0x05        // Keyfob is positioned inside the car
         ]
 
-        guard let keyfobPosition = AutoAPI.parseBinary(bytes) as? KeyfobPosition else {
+        guard let keyfobPosition = AAAutoAPI.parseBinary(bytes) as? AAKeyfobPosition else {
             return XCTFail("Parsed value is not KeyfobPosition")
         }
 

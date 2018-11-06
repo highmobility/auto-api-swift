@@ -29,7 +29,7 @@
 import Foundation
 
 
-extension Bool: PropertyConvertable {
+extension Bool: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         return [byte]

@@ -29,7 +29,7 @@
 import Foundation
 
 
-extension Int8: PropertyConvertable {
+extension Int8: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {
         return [UInt8(bitPattern: self)]

@@ -35,3 +35,11 @@ extension Collection where Element == UInt8 {
         return bytes.dropFirst(n).bytes
     }
 }
+
+extension Collection where Element == [UInt8]? {
+
+    /// - warning: This **blindly** expects the underlying *Collection* to contain *properties*.
+    var propertiesValuesCombined: [UInt8] {
+        return compactMap { $0 }.reduceToByteArray { $0 }
+    }
+}

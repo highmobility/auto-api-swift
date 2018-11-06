@@ -46,7 +46,7 @@ class ParkingTicketTests: XCTestCase {
             0x03        // Message Type for End Parking
         ]
 
-        XCTAssertEqual(ParkingTicket.endParking, bytes)
+        XCTAssertEqual(AAParkingTicket.endParking, bytes)
     }
 
     func testGetState() {
@@ -55,7 +55,7 @@ class ParkingTicketTests: XCTestCase {
             0x00        // Message Type for Get Parking Ticket
         ]
 
-        XCTAssertEqual(ParkingTicket.getParkingTicket, bytes)
+        XCTAssertEqual(AAParkingTicket.getParkingTicket, bytes)
     }
 
     func testStartParking() {
@@ -89,9 +89,9 @@ class ParkingTicketTests: XCTestCase {
         let name = "Berlin Parking"
         let ticketID = "64894233"
         let startTime = YearTime(year: 2017, month: 1, day: 10, hour: 17, minute: 34, second: 0, offset: 0)
-        let settings = ParkingTicket.Settings(operatorName: name, ticketID: ticketID, startTime: startTime, endTime: nil)
+        let settings = AAParkingTicket.Settings(operatorName: name, ticketID: ticketID, startTime: startTime, endTime: nil)
 
-        XCTAssertEqual(ParkingTicket.startParking(settings), bytes)
+        XCTAssertEqual(AAParkingTicket.startParking(settings), bytes)
     }
 
     func testState() {
@@ -134,7 +134,7 @@ class ParkingTicketTests: XCTestCase {
             0x00, 0x00  // 0min UTF time offset
         ]
 
-        guard let parkingTicket = AutoAPI.parseBinary(bytes) as? ParkingTicket else {
+        guard let parkingTicket = AAAutoAPI.parseBinary(bytes) as? AAParkingTicket else {
             return XCTFail("Parsed value is not ParkingTicket")
         }
 

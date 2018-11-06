@@ -50,7 +50,7 @@ class HomeChargerTests: XCTestCase {
             0x01    // Activate solar powered charging
         ]
 
-        XCTAssertEqual(HomeCharger.activateSolarCharging(true), bytes)
+        XCTAssertEqual(AAHomeCharger.activateSolarCharging(true), bytes)
     }
 
     func testEnableDisableWifiHotspot() {
@@ -61,7 +61,7 @@ class HomeChargerTests: XCTestCase {
             0x00    // Disable Wi-Fi Hotspot
         ]
 
-        XCTAssertEqual(HomeCharger.enableWifiHotspot(false), bytes)
+        XCTAssertEqual(AAHomeCharger.enableWifiHotspot(false), bytes)
     }
 
     func testGetState() {
@@ -70,7 +70,7 @@ class HomeChargerTests: XCTestCase {
             0x00        // Message Type for Get Home Charger State
         ]
 
-        XCTAssertEqual(HomeCharger.getHomeChargerState, bytes)
+        XCTAssertEqual(AAHomeCharger.getHomeChargerState, bytes)
     }
 
     func testSetChargeCurrent() {
@@ -81,7 +81,7 @@ class HomeChargerTests: XCTestCase {
             0x3f, 0x00, 0x00, 0x00  // Charger current (DC) 0.5
         ]
 
-        XCTAssertEqual(HomeCharger.setChargeCurrent(0.5), bytes)
+        XCTAssertEqual(AAHomeCharger.setChargeCurrent(0.5), bytes)
     }
 
     func testSetPriceTariffs() {
@@ -102,10 +102,10 @@ class HomeChargerTests: XCTestCase {
             0x3e, 0x99, 0x99, 0x9a  // 0.30
         ]
 
-        let tariff1 = HomeCharger.PriceTariff(type: .startingFee, currency: "EUR", price: 4.5)
-        let tariff2 = HomeCharger.PriceTariff(type: .per_kWh, currency: "EUR", price: 0.3)
+        let tariff1 = AAHomeCharger.PriceTariff(type: .startingFee, currency: "EUR", price: 4.5)
+        let tariff2 = AAHomeCharger.PriceTariff(type: .per_kWh, currency: "EUR", price: 0.3)
 
-        XCTAssertEqual(HomeCharger.setPriceTariffs([tariff1, tariff2]), bytes)
+        XCTAssertEqual(AAHomeCharger.setPriceTariffs([tariff1, tariff2]), bytes)
     }
 
     func testState() {
@@ -175,7 +175,7 @@ class HomeChargerTests: XCTestCase {
             0x3e, 0x99, 0x99, 0x9a  // 0.30
         ]
 
-        guard let homeCharger = AutoAPI.parseBinary(bytes) as? HomeCharger else {
+        guard let homeCharger = AAAutoAPI.parseBinary(bytes) as? AAHomeCharger else {
             return XCTFail("Parsed value is not HomeCharger")
         }
 

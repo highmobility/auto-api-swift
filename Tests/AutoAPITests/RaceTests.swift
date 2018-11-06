@@ -44,7 +44,7 @@ class RaceTests: XCTestCase {
             0x00        // Message Type for Get Race State
         ]
 
-        XCTAssertEqual(Race.getRaceState, bytes)
+        XCTAssertEqual(AARace.getRaceState, bytes)
     }
 
     func testState() {
@@ -128,7 +128,7 @@ class RaceTests: XCTestCase {
             0x01        // Accelerator pedal switch active, pedal fully depressed
         ]
 
-        guard let race = AutoAPI.parseBinary(bytes) as? Race else {
+        guard let race = AAAutoAPI.parseBinary(bytes) as? AARace else {
             return XCTFail("Parsed value is not Race")
         }
 

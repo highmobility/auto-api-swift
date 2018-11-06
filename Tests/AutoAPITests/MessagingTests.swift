@@ -53,9 +53,9 @@ class MessagingTests: XCTestCase {
             0x48, 0x65, 0x6c, 0x6c, 0x6f    // "Hello"
         ]
 
-        let message = Messaging.Message(senderHandle: "+1 555-555-555", text: "Hello")
+        let message = AAMessaging.Message(senderHandle: "+1 555-555-555", text: "Hello")
 
-        XCTAssertEqual(Messaging.messageReceived(message), bytes)
+        XCTAssertEqual(AAMessaging.messageReceived(message), bytes)
     }
 
     func testSendMessage() {
@@ -74,7 +74,7 @@ class MessagingTests: XCTestCase {
             0x79, 0x6f, 0x75, 0x20, 0x74, 0x6f, 0x6f    // "Hello you too"
         ]
 
-        guard let messaging = AutoAPI.parseBinary(bytes) as? Messaging else {
+        guard let messaging = AAAutoAPI.parseBinary(bytes) as? AAMessaging else {
             return XCTFail("Parsed value is not Messaging")
         }
 

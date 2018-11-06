@@ -46,7 +46,7 @@ class CapabilitiesTests: XCTestCase {
             0x00        // Message Type for Get Capabilities
         ]
 
-        XCTAssertEqual(Capabilities.getCapabilities, bytes)
+        XCTAssertEqual(AACapabilities.getCapabilities, bytes)
     }
 
     func testGetCapability() {
@@ -56,7 +56,7 @@ class CapabilitiesTests: XCTestCase {
             0x00, 0x29  // MSB, LSB Idenfitier for Heart Rate
         ]
 
-        XCTAssertEqual(Capabilities.getCapability(HeartRate.identifier), bytes)
+        XCTAssertEqual(AACapabilities.getCapability(AAHeartRate.identifier), bytes)
     }
 
     func testMultiple() {
@@ -147,7 +147,7 @@ class CapabilitiesTests: XCTestCase {
             0x02        // Set Navi Destination
         ]
 
-        guard let capabilities = AutoAPI.parseBinary(bytes) as? Capabilities else {
+        guard let capabilities = AAAutoAPI.parseBinary(bytes) as? AACapabilities else {
             return XCTFail("Parsed value is not Capabilities")
         }
 
@@ -156,88 +156,88 @@ class CapabilitiesTests: XCTestCase {
         XCTAssertEqual(all.count, 11)
 
         // DOOR LOCKS
-        if let capability = capabilities.first(where: { $0.command is DoorLocks.Type }) {
-            XCTAssertTrue(capability.supportsAllMessageTypes(for: DoorLocks.self))
+        if let capability = capabilities.first(where: { $0.command is AADoorLocks.Type }) {
+            XCTAssertTrue(capability.supportsAllMessageTypes(for: AADoorLocks.self))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for DoorLocks")
         }
 
         // TRUNK ACCESS
-        if let capability = capabilities.first(where: { $0.command is TrunkAccess.Type }) {
-            XCTAssertTrue(capability.supportsAllMessageTypes(for: TrunkAccess.self))
+        if let capability = capabilities.first(where: { $0.command is AATrunkAccess.Type }) {
+            XCTAssertTrue(capability.supportsAllMessageTypes(for: AATrunkAccess.self))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for TrunkAccess")
         }
 
         // CHARGING
-        if let capability = capabilities.first(where: { $0.command is Charging.Type }) {
-            XCTAssertTrue(capability.supports(Charging.MessageTypes.getChargeState, .chargeState, .startStopCharging, .setChargeLimit))
+        if let capability = capabilities.first(where: { $0.command is AACharging.Type }) {
+            XCTAssertTrue(capability.supports(AACharging.MessageTypes.getChargeState, .chargeState, .startStopCharging, .setChargeLimit))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for Charging")
         }
 
         // CLIMATE
-        if let capability = capabilities.first(where: { $0.command is Climate.Type }) {
-            XCTAssertTrue(capability.supportsAllMessageTypes(for: Climate.self))
+        if let capability = capabilities.first(where: { $0.command is AAClimate.Type }) {
+            XCTAssertTrue(capability.supportsAllMessageTypes(for: AAClimate.self))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for Climate")
         }
 
         // ROOFTOP CONTROL
-        if let capability = capabilities.first(where: { $0.command is RooftopControl.Type }) {
-            XCTAssertTrue(capability.supportsAllMessageTypes(for: RooftopControl.self))
+        if let capability = capabilities.first(where: { $0.command is AARooftopControl.Type }) {
+            XCTAssertTrue(capability.supportsAllMessageTypes(for: AARooftopControl.self))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for RooftopControl")
         }
 
         // HONK HORN, FLASH LIGHTS
-        if let capability = capabilities.first(where: { $0.command is HonkHornFlashFlights.Type }) {
-            XCTAssertTrue(capability.supportsAllMessageTypes(for: HonkHornFlashFlights.self))
+        if let capability = capabilities.first(where: { $0.command is AAHonkHornFlashFlights.Type }) {
+            XCTAssertTrue(capability.supportsAllMessageTypes(for: AAHonkHornFlashFlights.self))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for HonkHornFlashFlights")
         }
 
         // REMOTE CONTROL
-        if let capability = capabilities.first(where: { $0.command is RemoteControl.Type }) {
-            XCTAssertTrue(capability.supportsAllMessageTypes(for: RemoteControl.self))
+        if let capability = capabilities.first(where: { $0.command is AARemoteControl.Type }) {
+            XCTAssertTrue(capability.supportsAllMessageTypes(for: AARemoteControl.self))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for RemoteControl")
         }
 
         // VALET MODE
-        if let capability = capabilities.first(where: { $0.command is ValetMode.Type }) {
-            XCTAssertTrue(capability.supportsAllMessageTypes(for: ValetMode.self))
+        if let capability = capabilities.first(where: { $0.command is AAValetMode.Type }) {
+            XCTAssertTrue(capability.supportsAllMessageTypes(for: AAValetMode.self))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for ValetMode")
         }
 
         // HEART RATE
-        if let capability = capabilities.first(where: { $0.command is HeartRate.Type }) {
-            XCTAssertTrue(capability.supportsAllMessageTypes(for: HeartRate.self))
+        if let capability = capabilities.first(where: { $0.command is AAHeartRate.Type }) {
+            XCTAssertTrue(capability.supportsAllMessageTypes(for: AAHeartRate.self))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for HeartRate")
         }
 
         // VEHICLE LOCATION
-        if let capability = capabilities.first(where: { $0.command is VehicleLocation.Type }) {
-            XCTAssertTrue(capability.supportsAllMessageTypes(for: VehicleLocation.self))
+        if let capability = capabilities.first(where: { $0.command is AAVehicleLocation.Type }) {
+            XCTAssertTrue(capability.supportsAllMessageTypes(for: AAVehicleLocation.self))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for VehicleLocation")
         }
 
         // NAVI DESTINATION
-        if let capability = capabilities.first(where: { $0.command is NaviDestination.Type }) {
-            XCTAssertTrue(capability.supportsAllMessageTypes(for: NaviDestination.self))
+        if let capability = capabilities.first(where: { $0.command is AANaviDestination.Type }) {
+            XCTAssertTrue(capability.supportsAllMessageTypes(for: AANaviDestination.self))
         }
         else {
             XCTFail("Capabilities doesn't contain capability for NaviDestination")
@@ -257,13 +257,13 @@ class CapabilitiesTests: XCTestCase {
             0x02,       // Supports Open/Close Trunk
         ]
 
-        guard let capabilities = AutoAPI.parseBinary(bytes) as? Capabilities else {
+        guard let capabilities = AAAutoAPI.parseBinary(bytes) as? AACapabilities else {
             return XCTFail("Parsed value is not Capabilities")
         }
 
         XCTAssertEqual(capabilities.all.count, 1)
 
-        guard let trunkAccess = capabilities.first(where: { $0.command is TrunkAccess.Type }) else {
+        guard let trunkAccess = capabilities.first(where: { $0.command is AATrunkAccess.Type }) else {
             return XCTFail("Capabilities doesn't contain capability for TrunkAccess")
         }
 

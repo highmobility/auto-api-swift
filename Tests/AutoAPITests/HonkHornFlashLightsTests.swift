@@ -47,7 +47,7 @@ class HonkHornFlashLightsTests: XCTestCase {
             0x01        // Activate
         ]
 
-        XCTAssertEqual(HonkHornFlashFlights.activateEmergencyFlasher(true), bytes)
+        XCTAssertEqual(AAHonkHornFlashFlights.activateEmergencyFlasher(true), bytes)
     }
 
     func testGetState() {
@@ -56,7 +56,7 @@ class HonkHornFlashLightsTests: XCTestCase {
             0x00        // Message Type for Get Flashers State
         ]
 
-        XCTAssertEqual(HonkHornFlashFlights.getFlasherState, bytes)
+        XCTAssertEqual(AAHonkHornFlashFlights.getFlasherState, bytes)
     }
 
     func testHonkHornFlashLights() {
@@ -73,9 +73,9 @@ class HonkHornFlashLightsTests: XCTestCase {
             0x03        // Flash 3 times
         ]
 
-        let settings = HonkHornFlashFlights.Settings(honkHornSeconds: 0, flashLightsTimes: 3)
+        let settings = AAHonkHornFlashFlights.Settings(honkHornSeconds: 0, flashLightsTimes: 3)
 
-        XCTAssertEqual(HonkHornFlashFlights.honkHornFlashLights(settings), bytes)
+        XCTAssertEqual(AAHonkHornFlashFlights.honkHornFlashLights(settings), bytes)
     }
 
     func testState() {
@@ -88,7 +88,7 @@ class HonkHornFlashLightsTests: XCTestCase {
             0x02        // Left flasher active
         ]
 
-        guard let honkHornFlashLights = AutoAPI.parseBinary(bytes) as? HonkHornFlashFlights else {
+        guard let honkHornFlashLights = AAAutoAPI.parseBinary(bytes) as? AAHonkHornFlashFlights else {
             return XCTFail("Parsed value is not HonkHornFlashFlights")
         }
 

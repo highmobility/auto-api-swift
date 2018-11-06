@@ -44,7 +44,7 @@ class VehicleStatusTests: XCTestCase {
             0x00        // Message Type for Get Vehicle Status
         ]
 
-        XCTAssertEqual(VehicleStatus.getVehicleStatus, bytes)
+        XCTAssertEqual(AAVehicleStatus.getVehicleStatus, bytes)
     }
 
     func testState() {
@@ -133,7 +133,7 @@ class VehicleStatusTests: XCTestCase {
             0x02        // Remote Control Started
         ]
 
-        guard let vehicleStatus = AutoAPI.parseBinary(bytes) as? VehicleStatus else {
+        guard let vehicleStatus = AAAutoAPI.parseBinary(bytes) as? AAVehicleStatus else {
             return XCTFail("Parsed value is not VehicleStatus")
         }
 
@@ -158,7 +158,7 @@ class VehicleStatusTests: XCTestCase {
         XCTAssertEqual(states?.count, 2)
 
         // TRUNK ACCESS
-        if let trunkAccessState = states?.flatMapFirst({ $0 as? TrunkAccess }) {
+        if let trunkAccessState = states?.flatMapFirst({ $0 as? AATrunkAccess }) {
             XCTAssertEqual(trunkAccessState.lock, .unlocked)
             XCTAssertEqual(trunkAccessState.position, .open)
         }
@@ -167,7 +167,7 @@ class VehicleStatusTests: XCTestCase {
         }
 
         // REMOTE CONTROL
-        if let remoteControl = states?.flatMapFirst({ $0 as? RemoteControl }) {
+        if let remoteControl = states?.flatMapFirst({ $0 as? AARemoteControl }) {
             XCTAssertEqual(remoteControl.controlMode, .started)
         }
         else {

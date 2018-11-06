@@ -71,7 +71,7 @@ func main() {
         bytes.removeLast(32)
     }
 
-    guard let parsed = AutoAPI.parseBinary(bytes) else {
+    guard let parsed = AAAutoAPI.parseBinary(bytes) else {
         return print(" INVALID AUTOAPI DATA")
     }
 

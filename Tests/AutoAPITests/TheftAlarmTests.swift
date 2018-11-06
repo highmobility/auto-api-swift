@@ -45,7 +45,7 @@ class TheftAlarmTests: XCTestCase {
             0x00        // Message Type for Get Theft Alarm State
         ]
 
-        XCTAssertEqual(TheftAlarm.getTheftAlarmState, bytes)
+        XCTAssertEqual(AATheftAlarm.getTheftAlarmState, bytes)
     }
 
     func testSetTheftAlarm() {
@@ -56,7 +56,7 @@ class TheftAlarmTests: XCTestCase {
             0x02  // Trigger alarm
         ]
 
-        XCTAssertEqual(TheftAlarm.setTheftAlarm(.trigger), bytes)
+        XCTAssertEqual(AATheftAlarm.setTheftAlarm(.trigger), bytes)
     }
 
     func testState() {
@@ -69,7 +69,7 @@ class TheftAlarmTests: XCTestCase {
             0x01        // Theft alarm armed
         ]
 
-        guard let theftAlarm = AutoAPI.parseBinary(bytes) as? TheftAlarm else {
+        guard let theftAlarm = AAAutoAPI.parseBinary(bytes) as? AATheftAlarm else {
             return XCTFail("Parsed value is not TheftAlarm")
         }
 

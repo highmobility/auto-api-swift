@@ -53,6 +53,6 @@ class GraphicsTests: XCTestCase {
             return XCTFail("Failed to generate a URL")
         }
 
-        XCTAssertEqual(Graphics.displayImage(url), bytes)
+        XCTAssertEqual(AAGraphics.displayImage(url), bytes)
     }
 }

@@ -44,7 +44,7 @@ class VehicleTimeTests: XCTestCase {
             0x00        // Message Type for Get Vehicle Time
         ]
 
-        XCTAssertEqual(VehicleTime.getVehicleTime, bytes)
+        XCTAssertEqual(AAVehicleTime.getVehicleTime, bytes)
     }
 
     func testState() {
@@ -63,7 +63,7 @@ class VehicleTimeTests: XCTestCase {
             0xFF, 0x88  // -120 min UTC time offset
         ]
 
-        guard let vehicleTime = AutoAPI.parseBinary(bytes) as? VehicleTime else {
+        guard let vehicleTime = AAAutoAPI.parseBinary(bytes) as? AAVehicleTime else {
             return XCTFail("Parsed value is not VehicleTime")
         }
 

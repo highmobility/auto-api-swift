@@ -45,7 +45,7 @@ class NaviDestinationTests: XCTestCase {
             0x00        // Message Type for Get Navi Destination
         ]
 
-        XCTAssertEqual(NaviDestination.getNaviDestination, bytes)
+        XCTAssertEqual(AANaviDestination.getNaviDestination, bytes)
     }
 
     func testSetDestination() {
@@ -63,10 +63,10 @@ class NaviDestinationTests: XCTestCase {
             0x42, 0x65, 0x72, 0x6c, 0x69, 0x6e  // Berlin
         ]
 
-        let coordinate = Coordinate(latitude: 52.520008, longitude: 13.404954)
-        let destination = NaviDestination.Destination(coordinate: coordinate, name: "Berlin")
+        let coordinate = AACoordinatea(latitude: 52.520008, longitude: 13.404954)
+        let destination = AANaviDestination.Destination(coordinate: coordinate, name: "Berlin")
 
-        XCTAssertEqual(NaviDestination.setDestination(destination), bytes)
+        XCTAssertEqual(AANaviDestination.setDestination(destination), bytes)
     }
 
     func testState() {
@@ -84,7 +84,7 @@ class NaviDestinationTests: XCTestCase {
             0x42, 0x65, 0x72, 0x6c, 0x69, 0x6e  // Berlin
         ]
 
-        guard let naviDestination = AutoAPI.parseBinary(bytes) as? NaviDestination else {
+        guard let naviDestination = AAAutoAPI.parseBinary(bytes) as? AANaviDestination else {
             return XCTFail("Parsed value is not NaviDestination")
         }
 

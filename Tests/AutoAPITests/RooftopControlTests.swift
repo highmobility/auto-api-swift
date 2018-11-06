@@ -45,7 +45,7 @@ class RooftopControlTests: XCTestCase {
             0x00        // Message Type for Get Rooftop State
         ]
 
-        XCTAssertEqual(RooftopControl.getRooftopState, bytes)
+        XCTAssertEqual(AARooftopControl.getRooftopState, bytes)
     }
 
     func testControlRooftop() {
@@ -62,9 +62,9 @@ class RooftopControlTests: XCTestCase {
             0x00        // Close Rooftop
         ]
 
-        let control = RooftopControl.Control(dimming: 0, openClose: 0)
+        let control = AARooftopControl.Control(dimming: 0, openClose: 0)
 
-        XCTAssertEqual(RooftopControl.controlRooftop(control), bytes)
+        XCTAssertEqual(AARooftopControl.controlRooftop(control), bytes)
     }
 
     func testState() {
@@ -81,7 +81,7 @@ class RooftopControlTests: XCTestCase {
             0x00        // Rooftop is fully closed
         ]
 
-        guard let rooftopControl = AutoAPI.parseBinary(bytes) as? RooftopControl else {
+        guard let rooftopControl = AAAutoAPI.parseBinary(bytes) as? AARooftopControl else {
             return XCTFail("Parsed value is not RooftopControl")
         }
 

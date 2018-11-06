@@ -45,7 +45,7 @@ class EngineTests: XCTestCase {
             0x00        // Message Type for Get Ignition State
         ]
 
-        XCTAssertEqual(Engine.getIgnitionState, bytes)
+        XCTAssertEqual(AAEngine.getIgnitionState, bytes)
     }
 
     func testState() {
@@ -62,7 +62,7 @@ class EngineTests: XCTestCase {
             0x01        // Ignition state is powering on accessories such as radio
         ]
 
-        guard let engine = AutoAPI.parseBinary(bytes) as? Engine else {
+        guard let engine = AAAutoAPI.parseBinary(bytes) as? AAEngine else {
             return XCTFail("Parsed value is not Engine")
         }
 
@@ -77,6 +77,6 @@ class EngineTests: XCTestCase {
             0x01        // Engine On
         ]
 
-        XCTAssertEqual(Engine.turnIgnitionOn(true), bytes)
+        XCTAssertEqual(AAEngine.turnIgnitionOn(true), bytes)
     }
 }

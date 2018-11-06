@@ -63,9 +63,9 @@ class LightsTests: XCTestCase {
             0x00        // No blue ambient light
         ]
 
-        let control = Lights.Control(frontExterior: .activeFullBeam, isRearExteriorActive: false, isInteriorActive: false, ambientColour: Colour(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0))
+        let control = AALights.Control(frontExterior: .activeFullBeam, isRearExteriorActive: false, isInteriorActive: false, ambientColour: AAColour(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0))
 
-        XCTAssertEqual(Lights.controlLights(control), bytes)
+        XCTAssertEqual(AALights.controlLights(control), bytes)
     }
 
     func testGetState() {
@@ -74,7 +74,7 @@ class LightsTests: XCTestCase {
             0x00        // Message Type for Get Lights State
         ]
 
-        XCTAssertEqual(Lights.getLightsState, bytes)
+        XCTAssertEqual(AALights.getLightsState, bytes)
     }
 
     func testState() {
@@ -109,14 +109,14 @@ class LightsTests: XCTestCase {
             0x00        // Emergency brake lights are inactive
         ]
 
-        guard let lights = AutoAPI.parseBinary(bytes) as? Lights else {
+        guard let lights = AAAutoAPI.parseBinary(bytes) as? AALights else {
             return XCTFail("Parsed value is not Lights")
         }
 
         XCTAssertEqual(lights.frontExterior, .activeFullBeam)
         XCTAssertEqual(lights.isRearExteriorActive, true)
         XCTAssertEqual(lights.isInteriorActive, false)
-        XCTAssertEqual(lights.ambientColour, Colour(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0))
+        XCTAssertEqual(lights.ambientColour, AAColour(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0))
         XCTAssertEqual(lights.isReverseActive, false)
         XCTAssertEqual(lights.isEmergencyBrakeActive, false)
     }

@@ -49,7 +49,7 @@ class ClimateTests: XCTestCase {
             0x00        // Message Type for Get Climate State
         ]
 
-        XCTAssertEqual(Climate.getClimateState, bytes)
+        XCTAssertEqual(AAClimate.getClimateState, bytes)
     }
 
     func testSetClimateProfile() {
@@ -78,12 +78,12 @@ class ClimateTests: XCTestCase {
             0x41, 0xac, 0x00, 0x00  // Passenger temperature setting 21.5C
         ]
 
-        let sevenThirty = DayTime(hour: 7, minute: 30)
-        let weekdays = WeekdaysTimes(monday: DayTime.zero, tuesday: DayTime.zero, wednesday: DayTime.zero, thursday: DayTime.zero, friday: DayTime.zero, saturday: sevenThirty, sunday: sevenThirty)
-        let climateProfile = ClimateProfile(activatedDays: [.saturday, .sunday], weekdaysStartingTimes: weekdays)
-        let settings = Climate.Settings(climateProfile: climateProfile, driverTemp: 21.5, passengerTemp: 21.5)
+        let sevenThirty = AATime(hour: 7, minute: 30)
+        let weekdays = AAWeekdaysStartingTimes(monday: AATime.zero, tuesday: AATime.zero, wednesday: AATime.zero, thursday: AATime.zero, friday: AATime.zero, saturday: sevenThirty, sunday: sevenThirty)
+        let climateProfile = AAClimateProfile(activatedDays: [.saturday, .sunday], weekdaysStartingTimes: weekdays)
+        let settings = AAClimate.ClimateSettings(climateProfile: climateProfile, driverTemp: 21.5, passengerTemp: 21.5)
 
-        XCTAssertEqual(Climate.setClimateProfile(settings), bytes)
+        XCTAssertEqual(AAClimate.setClimateProfile(settings), bytes)
     }
 
     func testStartStopDefogging() {
@@ -93,7 +93,7 @@ class ClimateTests: XCTestCase {
             0x01        // Activate
         ]
 
-        XCTAssertEqual(Climate.startDefogging(true), bytes)
+        XCTAssertEqual(AAClimate.startDefogging(true), bytes)
     }
 
     func testStartStopDefrosting() {
@@ -103,7 +103,7 @@ class ClimateTests: XCTestCase {
             0x01        // Activate
         ]
 
-        XCTAssertEqual(Climate.startDefrosting(true), bytes)
+        XCTAssertEqual(AAClimate.startDefrosting(true), bytes)
     }
 
     func testStartStopHVAC() {
@@ -113,7 +113,7 @@ class ClimateTests: XCTestCase {
             0x01        // Activate
         ]
 
-        XCTAssertEqual(Climate.startHVAC(true), bytes)
+        XCTAssertEqual(AAClimate.startHVAC(true), bytes)
     }
 
     func testStartStopIonising() {
@@ -123,7 +123,7 @@ class ClimateTests: XCTestCase {
             0x01        // Activate
         ]
 
-        XCTAssertEqual(Climate.startIonising(true), bytes)
+        XCTAssertEqual(AAClimate.startIonising(true), bytes)
     }
 
     func testState() {
@@ -181,7 +181,7 @@ class ClimateTests: XCTestCase {
             0x07, 0x1E  // Sunday set to 07:30
         ]
 
-        guard let climate = AutoAPI.parseBinary(bytes) as? Climate else {
+        guard let climate = AAAutoAPI.parseBinary(bytes) as? AAClimate else {
             return XCTFail("Parsed value is not Climate")
         }
 

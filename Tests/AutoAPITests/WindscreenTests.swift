@@ -45,7 +45,7 @@ class WindscreenTests: XCTestCase {
             0x00        // Message Type for Get Windscreen State
         ]
 
-        XCTAssertEqual(Windscreen.getWindscreenState, bytes)
+        XCTAssertEqual(AAWindscreen.getWindscreenState, bytes)
     }
 
     func testSetWindscreenDamage() {
@@ -66,7 +66,7 @@ class WindscreenTests: XCTestCase {
             0x01        // No replacement needed
         ]
 
-        XCTAssertEqual(Windscreen.setWindscreenDamage(.init(damage: .impactButNoDamageDetected, zone: .matrix(0x23), needsReplacement: .noReplacementNeeded)), bytes)
+        XCTAssertEqual(AAWindscreen.setWindscreenDamage(.init(damage: .impactButNoDamageDetected, zone: .matrix(0x23), needsReplacement: .noReplacementNeeded)), bytes)
     }
 
     func testState() {
@@ -113,7 +113,7 @@ class WindscreenTests: XCTestCase {
             0x00, 0x78  // 0 min UTC time offset
         ]
 
-        guard let windscreen = AutoAPI.parseBinary(bytes) as? Windscreen else {
+        guard let windscreen = AAAutoAPI.parseBinary(bytes) as? AAWindscreen else {
             return XCTFail("Parsed value is not Windscreen")
         }
 

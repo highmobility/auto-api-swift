@@ -62,7 +62,7 @@ class PropertiesTests: XCTestCase {
             0xC7, 0xF7, 0xD7, 0x9A, 0x32, 0x20, 0x99, 0xE6  // Car signature
         ]
 
-        guard let propertiesCapable = AutoAPI.parseBinary(bytes) as? PropertiesCapable else {
+        guard let propertiesCapable = AAAutoAPI.parseBinary(bytes) as? AAPropertiesCapable else {
             return XCTFail("Parsed value is not PropertiesCapable")
         }
 
@@ -94,7 +94,7 @@ class PropertiesTests: XCTestCase {
             0x32, 0x42, 0x44, 0x43, 0x37, 0x43, 0x48, 0x34, 0x36    // Nonce
         ]
 
-        guard let propertiesCapable = AutoAPI.parseBinary(bytes) as? PropertiesCapable else {
+        guard let propertiesCapable = AAAutoAPI.parseBinary(bytes) as? AAPropertiesCapable else {
             return XCTFail("Parsed value is not PropertiesCapable")
         }
 
@@ -125,7 +125,7 @@ class PropertiesTests: XCTestCase {
             0x00, 0x00  // 0min UTF time offset
         ]
 
-        guard let propertiesCapable = AutoAPI.parseBinary(bytes) as? PropertiesCapable else {
+        guard let propertiesCapable = AAAutoAPI.parseBinary(bytes) as? AAPropertiesCapable else {
             return XCTFail("Parsed value is not PropertiesCapable")
         }
 

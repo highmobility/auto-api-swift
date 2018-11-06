@@ -45,7 +45,7 @@ class WindowsTests: XCTestCase {
             0x00        // Message Type for Get Windows State
         ]
 
-        XCTAssertEqual(Windows.getWindowsState, bytes)
+        XCTAssertEqual(AAWindows.getWindowsState, bytes)
     }
 
     func testOpenClose() {
@@ -64,10 +64,10 @@ class WindowsTests: XCTestCase {
             0x01        // To be opened
         ]
 
-        let frontLeft = Window(openClosed: .opened, position: .frontLeft)
-        let frontRight = Window(openClosed: .opened, position: .frontRight)
+        let frontLeft = AAWindow(openClosed: .open, position: .frontLeft)
+        let frontRight = AAWindow(openClosed: .open, position: .frontRight)
 
-        XCTAssertEqual(Windows.openClose([frontLeft, frontRight]), bytes)
+        XCTAssertEqual(AAWindows.openClose([frontLeft, frontRight]), bytes)
     }
 
     func testState() {
@@ -96,7 +96,7 @@ class WindowsTests: XCTestCase {
             0x00        // Window closed
         ]
 
-        guard let windows = AutoAPI.parseBinary(bytes) as? Windows else {
+        guard let windows = AAAutoAPI.parseBinary(bytes) as? AAWindows else {
             return XCTFail("Parsed value is not Windows")
         }
 

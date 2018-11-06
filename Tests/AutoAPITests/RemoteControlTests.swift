@@ -55,9 +55,9 @@ class RemoteControlTests: XCTestCase {
             0x00, 0x32  // Angle 50 degrees
         ]
 
-        let control = RemoteControl.Control(speed: 3, angle: 50)
+        let control = AARemoteControl.Control(speed: 3, angle: 50)
 
-        XCTAssertEqual(RemoteControl.controlCommand(control), bytes)
+        XCTAssertEqual(AARemoteControl.controlCommand(control), bytes)
     }
 
     func testGetState() {
@@ -66,7 +66,7 @@ class RemoteControlTests: XCTestCase {
             0x00        // Message Type for Get Control Mode
         ]
 
-        XCTAssertEqual(RemoteControl.getControlMode, bytes)
+        XCTAssertEqual(AARemoteControl.getControlMode, bytes)
     }
 
     func testStartControlMode() {
@@ -75,7 +75,7 @@ class RemoteControlTests: XCTestCase {
             0x02        // Message Type for Start Control Mode
         ]
 
-        XCTAssertEqual(RemoteControl.startControlMode, bytes)
+        XCTAssertEqual(AARemoteControl.startControlMode, bytes)
     }
 
     func testState() {
@@ -92,7 +92,7 @@ class RemoteControlTests: XCTestCase {
             0x00, 0x32  // Angle 50 degrees
         ]
 
-        guard let remoteControl = AutoAPI.parseBinary(bytes) as? RemoteControl else {
+        guard let remoteControl = AAAutoAPI.parseBinary(bytes) as? AARemoteControl else {
             return XCTFail("Parsed value is not RemoteControl")
         }
 
@@ -106,6 +106,6 @@ class RemoteControlTests: XCTestCase {
             0x03        // Message Type for Stop Control Mode
         ]
 
-        XCTAssertEqual(RemoteControl.stopControlMode, bytes)
+        XCTAssertEqual(AARemoteControl.stopControlMode, bytes)
     }
 }

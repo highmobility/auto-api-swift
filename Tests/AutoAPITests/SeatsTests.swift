@@ -44,7 +44,7 @@ class SeatsTests: XCTestCase {
             0x00        // Message Type for Get Seats State
         ]
 
-        XCTAssertEqual(Seats.getSeatsState, bytes)
+        XCTAssertEqual(AASeats.getSeatsState, bytes)
     }
 
     func testState() {
@@ -65,7 +65,7 @@ class SeatsTests: XCTestCase {
             0x00        // Seatbelt not fastened
         ]
 
-        guard let seats = AutoAPI.parseBinary(bytes) as? Seats else {
+        guard let seats = AAAutoAPI.parseBinary(bytes) as? AASeats else {
             return XCTFail("Parsed value is not Seats")
         }
 

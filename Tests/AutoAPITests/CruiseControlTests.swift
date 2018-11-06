@@ -53,9 +53,9 @@ class CruiseControlTests: XCTestCase {
             0x00, 0x3C  // Set target speed to 60 km/h
         ]
 
-        let control = CruiseControl.Control(isActive: true, targetSpeed: 60)
+        let control = AACruiseControl.Control(isActive: true, targetSpeed: 60)
 
-        XCTAssertEqual(CruiseControl.activateCruiseControl(control), bytes)
+        XCTAssertEqual(AACruiseControl.activateCruiseControl(control), bytes)
     }
 
     func testGetState() {
@@ -64,7 +64,7 @@ class CruiseControlTests: XCTestCase {
             0x00        // Message Type for Get Cruise Control State
         ]
 
-        XCTAssertEqual(CruiseControl.getCruiseControlState, bytes)
+        XCTAssertEqual(AACruiseControl.getCruiseControlState, bytes)
     }
 
     func testState() {
@@ -93,7 +93,7 @@ class CruiseControlTests: XCTestCase {
             0x00, 0x3C  // The Adaptive Cruise Control target speed is set to 60km/h
         ]
 
-        guard let cruiseControl = AutoAPI.parseBinary(bytes) as? CruiseControl else {
+        guard let cruiseControl = AAAutoAPI.parseBinary(bytes) as? AACruiseControl else {
             return XCTFail("Parsed value is not CruiseControl")
         }
 
