@@ -59,7 +59,7 @@ extension AAConditionBasedService: AABinaryInitable {
 
         let descSize = UInt16(bytes[(7 + textSize) ... (8 + textSize)]).int
 
-        guard let date = DateComponents(year: year, month: month).date,
+        guard let date = DateComponents(calendar: Calendar.current, year: year, month: month).date,
             let status = AADueStatus(rawValue: bytes[4]) else {
                 return nil
         }

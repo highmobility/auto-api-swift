@@ -60,7 +60,7 @@ public struct AAProperties: Sequence, AAPropertiesCapable, AAPropertiesTimestamp
     }
 
 
-    private let bytes: [UInt8]
+    let bytes: [UInt8]
 
 
     // MARK: Sequence

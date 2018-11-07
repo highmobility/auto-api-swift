@@ -39,12 +39,12 @@ public struct AACheckControlMessage {
 
 extension AACheckControlMessage: AAItemDynamicSize {
 
-    static var greaterOrEqualSize: Int = 10
+    static var greaterOrEqualSize: Int = 9
 
 
     init?(bytes: [UInt8]) {
         let id = UInt16(bytes[0...1])
-        let remainingLength = UInt32(bytes[2...5])
+        let remainingMinutes = UInt32(bytes[2...5])
         let textSize = UInt16(bytes[6...7]).int
 
         // Need to check to prevent a crash
@@ -55,7 +55,7 @@ extension AACheckControlMessage: AAItemDynamicSize {
         let statusSize = bytes[8 + textSize].int
 
         // Check for enough bytes
-        guard bytes.count == (10 + textSize + statusSize) else {
+        guard bytes.count == (9 + textSize + statusSize) else {
             return nil
         }
 
@@ -70,7 +70,7 @@ extension AACheckControlMessage: AAItemDynamicSize {
 
         // Set the iVars
         self.id = id
-        self.remainingMinutes = remainingLength
+        self.remainingMinutes = remainingMinutes
         self.status = status
         self.text = text
     }
