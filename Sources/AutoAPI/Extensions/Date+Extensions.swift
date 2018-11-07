@@ -43,14 +43,17 @@ extension Date: AAItem {
         let second = bytes[5].int
         let offset = Int(Int16(bytes[6...7]))
 
-        guard let convertedDate = DateComponents(timeZone: TimeZone(secondsFromGMT: offset * 60),
-                                                 year: year,
-                                                 month: month,
-                                                 day: day,
-                                                 hour: hour,
-                                                 minute: minute,
-                                                 second: second).date else {
-                                                    return nil
+        let dateComponents = DateComponents(calendar: Calendar.current,
+                                            timeZone: TimeZone(secondsFromGMT: offset * 60),
+                                            year: year,
+                                            month: month,
+                                            day: day,
+                                            hour: hour,
+                                            minute: minute,
+                                            second: second)
+
+        guard let convertedDate = dateComponents.date else {
+            return nil
         }
 
         self = convertedDate
