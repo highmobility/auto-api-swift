@@ -50,6 +50,7 @@ public struct AADiagnostics: AAFullStandardCommand {
     public let fuelLevel: AAPercentageInt?
     public let fuelVolume: Float?
     public let mileage: UInt32?
+    public let mileageMeters: Double?
     public let speed: Int16?
     public let tirePressures: [AATirePressure]?
     public let tireTemperatures: [AATireTemperature]?
@@ -97,6 +98,7 @@ public struct AADiagnostics: AAFullStandardCommand {
         tireTemperatures = properties.flatMap(for: \AADiagnostics.tireTemperatures) { AATireTemperature($0.value) }
         wheelRPMs = properties.flatMap(for: \AADiagnostics.wheelRPMs) { AAWheelRPM($0.value) }
         troubleCodes = properties.flatMap(for: \AADiagnostics.troubleCodes) { AADiagnosticTroubleCode($0.value) }
+        mileageMeters = properties.value(for: \AADiagnostics.mileageMeters)
 
         // Properties
         self.properties = properties
@@ -170,6 +172,7 @@ extension AADiagnostics: AAPropertyIdentifierGettable {
         case \AADiagnostics.tireTemperatures:       return 0x1B
         case \AADiagnostics.wheelRPMs:              return 0x1C
         case \AADiagnostics.troubleCodes:           return 0x1D
+        case \AADiagnostics.mileageMeters:          return 0x1E
 
         default:
             return 0x00
