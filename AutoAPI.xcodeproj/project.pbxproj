@@ -45,6 +45,7 @@
 		20DB154E2097265400A1658B /* DriverCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB154D2097265400A1658B /* DriverCard.swift */; };
 		20DB1550209727C700A1658B /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB154F209727C700A1658B /* Direction.swift */; };
 		20DB15522097286200A1658B /* TachographTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15512097286200A1658B /* TachographTests.swift */; };
+		20F805C9219C15980046C110 /* MultiCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F805C8219C15980046C110 /* MultiCommand.swift */; };
 		OBJ_251 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_169 /* Misc.swift */; };
 		OBJ_252 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_170 /* main.swift */; };
 		OBJ_254 /* AutoAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "AutoAPI::AutoAPI::Product" /* AutoAPI.framework */; };
@@ -301,6 +302,7 @@
 		20DB154D2097265400A1658B /* DriverCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverCard.swift; sourceTree = "<group>"; };
 		20DB154F209727C700A1658B /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		20DB15512097286200A1658B /* TachographTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TachographTests.swift; sourceTree = "<group>"; };
+		20F805C8219C15980046C110 /* MultiCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiCommand.swift; sourceTree = "<group>"; };
 		"AutoAPI::AutoAPI::Product" /* AutoAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AutoAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"AutoAPI::AutoAPICLT::Product" /* AutoAPICLT */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = AutoAPICLT; sourceTree = BUILT_PRODUCTS_DIR; };
 		"AutoAPI::AutoAPITests::Product" /* AutoAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = AutoAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -424,7 +426,7 @@
 		OBJ_225 /* SignedInteger+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignedInteger+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_226 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_227 /* UInt8Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt8Collection+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_228 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = ".build/checkouts/hm-utilities-swift--8723717934086454081/Package.swift"; sourceTree = "<group>"; };
+		OBJ_228 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = ".build/checkouts/hm-utilities-swift-1099862621387175478/Package.swift"; sourceTree = "<group>"; };
 		OBJ_23 /* Lights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lights.swift; sourceTree = "<group>"; };
 		OBJ_24 /* RooftopControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RooftopControl.swift; sourceTree = "<group>"; };
 		OBJ_25 /* Seats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seats.swift; sourceTree = "<group>"; };
@@ -665,6 +667,7 @@
 				OBJ_56 /* Parking */,
 				OBJ_63 /* PointsOfInterest */,
 				OBJ_67 /* Protocols */,
+				20F805C8219C15980046C110 /* MultiCommand.swift */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -810,7 +813,7 @@
 				OBJ_227 /* UInt8Collection+Extensions.swift */,
 			);
 			name = HMUtilities;
-			path = ".build/checkouts/hm-utilities-swift--8723717934086454081/Sources/HMUtilities";
+			path = ".build/checkouts/hm-utilities-swift-1099862621387175478/Sources/HMUtilities";
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_229 /* Products */ = {
@@ -1329,6 +1332,7 @@
 				OBJ_427 /* SpringRate.swift in Sources */,
 				OBJ_428 /* ActivatedDays.swift in Sources */,
 				OBJ_429 /* ClimateProfile.swift in Sources */,
+				20F805C9219C15980046C110 /* MultiCommand.swift in Sources */,
 				OBJ_430 /* DayTime.swift in Sources */,
 				OBJ_431 /* WeekdaysTimes.swift in Sources */,
 				OBJ_432 /* Colour.swift in Sources */,

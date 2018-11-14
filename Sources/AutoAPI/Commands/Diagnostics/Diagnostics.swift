@@ -51,6 +51,7 @@ public struct Diagnostics: FullStandardCommand {
     public let fuelVolume: Float?
     public let isABSActive: Bool?
     public let mileage: UInt32?
+    public let mileageMeters: Float?
     public let speed: Int16?
     public let tires: [Tire]?
     public let washerFluidLevel: FluidLevel?
@@ -88,6 +89,7 @@ public struct Diagnostics: FullStandardCommand {
         engineTorque = properties.value(for: 0x15)
         engineLoad = properties.value(for: 0x16)
         wheelBasedSpeed = properties.value(for: 0x17)
+        mileageMeters = properties.value(for: 0x1E)
 
         // Properties
         self.properties = properties
