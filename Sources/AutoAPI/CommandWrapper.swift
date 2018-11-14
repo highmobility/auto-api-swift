@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  MultiCommand.swift
+//  CommandWrapper.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 14/11/2018.
@@ -27,36 +27,16 @@
 //
 
 import Foundation
-import HMUtilities
 
 
-public struct MultiCommand: OutboundCommand {
+struct CommandWrapper {
 
+    let value: [UInt8]
 }
 
-extension MultiCommand: Identifiable {
+extension CommandWrapper: PropertyConvertable {
 
-    public static var identifier: Identifier = 0x0013
-}
-
-extension MultiCommand: MessageTypesGettable {
-
-    public enum MessageTypes: UInt8, MessageTypesKind {
-
-        case send = 0x02
-
-
-        public static var all: [MultiCommand.MessageTypes] {
-            return [self.send]
-        }
-    }
-}
-
-public extension MultiCommand {
-
-    static func combined(_ commands: [UInt8]...) -> [UInt8] {
-        let wrappedCommands = commands.map { CommandWrapper(value: $0) }
-
-        return commandPrefix(for: .send) + wrappedCommands.flatMap { $0.propertyBytes(0x01) }
+    var propertyValue: [UInt8] {
+        return value
     }
 }

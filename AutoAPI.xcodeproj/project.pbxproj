@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2033CAB4219C56D7006489F2 /* CommandWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2033CAB3219C56D7006489F2 /* CommandWrapper.swift */; };
 		205C5169208F154900B55ACE /* PropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5168208F154900B55ACE /* PropertiesTests.swift */; };
 		205C516B208F26CE00B55ACE /* DashboardLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C516A208F26CE00B55ACE /* DashboardLights.swift */; };
 		205C516D208F28FF00B55ACE /* DashboardLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C516C208F28FF00B55ACE /* DashboardLight.swift */; };
@@ -276,6 +277,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2033CAB3219C56D7006489F2 /* CommandWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandWrapper.swift; sourceTree = "<group>"; };
 		205C5168208F154900B55ACE /* PropertiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesTests.swift; sourceTree = "<group>"; };
 		205C516A208F26CE00B55ACE /* DashboardLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLights.swift; sourceTree = "<group>"; };
 		205C516C208F28FF00B55ACE /* DashboardLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardLight.swift; sourceTree = "<group>"; };
@@ -664,10 +666,10 @@
 				OBJ_51 /* Health */,
 				20DB153E20970F3700A1658B /* HeavyDuty */,
 				OBJ_54 /* Infrastructure */,
+				20F805C8219C15980046C110 /* MultiCommand.swift */,
 				OBJ_56 /* Parking */,
 				OBJ_63 /* PointsOfInterest */,
 				OBJ_67 /* Protocols */,
-				20F805C8219C15980046C110 /* MultiCommand.swift */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -1002,6 +1004,7 @@
 				OBJ_10 /* BinaryInitable.swift */,
 				OBJ_11 /* Capability */,
 				OBJ_15 /* CarSDKVersion.swift */,
+				2033CAB3219C56D7006489F2 /* CommandWrapper.swift */,
 				OBJ_16 /* Commands */,
 				OBJ_75 /* Enums */,
 				OBJ_112 /* Extensions */,
@@ -1250,6 +1253,7 @@
 				OBJ_350 /* TextInput.swift in Sources */,
 				OBJ_351 /* VideoHandover.swift in Sources */,
 				OBJ_352 /* WiFi.swift in Sources */,
+				2033CAB4219C56D7006489F2 /* CommandWrapper.swift in Sources */,
 				OBJ_353 /* DriverFatigue.swift in Sources */,
 				OBJ_354 /* HeartRate.swift in Sources */,
 				OBJ_355 /* HomeCharger.swift in Sources */,
