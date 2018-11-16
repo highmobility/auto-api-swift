@@ -119,11 +119,13 @@ public extension AARooftopControl {
     static func controlRooftop(dimming: AAPercentageInt?,
                                open: AAPercentageInt?,
                                convertibleRoof: AAConvertibleRoofState?,
-                               sunroofTilt: AATiltState?) -> [UInt8] {
+                               sunroofTilt: AATiltState?,
+                               sunroofState: AAPositionState?) -> [UInt8] {
         return commandPrefix(for: .controlRooftop) + [dimming?.propertyBytes(0x01),
                                                       open?.propertyBytes(0x02),
                                                       convertibleRoof?.propertyBytes(0x03),
-                                                      sunroofTilt?.propertyBytes(0x04)].propertiesValuesCombined
+                                                      sunroofTilt?.propertyBytes(0x04),
+                                                      sunroofState?.propertyBytes(0x05)].propertiesValuesCombined
     }
 }
 
