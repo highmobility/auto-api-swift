@@ -43,7 +43,7 @@ public struct AATrunkAccess: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         lock = AALockState(properties: properties, keyPath: \AATrunkAccess.lock)
-        position = AAPositionState(properties: properties, keyPath: \AATrunkAccess.position)
+        position = properties.value(for: \AATrunkAccess.position)
 
         // Properties
         self.properties = properties

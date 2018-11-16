@@ -35,6 +35,7 @@ public struct AARooftopControl: AAFullStandardCommand {
     public let dimming: AAPercentageInt?
     public let position: AAPercentageInt?
     public let sunroofTiltState: AATiltState?
+    public let sunroofState: AAPositionState?
 
 
     // MARK: AAFullStandardCommand
@@ -49,6 +50,7 @@ public struct AARooftopControl: AAFullStandardCommand {
         /* Level 8 */
         convertibleRoofState = AAConvertibleRoofState(properties: properties, keyPath: \AARooftopControl.convertibleRoofState)
         sunroofTiltState = AATiltState(properties: properties, keyPath: \AARooftopControl.sunroofTiltState)
+        sunroofState = properties.value(for: \AARooftopControl.sunroofState)
 
         // Properties
         self.properties = properties
@@ -97,6 +99,7 @@ extension AARooftopControl: AAPropertyIdentifierGettable {
             /* Level 8 */
         case \AARooftopControl.convertibleRoofState:    return 0x03
         case \AARooftopControl.sunroofTiltState:        return 0x04
+        case \AARooftopControl.sunroofState:            return 0x05
 
         default:
             return 0x00

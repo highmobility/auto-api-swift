@@ -40,7 +40,7 @@ public struct AAHood: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        position = AAPositionState(properties: properties, keyPath: \AAHood.position)
+        position = properties.value(for: \AAHood.position)
 
         // Properties
         self.properties = properties

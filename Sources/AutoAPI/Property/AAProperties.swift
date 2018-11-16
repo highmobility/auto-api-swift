@@ -120,6 +120,9 @@ extension AAProperties {
         case is AAFluidLevel.Type:
             return AAFluidLevel(rawValue: firstByte) as? ReturnType
 
+        case is AAPositionState.Type:
+            return AAPositionState(rawValue: firstByte) as? ReturnType
+
         case is String.Type:
             return String(bytes: bytes, encoding: .utf8) as? ReturnType
 

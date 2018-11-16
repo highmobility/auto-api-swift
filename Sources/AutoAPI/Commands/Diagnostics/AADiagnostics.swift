@@ -50,7 +50,7 @@ public struct AADiagnostics: AAFullStandardCommand {
     public let fuelLevel: AAPercentageInt?
     public let fuelVolume: Float?
     public let mileage: UInt32?
-    public let mileageMeters: Double?
+    public let mileageMeters: UInt32?
     public let speed: Int16?
     public let tirePressures: [AATirePressure]?
     public let tireTemperatures: [AATireTemperature]?
