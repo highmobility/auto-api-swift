@@ -32,18 +32,18 @@ import HMUtilities
 
 public protocol Command: Identifiable {
 
-    var debugTree: DebugTree { get }
+    var debugTree: HMDebugTree { get }
 }
 
 extension Command {
 
-    public var debugTree: DebugTree {
-        return DebugTree(self, label: nil, expandProperties: false) { (anything, label, expandProperties) -> DebugTree? in
+    public var debugTree: HMDebugTree {
+        return HMDebugTree(self, label: nil, expandProperties: false) { (anything, label, expandProperties) -> HMDebugTree? in
             switch anything {
             case let capabilities as Capabilities:
-                let nodes: [DebugTree] = capabilities.map {
-                    let idLeaf: DebugTree = .leaf(label: "identifier = " + String(format: "0x%04X", $0.identifier))
-                    let msgTypesLeaf: DebugTree = .leaf(label: "supportedMessageTypes = " + $0.supportedMessageTypes.map { String(format: "0x%02X", $0) }.joined(separator: ", "))
+                let nodes: [HMDebugTree] = capabilities.map {
+                    let idLeaf: HMDebugTree = .leaf(label: "identifier = " + String(format: "0x%04X", $0.identifier))
+                    let msgTypesLeaf: HMDebugTree = .leaf(label: "supportedMessageTypes = " + $0.supportedMessageTypes.map { String(format: "0x%02X", $0) }.joined(separator: ", "))
 
                     return .node(label: "\($0.command)", nodes: [idLeaf, msgTypesLeaf])
                 }
@@ -51,11 +51,11 @@ extension Command {
                 return .node(label: label, nodes: nodes)
 
             case let colour as Colour:
-                if case .node(_, let nodes) = DebugTree(colour.values, expandProperties: expandProperties) {
+                if case .node(_, let nodes) = HMDebugTree(colour.values, expandProperties: expandProperties) {
                     return .node(label: label, nodes: nodes)
                 }
                 else {
-                    return .node(label: label, nodes: [DebugTree(colour.values, expandProperties: expandProperties)])
+                    return .node(label: label, nodes: [HMDebugTree(colour.values, expandProperties: expandProperties)])
                 }
 
             case let properties as Properties:
@@ -64,7 +64,7 @@ extension Command {
                         return .leaf(label: "properties = []")
                     }
                     else {
-                        let nodes = properties.map { DebugTree.leaf(label: "\($0)") }
+                        let nodes = properties.map { HMDebugTree.leaf(label: "\($0)") }
 
                         return .node(label: label, nodes: nodes)
                     }

@@ -51,7 +51,7 @@ public struct Diagnostics: FullStandardCommand {
     public let fuelVolume: Float?
     public let isABSActive: Bool?
     public let mileage: UInt32?
-    public let mileageMeters: Double?
+    public let mileageMeters: UInt32?
     public let speed: Int16?
     public let tires: [Tire]?
     public let washerFluidLevel: FluidLevel?
