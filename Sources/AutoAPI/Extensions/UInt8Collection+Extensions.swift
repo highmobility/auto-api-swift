@@ -32,7 +32,7 @@ import Foundation
 extension Collection where Element == UInt8 {
 
     func dropFirstBytes(_ n: Int) -> [UInt8] {
-        return bytes.dropFirst(n).bytes
+        return dropFirst(n).bytes
     }
 }
 

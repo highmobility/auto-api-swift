@@ -53,8 +53,6 @@ extension AAMultiCommand: AAMessageTypesGettable {
 public extension AAMultiCommand {
 
     static func combined(_ commands: [UInt8]...) -> [UInt8] {
-        let wrappedCommands = commands.map { AACommandWrapper(value: $0) }
-
-        return commandPrefix(for: .send) + wrappedCommands.flatMap { $0.propertyBytes(0x01) }
+        return commandPrefix(for: .send) + commands.flatMap { $0.propertyBytes(0x01) }
     }
 }

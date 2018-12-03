@@ -19,24 +19,19 @@
 // licensing@high-mobility.com
 //
 //
-//  AACommandWrapper.swift
+//  UInt8Array+Extensions.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 14/11/2018.
+//  Created by Mikk Rätsep on 19/11/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-struct AACommandWrapper {
-
-    let value: [UInt8]
-}
-
-extension AACommandWrapper: AAPropertyConvertable {
+extension Array: AAPropertyConvertable where Element == UInt8 {
 
     var propertyValue: [UInt8] {
-        return value
+        return self
     }
 }
