@@ -40,6 +40,7 @@ public struct AALights: AAFullStandardCommand {
     public let fogLights: AAFogLightsState?
     public let frontExterior: AAFrontLightState?
     public let interiorState: AAActiveState?
+    public let readingLamps: [AAReadingLamp]?
     public let rearExteriorState: AAActiveState?
     public let reverseState: AAActiveState?
 
@@ -59,6 +60,7 @@ public struct AALights: AAFullStandardCommand {
         emergencyBrakeState = properties.value(for: \AALights.emergencyBrakeState)
         /* Level 9 */
         fogLights = AAFogLightsState(properties: properties, keyPath: \AALights.fogLights)
+        readingLamps = properties.flatMap(for: \AALights.readingLamps) { AAReadingLamp($0.value) }
 
         // Properties
         self.properties = properties
@@ -109,7 +111,8 @@ extension AALights: AAPropertyIdentifierGettable {
         case \AALights.reverseState:        return 0x05
         case \AALights.emergencyBrakeState: return 0x06
             /* Level 9 */
-        case \AALights.fogLights:   return 0x07
+        case \AALights.fogLights:       return 0x07
+        case \AALights.readingLamps:    return 0x08
 
         default:
             return 0x00
@@ -127,28 +130,28 @@ public extension AALights {
     }
 
 
-    /// At least *one* value needs to be entered, instead of all being `nil`.
     static func controlLights(frontExterior: AAFrontLightState? = nil,
                               rearExterior: AAActiveState? = nil,
                               interior: AAActiveState? = nil,
                               ambientColour: AAColour? = nil,
-                              fogLights: AAFogLightsState? = nil) -> [UInt8]? {
-        // TODO: Maybe having a non-optional return would be nicer (returns empty array when nothing given)
-
+                              fogLights: AAFogLightsState? = nil,
+                              readingLamps: [AAReadingLamp]? = nil) -> [UInt8] {
         // Make sure we have at least 1 value
         guard (frontExterior != nil) ||
             (rearExterior != nil) ||
             (interior != nil) ||
             (ambientColour != nil) ||
-            (fogLights != nil) else {
-                return nil
+            (fogLights != nil) ||
+            (readingLamps != nil) else {
+                return []
         }
 
         return commandPrefix(for: .controlLights) + [frontExterior?.propertyBytes(0x01),
                                                      rearExterior?.propertyBytes(0x02),
                                                      interior?.propertyBytes(0x03),
                                                      ambientColour?.propertyBytes(0x04),
-                                                     fogLights?.propertyBytes(0x07)].propertiesValuesCombined
+                                                     fogLights?.propertyBytes(0x07),
+                                                     readingLamps?.reduceToByteArray { $0.propertyBytes(0x08) }].propertiesValuesCombined
     }
 }
 
