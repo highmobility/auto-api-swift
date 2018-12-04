@@ -37,9 +37,9 @@ public struct AALights: AAFullStandardCommand {
 
     public let ambientColour: AAColour?
     public let emergencyBrakeState: AAActiveState?
-    public let fogLights: AAFogLightsState?
+    public let fogLights: AAFrontRearState?
     public let frontExterior: AAFrontLightState?
-    public let interiorState: AAActiveState?
+    public let interiorLights: AAFrontRearState?
     public let readingLamps: [AAReadingLamp]?
     public let rearExteriorState: AAActiveState?
     public let reverseState: AAActiveState?
@@ -54,13 +54,13 @@ public struct AALights: AAFullStandardCommand {
         // Ordered by the ID
         frontExterior = AAFrontLightState(properties: properties, keyPath: \AALights.frontExterior)
         rearExteriorState = properties.value(for: \AALights.rearExteriorState)
-        interiorState = properties.value(for: \AALights.interiorState)
         ambientColour = properties.first(for: \AALights.ambientColour)?.value.colour
         reverseState = properties.value(for: \AALights.reverseState)
         emergencyBrakeState = properties.value(for: \AALights.emergencyBrakeState)
         /* Level 9 */
-        fogLights = AAFogLightsState(properties: properties, keyPath: \AALights.fogLights)
+        fogLights = AAFrontRearState(properties: properties, keyPath: \AALights.fogLights)
         readingLamps = properties.flatMap(for: \AALights.readingLamps) { AAReadingLamp($0.value) }
+        interiorLights = AAFrontRearState(properties: properties, keyPath: \AALights.interiorLights)
 
         // Properties
         self.properties = properties
@@ -106,13 +106,13 @@ extension AALights: AAPropertyIdentifierGettable {
         switch keyPath {
         case \AALights.frontExterior:       return 0x01
         case \AALights.rearExteriorState:   return 0x02
-        case \AALights.interiorState:       return 0x03
         case \AALights.ambientColour:       return 0x04
         case \AALights.reverseState:        return 0x05
         case \AALights.emergencyBrakeState: return 0x06
             /* Level 9 */
         case \AALights.fogLights:       return 0x07
         case \AALights.readingLamps:    return 0x08
+        case \AALights.interiorLights:  return 0x09
 
         default:
             return 0x00
@@ -134,8 +134,9 @@ public extension AALights {
                               rearExterior: AAActiveState? = nil,
                               interior: AAActiveState? = nil,
                               ambientColour: AAColour? = nil,
-                              fogLights: AAFogLightsState? = nil,
-                              readingLamps: [AAReadingLamp]? = nil) -> [UInt8] {
+                              fogLights: AAFrontRearState? = nil,
+                              readingLamps: [AAReadingLamp]? = nil,
+                              interiorLights: AAFrontRearState? = nil) -> [UInt8] {
         // Make sure we have at least 1 value
         guard (frontExterior != nil) ||
             (rearExterior != nil) ||
@@ -151,7 +152,8 @@ public extension AALights {
                                                      interior?.propertyBytes(0x03),
                                                      ambientColour?.propertyBytes(0x04),
                                                      fogLights?.propertyBytes(0x07),
-                                                     readingLamps?.reduceToByteArray { $0.propertyBytes(0x08) }].propertiesValuesCombined
+                                                     readingLamps?.reduceToByteArray { $0.propertyBytes(0x08) },
+                                                     interiorLights?.propertyBytes(0x09)].propertiesValuesCombined
     }
 }
 

@@ -40,7 +40,7 @@
 		205C5179208F41C700B55ACE /* AACruiseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5178208F41C700B55ACE /* AACruiseControl.swift */; };
 		205C517B208F430100B55ACE /* AACruiseControlLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517A208F430100B55ACE /* AACruiseControlLimiter.swift */; };
 		205C517D208F451300B55ACE /* CruiseControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517C208F451300B55ACE /* CruiseControlTests.swift */; };
-		205D9EA221B670370082CE1E /* AAFogLightsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205D9EA121B670370082CE1E /* AAFogLightsState.swift */; };
+		205D9EA221B670370082CE1E /* AAFrontRearState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205D9EA121B670370082CE1E /* AAFrontRearState.swift */; };
 		205D9EA421B672840082CE1E /* AAGasFlapState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205D9EA321B672840082CE1E /* AAGasFlapState.swift */; };
 		205D9EA621B67C0D0082CE1E /* AAReadingLamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205D9EA521B67C0D0082CE1E /* AAReadingLamp.swift */; };
 		20646B94216B96910000824D /* AAHistoryCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20646B93216B96910000824D /* AAHistoryCapable.swift */; };
@@ -339,7 +339,7 @@
 		205C5178208F41C700B55ACE /* AACruiseControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACruiseControl.swift; sourceTree = "<group>"; };
 		205C517A208F430100B55ACE /* AACruiseControlLimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACruiseControlLimiter.swift; sourceTree = "<group>"; };
 		205C517C208F451300B55ACE /* CruiseControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruiseControlTests.swift; sourceTree = "<group>"; };
-		205D9EA121B670370082CE1E /* AAFogLightsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFogLightsState.swift; sourceTree = "<group>"; };
+		205D9EA121B670370082CE1E /* AAFrontRearState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFrontRearState.swift; sourceTree = "<group>"; };
 		205D9EA321B672840082CE1E /* AAGasFlapState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAGasFlapState.swift; sourceTree = "<group>"; };
 		205D9EA521B67C0D0082CE1E /* AAReadingLamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAReadingLamp.swift; sourceTree = "<group>"; };
 		20646B93216B96910000824D /* AAHistoryCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHistoryCapable.swift; sourceTree = "<group>"; };
@@ -1088,8 +1088,8 @@
 				OBJ_86 /* AAFatigueLevel.swift */,
 				OBJ_87 /* AAFlasherState.swift */,
 				OBJ_107 /* AAFluidLevel.swift */,
-				205D9EA121B670370082CE1E /* AAFogLightsState.swift */,
 				OBJ_91 /* AAFrontLightState.swift */,
+				205D9EA121B670370082CE1E /* AAFrontRearState.swift */,
 				205D9EA321B672840082CE1E /* AAGasFlapState.swift */,
 				20DB153A2096F7DA00A1658B /* AAGearbox.swift */,
 				OBJ_88 /* AAGearMode.swift */,
@@ -1434,7 +1434,7 @@
 				OBJ_378 /* AAChargingState.swift in Sources */,
 				205C517B208F430100B55ACE /* AACruiseControlLimiter.swift in Sources */,
 				OBJ_379 /* AAControlMode.swift in Sources */,
-				205D9EA221B670370082CE1E /* AAFogLightsState.swift in Sources */,
+				205D9EA221B670370082CE1E /* AAFrontRearState.swift in Sources */,
 				OBJ_380 /* AADrivingMode.swift in Sources */,
 				OBJ_381 /* AAFailureReason.swift in Sources */,
 				OBJ_382 /* AAFatigueLevel.swift in Sources */,

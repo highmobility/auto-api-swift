@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  AAFogLightsState.swift
+//  AAFrontRearState.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 04/12/2018.
@@ -29,7 +29,7 @@
 import Foundation
 
 
-public enum AAFogLightsState: UInt8 {
+public enum AAFrontRearState: UInt8 {
 
     case inactive       = 0x00
     case frontActive    = 0x01
@@ -37,6 +37,6 @@ public enum AAFogLightsState: UInt8 {
     case bothActive     = 0x03
 }
 
-extension AAFogLightsState: AAPropertyConvertable {
+extension AAFrontRearState: AAPropertyConvertable {
     
 }
