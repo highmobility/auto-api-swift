@@ -40,6 +40,7 @@
 		205C5179208F41C700B55ACE /* AACruiseControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5178208F41C700B55ACE /* AACruiseControl.swift */; };
 		205C517B208F430100B55ACE /* AACruiseControlLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517A208F430100B55ACE /* AACruiseControlLimiter.swift */; };
 		205C517D208F451300B55ACE /* CruiseControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517C208F451300B55ACE /* CruiseControlTests.swift */; };
+		205D9EA221B670370082CE1E /* AAFogLightsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205D9EA121B670370082CE1E /* AAFogLightsState.swift */; };
 		20646B94216B96910000824D /* AAHistoryCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20646B93216B96910000824D /* AAHistoryCapable.swift */; };
 		20646B96216B96CD0000824D /* AAHistoricalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20646B95216B96CD0000824D /* AAHistoricalState.swift */; };
 		20646B98216B97620000824D /* AAPropertiesTimestampGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20646B97216B97620000824D /* AAPropertiesTimestampGettable.swift */; };
@@ -336,6 +337,7 @@
 		205C5178208F41C700B55ACE /* AACruiseControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACruiseControl.swift; sourceTree = "<group>"; };
 		205C517A208F430100B55ACE /* AACruiseControlLimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACruiseControlLimiter.swift; sourceTree = "<group>"; };
 		205C517C208F451300B55ACE /* CruiseControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruiseControlTests.swift; sourceTree = "<group>"; };
+		205D9EA121B670370082CE1E /* AAFogLightsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFogLightsState.swift; sourceTree = "<group>"; };
 		20646B93216B96910000824D /* AAHistoryCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHistoryCapable.swift; sourceTree = "<group>"; };
 		20646B95216B96CD0000824D /* AAHistoricalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHistoricalState.swift; sourceTree = "<group>"; };
 		20646B97216B97620000824D /* AAPropertiesTimestampGettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertiesTimestampGettable.swift; sourceTree = "<group>"; };
@@ -1081,6 +1083,7 @@
 				OBJ_86 /* AAFatigueLevel.swift */,
 				OBJ_87 /* AAFlasherState.swift */,
 				OBJ_107 /* AAFluidLevel.swift */,
+				205D9EA121B670370082CE1E /* AAFogLightsState.swift */,
 				OBJ_91 /* AAFrontLightState.swift */,
 				20DB153A2096F7DA00A1658B /* AAGearbox.swift */,
 				OBJ_88 /* AAGearMode.swift */,
@@ -1425,6 +1428,7 @@
 				OBJ_378 /* AAChargingState.swift in Sources */,
 				205C517B208F430100B55ACE /* AACruiseControlLimiter.swift in Sources */,
 				OBJ_379 /* AAControlMode.swift in Sources */,
+				205D9EA221B670370082CE1E /* AAFogLightsState.swift in Sources */,
 				OBJ_380 /* AADrivingMode.swift in Sources */,
 				OBJ_381 /* AAFailureReason.swift in Sources */,
 				OBJ_382 /* AAFatigueLevel.swift in Sources */,

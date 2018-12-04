@@ -19,24 +19,24 @@
 // licensing@high-mobility.com
 //
 //
-//  AAFrontLightState.swift
+//  AAFogLightsState.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 30/11/2017.
+//  Created by Mikk Rätsep on 04/12/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum AAFrontLightState: UInt8 {
+public enum AAFogLightsState: UInt8 {
 
-    case inactive               = 0x00
-    case active                 = 0x01
-    case activeFullBeam         = 0x02
-    case daylightRunningLights  = 0x03
+    case inactive       = 0x00
+    case frontActive    = 0x01
+    case rearActive     = 0x02
+    case bothActive     = 0x03
 }
 
-extension AAFrontLightState: AAPropertyConvertable {
-
+extension AAFogLightsState: AAPropertyConvertable {
+    
 }
