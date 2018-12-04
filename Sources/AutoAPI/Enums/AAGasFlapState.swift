@@ -19,22 +19,23 @@
 // licensing@high-mobility.com
 //
 //
-//  AAOpenClose.swift
+//  AAGasFlapState.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 30/11/2017.
+//  Created by Mikk Rätsep on 04/12/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public enum AAOpenClose: UInt8 {
+public enum AAGasFlapState: UInt8 {
 
     case closed = 0x00
     case open   = 0x01
+    case locked = 0x02
 }
 
-extension AAOpenClose: AAPropertyConvertable {
+extension AAGasFlapState: AAPropertyConvertable {
 
 }
