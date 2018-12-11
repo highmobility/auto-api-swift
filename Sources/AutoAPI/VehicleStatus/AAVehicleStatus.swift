@@ -31,6 +31,7 @@ import Foundation
 
 public struct AAVehicleStatus: AAInboundCommand {
 
+    public let brand: String?
     public let colourName: String?
     public let displayUnit: AADisplayUnit?
     public let driverSeatPosition: AADriverSeatLocation?
@@ -82,6 +83,7 @@ public struct AAVehicleStatus: AAInboundCommand {
         displayUnit = AADisplayUnit(rawValue: properties.first(for: 0x0F)?.monoValue)
         driverSeatPosition = AADriverSeatLocation(rawValue: properties.first(for: 0x10)?.monoValue)
         equipment = properties.flatMap(for: 0x11) { String(bytes: $0.value, encoding: .utf8)  }
+        brand = properties.value(for: \AAVehicleStatus.brand)
 
         /* Special */
         states = properties.flatMap(for: 0x99) { property in
@@ -129,6 +131,7 @@ extension AAVehicleStatus: AAPropertyIdentifierGettable {
         case \AAVehicleStatus.displayUnit:          return 0x0F
         case \AAVehicleStatus.driverSeatPosition:   return 0x10
         case \AAVehicleStatus.equipment:            return 0x11
+        case \AAVehicleStatus.brand:                return 0x12
 
             /* Special */
         case \AAVehicleStatus.states: return 0x99
