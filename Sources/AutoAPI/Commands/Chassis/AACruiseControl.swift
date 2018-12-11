@@ -93,7 +93,7 @@ extension AACruiseControl: AAPropertyIdentifierGettable {
 
     static func propertyID<Type>(for keyPath: KeyPath<AACruiseControl, Type>) -> AAPropertyIdentifier {
         switch keyPath {
-        case \AACruiseControl.state:                    return 0x01
+        case \AACruiseControl.state:                 return 0x01
         case \AACruiseControl.limiter:               return 0x02
         case \AACruiseControl.targetSpeed:           return 0x03
         case \AACruiseControl.adaptiveState:         return 0x04

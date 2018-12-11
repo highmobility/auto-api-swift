@@ -29,8 +29,20 @@
 import Foundation
 
 
-#warning("AAPropertyFailureReason enum needs cases")
 public enum AAPropertyFailureReason: UInt8 {
 
-    case undefined = 0x00
+    /// Property rate limit has been exceeded.
+    case rateLimit          = 0x00
+
+    /// Failed to retrieve property in time.
+    case executionTimeout   = 0x01
+
+    /// Could not interpret property.
+    case formatError        = 0x02
+
+    /// Insufficient permissions to get the property.
+    case unauthorised       = 0x03
+
+    /// Property missing for unknown reason.
+    case unknown            = 0x04
 }
