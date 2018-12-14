@@ -30,8 +30,31 @@ import Foundation
 import HMUtilities
 
 
-public struct AAMultiCommand: AAOutboundCommand {
+public struct AAMultiCommand: AAInboundCommand, AAOutboundCommand {
 
+    public let states: [AAVehicleState]?
+
+
+    // MARK: AAInboundCommand
+
+    public let properties: AAProperties
+
+
+    init?(_ messageType: UInt8, properties: AAProperties) {
+        guard messageType == MessageTypes.states.rawValue else {
+            return nil
+        }
+
+        let binaryTypes = AAAutoAPI.commands.compactMap { $0 as? AABinaryInitable.Type }
+
+        /* Level 9 */
+        states = properties.flatMap(for: \AAMultiCommand.states) { property in
+            binaryTypes.flatMapFirst { $0.init(property.value) as? AAVehicleState }
+        }
+
+        // Properties
+        self.properties = properties
+    }
 }
 
 extension AAMultiCommand: AAIdentifiable {
@@ -43,7 +66,20 @@ extension AAMultiCommand: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
 
-        case send = 0x02
+        case states = 0x01
+        case send   = 0x02
+    }
+}
+
+extension AAMultiCommand: AAPropertyIdentifierGettable {
+
+    static func propertyID<Type>(for keyPath: KeyPath<AAMultiCommand, Type>) -> AAPropertyIdentifier {
+        switch keyPath {
+        case \AAMultiCommand.states: return 0x01
+
+        default:
+            return 0x00
+        }
     }
 }
 

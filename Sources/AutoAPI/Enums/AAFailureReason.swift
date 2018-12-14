@@ -31,10 +31,28 @@ import Foundation
 
 public enum AAFailureReason: UInt8 {
 
-    case unsupportedCapability  = 0x00
-    case unauthorised           = 0x01
-    case incorrectState         = 0x02
-    case executionTimeout       = 0x03
-    case vehicleAsleep          = 0x04
-    case invalidAutoCommand     = 0x05
+    /// Car has not the capability to perform the command.
+    case unsupportedCapability = 0x00
+
+    /// User has not been authenticated or lacks permissions.
+    case unauthorised = 0x01
+
+    /// Command can not be executed in the current car state.
+    case incorrectState = 0x02
+
+    /// Command failed to execute in time for an unknown reason.
+    case executionTimeout = 0x03
+
+    /// Car has to be waken up before the command can be used.
+    /// If this is for a virtual car, the emulator has to be loaded.
+    case vehicleAsleep = 0x04
+
+    /// Not recognised.
+    case invalidCommand = 0x05
+
+    /// Capability is being refreshed.
+    case pending = 0x06
+
+    /// Capability rate limit has been exceeded.
+    case rateLimit = 0x07
 }

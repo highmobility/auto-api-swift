@@ -40,7 +40,7 @@ public struct AAHistorical: AAInboundCommand, AAOutboundCommand {
 
 
     init?(_ messageType: UInt8, properties: AAProperties) {
-        guard messageType == 0x01 else {
+        guard messageType == MessageTypes.states.rawValue else {
             return nil
         }
 
