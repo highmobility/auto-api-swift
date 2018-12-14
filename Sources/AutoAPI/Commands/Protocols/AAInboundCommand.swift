@@ -68,6 +68,10 @@ extension AAInboundCommand {
         return properties.nonce
     }
 
+    public var propertiesFailures: [AAPropertyFailure]? {
+        return properties.propertiesFailures
+    }
+
     public var timestamp: Date? {
         return properties.timestamp
     }

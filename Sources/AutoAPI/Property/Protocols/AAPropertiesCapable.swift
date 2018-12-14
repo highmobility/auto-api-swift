@@ -37,4 +37,5 @@ public protocol AAPropertiesCapable {
     var timestamp: Date? { get }
 
     var properties: AAProperties { get }
+    var propertiesFailures: [AAPropertyFailure]? { get }
 }

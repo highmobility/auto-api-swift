@@ -51,6 +51,10 @@ public struct AAProperties: Sequence, AAPropertiesCapable, AAPropertiesTimestamp
         return self
     }
 
+    public var propertiesFailures: [AAPropertyFailure]? {
+        return flatMap(for: 0xA5) {  AAPropertyFailure($0.value) }
+    }
+
     public var propertiesTimestamps: [AAPropertyTimestamp]? {
         return flatMap(for: 0xA4) { AAPropertyTimestamp($0.value) }
     }

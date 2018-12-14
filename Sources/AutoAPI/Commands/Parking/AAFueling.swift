@@ -87,7 +87,8 @@ public extension AAFueling {
     }
 
 
-    static func openCloseGasFlap(_ state: AAOpenClose) -> [UInt8] {
-        return commandPrefix(for: .opencloseGasFlap) + state.propertyBytes(0x01)
+    static func controlGasFlap(lockState: AALockState? = nil, position: AAPositionState? = nil) -> [UInt8] {
+        return commandPrefix(for: .opencloseGasFlap) + [lockState?.propertyBytes(0x02),
+                                                        position?.propertyBytes(0x03)].propertiesValuesCombined
     }
 }

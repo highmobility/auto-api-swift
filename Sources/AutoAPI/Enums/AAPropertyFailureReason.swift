@@ -45,4 +45,7 @@ public enum AAPropertyFailureReason: UInt8 {
 
     /// Property missing for unknown reason.
     case unknown            = 0x04
+
+    /// Property is being refreshed.
+    case pending            = 0x05
 }
