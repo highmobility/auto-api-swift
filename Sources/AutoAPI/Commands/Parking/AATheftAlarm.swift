@@ -75,9 +75,6 @@ extension AATheftAlarm: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AATheftAlarm {
 
     static var getAlarmState: [UInt8] {
@@ -87,29 +84,5 @@ public extension AATheftAlarm {
     
     static func setAlarmState(_ state: AATheftAlarmState) -> [UInt8] {
         return commandPrefix(for: .setAlarmState) + state.propertyBytes(0x01)
-    }
-}
-
-public extension AATheftAlarm {
-
-    struct Legacy: AAMessageTypesGettable {
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case getTheftAlarmState = 0x00
-            case theftAlarmState    = 0x01
-            case setTheftAlarm      = 0x02
-        }
-
-
-        static var getTheftAlarmState: [UInt8] {
-            return commandPrefix(for: AATheftAlarm.self, messageType: .getTheftAlarmState)
-        }
-
-        static var setTheftAlarm: (AATheftAlarmState) -> [UInt8] {
-            return {
-                return commandPrefix(for: AATheftAlarm.self, messageType: .setTheftAlarm, additionalBytes: $0.rawValue)
-            }
-        }
     }
 }

@@ -75,9 +75,6 @@ extension AAMobile: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAMobile {
 
     static var getConnectionState: [UInt8] {

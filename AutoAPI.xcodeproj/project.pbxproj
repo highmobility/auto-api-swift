@@ -21,6 +21,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		201BFD8921C39D77001E1DC1 /* AAFogLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201BFD8821C39D77001E1DC1 /* AAFogLight.swift */; };
+		201BFD8B21C39DEF001E1DC1 /* AALightLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201BFD8A21C39DEF001E1DC1 /* AALightLocation.swift */; };
+		201BFD8D21C39FB7001E1DC1 /* AAInteriorLamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201BFD8C21C39FB7001E1DC1 /* AAInteriorLamp.swift */; };
 		2024BBF42154CFA400AA5261 /* AAClimateSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2024BBF32154CFA400AA5261 /* AAClimateSettings.swift */; };
 		2024BBF82154D95200AA5261 /* AAPropertiesMultiConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2024BBF72154D95200AA5261 /* AAPropertiesMultiConvertable.swift */; };
 		2024BBFA2154EF7100AA5261 /* CaseIterable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2024BBF92154EF7100AA5261 /* CaseIterable+Extensions.swift */; };
@@ -91,7 +94,6 @@
 		20DB1550209727C700A1658B /* AADirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB154F209727C700A1658B /* AADirection.swift */; };
 		20DB15522097286200A1658B /* TachographTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15512097286200A1658B /* TachographTests.swift */; };
 		20DC7514215B5EDE009B2B24 /* AAPluggedInState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DC7513215B5EDE009B2B24 /* AAPluggedInState.swift */; };
-		20DC751A215BC021009B2B24 /* AALegacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DC7519215BC021009B2B24 /* AALegacy.swift */; };
 		20EF4C382167F4A00077BFE4 /* AAPropertyIdentifierGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EF4C372167F4A00077BFE4 /* AAPropertyIdentifierGettable.swift */; };
 		20F57D782174C64E0099B921 /* AATiltState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F57D772174C64E0099B921 /* AATiltState.swift */; };
 		20F7903721356C54003BDFA2 /* AACheckControlMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903621356C54003BDFA2 /* AACheckControlMessage.swift */; };
@@ -322,6 +324,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		201BFD8821C39D77001E1DC1 /* AAFogLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFogLight.swift; sourceTree = "<group>"; };
+		201BFD8A21C39DEF001E1DC1 /* AALightLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALightLocation.swift; sourceTree = "<group>"; };
+		201BFD8C21C39FB7001E1DC1 /* AAInteriorLamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAInteriorLamp.swift; sourceTree = "<group>"; };
 		2024BBF32154CFA400AA5261 /* AAClimateSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAClimateSettings.swift; sourceTree = "<group>"; };
 		2024BBF72154D95200AA5261 /* AAPropertiesMultiConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertiesMultiConvertable.swift; sourceTree = "<group>"; };
 		2024BBF92154EF7100AA5261 /* CaseIterable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaseIterable+Extensions.swift"; sourceTree = "<group>"; };
@@ -394,7 +399,6 @@
 		20DB154F209727C700A1658B /* AADirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADirection.swift; sourceTree = "<group>"; };
 		20DB15512097286200A1658B /* TachographTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TachographTests.swift; sourceTree = "<group>"; };
 		20DC7513215B5EDE009B2B24 /* AAPluggedInState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPluggedInState.swift; sourceTree = "<group>"; };
-		20DC7519215BC021009B2B24 /* AALegacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALegacy.swift; sourceTree = "<group>"; };
 		20EF4C372167F4A00077BFE4 /* AAPropertyIdentifierGettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertyIdentifierGettable.swift; sourceTree = "<group>"; };
 		20F57D772174C64E0099B921 /* AATiltState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATiltState.swift; sourceTree = "<group>"; };
 		20F7903621356C54003BDFA2 /* AACheckControlMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACheckControlMessage.swift; sourceTree = "<group>"; };
@@ -709,6 +713,8 @@
 				20DB154D2097265400A1658B /* AADriverCard.swift */,
 				20DB154B20971CD700A1658B /* AADriverTimeState.swift */,
 				20DB15452097176600A1658B /* AADriverWorkingState.swift */,
+				201BFD8821C39D77001E1DC1 /* AAFogLight.swift */,
+				201BFD8C21C39FB7001E1DC1 /* AAInteriorLamp.swift */,
 				OBJ_143 /* AAItem.swift */,
 				OBJ_149 /* AAPriceTariff.swift */,
 				205D9EA521B67C0D0082CE1E /* AAReadingLamp.swift */,
@@ -1099,6 +1105,7 @@
 				20DB153A2096F7DA00A1658B /* AAGearbox.swift */,
 				OBJ_88 /* AAGearMode.swift */,
 				OBJ_90 /* AAKeyfobRelativePosition.swift */,
+				201BFD8A21C39DEF001E1DC1 /* AALightLocation.swift */,
 				OBJ_97 /* AALocation.swift */,
 				OBJ_92 /* AALockState.swift */,
 				20896EE721479DC5003A7A63 /* AAMovingState.swift */,
@@ -1138,7 +1145,6 @@
 				20646B95216B96CD0000824D /* AAHistoricalState.swift */,
 				20646B93216B96910000824D /* AAHistoryCapable.swift */,
 				OBJ_125 /* AAIdentifiable.swift */,
-				20DC7519215BC021009B2B24 /* AALegacy.swift */,
 				OBJ_154 /* AAMessageTypesGettable.swift */,
 				OBJ_15 /* AASDKVersion.swift */,
 				OBJ_11 /* Capability */,
@@ -1352,6 +1358,7 @@
 				OBJ_318 /* AAAutoAPI.swift in Sources */,
 				OBJ_319 /* AABinaryInitable.swift in Sources */,
 				OBJ_320 /* AACapabilities.swift in Sources */,
+				201BFD8D21C39FB7001E1DC1 /* AAInteriorLamp.swift in Sources */,
 				20AF961B21BFA742002EC106 /* AAPropertyFailureReason.swift in Sources */,
 				20DB1548209718DB00A1658B /* AAWorkingState.swift in Sources */,
 				OBJ_321 /* AACapabilitiesIterator.swift in Sources */,
@@ -1366,6 +1373,7 @@
 				209124B42166321800C15CDA /* AAPresenceState.swift in Sources */,
 				OBJ_326 /* AAClimate.swift in Sources */,
 				OBJ_327 /* AAHonkHornFlashLights.swift in Sources */,
+				201BFD8921C39D77001E1DC1 /* AAFogLight.swift in Sources */,
 				OBJ_328 /* AAKeyfobPosition.swift in Sources */,
 				OBJ_329 /* AALights.swift in Sources */,
 				OBJ_330 /* AARooftopControl.swift in Sources */,
@@ -1396,7 +1404,6 @@
 				208D1C92216B4BCA00ABA70E /* AADriverSeatLocation.swift in Sources */,
 				OBJ_350 /* AATextInput.swift in Sources */,
 				20896EE4214799C1003A7A63 /* AAChosenState.swift in Sources */,
-				20DC751A215BC021009B2B24 /* AALegacy.swift in Sources */,
 				OBJ_351 /* AAVideoHandover.swift in Sources */,
 				20646B94216B96910000824D /* AAHistoryCapable.swift in Sources */,
 				2024BBFE21553D8A00AA5261 /* AAClimateWeekdayTime.swift in Sources */,
@@ -1450,6 +1457,7 @@
 				OBJ_384 /* AAGearMode.swift in Sources */,
 				OBJ_386 /* AAKeyfobRelativePosition.swift in Sources */,
 				OBJ_387 /* AAFrontLightState.swift in Sources */,
+				201BFD8B21C39DEF001E1DC1 /* AALightLocation.swift in Sources */,
 				OBJ_388 /* AALockState.swift in Sources */,
 				20BB171D2142604100A3FDB5 /* Date+Extensions.swift in Sources */,
 				20DB153B2096F7DA00A1658B /* AAGearbox.swift in Sources */,

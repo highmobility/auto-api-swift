@@ -57,24 +57,6 @@ extension AAEngine: AAIdentifiable {
     public static var identifier: AACommandIdentifier = 0x0035
 }
 
-extension AAEngine: AALegacyGettable {
-
-    public struct Legacy: AALegacyType {
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case getIgnitionState   = 0x00
-            case ignitionState      = 0x01
-            case turnEngineOnOff    = 0x02
-        }
-
-
-        public init(properties: AAProperties) {
-
-        }
-    }
-}
-
 extension AAEngine: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
@@ -99,9 +81,6 @@ extension AAEngine: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAEngine {
 
     static var getEngineState: [UInt8] {
@@ -111,18 +90,5 @@ public extension AAEngine {
 
     static func turnIgnitionOnOff(_ state: AAActiveState) -> [UInt8] {
         return commandPrefix(for: .turnOnOff) + state.propertyBytes(0x01)
-    }
-}
-
-public extension AAEngine.Legacy {
-
-    static var getIgnitionState: [UInt8] {
-        return commandPrefix(for: AAEngine.self, messageType: .getIgnitionState)
-    }
-
-    static var setIgnitionState: (AAActiveState) -> [UInt8] {
-        return {
-            return commandPrefix(for: AAEngine.self, messageType: .turnEngineOnOff) + $0.propertyBytes(0x01)
-        }
     }
 }

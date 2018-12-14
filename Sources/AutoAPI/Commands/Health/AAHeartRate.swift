@@ -46,30 +46,9 @@ extension AAHeartRate: AAMessageTypesGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAHeartRate {
 
     static func sendRate(_ rate: UInt8) -> [UInt8] {
         return commandPrefix(for: .sendRate) + rate.propertyBytes(0x01)
-    }
-}
-
-public extension AAHeartRate {
-
-    public struct Legacy: AAMessageTypesGettable {
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case sendRate = 0x02
-        }
-
-
-        static var sendRate: (UInt8) -> [UInt8] {
-            return {
-                return commandPrefix(for: AAHeartRate.self, messageType: .sendRate, additionalBytes: $0)
-            }
-        }
     }
 }

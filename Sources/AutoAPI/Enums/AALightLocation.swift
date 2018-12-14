@@ -19,36 +19,18 @@
 // licensing@high-mobility.com
 //
 //
-//  AAWakeUp.swift
+//  AALightLocation.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 29/11/2017.
+//  Created by Mikk Rätsep on 14/12/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct AAWakeUp: AAOutboundCommand {
+public enum AALightLocation: UInt8 {
 
-}
-
-extension AAWakeUp: AAIdentifiable {
-
-    public static var identifier: AACommandIdentifier = 0x0022
-}
-
-extension AAWakeUp: AAMessageTypesGettable {
-
-    public enum MessageTypes: UInt8, CaseIterable {
-
-        case wakeUp = 0x02
-    }
-}
-
-public extension AAWakeUp {
-
-    static var wakeUp: [UInt8] {
-        return commandPrefix(for: .wakeUp)
-    }
+    case front  = 0x00
+    case rear   = 0x01
 }

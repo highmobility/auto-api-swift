@@ -68,34 +68,6 @@ extension AAChassisSettings: AAIdentifiable {
     public static var identifier: AACommandIdentifier = 0x0053
 }
 
-extension AAChassisSettings: AALegacyGettable {
-
-    public struct Legacy: AALegacyType {
-
-        public let chassisPosition: AAChassisPosition?
-        public let springRates: [AASpringRate]?
-
-
-        // MARK: AALegacyType
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case getChassisSettings     = 0x00
-            case chassisSettings        = 0x01
-            case setDrivingMode         = 0x02
-            case startStopSportChrono   = 0x03
-            case setSpringRate          = 0x04
-            case setChassisPosition     = 0x05
-        }
-
-
-        public init(properties: AAProperties) {
-            springRates = properties.flatMap(for: 0x03) { AASpringRate($0.value) }
-            chassisPosition = AAChassisPosition(bytes: properties.first(for: 0x04)?.value)
-        }
-    }
-}
-
 extension AAChassisSettings: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
@@ -129,9 +101,6 @@ extension AAChassisSettings: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAChassisSettings {
 
     static var getChassisSettings: [UInt8] {
@@ -152,36 +121,5 @@ public extension AAChassisSettings {
 
     static func startStopSportChrono(_ startStop: AAStartStopState) -> [UInt8] {
         return commandPrefix(for: .startStopSportChrono) + startStop.propertyBytes(0x01)
-    }
-}
-
-public extension AAChassisSettings.Legacy {
-
-    static var getChassisSettings: [UInt8] {
-        return commandPrefix(for: AAChassisSettings.self, messageType: .getChassisSettings)
-    }
-
-    static var setChassisPosition: (UInt8) -> [UInt8] {
-        return {
-            return commandPrefix(for: AAChassisSettings.self, messageType: .setChassisPosition, additionalBytes: $0)
-        }
-    }
-
-    static var setDrivingMode: (AADrivingMode) -> [UInt8] {
-        return {
-            return commandPrefix(for: AAChassisSettings.self, messageType: .setDrivingMode, additionalBytes: $0.rawValue)
-        }
-    }
-
-    static var setSpringRate: (AAAxle, UInt8) -> [UInt8] {
-        return {
-            return commandPrefix(for: AAChassisSettings.self, messageType: .setSpringRate, additionalBytes: $0.rawValue, $1)
-        }
-    }
-
-    static var startStopSportChrono: (AAStartStopState) -> [UInt8] {
-        return {
-            return commandPrefix(for: AAChassisSettings.self, messageType: .startStopSportChrono, additionalBytes: $0.rawValue)
-        }
     }
 }

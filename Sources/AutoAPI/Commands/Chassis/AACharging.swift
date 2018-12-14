@@ -92,35 +92,6 @@ extension AACharging: AAIdentifiable {
     public static var identifier: AACommandIdentifier = 0x0023
 }
 
-extension AACharging: AALegacyGettable {
-
-    public struct Legacy: AALegacyType {
-
-        public let chargingState: AAChargingStateLegacy?
-        public let chargeTimer: AAChargingTimer?
-
-
-        // MARK: AALegacyType
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case getChargeState         = 0x00
-            case chargeState            = 0x01
-            case startStopCharging      = 0x02
-            case setChargeLimit         = 0x03
-            case openCloseChargePort    = 0x04
-            case setChargeMode          = 0x05
-            case setChargeTimer         = 0x06
-        }
-
-
-        public init(properties: AAProperties) {
-            chargingState = AAChargingStateLegacy(rawValue: properties.first(for: 0x01)?.monoValue)
-            chargeTimer = AAChargingTimer(properties.first(for: 0x0D)?.value ?? [])
-        }
-    }
-}
-
 extension AACharging: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
@@ -168,9 +139,6 @@ extension AACharging: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AACharging {
 
     static var getChargingState: [UInt8] {
@@ -205,48 +173,5 @@ public extension AACharging {
 
     static func startStopCharging(_ state: AAActiveState) -> [UInt8] {
         return commandPrefix(for: .startStopCharging) + state.propertyBytes(0x01)
-    }
-}
-
-public extension AACharging.Legacy {
-
-    static var getChargeState: [UInt8] {
-        return commandPrefix(for: AACharging.self, messageType: .getChargeState)
-    }
-
-    static var openCloseChargePort: (AAOpenClose) -> [UInt8] {
-        return {
-            return commandPrefix(for: AACharging.self, messageType: .openCloseChargePort, additionalBytes: $0.rawValue)
-        }
-    }
-
-    static var setChargeLimit: (AAPercentageInt) -> [UInt8] {
-        return {
-            return commandPrefix(for: AACharging.self, messageType: .setChargeLimit, additionalBytes: $0)
-        }
-    }
-
-    /// `.immediate` is not supported
-    static var setChargeMode: (AAChargeMode) -> [UInt8]? {
-        return {
-            guard $0 != .immediate else {
-                return nil
-            }
-
-            return commandPrefix(for: AACharging.self, messageType: .setChargeMode, additionalBytes: $0.rawValue)
-        }
-    }
-
-    static var setChargeTimer: (AAChargingTimer) -> [UInt8] {
-        return {
-            return commandPrefix(for: AACharging.self, messageType: .setChargeTimer) + $0.propertyBytes(0x0D)
-        }
-    }
-
-    /// Use `false` to *stop*.
-    static var startCharging: (Bool) -> [UInt8] {
-        return {
-            return commandPrefix(for: AACharging.self, messageType: .startStopCharging, additionalBytes: $0.byte)
-        }
     }
 }

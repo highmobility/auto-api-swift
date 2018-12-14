@@ -88,9 +88,6 @@ extension AAParkingTicket: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAParkingTicket {
 
     static var getTicket: [UInt8] {
@@ -107,55 +104,5 @@ public extension AAParkingTicket {
                                                     startTime.propertyBytes(0x03),
                                                     endTime?.propertyBytes(0x04),
                                                     operatorName?.propertyBytes(0x01)].propertiesValuesCombined
-    }
-}
-
-public extension AAParkingTicket {
-
-    struct Legacy: AAMessageTypesGettable {
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case getTicket      = 0x00
-            case parkingTicket  = 0x01
-            case startParking   = 0x02
-            case endParking     = 0x03
-        }
-
-
-        struct Settings {
-            public let operatorName: String?
-            public let ticketID: String
-            public let startTime: Date
-            public let endTime: Date?
-
-            public init(operatorName: String?, ticketID: String, startTime: Date, endTime: Date?) {
-                self.operatorName = operatorName
-                self.ticketID = ticketID
-                self.startTime = startTime
-                self.endTime = endTime
-            }
-        }
-
-
-        static var endParking: [UInt8] {
-            return commandPrefix(for: AAParkingTicket.self, messageType: .endParking)
-        }
-
-        static var getTicket: [UInt8] {
-            return commandPrefix(for: AAParkingTicket.self, messageType: .getTicket)
-        }
-
-        static var startParking: (Settings) -> [UInt8] {
-            return {
-                // Strings return [] from .propertyBytes if the String couldn't be converted to Data
-                let nameBytes: [UInt8] = $0.operatorName?.propertyBytes(0x01) ?? []
-                let ticketBytes = $0.ticketID.propertyBytes(0x02)
-                let startBytes = $0.startTime.propertyBytes(0x03)
-                let endBytes: [UInt8] = $0.endTime?.propertyBytes(0x04) ?? []
-
-                return commandPrefix(for: AAParkingTicket.self, messageType: .startParking) + nameBytes + ticketBytes + startBytes + endBytes
-            }
-        }
     }
 }

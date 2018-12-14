@@ -77,9 +77,6 @@ extension AAOffroad: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAOffroad {
 
     static var getOffroadState: [UInt8] {

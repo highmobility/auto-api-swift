@@ -55,24 +55,6 @@ extension AATrunkAccess: AAIdentifiable {
     public static var identifier: AACommandIdentifier = 0x0021
 }
 
-extension AATrunkAccess: AALegacyGettable {
-
-    public struct Legacy: AALegacyType {
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case getState   = 0x00
-            case state      = 0x01
-            case setState   = 0x02
-        }
-
-
-        public init(properties: AAProperties) {
-
-        }
-    }
-}
-
 extension AATrunkAccess: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
@@ -96,9 +78,6 @@ extension AATrunkAccess: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AATrunkAccess {
 
     static var getState: [UInt8] {
@@ -109,32 +88,5 @@ public extension AATrunkAccess {
     static func controlTrunk(_ lockUnlock: AALockState?, changePosition position: AAPositionState?) -> [UInt8] {
         return commandPrefix(for: .lockOpen) + [lockUnlock?.propertyBytes(0x01),
                                                 position?.propertyBytes(0x02)].propertiesValuesCombined
-    }
-}
-
-public extension AATrunkAccess.Legacy {
-
-    struct Settings {
-        public let lock: AALockState?
-        public let position: AAPositionState?
-
-        public init(lock: AALockState?, position: AAPositionState?) {
-            self.lock = lock
-            self.position = position
-        }
-    }
-
-
-    static var getState: [UInt8] {
-        return commandPrefix(for: AATrunkAccess.self, messageType: .getState)
-    }
-
-    static var openClose: (Settings) -> [UInt8] {
-        return {
-            let lockBytes: [UInt8] = $0.lock?.propertyBytes(0x01) ?? []
-            let positionBytes: [UInt8] = $0.position?.propertyBytes(0x02) ?? []
-
-            return commandPrefix(for: AATrunkAccess.self, messageType: .setState) + lockBytes + positionBytes
-        }
     }
 }

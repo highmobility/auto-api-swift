@@ -75,9 +75,6 @@ extension AAParkingBrake: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAParkingBrake {
 
     static var getBrakeState: [UInt8] {
@@ -87,30 +84,5 @@ public extension AAParkingBrake {
 
     static func activate(_ state: AAActiveState) -> [UInt8] {
         return commandPrefix(for: .activate) + state.propertyBytes(0x01)
-    }
-}
-
-public extension AAParkingBrake {
-
-    struct Legacy: AAMessageTypesGettable {
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case getBrakeState  = 0x00
-            case brakeState     = 0x01
-            case setBrakeState  = 0x02
-        }
-
-
-        /// Use `false` to *inactivate*.
-        static var activate: (Bool) -> [UInt8] {
-            return {
-                return commandPrefix(for: AAParkingBrake.self, messageType: .setBrakeState) + [$0 ? 0x01 : 0x00]
-            }
-        }
-
-        static var getBrakeState: [UInt8] {
-            return commandPrefix(for: AAParkingBrake.self, messageType: .getBrakeState)
-        }
     }
 }

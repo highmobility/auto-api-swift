@@ -96,8 +96,6 @@ extension AAFirmwareVersion: AAPropertyIdentifierGettable {
 }
 
 
-// MARK: Commands
-
 public extension AAFirmwareVersion {
 
     static var getVersion: [UInt8] {

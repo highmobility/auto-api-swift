@@ -47,9 +47,6 @@ extension AAMultiCommand: AAMessageTypesGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAMultiCommand {
 
     static func combined(_ commands: [UInt8]...) -> [UInt8] {

@@ -69,24 +69,6 @@ extension AAWindscreen: AAIdentifiable {
     public static var identifier: AACommandIdentifier = 0x0042
 }
 
-extension AAWindscreen: AALegacyGettable {
-
-    public struct Legacy: AALegacyType {
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case getWindscreenState     = 0x00
-            case windscreenState        = 0x01
-            case setWindscreenDamage    = 0x02
-        }
-
-
-        public init(properties: AAProperties) {
-
-        }
-    }
-}
-
 extension AAWindscreen: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
@@ -118,9 +100,6 @@ extension AAWindscreen: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAWindscreen {
 
     static var getWindscreenState: [UInt8] {
@@ -140,35 +119,5 @@ public extension AAWindscreen {
 
     static func setNeedsReplacement(_ needsReplacement: AANeedsReplacement) -> [UInt8] {
         return commandPrefix(for: .setNeedsReplacement) + needsReplacement.propertyBytes(0x01)
-    }
-}
-
-public extension AAWindscreen.Legacy {
-
-    struct Damage {
-        public let damage: AAWindscreenDamage
-        public let zone: AAZone
-        public let needsReplacement: AANeedsReplacement
-
-        public init(damage: AAWindscreenDamage, zone: AAZone, needsReplacement: AANeedsReplacement) {
-            self.damage = damage
-            self.zone = zone
-            self.needsReplacement = needsReplacement
-        }
-    }
-
-
-    static var getWindscreenState: [UInt8] {
-        return commandPrefix(for: AAWindscreen.self, messageType: .getWindscreenState)
-    }
-
-    static var setWindscreenDamage: (Damage) -> [UInt8] {
-        return {
-            let damageBytes = $0.damage.propertyBytes(0x03)
-            let zoneBytes = $0.zone.propertyBytes(0x05)
-            let replacementBytes = $0.needsReplacement.propertyBytes(0x06)
-
-            return commandPrefix(for: AAWindscreen.self, messageType: .setWindscreenDamage) + damageBytes + zoneBytes + replacementBytes
-        }
     }
 }

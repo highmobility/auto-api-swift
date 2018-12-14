@@ -58,29 +58,6 @@ extension AADoorLocks: AAIdentifiable {
     public static var identifier: AACommandIdentifier = 0x0020
 }
 
-extension AADoorLocks: AALegacyGettable {
-
-    public struct Legacy: AALegacyType {
-
-        public let doors: [AADoor]?
-
-
-        // MARK: AALegacyType
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case getLockState       = 0x00
-            case lockState          = 0x01
-            case lockUnlockDoors    = 0x02
-        }
-
-
-        public init(properties: AAProperties) {
-            doors = properties.flatMap(for: 0x01) { AADoor($0.value) }
-        }
-    }
-}
-
 extension AADoorLocks: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
@@ -106,9 +83,6 @@ extension AADoorLocks: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AADoorLocks {
 
     static var getLocksState: [UInt8] {
@@ -118,18 +92,5 @@ public extension AADoorLocks {
 
     static func lockUnlock(_ state: AALockState) -> [UInt8] {
         return commandPrefix(for: .lockUnlock) + state.propertyBytes(0x01)
-    }
-}
-
-public extension AADoorLocks.Legacy {
-
-    static var getLockState: [UInt8] {
-        return commandPrefix(for: AADoorLocks.self, messageType: .getLockState)
-    }
-
-    static var lockUnlock: (AALockState) -> [UInt8] {
-        return {
-            return commandPrefix(for: AADoorLocks.self, messageType: .lockUnlockDoors, additionalBytes: $0.rawValue)
-        }
     }
 }

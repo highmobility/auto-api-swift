@@ -47,9 +47,6 @@ extension AABrowser: AAMessageTypesGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AABrowser {
 
     static func loadURL(_ url: URL) -> [UInt8] {

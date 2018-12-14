@@ -92,9 +92,6 @@ extension AATachograph: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AATachograph {
 
     static var getState: [UInt8] {

@@ -56,29 +56,6 @@ extension AAWindows: AAIdentifiable {
     public static var identifier: AACommandIdentifier = 0x0045
 }
 
-extension AAWindows: AALegacyGettable {
-
-    public struct Legacy: AALegacyType {
-
-        public let windows: [AAWindow]?
-
-
-        // MARK: AALegacyType
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case getWindowsState    = 0x00
-            case windowsState       = 0x01
-            case openCloseWindows   = 0x02
-        }
-
-
-        public init(properties: AAProperties) {
-            windows = properties.flatMap(for: 0x01) { AAWindow($0.value) }
-        }
-    }
-}
-
 extension AAWindows: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
@@ -102,9 +79,6 @@ extension AAWindows: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAWindows {
 
     static var getWindowsState: [UInt8] {
@@ -115,18 +89,5 @@ public extension AAWindows {
     static func controlWindows(openPercentages: [AAWindowOpenPercentage]?, positions: [AAWindowPosition]?) -> [UInt8] {
         return commandPrefix(for: .control) + [openPercentages?.reduceToByteArray { $0.propertyBytes(0x01) },
                                                positions?.reduceToByteArray { $0.propertyBytes(0x02) }].propertiesValuesCombined
-    }
-}
-
-public extension AAWindows.Legacy {
-
-    static var getWindowsState: [UInt8] {
-        return commandPrefix(for: AAWindows.self, messageType: .getWindowsState)
-    }
-
-    static var openClose: ([AAWindow]) -> [UInt8] {
-        return {
-            return commandPrefix(for: AAWindows.self, messageType: .openCloseWindows) + $0.flatMap { $0.propertyBytes(0x01) }
-        }
     }
 }

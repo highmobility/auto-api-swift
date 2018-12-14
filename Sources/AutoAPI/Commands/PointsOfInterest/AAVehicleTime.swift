@@ -74,9 +74,6 @@ extension AAVehicleTime: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAVehicleTime {
 
     static var getTime: [UInt8] {

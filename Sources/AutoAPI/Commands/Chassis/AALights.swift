@@ -37,9 +37,9 @@ public struct AALights: AAFullStandardCommand {
 
     public let ambientColour: AAColour?
     public let emergencyBrakeState: AAActiveState?
-    public let fogLights: AAFrontRearState?
+    public let fogLights: [AAFogLight]?
     public let frontExterior: AAFrontLightState?
-    public let interiorLights: AAFrontRearState?
+    public let interiorLamps: [AAInteriorLamp]?
     public let readingLamps: [AAReadingLamp]?
     public let rearExteriorState: AAActiveState?
     public let reverseState: AAActiveState?
@@ -58,9 +58,9 @@ public struct AALights: AAFullStandardCommand {
         reverseState = properties.value(for: \AALights.reverseState)
         emergencyBrakeState = properties.value(for: \AALights.emergencyBrakeState)
         /* Level 9 */
-        fogLights = AAFrontRearState(properties: properties, keyPath: \AALights.fogLights)
+        fogLights = properties.flatMap(for: \AALights.fogLights) { AAFogLight($0.value) }
         readingLamps = properties.flatMap(for: \AALights.readingLamps) { AAReadingLamp($0.value) }
-        interiorLights = AAFrontRearState(properties: properties, keyPath: \AALights.interiorLights)
+        interiorLamps = properties.flatMap(for: \AALights.interiorLamps) { AAInteriorLamp($0.value) }
 
         // Properties
         self.properties = properties
@@ -70,24 +70,6 @@ public struct AALights: AAFullStandardCommand {
 extension AALights: AAIdentifiable {
 
     public static var identifier: AACommandIdentifier = 0x0036
-}
-
-extension AALights: AALegacyGettable {
-
-    public struct Legacy: AALegacyType {
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case getLightsState = 0x00
-            case lightsState    = 0x01
-            case controlLights  = 0x02
-        }
-
-
-        public init(properties: AAProperties) {
-
-        }
-    }
 }
 
 extension AALights: AAMessageTypesGettable {
@@ -112,16 +94,13 @@ extension AALights: AAPropertyIdentifierGettable {
             /* Level 9 */
         case \AALights.fogLights:       return 0x07
         case \AALights.readingLamps:    return 0x08
-        case \AALights.interiorLights:  return 0x09
+        case \AALights.interiorLamps:  return 0x09
 
         default:
             return 0x00
         }
     }
 }
-
-
-// MARK: Commands
 
 public extension AALights {
 
@@ -134,16 +113,17 @@ public extension AALights {
                               rearExterior: AAActiveState? = nil,
                               interior: AAActiveState? = nil,
                               ambientColour: AAColour? = nil,
-                              fogLights: AAFrontRearState? = nil,
+                              fogLights: [AAFogLight]? = nil,
                               readingLamps: [AAReadingLamp]? = nil,
-                              interiorLights: AAFrontRearState? = nil) -> [UInt8] {
+                              interiorLamps: [AAInteriorLamp]? = nil) -> [UInt8] {
         // Make sure we have at least 1 value
         guard (frontExterior != nil) ||
             (rearExterior != nil) ||
             (interior != nil) ||
             (ambientColour != nil) ||
             (fogLights != nil) ||
-            (readingLamps != nil) else {
+            (readingLamps != nil) ||
+            (interiorLamps != nil) else {
                 return []
         }
 
@@ -151,42 +131,9 @@ public extension AALights {
                                                      rearExterior?.propertyBytes(0x02),
                                                      interior?.propertyBytes(0x03),
                                                      ambientColour?.propertyBytes(0x04),
-                                                     fogLights?.propertyBytes(0x07),
+                                                     fogLights?.reduceToByteArray { $0.propertyBytes(0x07) },
                                                      readingLamps?.reduceToByteArray { $0.propertyBytes(0x08) },
-                                                     interiorLights?.propertyBytes(0x09)].propertiesValuesCombined
-    }
-}
-
-public extension AALights.Legacy {
-
-    struct Control {
-        public let frontExterior: AAFrontLightState?
-        public let isRearExteriorActive: Bool?
-        public let isInteriorActive: Bool?
-        public let ambientColour: AAColour?
-
-        public init(frontExterior: AAFrontLightState?, isRearExteriorActive: Bool?, isInteriorActive: Bool?, ambientColour: AAColour?) {
-            self.frontExterior = frontExterior
-            self.isRearExteriorActive = isRearExteriorActive
-            self.isInteriorActive = isInteriorActive
-            self.ambientColour = ambientColour
-        }
-    }
-
-
-    static var controlLights: (Control) -> [UInt8] {
-        return {
-            let frontBytes: [UInt8] = $0.frontExterior?.propertyBytes(0x01) ?? []
-            let rearBytes: [UInt8] = $0.isRearExteriorActive?.propertyBytes(0x02) ?? []
-            let interiorBytes: [UInt8] = $0.isInteriorActive?.propertyBytes(0x03) ?? []
-            let ambientBytes: [UInt8] = $0.ambientColour?.propertyBytes(0x04) ?? []
-
-            return commandPrefix(for: AALights.self, messageType: .controlLights) + frontBytes + rearBytes + interiorBytes + ambientBytes
-        }
-    }
-
-    static var getLightsState: [UInt8] {
-        return commandPrefix(for: AALights.self, messageType: .getLightsState)
+                                                     interiorLamps?.reduceToByteArray { $0.propertyBytes(0x09) }].propertiesValuesCombined
     }
 }
 

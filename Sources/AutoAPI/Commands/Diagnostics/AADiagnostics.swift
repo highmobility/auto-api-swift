@@ -110,28 +110,6 @@ extension AADiagnostics: AAIdentifiable {
     public static var identifier: AACommandIdentifier = 0x0033
 }
 
-extension AADiagnostics: AALegacyGettable {
-
-    public struct Legacy: AALegacyType {
-
-        public let currentFuelConsumption: Float?
-        public let averageFuelConsumption: Float?
-        public let tires: [AATire]?
-
-
-        // MARK: AALegacyType
-
-        public typealias MessageTypes = AADiagnostics.MessageTypes
-
-
-        public init(properties: AAProperties) {
-            currentFuelConsumption = properties.value(for: 0x07)
-            averageFuelConsumption = properties.value(for: 0x08)
-            tires = properties.flatMap(for: 0x0A) { AATire($0.value) }
-        }
-    }
-}
-
 extension AADiagnostics: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
@@ -179,9 +157,6 @@ extension AADiagnostics: AAPropertyIdentifierGettable {
         }
     }
 }
-
-
-// MARK: Commands
 
 public extension AADiagnostics {
 

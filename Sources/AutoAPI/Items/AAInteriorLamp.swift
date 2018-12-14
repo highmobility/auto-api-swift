@@ -19,33 +19,49 @@
 // licensing@high-mobility.com
 //
 //
-//  AALegacy.swift
+//  AAInteriorLamp.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 26/09/2018.
+//  Created by Mikk Rätsep on 14/12/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public protocol AALegacyGettable: AAPropertiesCapable {
+public struct AAInteriorLamp {
 
-    associatedtype Legacy: AALegacyType
+    public let location: AALightLocation
+    public let state: AAActiveState
 
 
-    var legacy: Legacy { get }
-}
+    // MARK: Init
 
-public extension AALegacyGettable {
-
-    var legacy: Legacy {
-        return Legacy(properties: properties)
+    init(location: AALightLocation, state: AAActiveState) {
+        self.location = location
+        self.state = state
     }
 }
 
+extension AAInteriorLamp: AAItem {
 
-public protocol AALegacyType: AAMessageTypesGettable {
+    static var size: Int = 2
 
-    init(properties: AAProperties)
+
+    init?(bytes: [UInt8]) {
+        guard let location = AALightLocation(rawValue: bytes[0]),
+            let state = AAActiveState(rawValue: bytes[1]) else {
+                return nil
+        }
+
+        self.location = location
+        self.state = state
+    }
+}
+
+extension AAInteriorLamp: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [location.rawValue, state.rawValue]
+    }
 }

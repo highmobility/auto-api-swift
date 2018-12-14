@@ -112,9 +112,6 @@ extension AAMaintenance: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAMaintenance {
 
     static var getMaintenanceState: [UInt8] {

@@ -29,6 +29,7 @@
 import Foundation
 
 
+// TODO: Delete
 public enum AAFrontRearState: UInt8 {
 
     case inactive       = 0x00

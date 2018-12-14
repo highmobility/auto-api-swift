@@ -19,36 +19,49 @@
 // licensing@high-mobility.com
 //
 //
-//  AAWakeUp.swift
+//  AAFogLight.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 29/11/2017.
+//  Created by Mikk Rätsep on 14/12/2018.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct AAWakeUp: AAOutboundCommand {
+public struct AAFogLight {
 
-}
+    public let location: AALightLocation
+    public let state: AAActiveState
 
-extension AAWakeUp: AAIdentifiable {
 
-    public static var identifier: AACommandIdentifier = 0x0022
-}
+    // MARK: Init
 
-extension AAWakeUp: AAMessageTypesGettable {
-
-    public enum MessageTypes: UInt8, CaseIterable {
-
-        case wakeUp = 0x02
+    init(location: AALightLocation, state: AAActiveState) {
+        self.location = location
+        self.state = state
     }
 }
 
-public extension AAWakeUp {
+extension AAFogLight: AAItem {
 
-    static var wakeUp: [UInt8] {
-        return commandPrefix(for: .wakeUp)
+    static var size: Int = 2
+
+
+    init?(bytes: [UInt8]) {
+        guard let location = AALightLocation(rawValue: bytes[0]),
+            let state = AAActiveState(rawValue: bytes[1]) else {
+                return nil
+        }
+
+        self.location = location
+        self.state = state
+    }
+}
+
+extension AAFogLight: AAPropertyConvertable {
+
+    var propertyValue: [UInt8] {
+        return [location.rawValue, state.rawValue]
     }
 }

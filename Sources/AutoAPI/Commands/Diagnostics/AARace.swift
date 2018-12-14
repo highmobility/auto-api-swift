@@ -127,9 +127,6 @@ extension AARace: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AARace {
 
     static var getRaceState: [UInt8] {

@@ -62,24 +62,6 @@ extension AARooftopControl: AAIdentifiable {
     public static var identifier: AACommandIdentifier = 0x0025
 }
 
-extension AARooftopControl: AALegacyGettable {
-
-    public struct Legacy: AALegacyType {
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case getRooftopState    = 0x00
-            case rooftopState       = 0x01
-            case controlRooftop     = 0x02
-        }
-
-
-        public init(properties: AAProperties) {
-
-        }
-    }
-}
-
 extension AARooftopControl: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
@@ -107,9 +89,6 @@ extension AARooftopControl: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AARooftopControl {
 
     static var getRooftopState: [UInt8] {
@@ -126,32 +105,5 @@ public extension AARooftopControl {
                                                       convertibleRoof?.propertyBytes(0x03),
                                                       sunroofTilt?.propertyBytes(0x04),
                                                       sunroofState?.propertyBytes(0x05)].propertiesValuesCombined
-    }
-}
-
-public extension AARooftopControl.Legacy {
-
-    struct Control {
-        public let dimming: AAPercentageInt?
-        public let openClose: AAPercentageInt?
-
-        public init(dimming: AAPercentageInt?, openClose: AAPercentageInt?) {
-            self.dimming = dimming
-            self.openClose = openClose
-        }
-    }
-
-
-    static var controlRooftop: (Control) -> [UInt8] {
-        return {
-            let dimmingBytes: [UInt8] = $0.dimming?.propertyBytes(0x01) ?? []
-            let openCloseBytes: [UInt8] = $0.openClose?.propertyBytes(0x02) ?? []
-
-            return commandPrefix(for: AARooftopControl.self, messageType: .controlRooftop) + dimmingBytes + openCloseBytes
-        }
-    }
-
-    static var getRooftopState: [UInt8] {
-        return commandPrefix(for: AARooftopControl.self, messageType: .getRooftopState)
     }
 }

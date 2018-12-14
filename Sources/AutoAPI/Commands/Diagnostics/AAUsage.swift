@@ -118,9 +118,6 @@ extension AAUsage: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAUsage {
 
     static var getUsage: [UInt8] {

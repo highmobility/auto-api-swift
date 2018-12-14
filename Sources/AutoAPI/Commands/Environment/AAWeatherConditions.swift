@@ -74,9 +74,6 @@ extension AAWeatherConditions: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAWeatherConditions {
 
     static var getConditions: [UInt8] {

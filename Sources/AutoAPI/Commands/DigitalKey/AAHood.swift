@@ -73,9 +73,6 @@ extension AAHood: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAHood {
 
     static var getHoodState: [UInt8] {

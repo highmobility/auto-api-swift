@@ -53,25 +53,6 @@ extension AAHonkHornFlashLights: AAIdentifiable {
     public static var identifier: AACommandIdentifier = 0x0026
 }
 
-extension AAHonkHornFlashLights: AALegacyGettable {
-
-    public struct Legacy: AALegacyType {
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case getFlasherState                    = 0x00
-            case flasherState                       = 0x01
-            case honkFlash                          = 0x02
-            case activateDeactivateEmergencyFlasher = 0x03
-        }
-
-
-        public init(properties: AAProperties) {
-
-        }
-    }
-}
-
 extension AAHonkHornFlashLights: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
@@ -95,9 +76,6 @@ extension AAHonkHornFlashLights: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAHonkHornFlashLights {
 
     static var getFlasherState: [UInt8] {
@@ -117,39 +95,5 @@ public extension AAHonkHornFlashLights {
 
         return commandPrefix(for: .honkFlash) + [seconds?.propertyBytes(0x01),
                                                  flashLightsXTimes?.propertyBytes(0x02)].propertiesValuesCombined
-    }
-}
-
-public extension AAHonkHornFlashLights.Legacy {
-
-    struct Settings {
-        public let honkHornSeconds: UInt8?
-        public let flashLightsTimes: UInt8?
-
-        public init(honkHornSeconds: UInt8?, flashLightsTimes: UInt8?){
-            self.honkHornSeconds = honkHornSeconds
-            self.flashLightsTimes = flashLightsTimes
-        }
-    }
-
-
-    /// Use `false` to *inactivate*.
-    static var activateEmergencyFlasher: (Bool) -> [UInt8] {
-        return {
-            return commandPrefix(for: AAHonkHornFlashLights.self, messageType: .activateDeactivateEmergencyFlasher, additionalBytes: $0.byte)
-        }
-    }
-
-    static var getFlasherState: [UInt8] {
-        return commandPrefix(for: AAHonkHornFlashLights.self, messageType: .getFlasherState)
-    }
-
-    static var honkHornFlashLights: (Settings) -> [UInt8] {
-        return {
-            let hornBytes: [UInt8] = $0.honkHornSeconds?.propertyBytes(0x01) ?? []
-            let flashBytes: [UInt8] = $0.flashLightsTimes?.propertyBytes(0x02) ?? []
-
-            return commandPrefix(for: AAHonkHornFlashLights.self, messageType: .honkFlash) + hornBytes + flashBytes
-        }
     }
 }

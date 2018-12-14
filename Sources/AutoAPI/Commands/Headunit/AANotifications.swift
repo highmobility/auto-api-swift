@@ -69,16 +69,6 @@ public struct AANotifications: AAInboundCommand, AAOutboundCommand {
 
             properties = AAProperties([])
 
-        case Legacy.MessageTypes.notificationAction.rawValue:
-            guard binary.count == 4 else {
-                return nil
-            }
-
-            // Hack
-            properties = AAProperties([AANotifications.propertyID(for: \AANotifications.receivedActionID),
-                                       0x00, 0x01,  // Property size
-                                       binary.bytes[3]])
-
         default:
             return nil
         }
@@ -94,7 +84,7 @@ public struct AANotifications: AAInboundCommand, AAOutboundCommand {
             receivedActionID = nil
             receivedClearCommand = false
 
-        case MessageTypes.action.rawValue, Legacy.MessageTypes.notificationAction.rawValue:
+        case MessageTypes.action.rawValue:
             receivedActionID = properties.value(for: \AANotifications.receivedActionID)
             receivedClearCommand = false
 
@@ -122,24 +112,6 @@ extension AANotifications: AAIdentifiable {
     public static var identifier: AACommandIdentifier = 0x0038
 }
 
-extension AANotifications: AALegacyGettable {
-
-    public struct Legacy: AALegacyType {
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case notification       = 0x00
-            case notificationAction = 0x01
-            case clearNotification  = 0x02
-        }
-
-
-        public init(properties: AAProperties) {
-
-        }
-    }
-}
-
 extension AANotifications: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
@@ -165,9 +137,6 @@ extension AANotifications: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AANotifications {
 
     static var clearNotification: [UInt8] {
@@ -182,38 +151,5 @@ public extension AANotifications {
     static func received(text: String, actionItems items: [AAActionItem]?) -> [UInt8] {
         return commandPrefix(for: .notification) + text.propertyBytes(0x01)
                                                  + (items?.reduceToByteArray { $0.propertyBytes(0x02) } ?? [])
-    }
-}
-
-public extension AANotifications.Legacy {
-
-    struct Notification {
-        public let text: String
-        public let actionItems: [AAActionItem]?
-
-        public init(text: String, actionItems: [AAActionItem]?) {
-            self.text = text
-            self.actionItems = actionItems
-        }
-    }
-
-
-    static var clearNotification: [UInt8] {
-        return commandPrefix(for: AANotifications.self, messageType: .clearNotification)
-    }
-
-    static var notification: (Notification) -> [UInt8] {
-        return {
-            let textBytes = $0.text.propertyBytes(0x01)
-            let actionsBytes: [UInt8] = $0.actionItems?.flatMap { $0.propertyBytes(0x02) } ?? []
-
-            return commandPrefix(for: AANotifications.self, messageType: .notification) + textBytes + actionsBytes
-        }
-    }
-
-    static var notificationAction: (UInt8) -> [UInt8] {
-        return {
-            return commandPrefix(for: AANotifications.self, messageType: .notificationAction, additionalBytes: $0)
-        }
     }
 }

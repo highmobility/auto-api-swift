@@ -141,9 +141,7 @@ extension AAVehicleStatus: AAPropertyIdentifierGettable {
         }
     }
 }
-
-
-// MARK: Commands
+ 
 
 public extension AAVehicleStatus {
 

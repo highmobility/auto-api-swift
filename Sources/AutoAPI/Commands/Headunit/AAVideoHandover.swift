@@ -46,49 +46,11 @@ extension AAVideoHandover: AAMessageTypesGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAVideoHandover {
 
     static func videoHandover(url: URL, startingSecond second: UInt16?, screen: AAScreen?) -> [UInt8] {
         return commandPrefix(for: .handover) + [url.propertyBytes(0x01),
                                                 second?.propertyBytes(0x02),
                                                 screen?.propertyBytes(0x03)].propertiesValuesCombined
-    }
-}
-
-public extension AAVideoHandover {
-
-    struct Legacy: AAMessageTypesGettable {
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case handover  = 0x00
-        }
-        
-
-        struct Details {
-            public let videoURL: URL
-            public let startingSecond: UInt16?
-            public let screen: AAScreen?
-
-            public init(videoURL: URL, startingSecond: UInt16?, screen: AAScreen?) {
-                self.videoURL = videoURL
-                self.startingSecond = startingSecond
-                self.screen = screen
-            }
-        }
-
-
-        static var videoHandover: (Details) -> [UInt8] {
-            return {
-                let urlBytes = $0.videoURL.propertyBytes(0x01)
-                let secondBytes: [UInt8] = $0.startingSecond?.propertyBytes(0x02) ?? []
-                let screenBytes: [UInt8] = $0.screen?.propertyBytes(0x03) ?? []
-
-                return commandPrefix(for: AAVideoHandover.self, messageType: .handover) + urlBytes + secondBytes + screenBytes
-            }
-        }
     }
 }

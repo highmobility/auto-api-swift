@@ -60,39 +60,7 @@ extension AAVehicleLocation: AAMessageTypesGettable {
         case getLocation    = 0x00
         case location       = 0x01
     }
-}
-
-extension AAVehicleLocation: AALegacyGettable {
-
-    public struct Legacy: AALegacyType {
-
-        public typealias Coordinates = (latitude: Float, longitude: Float)
-
-        public let altitude: Float?
-        public let heading: Float?
-        public let coordinates: Coordinates?
-
-
-        // MARK: AALegacyType
-
-        public typealias MessageTypes = AAVehicleLocation.MessageTypes
-
-
-        public init(properties: AAProperties) {
-            coordinates = properties.first(for: 0x01).flatMap { property -> Coordinates? in
-                guard property.value.count == 8 else {
-                    return nil
-                }
-
-                return (latitude: Float(property.value.prefix(upTo: 4)),
-                        longitude: Float(property.value.dropFirst(4)))
-            }
-
-            heading = properties.value(for: 0x02)
-            altitude = properties.value(for: 0x03)
-        }
-    }
-}
+} 
 
 extension AAVehicleLocation: AAIdentifiable {
 
@@ -113,9 +81,6 @@ extension AAVehicleLocation: AAPropertyIdentifierGettable {
         }
     }
 }
-
-
-// MARK: Commands
 
 public extension AAVehicleLocation {
 

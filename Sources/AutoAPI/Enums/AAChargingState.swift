@@ -38,11 +38,3 @@ public enum AAChargingState: UInt8 {
     case chargingPaused     = 0x04
     case chargingError      = 0x05
 }
-
-public enum AAChargingStateLegacy: UInt8 {
-
-    case disconnected   = 0x00
-    case pluggedIn      = 0x01
-    case charging       = 0x02
-    case chargingDone   = 0x03
-}

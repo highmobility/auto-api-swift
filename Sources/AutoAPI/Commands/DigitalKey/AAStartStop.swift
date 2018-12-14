@@ -53,24 +53,6 @@ extension AAStartStop: AAIdentifiable {
     public static var identifier: AACommandIdentifier = 0x0063
 }
 
-extension AAStartStop: AALegacyGettable {
-
-    public struct Legacy: AALegacyType {
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case getState   = 0x00
-            case state      = 0x01
-            case setState   = 0x02
-        }
-
-
-        public init(properties: AAProperties) {
-
-        }
-    }
-}
-
 extension AAStartStop: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
@@ -93,9 +75,6 @@ extension AAStartStop: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAStartStop {
 
     static var getState: [UInt8] {
@@ -105,18 +84,5 @@ public extension AAStartStop {
 
     static func activate(_ state: AAActiveState) -> [UInt8] {
         return commandPrefix(for: .activate) + state.propertyBytes(0x01)
-    }
-}
-
-public extension AAStartStop.Legacy {
-
-    static var getState: [UInt8] {
-        return commandPrefix(for: AAStartStop.self, messageType: .getState)
-    }
-
-    static var setState: (AAActiveState) -> [UInt8] {
-        return {
-            return commandPrefix(for: AAStartStop.self, messageType: .setState) + $0.propertyBytes(0x01)
-        }
     }
 }

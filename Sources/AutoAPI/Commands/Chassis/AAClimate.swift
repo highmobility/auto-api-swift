@@ -74,33 +74,6 @@ extension AAClimate: AAIdentifiable {
     public static var identifier: AACommandIdentifier = 0x0024
 }
 
-extension AAClimate: AALegacyGettable {
-
-    public struct Legacy: AALegacyType {
-
-        public let climateProfile: AAClimateProfile?
-
-
-        // MARK: AALegacyType
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case getClimateState        = 0x00
-            case climateState           = 0x01
-            case setClimateProfile      = 0x02
-            case startStopHVAC          = 0x03
-            case startStopDefogging     = 0x04
-            case startStopDefrosting    = 0x05
-            case startStopIonising      = 0x06
-        }
-
-
-        public init(properties: AAProperties) {
-            climateProfile = AAClimateProfile(bytes: properties.first(for: 0x0A)?.value)
-        }
-    }
-}
-
 extension AAClimate: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
@@ -139,9 +112,6 @@ extension AAClimate: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAClimate {
 
     static var getClimateState: [UInt8] {
@@ -173,63 +143,5 @@ public extension AAClimate {
 
     static func startStopIonising(_ state: AAActiveState) -> [UInt8] {
         return commandPrefix(for: .startStopIonising) + state.propertyBytes(0x01)
-    }
-}
-
-public extension AAClimate.Legacy {
-
-    public struct Settings {
-        public let climateProfile: AAClimateProfile?
-        public let driverTemp: Float?
-        public let passengerTemp: Float?
-
-        public init(climateProfile: AAClimateProfile?, driverTemp: Float?, passengerTemp: Float?) {
-            self.climateProfile = climateProfile
-            self.driverTemp = driverTemp
-            self.passengerTemp = passengerTemp
-        }
-    }
-
-
-    static var getClimateState: [UInt8] {
-        return commandPrefix(for: AAClimate.self, messageType: .getClimateState)
-    }
-
-    static var setClimateProfile: (Settings) -> [UInt8] {
-        return {
-            let profileBytes: [UInt8] = $0.climateProfile?.propertyBytes(0x01) ?? []
-            let driverBytes: [UInt8] = $0.driverTemp?.propertyBytes(0x02) ?? []
-            let passengerBytes: [UInt8] = $0.passengerTemp?.propertyBytes(0x03) ?? []
-
-            return commandPrefix(for: AAClimate.self, messageType: .setClimateProfile) + profileBytes + driverBytes + passengerBytes
-        }
-    }
-
-    /// Use `false` to *stop*.
-    static var startDefogging: (Bool) -> [UInt8] {
-        return {
-            return commandPrefix(for: AAClimate.self, messageType: .startStopDefogging, additionalBytes: $0.byte)
-        }
-    }
-
-    /// Use `false` to *stop*.
-    static var startDefrosting: (Bool) -> [UInt8] {
-        return {
-            return commandPrefix(for: AAClimate.self, messageType: .startStopDefrosting, additionalBytes: $0.byte)
-        }
-    }
-
-    /// Use `false` to *stop*.
-    static var startHVAC: (Bool) -> [UInt8] {
-        return {
-            return commandPrefix(for: AAClimate.self, messageType: .startStopHVAC, additionalBytes: $0.byte)
-        }
-    }
-
-    /// Use `false` to *stop*.
-    static var startIonising: (Bool) -> [UInt8] {
-        return {
-            return commandPrefix(for: AAClimate.self, messageType: .startStopIonising, additionalBytes: $0.byte)
-        }
     }
 }

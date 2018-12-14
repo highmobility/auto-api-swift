@@ -78,9 +78,6 @@ extension AAPowerTakeoff: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAPowerTakeoff {
 
     static var getState: [UInt8] {

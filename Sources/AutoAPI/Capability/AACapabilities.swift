@@ -99,9 +99,6 @@ extension AACapabilities: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AACapabilities {
 
     static var getCapabilities: [UInt8] {

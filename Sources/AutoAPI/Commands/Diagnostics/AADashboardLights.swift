@@ -74,9 +74,6 @@ extension AADashboardLights: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AADashboardLights {
 
     static var getDashboardLights: [UInt8] {

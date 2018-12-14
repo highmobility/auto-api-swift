@@ -80,9 +80,6 @@ extension AALightConditions: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AALightConditions {
 
     static var getConditions: [UInt8] {

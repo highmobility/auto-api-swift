@@ -82,46 +82,6 @@ extension AAHomeCharger: AAIdentifiable {
     public static var identifier: AACommandIdentifier = 0x0060
 }
 
-extension AAHomeCharger: AALegacyGettable {
-
-    public struct Legacy: AALegacyType {
-
-        public typealias Coordinate = (latitude: Float, longitude: Float)
-
-        public let chargeCurrent: AAChargeCurrent?
-        public let location: Coordinate?
-        public let pricingTariffs: [AALegacyPricingTariff]?
-
-
-        // MARK: AALegacyType
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case getChargerState        = 0x00
-            case chargerState           = 0x01
-            case setChargeCurrent       = 0x02
-            case setPriceTariffs        = 0x03
-            case setSolarChargingState  = 0x04
-            case setWifiHotspotState    = 0x05
-        }
-
-
-        public init(properties: AAProperties) {
-            location = properties.first(for: 0x06).flatMap { property -> Coordinate? in
-                guard property.value.count == 8 else {
-                    return nil
-                }
-
-                return (latitude: Float(property.value.prefix(upTo: 4)),
-                        longitude: Float(property.value.dropFirst(4)))
-            }
-
-            chargeCurrent = AAChargeCurrent(properties.first(for: 0x07)?.value ?? [])
-            pricingTariffs = properties.flatMap(for: 0x0C) { AALegacyPricingTariff($0.value) }
-        }
-    }
-}
-
 extension AAHomeCharger: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
@@ -163,9 +123,6 @@ extension AAHomeCharger: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AAHomeCharger {
 
     static var getChargerState: [UInt8] {
@@ -191,39 +148,5 @@ public extension AAHomeCharger {
 
     static func setPriceTariffs(_ tariffs: [AAPriceTariff]) -> [UInt8] {
         return commandPrefix(for: .setPriceTariffs) + tariffs.reduceToByteArray { $0.propertyBytes(0x0C) }
-    }
-}
-
-public extension AAHomeCharger.Legacy {
-
-    typealias PriceTariff = AAPriceTariff
-
-
-    static var setSolarChargingState: (AAActiveState) -> [UInt8] {
-        return {
-            return commandPrefix(for: AAHomeCharger.self, messageType: .setSolarChargingState) + $0.propertyBytes(0x01)
-        }
-    }
-
-    static var setWifiHotspotState: (AAActiveState) -> [UInt8] {
-        return {
-            return commandPrefix(for: AAHomeCharger.self, messageType: .setWifiHotspotState) + $0.propertyBytes(0x01)
-        }
-    }
-
-    static var getChargerState: [UInt8] {
-        return commandPrefix(for: AAHomeCharger.self, messageType: .getChargerState)
-    }
-
-    static var setChargeCurrent: (Float) -> [UInt8] {
-        return {
-            return commandPrefix(for: AAHomeCharger.self, messageType: .setChargeCurrent) + $0.propertyBytes(0x01)
-        }
-    }
-
-    static var setPriceTariffs: ([PriceTariff]) -> [UInt8] {
-        return {
-            return commandPrefix(for: AAHomeCharger.self, messageType: .setPriceTariffs) + $0.map { $0.propertyBytes(0x0C) }.flatMap { $0 }
-        }
     }
 }

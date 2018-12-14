@@ -56,28 +56,6 @@ extension AASeats: AAIdentifiable {
     public static var identifier: AACommandIdentifier = 0x0056
 }
 
-extension AASeats: AALegacyGettable {
-
-    public struct Legacy: AALegacyType {
-
-        public let seats: [AASeat]?
-
-
-        // MARK: AALegacyType
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case getSeatsState  = 0x00
-            case seatsState     = 0x01
-        }
-
-
-        public init(properties: AAProperties) {
-            seats = properties.flatMap(for: 0x01) { AASeat($0.value) }
-        }
-    }
-}
-
 extension AASeats: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
@@ -100,19 +78,9 @@ extension AASeats: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AASeats {
 
     static var getSeatsState: [UInt8] {
         return commandPrefix(for: .getSeatsState)
-    }
-}
-
-public extension AASeats.Legacy {
-
-    static var getSeatsState: [UInt8] {
-        return commandPrefix(for: AASeats.self, messageType: .getSeatsState)
     }
 }

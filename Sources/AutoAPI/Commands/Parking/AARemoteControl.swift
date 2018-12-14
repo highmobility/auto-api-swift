@@ -79,9 +79,6 @@ extension AARemoteControl: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AARemoteControl {
 
     static var getControlState: [UInt8] {
@@ -101,53 +98,5 @@ public extension AARemoteControl {
         }
 
         return commandPrefix(for: .startStopControl) + startStop.propertyBytes(0x01)
-    }
-}
-
-public extension AARemoteControl {
-
-    struct Legacy: AAMessageTypesGettable {
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case getControlMode     = 0x00
-            case controlMode        = 0x01
-            case startControlMode   = 0x02
-            case stopControlMode    = 0x03
-            case controlCommand     = 0x04
-        }
-
-
-        struct Control {
-            public let speed: Int8?
-            public let angle: Int16?
-
-            public init(speed: Int8?, angle: Int16?) {
-                self.speed = speed
-                self.angle = angle
-            }
-        }
-
-
-        static var controlCommand: (Control) -> [UInt8] {
-            return {
-                let speedBytes: [UInt8] = $0.speed?.propertyBytes(0x01) ?? []
-                let angleBytes: [UInt8] = $0.angle?.propertyBytes(0x02) ?? []
-
-                return commandPrefix(for: AARemoteControl.self, messageType: .controlCommand) + speedBytes + angleBytes
-            }
-        }
-
-        static var getControlMode: [UInt8] {
-            return commandPrefix(for: AARemoteControl.self, messageType: .getControlMode)
-        }
-
-        static var startControlMode: [UInt8] {
-            return commandPrefix(for: AARemoteControl.self, messageType: .startControlMode)
-        }
-
-        static var stopControlMode: [UInt8] {
-            return commandPrefix(for: AARemoteControl.self, messageType: .stopControlMode)
-        }
     }
 }

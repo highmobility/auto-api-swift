@@ -46,9 +46,6 @@ extension AATextInput: AAMessageTypesGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AATextInput {
 
     static func textInput(_ text: String) -> [UInt8] {

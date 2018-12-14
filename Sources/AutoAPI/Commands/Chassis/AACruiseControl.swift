@@ -61,24 +61,6 @@ extension AACruiseControl: AAIdentifiable {
     public static var identifier: AACommandIdentifier = 0x0062
 }
 
-extension AACruiseControl: AALegacyGettable {
-
-    public struct Legacy: AALegacyType {
-
-        public enum MessageTypes: UInt8, CaseIterable {
-
-            case getCruiseControlState  = 0x00
-            case cruiseControlState     = 0x01
-            case controlCruiseControl   = 0x02
-        }
-
-
-        public init(properties: AAProperties) {
-
-        }
-    }
-}
-
 extension AACruiseControl: AAMessageTypesGettable {
 
     public enum MessageTypes: UInt8, CaseIterable {
@@ -105,9 +87,6 @@ extension AACruiseControl: AAPropertyIdentifierGettable {
     }
 }
 
-
-// MARK: Commands
-
 public extension AACruiseControl {
 
     static var getCruiseControlState: [UInt8] {
@@ -121,32 +100,5 @@ public extension AACruiseControl {
 
         return commandPrefix(for: .activateCruiseControl) + [state.propertyBytes(0x01),
                                                              targetSpeedBytes].propertiesValuesCombined
-    }
-}
-
-public extension AACruiseControl.Legacy {
-
-    struct Control {
-        public let isActive: Bool
-        public let targetSpeed: Int16?
-
-        public init(isActive: Bool, targetSpeed: Int16?) {
-            self.isActive = isActive
-            self.targetSpeed = targetSpeed
-        }
-    }
-
-
-    static var activateCruiseControl: (Control) -> [UInt8] {
-        return {
-            let activationBytes = $0.isActive.propertyBytes(0x01)
-            let speedBytes: [UInt8] = $0.targetSpeed?.propertyBytes(0x02) ?? []
-
-            return commandPrefix(for: AACruiseControl.self, messageType: .controlCruiseControl) + activationBytes + speedBytes
-        }
-    }
-
-    static var getCruiseControlState: [UInt8] {
-        return commandPrefix(for: AACruiseControl.self, messageType: .getCruiseControlState)
     }
 }
