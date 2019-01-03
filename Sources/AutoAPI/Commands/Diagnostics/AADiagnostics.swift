@@ -98,6 +98,7 @@ public struct AADiagnostics: AAFullStandardCommand {
         tireTemperatures = properties.flatMap(for: \AADiagnostics.tireTemperatures) { AATireTemperature($0.value) }
         wheelRPMs = properties.flatMap(for: \AADiagnostics.wheelRPMs) { AAWheelRPM($0.value) }
         troubleCodes = properties.flatMap(for: \AADiagnostics.troubleCodes) { AADiagnosticTroubleCode($0.value) }
+        /* Level 9 */
         mileageMeters = properties.value(for: \AADiagnostics.mileageMeters)
 
         // Properties

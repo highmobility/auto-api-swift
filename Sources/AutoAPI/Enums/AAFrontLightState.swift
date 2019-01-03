@@ -35,6 +35,7 @@ public enum AAFrontLightState: UInt8 {
     case active                 = 0x01
     case activeFullBeam         = 0x02
     case daylightRunningLamps   = 0x03
+    case automatic              = 0x04
 }
 
 extension AAFrontLightState: AAPropertyConvertable {

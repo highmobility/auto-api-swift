@@ -83,6 +83,7 @@ public struct AAVehicleStatus: AAInboundCommand {
         displayUnit = AADisplayUnit(rawValue: properties.first(for: 0x0F)?.monoValue)
         driverSeatPosition = AADriverSeatLocation(rawValue: properties.first(for: 0x10)?.monoValue)
         equipment = properties.flatMap(for: 0x11) { String(bytes: $0.value, encoding: .utf8)  }
+        /* Level 9 */
         brand = properties.value(for: \AAVehicleStatus.brand)
 
         /* Special */
@@ -127,11 +128,14 @@ extension AAVehicleStatus: AAPropertyIdentifierGettable {
         case \AAVehicleStatus.engineVolume:     return 0x0C
         case \AAVehicleStatus.engineMaxTorque:  return 0x0D
         case \AAVehicleStatus.gearbox:          return 0x0E
+
             /* Level 8 */
         case \AAVehicleStatus.displayUnit:          return 0x0F
         case \AAVehicleStatus.driverSeatPosition:   return 0x10
         case \AAVehicleStatus.equipment:            return 0x11
-        case \AAVehicleStatus.brand:                return 0x12
+
+            /* Level 9 */
+        case \AAVehicleStatus.brand: return 0x12
 
             /* Special */
         case \AAVehicleStatus.states: return 0x99

@@ -50,6 +50,7 @@ public struct AARooftopControl: AAFullStandardCommand {
         /* Level 8 */
         convertibleRoofState = AAConvertibleRoofState(properties: properties, keyPath: \AARooftopControl.convertibleRoofState)
         sunroofTiltState = AATiltState(properties: properties, keyPath: \AARooftopControl.sunroofTiltState)
+        /* Level 9 */
         sunroofState = properties.value(for: \AARooftopControl.sunroofState)
 
         // Properties

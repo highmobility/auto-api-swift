@@ -37,4 +37,5 @@ public enum AALocation: UInt8 {
     case rearLeft   = 0x03
 
     case hatch      = 0x04
+    case all        = 0x05
 }

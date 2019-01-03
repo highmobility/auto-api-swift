@@ -94,7 +94,7 @@ extension AALights: AAPropertyIdentifierGettable {
             /* Level 9 */
         case \AALights.fogLights:       return 0x07
         case \AALights.readingLamps:    return 0x08
-        case \AALights.interiorLamps:  return 0x09
+        case \AALights.interiorLamps:   return 0x09
 
         default:
             return 0x00
