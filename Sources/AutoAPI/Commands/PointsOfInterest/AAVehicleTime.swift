@@ -31,7 +31,7 @@ import Foundation
 
 public struct AAVehicleTime: AAFullStandardCommand {
 
-    public let time: AATime?
+    public let time: AAProperty<AATime>?
 
 
     // MARK: AAFullStandardCommand
@@ -41,7 +41,7 @@ public struct AAVehicleTime: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        time = AATime(bytes: properties.first(for: \AAVehicleTime.time)?.value)
+        time = properties.property(for: \AAVehicleTime.time)
 
         // Properties
         self.properties = properties
@@ -64,12 +64,12 @@ extension AAVehicleTime: AAIdentifiable {
 
 extension AAVehicleTime: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAVehicleTime, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAVehicleTime, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAVehicleTime.time: return 0x01
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

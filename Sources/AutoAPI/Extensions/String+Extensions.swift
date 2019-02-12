@@ -49,6 +49,13 @@ extension String {
     }
 }
 
+extension String: AABinaryInitable {
+
+    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
+        self.init(bytes: binary, encoding: .utf8)
+    }
+}
+
 extension String: AAPropertyConvertable {
 
     var propertyValue: [UInt8] {

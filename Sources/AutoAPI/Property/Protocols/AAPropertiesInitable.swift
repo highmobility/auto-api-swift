@@ -34,13 +34,13 @@ protocol AAPropertiesInitable {
     var propertiesIterator: AAPropertiesIterator { get }
 
 
-    init(propertiesArray properties: [AAProperty])
+    init(propertiesArray properties: [AABasicProperty])
     init(propertiesIterator iterator: AAPropertiesIterator)
 }
 
 extension AAPropertiesInitable {
 
-    init(propertiesArray properties: [AAProperty]) {
+    init(propertiesArray properties: [AABasicProperty]) {
         self.init(propertiesIterator: AAPropertiesIterator(properties.flatMap { $0.bytes }))
     }
 }

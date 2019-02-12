@@ -31,24 +31,24 @@ import Foundation
 
 public struct AARace: AAFullStandardCommand {
 
-    public let accelerations: [AAAcceleration]?
-    public let acceleratorPedalIdleSwitchState: AAActiveState?
-    public let acceleratorPedalKickdownSwitchState: AAActiveState?
-    public let brakePedalPosition: AAPercentageInt?
-    public let brakePedalSwitchState: AAActiveState?
-    public let brakePressure: Float?
-    public let brakeTorqueVectorings: [AABrakeTorqueVectoring]?
-    public let clutchPedalSwitchState: AAActiveState?
-    public let espState: AAActiveState?
-    public let gasPedalPosition: AAPercentageInt?
-    public let gearMode: AAGearMode?
-    public let oversteering: AAPercentageInt?
-    public let rearSuspensionSteering: Int8?
-    public let selectedGear: Int8?
-    public let steeringAngle: Int8?
-    public let understeering: AAPercentageInt?
-    public let vehicleMoving: AAMovingState?
-    public let yawRate: Float?
+    public let accelerations: [AAProperty<AAAcceleration>]?
+    public let acceleratorPedalIdleSwitchState: AAProperty<AAActiveState>?
+    public let acceleratorPedalKickdownSwitchState: AAProperty<AAActiveState>?
+    public let brakePedalPosition: AAProperty<AAPercentageInt>?
+    public let brakePedalSwitchState: AAProperty<AAActiveState>?
+    public let brakePressure: AAProperty<Float>?
+    public let brakeTorqueVectorings: [AAProperty<AABrakeTorqueVectoring>]?
+    public let clutchPedalSwitchState: AAProperty<AAActiveState>?
+    public let espState: AAProperty<AAActiveState>?
+    public let gasPedalPosition: AAProperty<AAPercentageInt>?
+    public let gearMode: AAProperty<AAGearMode>?
+    public let oversteering: AAProperty<AAPercentageInt>?
+    public let rearSuspensionSteering: AAProperty<Int8>?
+    public let selectedGear: AAProperty<Int8>?
+    public let steeringAngle: AAProperty<Int8>?
+    public let understeering: AAProperty<AAPercentageInt>?
+    public let vehicleMoving: AAProperty<AAMovingState>?
+    public let yawRate: AAProperty<Float>?
 
 
     // MARK: AAFullStandardCommand
@@ -58,25 +58,25 @@ public struct AARace: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        accelerations = properties.flatMap(for: \AARace.accelerations) { AAAcceleration($0.value) }
-        understeering = properties.value(for: \AARace.understeering)
-        oversteering = properties.value(for: \AARace.oversteering)
-        gasPedalPosition = properties.value(for: \AARace.gasPedalPosition)
-        steeringAngle = properties.value(for: \AARace.steeringAngle)
-        brakePressure = properties.value(for: \AARace.brakePressure)
-        yawRate = properties.value(for: \AARace.yawRate)
-        rearSuspensionSteering = properties.value(for: \AARace.rearSuspensionSteering)
-        espState = properties.value(for: \AARace.espState)
-        brakeTorqueVectorings = properties.flatMap(for: \AARace.brakeTorqueVectorings) { AABrakeTorqueVectoring($0.value) }
-        gearMode = AAGearMode(properties: properties, keyPath: \AARace.gearMode)
-        selectedGear = properties.value(for: \AARace.selectedGear)
-        brakePedalPosition = properties.value(for: \AARace.brakePedalPosition)
-        brakePedalSwitchState = properties.value(for: \AARace.brakePedalSwitchState)
-        clutchPedalSwitchState = properties.value(for: \AARace.clutchPedalSwitchState)
-        acceleratorPedalIdleSwitchState = properties.value(for: \AARace.acceleratorPedalIdleSwitchState)
-        acceleratorPedalKickdownSwitchState = properties.value(for: \AARace.acceleratorPedalKickdownSwitchState)
+        accelerations = properties.properties(for: \AARace.accelerations)
+        understeering = properties.property(for: \AARace.understeering)
+        oversteering = properties.property(for: \AARace.oversteering)
+        gasPedalPosition = properties.property(for: \AARace.gasPedalPosition)
+        steeringAngle = properties.property(for: \AARace.steeringAngle)
+        brakePressure = properties.property(for: \AARace.brakePressure)
+        yawRate = properties.property(for: \AARace.yawRate)
+        rearSuspensionSteering = properties.property(for: \AARace.rearSuspensionSteering)
+        espState = properties.property(for: \AARace.espState)
+        brakeTorqueVectorings = properties.properties(for: \AARace.brakeTorqueVectorings)
+        gearMode = properties.property(for: \AARace.gearMode)
+        selectedGear = properties.property(for: \AARace.selectedGear)
+        brakePedalPosition = properties.property(for: \AARace.brakePedalPosition)
+        brakePedalSwitchState = properties.property(for: \AARace.brakePedalSwitchState)
+        clutchPedalSwitchState = properties.property(for: \AARace.clutchPedalSwitchState)
+        acceleratorPedalIdleSwitchState = properties.property(for: \AARace.acceleratorPedalIdleSwitchState)
+        acceleratorPedalKickdownSwitchState = properties.property(for: \AARace.acceleratorPedalKickdownSwitchState)
         /* Level 8 */
-        vehicleMoving = AAMovingState(properties: properties, keyPath: \AARace.vehicleMoving)
+        vehicleMoving = properties.property(for: \AARace.vehicleMoving)
 
         // Properties
         self.properties = properties
@@ -99,7 +99,7 @@ extension AARace: AAMessageTypesGettable {
 
 extension AARace: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AARace, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AARace, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AARace.accelerations:                         return 0x01
         case \AARace.understeering:                         return 0x02
@@ -122,7 +122,7 @@ extension AARace: AAPropertyIdentifierGettable {
         case \AARace.vehicleMoving: return 0x12
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

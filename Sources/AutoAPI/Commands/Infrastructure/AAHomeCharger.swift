@@ -31,21 +31,21 @@ import Foundation
 
 public struct AAHomeCharger: AAFullStandardCommand {
 
-    public let authenticationMechanism: AAAuthenticationMechanism?
-    public let authenticationState: AAAuthenticationState?
-    public let chargeCurrentDC: Float?
-    public let chargingPower: Float?
-    public let chargingState: AAChargingState?
-    public let hotspotState: AAActiveState?
-    public let coordinates: AACoordinates?
-    public let maximumChargeCurrent: Float?
-    public let minimumChargeCurrent: Float?
-    public let plugType: AAPlugType?
-    public let priceTariffs: [AAPriceTariff]?
-    public let solarChargingState: AAActiveState?
-    public let wifiHotspotPassword: String?
-    public let wifiHotspotSecurity: AANetworkSecurity?
-    public let wifiHotspotSSID: String?
+    public let authenticationMechanism: AAProperty<AAAuthenticationMechanism>?
+    public let authenticationState: AAProperty<AAAuthenticationState>?
+    public let chargeCurrentDC: AAProperty<Float>?
+    public let chargingPower: AAProperty<Float>?
+    public let chargingState: AAProperty<AAChargingState>?
+    public let hotspotState: AAProperty<AAActiveState>?
+    public let coordinates: AAProperty<AACoordinates>?
+    public let maximumChargeCurrent: AAProperty<Float>?
+    public let minimumChargeCurrent: AAProperty<Float>?
+    public let plugType: AAProperty<AAPlugType>?
+    public let priceTariffs: [AAProperty<AAPriceTariff>]?
+    public let solarChargingState: AAProperty<AAActiveState>?
+    public let wifiHotspotPassword: AAProperty<String>?
+    public let wifiHotspotSecurity: AAProperty<AANetworkSecurity>?
+    public let wifiHotspotSSID: AAProperty<String>?
 
 
     // MARK: AAFullStandardCommand
@@ -55,22 +55,22 @@ public struct AAHomeCharger: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        chargingState = AAChargingState(properties: properties, keyPath: \AAHomeCharger.chargingState)
-        authenticationMechanism = AAAuthenticationMechanism(properties: properties, keyPath: \AAHomeCharger.authenticationMechanism)
-        plugType = AAPlugType(properties: properties, keyPath: \AAHomeCharger.plugType)
-        chargingPower = properties.value(for: \AAHomeCharger.chargingPower)
-        solarChargingState = AAActiveState(properties: properties, keyPath: \AAHomeCharger.solarChargingState)
-        hotspotState = AAActiveState(properties: properties, keyPath: \AAHomeCharger.hotspotState)
-        wifiHotspotSSID = properties.value(for: \AAHomeCharger.wifiHotspotSSID)
-        wifiHotspotSecurity = AANetworkSecurity(properties: properties, keyPath: \AAHomeCharger.wifiHotspotSecurity)
-        wifiHotspotPassword = properties.value(for: \AAHomeCharger.wifiHotspotPassword)
+        chargingState = properties.property(for: \AAHomeCharger.chargingState)
+        authenticationMechanism = properties.property(for: \AAHomeCharger.authenticationMechanism)
+        plugType = properties.property(for: \AAHomeCharger.plugType)
+        chargingPower = properties.property(for: \AAHomeCharger.chargingPower)
+        solarChargingState = properties.property(for: \AAHomeCharger.solarChargingState)
+        hotspotState = properties.property(for: \AAHomeCharger.hotspotState)
+        wifiHotspotSSID = properties.property(for: \AAHomeCharger.wifiHotspotSSID)
+        wifiHotspotSecurity = properties.property(for: \AAHomeCharger.wifiHotspotSecurity)
+        wifiHotspotPassword = properties.property(for: \AAHomeCharger.wifiHotspotPassword)
         /* Level 8 */
-        authenticationState = AAAuthenticationState(properties: properties, keyPath: \AAHomeCharger.authenticationState)
-        chargeCurrentDC = properties.value(for: \AAHomeCharger.chargeCurrentDC)
-        maximumChargeCurrent = properties.value(for: \AAHomeCharger.maximumChargeCurrent)
-        minimumChargeCurrent = properties.value(for: \AAHomeCharger.minimumChargeCurrent)
-        coordinates = AACoordinates(properties.first(for: \AAHomeCharger.coordinates)?.value ?? [])
-        priceTariffs = properties.flatMap(for: \AAHomeCharger.priceTariffs) { AAPriceTariff($0.value) }
+        authenticationState = properties.property(for: \AAHomeCharger.authenticationState)
+        chargeCurrentDC = properties.property(for: \AAHomeCharger.chargeCurrentDC)
+        maximumChargeCurrent = properties.property(for: \AAHomeCharger.maximumChargeCurrent)
+        minimumChargeCurrent = properties.property(for: \AAHomeCharger.minimumChargeCurrent)
+        coordinates = properties.property(for: \AAHomeCharger.coordinates)
+        priceTariffs = properties.properties(for: \AAHomeCharger.priceTariffs) 
 
         // Properties
         self.properties = properties
@@ -98,7 +98,7 @@ extension AAHomeCharger: AAMessageTypesGettable {
 
 extension AAHomeCharger: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAHomeCharger, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAHomeCharger, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAHomeCharger.chargingState:              return 0x01
         case \AAHomeCharger.authenticationMechanism:    return 0x02
@@ -118,7 +118,7 @@ extension AAHomeCharger: AAPropertyIdentifierGettable {
         case \AAHomeCharger.priceTariffs:         return 0x12
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

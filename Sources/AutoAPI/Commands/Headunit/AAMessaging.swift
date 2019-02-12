@@ -31,8 +31,8 @@ import Foundation
 
 public struct AAMessaging: AAInboundCommand, AAOutboundCommand {
 
-    public let recipientHandle: String?
-    public let text: String?
+    public let recipientHandle: AAProperty<String>?
+    public let text: AAProperty<String>?
 
 
     // MARK: AAInboundCommand
@@ -46,8 +46,8 @@ public struct AAMessaging: AAInboundCommand, AAOutboundCommand {
         }
 
         // Ordered by the ID
-        recipientHandle = properties.value(for: \AAMessaging.recipientHandle)
-        text = properties.value(for: \AAMessaging.text)
+        recipientHandle = properties.property(for: \AAMessaging.recipientHandle)
+        text = properties.property(for: \AAMessaging.text)
 
         // Properties
         self.properties = properties
@@ -70,13 +70,13 @@ extension AAMessaging: AAMessageTypesGettable {
 
 extension AAMessaging: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAMessaging, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAMessaging, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAMessaging.recipientHandle:  return 0x01
         case \AAMessaging.text:             return 0x02
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

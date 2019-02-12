@@ -27,11 +27,9 @@
 //
 
 import Foundation
+import HMUtilities
 
 
-extension UInt32: BinaryInitable {
+extension UInt32: AABinaryInitable {
 
-    init<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        self = binary.bytes.prefix(4).reduce(UInt32(0)) { ($0 << 8) + $1.uint32 }
-    }
 }

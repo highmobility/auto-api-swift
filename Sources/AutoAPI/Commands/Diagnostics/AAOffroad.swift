@@ -31,8 +31,8 @@ import Foundation
 
 public struct AAOffroad: AAFullStandardCommand {
 
-    public let routeIncline: Int16?
-    public let wheelSuspension: AAPercentageInt?
+    public let routeIncline: AAProperty<Int16>?
+    public let wheelSuspension: AAProperty<AAPercentageInt>?
 
 
     // MARK: AAFullStandardCommand
@@ -42,8 +42,8 @@ public struct AAOffroad: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        routeIncline = properties.value(for: \AAOffroad.routeIncline)
-        wheelSuspension = properties.value(for: \AAOffroad.wheelSuspension)
+        routeIncline = properties.property(for: \AAOffroad.routeIncline)
+        wheelSuspension = properties.property(for: \AAOffroad.wheelSuspension)
 
         // Properties
         self.properties = properties
@@ -66,13 +66,13 @@ extension AAOffroad: AAMessageTypesGettable {
 
 extension AAOffroad: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAOffroad, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAOffroad, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAOffroad.routeIncline:       return 0x01
         case \AAOffroad.wheelSuspension:    return 0x02
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

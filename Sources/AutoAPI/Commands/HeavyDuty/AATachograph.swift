@@ -31,13 +31,13 @@ import Foundation
 
 public struct AATachograph: AAFullStandardCommand {
 
-    public let driversCards: [AADriverCard]?
-    public let driversTimeStates: [AADriverTimeState]?
-    public let driversWorkingStates: [AADriverWorkingState]?
-    public let vehicleDirection: AADirection?
-    public let vehicleMotionState: AAMovingState?
-    public let vehicleOverspeedActive: AAActiveState?
-    public let vehicleSpeed: Int16?
+    public let driversCards: [AAProperty<AADriverCard>]?
+    public let driversTimeStates: [AAProperty<AADriverTimeState>]?
+    public let driversWorkingStates: [AAProperty<AADriverWorkingState>]?
+    public let vehicleDirection: AAProperty<AADirection>?
+    public let vehicleMotionState: AAProperty<AAMovingState>?
+    public let vehicleOverspeedActive: AAProperty<AAActiveState>?
+    public let vehicleSpeed: AAProperty<Int16>?
 
 
     // MARK: AAFullStandardCommand
@@ -47,13 +47,13 @@ public struct AATachograph: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        driversWorkingStates = properties.flatMap(for: \AATachograph.driversWorkingStates) { AADriverWorkingState($0.value) }
-        driversTimeStates = properties.flatMap(for: \AATachograph.driversTimeStates) { AADriverTimeState($0.value) }
-        driversCards = properties.flatMap(for: \AATachograph.driversCards) { AADriverCard($0.value) }
-        vehicleDirection = AADirection(properties: properties, keyPath: \AATachograph.vehicleDirection)
-        vehicleMotionState = AAMovingState(properties: properties, keyPath: \AATachograph.vehicleMotionState)
-        vehicleOverspeedActive = properties.value(for: \AATachograph.vehicleOverspeedActive)
-        vehicleSpeed = properties.value(for: \AATachograph.vehicleSpeed)
+        driversWorkingStates = properties.properties(for: \AATachograph.driversWorkingStates)
+        driversTimeStates = properties.properties(for: \AATachograph.driversTimeStates)
+        driversCards = properties.properties(for: \AATachograph.driversCards)
+        vehicleDirection = properties.property(for: \AATachograph.vehicleDirection)
+        vehicleMotionState = properties.property(for: \AATachograph.vehicleMotionState)
+        vehicleOverspeedActive = properties.property(for: \AATachograph.vehicleOverspeedActive)
+        vehicleSpeed = properties.property(for: \AATachograph.vehicleSpeed)
 
         // Properties
         self.properties = properties
@@ -76,7 +76,7 @@ extension AATachograph: AAMessageTypesGettable {
 
 extension AATachograph: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AATachograph, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AATachograph, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AATachograph.driversWorkingStates:    return 0x01
         case \AATachograph.driversTimeStates:       return 0x02
@@ -87,7 +87,7 @@ extension AATachograph: AAPropertyIdentifierGettable {
         case \AATachograph.vehicleSpeed:            return 0x07
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

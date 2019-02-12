@@ -31,7 +31,7 @@ import Foundation
 
 public struct AADashboardLights: AAFullStandardCommand {
 
-    public let lights: [AADashboardLight]?
+    public let lights: [AAProperty<AADashboardLight>]?
 
 
     // MARK: AAFullStandardCommand
@@ -41,7 +41,7 @@ public struct AADashboardLights: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        lights = properties.flatMap(for: \AADashboardLights.lights) { AADashboardLight($0.value) }
+        lights = properties.properties(for: \AADashboardLights.lights) 
 
         // Properties
         self.properties = properties
@@ -64,12 +64,12 @@ extension AADashboardLights: AAMessageTypesGettable {
 
 extension AADashboardLights: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AADashboardLights, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AADashboardLights, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AADashboardLights.lights: return 0x01
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

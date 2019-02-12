@@ -31,7 +31,7 @@ import Foundation
 
 public struct AADriverFatigue: AAInboundCommand {
 
-    public let fatigueLevel: AAFatigueLevel?
+    public let fatigueLevel: AAProperty<AAFatigueLevel>?
 
 
     // MARK: AAInboundCommand
@@ -45,7 +45,7 @@ public struct AADriverFatigue: AAInboundCommand {
         }
 
         // Ordered by the ID
-        fatigueLevel = AAFatigueLevel(properties: properties, keyPath: \AADriverFatigue.fatigueLevel)
+        fatigueLevel = properties.property(for: \AADriverFatigue.fatigueLevel)
 
         // Properties
         self.properties = properties
@@ -67,12 +67,12 @@ extension AADriverFatigue: AAIdentifiable {
 
 extension AADriverFatigue: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AADriverFatigue, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AADriverFatigue, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AADriverFatigue.fatigueLevel: return 0x01
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

@@ -31,9 +31,9 @@ import Foundation
 
 public struct AAVehicleLocation: AAFullStandardCommand {
 
-    public let altitude: Double?
-    public let heading: Double?
-    public let coordinates: AACoordinates?
+    public let altitude: AAProperty<Double>?
+    public let heading: AAProperty<Double>?
+    public let coordinates: AAProperty<AACoordinates>?
 
 
     // MARK: AAFullStandardCommand
@@ -44,9 +44,9 @@ public struct AAVehicleLocation: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         /* Level 8 */
-        coordinates = AACoordinates(properties.first(for: \AAVehicleLocation.coordinates)?.value ?? [])
-        heading = properties.value(for: \AAVehicleLocation.heading)
-        altitude = properties.value(for: \AAVehicleLocation.altitude)
+        coordinates = properties.property(for: \AAVehicleLocation.coordinates)
+        heading = properties.property(for: \AAVehicleLocation.heading)
+        altitude = properties.property(for: \AAVehicleLocation.altitude)
 
         // Properties
         self.properties = properties
@@ -69,7 +69,7 @@ extension AAVehicleLocation: AAIdentifiable {
 
 extension AAVehicleLocation: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAVehicleLocation, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAVehicleLocation, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
             /* Level 8 */
         case \AAVehicleLocation.coordinates: return 0x04
@@ -77,7 +77,7 @@ extension AAVehicleLocation: AAPropertyIdentifierGettable {
         case \AAVehicleLocation.altitude:   return 0x06
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

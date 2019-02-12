@@ -31,7 +31,7 @@ import Foundation
 
 public struct AAMobile: AAFullStandardCommand {
 
-    public let connected: AAConnectionState?
+    public let connected: AAProperty<AAConnectionState>?
 
 
     // MARK: AAFullStandardCommand
@@ -41,7 +41,7 @@ public struct AAMobile: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        connected = AAConnectionState(properties: properties, keyPath: \AAMobile.connected)
+        connected = properties.property(for: \AAMobile.connected)
 
 
         // Properties
@@ -65,12 +65,12 @@ extension AAMobile: AAMessageTypesGettable {
 
 extension AAMobile: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAMobile, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAMobile, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAMobile.connected: return 0x01
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

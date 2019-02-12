@@ -31,7 +31,7 @@ import Foundation
 
 public struct AAHood: AAFullStandardCommand {
 
-    public let position: AAPositionState?
+    public let position: AAProperty<AAPositionState>?
 
 
     // MARK: AAFullStandardCommand
@@ -40,7 +40,7 @@ public struct AAHood: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        position = properties.value(for: \AAHood.position)
+        position = properties.property(for: \AAHood.position)
 
         // Properties
         self.properties = properties
@@ -63,12 +63,12 @@ extension AAHood: AAMessageTypesGettable {
 
 extension AAHood: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAHood, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAHood, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAHood.position: return 0x01
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

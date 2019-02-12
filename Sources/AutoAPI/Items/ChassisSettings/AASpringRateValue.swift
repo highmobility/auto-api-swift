@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  AASpringRate.swift
+//  AASpringRateValue.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 13/12/2017.
@@ -27,39 +27,6 @@
 //
 
 import Foundation
-
-
-public struct AASpringRate {
-
-    public let axle: AAAxle
-    public let maximum: UInt8
-    public let minimum: UInt8
-    public let rate: UInt8
-}
-
-extension AASpringRate: AAItem {
-
-    static var size: Int = 4
-
-
-    init?(bytes: [UInt8]) {
-        guard let axle = AAAxle(rawValue: bytes[0]) else {
-            return nil
-        }
-
-        self.axle = axle
-        self.maximum = bytes[2]
-        self.minimum = bytes[3]
-        self.rate = bytes[1]
-    }
-}
-
-extension AASpringRate: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [axle.rawValue, rate, maximum, minimum]
-    }
-}
 
 
 public struct AASpringRateValue {

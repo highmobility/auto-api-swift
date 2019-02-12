@@ -31,7 +31,7 @@ import Foundation
 
 public struct AAStartStop: AAFullStandardCommand {
 
-    public let activeState: AAActiveState?
+    public let activeState: AAProperty<AAActiveState>?
 
 
     // MARK: AAFullStandardCommand
@@ -41,7 +41,7 @@ public struct AAStartStop: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        activeState = properties.value(for: \AAStartStop.activeState)
+        activeState = properties.property(for: \AAStartStop.activeState)
 
         // Properties
         self.properties = properties
@@ -65,12 +65,12 @@ extension AAStartStop: AAMessageTypesGettable {
 
 extension AAStartStop: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAStartStop, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAStartStop, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAStartStop.activeState: return 0x01
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

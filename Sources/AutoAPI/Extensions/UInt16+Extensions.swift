@@ -27,6 +27,7 @@
 //
 
 import Foundation
+import HMUtilities
 
 
 extension UInt16 {
@@ -38,9 +39,6 @@ extension UInt16 {
 
 extension UInt16: AABinaryInitable {
 
-    init<C: Collection>(_ binary: C) where C.Element == UInt8 {
-        self = binary.bytes.prefix(2).reduce(UInt16(0)) { ($0 << 8) + $1.uint16 }
-    }
 }
 
 extension UInt16: AAPropertyConvertable {

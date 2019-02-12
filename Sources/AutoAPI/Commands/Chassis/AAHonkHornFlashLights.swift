@@ -31,7 +31,7 @@ import Foundation
 
 public struct AAHonkHornFlashLights: AAFullStandardCommand {
 
-    public let flasherState: AAFlasherState?
+    public let flasherState: AAProperty<AAFlasherState>?
 
 
     // MARK: AAFullStandardCommand
@@ -41,7 +41,7 @@ public struct AAHonkHornFlashLights: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        flasherState = AAFlasherState(properties: properties, keyPath: \AAHonkHornFlashLights.flasherState)
+        flasherState = properties.property(for: \AAHonkHornFlashLights.flasherState)
 
         // Properties
         self.properties = properties
@@ -66,12 +66,12 @@ extension AAHonkHornFlashLights: AAMessageTypesGettable {
 
 extension AAHonkHornFlashLights: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAHonkHornFlashLights, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAHonkHornFlashLights, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAHonkHornFlashLights.flasherState:   return 0x01
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

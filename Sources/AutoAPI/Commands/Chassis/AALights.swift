@@ -35,14 +35,14 @@ import Foundation
 
 public struct AALights: AAFullStandardCommand {
 
-    public let ambientColour: AAColour?
-    public let emergencyBrakeState: AAActiveState?
-    public let fogLights: [AAFogLight]?
-    public let frontExterior: AAFrontLightState?
-    public let interiorLamps: [AAInteriorLamp]?
-    public let readingLamps: [AAReadingLamp]?
-    public let rearExteriorState: AAActiveState?
-    public let reverseState: AAActiveState?
+    public let ambientColour: AAProperty<AAColour>?
+    public let emergencyBrakeState: AAProperty<AAActiveState>?
+    public let fogLights: [AAProperty<AAFogLight>]?
+    public let frontExterior: AAProperty<AAFrontLightState>?
+    public let interiorLamps: [AAProperty<AAInteriorLamp>]?
+    public let readingLamps: [AAProperty<AAReadingLamp>]?
+    public let rearExteriorState: AAProperty<AAActiveState>?
+    public let reverseState: AAProperty<AAActiveState>?
 
 
     // MARK: AAFullStandardCommand
@@ -52,15 +52,15 @@ public struct AALights: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        frontExterior = AAFrontLightState(properties: properties, keyPath: \AALights.frontExterior)
-        rearExteriorState = properties.value(for: \AALights.rearExteriorState)
-        ambientColour = properties.first(for: \AALights.ambientColour)?.value.colour
-        reverseState = properties.value(for: \AALights.reverseState)
-        emergencyBrakeState = properties.value(for: \AALights.emergencyBrakeState)
+        frontExterior = properties.property(for: \AALights.frontExterior)
+        rearExteriorState = properties.property(for: \AALights.rearExteriorState)
+        ambientColour = properties.properties(for: \AALights.ambientColour) { $0.colour }?.first
+        reverseState = properties.property(for: \AALights.reverseState)
+        emergencyBrakeState = properties.property(for: \AALights.emergencyBrakeState)
         /* Level 9 */
-        fogLights = properties.flatMap(for: \AALights.fogLights) { AAFogLight($0.value) }
-        readingLamps = properties.flatMap(for: \AALights.readingLamps) { AAReadingLamp($0.value) }
-        interiorLamps = properties.flatMap(for: \AALights.interiorLamps) { AAInteriorLamp($0.value) }
+        fogLights = properties.properties(for: \AALights.fogLights)
+        readingLamps = properties.properties(for: \AALights.readingLamps)
+        interiorLamps = properties.properties(for: \AALights.interiorLamps)
 
         // Properties
         self.properties = properties
@@ -84,7 +84,7 @@ extension AALights: AAMessageTypesGettable {
 
 extension AALights: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AALights, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AALights, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AALights.frontExterior:       return 0x01
         case \AALights.rearExteriorState:   return 0x02
@@ -97,7 +97,7 @@ extension AALights: AAPropertyIdentifierGettable {
         case \AALights.interiorLamps:   return 0x09
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

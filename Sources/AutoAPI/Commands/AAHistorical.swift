@@ -31,7 +31,7 @@ import Foundation
 
 public struct AAHistorical: AAInboundCommand, AAOutboundCommand {
 
-    public let states: [AAHistoricalState]?
+    public let states: [AAProperty<AAHistoricalState>]?
 
 
     // MARK: AAInboundCommand
@@ -47,8 +47,8 @@ public struct AAHistorical: AAInboundCommand, AAOutboundCommand {
         let binaryTypes = AAAutoAPI.commands.compactMap { $0 as? AABinaryInitable.Type }
 
         /* Level 8 */
-        states = properties.flatMap(for: \AAHistorical.states) { property in
-            binaryTypes.flatMapFirst { $0.init(property.value) as? AAHistoricalState }
+        states = properties.properties(for: \AAHistorical.states) { bytes in
+            binaryTypes.flatMapFirst { $0.init(bytes) as? AAHistoricalState }
         }
 
         // Properties
@@ -72,12 +72,12 @@ extension AAHistorical: AAMessageTypesGettable {
 
 extension AAHistorical: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAHistorical, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAHistorical, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAHistorical.states: return 0x01
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

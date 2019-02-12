@@ -32,10 +32,10 @@ import Foundation
 public struct AALightConditions: AAFullStandardCommand {
 
     /// Value in *lux*.
-    public let insideLight: Float?
+    public let insideLight: AAProperty<Float>?
 
     /// Value in *lux*.
-    public let outsideLight: Float?
+    public let outsideLight: AAProperty<Float>?
 
 
     // MARK: AAFullStandardCommand
@@ -45,8 +45,8 @@ public struct AALightConditions: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        outsideLight = properties.value(for: \AALightConditions.outsideLight)
-        insideLight = properties.value(for: \AALightConditions.insideLight)
+        outsideLight = properties.property(for: \AALightConditions.outsideLight)
+        insideLight = properties.property(for: \AALightConditions.insideLight)
 
         // Properties
         self.properties = properties
@@ -69,13 +69,13 @@ extension AALightConditions: AAMessageTypesGettable {
 
 extension AALightConditions: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AALightConditions, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AALightConditions, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AALightConditions.outsideLight:   return 0x01
         case \AALightConditions.insideLight:    return 0x02
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

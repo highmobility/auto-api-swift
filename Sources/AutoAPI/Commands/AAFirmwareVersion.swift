@@ -31,19 +31,19 @@ import Foundation
 
 public struct AAFirmwareVersion: AAInboundCommand {
 
-    public let applicationVersion: String?
-    public let hmkitVersion: AASDKVersion?
-    public let hmkitBuildName: String?
+    public let applicationVersion: AAProperty<String>?
+    public let hmkitVersion: AAProperty<AASDKVersion>?
+    public let hmkitBuildName: AAProperty<String>?
 
 
     @available(*, deprecated, renamed: "hmkitVersion")
     public var carSDKVersion: AASDKVersion? {
-        return hmkitVersion
+        return hmkitVersion?.value
     }
 
     @available(*, deprecated, renamed: "hmkitBuildName")
     public var carSDKBuildName: String? {
-        return hmkitBuildName
+        return hmkitBuildName?.value
     }
 
 
@@ -58,9 +58,9 @@ public struct AAFirmwareVersion: AAInboundCommand {
         }
 
         // Ordered by the ID
-        hmkitVersion = AASDKVersion(properties.first(for: \AAFirmwareVersion.hmkitVersion)?.value ?? [])
-        hmkitBuildName = properties.value(for: \AAFirmwareVersion.hmkitBuildName)
-        applicationVersion = properties.value(for: \AAFirmwareVersion.applicationVersion)
+        hmkitVersion = properties.property(for: \AAFirmwareVersion.hmkitVersion)
+        hmkitBuildName = properties.property(for: \AAFirmwareVersion.hmkitBuildName)
+        applicationVersion = properties.property(for: \AAFirmwareVersion.applicationVersion)
 
         // Properties
         self.properties = properties
@@ -83,14 +83,14 @@ extension AAFirmwareVersion: AAMessageTypesGettable {
 
 extension AAFirmwareVersion: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAFirmwareVersion, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAFirmwareVersion, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAFirmwareVersion.hmkitVersion:       return 0x01
         case \AAFirmwareVersion.hmkitBuildName:     return 0x02
         case \AAFirmwareVersion.applicationVersion: return 0x03
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

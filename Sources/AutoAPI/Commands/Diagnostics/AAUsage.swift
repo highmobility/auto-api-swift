@@ -31,21 +31,21 @@ import Foundation
 
 public struct AAUsage: AAFullStandardCommand {
 
-    public let accelerationEvalution: AAPercentageInt?
-    public let averageFuelConsumption: Float?
-    public let averageWeeklyDistance: UInt16?
-    public let averageWeeklyDistanceLongTerm: UInt16?
-    public let currentFuelConsumption: Float?
-    public let drivingModeActivationPeriods: [AADrivingMode.ActivationPeriod]?
-    public let drivingModeEnergyConsumptions: [AADrivingMode.EnergyConsumption]?
-    public let drivingStyleEvalution: AAPercentageInt?
-    public let lastTripAverageEnergyRecuperation: Float?
-    public let lastTripBatteryRemaining: AAPercentageInt?
-    public let lastTripElectricPortion: AAPercentageInt?
-    public let lastTripEnergyConsumption: Float?
-    public let lastTripFuelConsumption: Float?
-    public let lastTripDate: Date?
-    public let mileageAfterLastTrip: UInt32?
+    public let accelerationEvalution: AAProperty<AAPercentageInt>?
+    public let averageFuelConsumption: AAProperty<Float>?
+    public let averageWeeklyDistance: AAProperty<UInt16>?
+    public let averageWeeklyDistanceLongTerm: AAProperty<UInt16>?
+    public let currentFuelConsumption: AAProperty<Float>?
+    public let drivingModeActivationPeriods: [AAProperty<AADrivingMode.ActivationPeriod>]?
+    public let drivingModeEnergyConsumptions: [AAProperty<AADrivingMode.EnergyConsumption>]?
+    public let drivingStyleEvalution: AAProperty<AAPercentageInt>?
+    public let lastTripAverageEnergyRecuperation: AAProperty<Float>?
+    public let lastTripBatteryRemaining: AAProperty<AAPercentageInt>?
+    public let lastTripElectricPortion: AAProperty<AAPercentageInt>?
+    public let lastTripEnergyConsumption: AAProperty<Float>?
+    public let lastTripFuelConsumption: AAProperty<Float>?
+    public let lastTripDate: AAProperty<Date>?
+    public let mileageAfterLastTrip: AAProperty<UInt32>?
 
 
     // MARK: AAFullStandardCommand
@@ -56,21 +56,21 @@ public struct AAUsage: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         /* Level 8 */
-        averageWeeklyDistance = properties.value(for: \AAUsage.averageWeeklyDistance)
-        averageWeeklyDistanceLongTerm = properties.value(for: \AAUsage.averageWeeklyDistanceLongTerm)
-        accelerationEvalution = properties.value(for: \AAUsage.accelerationEvalution)
-        drivingStyleEvalution = properties.value(for: \AAUsage.drivingStyleEvalution)
-        drivingModeActivationPeriods = properties.flatMap(for: \AAUsage.drivingModeActivationPeriods) { AADrivingMode.ActivationPeriod($0.value) }
-        drivingModeEnergyConsumptions = properties.flatMap(for: \AAUsage.drivingModeEnergyConsumptions) { AADrivingMode.EnergyConsumption($0.value) }
-        lastTripEnergyConsumption = properties.value(for: \AAUsage.lastTripEnergyConsumption)
-        lastTripFuelConsumption = properties.value(for: \AAUsage.lastTripFuelConsumption)
-        mileageAfterLastTrip = properties.value(for: \AAUsage.mileageAfterLastTrip)
-        lastTripElectricPortion = properties.value(for: \AAUsage.lastTripElectricPortion)
-        lastTripAverageEnergyRecuperation = properties.value(for: \AAUsage.lastTripAverageEnergyRecuperation)
-        lastTripBatteryRemaining = properties.value(for: \AAUsage.lastTripBatteryRemaining)
-        lastTripDate = properties.value(for: \AAUsage.lastTripDate)
-        averageFuelConsumption = properties.value(for: \AAUsage.averageFuelConsumption)
-        currentFuelConsumption = properties.value(for: \AAUsage.currentFuelConsumption)
+        averageWeeklyDistance = properties.property(for: \AAUsage.averageWeeklyDistance)
+        averageWeeklyDistanceLongTerm = properties.property(for: \AAUsage.averageWeeklyDistanceLongTerm)
+        accelerationEvalution = properties.property(for: \AAUsage.accelerationEvalution)
+        drivingStyleEvalution = properties.property(for: \AAUsage.drivingStyleEvalution)
+        drivingModeActivationPeriods = properties.properties(for: \AAUsage.drivingModeActivationPeriods)
+        drivingModeEnergyConsumptions = properties.properties(for: \AAUsage.drivingModeEnergyConsumptions)
+        lastTripEnergyConsumption = properties.property(for: \AAUsage.lastTripEnergyConsumption)
+        lastTripFuelConsumption = properties.property(for: \AAUsage.lastTripFuelConsumption)
+        mileageAfterLastTrip = properties.property(for: \AAUsage.mileageAfterLastTrip)
+        lastTripElectricPortion = properties.property(for: \AAUsage.lastTripElectricPortion)
+        lastTripAverageEnergyRecuperation = properties.property(for: \AAUsage.lastTripAverageEnergyRecuperation)
+        lastTripBatteryRemaining = properties.property(for: \AAUsage.lastTripBatteryRemaining)
+        lastTripDate = properties.property(for: \AAUsage.lastTripDate)
+        averageFuelConsumption = properties.property(for: \AAUsage.averageFuelConsumption)
+        currentFuelConsumption = properties.property(for: \AAUsage.currentFuelConsumption)
 
         // Properties
         self.properties = properties
@@ -93,7 +93,7 @@ extension AAUsage: AAMessageTypesGettable {
 
 extension AAUsage: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAUsage, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAUsage, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
             /* Level 8 */
         case \AAUsage.averageWeeklyDistance:                return 0x01
@@ -113,7 +113,7 @@ extension AAUsage: AAPropertyIdentifierGettable {
         case \AAUsage.currentFuelConsumption:               return 0x0F
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

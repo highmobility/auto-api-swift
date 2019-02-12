@@ -31,8 +31,8 @@ import Foundation
 
 public struct AAFueling: AAFullStandardCommand {
 
-    public let gasFlapLockState: AALockState?
-    public let gasFlapPosition: AAPositionState?
+    public let gasFlapLockState: AAProperty<AALockState>?
+    public let gasFlapPosition: AAProperty<AAPositionState>?
 
 
     // MARK: AAFullStandardCommand
@@ -43,8 +43,8 @@ public struct AAFueling: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         /* Level 9 */
-        gasFlapLockState = AALockState(properties: properties, keyPath: \AAFueling.gasFlapLockState)
-        gasFlapPosition = properties.value(for: \AAFueling.gasFlapPosition)
+        gasFlapLockState = properties.property(for: \AAFueling.gasFlapLockState)
+        gasFlapPosition = properties.property(for: \AAFueling.gasFlapPosition)
 
         // Properties
         self.properties = properties
@@ -68,14 +68,14 @@ extension AAFueling: AAMessageTypesGettable {
 
 extension AAFueling: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAFueling, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAFueling, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
             /* Level 9 */
         case \AAFueling.gasFlapLockState:   return 0x02
         case \AAFueling.gasFlapPosition:    return 0x03
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

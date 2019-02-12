@@ -31,7 +31,7 @@ import Foundation
 
 public struct AAKeyfobPosition: AAFullStandardCommand {
 
-    public let relativePosition: AAKeyfobRelativePosition?
+    public let relativePosition: AAProperty<AAKeyfobRelativePosition>?
 
 
     // MARK: AAFullStandardCommand
@@ -41,7 +41,7 @@ public struct AAKeyfobPosition: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        relativePosition = AAKeyfobRelativePosition(properties: properties, keyPath: \AAKeyfobPosition.relativePosition)
+        relativePosition = properties.property(for: \AAKeyfobPosition.relativePosition)
 
         // Properties
         self.properties = properties
@@ -64,12 +64,12 @@ extension AAKeyfobPosition: AAIdentifiable {
 
 extension AAKeyfobPosition: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAKeyfobPosition, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAKeyfobPosition, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAKeyfobPosition.relativePosition: return 0x01
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

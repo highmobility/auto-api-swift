@@ -64,3 +64,24 @@ extension AAPropertyTimestamp: AAPropertyConvertable {
         return date.propertyValue + [propertyID] + propertyFullValue
     }
 }
+
+
+extension Sequence where Element == AAPropertyTimestamp {
+
+    func first(for identifier: AAPropertyIdentifier, value: [UInt8]? = nil) -> AAPropertyTimestamp? {
+        let timestamps = filter { $0.propertyID == identifier }
+
+        // Check if only 1 timestamp
+        guard timestamps.count > 1 else {
+            return timestamps.first
+        }
+
+        // Otherwise needs the value to distinguish between many
+        guard let value = value else {
+            // Needs the value when many timestamps are present
+            return nil
+        }
+
+        return first { $0.propertyFullValue == value }
+    }
+}

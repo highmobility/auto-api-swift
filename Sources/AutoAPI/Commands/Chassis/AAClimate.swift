@@ -31,17 +31,17 @@ import Foundation
 
 public struct AAClimate: AAFullStandardCommand {
 
-    public let defrostingTemperature: Float?
-    public let defoggingState: AAActiveState?
-    public let defrostingState: AAActiveState?
-    public let driverTemperature: Float?
-    public let hvacState: AAActiveState?
-    public let insideTemperature: Float?
-    public let ionisingState: AAActiveState?
-    public let outsideTemperature: Float?
-    public let passengerTemperature: Float?
-    public let rearTemperature: Float?
-    public let weekdaysStartingTimes: [AAClimateWeekdayTime]?
+    public let defrostingTemperature: AAProperty<Float>?
+    public let defoggingState: AAProperty<AAActiveState>?
+    public let defrostingState: AAProperty<AAActiveState>?
+    public let driverTemperature: AAProperty<Float>?
+    public let hvacState: AAProperty<AAActiveState>?
+    public let insideTemperature: AAProperty<Float>?
+    public let ionisingState: AAProperty<AAActiveState>?
+    public let outsideTemperature: AAProperty<Float>?
+    public let passengerTemperature: AAProperty<Float>?
+    public let rearTemperature: AAProperty<Float>?
+    public let weekdaysStartingTimes: [AAProperty<AAClimateWeekdayTime>]?
 
 
     // MARK: AAFullStandardCommand
@@ -51,18 +51,18 @@ public struct AAClimate: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        insideTemperature = properties.value(for: \AAClimate.insideTemperature)
-        outsideTemperature = properties.value(for: \AAClimate.outsideTemperature)
-        driverTemperature = properties.value(for: \AAClimate.driverTemperature)
-        passengerTemperature = properties.value(for: \AAClimate.passengerTemperature)
-        hvacState = properties.value(for: \AAClimate.hvacState)
-        defoggingState = properties.value(for: \AAClimate.defoggingState)
-        defrostingState = properties.value(for: \AAClimate.defrostingState)
-        ionisingState = properties.value(for: \AAClimate.ionisingState)
-        defrostingTemperature = properties.value(for: \AAClimate.defrostingTemperature)
+        insideTemperature = properties.property(for: \AAClimate.insideTemperature)
+        outsideTemperature = properties.property(for: \AAClimate.outsideTemperature)
+        driverTemperature = properties.property(for: \AAClimate.driverTemperature)
+        passengerTemperature = properties.property(for: \AAClimate.passengerTemperature)
+        hvacState = properties.property(for: \AAClimate.hvacState)
+        defoggingState = properties.property(for: \AAClimate.defoggingState)
+        defrostingState = properties.property(for: \AAClimate.defrostingState)
+        ionisingState = properties.property(for: \AAClimate.ionisingState)
+        defrostingTemperature = properties.property(for: \AAClimate.defrostingTemperature)
         /* Level 8 */
-        weekdaysStartingTimes = properties.flatMap(for: \AAClimate.weekdaysStartingTimes) { AAClimateWeekdayTime($0.value) }
-        rearTemperature = properties.value(for: \AAClimate.rearTemperature)
+        weekdaysStartingTimes = properties.properties(for: \AAClimate.weekdaysStartingTimes)
+        rearTemperature = properties.property(for: \AAClimate.rearTemperature)
 
         // Properties
         self.properties = properties
@@ -91,7 +91,7 @@ extension AAClimate: AAMessageTypesGettable {
 
 extension AAClimate: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAClimate, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAClimate, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAClimate.insideTemperature:      return 0x01
         case \AAClimate.outsideTemperature:     return 0x02
@@ -107,7 +107,7 @@ extension AAClimate: AAPropertyIdentifierGettable {
         case \AAClimate.rearTemperature:        return 0x0C
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

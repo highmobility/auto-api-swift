@@ -1,81 +1,79 @@
 //
-// AutoAPI
-// Copyright (C) 2018 High-Mobility GmbH
-//
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program. If not, see http://www.gnu.org/licenses/.
-//
-// Please inquire about commercial licensing options at
-// licensing@high-mobility.com
-//
-//
 //  AAProperty.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 23/11/2017.
-//  Copyright © 2018 High Mobility. All rights reserved.
+//  Created by Mikk Rätsep on 25/01/2019.
+//  Copyright © 2019 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public struct AAProperty {
+public struct AAProperty<ValueType> {
 
-    public let identifier: UInt8
-    public let size: UInt16
-    public let value: [UInt8]
+    public var failure: AAPropertyFailure?
+    public var timestamp: Date?
+    public var value: ValueType?
 
-    public var bytes: [UInt8] {
-        return [identifier] + size.bytes + value.bytes
-    }
 
-    
-    var monoValue: UInt8? {
-        return value.first
+    init?(property: AABasicProperty, properties: AAProperties, valueMaker: ([UInt8]) -> ValueType?) {
+        failure = properties.propertiesFailures?.first(for: property.identifier)
+        timestamp = properties.propertiesTimestamps?.first(for: property.identifier, value: property.value)?.date
+        value = valueMaker(property.value)
+
+        if (failure == nil) && (timestamp == nil) && (value == nil) {
+            return nil
+        }
     }
 }
 
-extension AAProperty: AABinaryInitable {
 
-    init?<C: Collection>(_ binary: C) where C.Element == UInt8 {
-        guard binary.count >= 3 else {
-            return nil
-        }
+extension AAProperties {
 
-        /*
-         This is a workaround for a Swift Compiler problem/bug? that doesn't let to subscript with an Int.
-         Which should work, as it inherits Comparable from (BinaryInteger -> Stridable).
-         */
-        let bytes = binary.bytes
+    // Single Convenience methods
 
-        identifier = bytes[0]
-        size = UInt16(bytes[1...2])
-
-        guard binary.count == (3 + size) else {
-            return nil
-        }
-
-        value = bytes.suffix(from: 3).bytes
+    func property<R, T>(for propertyKeyPath: KeyPath<T, AAProperty<R>?>) -> AAProperty<R>? where R: AABinaryInitable, T: AAPropertyIdentifierGettable {
+        return properties(for: propertyKeyPath, valueMaker: { R($0) })?.first
     }
-}
 
-extension AAProperty: CustomStringConvertible {
+    func property<R, T>(for propertyKeyPath: KeyPath<T, AAProperty<R>?>) -> AAProperty<R>? where R: RawRepresentable, R.RawValue == UInt8, T: AAPropertyIdentifierGettable {
+        return properties(for: propertyKeyPath, valueMaker: { R(rawValue: $0.first) })?.first
+    }
 
-    public var description: String {
-        let id = String(format: "0x%02X", identifier)
-        let size = String(format: "%3d", self.size)
-        let value = self.value.map { String(format: "%02X", $0) }.joined()
+    // Multi Convenience methods
 
-        return "id: " + id + ", size: " + size + ", val: 0x" + value
+    func properties<R, T>(for propertyKeyPath: KeyPath<T, [AAProperty<R>]?>) -> [AAProperty<R>]? where R: AABinaryInitable, T: AAPropertyIdentifierGettable {
+        return properties(for: propertyKeyPath, valueMaker: { R($0) })
+    }
+
+    func properties<R, T>(for propertyKeyPath: KeyPath<T, [AAProperty<R>]?>) -> [AAProperty<R>]? where R: RawRepresentable, R.RawValue == UInt8, T: AAPropertyIdentifierGettable {
+        return properties(for: propertyKeyPath, valueMaker: { R(rawValue: $0.first) })
+    }
+
+    // Basic methods
+
+    func properties<R, T, X>(for keyPath: KeyPath<T, X>, valueMaker: ([UInt8]) -> R?) -> [AAProperty<R>]? where T: AAPropertyIdentifierGettable {
+        guard let identifier = T.propertyID(for: keyPath) else {
+            return nil
+        }
+
+        var properties = filter(for: identifier)
+
+        // This hack isn't cool.
+        // Creates and adds a property to the list if there's a failure for it (and it didn't exist).
+        if (properties.count == 0) &&
+            (propertiesFailures?.contains(where: { $0.propertyID == identifier }) ?? false),
+            let dummyProperty = AABasicProperty(identifier.bytes + [0x00] ) {
+            // Add the created property
+            properties.append(dummyProperty)
+        }
+
+        guard properties.count > 0 else {
+            return nil
+        }
+
+        return properties.compactMap {
+            AAProperty(property: $0, properties: self, valueMaker: valueMaker)
+        }
     }
 }

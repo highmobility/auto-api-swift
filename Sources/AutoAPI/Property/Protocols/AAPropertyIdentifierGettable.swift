@@ -31,5 +31,5 @@ import Foundation
 
 protocol AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<Self, Type>) -> AAPropertyIdentifier
+    static func propertyID<Type>(for keyPath: KeyPath<Self, Type>) -> AAPropertyIdentifier?
 }

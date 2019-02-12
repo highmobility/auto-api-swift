@@ -31,9 +31,9 @@ import Foundation
 
 public struct AAEngine: AAFullStandardCommand {
 
-    public let accessoriesPoweredState: AAActiveState?
-    public let engineState: AAActiveState?
-    public let ignitionState: AAActiveState?
+    public let accessoriesPoweredState: AAProperty<AAActiveState>?
+    public let engineState: AAProperty<AAActiveState>?
+    public let ignitionState: AAProperty<AAActiveState>?
 
 
     // MARK: AAFullStandardCommand
@@ -43,9 +43,9 @@ public struct AAEngine: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        ignitionState = properties.value(for: \AAEngine.ignitionState)
-        accessoriesPoweredState = properties.value(for: \AAEngine.accessoriesPoweredState)
-        engineState = properties.value(for: \AAEngine.engineState)
+        ignitionState = properties.property(for: \AAEngine.ignitionState)
+        accessoriesPoweredState = properties.property(for: \AAEngine.accessoriesPoweredState)
+        engineState = properties.property(for: \AAEngine.engineState)
 
         // Properties
         self.properties = properties
@@ -69,14 +69,14 @@ extension AAEngine: AAMessageTypesGettable {
 
 extension AAEngine: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAEngine, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAEngine, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAEngine.ignitionState:           return 0x01
         case \AAEngine.accessoriesPoweredState: return 0x02
         case \AAEngine.engineState:             return 0x03
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

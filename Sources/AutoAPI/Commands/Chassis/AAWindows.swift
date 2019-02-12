@@ -31,8 +31,8 @@ import Foundation
 
 public struct AAWindows: AAFullStandardCommand {
 
-    public let openPercentages: [AAWindowOpenPercentage]?
-    public let positions: [AAWindowPosition]?
+    public let openPercentages: [AAProperty<AAWindowOpenPercentage>]?
+    public let positions: [AAProperty<AAWindowPosition>]?
 
 
     // MARK: AAFullStandardCommand
@@ -43,8 +43,8 @@ public struct AAWindows: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         /* Level 8 */
-        openPercentages = properties.flatMap(for: \AAWindows.openPercentages) { AAWindowOpenPercentage($0.value) }
-        positions = properties.flatMap(for: \AAWindows.positions) { AAWindowPosition($0.value) }
+        openPercentages = properties.properties(for: \AAWindows.openPercentages)
+        positions = properties.properties(for: \AAWindows.positions)
 
         // Properties
         self.properties = properties
@@ -68,13 +68,13 @@ extension AAWindows: AAMessageTypesGettable {
 
 extension AAWindows: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAWindows, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAWindows, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAWindows.openPercentages:    return 0x02
         case \AAWindows.positions:          return 0x03
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

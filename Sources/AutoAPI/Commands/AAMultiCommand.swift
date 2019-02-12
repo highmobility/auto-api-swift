@@ -32,7 +32,7 @@ import HMUtilities
 
 public struct AAMultiCommand: AAInboundCommand, AAOutboundCommand {
 
-    public let states: [AAVehicleState]?
+    public let states: [AAProperty<AAVehicleState>]?
 
 
     // MARK: AAInboundCommand
@@ -48,8 +48,8 @@ public struct AAMultiCommand: AAInboundCommand, AAOutboundCommand {
         let binaryTypes = AAAutoAPI.commands.compactMap { $0 as? AABinaryInitable.Type }
 
         /* Level 9 */
-        states = properties.flatMap(for: \AAMultiCommand.states) { property in
-            binaryTypes.flatMapFirst { $0.init(property.value) as? AAVehicleState }
+        states = properties.properties(for: \AAMultiCommand.states) { bytes in
+            binaryTypes.flatMapFirst { $0.init(bytes) as? AAVehicleState }
         }
 
         // Properties
@@ -73,12 +73,12 @@ extension AAMultiCommand: AAMessageTypesGettable {
 
 extension AAMultiCommand: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAMultiCommand, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAMultiCommand, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAMultiCommand.states: return 0x01
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

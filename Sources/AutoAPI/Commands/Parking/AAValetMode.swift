@@ -31,7 +31,7 @@ import Foundation
 
 public struct AAValetMode: AAFullStandardCommand {
 
-    public let state: AAActiveState?
+    public let state: AAProperty<AAActiveState>?
 
 
     // MARK: AAFullStandardCommand
@@ -41,7 +41,7 @@ public struct AAValetMode: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        state = properties.value(for: \AAValetMode.state)
+        state = properties.property(for: \AAValetMode.state)
 
         // Properties
         self.properties = properties
@@ -65,12 +65,12 @@ extension AAValetMode: AAMessageTypesGettable {
 
 extension AAValetMode: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAValetMode, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAValetMode, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAValetMode.state: return 0x01
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

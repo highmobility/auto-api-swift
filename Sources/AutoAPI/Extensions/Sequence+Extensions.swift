@@ -55,10 +55,3 @@ extension Sequence {
         })
     }
 }
-
-extension Sequence where Element == AAPropertyTimestamp {
-
-    func first(for identifier: AAPropertyIdentifier) -> AAPropertyTimestamp? {
-        return first { $0.propertyID == identifier }
-    }
-}

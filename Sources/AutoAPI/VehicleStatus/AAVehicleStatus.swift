@@ -31,25 +31,25 @@ import Foundation
 
 public struct AAVehicleStatus: AAInboundCommand {
 
-    public let brand: String?
-    public let colourName: String?
-    public let displayUnit: AADisplayUnit?
-    public let driverSeatPosition: AADriverSeatLocation?
-    public let engineVolume: Float?
-    public let engineMaxTorque: UInt16?
-    public let equipment: [String]?
-    public let gearbox: AAGearbox?
-    public let licensePlate: String?
-    public let modelName: String?
-    public let modelYear: UInt16?
-    public let name: String?
-    public let numberOfDoors: UInt8?
-    public let numberOfSeats: UInt8?
-    public let powerKW: UInt16?
-    public let powerTrain: AAPowerTrain?
-    public let salesDesignation: String?
-    public let states: [AAVehicleState]?
-    public let vin: String?
+    public let brand: AAProperty<String>?
+    public let colourName: AAProperty<String>?
+    public let displayUnit: AAProperty<AADisplayUnit>?
+    public let driverSeatPosition: AAProperty<AADriverSeatLocation>?
+    public let engineVolume: AAProperty<Float>?
+    public let engineMaxTorque: AAProperty<UInt16>?
+    public let equipment: [AAProperty<String>]?
+    public let gearbox: AAProperty<AAGearbox>?
+    public let licensePlate: AAProperty<String>?
+    public let modelName: AAProperty<String>?
+    public let modelYear: AAProperty<UInt16>?
+    public let name: AAProperty<String>?
+    public let numberOfDoors: AAProperty<UInt8>?
+    public let numberOfSeats: AAProperty<UInt8>?
+    public let powerKW: AAProperty<UInt16>?
+    public let powerTrain: AAProperty<AAPowerTrain>?
+    public let salesDesignation: AAProperty<String>?
+    public let states: [AAProperty<AAVehicleState>]?
+    public let vin: AAProperty<String>?
 
 
     // MARK: AAInboundCommand
@@ -65,30 +65,30 @@ public struct AAVehicleStatus: AAInboundCommand {
         let binaryTypes = AAAutoAPI.commands.compactMap { $0 as? AABinaryInitable.Type }
 
         // Ordered by the ID
-        vin = String(bytes: properties.first(for: 0x01)?.value, encoding: .ascii)
-        powerTrain = AAPowerTrain(rawValue: properties.first(for: 0x02)?.monoValue)
-        modelName = properties.value(for: 0x03)
-        name = properties.value(for: 0x04)
-        licensePlate = properties.value(for: 0x05)
-        salesDesignation = properties.value(for: 0x06)
-        modelYear = properties.value(for: 0x07)
-        colourName = properties.value(for: 0x08)
-        powerKW = properties.value(for: 0x09)
-        numberOfDoors = properties.value(for: 0x0A)
-        numberOfSeats = properties.value(for: 0x0B)
-        engineVolume = properties.value(for: 0x0C)
-        engineMaxTorque = properties.value(for: 0x0D)
-        gearbox = AAGearbox(rawValue: properties.first(for: 0x0E)?.monoValue)
+        vin = properties.properties(for: \AAVehicleStatus.vin) { String(bytes: $0, encoding: .ascii) }?.first
+        powerTrain = properties.property(for: \AAVehicleStatus.powerTrain)
+        modelName = properties.property(for: \AAVehicleStatus.modelName)
+        name = properties.property(for: \AAVehicleStatus.name)
+        licensePlate = properties.property(for: \AAVehicleStatus.licensePlate)
+        salesDesignation = properties.property(for: \AAVehicleStatus.salesDesignation)
+        modelYear = properties.property(for: \AAVehicleStatus.modelYear)
+        colourName = properties.property(for: \AAVehicleStatus.colourName)
+        powerKW = properties.property(for: \AAVehicleStatus.powerKW)
+        numberOfDoors = properties.property(for: \AAVehicleStatus.numberOfDoors)
+        numberOfSeats = properties.property(for: \AAVehicleStatus.numberOfSeats)
+        engineVolume = properties.property(for: \AAVehicleStatus.engineVolume)
+        engineMaxTorque = properties.property(for: \AAVehicleStatus.engineMaxTorque)
+        gearbox = properties.property(for: \AAVehicleStatus.gearbox)
         /* Level 8 */
-        displayUnit = AADisplayUnit(rawValue: properties.first(for: 0x0F)?.monoValue)
-        driverSeatPosition = AADriverSeatLocation(rawValue: properties.first(for: 0x10)?.monoValue)
-        equipment = properties.flatMap(for: 0x11) { String(bytes: $0.value, encoding: .utf8)  }
+        displayUnit = properties.property(for: \AAVehicleStatus.displayUnit)
+        driverSeatPosition = properties.property(for: \AAVehicleStatus.driverSeatPosition)
+        equipment = properties.properties(for: \AAVehicleStatus.equipment)
         /* Level 9 */
-        brand = properties.value(for: \AAVehicleStatus.brand)
+        brand = properties.property(for: \AAVehicleStatus.brand)
 
         /* Special */
-        states = properties.flatMap(for: 0x99) { property in
-            binaryTypes.flatMapFirst { $0.init(property.value) as? AAVehicleState }
+        states = properties.properties(for: \AAVehicleStatus.states) { bytes in
+            binaryTypes.flatMapFirst { $0.init(bytes) as? AAVehicleState }
         }
 
         // Properties
@@ -112,7 +112,7 @@ extension AAVehicleStatus: AAMessageTypesGettable {
 
 extension AAVehicleStatus: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAVehicleStatus, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAVehicleStatus, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAVehicleStatus.vin:              return 0x01
         case \AAVehicleStatus.powerTrain:       return 0x02
@@ -141,7 +141,7 @@ extension AAVehicleStatus: AAPropertyIdentifierGettable {
         case \AAVehicleStatus.states: return 0x99
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

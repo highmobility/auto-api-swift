@@ -31,11 +31,11 @@ import Foundation
 
 public struct AARooftopControl: AAFullStandardCommand {
 
-    public let convertibleRoofState: AAConvertibleRoofState?
-    public let dimming: AAPercentageInt?
-    public let position: AAPercentageInt?
-    public let sunroofTiltState: AATiltState?
-    public let sunroofState: AAPositionState?
+    public let convertibleRoofState: AAProperty<AAConvertibleRoofState>?
+    public let dimming: AAProperty<AAPercentageInt>?
+    public let position: AAProperty<AAPercentageInt>?
+    public let sunroofTiltState: AAProperty<AATiltState>?
+    public let sunroofState: AAProperty<AAPositionState>?
 
 
     // MARK: AAFullStandardCommand
@@ -45,13 +45,13 @@ public struct AARooftopControl: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        dimming = properties.value(for: \AARooftopControl.dimming)
-        position = properties.value(for: \AARooftopControl.position)
+        dimming = properties.property(for: \AARooftopControl.dimming)
+        position = properties.property(for: \AARooftopControl.position)
         /* Level 8 */
-        convertibleRoofState = AAConvertibleRoofState(properties: properties, keyPath: \AARooftopControl.convertibleRoofState)
-        sunroofTiltState = AATiltState(properties: properties, keyPath: \AARooftopControl.sunroofTiltState)
+        convertibleRoofState = properties.property(for: \AARooftopControl.convertibleRoofState)
+        sunroofTiltState = properties.property(for: \AARooftopControl.sunroofTiltState)
         /* Level 9 */
-        sunroofState = properties.value(for: \AARooftopControl.sunroofState)
+        sunroofState = properties.property(for: \AARooftopControl.sunroofState)
 
         // Properties
         self.properties = properties
@@ -75,7 +75,7 @@ extension AARooftopControl: AAMessageTypesGettable {
 
 extension AARooftopControl: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AARooftopControl, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AARooftopControl, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AARooftopControl.dimming:     return 0x01
         case \AARooftopControl.position:    return 0x02
@@ -85,7 +85,7 @@ extension AARooftopControl: AAPropertyIdentifierGettable {
         case \AARooftopControl.sunroofState:            return 0x05
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

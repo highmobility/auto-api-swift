@@ -31,7 +31,7 @@ import Foundation
 
 public struct AAParkingBrake: AAFullStandardCommand {
 
-    public let state: AAActiveState?
+    public let state: AAProperty<AAActiveState>?
 
 
     // MARK: AAFullStandardCommand
@@ -41,7 +41,7 @@ public struct AAParkingBrake: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        state = properties.value(for: \AAParkingBrake.state)
+        state = properties.property(for: \AAParkingBrake.state)
 
         // Properties
         self.properties = properties
@@ -65,12 +65,12 @@ extension AAParkingBrake: AAMessageTypesGettable {
 
 extension AAParkingBrake: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAParkingBrake, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAParkingBrake, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAParkingBrake.state: return 0x01
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

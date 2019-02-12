@@ -31,8 +31,8 @@ import Foundation
 
 public struct AASeats: AAFullStandardCommand {
 
-    public let personsDetected: [AASeatPersonDetected]?
-    public let seatbeltsFastened: [AASeatbeltFastened]?
+    public let personsDetected: [AAProperty<AASeatPersonDetected>]?
+    public let seatbeltsFastened: [AAProperty<AASeatbeltFastened>]?
 
 
     // MARK: AAFullStandardCommand
@@ -43,8 +43,8 @@ public struct AASeats: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         /* Level 8 */
-        personsDetected = properties.flatMap(for: \AASeats.personsDetected) { AASeatPersonDetected($0.value) }
-        seatbeltsFastened = properties.flatMap(for: \AASeats.seatbeltsFastened) { AASeatbeltFastened($0.value) }
+        personsDetected = properties.properties(for: \AASeats.personsDetected)
+        seatbeltsFastened = properties.properties(for: \AASeats.seatbeltsFastened)
 
         // Properties
         self.properties = properties
@@ -67,13 +67,13 @@ extension AASeats: AAMessageTypesGettable {
 
 extension AASeats: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AASeats, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AASeats, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AASeats.personsDetected:      return 0x02
         case \AASeats.seatbeltsFastened:    return 0x03
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

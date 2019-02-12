@@ -31,11 +31,11 @@ import Foundation
 
 public struct AAParkingTicket: AAFullStandardCommand {
 
-    public let endTime: Date?
-    public let operatorName: String?
-    public let startTime: Date?
-    public let state: AAParkingTicketState?
-    public let ticketID: String?
+    public let endTime: AAProperty<Date>?
+    public let operatorName: AAProperty<String>?
+    public let startTime: AAProperty<Date>?
+    public let state: AAProperty<AAParkingTicketState>?
+    public let ticketID: AAProperty<String>?
 
 
     // MARK: AAFullStandardCommand
@@ -45,11 +45,11 @@ public struct AAParkingTicket: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        state = AAParkingTicketState(properties: properties, keyPath: \AAParkingTicket.state)
-        operatorName = properties.value(for: \AAParkingTicket.operatorName)
-        ticketID = properties.value(for: \AAParkingTicket.ticketID)
-        startTime = properties.value(for: \AAParkingTicket.startTime)
-        endTime = properties.value(for: \AAParkingTicket.endTime)
+        state = properties.property(for: \AAParkingTicket.state)
+        operatorName = properties.property(for: \AAParkingTicket.operatorName)
+        ticketID = properties.property(for: \AAParkingTicket.ticketID)
+        startTime = properties.property(for: \AAParkingTicket.startTime)
+        endTime = properties.property(for: \AAParkingTicket.endTime)
 
         // Properties
         self.properties = properties
@@ -74,7 +74,7 @@ extension AAParkingTicket: AAMessageTypesGettable {
 
 extension AAParkingTicket: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAParkingTicket, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAParkingTicket, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAParkingTicket.state:        return 0x01
         case \AAParkingTicket.operatorName: return 0x02
@@ -83,7 +83,7 @@ extension AAParkingTicket: AAPropertyIdentifierGettable {
         case \AAParkingTicket.endTime:      return 0x05
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

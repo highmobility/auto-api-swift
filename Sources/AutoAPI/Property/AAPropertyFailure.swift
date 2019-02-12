@@ -31,7 +31,7 @@ import Foundation
 
 public struct AAPropertyFailure {
 
-    public let propertyID: UInt8
+    public let propertyID: AAPropertyIdentifier
     public let failureReason: AAPropertyFailureReason
     public let description: String
 }
@@ -65,5 +65,13 @@ extension AAPropertyFailure: AAPropertyConvertable {
         let descriptionBytes = description.data(using: .utf8)?.bytes ?? []
 
         return [propertyID, failureReason.rawValue, descriptionBytes.count.uint8] + descriptionBytes
+    }
+}
+
+
+extension Sequence where Element == AAPropertyFailure {
+
+    func first(for identifier: AAPropertyIdentifier) -> AAPropertyFailure? {
+        return first { $0.propertyID == identifier }
     }
 }

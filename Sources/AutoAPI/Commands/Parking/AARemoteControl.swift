@@ -31,8 +31,8 @@ import Foundation
 
 public struct AARemoteControl: AAFullStandardCommand {
 
-    public let angle: Int16?
-    public let controlMode: AAControlMode?
+    public let angle: AAProperty<Int16>?
+    public let controlMode: AAProperty<AAControlMode>?
 
 
     // MARK: AAFullStandardCommand
@@ -42,8 +42,8 @@ public struct AARemoteControl: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        controlMode = AAControlMode(properties: properties, keyPath: \AARemoteControl.controlMode)
-        angle = properties.value(for: \AARemoteControl.angle)
+        controlMode = properties.property(for: \AARemoteControl.controlMode)
+        angle = properties.property(for: \AARemoteControl.angle)
 
         // Properties
         self.properties = properties
@@ -68,13 +68,13 @@ extension AARemoteControl: AAMessageTypesGettable {
 
 extension AARemoteControl: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AARemoteControl, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AARemoteControl, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AARemoteControl.controlMode:  return 0x01
         case \AARemoteControl.angle:        return 0x02
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

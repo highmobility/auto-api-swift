@@ -31,9 +31,9 @@ import Foundation
 
 public struct AADoorLocks: AAFullStandardCommand {
 
-    public let insideLocks: [AADoorLock]?
-    public let locks: [AADoorLock]?
-    public let positions: [AADoorPosition]?
+    public let insideLocks: [AAProperty<AADoorLock>]?
+    public let locks: [AAProperty<AADoorLock>]?
+    public let positions: [AAProperty<AADoorPosition>]?
 
 
     // MARK: AAFullStandardCommand
@@ -44,9 +44,9 @@ public struct AADoorLocks: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         /* Level 8 */
-        insideLocks = properties.flatMap(for: \AADoorLocks.insideLocks) { AADoorLock($0.value) }
-        locks = properties.flatMap(for: \AADoorLocks.locks) { AADoorLock($0.value) }
-        positions = properties.flatMap(for: \AADoorLocks.positions) { AADoorPosition($0.value) }
+        insideLocks = properties.properties(for: \AADoorLocks.insideLocks)
+        locks = properties.properties(for: \AADoorLocks.locks)
+        positions = properties.properties(for: \AADoorLocks.positions)
 
         // Properties
         self.properties = properties
@@ -70,7 +70,7 @@ extension AADoorLocks: AAMessageTypesGettable {
 
 extension AADoorLocks: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AADoorLocks, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AADoorLocks, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
             /* Level 8 */
         case \AADoorLocks.insideLocks:  return 0x02
@@ -78,7 +78,7 @@ extension AADoorLocks: AAPropertyIdentifierGettable {
         case \AADoorLocks.positions:    return 0x04
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

@@ -31,7 +31,7 @@ import Foundation
 
 public struct AAWeatherConditions: AAFullStandardCommand {
 
-    public let rainIntensity: AAPercentageInt?
+    public let rainIntensity: AAProperty<AAPercentageInt>?
 
 
     // MARK: AAFullStandardCommand
@@ -41,7 +41,7 @@ public struct AAWeatherConditions: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        rainIntensity = properties.value(for: \AAWeatherConditions.rainIntensity)
+        rainIntensity = properties.property(for: \AAWeatherConditions.rainIntensity)
 
         // Properties
         self.properties = properties
@@ -64,12 +64,12 @@ extension AAWeatherConditions: AAMessageTypesGettable {
 
 extension AAWeatherConditions: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAWeatherConditions, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAWeatherConditions, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAWeatherConditions.rainIntensity: return 0x01
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

@@ -31,7 +31,7 @@ import Foundation
 
 public struct AACapabilities: AAInboundCommand, Sequence  {
 
-    public let capabilities: [AACapability]
+    public let capabilities: [AAProperty<AACapability>]?
 
 
     // MARK: AAInboundCommand
@@ -47,14 +47,14 @@ public struct AACapabilities: AAInboundCommand, Sequence  {
         let commandTypes = AAAutoAPI.commands.compactMap { $0 as? AACommand.Type }
 
         // Ordered by the ID
-        capabilities = properties.filter(for: \AACapabilities.capabilities).compactMap { property in
-            let identifier = AACommandIdentifier(property.value.prefix(2))
+        capabilities = properties.properties(for: \AACapabilities.capabilities) { bytes in
+            let identifier = AACommandIdentifier(bytes.prefix(2))
 
             guard let command = commandTypes.first(where: { $0.identifier == identifier }) else {
                 return nil
             }
 
-            return AACapability(binary: property.value, command: command)
+            return AACapability(binary: bytes, command: command)
         }
 
         // Properties
@@ -88,13 +88,12 @@ extension AACapabilities: AAMessageTypesGettable {
 }
 
 extension AACapabilities: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AACapabilities, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AACapabilities, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AACapabilities.capabilities: return 0x01
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

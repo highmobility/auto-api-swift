@@ -31,16 +31,18 @@ import Foundation
 
 public struct AAWindscreen: AAFullStandardCommand {
 
-    public let damage: AAWindscreenDamage?
-    public let damageConfidence: AAPercentageInt?
-    public let damageDetectionTime: Date?
+    public let damage: AAProperty<AAWindscreenDamage>?
+    public let damageConfidence: AAProperty<AAPercentageInt>?
+    public let damageDetectionTime: AAProperty<Date>?
+
     /// The *position* of the *damage* on the Windscreen.
-    public let damageZone: AAZone?
-    public let needsReplacement: AANeedsReplacement?
+    public let damageZone: AAProperty<AAZone>?
+    public let needsReplacement: AAProperty<AANeedsReplacement>?
+
     /// The *size* of *zones* on the Windscreen.
-    public let zoneMatrix: AAZone?
-    public let wipersIntensity: AAWipersIntensity?
-    public let wipersState: AAWipersState?
+    public let zoneMatrix: AAProperty<AAZone>?
+    public let wipersIntensity: AAProperty<AAWipersIntensity>?
+    public let wipersState: AAProperty<AAWipersState>?
 
 
     // MARK: AAFullStandardCommand
@@ -50,14 +52,14 @@ public struct AAWindscreen: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        wipersState = AAWipersState(properties: properties, keyPath: \AAWindscreen.wipersState)
-        wipersIntensity = AAWipersIntensity(properties: properties, keyPath: \AAWindscreen.wipersIntensity)
-        damage = AAWindscreenDamage(properties: properties, keyPath: \AAWindscreen.damage)
-        zoneMatrix = AAZone(properties: properties, keyPath: \AAWindscreen.zoneMatrix)
-        damageZone = AAZone(properties: properties, keyPath: \AAWindscreen.damageZone)
-        needsReplacement = AANeedsReplacement(properties: properties, keyPath: \AAWindscreen.needsReplacement)
-        damageConfidence = properties.value(for: \AAWindscreen.damageConfidence)
-        damageDetectionTime = properties.value(for: \AAWindscreen.damageDetectionTime)
+        wipersState = properties.property(for: \AAWindscreen.wipersState)
+        wipersIntensity = properties.property(for: \AAWindscreen.wipersIntensity)
+        damage = properties.property(for: \AAWindscreen.damage)
+        zoneMatrix = properties.property(for: \AAWindscreen.zoneMatrix)
+        damageZone = properties.property(for: \AAWindscreen.damageZone)
+        needsReplacement = properties.property(for: \AAWindscreen.needsReplacement)
+        damageConfidence = properties.property(for: \AAWindscreen.damageConfidence)
+        damageDetectionTime = properties.property(for: \AAWindscreen.damageDetectionTime)
 
         // Properties
         self.properties = properties
@@ -83,7 +85,7 @@ extension AAWindscreen: AAMessageTypesGettable {
 
 extension AAWindscreen: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAWindscreen, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAWindscreen, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAWindscreen.wipersState:         return 0x01
         case \AAWindscreen.wipersIntensity:     return 0x02
@@ -95,7 +97,7 @@ extension AAWindscreen: AAPropertyIdentifierGettable {
         case \AAWindscreen.damageDetectionTime: return 0x08
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

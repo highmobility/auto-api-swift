@@ -31,11 +31,11 @@ import Foundation
 
 public struct AACruiseControl: AAFullStandardCommand {
 
-    public let state: AAActiveState?
-    public let adaptiveState: AAActiveState?
-    public let adaptiveTargetSpeed: Int16?
-    public let limiter: AACruiseControlLimiter?
-    public let targetSpeed: Int16?
+    public let state: AAProperty<AAActiveState>?
+    public let adaptiveState: AAProperty<AAActiveState>?
+    public let adaptiveTargetSpeed: AAProperty<Int16>?
+    public let limiter: AAProperty<AACruiseControlLimiter>?
+    public let targetSpeed: AAProperty<Int16>?
 
 
     // MARK: AAFullStandardCommand
@@ -45,11 +45,11 @@ public struct AACruiseControl: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        state = properties.value(for: \AACruiseControl.state)
-        limiter = AACruiseControlLimiter(properties: properties, keyPath: \AACruiseControl.limiter)
-        targetSpeed = properties.value(for: \AACruiseControl.targetSpeed)
-        adaptiveState = properties.value(for: \AACruiseControl.adaptiveState)
-        adaptiveTargetSpeed = properties.value(for: \AACruiseControl.adaptiveTargetSpeed)
+        state = properties.property(for: \AACruiseControl.state)
+        limiter = properties.property(for: \AACruiseControl.limiter)
+        targetSpeed = properties.property(for: \AACruiseControl.targetSpeed)
+        adaptiveState = properties.property(for: \AACruiseControl.adaptiveState)
+        adaptiveTargetSpeed = properties.property(for: \AACruiseControl.adaptiveTargetSpeed)
 
         // Properties
         self.properties = properties
@@ -73,7 +73,7 @@ extension AACruiseControl: AAMessageTypesGettable {
 
 extension AACruiseControl: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AACruiseControl, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AACruiseControl, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AACruiseControl.state:                 return 0x01
         case \AACruiseControl.limiter:               return 0x02
@@ -82,7 +82,7 @@ extension AACruiseControl: AAPropertyIdentifierGettable {
         case \AACruiseControl.adaptiveTargetSpeed:   return 0x05
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

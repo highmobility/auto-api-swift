@@ -31,12 +31,12 @@ import Foundation
 
 public struct AANaviDestination: AAFullStandardCommand {
 
-    public let arrivalTime: AATime?
-    public let coordinates: AACoordinates?
-    public let distanceTo: UInt16?
-    public let name: String?
-    public let poiSlotsFree: UInt8?
-    public let poiSlotsMax: UInt8?
+    public let arrivalTime: AAProperty<AATime>?
+    public let coordinates: AAProperty<AACoordinates>?
+    public let distanceTo: AAProperty<UInt16>?
+    public let name: AAProperty<String>?
+    public let poiSlotsFree: AAProperty<UInt8>?
+    public let poiSlotsMax: AAProperty<UInt8>?
 
 
     // MARK: AAFullStandardCommand
@@ -46,13 +46,13 @@ public struct AANaviDestination: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        name = properties.value(for: \AANaviDestination.name)
-        poiSlotsFree = properties.value(for: \AANaviDestination.poiSlotsFree)
-        poiSlotsMax = properties.value(for: \AANaviDestination.poiSlotsMax)
-        arrivalTime = AATime(properties.first(for: \AANaviDestination.arrivalTime)?.value ?? [])
-        distanceTo = properties.value(for: \AANaviDestination.distanceTo)
+        name = properties.property(for: \AANaviDestination.name)
+        poiSlotsFree = properties.property(for: \AANaviDestination.poiSlotsFree)
+        poiSlotsMax = properties.property(for: \AANaviDestination.poiSlotsMax)
+        arrivalTime = properties.property(for: \AANaviDestination.arrivalTime)
+        distanceTo = properties.property(for: \AANaviDestination.distanceTo)
         /* Level 8 */
-        coordinates = AACoordinates(properties.first(for: \AANaviDestination.coordinates)?.value ?? [])
+        coordinates = properties.property(for: \AANaviDestination.coordinates)
 
         // Properties
         self.properties = properties
@@ -76,18 +76,18 @@ extension AANaviDestination: AAMessageTypesGettable {
 
 extension AANaviDestination: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AANaviDestination, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AANaviDestination, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AANaviDestination.name:           return 0x02
         case \AANaviDestination.poiSlotsFree:   return 0x03
         case \AANaviDestination.poiSlotsMax:    return 0x04
-        case \AANaviDestination.distanceTo:     return 0x06
         case \AANaviDestination.arrivalTime:    return 0x05
+        case \AANaviDestination.distanceTo:     return 0x06
             /* Level 8 */
         case \AANaviDestination.coordinates: return 0x07
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

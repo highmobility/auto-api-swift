@@ -29,14 +29,18 @@
 import Foundation
 
 
-public struct AAProperties: Sequence, AAPropertiesCapable, AAPropertiesTimestampGettable {
+public struct AAProperties: Sequence, AAPropertiesCapable {
 
     public var carSignature: [UInt8]? {
         return first(for: 0xA1)?.value
     }
 
     public var milliseconds: TimeInterval? {
-        return value(for: 0xA3)
+        guard let bytes = first(for: 0xA3)?.value else {
+            return nil
+        }
+
+        return TimeInterval(bytes)
     }
 
     public var nonce: [UInt8]? {
@@ -44,25 +48,19 @@ public struct AAProperties: Sequence, AAPropertiesCapable, AAPropertiesTimestamp
     }
 
     public var timestamp: Date? {
-        return value(for: 0xA2)
+        guard let bytes = first(for: 0xA2)?.value else {
+            return nil
+        }
+
+        return Date(bytes)
     }
 
     public var properties: AAProperties {
         return self
     }
 
-    public var propertiesFailures: [AAPropertyFailure]? {
-        return flatMap(for: 0xA5) {  AAPropertyFailure($0.value) }
-    }
 
-    public var propertiesTimestamps: [AAPropertyTimestamp]? {
-        return flatMap(for: 0xA4) { AAPropertyTimestamp($0.value) }
-    }
-
-    public func propertyTimestamp<Type>(for keyPath: KeyPath<AAProperties, Type>, specificProperty property: Any?) -> AAPropertyTimestamp? {
-        return nil
-    }
-
+    // MARK: Internal Vars
 
     let bytes: [UInt8]
 
@@ -86,109 +84,36 @@ extension AAProperties: AABinaryInitable {
 
 extension AAProperties {
 
-    func value<ReturnType>(for identifier: AAPropertyIdentifier) -> ReturnType? {
-        guard let bytes = first(for: identifier)?.value else {
-            return nil
-        }
-
-        guard let firstByte = bytes.first else {
-            return nil
-        }
-
-        switch ReturnType.self {
-
-        /*** INTs ***/
-        case is Int8.Type:
-            return Int8(bitPattern: firstByte) as? ReturnType
-
-        case is Int16.Type:
-            return Int16(bitPattern: UInt16(bytes)) as? ReturnType
-
-        case is Int32.Type:
-            return Int32(bitPattern: UInt32(bytes)) as? ReturnType
-
-
-        /*** OTHERs ***/
-        case is AAActiveState.Type:
-            return AAActiveState(rawValue: firstByte) as? ReturnType
-
-        case is Date.Type:
-            return Date(bytes) as? ReturnType
-
-        case is Double.Type:
-            return Double(bytes) as? ReturnType
-
-        case is Float.Type:
-            return Float(bytes) as? ReturnType
-
-        case is AAFluidLevel.Type:
-            return AAFluidLevel(rawValue: firstByte) as? ReturnType
-
-        case is AAPositionState.Type:
-            return AAPositionState(rawValue: firstByte) as? ReturnType
-
-        case is String.Type:
-            return String(bytes: bytes, encoding: .utf8) as? ReturnType
-
-
-        /*** UINTs ***/
-        case is UInt8.Type:
-            return bytes.first as? ReturnType
-
-        case is UInt16.Type:
-            return UInt16(bytes) as? ReturnType
-
-        case is UInt32.Type:
-            return UInt32(bytes) as? ReturnType
-
-
-        /*** Everything else... ***/
-        default:
-            return nil
-        }
+    var propertiesFailures: [AAPropertyFailure]? {
+        return flatMap(for: 0xA5) {  AAPropertyFailure($0.value) }
     }
 
-    func value<Type: AAPropertyIdentifierGettable, ReturnType>(for propertyKeyPath: KeyPath<Type, ReturnType?>) -> ReturnType? {
-        let identifier = Type.propertyID(for: propertyKeyPath)
-
-        guard identifier != 0x00 else {
-            return nil
-        }
-
-        return value(for: identifier)
-    }
-}
-
-extension AAProperties {
-
-    func contains(identifier: AAPropertyIdentifier) -> Bool {
-        return contains { $0.identifier == identifier }
+    var propertiesTimestamps: [AAPropertyTimestamp]? {
+        return flatMap(for: 0xA4) { AAPropertyTimestamp($0.value) }
     }
 
 
-    func filter(for identifier: AAPropertyIdentifier) -> [AAProperty] {
+    // MARK: Methods
+
+    func filter(for identifier: AAPropertyIdentifier) -> [AABasicProperty] {
         return filter { $0.identifier == identifier }
     }
 
-    func filter<Type: AAPropertyIdentifierGettable, ReturnType>(for propertyKeyPath: KeyPath<Type, ReturnType>) -> [AAProperty] {
-        let identifer = Type.propertyID(for: propertyKeyPath)
-
-        guard identifer != 0x00 else {
+    func filter<Type: AAPropertyIdentifierGettable, ReturnType>(for propertyKeyPath: KeyPath<Type, ReturnType>) -> [AABasicProperty] {
+        guard let identifier = Type.propertyID(for: propertyKeyPath) else {
             return []
         }
 
-        return filter(for: identifer)
+        return filter(for: identifier)
     }
 
 
-    func first(for identifier: AAPropertyIdentifier) -> AAProperty? {
+    func first(for identifier: AAPropertyIdentifier) -> AABasicProperty? {
         return first(where: { $0.identifier == identifier })
     }
 
-    func first<Type: AAPropertyIdentifierGettable, ReturnType>(for propertyKeyPath: KeyPath<Type, ReturnType>) -> AAProperty? {
-        let identifier = Type.propertyID(for: propertyKeyPath)
-
-        guard identifier != 0x00 else {
+    func first<Type: AAPropertyIdentifierGettable, ReturnType>(for propertyKeyPath: KeyPath<Type, ReturnType>) -> AABasicProperty? {
+        guard let identifier = Type.propertyID(for: propertyKeyPath) else {
             return nil
         }
 
@@ -196,7 +121,7 @@ extension AAProperties {
     }
 
 
-    func flatMap<T>(for identifier: AAPropertyIdentifier, transform: (AAProperty) throws -> T?) rethrows -> [T]? {
+    func flatMap<T>(for identifier: AAPropertyIdentifier, transform: (AABasicProperty) throws -> T?) rethrows -> [T]? {
         let filtered = filter(for: identifier)
 
         guard filtered.count > 0 else {
@@ -206,10 +131,8 @@ extension AAProperties {
         return try filtered.compactMap(transform)
     }
 
-    func flatMap<T, Type: AAPropertyIdentifierGettable, ReturnType>(for propertyKeyPath: KeyPath<Type, ReturnType>, transform: (AAProperty) throws -> T?) rethrows -> [T]? {
-        let identifier = Type.propertyID(for: propertyKeyPath)
-
-        guard identifier != 0x00 else {
+    func flatMap<T, Type: AAPropertyIdentifierGettable, ReturnType>(for propertyKeyPath: KeyPath<Type, ReturnType>, transform: (AABasicProperty) throws -> T?) rethrows -> [T]? {
+        guard let identifier = Type.propertyID(for: propertyKeyPath) else {
             return nil
         }
 

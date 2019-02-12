@@ -31,10 +31,10 @@ import Foundation
 
 public struct AAWiFi: AAFullStandardCommand {
 
-    public let connectedState: AAConnectionState?
-    public let enabledState: AAEnabledState?
-    public let networkSecurity: AANetworkSecurity?
-    public let networkSSID: AANetworkSSID?
+    public let connectedState: AAProperty<AAConnectionState>?
+    public let enabledState: AAProperty<AAEnabledState>?
+    public let networkSecurity: AAProperty<AANetworkSecurity>?
+    public let networkSSID: AAProperty<AANetworkSSID>?
 
 
     // MARK: AAFullStandardCommand
@@ -44,10 +44,10 @@ public struct AAWiFi: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        enabledState = AAEnabledState(properties: properties, keyPath: \AAWiFi.enabledState)
-        connectedState = AAConnectionState(properties: properties, keyPath: \AAWiFi.connectedState)
-        networkSSID = properties.value(for: \AAWiFi.networkSSID)
-        networkSecurity = AANetworkSecurity(properties: properties, keyPath: \AAWiFi.networkSecurity)
+        enabledState = properties.property(for: \AAWiFi.enabledState)
+        connectedState = properties.property(for: \AAWiFi.connectedState)
+        networkSSID = properties.property(for: \AAWiFi.networkSSID)
+        networkSecurity = properties.property(for: \AAWiFi.networkSecurity)
 
         // Properties
         self.properties = properties
@@ -73,7 +73,7 @@ extension AAWiFi: AAMessageTypesGettable {
 
 extension AAWiFi: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAWiFi, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAWiFi, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAWiFi.enabledState:      return 0x01
         case \AAWiFi.connectedState:    return 0x02
@@ -81,7 +81,7 @@ extension AAWiFi: AAPropertyIdentifierGettable {
         case \AAWiFi.networkSecurity:   return 0x04
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

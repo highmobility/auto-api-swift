@@ -27,7 +27,12 @@
 //
 
 import Foundation
+import HMUtilities
 
+
+extension Int8: AABinaryInitable {
+
+}
 
 extension Int8: AAPropertyConvertable {
 

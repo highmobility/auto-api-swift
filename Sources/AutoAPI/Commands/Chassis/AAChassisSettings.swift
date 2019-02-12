@@ -31,14 +31,14 @@ import Foundation
 
 public struct AAChassisSettings: AAFullStandardCommand {
 
-    public let currentChassisPosition: UInt8?
-    public let currentSpringRates: [AASpringRateValue]?
-    public let drivingMode: AADrivingMode?
-    public let maximumChassisPosition: Int8?
-    public let maximumSpringRates: [AASpringRateValue]?
-    public let minimumChassisPosition: Int8?
-    public let minimumSpringRates: [AASpringRateValue]?
-    public let sportChronoState: AAActiveState?
+    public let currentChassisPosition: AAProperty<UInt8>?
+    public let currentSpringRates: [AAProperty<AASpringRateValue>]?
+    public let drivingMode: AAProperty<AADrivingMode>?
+    public let maximumChassisPosition: AAProperty<Int8>?
+    public let maximumSpringRates: [AAProperty<AASpringRateValue>]?
+    public let minimumChassisPosition: AAProperty<Int8>?
+    public let minimumSpringRates: [AAProperty<AASpringRateValue>]?
+    public let sportChronoState: AAProperty<AAActiveState>?
 
 
     // MARK: AAFullStandardCommand
@@ -48,15 +48,15 @@ public struct AAChassisSettings: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        drivingMode = AADrivingMode(rawValue: properties.first(for: \AAChassisSettings.drivingMode)?.monoValue)
-        sportChronoState = properties.value(for: \AAChassisSettings.sportChronoState)
+        drivingMode = properties.property(for: \AAChassisSettings.drivingMode)
+        sportChronoState = properties.property(for: \AAChassisSettings.sportChronoState)
         /* Level 8 */
-        currentSpringRates = properties.flatMap(for: \AAChassisSettings.currentSpringRates) { AASpringRateValue($0.value) }
-        maximumSpringRates = properties.flatMap(for: \AAChassisSettings.maximumSpringRates) { AASpringRateValue($0.value) }
-        minimumSpringRates = properties.flatMap(for: \AAChassisSettings.minimumSpringRates) { AASpringRateValue($0.value) }
-        currentChassisPosition = properties.value(for: \AAChassisSettings.currentChassisPosition)
-        maximumChassisPosition = properties.value(for: \AAChassisSettings.maximumChassisPosition)
-        minimumChassisPosition = properties.value(for: \AAChassisSettings.minimumChassisPosition)
+        currentSpringRates = properties.properties(for: \AAChassisSettings.currentSpringRates)
+        maximumSpringRates = properties.properties(for: \AAChassisSettings.maximumSpringRates)
+        minimumSpringRates = properties.properties(for: \AAChassisSettings.minimumSpringRates)
+        currentChassisPosition = properties.property(for: \AAChassisSettings.currentChassisPosition)
+        maximumChassisPosition = properties.property(for: \AAChassisSettings.maximumChassisPosition)
+        minimumChassisPosition = properties.property(for: \AAChassisSettings.minimumChassisPosition)
 
         // Properties
         self.properties = properties
@@ -83,10 +83,10 @@ extension AAChassisSettings: AAMessageTypesGettable {
 
 extension AAChassisSettings: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAChassisSettings, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAChassisSettings, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
-        case \AAChassisSettings.drivingMode:            return 0x01
-        case \AAChassisSettings.sportChronoState:    return 0x02
+        case \AAChassisSettings.drivingMode:        return 0x01
+        case \AAChassisSettings.sportChronoState:   return 0x02
             /* Level 8 */
         case \AAChassisSettings.currentSpringRates:      return 0x05
         case \AAChassisSettings.maximumSpringRates:      return 0x06
@@ -96,7 +96,7 @@ extension AAChassisSettings: AAPropertyIdentifierGettable {
         case \AAChassisSettings.minimumChassisPosition:  return 0x0A
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

@@ -34,18 +34,18 @@ public struct AAMaintenance: AAFullStandardCommand {
     public typealias Weeks = UInt8
 
 
-    public let automaticTeleserviceCallDate: Date?
-    public let brakeFluidChangeDate: Date?
-    public let cbsReportsCount: UInt8?
-    public let conditionBasedServices: [AAConditionBasedService]?
-    public let daysToNextService: Int16?
-    public let kmToNextService: UInt32?
-    public let monthsToExhaustInspection: UInt8?
-    public let nextInspectionDate: Date?
-    public let serviceDistanceThreshold: UInt16?
-    public let serviceTimeThreshold: Weeks?
-    public let teleserviceAvailability: AAAvailability?
-    public let teleserviceBatteryCallDate: Date?
+    public let automaticTeleserviceCallDate: AAProperty<Date>?
+    public let brakeFluidChangeDate: AAProperty<Date>?
+    public let cbsReportsCount: AAProperty<UInt8>?
+    public let conditionBasedServices: [AAProperty<AAConditionBasedService>]?
+    public let daysToNextService: AAProperty<Int16>?
+    public let kmToNextService: AAProperty<UInt32>?
+    public let monthsToExhaustInspection: AAProperty<UInt8>?
+    public let nextInspectionDate: AAProperty<Date>?
+    public let serviceDistanceThreshold: AAProperty<UInt16>?
+    public let serviceTimeThreshold: AAProperty<Weeks>?
+    public let teleserviceAvailability: AAProperty<AAAvailability>?
+    public let teleserviceBatteryCallDate: AAProperty<Date>?
 
 
     // MARK: AAFullStandardCommand
@@ -55,19 +55,19 @@ public struct AAMaintenance: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        daysToNextService = properties.value(for: \AAMaintenance.daysToNextService)
-        kmToNextService = properties.value(for: \AAMaintenance.kmToNextService)
+        daysToNextService = properties.property(for: \AAMaintenance.daysToNextService)
+        kmToNextService = properties.property(for: \AAMaintenance.kmToNextService)
         /* Level 8 */
-        cbsReportsCount = properties.value(for: \AAMaintenance.cbsReportsCount)
-        monthsToExhaustInspection = properties.value(for: \AAMaintenance.monthsToExhaustInspection)
-        teleserviceAvailability = AAAvailability(properties: properties, keyPath: \AAMaintenance.teleserviceAvailability)
-        serviceDistanceThreshold = properties.value(for: \AAMaintenance.serviceDistanceThreshold)
-        serviceTimeThreshold = properties.value(for: \AAMaintenance.serviceTimeThreshold)
-        automaticTeleserviceCallDate = properties.value(for: \AAMaintenance.automaticTeleserviceCallDate)
-        teleserviceBatteryCallDate = properties.value(for: \AAMaintenance.teleserviceBatteryCallDate)
-        nextInspectionDate = properties.value(for: \AAMaintenance.nextInspectionDate)
-        conditionBasedServices = properties.flatMap(for: \AAMaintenance.conditionBasedServices) { AAConditionBasedService($0.value) }
-        brakeFluidChangeDate = properties.value(for: \AAMaintenance.brakeFluidChangeDate)
+        cbsReportsCount = properties.property(for: \AAMaintenance.cbsReportsCount)
+        monthsToExhaustInspection = properties.property(for: \AAMaintenance.monthsToExhaustInspection)
+        teleserviceAvailability = properties.property(for: \AAMaintenance.teleserviceAvailability)
+        serviceDistanceThreshold = properties.property(for: \AAMaintenance.serviceDistanceThreshold)
+        serviceTimeThreshold = properties.property(for: \AAMaintenance.serviceTimeThreshold)
+        automaticTeleserviceCallDate = properties.property(for: \AAMaintenance.automaticTeleserviceCallDate)
+        teleserviceBatteryCallDate = properties.property(for: \AAMaintenance.teleserviceBatteryCallDate)
+        nextInspectionDate = properties.property(for: \AAMaintenance.nextInspectionDate)
+        conditionBasedServices = properties.properties(for: \AAMaintenance.conditionBasedServices)
+        brakeFluidChangeDate = properties.property(for: \AAMaintenance.brakeFluidChangeDate)
 
         // Properties
         self.properties = properties
@@ -90,7 +90,7 @@ extension AAMaintenance: AAMessageTypesGettable {
 
 extension AAMaintenance: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAMaintenance, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAMaintenance, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAMaintenance.daysToNextService:  return 0x01
         case \AAMaintenance.kmToNextService:    return 0x02
@@ -107,7 +107,7 @@ extension AAMaintenance: AAPropertyIdentifierGettable {
         case \AAMaintenance.brakeFluidChangeDate:           return 0x0C
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

@@ -31,7 +31,7 @@ import Foundation
 
 public struct AATheftAlarm: AAFullStandardCommand {
 
-    public let state: AATheftAlarmState?
+    public let state: AAProperty<AATheftAlarmState>?
 
 
     // MARK: AAFullStandardCommand
@@ -41,7 +41,7 @@ public struct AATheftAlarm: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        state = AATheftAlarmState(properties: properties, keyPath: \AATheftAlarm.state)
+        state = properties.property(for: \AATheftAlarm.state)
 
         // Properties
         self.properties = properties
@@ -65,12 +65,12 @@ extension AATheftAlarm: AAMessageTypesGettable {
 
 extension AATheftAlarm: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AATheftAlarm, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AATheftAlarm, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AATheftAlarm.state: return 0x01
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

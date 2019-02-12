@@ -31,10 +31,10 @@ import Foundation
 
 public struct AAFailureMessage: AAInboundCommand {
 
-    public let description: String?
-    public let messageIdentifier: AACommandIdentifier?
-    public let messageType: UInt8?
-    public let reason: AAFailureReason?
+    public let description: AAProperty<String>?
+    public let messageIdentifier: AAProperty<AACommandIdentifier>?
+    public let messageType: AAProperty<UInt8>?
+    public let reason: AAProperty<AAFailureReason>?
 
 
     // MARK: AAInboundCommand
@@ -47,10 +47,10 @@ public struct AAFailureMessage: AAInboundCommand {
             return nil
         }
 
-        messageIdentifier = properties.value(for: \AAFailureMessage.messageIdentifier)
-        self.messageType = properties.value(for: \AAFailureMessage.messageType)
-        reason = AAFailureReason(properties: properties, keyPath: \AAFailureMessage.reason)
-        description = properties.value(for: \AAFailureMessage.description)
+        messageIdentifier = properties.property(for: \AAFailureMessage.messageIdentifier)
+        self.messageType = properties.property(for: \AAFailureMessage.messageType)
+        description = properties.property(for: \AAFailureMessage.description)
+        reason = properties.property(for: \AAFailureMessage.reason)
 
         // Properties
         self.properties = properties
@@ -72,7 +72,7 @@ extension AAFailureMessage: AAMessageTypesGettable {
 
 extension AAFailureMessage: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AAFailureMessage, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AAFailureMessage, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AAFailureMessage.messageIdentifier:   return 0x01
         case \AAFailureMessage.messageType:         return 0x02
@@ -80,7 +80,7 @@ extension AAFailureMessage: AAPropertyIdentifierGettable {
         case \AAFailureMessage.description:         return 0x04
 
         default:
-            return 0x00
+            return nil
         }
     }
 }

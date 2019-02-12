@@ -27,6 +27,7 @@
 //
 
 import Foundation
+import HMUtilities
 
 
 extension UInt8 {
@@ -54,6 +55,10 @@ extension UInt8 {
     var uint32: UInt32 {
         return UInt32(self)
     }
+}
+
+extension UInt8: AABinaryInitable {
+
 }
 
 extension UInt8: AAPropertyConvertable {

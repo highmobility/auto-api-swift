@@ -31,10 +31,10 @@ import Foundation
 
 public struct AANotifications: AAInboundCommand, AAOutboundCommand {
 
-    public let actionItems: [AAActionItem]?
-    public let receivedActionID: UInt8?
+    public let actionItems: [AAProperty<AAActionItem>]?
+    public let receivedActionID: AAProperty<UInt8>?
     public let receivedClearCommand: Bool
-    public let text: String?
+    public let text: AAProperty<String>?
 
 
     // MARK: AAInboundCommand
@@ -85,7 +85,7 @@ public struct AANotifications: AAInboundCommand, AAOutboundCommand {
             receivedClearCommand = false
 
         case MessageTypes.action.rawValue:
-            receivedActionID = properties.value(for: \AANotifications.receivedActionID)
+            receivedActionID = properties.property(for: \AANotifications.receivedActionID)
             receivedClearCommand = false
 
             properties = AAProperties([])
@@ -99,8 +99,8 @@ public struct AANotifications: AAInboundCommand, AAOutboundCommand {
         }
 
         // Ordered by the ID
-        text = properties.value(for: \AANotifications.text)
-        actionItems = properties.flatMap(for: \AANotifications.actionItems) { AAActionItem($0.value) }
+        text = properties.property(for: \AANotifications.text)
+        actionItems = properties.properties(for: \AANotifications.actionItems) 
 
         // Properties
         self.properties = properties
@@ -124,7 +124,7 @@ extension AANotifications: AAMessageTypesGettable {
 
 extension AANotifications: AAPropertyIdentifierGettable {
 
-    static func propertyID<Type>(for keyPath: KeyPath<AANotifications, Type>) -> AAPropertyIdentifier {
+    static func propertyID<Type>(for keyPath: KeyPath<AANotifications, Type>) -> AAPropertyIdentifier? {
         switch keyPath {
         case \AANotifications.text:         return 0x01
         case \AANotifications.actionItems:  return 0x02
@@ -132,7 +132,7 @@ extension AANotifications: AAPropertyIdentifierGettable {
         case \AANotifications.receivedActionID: return 0x10
 
         default:
-            return 0x00
+            return nil
         }
     }
 }
