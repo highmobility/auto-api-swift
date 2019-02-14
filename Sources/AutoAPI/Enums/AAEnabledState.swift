@@ -35,6 +35,6 @@ public enum AAEnabledState: UInt8 {
     case enabled    = 0x01
 }
 
-extension AAEnabledState: AAPropertyConvertable {
+extension AAEnabledState: AABytesConvertable {
 
 }

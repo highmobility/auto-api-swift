@@ -35,3 +35,7 @@ public enum AAGearbox: UInt8 {
     case automatic      = 0x01
     case semiAutomatic  = 0x02
 }
+
+extension AAGearbox: AABytesConvertable {
+    
+}

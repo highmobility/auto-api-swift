@@ -49,3 +49,7 @@ public enum AAPropertyFailureReason: UInt8 {
     /// Property is being refreshed.
     case pending            = 0x05
 }
+
+extension AAPropertyFailureReason: AABytesConvertable {
+    
+}

@@ -39,3 +39,7 @@ public enum AATimeState: UInt8 {
     case quarterBefore16Hours   = 0x05
     case reached16Hours         = 0x06
 }
+
+extension AATimeState: AABytesConvertable {
+    
+}

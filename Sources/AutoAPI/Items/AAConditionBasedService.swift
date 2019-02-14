@@ -38,15 +38,30 @@ public struct AAConditionBasedService {
     public let text: String
 }
 
-extension AAConditionBasedService: AABinaryInitable {
+extension AAConditionBasedService: AABytesConvertable {
 
-    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        guard binary.count >= 9 else {
+    public var bytes: [UInt8] {
+        let components = Calendar.current.dateComponents([.year, .month], from: date)
+
+        guard let year = components.year,
+            let month = components.month else {
+                return []
+        }
+
+        let header = [(year - 2000).uint8, month.uint8]
+        let textBytes = text.bytes.count.sizeBytes(amount: 2) + text.bytes
+        let descriptionBytes = description.bytes.count.sizeBytes(amount: 2) + description.bytes
+
+        return header + id.bytes + status.bytes + textBytes + descriptionBytes
+    }
+
+
+    public init?(bytes: [UInt8]) {
+        guard bytes.count >= 9 else {
             return nil
         }
 
         // Gather some values
-        let bytes = binary.bytes
         let year = bytes[0].int + 2000
         let month = bytes[1].int
         let id = UInt16(bytes[2...3])

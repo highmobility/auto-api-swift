@@ -35,23 +35,23 @@ public struct AADriverCard: Equatable {
     public let present: AAPresenceState
 }
 
-extension AADriverCard: AAItem {
+extension AADriverCard: AABytesConvertable {
 
-    static var size: Int = 2
+    public var bytes: [UInt8] {
+        return driverNumber.bytes + present.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let present = AAPresenceState(rawValue: bytes[1]) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 2 else {
+            return nil
+        }
+
+        guard let present = AAPresenceState(bytes: bytes[1..<2]) else {
             return nil
         }
 
         self.driverNumber = bytes[0]
         self.present = present
-    }
-}
-extension AADriverCard: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [driverNumber, present.rawValue]
     }
 }

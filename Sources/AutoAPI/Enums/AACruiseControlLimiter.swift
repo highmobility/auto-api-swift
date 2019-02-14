@@ -36,3 +36,7 @@ public enum AACruiseControlLimiter: UInt8 {
     case lowerSpeedRequested    = 0x02
     case speedFixed             = 0x03
 }
+
+extension AACruiseControlLimiter: AABytesConvertable {
+    
+}

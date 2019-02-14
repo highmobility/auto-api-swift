@@ -35,6 +35,6 @@ public enum AAOpenClose: UInt8 {
     case open   = 0x01
 }
 
-extension AAOpenClose: AAPropertyConvertable {
+extension AAOpenClose: AABytesConvertable {
 
 }

@@ -42,8 +42,8 @@ public struct AAPowerTakeoff: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        activeState = properties.property(for: \AAPowerTakeoff.activeState)
-        engagedState = properties.property(for: \AAPowerTakeoff.engagedState)
+        activeState = properties.property(forIdentifier: 0x01)
+        engagedState = properties.property(forIdentifier: 0x02)
 
         // Properties
         self.properties = properties
@@ -65,19 +65,6 @@ extension AAPowerTakeoff: AAMessageTypesGettable {
     }
 }
 
-extension AAPowerTakeoff: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AAPowerTakeoff, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AAPowerTakeoff.activeState:   return 0x01
-        case \AAPowerTakeoff.engagedState:  return 0x02
-
-        default:
-            return nil
-        }
-    }
-}
-
 public extension AAPowerTakeoff {
 
     static var getState: [UInt8] {
@@ -86,6 +73,7 @@ public extension AAPowerTakeoff {
 
 
     static func activate(_ state: AAActiveState) -> [UInt8] {
-        return commandPrefix(for: .activate) + state.propertyBytes(0x01)
+        return commandPrefix(for: .activate)
+        // TODO: + state.propertyBytes(0x01)
     }
 }

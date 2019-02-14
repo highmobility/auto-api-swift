@@ -41,66 +41,66 @@ public enum AADrivingMode: UInt8 {
     case ecoPlus    = 0x04
 }
 
-extension AADrivingMode: AAPropertyConvertable {
-    
+extension AADrivingMode: AABytesConvertable {
+
 }
 
 public extension AADrivingMode {
 
-    struct ActivationPeriod: AAItem, AAPropertyConvertable {
+    struct ActivationPeriod: AABytesConvertable {
 
         public let mode: AADrivingMode
-        public let period: AAPercentageInt
+        public let period: AAPercentage
 
 
-        // MARK: AAItem
+        // MARK: AABytesConvertable
 
-        static var size: Int = 2
-
-
-        init?(bytes: [UInt8]) {
-            guard let drivingMode = AADrivingMode(rawValue: bytes[0]) else {
-                return nil
-            }
-
-            mode = drivingMode
-            period = bytes[1]
+        public var bytes: [UInt8] {
+            return mode.bytes + period.bytes
         }
 
 
-        // MARK: AAPropertyConvertable
+        public init?(bytes: [UInt8]) {
+            guard bytes.count == 9 else {
+                return nil
+            }
 
-        var propertyValue: [UInt8] {
-            return [mode.rawValue, period]
+            guard let drivingMode = AADrivingMode(bytes: bytes[0..<1]),
+                let percentage = AAPercentage(bytes: bytes[1...9]) else {
+                    return nil
+            }
+
+            mode = drivingMode
+            period = percentage
         }
     }
 
 
-    struct EnergyConsumption: AAItem, AAPropertyConvertable {
+    struct EnergyConsumption: AABytesConvertable {
 
         public let mode: AADrivingMode
         public let consumption: Float
 
 
-        // MARK: AAItem
+        // MARK: AABytesConvertable
 
-        static var size: Int = 5
-
-
-        init?(bytes: [UInt8]) {
-            guard let drivingMode = AADrivingMode(rawValue: bytes[0]) else {
-                return nil
-            }
-
-            mode = drivingMode
-            consumption = Float(bytes.dropFirstBytes(1))
+        public var bytes: [UInt8] {
+            return mode.bytes + consumption.bytes
         }
 
 
-        // MARK: AAPropertyConvertable
+        public init?(bytes: [UInt8]) {
+            guard bytes.count == 5 else {
+                return nil
+            }
 
-        var propertyValue: [UInt8] {
-            return [mode.rawValue] + consumption.bytes
+            guard let drivingMode = AADrivingMode(bytes: bytes[0..<1]),
+                let value = Float(bytes: bytes[1...4]) else {
+                    return nil
+            }
+
+            mode = drivingMode
+            consumption = value
         }
     }
 }

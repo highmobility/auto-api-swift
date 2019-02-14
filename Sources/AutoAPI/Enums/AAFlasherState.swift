@@ -36,3 +36,7 @@ public enum AAFlasherState: UInt8 {
     case leftFlasherActive      = 0x02
     case rightFlasherActive     = 0x03
 }
+
+extension AAFlasherState: AABytesConvertable {
+    
+}

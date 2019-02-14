@@ -31,12 +31,8 @@ import Foundation
 
 public struct AANaviDestination: AAFullStandardCommand {
 
-    public let arrivalTime: AAProperty<AATime>?
     public let coordinates: AAProperty<AACoordinates>?
-    public let distanceTo: AAProperty<UInt16>?
     public let name: AAProperty<String>?
-    public let poiSlotsFree: AAProperty<UInt8>?
-    public let poiSlotsMax: AAProperty<UInt8>?
 
 
     // MARK: AAFullStandardCommand
@@ -46,13 +42,9 @@ public struct AANaviDestination: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        name = properties.property(for: \AANaviDestination.name)
-        poiSlotsFree = properties.property(for: \AANaviDestination.poiSlotsFree)
-        poiSlotsMax = properties.property(for: \AANaviDestination.poiSlotsMax)
-        arrivalTime = properties.property(for: \AANaviDestination.arrivalTime)
-        distanceTo = properties.property(for: \AANaviDestination.distanceTo)
+        name = properties.property(forIdentifier: 0x02)
         /* Level 8 */
-        coordinates = properties.property(for: \AANaviDestination.coordinates)
+        coordinates = properties.property(forIdentifier: 0x07)
 
         // Properties
         self.properties = properties
@@ -74,24 +66,6 @@ extension AANaviDestination: AAMessageTypesGettable {
     }
 }
 
-extension AANaviDestination: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AANaviDestination, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AANaviDestination.name:           return 0x02
-        case \AANaviDestination.poiSlotsFree:   return 0x03
-        case \AANaviDestination.poiSlotsMax:    return 0x04
-        case \AANaviDestination.arrivalTime:    return 0x05
-        case \AANaviDestination.distanceTo:     return 0x06
-            /* Level 8 */
-        case \AANaviDestination.coordinates: return 0x07
-
-        default:
-            return nil
-        }
-    }
-}
-
 public extension AANaviDestination {
 
     static var getDestination: [UInt8] {
@@ -100,7 +74,7 @@ public extension AANaviDestination {
 
 
     static func setDestination(coordinate: AACoordinates, name: String?) -> [UInt8] {
-        return commandPrefix(for: .setDestination) + [coordinate.propertyBytes(0x01),
-                                                      name?.propertyBytes(0x02)].propertiesValuesCombined
+        return commandPrefix(for: .setDestination)
+        // TODO: + [coordinate.propertyBytes(0x01), name?.propertyBytes(0x02)].propertiesValuesCombined
     }
 }

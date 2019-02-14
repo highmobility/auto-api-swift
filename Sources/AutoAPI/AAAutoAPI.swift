@@ -31,10 +31,12 @@ import HMUtilities
 
 
 public typealias AutoAPI = AAAutoAPI
+public typealias AABytesConvertable = HMBytesConvertable
 public typealias AACommandIdentifier = UInt16
 public typealias AANetworkSSID = String
-public typealias AAPercentageInt = UInt8
+public typealias AAPercentage = Double
 public typealias AAPropertyIdentifier = UInt8
+
 
 // TODO: Go over the `Sequence`-d types
 
@@ -99,6 +101,6 @@ public struct AAAutoAPI {
     // MARK: Type Methods
 
     public static func parseBinary<C: Collection>(_ binary: C) -> AACommand? where C.Element == UInt8 {
-        return commands.compactMap { $0 as? AABinaryInitable.Type }.flatMapFirst { $0.init(binary) as? AACommand }
+        return commands.compactMap { $0 as? AABytesConvertable.Type }.flatMapFirst { $0.init(bytes: binary) as? AACommand }
     }
 }

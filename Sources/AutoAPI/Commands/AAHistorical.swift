@@ -31,7 +31,7 @@ import Foundation
 
 public struct AAHistorical: AAInboundCommand, AAOutboundCommand {
 
-    public let states: [AAProperty<AAHistoricalState>]?
+    public let states: [AAHistoricalState]?
 
 
     // MARK: AAInboundCommand
@@ -44,11 +44,16 @@ public struct AAHistorical: AAInboundCommand, AAOutboundCommand {
             return nil
         }
 
-        let binaryTypes = AAAutoAPI.commands.compactMap { $0 as? AABinaryInitable.Type }
+        let binaryTypes = AAAutoAPI.commands.compactMap { $0 as? AABytesConvertable.Type }
 
         /* Level 8 */
-        states = properties.properties(for: \AAHistorical.states) { bytes in
-            binaryTypes.flatMapFirst { $0.init(bytes) as? AAHistoricalState }
+        // TODO: Not sure this actually works
+        states = properties.filter {
+            $0.identifer == 0x01
+        }.compactMap {
+            $0.valueBytes
+        }.compactMap { bytes in
+            binaryTypes.flatMapFirst { $0.init(bytes: bytes) as? AAHistoricalState }
         }
 
         // Properties
@@ -70,23 +75,10 @@ extension AAHistorical: AAMessageTypesGettable {
     }
 }
 
-extension AAHistorical: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AAHistorical, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AAHistorical.states: return 0x01
-
-        default:
-            return nil
-        }
-    }
-}
-
 public extension AAHistorical {
 
     static func getHistoricalStates(for capability: AAHistoryCapable, startDate: Date, endDate: Date) -> [UInt8] {
-        return commandPrefix(for: .getHistoricalStates) + [capability.propertyBytes(0x01),
-                                                           startDate.propertyBytes(0x02),
-                                                           endDate.propertyBytes(0x03)].propertiesValuesCombined
+        return commandPrefix(for: .getHistoricalStates)
+        // TODO: + [capability.propertyBytes(0x01), startDate.propertyBytes(0x02), endDate.propertyBytes(0x03)].propertiesValuesCombined
     }
 }

@@ -35,25 +35,24 @@ public struct AABrakeTorqueVectoring {
     public let state: AAActiveState
 }
 
-extension AABrakeTorqueVectoring: AAItem {
+extension AABrakeTorqueVectoring: AABytesConvertable {
 
-    static var size: Int = 2
+    public var bytes: [UInt8] {
+        return axle.bytes + state.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let axle = AAAxle(rawValue: bytes[0]),
-            let state = AAActiveState(rawValue: bytes[1]) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 2 else {
+            return nil
+        }
+
+        guard let axle = AAAxle(bytes: bytes[0..<1]),
+            let state = AAActiveState(bytes: bytes[1..<2]) else {
                 return nil
         }
 
         self.axle = axle
         self.state = state
-    }
-}
-
-extension AABrakeTorqueVectoring: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [axle.rawValue, state.rawValue]
     }
 }

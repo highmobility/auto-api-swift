@@ -35,25 +35,24 @@ public struct AASeatPersonDetected {
     public let location: AASeatLocation
 }
 
-extension AASeatPersonDetected: AAItem {
+extension AASeatPersonDetected: AABytesConvertable {
 
-    static var size: Int = 2
+    public var bytes: [UInt8] {
+        return location.bytes + detected.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let location = AASeatLocation(rawValue: bytes[0]),
-            let detected = AADetectedState(rawValue: bytes[1]) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 2 else {
+            return nil
+        }
+
+        guard let location = AASeatLocation(bytes: bytes[0..<1]),
+            let detected = AADetectedState(bytes: bytes[1..<2]) else {
                 return nil
         }
 
         self.location = location
         self.detected = detected
-    }
-}
-
-extension AASeatPersonDetected: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [location.rawValue, detected.rawValue]
     }
 }

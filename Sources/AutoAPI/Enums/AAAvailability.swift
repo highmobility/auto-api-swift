@@ -36,3 +36,7 @@ public enum AAAvailability: UInt8 {
     case successful = 0x02
     case error      = 0x03
 }
+
+extension AAAvailability: AABytesConvertable {
+    
+}

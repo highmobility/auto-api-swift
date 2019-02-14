@@ -33,9 +33,9 @@ public struct AACharging: AAFullStandardCommand {
 
     public let batteryCurrentAC: AAProperty<Float>?
     public let batteryCurrentDC: AAProperty<Float>?
-    public let batteryLevel: AAProperty<AAPercentageInt>?
+    public let batteryLevel: AAProperty<AAPercentage>?
     public let batteryTemperature: AAProperty<Float>?
-    public let chargeLimit: AAProperty<AAPercentageInt>?
+    public let chargeLimit: AAProperty<AAPercentage>?
     public let chargeMode: AAProperty<AAChargeMode>?
     public let chargePortState: AAProperty<AAOpenClose>?
     public let chargerVoltageAC: AAProperty<Float>?
@@ -60,27 +60,27 @@ public struct AACharging: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        estimatedRange = properties.property(for: \AACharging.estimatedRange)
-        batteryLevel = properties.property(for: \AACharging.batteryLevel)
-        batteryCurrentAC = properties.property(for: \AACharging.batteryCurrentAC)
-        batteryCurrentDC = properties.property(for: \AACharging.batteryCurrentDC)
-        chargerVoltageAC = properties.property(for: \AACharging.chargerVoltageAC)
-        chargerVoltageDC = properties.property(for: \AACharging.chargerVoltageDC)
-        chargeLimit = properties.property(for: \AACharging.chargeLimit)
-        timeToCompleteCharge = properties.property(for: \AACharging.timeToCompleteCharge)
-        chargingRate = properties.property(for: \AACharging.chargingRate)
-        chargePortState = properties.property(for: \AACharging.chargePortState)
-        chargeMode = properties.property(for: \AACharging.chargeMode)
+        estimatedRange = properties.property(forIdentifier: 0x02)
+        batteryLevel = properties.property(forIdentifier: 0x03)
+        batteryCurrentAC = properties.property(forIdentifier: 0x04)
+        batteryCurrentDC = properties.property(forIdentifier: 0x05)
+        chargerVoltageAC = properties.property(forIdentifier: 0x06)
+        chargerVoltageDC = properties.property(forIdentifier: 0x07)
+        chargeLimit = properties.property(forIdentifier: 0x08)
+        timeToCompleteCharge = properties.property(forIdentifier: 0x09)
+        chargingRate = properties.property(forIdentifier: 0x0A)
+        chargePortState = properties.property(forIdentifier: 0x0B)
+        chargeMode = properties.property(forIdentifier: 0x0C)
         /* Level 8 */
-        maxChargingCurrentAC = properties.property(for: \AACharging.maxChargingCurrentAC)
-        plugType = properties.property(for: \AACharging.plugType)
-        chargingWindowChosen = properties.property(for: \AACharging.chargingWindowChosen)
-        departureTimes = properties.properties(for: \AACharging.departureTimes)
-        reductionOfChargingCurrentTimes = properties.properties(for: \AACharging.reductionOfChargingCurrentTimes)
-        batteryTemperature = properties.property(for: \AACharging.batteryTemperature)
-        timers = properties.properties(for: \AACharging.timers)
-        pluggedIn = properties.property(for: \AACharging.pluggedIn)
-        state = properties.property(for: \AACharging.state)
+        maxChargingCurrentAC = properties.property(forIdentifier: 0x0E)
+        plugType = properties.property(forIdentifier: 0x0F)
+        chargingWindowChosen = properties.property(forIdentifier: 0x10)
+        departureTimes = properties.allOrNil(forIdentifier: 0x11)
+        reductionOfChargingCurrentTimes = properties.allOrNil(forIdentifier: 0x13)
+        batteryTemperature = properties.property(forIdentifier: 0x14)
+        timers = properties.allOrNil(forIdentifier: 0x15)
+        pluggedIn = properties.property(forIdentifier: 0x16)
+        state = properties.property(forIdentifier: 0x17)
 
         // Properties
         self.properties = properties
@@ -107,38 +107,6 @@ extension AACharging: AAMessageTypesGettable {
     }
 }
 
-extension AACharging: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AACharging, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AACharging.estimatedRange:        return 0x02
-        case \AACharging.batteryLevel:          return 0x03
-        case \AACharging.batteryCurrentAC:      return 0x04
-        case \AACharging.batteryCurrentDC:      return 0x05
-        case \AACharging.chargerVoltageAC:      return 0x06
-        case \AACharging.chargerVoltageDC:      return 0x07
-        case \AACharging.chargeLimit:           return 0x08
-        case \AACharging.timeToCompleteCharge:  return 0x09
-        case \AACharging.chargingRate:          return 0x0A
-        case \AACharging.chargePortState:       return 0x0B
-        case \AACharging.chargeMode:            return 0x0C
-            /* Level 8 */
-        case \AACharging.maxChargingCurrentAC:              return 0x0E
-        case \AACharging.plugType:                          return 0x0F
-        case \AACharging.chargingWindowChosen:              return 0x10
-        case \AACharging.departureTimes:                    return 0x11
-        case \AACharging.reductionOfChargingCurrentTimes:   return 0x13
-        case \AACharging.batteryTemperature:                return 0x14
-        case \AACharging.timers:                            return 0x15
-        case \AACharging.pluggedIn:                         return 0x16
-        case \AACharging.state:                             return 0x17
-
-        default:
-            return nil
-        }
-    }
-}
-
 public extension AACharging {
 
     static var getChargingState: [UInt8] {
@@ -147,11 +115,13 @@ public extension AACharging {
 
 
     static func openCloseChargePort(_ state: AAOpenClose) -> [UInt8] {
-        return commandPrefix(for: .openCloseChargePort) + state.propertyBytes(0x01)
+        return commandPrefix(for: .openCloseChargePort)
+        // TODO: + state.propertyBytes(0x01)
     }
 
-    static func setChargeLimit(_ limit: AAPercentageInt) -> [UInt8] {
-        return commandPrefix(for: .setChargeLimit) + limit.propertyBytes(0x01)
+    static func setChargeLimit(_ limit: AAPercentage) -> [UInt8] {
+        return commandPrefix(for: .setChargeLimit)
+            // TODO: + limit.propertyBytes(0x01)
     }
 
     /// - warning: `.immediate` is not supported
@@ -160,18 +130,22 @@ public extension AACharging {
             return nil
         }
 
-        return commandPrefix(for: .setChargeMode) + mode.propertyBytes(0x01)
+        return commandPrefix(for: .setChargeMode)
+            // TODO: + mode.propertyBytes(0x01)
     }
 
     static func setChargingTimers(_ timers: [AAChargingTimer]) -> [UInt8] {
-        return commandPrefix(for: .setChargingTimers) + timers.reduceToByteArray { $0.propertyBytes(0x0D) }
+        return commandPrefix(for: .setChargingTimers)
+            // TODO: + timers.reduceToByteArray { $0.propertyBytes(0x0D) }
     }
 
     static func setReductionOfChargingCurrentTimes(_ times: [AAReductionTime]) -> [UInt8] {
-        return commandPrefix(for: .setReductionTimes) + times.reduceToByteArray { $0.propertyBytes(0x01) }
+        return commandPrefix(for: .setReductionTimes)
+            // TODO: + times.reduceToByteArray { $0.propertyBytes(0x01) }
     }
 
     static func startStopCharging(_ state: AAActiveState) -> [UInt8] {
-        return commandPrefix(for: .startStopCharging) + state.propertyBytes(0x01)
+        return commandPrefix(for: .startStopCharging)
+            // TODO: + state.propertyBytes(0x01)
     }
 }

@@ -40,3 +40,7 @@ public enum AAFatigueLevel: UInt8 {
     /// Same as *.actionNeeded*
     public static let driverNeedsRest = AAFatigueLevel.actionNeeded
 }
+
+extension AAFatigueLevel: AABytesConvertable {
+    
+}

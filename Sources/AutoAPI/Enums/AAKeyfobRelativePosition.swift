@@ -38,3 +38,7 @@ public enum AAKeyfobRelativePosition: UInt8 {
     case outsideBehind          = 0x04
     case inside                 = 0x05
 }
+
+extension AAKeyfobRelativePosition: AABytesConvertable {
+    
+}

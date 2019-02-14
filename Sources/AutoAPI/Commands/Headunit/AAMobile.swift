@@ -41,7 +41,7 @@ public struct AAMobile: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        connected = properties.property(for: \AAMobile.connected)
+        connected = properties.property(forIdentifier: 0x01)
 
 
         // Properties
@@ -60,18 +60,6 @@ extension AAMobile: AAMessageTypesGettable {
 
         case getMobileState = 0x00
         case state          = 0x01
-    }
-}
-
-extension AAMobile: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AAMobile, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AAMobile.connected: return 0x01
-
-        default:
-            return nil
-        }
     }
 }
 

@@ -38,6 +38,6 @@ public enum AAFrontLightState: UInt8 {
     case automatic              = 0x04
 }
 
-extension AAFrontLightState: AAPropertyConvertable {
+extension AAFrontLightState: AABytesConvertable {
 
 }

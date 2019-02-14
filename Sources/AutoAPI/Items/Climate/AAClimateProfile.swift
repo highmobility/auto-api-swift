@@ -29,15 +29,10 @@
 import Foundation
 
 
-public struct AAClimateProfile: AAItem {
+public struct AAClimateProfile {
 
     public let activatedDays: AAActivatedDays
     public let weekdaysStartingTimes: AAWeekdaysStartingTimes
-
-
-    // MARK: AAItem
-
-    static var size: Int = 15
 
 
     // MARK: Init
@@ -48,29 +43,21 @@ public struct AAClimateProfile: AAItem {
     }
 }
 
-extension AAClimateProfile: AABinaryInitable {
+extension AAClimateProfile: AABytesConvertable {
 
-    init?(bytes: [UInt8]) {
-        guard let startingTimes = AAWeekdaysStartingTimes(bytes.dropFirstBytes(1)) else {
+    public var bytes: [UInt8] {
+        return activatedDays.bytes + weekdaysStartingTimes.bytes
+    }
+
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 15 else {
             return nil
         }
 
-        activatedDays = AAActivatedDays(rawValue: bytes[0])
-        weekdaysStartingTimes = startingTimes
-    }
-}
+        guard let startingTimes = AAWeekdaysStartingTimes(bytes: bytes[1...]) else {
+            return nil
+        }
 
-extension AAClimateProfile: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [activatedDays.rawValue] + weekdaysStartingTimes.propertyValue
-    }
-}
-
-extension AAClimateProfile: AAPropertiesMultiConvertable {
-
-    var propertiesValues: [[UInt8]?] {
-        return [activatedDays.propertyBytes(0x01),
-                weekdaysStartingTimes.propertyBytes(0x02)]
+        self.init(activatedDays: AAActivatedDays(rawValue: bytes[0]), weekdaysStartingTimes: startingTimes)
     }
 }

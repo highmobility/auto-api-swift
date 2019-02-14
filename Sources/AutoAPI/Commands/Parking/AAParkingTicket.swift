@@ -45,11 +45,11 @@ public struct AAParkingTicket: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        state = properties.property(for: \AAParkingTicket.state)
-        operatorName = properties.property(for: \AAParkingTicket.operatorName)
-        ticketID = properties.property(for: \AAParkingTicket.ticketID)
-        startTime = properties.property(for: \AAParkingTicket.startTime)
-        endTime = properties.property(for: \AAParkingTicket.endTime)
+        state = properties.property(forIdentifier: 0x01)
+        operatorName = properties.property(forIdentifier: 0x02)
+        ticketID = properties.property(forIdentifier: 0x03)
+        startTime = properties.property(forIdentifier: 0x04)
+        endTime = properties.property(forIdentifier: 0x05)
 
         // Properties
         self.properties = properties
@@ -72,22 +72,6 @@ extension AAParkingTicket: AAMessageTypesGettable {
     }
 }
 
-extension AAParkingTicket: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AAParkingTicket, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AAParkingTicket.state:        return 0x01
-        case \AAParkingTicket.operatorName: return 0x02
-        case \AAParkingTicket.ticketID:     return 0x03
-        case \AAParkingTicket.startTime:    return 0x04
-        case \AAParkingTicket.endTime:      return 0x05
-
-        default:
-            return nil
-        }
-    }
-}
-
 public extension AAParkingTicket {
 
     static var getTicket: [UInt8] {
@@ -100,9 +84,7 @@ public extension AAParkingTicket {
     }
 
     static func startParking(ticketID: String, startTime: Date, endTime: Date?, operatorName: String?) -> [UInt8] {
-        return commandPrefix(for: .startParking) + [ticketID.propertyBytes(0x02),
-                                                    startTime.propertyBytes(0x03),
-                                                    endTime?.propertyBytes(0x04),
-                                                    operatorName?.propertyBytes(0x01)].propertiesValuesCombined
+        return commandPrefix(for: .startParking)
+            // TODO: + [ticketID.propertyBytes(0x02), startTime.propertyBytes(0x03), endTime?.propertyBytes(0x04), operatorName?.propertyBytes(0x01)].propertiesValuesCombined
     }
 }

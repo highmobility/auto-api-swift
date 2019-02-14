@@ -38,3 +38,7 @@ public enum AAControlMode: UInt8 {
     case aborted        = 0x04
     case ended          = 0x05
 }
+
+extension AAControlMode: AABytesConvertable {
+    
+}

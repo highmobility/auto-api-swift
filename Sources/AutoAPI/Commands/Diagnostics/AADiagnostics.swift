@@ -33,21 +33,21 @@ public struct AADiagnostics: AAFullStandardCommand {
 
     public let absState: AAProperty<AAActiveState>?
     public let adBlueLevel: AAProperty<Float>?
-    public let batteryLevel: AAProperty<AAPercentageInt>?
+    public let batteryLevel: AAProperty<AAPercentage>?
     public let batteryVoltage: AAProperty<Float>?
     public let brakeFluidLevel: AAProperty<AAFluidLevel>?
     public let checkControlMessages: [AAProperty<AACheckControlMessage>]?
     public let distanceSinceReset: AAProperty<UInt16>?
     public let distanceSinceStart: AAProperty<UInt16>?
     public let engineCoolantTemperature: AAProperty<Int16>?
-    public let engineLoad: AAProperty<AAPercentageInt>?
+    public let engineLoad: AAProperty<AAPercentage>?
     public let engineOilTemperature: AAProperty<Int16>?
-    public let engineTorque: AAProperty<AAPercentageInt>?
+    public let engineTorque: AAProperty<AAPercentage>?
     public let engineTotalFuelConsumption: AAProperty<Float>?
     public let engineTotalOperatingHours: AAProperty<Float>?
     public let engineRPM: AAProperty<UInt16>?
     public let estimatedRange: AAProperty<UInt16>?
-    public let fuelLevel: AAProperty<AAPercentageInt>?
+    public let fuelLevel: AAProperty<AAPercentage>?
     public let fuelVolume: AAProperty<Float>?
     public let mileage: AAProperty<UInt32>?
     public let mileageMeters: AAProperty<UInt32>?
@@ -71,35 +71,35 @@ public struct AADiagnostics: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        mileage = properties.property(for: \AADiagnostics.mileage)
-        engineOilTemperature = properties.property(for: \AADiagnostics.engineOilTemperature)
-        speed = properties.property(for: \AADiagnostics.speed)
-        engineRPM = properties.property(for: \AADiagnostics.engineRPM)
-        fuelLevel = properties.property(for: \AADiagnostics.fuelLevel)
-        estimatedRange = properties.property(for: \AADiagnostics.estimatedRange)
-        washerFluidLevel = properties.property(for: \AADiagnostics.washerFluidLevel)
-        batteryVoltage = properties.property(for: \AADiagnostics.batteryVoltage)
-        adBlueLevel = properties.property(for: \AADiagnostics.adBlueLevel)
-        distanceSinceReset = properties.property(for: \AADiagnostics.distanceSinceReset)
-        distanceSinceStart = properties.property(for: \AADiagnostics.distanceSinceStart)
-        fuelVolume = properties.property(for: \AADiagnostics.fuelVolume)
-        absState = properties.property(for: \AADiagnostics.absState)
-        engineCoolantTemperature = properties.property(for: \AADiagnostics.engineCoolantTemperature)
-        engineTotalOperatingHours = properties.property(for: \AADiagnostics.engineTotalOperatingHours)
-        engineTotalFuelConsumption = properties.property(for: \AADiagnostics.engineTotalFuelConsumption)
-        brakeFluidLevel = properties.property(for: \AADiagnostics.brakeFluidLevel)
-        engineTorque = properties.property(for: \AADiagnostics.engineTorque)
-        engineLoad = properties.property(for: \AADiagnostics.engineLoad)
-        wheelBasedSpeed = properties.property(for: \AADiagnostics.wheelBasedSpeed)
+        mileage = properties.property(forIdentifier: 0x01)
+        engineOilTemperature = properties.property(forIdentifier: 0x02)
+        speed = properties.property(forIdentifier: 0x03)
+        engineRPM = properties.property(forIdentifier: 0x04)
+        fuelLevel = properties.property(forIdentifier: 0x05)
+        estimatedRange = properties.property(forIdentifier: 0x06)
+        washerFluidLevel = properties.property(forIdentifier: 0x09)
+        batteryVoltage = properties.property(forIdentifier: 0x0B)
+        adBlueLevel = properties.property(forIdentifier: 0x0C)
+        distanceSinceReset = properties.property(forIdentifier: 0x0D)
+        distanceSinceStart = properties.property(forIdentifier: 0x0E)
+        fuelVolume = properties.property(forIdentifier: 0x0F)
+        absState = properties.property(forIdentifier: 0x10)
+        engineCoolantTemperature = properties.property(forIdentifier: 0x11)
+        engineTotalOperatingHours = properties.property(forIdentifier: 0x12)
+        engineTotalFuelConsumption = properties.property(forIdentifier: 0x13)
+        brakeFluidLevel = properties.property(forIdentifier: 0x14)
+        engineTorque = properties.property(forIdentifier: 0x15)
+        engineLoad = properties.property(forIdentifier: 0x16)
+        wheelBasedSpeed = properties.property(forIdentifier: 0x17)
         /* Level 8 */
-        batteryLevel = properties.property(for: \AADiagnostics.batteryLevel)
-        checkControlMessages = properties.properties(for: \AADiagnostics.checkControlMessages)
-        tirePressures = properties.properties(for: \AADiagnostics.tirePressures)
-        tireTemperatures = properties.properties(for: \AADiagnostics.tireTemperatures)
-        wheelRPMs = properties.properties(for: \AADiagnostics.wheelRPMs)
-        troubleCodes = properties.properties(for: \AADiagnostics.troubleCodes)
+        batteryLevel = properties.property(forIdentifier: 0x18)
+        checkControlMessages = properties.allOrNil(forIdentifier: 0x19)
+        tirePressures = properties.allOrNil(forIdentifier: 0x1A)
+        tireTemperatures = properties.allOrNil(forIdentifier: 0x1B)
+        wheelRPMs = properties.allOrNil(forIdentifier: 0x1C)
+        troubleCodes = properties.allOrNil(forIdentifier: 0x1D)
         /* Level 9 */
-        mileageMeters = properties.property(for: \AADiagnostics.mileageMeters)
+        mileageMeters = properties.property(forIdentifier: 0x1E)
 
         // Properties
         self.properties = properties
@@ -117,45 +117,6 @@ extension AADiagnostics: AAMessageTypesGettable {
 
         case getDiagnosticsState    = 0x00
         case diagnosticsState       = 0x01
-    }
-}
-
-extension AADiagnostics: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AADiagnostics, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AADiagnostics.mileage:                    return 0x01
-        case \AADiagnostics.engineOilTemperature:       return 0x02
-        case \AADiagnostics.speed:                      return 0x03
-        case \AADiagnostics.engineRPM:                  return 0x04
-        case \AADiagnostics.fuelLevel:                  return 0x05
-        case \AADiagnostics.estimatedRange:             return 0x06
-        case \AADiagnostics.washerFluidLevel:           return 0x09
-        case \AADiagnostics.batteryVoltage:             return 0x0B
-        case \AADiagnostics.adBlueLevel:                return 0x0C
-        case \AADiagnostics.distanceSinceReset:         return 0x0D
-        case \AADiagnostics.distanceSinceStart:         return 0x0E
-        case \AADiagnostics.fuelVolume:                 return 0x0F
-        case \AADiagnostics.absState:                   return 0x10
-        case \AADiagnostics.engineCoolantTemperature:   return 0x11
-        case \AADiagnostics.engineTotalOperatingHours:  return 0x12
-        case \AADiagnostics.engineTotalFuelConsumption: return 0x13
-        case \AADiagnostics.brakeFluidLevel:            return 0x14
-        case \AADiagnostics.engineTorque:               return 0x15
-        case \AADiagnostics.engineLoad:                 return 0x16
-        case \AADiagnostics.wheelBasedSpeed:            return 0x17
-            /* Level 8 */
-        case \AADiagnostics.batteryLevel:           return 0x18
-        case \AADiagnostics.checkControlMessages:   return 0x19
-        case \AADiagnostics.tirePressures:          return 0x1A
-        case \AADiagnostics.tireTemperatures:       return 0x1B
-        case \AADiagnostics.wheelRPMs:              return 0x1C
-        case \AADiagnostics.troubleCodes:           return 0x1D
-        case \AADiagnostics.mileageMeters:          return 0x1E
-
-        default:
-            return nil
-        }
     }
 }
 

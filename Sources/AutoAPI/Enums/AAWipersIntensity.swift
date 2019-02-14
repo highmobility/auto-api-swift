@@ -41,6 +41,6 @@ public enum AAWipersIntensity: UInt8 {
     public static let highest = AAWipersIntensity.level3
 }
 
-extension AAWipersIntensity: AAPropertyConvertable {
+extension AAWipersIntensity: AABytesConvertable {
     
 }

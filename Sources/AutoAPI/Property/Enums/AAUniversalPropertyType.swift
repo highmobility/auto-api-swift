@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2018 High-Mobility GmbH
+// Copyright (C) 2019 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -19,17 +19,19 @@
 // licensing@high-mobility.com
 //
 //
-//  AAPropertyIdentifierGettable.swift
+//  AAUniversalPropertyType.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 05/10/2018.
-//  Copyright © 2018 High Mobility. All rights reserved.
+//  Created by Mikk Rätsep on 12/02/2019.
+//  Copyright © 2019 High Mobility GmbH. All rights reserved.
 //
 
 import Foundation
 
 
-protocol AAPropertyIdentifierGettable {
+enum AAUniversalPropertyType: UInt8 {
 
-    static func propertyID<Type>(for keyPath: KeyPath<Self, Type>) -> AAPropertyIdentifier?
+    case nonce          = 0xA0
+    case carSignature   = 0xA1
+    case timestamp      = 0xA2
 }

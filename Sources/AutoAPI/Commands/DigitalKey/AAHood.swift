@@ -40,7 +40,7 @@ public struct AAHood: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        position = properties.property(for: \AAHood.position)
+        position = properties.property(forIdentifier: 0x01)
 
         // Properties
         self.properties = properties
@@ -58,18 +58,6 @@ extension AAHood: AAMessageTypesGettable {
 
         case getHoodState   = 0x00
         case hoodState      = 0x01
-    }
-}
-
-extension AAHood: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AAHood, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AAHood.position: return 0x01
-
-        default:
-            return nil
-        }
     }
 }
 

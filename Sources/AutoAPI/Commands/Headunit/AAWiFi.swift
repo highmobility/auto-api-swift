@@ -44,10 +44,10 @@ public struct AAWiFi: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        enabledState = properties.property(for: \AAWiFi.enabledState)
-        connectedState = properties.property(for: \AAWiFi.connectedState)
-        networkSSID = properties.property(for: \AAWiFi.networkSSID)
-        networkSecurity = properties.property(for: \AAWiFi.networkSecurity)
+        enabledState = properties.property(forIdentifier: 0x01)
+        connectedState = properties.property(forIdentifier: 0x02)
+        networkSSID = properties.property(forIdentifier: 0x03)
+        networkSecurity = properties.property(forIdentifier: 0x04)
 
         // Properties
         self.properties = properties
@@ -71,21 +71,6 @@ extension AAWiFi: AAMessageTypesGettable {
     }
 }
 
-extension AAWiFi: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AAWiFi, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AAWiFi.enabledState:      return 0x01
-        case \AAWiFi.connectedState:    return 0x02
-        case \AAWiFi.networkSSID:       return 0x03
-        case \AAWiFi.networkSecurity:   return 0x04
-
-        default:
-            return nil
-        }
-    }
-}
-
 public extension AAWiFi {
 
     static var getWifiState: [UInt8] {
@@ -94,16 +79,17 @@ public extension AAWiFi {
 
 
     static func connectToNetwork(ssid: AANetworkSSID, security: AANetworkSecurity, password: String?) -> [UInt8] {
-        return commandPrefix(for: .connectToNetwork) + [ssid.propertyBytes(0x03),
-                                                        security.propertyBytes(0x04),
-                                                        password?.propertyBytes(0x05)].propertiesValuesCombined
+        return commandPrefix(for: .connectToNetwork)
+            // TODO: + [ssid.propertyBytes(0x03), security.propertyBytes(0x04), password?.propertyBytes(0x05)].propertiesValuesCombined
     }
 
     static func enableDisalbe(_ state: AAEnabledState) -> [UInt8] {
-        return commandPrefix(for: .enableDisable) + state.propertyBytes(0x04)
+        return commandPrefix(for: .enableDisable)
+            // TODO: + state.propertyBytes(0x04)
     }
 
     static func forgetNetwork(ssid: AANetworkSSID) -> [UInt8] {
-        return commandPrefix(for: .forgetNetwork) + ssid.propertyBytes(0x03)
+        return commandPrefix(for: .forgetNetwork)
+            // TODO: + ssid.propertyBytes(0x03)
     }
 }

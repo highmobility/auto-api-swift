@@ -41,3 +41,7 @@ public enum AAWeekday: UInt8 {
 
     case automatic  = 0x07
 }
+
+extension AAWeekday: AABytesConvertable {
+    
+}

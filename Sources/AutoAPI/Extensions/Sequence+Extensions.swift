@@ -31,7 +31,7 @@ import Foundation
 
 extension Sequence {
 
-    public var all: [Element] {
+    public var all2: [Element] {
         var iterator = makeIterator()
         var all: [Element] = []
 

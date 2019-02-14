@@ -49,6 +49,7 @@ extension AAGraphics: AAMessageTypesGettable {
 public extension AAGraphics {
 
     static func displayImage(_ url: URL) -> [UInt8] {
-        return commandPrefix(for: .displayImage) + url.propertyBytes(0x01)
+        return commandPrefix(for: .displayImage)
+            // TODO: + url.propertyBytes(0x01)
     }
 }

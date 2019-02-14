@@ -36,6 +36,6 @@ public enum AATiltState: UInt8 {
     case halfTilted = 0x02
 }
 
-extension AATiltState: AAPropertyConvertable {
+extension AATiltState: AABytesConvertable {
 
 }

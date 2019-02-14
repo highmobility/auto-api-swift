@@ -50,6 +50,7 @@ extension AABrowser: AAMessageTypesGettable {
 public extension AABrowser {
 
     static func loadURL(_ url: URL) -> [UInt8] {
-        return commandPrefix(for: .loadURL) + url.propertyBytes(0x01)
+        return commandPrefix(for: .loadURL)
+            // TODO: + url.propertyBytes(0x01)
     }
 }

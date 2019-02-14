@@ -41,7 +41,7 @@ public struct AAHonkHornFlashLights: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        flasherState = properties.property(for: \AAHonkHornFlashLights.flasherState)
+        flasherState = properties.property(forIdentifier: 0x01)
 
         // Properties
         self.properties = properties
@@ -64,18 +64,6 @@ extension AAHonkHornFlashLights: AAMessageTypesGettable {
     }
 }
 
-extension AAHonkHornFlashLights: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AAHonkHornFlashLights, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AAHonkHornFlashLights.flasherState:   return 0x01
-
-        default:
-            return nil
-        }
-    }
-}
-
 public extension AAHonkHornFlashLights {
 
     static var getFlasherState: [UInt8] {
@@ -84,7 +72,8 @@ public extension AAHonkHornFlashLights {
 
 
     static func activateEmergencyFlasher(_ state: AAActiveState) -> [UInt8] {
-        return commandPrefix(for: .emergencyFlasher) + state.propertyBytes(0x01)
+        return commandPrefix(for: .emergencyFlasher)
+            // TODO: + state.propertyBytes(0x01)
     }
 
     /// At least *one* value needs to be entered, instead of both being `nil`.
@@ -93,7 +82,7 @@ public extension AAHonkHornFlashLights {
             return nil
         }
 
-        return commandPrefix(for: .honkFlash) + [seconds?.propertyBytes(0x01),
-                                                 flashLightsXTimes?.propertyBytes(0x02)].propertiesValuesCombined
+        return commandPrefix(for: .honkFlash)
+            // TODO: + [seconds?.propertyBytes(0x01), flashLightsXTimes?.propertyBytes(0x02)].propertiesValuesCombined
     }
 }

@@ -47,13 +47,13 @@ public struct AATachograph: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        driversWorkingStates = properties.properties(for: \AATachograph.driversWorkingStates)
-        driversTimeStates = properties.properties(for: \AATachograph.driversTimeStates)
-        driversCards = properties.properties(for: \AATachograph.driversCards)
-        vehicleDirection = properties.property(for: \AATachograph.vehicleDirection)
-        vehicleMotionState = properties.property(for: \AATachograph.vehicleMotionState)
-        vehicleOverspeedActive = properties.property(for: \AATachograph.vehicleOverspeedActive)
-        vehicleSpeed = properties.property(for: \AATachograph.vehicleSpeed)
+        driversWorkingStates = properties.allOrNil(forIdentifier: 0x01)
+        driversTimeStates = properties.allOrNil(forIdentifier: 0x02)
+        driversCards = properties.allOrNil(forIdentifier: 0x03)
+        vehicleMotionState = properties.property(forIdentifier: 0x04)
+        vehicleOverspeedActive = properties.property(forIdentifier: 0x05)
+        vehicleDirection = properties.property(forIdentifier: 0x06)
+        vehicleSpeed = properties.property(forIdentifier: 0x07)
 
         // Properties
         self.properties = properties
@@ -71,24 +71,6 @@ extension AATachograph: AAMessageTypesGettable {
 
         case getState = 0x00
         case state    = 0x01
-    }
-}
-
-extension AATachograph: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AATachograph, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AATachograph.driversWorkingStates:    return 0x01
-        case \AATachograph.driversTimeStates:       return 0x02
-        case \AATachograph.driversCards:            return 0x03
-        case \AATachograph.vehicleDirection:        return 0x06
-        case \AATachograph.vehicleMotionState:      return 0x04
-        case \AATachograph.vehicleOverspeedActive:  return 0x05
-        case \AATachograph.vehicleSpeed:            return 0x07
-
-        default:
-            return nil
-        }
     }
 }
 

@@ -43,35 +43,27 @@ public struct AAChargingTimer {
     }
 }
 
-extension AAChargingTimer: AAItem {
+extension AAChargingTimer: AABytesConvertable {
 
-    static var size: Int = 9
-
-
-    init?(bytes: [UInt8]) {
-        guard let timerType = AATimerType(rawValue: bytes[0]) else {
-            return nil
-        }
-        
-        guard let date = Date(bytes.dropFirst()) else {
-            return nil
-        }
-
-        type = timerType
-        time = date
+    public var bytes: [UInt8] {
+        return type.bytes + time.bytes
     }
-}
 
-extension AAChargingTimer: AAPropertyConvertable {
 
-    var propertyValue: [UInt8] {
-        return [type.rawValue] + time.propertyValue
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 9 else {
+            return nil
+        }
+
+        guard let type = AATimerType(bytes: bytes[0..<1]),
+            let time = Date(bytes: bytes[1...8]) else {
+                return nil
+        }
+
+        self.init(type: type, time: time)
     }
 }
 
 extension AAChargingTimer: Equatable {
 
-    public static func ==(lhs: AAChargingTimer, rhs: AAChargingTimer) -> Bool {
-        return (lhs.type == rhs.type) && (lhs.time == rhs.time)
-    }
 }

@@ -34,3 +34,7 @@ public enum AAFastened: UInt8 {
     case notFastened    = 0x00
     case fastened       = 0x01
 }
+
+extension AAFastened: AABytesConvertable {
+    
+}

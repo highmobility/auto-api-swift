@@ -46,8 +46,8 @@ public struct AAMessaging: AAInboundCommand, AAOutboundCommand {
         }
 
         // Ordered by the ID
-        recipientHandle = properties.property(for: \AAMessaging.recipientHandle)
-        text = properties.property(for: \AAMessaging.text)
+        recipientHandle = properties.property(forIdentifier: 0x01)
+        text = properties.property(forIdentifier: 0x02)
 
         // Properties
         self.properties = properties
@@ -68,23 +68,10 @@ extension AAMessaging: AAMessageTypesGettable {
     }
 }
 
-extension AAMessaging: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AAMessaging, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AAMessaging.recipientHandle:  return 0x01
-        case \AAMessaging.text:             return 0x02
-
-        default:
-            return nil
-        }
-    }
-}
-
 public extension AAMessaging {
 
     static func received(message text: String, senderHandle handle: String?) -> [UInt8] {
-        return commandPrefix(for: .received) + [text.propertyBytes(0x01),
-                                                handle?.propertyBytes(0x02)].propertiesValuesCombined
+        return commandPrefix(for: .received)
+            // TODO: + [text.propertyBytes(0x01), handle?.propertyBytes(0x02)].propertiesValuesCombined
     }
 } 

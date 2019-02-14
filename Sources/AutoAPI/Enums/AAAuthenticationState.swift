@@ -35,6 +35,6 @@ public enum AAAuthenticationState: UInt8 {
     case authenticated      = 0x01
 }
 
-extension AAAuthenticationState: AAPropertyConvertable {
+extension AAAuthenticationState: AABytesConvertable {
     
 }

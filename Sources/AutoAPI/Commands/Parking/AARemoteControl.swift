@@ -42,8 +42,8 @@ public struct AARemoteControl: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        controlMode = properties.property(for: \AARemoteControl.controlMode)
-        angle = properties.property(for: \AARemoteControl.angle)
+        controlMode = properties.property(forIdentifier: 0x01)
+        angle = properties.property(forIdentifier: 0x02)
 
         // Properties
         self.properties = properties
@@ -66,19 +66,6 @@ extension AARemoteControl: AAMessageTypesGettable {
     }
 }
 
-extension AARemoteControl: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AARemoteControl, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AARemoteControl.controlMode:  return 0x01
-        case \AARemoteControl.angle:        return 0x02
-
-        default:
-            return nil
-        }
-    }
-}
-
 public extension AARemoteControl {
 
     static var getControlState: [UInt8] {
@@ -87,8 +74,8 @@ public extension AARemoteControl {
 
 
     static func controlCommand(angle: Int16?, speed: Int8?) -> [UInt8] {
-        return commandPrefix(for: .controlCommand) + [angle?.propertyBytes(0x02),
-                                                      speed?.propertyBytes(0x01)].propertiesValuesCombined
+        return commandPrefix(for: .controlCommand)
+            // TODO: + [angle?.propertyBytes(0x02), speed?.propertyBytes(0x01)].propertiesValuesCombined
     }
 
     /// `.reset` is not supported
@@ -97,6 +84,7 @@ public extension AARemoteControl {
             return nil
         }
 
-        return commandPrefix(for: .startStopControl) + startStop.propertyBytes(0x01)
+        return commandPrefix(for: .startStopControl)
+            // TODO: + startStop.propertyBytes(0x01)
     }
 }

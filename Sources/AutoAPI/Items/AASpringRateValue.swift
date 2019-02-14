@@ -19,20 +19,44 @@
 // licensing@high-mobility.com
 //
 //
-//  CaseIterable+Extensions.swift
+//  AASpringRateValue.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 21/09/2018.
+//  Created by Mikk Rätsep on 13/12/2017.
 //  Copyright © 2018 High Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-public extension CaseIterable {
+public struct AASpringRateValue {
 
-    @available(*, deprecated, renamed: "allCases")
-    public static var all: Self.AllCases {
-        return self.allCases
+    public let axle: AAAxle
+    public let value: UInt8
+
+
+    init(axle: AAAxle, value: UInt8) {
+        self.axle = axle
+        self.value = value
+    }
+}
+
+extension AASpringRateValue: AABytesConvertable {
+
+    public var bytes: [UInt8] {
+        return axle.bytes + value.bytes
+    }
+
+
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 2 else {
+            return nil
+        }
+
+        guard let axle = AAAxle(bytes: bytes[0..<1]) else {
+            return nil
+        }
+
+        self.init(axle: axle, value: bytes[1])
     }
 }

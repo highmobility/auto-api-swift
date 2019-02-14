@@ -31,47 +31,38 @@ import Foundation
 
 public struct AAPropertyFailure {
 
-    public let propertyID: AAPropertyIdentifier
-    public let failureReason: AAPropertyFailureReason
+    public let reason: AAPropertyFailureReason
     public let description: String
 }
 
-extension AAPropertyFailure: AAItemDynamicSize {
+extension AAPropertyFailure: AABytesConvertable {
 
-    static var greaterOrEqualSize: Int = 3
+    public var bytes: [UInt8] {
+        return reason.bytes +
+            description.bytes.count.sizeBytes(amount: 2) +
+            description.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        let descriptionSize = bytes[2].int
-
-        guard bytes.count == (AAPropertyFailure.greaterOrEqualSize + descriptionSize) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count >= 3 else {
             return nil
         }
 
-        guard let reason = AAPropertyFailureReason(rawValue: bytes[1]),
-            let description = String(bytes: bytes.suffix(from: 4), encoding: .utf8) else {
+        guard let descriptionSize = Int(bytes: bytes[1...2]) else {
+            return nil
+        }
+
+        guard bytes.count == (3 + descriptionSize) else {
+            return nil
+        }
+
+        guard let reason = AAPropertyFailureReason(bytes: bytes[0..<1]),
+            let description = String(bytes: bytes[3..<(3 + descriptionSize)], encoding: .utf8) else {
                 return nil
         }
 
-        self.propertyID = bytes[0]
-        self.failureReason = reason
+        self.reason = reason
         self.description = description
-    }
-}
-
-extension AAPropertyFailure: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        let descriptionBytes = description.data(using: .utf8)?.bytes ?? []
-
-        return [propertyID, failureReason.rawValue, descriptionBytes.count.uint8] + descriptionBytes
-    }
-}
-
-
-extension Sequence where Element == AAPropertyFailure {
-
-    func first(for identifier: AAPropertyIdentifier) -> AAPropertyFailure? {
-        return first { $0.propertyID == identifier }
     }
 }

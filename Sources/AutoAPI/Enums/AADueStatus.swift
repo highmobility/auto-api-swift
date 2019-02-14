@@ -40,3 +40,7 @@ public enum AADueStatus: UInt8 {
     /// Service overdue
     case overdue    = 0x02
 }
+
+extension AADueStatus: AABytesConvertable {
+    
+}

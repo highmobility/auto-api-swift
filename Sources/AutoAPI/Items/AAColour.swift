@@ -29,68 +29,50 @@
 import Foundation
 
 
+public struct AAColour {
+
+    public var red: Double
+    public var green: Double
+    public var blue: Double
+}
+
+extension AAColour: AABytesConvertable {
+
+    public var bytes: [UInt8] {
+        return [UInt8(red * 255.0), UInt8(green * 255.0), UInt8(blue * 255.0)]
+    }
+
+
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 3 else {
+            return nil
+        }
+
+        red = Double(bytes[0]) / 255.0
+        green = Double(bytes[1]) / 255.0
+        blue = Double(bytes[2]) / 255.0
+    }
+}
+
+extension AAColour: Equatable {
+
+}
+
 #if os(macOS)
-    import AppKit
-    public typealias AAColour = NSColor
+import AppKit
+
+extension AAColour {
+
+    var nsColor: NSColor {
+        return NSColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 1.0)
+    }
+}
 #elseif os(iOS) || os(tvOS)
-    import UIKit
-    public typealias AAColour = UIColor
-#else
-    public typealias CGFloat = Double
+import UIKit
 
-    public struct AAColour {
-
-        public var red: CGFloat
-        public var green: CGFloat
-        public var blue: CGFloat
-        public var alpha: CGFloat
-
-
-        public init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
-            self.red = red
-            self.green = green
-            self.blue = blue
-            self.alpha = alpha
-        }
+extension AAColour {
+    var uiColor: UIColor {
+        return UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 1.0)
     }
-
-    extension AAColour: Equatable {
-
-        public static func ==(lhs: AAColour, rhs: AAColour) -> Bool {
-            return (lhs.red == rhs.red) && (lhs.green == rhs.green) && (lhs.blue == rhs.blue) && (lhs.alpha == rhs.alpha)
-        }
-    }
+}
 #endif
-
-extension AAColour: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        let values = self.values
-
-        return [values.red, values.green, values.blue]
-    }
-}
-
-public extension AAColour {
-
-    var values: (red: UInt8, green: UInt8, blue: UInt8, alpha: UInt8) {
-        #if os(macOS)
-            let redVal = UInt8(redComponent * 255.0)
-            let greenVal = UInt8(greenComponent * 255.0)
-            let blueVal = UInt8(blueComponent * 255.0)
-            let alphaVal = UInt8(alphaComponent * 255.0)
-        #elseif os(iOS) || os(tvOS)
-            let redVal = UInt8(CIColor(color: self).red * 255.0)
-            let greenVal = UInt8(CIColor(color: self).green * 255.0)
-            let blueVal = UInt8(CIColor(color: self).blue * 255.0)
-            let alphaVal = UInt8(CIColor(color: self).alpha * 255.0)
-        #else
-            let redVal = UInt8(red * 255.0)
-            let greenVal = UInt8(green * 255.0)
-            let blueVal = UInt8(blue * 255.0)
-            let alphaVal = 0x00
-        #endif
-
-        return (red: redVal, green: greenVal, blue: blueVal, alpha: alphaVal)
-    }
-}

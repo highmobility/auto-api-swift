@@ -36,6 +36,6 @@ public enum AAWipersState: UInt8 {
     case automatic  = 0x02
 }
 
-extension AAWipersState: AAPropertyConvertable {
+extension AAWipersState: AABytesConvertable {
     
 }

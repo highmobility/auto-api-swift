@@ -27,55 +27,54 @@
 //
 
 import Foundation
+import HMUtilities
 
 
-protocol AAItem: AABinaryInitable, AAPropertyConvertable {
-
-    static var size: Int { get }
-
-
-    init?(bytes: [UInt8])
-    init?(bytes: [UInt8]?)
-}
-
-extension AAItem {
-
-    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        guard binary.count == Self.size else {
-            return nil
-        }
-
-        self.init(bytes: binary.bytes)
-    }
-
-    init?(bytes: [UInt8]?) {
-        guard let bytes = bytes else {
-            return nil
-        }
-
-        self.init(bytes: bytes)
-    }
-}
-
-
-
-protocol AAItemDynamicSize: AAItem {
-
-    static var greaterOrEqualSize: Int { get }
-}
-
-extension AAItemDynamicSize {
-
-    static var size: Int {
-        return greaterOrEqualSize
-    }
-
-
-    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        guard binary.count >= Self.size else {
-            return nil
-        }
-
-        self.init(bytes: binary.bytes)
-    }
-}
+//protocol AAItem: AABinaryInitable {
+//
+//    static var size: Int { get }
+//
+//
+//    init?(bytes: [UInt8]?)
+//}
+//
+//extension AAItem {
+//
+//    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
+//        guard binary.count == Self.size else {
+//            return nil
+//        }
+//
+//        self.init(bytes: binary.bytes)
+//    }
+//
+//    init?(bytes: [UInt8]?) {
+//        guard let bytes = bytes else {
+//            return nil
+//        }
+//
+//        self.init(bytes: bytes)
+//    }
+//}
+//
+//
+//protocol AAItemDynamicSize: AAItem {
+//
+//    static var greaterOrEqualSize: Int { get }
+//}
+//
+//extension AAItemDynamicSize {
+//
+//    static var size: Int {
+//        return greaterOrEqualSize
+//    }
+//
+//
+//    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
+//        guard binary.count >= Self.size else {
+//            return nil
+//        }
+//
+//        self.init(bytes: binary.bytes)
+//    }
+//}

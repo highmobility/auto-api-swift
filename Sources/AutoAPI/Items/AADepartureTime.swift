@@ -35,13 +35,19 @@ public struct AADepartureTime {
     public let time: AATime?
 }
 
-extension AADepartureTime: AAItem {
+extension AADepartureTime: AABytesConvertable {
 
-    static var size: Int = 3
+    public var bytes: [UInt8] {
+        return state.bytes + (time?.bytes ?? [])
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let activeState = AAActiveState(rawValue: bytes[0]) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 3 else {
+            return nil
+        }
+        
+        guard let activeState = AAActiveState(bytes: bytes[0..<1]) else {
             return nil
         }
 
@@ -51,14 +57,7 @@ extension AADepartureTime: AAItem {
             time = nil
         }
         else {
-            time = AATime(bytes[2...])
+            time = AATime(bytes: bytes[2...])
         }
-    }
-}
-
-extension AADepartureTime: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [state.rawValue] + (time?.propertyValue ?? [])
     }
 }

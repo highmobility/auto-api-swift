@@ -34,3 +34,7 @@ public enum AAAuthenticationMechanism: UInt8 {
     case pin    = 0x00
     case app    = 0x01
 }
+
+extension AAAuthenticationMechanism: AABytesConvertable {
+    
+}

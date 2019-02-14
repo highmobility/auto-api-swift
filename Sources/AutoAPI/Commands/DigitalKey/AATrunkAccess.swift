@@ -42,8 +42,8 @@ public struct AATrunkAccess: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        lock = properties.property(for: \AATrunkAccess.lock)
-        position = properties.property(for: \AATrunkAccess.position)
+        lock = properties.property(forIdentifier: 0x01)
+        position = properties.property(forIdentifier: 0x02)
 
         // Properties
         self.properties = properties
@@ -65,19 +65,6 @@ extension AATrunkAccess: AAMessageTypesGettable {
     }
 }
 
-extension AATrunkAccess: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AATrunkAccess, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AATrunkAccess.lock:       return 0x01
-        case \AATrunkAccess.position:   return 0x02
-
-        default:
-            return nil
-        }
-    }
-}
-
 public extension AATrunkAccess {
 
     static var getState: [UInt8] {
@@ -86,7 +73,7 @@ public extension AATrunkAccess {
 
 
     static func controlTrunk(_ lockUnlock: AALockState?, changePosition position: AAPositionState?) -> [UInt8] {
-        return commandPrefix(for: .lockOpen) + [lockUnlock?.propertyBytes(0x01),
-                                                position?.propertyBytes(0x02)].propertiesValuesCombined
+        return commandPrefix(for: .lockOpen)
+            // TODO: + [lockUnlock?.propertyBytes(0x01), position?.propertyBytes(0x02)].propertiesValuesCombined
     }
 }

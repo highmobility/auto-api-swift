@@ -40,21 +40,20 @@ public struct AASDKVersion {
     }
 }
 
-extension AASDKVersion: AAItem {
+extension AASDKVersion: AABytesConvertable {
 
-    static var size: Int = 3
+    public var bytes: [UInt8] {
+        return [major, minor, patch]
+    }
 
 
-    init?(bytes: [UInt8]) {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 3 else {
+            return nil
+        }
+
         major = bytes.bytes[0]
         minor = bytes.bytes[1]
         patch = bytes.bytes[2]
-    }
-}
-
-extension AASDKVersion: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [major, minor, patch]
     }
 }

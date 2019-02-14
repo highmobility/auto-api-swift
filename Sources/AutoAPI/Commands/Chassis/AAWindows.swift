@@ -43,8 +43,8 @@ public struct AAWindows: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         /* Level 8 */
-        openPercentages = properties.properties(for: \AAWindows.openPercentages)
-        positions = properties.properties(for: \AAWindows.positions)
+        openPercentages = properties.allOrNil(forIdentifier: 0x02)
+        positions = properties.allOrNil(forIdentifier: 0x03)
 
         // Properties
         self.properties = properties
@@ -66,19 +66,6 @@ extension AAWindows: AAMessageTypesGettable {
     }
 }
 
-extension AAWindows: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AAWindows, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AAWindows.openPercentages:    return 0x02
-        case \AAWindows.positions:          return 0x03
-
-        default:
-            return nil
-        }
-    }
-}
-
 public extension AAWindows {
 
     static var getWindowsState: [UInt8] {
@@ -87,7 +74,7 @@ public extension AAWindows {
 
 
     static func controlWindows(openPercentages: [AAWindowOpenPercentage]?, positions: [AAWindowPosition]?) -> [UInt8] {
-        return commandPrefix(for: .control) + [openPercentages?.reduceToByteArray { $0.propertyBytes(0x01) },
-                                               positions?.reduceToByteArray { $0.propertyBytes(0x02) }].propertiesValuesCombined
+        return commandPrefix(for: .control)
+            // TODO: + [openPercentages?.reduceToByteArray { $0.propertyBytes(0x01) }, positions?.reduceToByteArray { $0.propertyBytes(0x02) }].propertiesValuesCombined
     }
 }

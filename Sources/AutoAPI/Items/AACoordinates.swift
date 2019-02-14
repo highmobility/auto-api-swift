@@ -55,30 +55,23 @@ import Foundation
 #endif
 
 
-extension AACoordinates {
+extension AACoordinates: AABytesConvertable {
 
-    var bytes: [UInt8] {
+    public var bytes: [UInt8] {
         return latitude.bytes + longitude.bytes
     }
-}
 
-extension AACoordinates: AABinaryInitable {
 
-    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        guard binary.count == 16 else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 16 else {
             return nil
         }
 
-        let latitudeBytes = Double(binary.bytes.prefix(upTo: 8))
-        let longitudeBytes = Double(binary.dropFirstBytes(8))
+        guard let latitudeBytes = Double(bytes: bytes[0...7]),
+            let longitudeBytes = Double(bytes: bytes[8...15]) else {
+                return nil
+        }
 
         self.init(latitude: Double(latitudeBytes), longitude: Double(longitudeBytes))
-    }
-}
-
-extension AACoordinates: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return bytes
     }
 }

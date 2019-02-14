@@ -67,3 +67,7 @@ public enum AADashboardLightName: UInt8 {
     case escSwitchedOff                     = 0x21
     case laneDepartureWarningSwitchedOff    = 0x22
 }
+
+extension AADashboardLightName: AABytesConvertable {
+    
+}

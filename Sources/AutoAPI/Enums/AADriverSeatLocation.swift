@@ -36,6 +36,6 @@ public enum AADriverSeatLocation: UInt8 {
     case center = 0x02
 }
 
-extension AADriverSeatLocation: AAPropertyConvertable {
+extension AADriverSeatLocation: AABytesConvertable {
     
 }

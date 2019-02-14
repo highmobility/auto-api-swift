@@ -39,3 +39,7 @@ public enum AAGearMode: UInt8 {
     case lowGear    = 0x05
     case sport      = 0x06
 }
+
+extension AAGearMode: AABytesConvertable {
+    
+}

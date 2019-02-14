@@ -41,6 +41,6 @@ public enum AAWindscreenDamage: UInt8 {
     public static let big = AAWindscreenDamage.damageLargerThan_1in
 }
 
-extension AAWindscreenDamage: AAPropertyConvertable {
+extension AAWindscreenDamage: AABytesConvertable {
     
 }

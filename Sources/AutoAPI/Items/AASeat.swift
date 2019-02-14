@@ -36,25 +36,24 @@ public struct AASeat {
     public let seatbeltFastened: Bool
 }
 
-extension AASeat: AAItem {
+extension AASeat: AABytesConvertable {
 
-    static var size: Int = 3
+    public var bytes: [UInt8] {
+        return position.bytes + personDetected.bytes + seatbeltFastened.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let position = AASeatLocation(rawValue: bytes[0]) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 3 else {
+            return nil
+        }
+
+        guard let position = AASeatLocation(bytes: bytes[0..<1]) else {
             return nil
         }
 
         self.personDetected = bytes[1].bool
         self.position = position
         self.seatbeltFastened = bytes[2].bool
-    }
-}
-
-extension AASeat: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [position.rawValue, personDetected.byte, seatbeltFastened.byte]
     }
 }

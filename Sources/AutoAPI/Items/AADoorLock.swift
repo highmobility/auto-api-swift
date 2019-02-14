@@ -35,25 +35,24 @@ public struct AADoorLock {
     public let lock: AALockState
 }
 
-extension AADoorLock: AAItem {
+extension AADoorLock: AABytesConvertable {
 
-    static var size: Int = 2
+    public var bytes: [UInt8] {
+        return location.bytes + lock.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let location = AALocation(rawValue: bytes[0]),
-            let lock = AALockState(rawValue: bytes[1]) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 2 else {
+            return nil
+        }
+
+        guard let location = AALocation(bytes: bytes[0..<1]),
+            let lock = AALockState(bytes: bytes[1..<2]) else {
                 return nil
         }
 
         self.location = location
         self.lock = lock
-    }
-}
-
-extension AADoorLock: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [location.rawValue, lock.rawValue]
     }
 }

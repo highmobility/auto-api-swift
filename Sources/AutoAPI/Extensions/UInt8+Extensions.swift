@@ -56,14 +56,3 @@ extension UInt8 {
         return UInt32(self)
     }
 }
-
-extension UInt8: AABinaryInitable {
-
-}
-
-extension UInt8: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [self]
-    }
-}

@@ -29,7 +29,7 @@
 import Foundation
 
 
-protocol AAInboundCommand: AACommand, AABinaryInitable, AAMessageTypesGettable, AAPropertiesCapable, AAPropertyIdentifierGettable {
+protocol AAInboundCommand: AACommand, AAMessageTypesGettable, AAPropertiesCapable {
 
     init?(_ messageType: UInt8, properties: AAProperties)
 }
@@ -48,7 +48,10 @@ extension AAInboundCommand {
         }
 
         let messageType = binary.bytes[2]
-        let properties = AAProperties(binary.dropFirstBytes(3))
+
+        guard let properties = AAProperties(bytes: binary.dropFirstBytes(3)) else {
+            return nil
+        }
 
         self.init(messageType, properties: properties)
     }
@@ -60,16 +63,8 @@ extension AAInboundCommand {
         return properties.carSignature
     }
 
-    public var milliseconds: TimeInterval? {
-        return properties.milliseconds
-    }
-
     public var nonce: [UInt8]? {
         return properties.nonce
-    }
-
-    public var propertiesFailures: [AAPropertyFailure]? {
-        return properties.propertiesFailures
     }
 
     public var timestamp: Date? {

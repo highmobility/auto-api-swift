@@ -35,24 +35,24 @@ public struct AAAcceleration {
     public let value: Float
 }
 
-extension AAAcceleration: AAItem {
+extension AAAcceleration: AABytesConvertable {
 
-    static var size: Int = 5
+    public var bytes: [UInt8] {
+        return type.bytes + value.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let accelerationType = AAAccelerationType(rawValue: bytes[0]) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 5 else {
             return nil
         }
 
+        guard let accelerationType = AAAccelerationType(bytes: bytes[0..<1]),
+            let float = Float(bytes: bytes[1...4]) else {
+                return nil
+        }
+
         type = accelerationType
-        value = Float(bytes.dropFirstBytes(1))
-    }
-}
-
-extension AAAcceleration: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [type.rawValue] + value.bytes
+        value = float
     }
 }

@@ -35,3 +35,7 @@ public enum AAPricingType: UInt8 {
     case perMinute      = 0x01
     case perKWh         = 0x02
 }
+
+extension AAPricingType: AABytesConvertable {
+    
+}

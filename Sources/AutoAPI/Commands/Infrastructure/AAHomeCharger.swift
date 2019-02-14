@@ -55,22 +55,22 @@ public struct AAHomeCharger: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        chargingState = properties.property(for: \AAHomeCharger.chargingState)
-        authenticationMechanism = properties.property(for: \AAHomeCharger.authenticationMechanism)
-        plugType = properties.property(for: \AAHomeCharger.plugType)
-        chargingPower = properties.property(for: \AAHomeCharger.chargingPower)
-        solarChargingState = properties.property(for: \AAHomeCharger.solarChargingState)
-        hotspotState = properties.property(for: \AAHomeCharger.hotspotState)
-        wifiHotspotSSID = properties.property(for: \AAHomeCharger.wifiHotspotSSID)
-        wifiHotspotSecurity = properties.property(for: \AAHomeCharger.wifiHotspotSecurity)
-        wifiHotspotPassword = properties.property(for: \AAHomeCharger.wifiHotspotPassword)
+        chargingState = properties.property(forIdentifier: 0x01)
+        authenticationMechanism = properties.property(forIdentifier: 0x02)
+        plugType = properties.property(forIdentifier: 0x03)
+        chargingPower = properties.property(forIdentifier: 0x04)
+        solarChargingState = properties.property(forIdentifier: 0x05)
+        hotspotState = properties.property(forIdentifier: 0x08)
+        wifiHotspotSSID = properties.property(forIdentifier: 0x09)
+        wifiHotspotSecurity = properties.property(forIdentifier: 0x0A)
+        wifiHotspotPassword = properties.property(forIdentifier: 0x0B)
         /* Level 8 */
-        authenticationState = properties.property(for: \AAHomeCharger.authenticationState)
-        chargeCurrentDC = properties.property(for: \AAHomeCharger.chargeCurrentDC)
-        maximumChargeCurrent = properties.property(for: \AAHomeCharger.maximumChargeCurrent)
-        minimumChargeCurrent = properties.property(for: \AAHomeCharger.minimumChargeCurrent)
-        coordinates = properties.property(for: \AAHomeCharger.coordinates)
-        priceTariffs = properties.properties(for: \AAHomeCharger.priceTariffs) 
+        authenticationState = properties.property(forIdentifier: 0x0D)
+        chargeCurrentDC = properties.property(forIdentifier: 0x0E)
+        maximumChargeCurrent = properties.property(forIdentifier: 0x0F)
+        minimumChargeCurrent = properties.property(forIdentifier: 0x10)
+        coordinates = properties.property(forIdentifier: 0x11)
+        priceTariffs = properties.allOrNil(forIdentifier: 0x12)
 
         // Properties
         self.properties = properties
@@ -96,33 +96,6 @@ extension AAHomeCharger: AAMessageTypesGettable {
     }
 }
 
-extension AAHomeCharger: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AAHomeCharger, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AAHomeCharger.chargingState:              return 0x01
-        case \AAHomeCharger.authenticationMechanism:    return 0x02
-        case \AAHomeCharger.plugType:                   return 0x03
-        case \AAHomeCharger.chargingPower:              return 0x04
-        case \AAHomeCharger.solarChargingState:         return 0x05
-        case \AAHomeCharger.hotspotState:               return 0x08
-        case \AAHomeCharger.wifiHotspotSSID:            return 0x09
-        case \AAHomeCharger.wifiHotspotSecurity:        return 0x0A
-        case \AAHomeCharger.wifiHotspotPassword:        return 0x0B
-            /* Level 8 */
-        case \AAHomeCharger.authenticationState:    return 0x0D
-        case \AAHomeCharger.chargeCurrentDC:        return 0x0E
-        case \AAHomeCharger.maximumChargeCurrent:   return 0x0F
-        case \AAHomeCharger.minimumChargeCurrent:   return 0x10
-        case \AAHomeCharger.coordinates:            return 0x11
-        case \AAHomeCharger.priceTariffs:         return 0x12
-
-        default:
-            return nil
-        }
-    }
-}
-
 public extension AAHomeCharger {
 
     static var getChargerState: [UInt8] {
@@ -131,22 +104,27 @@ public extension AAHomeCharger {
 
 
     static func activateSolarCharging(_ state: AAActiveState) -> [UInt8] {
-        return commandPrefix(for: .activateSolarCharging) + state.propertyBytes(0x01)
+        return commandPrefix(for: .activateSolarCharging)
+            // TODO: + state.propertyBytes(0x01)
     }
 
     static func enableWifiHotspot(_ enable: AAEnabledState) -> [UInt8] {
-        return commandPrefix(for: .enableWifiHotspot) + enable.propertyBytes(0x01)
+        return commandPrefix(for: .enableWifiHotspot)
+            // TODO: + enable.propertyBytes(0x01)
     }
 
     static func setAuthenticationState(_ state: AAAuthenticationState) -> [UInt8] {
-        return commandPrefix(for: .authenticateExpire) + state.propertyBytes(0x01)
+        return commandPrefix(for: .authenticateExpire)
+            // TODO: + state.propertyBytes(0x01)
     }
 
     static func setChargingCurrent(_ current: Float) -> [UInt8] {
-        return commandPrefix(for: .setChargingCurrent) + current.propertyBytes(0x01)
+        return commandPrefix(for: .setChargingCurrent)
+            // TODO: + current.propertyBytes(0x01)
     }
 
     static func setPriceTariffs(_ tariffs: [AAPriceTariff]) -> [UInt8] {
-        return commandPrefix(for: .setPriceTariffs) + tariffs.reduceToByteArray { $0.propertyBytes(0x0C) }
+        return commandPrefix(for: .setPriceTariffs)
+            // TODO: + tariffs.reduceToByteArray { $0.propertyBytes(0x0C) }
     }
 }

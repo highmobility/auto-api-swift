@@ -36,17 +36,6 @@ public struct AAFirmwareVersion: AAInboundCommand {
     public let hmkitBuildName: AAProperty<String>?
 
 
-    @available(*, deprecated, renamed: "hmkitVersion")
-    public var carSDKVersion: AASDKVersion? {
-        return hmkitVersion?.value
-    }
-
-    @available(*, deprecated, renamed: "hmkitBuildName")
-    public var carSDKBuildName: String? {
-        return hmkitBuildName?.value
-    }
-
-
     // MARK: AAInboundCommand
 
     public let properties: AAProperties
@@ -58,9 +47,9 @@ public struct AAFirmwareVersion: AAInboundCommand {
         }
 
         // Ordered by the ID
-        hmkitVersion = properties.property(for: \AAFirmwareVersion.hmkitVersion)
-        hmkitBuildName = properties.property(for: \AAFirmwareVersion.hmkitBuildName)
-        applicationVersion = properties.property(for: \AAFirmwareVersion.applicationVersion)
+        hmkitVersion = properties.property(forIdentifier: 0x01)
+        hmkitBuildName = properties.property(forIdentifier: 0x02)
+        applicationVersion = properties.property(forIdentifier: 0x03)
 
         // Properties
         self.properties = properties
@@ -80,21 +69,6 @@ extension AAFirmwareVersion: AAMessageTypesGettable {
         case version    = 0x01
     }
 }
-
-extension AAFirmwareVersion: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AAFirmwareVersion, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AAFirmwareVersion.hmkitVersion:       return 0x01
-        case \AAFirmwareVersion.hmkitBuildName:     return 0x02
-        case \AAFirmwareVersion.applicationVersion: return 0x03
-
-        default:
-            return nil
-        }
-    }
-}
-
 
 public extension AAFirmwareVersion {
 

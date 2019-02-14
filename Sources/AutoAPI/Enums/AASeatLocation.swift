@@ -38,3 +38,7 @@ public enum AASeatLocation: UInt8 {
     case rearLeft   = 0x03
     case rearCenter = 0x04
 }
+
+extension AASeatLocation: AABytesConvertable {
+    
+}

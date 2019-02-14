@@ -53,44 +53,37 @@ public struct AAWeekdaysStartingTimes {
     }
 }
 
-extension AAWeekdaysStartingTimes: AABinaryInitable {
+extension AAWeekdaysStartingTimes: AABytesConvertable {
 
-    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        guard binary.count == 14 else {
+    public var bytes: [UInt8] {
+        let weekdaysBytes = monday.bytes + tuesday.bytes + wednesday.bytes + thursday.bytes + friday.bytes
+        let weekendBytes = saturday.bytes + sunday.bytes
+
+        return weekdaysBytes + weekendBytes
+    }
+
+
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 14 else {
             return nil
         }
 
-        let bytes = binary.bytes
-
-        guard let monday = AATime(bytes),
-            let tuesday = AATime(bytes.suffix(from: 2)),
-            let wednesday = AATime(bytes.suffix(from: 4)),
-            let thursday = AATime(bytes.suffix(from: 6)),
-            let friday = AATime(bytes.suffix(from: 8)),
-            let saturday = AATime(bytes.suffix(from: 10)),
-            let sunday = AATime(bytes.suffix(from: 12)) else {
+        guard let monday = AATime(bytes: bytes[0...1]),
+            let tuesday = AATime(bytes: bytes[2...3]),
+            let wednesday = AATime(bytes: bytes[4...5]),
+            let thursday = AATime(bytes: bytes[6...7]),
+            let friday = AATime(bytes: bytes[8...9]),
+            let saturday = AATime(bytes: bytes[10...11]),
+            let sunday = AATime(bytes: bytes[12...13]) else {
                 return nil
         }
 
-        self.monday = monday
-        self.tuesday = tuesday
-        self.wednesday = wednesday
-        self.thursday = thursday
-        self.friday = friday
-        self.saturday = saturday
-        self.sunday = sunday
-    }
-}
-
-extension AAWeekdaysStartingTimes: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [monday.hour, monday.minute,
-                tuesday.hour, tuesday.minute,
-                wednesday.hour, wednesday.minute,
-                thursday.hour, thursday.minute,
-                friday.hour, friday.minute,
-                saturday.hour, saturday.minute,
-                sunday.hour, sunday.minute]
+        self.init(monday: monday,
+                  tuesday: tuesday,
+                  wednesday: wednesday,
+                  thursday: thursday,
+                  friday: friday,
+                  saturday: saturday,
+                  sunday: sunday)
     }
 }

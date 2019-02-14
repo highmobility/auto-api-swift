@@ -36,6 +36,6 @@ public enum AATheftAlarmState: UInt8 {
     case triggered  = 0x02
 }
 
-extension AATheftAlarmState: AAPropertyConvertable {
+extension AATheftAlarmState: AABytesConvertable {
     
 }

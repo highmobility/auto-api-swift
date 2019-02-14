@@ -35,24 +35,24 @@ public struct AATireTemperature {
     public let temperature: Float
 }
 
-extension AATireTemperature: AAItem {
+extension AATireTemperature: AABytesConvertable {
 
-    static var size: Int = 5
+    public var bytes: [UInt8] {
+        return location.bytes + temperature.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let location = AALocation(rawValue: bytes[0]) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 5 else {
             return nil
         }
 
+        guard let location = AALocation(bytes: bytes[0..<1]),
+            let temperature = Float(bytes: bytes[1...4]) else {
+                return nil
+        }
+
         self.location = location
-        self.temperature = Float(bytes.dropFirst())
-    }
-}
-
-extension AATireTemperature: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [location.rawValue] + temperature.bytes
+        self.temperature = temperature
     }
 }

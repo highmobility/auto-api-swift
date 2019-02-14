@@ -35,3 +35,7 @@ public enum AATimerType: UInt8 {
     case prefferedEndTime   = 0x01
     case departureDate      = 0x02
 }
+
+extension AATimerType: AABytesConvertable {
+    
+}

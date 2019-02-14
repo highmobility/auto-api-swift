@@ -36,3 +36,7 @@ public enum AAPlugType: UInt8 {
     case combinedChargingSystem = 0x02
     case CHAdeMO                = 0x03
 }
+
+extension AAPlugType: AABytesConvertable {
+
+}

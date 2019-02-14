@@ -37,15 +37,27 @@ public struct AACheckControlMessage {
     public let text: String
 }
 
-extension AACheckControlMessage: AAItemDynamicSize {
+extension AACheckControlMessage: AABytesConvertable {
 
-    static var greaterOrEqualSize: Int = 9
+    public var bytes: [UInt8] {
+        var textBytes = text.bytes
+        var statusBytes = status.bytes
+
+        textBytes.insert(contentsOf: textBytes.count.sizeBytes(amount: 2), at: 0)
+        statusBytes.insert(statusBytes.count.uint8, at: 0)
+
+        return id.bytes + remainingMinutes.bytes + textBytes + statusBytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        let id = UInt16(bytes[0...1])
-        let remainingMinutes = UInt32(bytes[2...5])
-        let textSize = UInt16(bytes[6...7]).int
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 9 else {
+            return nil
+        }
+
+        guard let textSize = UInt16(bytes: bytes[6...7])?.int else {
+            return nil
+        }
 
         // Need to check to prevent a crash
         guard bytes.count >= (8 + textSize) else {
@@ -62,9 +74,11 @@ extension AACheckControlMessage: AAItemDynamicSize {
         let textBytes = bytes[8 ..< (8 + textSize)]
         let statusBytes = bytes[(9 + textSize) ..< (9 + textSize + statusSize)]
 
-        // Create strings
-        guard let text = String(bytes: textBytes, encoding: .utf8),
-            let status = String(bytes: statusBytes, encoding: .utf8) else {
+        // Create values
+        guard let id = UInt16(bytes: bytes[0...1]),
+            let remainingMinutes = UInt32(bytes: bytes[2...5]),
+            let text = String(bytes: textBytes),
+            let status = String(bytes: statusBytes) else {
                 return nil
         }
 
@@ -73,18 +87,5 @@ extension AACheckControlMessage: AAItemDynamicSize {
         self.remainingMinutes = remainingMinutes
         self.status = status
         self.text = text
-    }
-}
-
-extension AACheckControlMessage: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        var textBytes = text.propertyValue
-        var statusBytes = status.propertyValue
-
-        textBytes.insert(contentsOf: UInt16(textBytes.count).bytes, at: 0)
-        statusBytes.insert(statusBytes.count.uint8, at: 0)
-
-        return id.bytes + remainingMinutes.bytes + textBytes + statusBytes
     }
 }

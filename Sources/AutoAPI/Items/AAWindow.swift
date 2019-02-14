@@ -46,25 +46,23 @@ public struct AAWindow {
     }
 }
 
-extension AAWindow: AAItem {
+extension AAWindow: AABytesConvertable {
 
-    static let size: Int = 2
+    public var bytes: [UInt8] {
+        return position.bytes + openClosed.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let location = AALocation(rawValue: bytes[0]),
-            let openClosed = AAOpenClosed(rawValue: bytes[1]) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 2 else {
+            return nil
+        }
+
+        guard let position = AALocation(bytes: bytes[0..<1]),
+            let openClosed = AAOpenClosed(bytes: bytes[1..<2]) else {
                 return nil
         }
 
-        self.openClosed = openClosed
-        self.position = location
-    }
-}
-
-extension AAWindow: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [position.rawValue, openClosed.rawValue]
+        self.init(openClosed: openClosed, position: position)
     }
 }

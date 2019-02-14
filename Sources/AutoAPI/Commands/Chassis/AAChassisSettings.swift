@@ -48,15 +48,15 @@ public struct AAChassisSettings: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        drivingMode = properties.property(for: \AAChassisSettings.drivingMode)
-        sportChronoState = properties.property(for: \AAChassisSettings.sportChronoState)
+        drivingMode = properties.property(forIdentifier: 0x01)
+        sportChronoState = properties.property(forIdentifier: 0x02)
         /* Level 8 */
-        currentSpringRates = properties.properties(for: \AAChassisSettings.currentSpringRates)
-        maximumSpringRates = properties.properties(for: \AAChassisSettings.maximumSpringRates)
-        minimumSpringRates = properties.properties(for: \AAChassisSettings.minimumSpringRates)
-        currentChassisPosition = properties.property(for: \AAChassisSettings.currentChassisPosition)
-        maximumChassisPosition = properties.property(for: \AAChassisSettings.maximumChassisPosition)
-        minimumChassisPosition = properties.property(for: \AAChassisSettings.minimumChassisPosition)
+        currentSpringRates = properties.allOrNil(forIdentifier: 0x05)
+        maximumSpringRates = properties.allOrNil(forIdentifier: 0x06)
+        minimumSpringRates = properties.allOrNil(forIdentifier: 0x07)
+        currentChassisPosition = properties.property(forIdentifier: 0x08)
+        maximumChassisPosition = properties.property(forIdentifier: 0x09)
+        minimumChassisPosition = properties.property(forIdentifier: 0x0A)
 
         // Properties
         self.properties = properties
@@ -81,26 +81,6 @@ extension AAChassisSettings: AAMessageTypesGettable {
     }
 }
 
-extension AAChassisSettings: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AAChassisSettings, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AAChassisSettings.drivingMode:        return 0x01
-        case \AAChassisSettings.sportChronoState:   return 0x02
-            /* Level 8 */
-        case \AAChassisSettings.currentSpringRates:      return 0x05
-        case \AAChassisSettings.maximumSpringRates:      return 0x06
-        case \AAChassisSettings.minimumSpringRates:      return 0x07
-        case \AAChassisSettings.currentChassisPosition:  return 0x08
-        case \AAChassisSettings.maximumChassisPosition:  return 0x09
-        case \AAChassisSettings.minimumChassisPosition:  return 0x0A
-
-        default:
-            return nil
-        }
-    }
-}
-
 public extension AAChassisSettings {
 
     static var getChassisSettings: [UInt8] {
@@ -108,18 +88,22 @@ public extension AAChassisSettings {
     }
 
     static func setChassisPosition(_ position: UInt8) -> [UInt8] {
-        return commandPrefix(for: .setChassisPosition) + position.propertyBytes(0x01)
+        return commandPrefix(for: .setChassisPosition)
+        // TODO: + position.propertyBytes(0x01)
     }
 
     static func setDrivingMode(_ mode: AADrivingMode) -> [UInt8] {
-        return commandPrefix(for: .setDrivingMode) + mode.propertyBytes(0x01)
+        return commandPrefix(for: .setDrivingMode)
+            // TODO: + mode.propertyBytes(0x01)
     }
 
     static func setSpringRates(_ rates: [AASpringRateValue]) -> [UInt8] {
-        return commandPrefix(for: .setSpringRates) + rates.reduceToByteArray { $0.propertyBytes(0x01) }
+        return commandPrefix(for: .setSpringRates)
+            // TODO: + rates.reduceToByteArray { $0.propertyBytes(0x01) }
     }
 
     static func startStopSportChrono(_ startStop: AAStartStopState) -> [UInt8] {
-        return commandPrefix(for: .startStopSportChrono) + startStop.propertyBytes(0x01)
+        return commandPrefix(for: .startStopSportChrono)
+            // TODO: + startStop.propertyBytes(0x01)
     }
 }

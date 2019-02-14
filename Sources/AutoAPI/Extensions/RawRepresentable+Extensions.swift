@@ -27,22 +27,16 @@
 //
 
 import Foundation
+import HMUtilities
 
 
 extension RawRepresentable {
 
-    init?(rawValue: Self.RawValue?) {
-        guard let rawValue = rawValue else {
-            return nil
-        }
-
-        self.init(rawValue: rawValue)
-    }
-}
-
-extension RawRepresentable where RawValue == UInt8 {
-
-    init?<Type: AAPropertyIdentifierGettable>(properties: AAProperties, keyPath: KeyPath<Type, Self?>) {
-        self.init(rawValue: properties.first(for: keyPath)?.monoValue)
-    }
+//    init?(rawValue: Self.RawValue?) {
+//        guard let rawValue = rawValue else {
+//            return nil
+//        }
+//
+//        self.init(rawValue: rawValue)
+//    }
 }

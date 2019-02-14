@@ -36,6 +36,6 @@ public enum AAGasFlapState: UInt8 {
     case locked = 0x02
 }
 
-extension AAGasFlapState: AAPropertyConvertable {
+extension AAGasFlapState: AABytesConvertable {
 
 }

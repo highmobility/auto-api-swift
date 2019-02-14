@@ -32,35 +32,34 @@ import Foundation
 public struct AAWindowOpenPercentage {
 
     public let location: AALocation
-    public let percentage: AAPercentageInt
+    public let percentage: AAPercentage
 
 
     // MARK: Init
 
-    public init(location: AALocation, percentage: AAPercentageInt) {
+    public init(location: AALocation, percentage: AAPercentage) {
         self.location = location
         self.percentage = percentage
     }
 }
 
-extension AAWindowOpenPercentage: AAItem {
+extension AAWindowOpenPercentage: AABytesConvertable {
 
-    static var size: Int = 2
+    public var bytes: [UInt8] {
+        return location.bytes + percentage.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let location = AALocation(rawValue: bytes[0]) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 9 else {
             return nil
         }
 
-        self.location = location
-        self.percentage = bytes[1]
-    }
-}
+        guard let location = AALocation(bytes: bytes[0..<1]),
+            let percentage = AAPercentage(bytes: bytes[1...9]) else {
+                return nil
+        }
 
-extension AAWindowOpenPercentage: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [location.rawValue, percentage]
+        self.init(location: location, percentage: percentage)
     }
 }

@@ -35,6 +35,6 @@ public enum AALockState: UInt8 {
     case locked     = 0x01
 }
 
-extension AALockState: AAPropertyConvertable {
+extension AALockState: AABytesConvertable {
 
 }

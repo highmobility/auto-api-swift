@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2018 High-Mobility GmbH
+// Copyright (C) 2019 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,60 +22,57 @@
 //  AABasicProperty.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 23/11/2017.
-//  Copyright © 2018 High Mobility. All rights reserved.
+//  Created by Mikk Rätsep on 12/02/2019.
+//  Copyright © 2019 High Mobility GmbH. All rights reserved.
 //
 
 import Foundation
 
 
-public struct AABasicProperty {
+public class AABasicProperty: AABytesConvertable {
 
-    public let identifier: AAPropertyIdentifier
-    public let size: UInt16
-    public let value: [UInt8]
-
-    public var bytes: [UInt8] {
-        return [identifier] + size.bytes + value.bytes
+    public var identifer: AAPropertyIdentifier {
+        return bytes[0]
     }
 
-    
-    var monoValue: UInt8? {
-        return value.first
+    public var failure: AAPropertyFailure? {
+        return AAPropertyFailure(bytes: components.component(for: .failure)?.value)
     }
-}
 
-extension AABasicProperty: AABinaryInitable {
+    public var timestamp: Date? {
+        return Date(bytes: components.component(for: .timestamp)?.value)
+    }
 
-    init?<C: Collection>(_ binary: C) where C.Element == UInt8 {
-        guard binary.count >= 3 else {
+    public var valueBytes: [UInt8]? {
+        return components.component(for: .data)?.value
+    }
+
+
+    let components: AAPropertyComponents
+
+
+    // MARK: AABytesConvertable
+
+    public let bytes: [UInt8]
+
+
+    required public init?(bytes: [UInt8]) {
+        guard bytes.count >= 3 else {
             return nil
         }
 
-        /*
-         This is a workaround for a Swift Compiler problem/bug? that doesn't let to subscript with an Int.
-         Which should work, as it inherits Comparable from (BinaryInteger -> Stridable).
-         */
-        let bytes = binary.bytes
+        let size = 3 + UInt16(bytes[1...2]).int
 
-        identifier = bytes[0]
-        size = UInt16(bytes[1...2])
-
-        guard binary.count == (3 + size) else {
+        guard bytes.count == size else {
             return nil
         }
 
-        value = bytes.suffix(from: 3).bytes
-    }
-}
+        guard let components = AAPropertyComponents(bytes: bytes[3..<size]) else {
+            return nil
+        }
 
-extension AABasicProperty: CustomStringConvertible {
-
-    public var description: String {
-        let id = String(format: "0x%02X", identifier)
-        let size = String(format: "%3d", self.size)
-        let value = self.value.map { String(format: "%02X", $0) }.joined()
-
-        return "id: " + id + ", size: " + size + ", val: 0x" + value
+        // Set the required and pre-computed values
+        self.bytes = bytes
+        self.components = components
     }
 }

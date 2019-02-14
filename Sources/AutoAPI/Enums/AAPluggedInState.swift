@@ -34,3 +34,7 @@ public enum AAPluggedInState: UInt8 {
     case disconnected   = 0x00
     case pluggedIn      = 0x01
 }
+
+extension AAPluggedInState: AABytesConvertable {
+
+}

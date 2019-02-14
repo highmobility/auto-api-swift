@@ -32,7 +32,7 @@ import HMUtilities
 
 public struct AAMultiCommand: AAInboundCommand, AAOutboundCommand {
 
-    public let states: [AAProperty<AAVehicleState>]?
+    public let states: [AAVehicleState]?
 
 
     // MARK: AAInboundCommand
@@ -45,11 +45,16 @@ public struct AAMultiCommand: AAInboundCommand, AAOutboundCommand {
             return nil
         }
 
-        let binaryTypes = AAAutoAPI.commands.compactMap { $0 as? AABinaryInitable.Type }
+        let binaryTypes = AAAutoAPI.commands.compactMap { $0 as? AABytesConvertable.Type }
 
         /* Level 9 */
-        states = properties.properties(for: \AAMultiCommand.states) { bytes in
-            binaryTypes.flatMapFirst { $0.init(bytes) as? AAVehicleState }
+        // TODO: Not sure this actually works
+        states = properties.filter {
+            $0.identifer == 0x01
+        }.compactMap {
+            $0.valueBytes
+        }.compactMap { bytes in
+            binaryTypes.flatMapFirst { $0.init(bytes: bytes) as? AAVehicleState }
         }
 
         // Properties
@@ -71,21 +76,11 @@ extension AAMultiCommand: AAMessageTypesGettable {
     }
 }
 
-extension AAMultiCommand: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AAMultiCommand, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AAMultiCommand.states: return 0x01
-
-        default:
-            return nil
-        }
-    }
-}
 
 public extension AAMultiCommand {
 
     static func combined(_ commands: [UInt8]...) -> [UInt8] {
-        return commandPrefix(for: .send) + commands.flatMap { $0.propertyBytes(0x01) }
+        return commandPrefix(for: .send)
+        // TODO: + commands.flatMap { $0.propertyBytes(0x01) }
     }
 }

@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2018 High-Mobility GmbH
+// Copyright (C) 2019 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -19,27 +19,24 @@
 // licensing@high-mobility.com
 //
 //
-//  AAPropertiesIterator.swift
+//  AAPropertyComponents.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 24/11/2017.
-//  Copyright © 2018 High Mobility. All rights reserved.
+//  Created by Mikk Rätsep on 12/02/2019.
+//  Copyright © 2019 High Mobility GmbH. All rights reserved.
 //
 
 import Foundation
 
 
-public struct AAPropertiesIterator: IteratorProtocol {
+struct AAPropertyComponents: Sequence, IteratorProtocol {
 
-    private var bytes: [UInt8]
+    public var bytes: [UInt8]
 
 
     // MARK: IteratorProtocol
 
-    public typealias Element = AABasicProperty
-
-
-    public mutating func next() -> AABasicProperty? {
+    mutating func next() -> AAPropertyComponent? {
         guard bytes.count >= 3 else {
             return nil
         }
@@ -50,19 +47,26 @@ public struct AAPropertiesIterator: IteratorProtocol {
             return nil
         }
 
-        guard let property = AABasicProperty(bytes.prefix(upTo: size)) else {
+        guard let component = AAPropertyComponent(bytes: bytes[..<size].bytes) else {
             return nil
         }
 
         bytes.removeFirst(size)
 
-        return property
+        return component
     }
 }
 
-extension AAPropertiesIterator: AABinaryInitable {
+extension AAPropertyComponents: AABytesConvertable {
 
-    init<C: Collection>(_ binary: C) where C.Element == UInt8 {
-        bytes = binary.bytes
+//    public init?(bytes: [UInt8]) {
+//        self.bytes = bytes
+//    }
+}
+
+extension AAPropertyComponents {
+
+    func component(for type: AAPropertyComponentType) -> AAPropertyComponent? {
+        return first { $0.type == type }
     }
 }

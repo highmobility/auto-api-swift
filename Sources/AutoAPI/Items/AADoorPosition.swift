@@ -35,25 +35,24 @@ public struct AADoorPosition {
     public let position: AAPositionState
 }
 
-extension AADoorPosition: AAItem {
+extension AADoorPosition: AABytesConvertable {
 
-    static let size: Int = 2
+    public var bytes: [UInt8] {
+        return location.bytes + position.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let location = AALocation(rawValue: bytes[0]),
-            let position = AAPositionState(rawValue: bytes[1]) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 2 else {
+            return nil
+        }
+
+        guard let location = AALocation(bytes: bytes[0..<1]),
+            let position = AAPositionState(bytes: bytes[1..<2]) else {
                 return nil
         }
 
         self.location = location
         self.position = position
-    }
-}
-
-extension AADoorPosition: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [location.rawValue, position.rawValue]
     }
 }

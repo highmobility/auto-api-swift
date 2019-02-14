@@ -56,3 +56,7 @@ public enum AAFailureReason: UInt8 {
     /// Capability rate limit has been exceeded.
     case rateLimit              = 0x07
 }
+
+extension AAFailureReason: AABytesConvertable {
+    
+}

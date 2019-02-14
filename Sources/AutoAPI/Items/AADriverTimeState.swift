@@ -35,24 +35,23 @@ public struct AADriverTimeState: Equatable {
     public let state: AATimeState
 }
 
-extension AADriverTimeState: AAItem {
+extension AADriverTimeState: AABytesConvertable {
 
-    static var size: Int = 2
+    public var bytes: [UInt8] {
+        return driverNumber.bytes + state.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let state = AATimeState(rawValue: bytes[1]) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 2 else {
+            return nil
+        }
+
+        guard let state = AATimeState(bytes: bytes[1..<2]) else {
             return nil
         }
 
         self.driverNumber = bytes[0]
         self.state = state
-    }
-}
-
-extension AADriverTimeState: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [driverNumber, state.rawValue]
     }
 }

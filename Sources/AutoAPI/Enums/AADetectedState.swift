@@ -34,3 +34,7 @@ public enum AADetectedState: UInt8 {
     case notDetected    = 0x00
     case detected       = 0x01
 }
+
+extension AADetectedState: AABytesConvertable {
+    
+}

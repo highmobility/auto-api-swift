@@ -34,3 +34,7 @@ public enum AAFluidLevel: UInt8 {
     case low    = 0x00
     case filled = 0x01
 }
+
+extension AAFluidLevel: AABytesConvertable {
+    
+}

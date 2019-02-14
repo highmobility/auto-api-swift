@@ -43,25 +43,23 @@ public struct AAReadingLamp {
     }
 }
 
-extension AAReadingLamp: AAItem {
+extension AAReadingLamp: AABytesConvertable {
 
-    static var size: Int = 2
+    public var bytes: [UInt8] {
+        return location.bytes + state.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let location = AALocation(rawValue: bytes[0]),
-            let state = AAActiveState(rawValue: bytes[1]) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 2 else {
+            return nil
+        }
+
+        guard let location = AALocation(bytes: bytes[0..<1]),
+            let state = AAActiveState(bytes: bytes[1..<2]) else {
                 return nil
         }
 
-        self.location = location
-        self.state = state
-    }
-}
-
-extension AAReadingLamp: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [location.rawValue, state.rawValue]
+        self.init(location: location, state: state)
     }
 }

@@ -151,7 +151,7 @@ class CapabilitiesTests: XCTestCase {
             return XCTFail("Parsed value is not Capabilities")
         }
 
-        let all = capabilities.all
+        let all = capabilities.all2
 
         XCTAssertEqual(all.count, 11)
 
@@ -261,7 +261,7 @@ class CapabilitiesTests: XCTestCase {
             return XCTFail("Parsed value is not Capabilities")
         }
 
-        XCTAssertEqual(capabilities.all.count, 1)
+        XCTAssertEqual(capabilities.all2.count, 1)
 
         guard let trunkAccess = capabilities.first(where: { $0.command is AATrunkAccess.Type }) else {
             return XCTFail("Capabilities doesn't contain capability for TrunkAccess")

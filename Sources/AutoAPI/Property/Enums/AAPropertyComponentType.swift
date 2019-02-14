@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2018 High-Mobility GmbH
+// Copyright (C) 2019 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -19,35 +19,19 @@
 // licensing@high-mobility.com
 //
 //
-//  AAPropertyConvertable.swift
+//  AAPropertyComponentType.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 01/12/2017.
-//  Copyright © 2018 High Mobility. All rights reserved.
+//  Created by Mikk Rätsep on 12/02/2019.
+//  Copyright © 2019 High Mobility GmbH. All rights reserved.
 //
 
 import Foundation
 
 
-protocol AAPropertyConvertable {
+enum AAPropertyComponentType: UInt8 {
 
-    var propertyValue: [UInt8] { get }
-
-    func propertyBytes(_ id: AAPropertyIdentifier) -> [UInt8]
-}
-
-extension AAPropertyConvertable {
-
-    func propertyBytes(_ id: AAPropertyIdentifier) -> [UInt8] {
-        let size = propertyValue.count
-
-        return [id, UInt8((size >> 8) & 0xFF), UInt8(size & 0xFF)] + propertyValue
-    }
-}
-
-extension AAPropertyConvertable where Self: RawRepresentable, Self.RawValue == UInt8 {
-
-    var propertyValue: [UInt8] {
-        return [rawValue]
-    }
+    case data       = 0x01
+    case timestamp  = 0x02
+    case failure    = 0x03
 }

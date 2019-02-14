@@ -36,3 +36,7 @@ public enum AADashboardLightState: UInt8 {
     case yellow     = 0x02
     case red        = 0x03
 }
+
+extension AADashboardLightState: AABytesConvertable {
+    
+}

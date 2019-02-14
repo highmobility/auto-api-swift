@@ -34,3 +34,7 @@ public enum AADisplayUnit: UInt8 {
     case km     = 0x00
     case miles  = 0x01
 }
+
+extension AADisplayUnit: AABytesConvertable {
+    
+}

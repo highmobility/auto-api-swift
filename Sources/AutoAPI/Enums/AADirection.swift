@@ -34,3 +34,7 @@ public enum AADirection: UInt8 {
     case forward    = 0x00
     case reverse    = 0x01
 }
+
+extension AADirection: AABytesConvertable {
+    
+}

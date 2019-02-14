@@ -35,6 +35,6 @@ public enum AAAxle: UInt8 {
     case rear   = 0x01
 }
 
-extension AAAxle: AAPropertyConvertable {
+extension AAAxle: AABytesConvertable {
     
 }

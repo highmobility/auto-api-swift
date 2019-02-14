@@ -34,3 +34,7 @@ public enum AALightLocation: UInt8 {
     case front  = 0x00
     case rear   = 0x01
 }
+
+extension AALightLocation: AABytesConvertable {
+    
+}

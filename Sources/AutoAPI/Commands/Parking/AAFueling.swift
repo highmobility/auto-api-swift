@@ -43,8 +43,8 @@ public struct AAFueling: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         /* Level 9 */
-        gasFlapLockState = properties.property(for: \AAFueling.gasFlapLockState)
-        gasFlapPosition = properties.property(for: \AAFueling.gasFlapPosition)
+        gasFlapLockState = properties.property(forIdentifier: 0x02)
+        gasFlapPosition = properties.property(forIdentifier: 0x03)
 
         // Properties
         self.properties = properties
@@ -66,20 +66,6 @@ extension AAFueling: AAMessageTypesGettable {
     }
 }
 
-extension AAFueling: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AAFueling, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-            /* Level 9 */
-        case \AAFueling.gasFlapLockState:   return 0x02
-        case \AAFueling.gasFlapPosition:    return 0x03
-
-        default:
-            return nil
-        }
-    }
-}
-
 public extension AAFueling {
 
     static var getGasFlapState: [UInt8] {
@@ -88,7 +74,7 @@ public extension AAFueling {
 
 
     static func controlGasFlap(lockState: AALockState? = nil, position: AAPositionState? = nil) -> [UInt8] {
-        return commandPrefix(for: .opencloseGasFlap) + [lockState?.propertyBytes(0x02),
-                                                        position?.propertyBytes(0x03)].propertiesValuesCombined
+        return commandPrefix(for: .opencloseGasFlap)
+        // TODO: + [lockState?.propertyBytes(0x02), position?.propertyBytes(0x03)].propertiesValuesCombined
     }
 }

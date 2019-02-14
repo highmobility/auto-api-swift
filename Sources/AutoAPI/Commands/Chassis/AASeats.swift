@@ -43,8 +43,8 @@ public struct AASeats: AAFullStandardCommand {
     init?(properties: AAProperties) {
         // Ordered by the ID
         /* Level 8 */
-        personsDetected = properties.properties(for: \AASeats.personsDetected)
-        seatbeltsFastened = properties.properties(for: \AASeats.seatbeltsFastened)
+        personsDetected = properties.allOrNil(forIdentifier: 0x02)
+        seatbeltsFastened = properties.allOrNil(forIdentifier: 0x03)
 
         // Properties
         self.properties = properties
@@ -62,19 +62,6 @@ extension AASeats: AAMessageTypesGettable {
 
         case getSeatsState  = 0x00
         case seatsState     = 0x01
-    }
-}
-
-extension AASeats: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AASeats, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AASeats.personsDetected:      return 0x02
-        case \AASeats.seatbeltsFastened:    return 0x03
-
-        default:
-            return nil
-        }
     }
 }
 

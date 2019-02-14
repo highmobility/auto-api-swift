@@ -37,6 +37,6 @@ public enum AAPositionState: UInt8 {
     case intermediate   = 0x02
 }
 
-extension AAPositionState: AAPropertyConvertable {
-
+extension AAPositionState: AABytesConvertable {
+    
 }

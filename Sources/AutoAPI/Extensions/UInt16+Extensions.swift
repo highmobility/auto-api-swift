@@ -36,14 +36,3 @@ extension UInt16 {
         return Int(self)
     }
 }
-
-extension UInt16: AABinaryInitable {
-
-}
-
-extension UInt16: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return bytes
-    }
-}

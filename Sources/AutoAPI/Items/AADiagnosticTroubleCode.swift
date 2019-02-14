@@ -37,12 +37,26 @@ public struct AADiagnosticTroubleCode {
     public let status: String
 }
 
-extension AADiagnosticTroubleCode: AAItemDynamicSize {
+extension AADiagnosticTroubleCode: AABytesConvertable {
 
-    static var greaterOrEqualSize: Int = 4
+    public var bytes: [UInt8] {
+        var idBytes = id.bytes
+        var ecuIDBytes = ecuID.bytes
+        var statusBytes = status.bytes
+
+        idBytes.insert(idBytes.count.uint8, at: 0)
+        ecuIDBytes.insert(ecuIDBytes.count.uint8, at: 0)
+        statusBytes.insert(statusBytes.count.uint8, at: 0)
+
+        return [occurences] + idBytes + ecuIDBytes + statusBytes
+    }
 
 
-    init?(bytes: [UInt8]) {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count >= 4 else {
+            return nil
+        }
+
         let occurences = bytes[0]
         let idSize = bytes[1].int
 
@@ -71,9 +85,9 @@ extension AADiagnosticTroubleCode: AAItemDynamicSize {
         let statusBytes = bytes[(4 + idSize + ecuIDSize) ..< (4 + idSize + ecuIDSize + statusSize)]
 
         // Create the strings
-        guard let id = String(bytes: idBytes, encoding: .utf8),
-            let ecuID = String(bytes: ecuIDBytes, encoding: .utf8),
-            let status = String(bytes: statusBytes, encoding: .utf8) else {
+        guard let id = String(bytes: idBytes),
+            let ecuID = String(bytes: ecuIDBytes),
+            let status = String(bytes: statusBytes) else {
                 return nil
         }
 
@@ -81,20 +95,5 @@ extension AADiagnosticTroubleCode: AAItemDynamicSize {
         self.id = id
         self.occurences = occurences
         self.status = status
-    }
-}
-
-extension AADiagnosticTroubleCode: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        var idBytes = id.propertyValue
-        var ecuIDBytes = ecuID.propertyValue
-        var statusBytes = status.propertyValue
-
-        idBytes.insert(idBytes.count.uint8, at: 0)
-        ecuIDBytes.insert(ecuIDBytes.count.uint8, at: 0)
-        statusBytes.insert(statusBytes.count.uint8, at: 0)
-
-        return [occurences, idBytes.count.uint8] + idBytes + ecuIDBytes + statusBytes
     }
 }

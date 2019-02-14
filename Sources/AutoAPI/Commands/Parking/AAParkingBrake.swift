@@ -41,7 +41,7 @@ public struct AAParkingBrake: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        state = properties.property(for: \AAParkingBrake.state)
+        state = properties.property(forIdentifier: 0x01)
 
         // Properties
         self.properties = properties
@@ -63,18 +63,6 @@ extension AAParkingBrake: AAMessageTypesGettable {
     }
 }
 
-extension AAParkingBrake: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AAParkingBrake, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AAParkingBrake.state: return 0x01
-
-        default:
-            return nil
-        }
-    }
-}
-
 public extension AAParkingBrake {
 
     static var getBrakeState: [UInt8] {
@@ -83,6 +71,7 @@ public extension AAParkingBrake {
 
 
     static func activate(_ state: AAActiveState) -> [UInt8] {
-        return commandPrefix(for: .activate) + state.propertyBytes(0x01)
+        return commandPrefix(for: .activate)
+            // TODO: + state.propertyBytes(0x01)
     }
 }

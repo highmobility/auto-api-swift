@@ -37,26 +37,28 @@ public struct AATire {
     public let wheelRPM: UInt16
 }
 
-extension AATire: AAItem {
+extension AATire: AABytesConvertable {
 
-    static let size: Int = 11
+    public var bytes: [UInt8] {
+        return position.bytes + pressure.bytes + temperature.bytes + wheelRPM.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let tirePosition = AALocation(rawValue: bytes[0]) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 11 else {
             return nil
         }
 
-        position = tirePosition
-        pressure = Float(bytes.dropFirstBytes(1))
-        temperature = Float(bytes.dropFirstBytes(5))
-        wheelRPM = UInt16(bytes.dropFirstBytes(9))
-    }
-}
+        guard let position = AALocation(bytes: bytes[0..<1]),
+            let pressure = Float(bytes: bytes[1...4]),
+            let temperature = Float(bytes: bytes[5...8]),
+            let wheelRPM = UInt16(bytes: bytes[9...10]) else {
+                return nil
+        }
 
-extension AATire: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [position.rawValue] + pressure.bytes + temperature.bytes + wheelRPM.bytes
+        self.position = position
+        self.pressure = pressure
+        self.temperature = temperature
+        self.wheelRPM = wheelRPM
     }
 }

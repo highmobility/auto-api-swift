@@ -37,6 +37,6 @@ public enum AANetworkSecurity: UInt8 {
     case WPA2Personal       = 0x03
 }
 
-extension AANetworkSecurity: AAPropertyConvertable {
+extension AANetworkSecurity: AABytesConvertable {
     
 }

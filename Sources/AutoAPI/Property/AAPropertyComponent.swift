@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  AAProperty.swift
+//  AAPropertyComponent.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 12/02/2019.
@@ -29,27 +29,45 @@
 import Foundation
 
 
-public class AAProperty<ValueType>: AABasicProperty where ValueType: AABytesConvertable {
+struct AAPropertyComponent {
 
-    public var value: ValueType? {
-        guard let valueBytes = valueBytes else {
-            return nil
-        }
+    let bytes: [UInt8]
+    let type: AAPropertyComponentType
 
-        return ValueType(bytes: valueBytes)
+    var value: [UInt8] {
+        return bytes[3...].bytes
     }
 
 
     // MARK: Init
 
-    init?(identifier: AAPropertyIdentifier, value: ValueType) {
-        let dataComponent = AAPropertyComponent(type: .data, value: value.bytes)
-        let size = [(dataComponent.bytes.count >> 8).uint8, dataComponent.bytes.count.uint8]
+    init(type: AAPropertyComponentType, value: [UInt8]) {
+        let size = [(value.count >> 8).uint8, value.count.uint8]
 
-        super.init(bytes: [identifier] + size + dataComponent.value)
+        self.bytes = [type.rawValue] + size + value
+        self.type = type
     }
+}
 
-    required init?(bytes: [UInt8]) {
-        super.init(bytes: bytes)
+extension AAPropertyComponent: AABytesConvertable {
+
+    /// Picks out the first bytes that correspond to a single component
+    init?(bytes: [UInt8]) {
+        guard bytes.count >= 3 else {
+            return nil
+        }
+
+        let size = 3 + UInt16(bytes[1...2])
+
+        guard bytes.count == size else {
+            return nil
+        }
+
+        guard let type = AAPropertyComponentType(rawValue: bytes[0]) else {
+            return nil
+        }
+
+        self.bytes = bytes
+        self.type = type
     }
 }

@@ -35,25 +35,24 @@ public struct AADashboardLight {
     public let state: AADashboardLightState
 }
 
-extension AADashboardLight: AAItem {
+extension AADashboardLight: AABytesConvertable {
 
-    static var size: Int = 2
+    public var bytes: [UInt8] {
+        return name.bytes + state.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let name = AADashboardLightName(rawValue: bytes[0]),
-            let state = AADashboardLightState(rawValue: bytes[1]) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 2 else {
+            return nil
+        }
+
+        guard let name = AADashboardLightName(bytes: bytes[0..<1]),
+            let state = AADashboardLightState(bytes: bytes[1..<2]) else {
                 return nil
         }
 
         self.name = name
         self.state = state
-    }
-}
-
-extension AADashboardLight: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [name.rawValue, state.rawValue]
     }
 }

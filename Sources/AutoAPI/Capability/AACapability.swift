@@ -49,19 +49,6 @@ public struct AACapability {
     public func supportsAllMessageTypes<M: AAMessageTypesGettable>(for command: M.Type) -> Bool where M.MessageTypes.RawValue == UInt8 {
         return supports(command.MessageTypes.allCases.map { $0.rawValue })
     }
-
-
-    // MARK: Init
-
-    init?<C: Collection>(binary: C, command: AACommand.Type) where C.Element == UInt8 {
-        guard binary.count >= 2 else {
-            return nil
-        }
-
-        self.command = command
-        self.identifier = AACommandIdentifier(binary.bytes.prefix(2))
-        self.supportedMessageTypes = binary.dropFirstBytes(2)
-    }
 }
 
 extension AACapability: Equatable {
@@ -69,5 +56,30 @@ extension AACapability: Equatable {
     public static func ==(lhs: AACapability, rhs: AACapability) -> Bool {
         // If the command matches, the 'identifier' must be the same
         return (lhs.command == rhs.command) && (lhs.supportedMessageTypes == rhs.supportedMessageTypes)
+    }
+}
+
+extension AACapability: AABytesConvertable {
+
+    public var bytes: [UInt8] {
+        return identifier.bytes + supportedMessageTypes
+    }
+
+
+    public init?(bytes: [UInt8]) {
+        guard bytes.count >= 2 else {
+            return nil
+        }
+
+        let commandTypes = AAAutoAPI.commands.compactMap { $0 as? AACommand.Type }
+        let identifier = AACommandIdentifier(bytes.prefix(2))
+
+        guard let command = commandTypes.first(where: { $0.identifier == identifier }) else {
+            return nil
+        }
+
+        self.command = command
+        self.identifier = identifier
+        self.supportedMessageTypes = bytes.dropFirstBytes(2)
     }
 }

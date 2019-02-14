@@ -38,3 +38,7 @@ public enum AAPowerTrain: UInt8 {
     case hydrogen           = 0x04
     case hydrogenHybrid     = 0x05
 }
+
+extension AAPowerTrain: AABytesConvertable {
+    
+}

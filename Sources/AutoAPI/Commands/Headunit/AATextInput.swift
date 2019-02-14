@@ -49,6 +49,7 @@ extension AATextInput: AAMessageTypesGettable {
 public extension AATextInput {
 
     static func textInput(_ text: String) -> [UInt8] {
-        return commandPrefix(for: .input) + text.propertyBytes(0x01)
+        return commandPrefix(for: .input)
+            // TODO: + text.propertyBytes(0x01)
     }
 }

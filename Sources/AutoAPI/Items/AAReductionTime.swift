@@ -35,25 +35,24 @@ public struct AAReductionTime {
     public let time: AATime
 }
 
-extension AAReductionTime: AAItem {
+extension AAReductionTime: AABytesConvertable {
 
-    static var size: Int = 3
+    public var bytes: [UInt8] {
+        return state.bytes + time.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let state = AAStartStopState(rawValue: bytes[0]),
-            let time = AATime(bytes.dropFirst()) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 3 else {
+            return nil
+        }
+
+        guard let state = AAStartStopState(bytes: bytes[0..<1]),
+            let time = AATime(bytes: bytes[1...2]) else {
                 return nil
         }
 
         self.state = state
         self.time = time
-    }
-}
-
-extension AAReductionTime: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return state.propertyValue + time.propertyValue
     }
 }

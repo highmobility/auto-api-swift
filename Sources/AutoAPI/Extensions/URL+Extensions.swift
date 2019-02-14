@@ -29,9 +29,18 @@
 import Foundation
 
 
-extension URL: AAPropertyConvertable {
+extension URL: AABytesConvertable {
 
-    var propertyValue: [UInt8] {
+    public var bytes: [UInt8] {
         return absoluteString.data(using: .utf8)?.bytes ?? []
+    }
+
+
+    public init?(bytes: [UInt8]) {
+        guard let string = String(bytes: bytes, encoding: .utf8) else {
+            return nil
+        }
+
+        self.init(string: string)
     }
 }

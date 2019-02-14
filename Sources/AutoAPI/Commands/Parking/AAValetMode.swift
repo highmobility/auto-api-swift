@@ -41,7 +41,7 @@ public struct AAValetMode: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        state = properties.property(for: \AAValetMode.state)
+        state = properties.property(forIdentifier: 0x01)
 
         // Properties
         self.properties = properties
@@ -63,18 +63,6 @@ extension AAValetMode: AAMessageTypesGettable {
     }
 }
 
-extension AAValetMode: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AAValetMode, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AAValetMode.state: return 0x01
-
-        default:
-            return nil
-        }
-    }
-}
-
 public extension AAValetMode {
 
     static var getState: [UInt8] {
@@ -83,6 +71,7 @@ public extension AAValetMode {
 
 
     static func activate(_ state: AAActiveState) -> [UInt8] {
-        return commandPrefix(for: .activate) + state.propertyBytes(0x01)
+        return commandPrefix(for: .activate)
+        // TODO: + state.propertyBytes(0x01)
     }
 }

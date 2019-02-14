@@ -47,10 +47,10 @@ public struct AAFailureMessage: AAInboundCommand {
             return nil
         }
 
-        messageIdentifier = properties.property(for: \AAFailureMessage.messageIdentifier)
-        self.messageType = properties.property(for: \AAFailureMessage.messageType)
-        description = properties.property(for: \AAFailureMessage.description)
-        reason = properties.property(for: \AAFailureMessage.reason)
+        messageIdentifier = properties.property(forIdentifier: 0x01)
+        self.messageType = properties.property(forIdentifier: 0x02)
+        reason = properties.property(forIdentifier: 0x03)
+        description = properties.property(forIdentifier: 0x04)
 
         // Properties
         self.properties = properties
@@ -67,20 +67,5 @@ extension AAFailureMessage: AAMessageTypesGettable {
     public enum MessageTypes: UInt8, CaseIterable {
 
         case failure = 0x01
-    }
-}
-
-extension AAFailureMessage: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AAFailureMessage, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AAFailureMessage.messageIdentifier:   return 0x01
-        case \AAFailureMessage.messageType:         return 0x02
-        case \AAFailureMessage.reason:              return 0x03
-        case \AAFailureMessage.description:         return 0x04
-
-        default:
-            return nil
-        }
     }
 }

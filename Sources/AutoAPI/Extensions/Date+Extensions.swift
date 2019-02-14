@@ -29,58 +29,22 @@
 import Foundation
 
 
-extension Date: AAItem {
+extension Date: AABytesConvertable {
 
-    static var size: Int = 8
+    public var bytes: [UInt8] {
+        return UInt64(timeIntervalSince1970 * 1e3).bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        let year = bytes[0].int + 2000
-        let month = bytes[1].int
-        let day = bytes[2].int
-        let hour = bytes[3].int
-        let minute = bytes[4].int
-        let second = bytes[5].int
-        let offset = Int(Int16(bytes[6...7]))
-
-        let dateComponents = DateComponents(calendar: Calendar.current,
-                                            timeZone: TimeZone(secondsFromGMT: offset * 60),
-                                            year: year,
-                                            month: month,
-                                            day: day,
-                                            hour: hour,
-                                            minute: minute,
-                                            second: second)
-
-        guard let convertedDate = dateComponents.date else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 8 else {
             return nil
         }
 
-        self = convertedDate
-    }
-}
-
-extension Date: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second, .timeZone], from: self)
-
-        guard let year = components.year,
-            let month = components.month,
-            let day = components.day,
-            let hour = components.hour,
-            let minute = components.minute,
-            let second = components.second,
-            let timeZone = components.timeZone else {
-                return []
+        guard let uint64 = UInt64(bytes: bytes) else {
+            return nil
         }
 
-        return [(year - 2000).uint8,
-                month.uint8,
-                day.uint8,
-                hour.uint8,
-                minute.uint8,
-                second.uint8] +
-            Int16(timeZone.secondsFromGMT() / 60).bytes
+        self.init(timeIntervalSince1970: TimeInterval(uint64) * 1e3)
     }
 }

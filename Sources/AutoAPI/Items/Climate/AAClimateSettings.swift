@@ -44,12 +44,3 @@ public struct AAClimateSettings {
         self.passengerTemp = passengerTemp
     }
 }
-
-extension AAClimateSettings: AAPropertiesMultiConvertable {
-
-    var propertiesValues: [[UInt8]?] {
-        return [climateProfile?.propertyBytes(0x01),
-                driverTemp?.propertyBytes(0x02),
-                passengerTemp?.propertyBytes(0x03)]
-    }
-}

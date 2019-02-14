@@ -27,6 +27,7 @@
 //
 
 import Foundation
+import HMUtilities
 
 
 public struct AATime {
@@ -43,21 +44,19 @@ public struct AATime {
     }
 }
 
-extension AATime: AAItem {
+extension AATime: AABytesConvertable {
 
-    static var size: Int = 2
-
-
-    init?(bytes: [UInt8]) {
-        hour = bytes[0]
-        minute = bytes[1]
-    }
-}
-
-extension AATime: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
+    public var bytes: [UInt8] {
         return [hour, minute]
+    }
+
+
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 2 else {
+            return nil
+        }
+
+        self.init(hour: bytes[0], minute: bytes[1])
     }
 }
 

@@ -39,26 +39,16 @@ extension String {
             self.init(format: format, arguments: arguments.compactMap { $0 })
         }
     }
-
-    init?<S>(bytes: S?, encoding: String.Encoding) where S : Sequence, S.Element == UInt8 {
-        guard let bytes = bytes else {
-            return nil
-        }
-
-        self.init(bytes: bytes, encoding: encoding)
-    }
 }
 
-extension String: AABinaryInitable {
+extension String: AABytesConvertable {
 
-    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        self.init(bytes: binary, encoding: .utf8)
-    }
-}
-
-extension String: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
+    public var bytes: [UInt8] {
         return data(using: .utf8)?.bytes ?? []
+    }
+
+
+    public init?(bytes: [UInt8]) {
+        self.init(data: bytes.data, encoding: .utf8)
     }
 }

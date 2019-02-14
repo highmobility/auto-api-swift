@@ -49,6 +49,7 @@ extension AAHeartRate: AAMessageTypesGettable {
 public extension AAHeartRate {
 
     static func sendRate(_ rate: UInt8) -> [UInt8] {
-        return commandPrefix(for: .sendRate) + rate.propertyBytes(0x01)
+        return commandPrefix(for: .sendRate)
+        // TODO: + rate.propertyBytes(0x01)
     }
 }

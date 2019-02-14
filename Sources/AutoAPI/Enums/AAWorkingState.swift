@@ -36,3 +36,7 @@ public enum AAWorkingState: UInt8 {
     case working            = 0x02
     case driving            = 0x03
 }
+
+extension AAWorkingState: AABytesConvertable {
+    
+}

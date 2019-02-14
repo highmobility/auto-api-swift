@@ -41,27 +41,23 @@ public struct AAActionItem {
     }
 }
 
-extension AAActionItem: AABinaryInitable {
+extension AAActionItem: AABytesConvertable {
 
-    init?<C>(_ binary: C) where C : Collection, C.Element == UInt8 {
-        guard binary.count >= 1 else {
-            return nil
-        }
-
-        guard let string = String(bytes: binary.dropFirst(), encoding: .utf8) else {
-            return nil
-        }
-
-        identifier = binary.bytes[0]
-        name = string
+    public var bytes: [UInt8] {
+        return identifier.bytes + name.bytes
     }
-}
 
-extension AAActionItem: AAPropertyConvertable {
 
-    var propertyValue: [UInt8] {
-        let nameBytes: [UInt8] = name.data(using: .utf8)?.bytes ?? []
+    public init?(bytes: [UInt8]) {
+        guard bytes.count >= 1 else {
+            return nil
+        }
 
-        return [identifier] + nameBytes
+        guard let string = String(bytes: bytes.dropFirst()) else {
+            return nil
+        }
+
+        identifier = bytes[0]
+        name = string
     }
 }

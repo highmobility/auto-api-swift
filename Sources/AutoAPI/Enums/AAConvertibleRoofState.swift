@@ -59,6 +59,6 @@ public enum AAConvertibleRoofState: UInt8 {
     case loadingPositionImmediate   = 0x08
 }
 
-extension AAConvertibleRoofState: AAPropertyConvertable {
-
+extension AAConvertibleRoofState: AABytesConvertable {
+    
 }

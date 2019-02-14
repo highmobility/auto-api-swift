@@ -29,19 +29,25 @@
 import Foundation
 
 
-public struct AADriverWorkingState: Equatable {
+public struct AADriverWorkingState {
 
     public let driverNumber: UInt8
     public let state: AAWorkingState
 }
 
-extension AADriverWorkingState: AAItem {
+extension AADriverWorkingState: AABytesConvertable {
 
-    static var size: Int = 2
+    public var bytes: [UInt8] {
+        return driverNumber.bytes + state.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let state = AAWorkingState(rawValue: bytes[1]) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 2 else {
+            return nil
+        }
+
+        guard let state = AAWorkingState(bytes: bytes[1..<2]) else {
             return nil
         }
 
@@ -50,9 +56,6 @@ extension AADriverWorkingState: AAItem {
     }
 }
 
-extension AADriverWorkingState: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [driverNumber, state.rawValue]
-    }
+extension AADriverWorkingState: Equatable {
+    
 }

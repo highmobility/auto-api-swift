@@ -35,24 +35,24 @@ public struct AATirePressure {
     public let pressure: Float
 }
 
-extension AATirePressure: AAItem {
+extension AATirePressure: AABytesConvertable {
 
-    static let size: Int = 5
+    public var bytes: [UInt8] {
+        return location.bytes + pressure.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let location = AALocation(rawValue: bytes[0]) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 5 else {
             return nil
         }
 
+        guard let location = AALocation(bytes: bytes[0..<1]),
+            let pressure = Float(bytes: bytes[1...4]) else {
+                return nil
+        }
+
         self.location = location
-        self.pressure = Float(bytes.dropFirst())
-    }
-}
-
-extension AATirePressure: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [location.rawValue] + pressure.bytes
+        self.pressure = pressure
     }
 }

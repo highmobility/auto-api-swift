@@ -36,3 +36,7 @@ public enum AAAccelerationType: UInt8 {
     case frontLateral   = 0x02
     case rearLateral    = 0x03
 }
+
+extension AAAccelerationType: AABytesConvertable {
+    
+}

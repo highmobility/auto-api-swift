@@ -35,24 +35,24 @@ public struct AAWheelRPM {
     public let rpm: UInt16
 }
 
-extension AAWheelRPM: AAItem {
+extension AAWheelRPM: AABytesConvertable {
 
-    static var size: Int = 3
+    public var bytes: [UInt8] {
+        return location.bytes + rpm.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let location = AALocation(rawValue: bytes[0]) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 3 else {
             return nil
         }
 
+        guard let location = AALocation(bytes: bytes[0..<1]),
+            let rpm = UInt16(bytes: bytes[1...2]) else {
+                return nil
+        }
+
         self.location = location
-        self.rpm = UInt16(bytes.dropFirst())
-    }
-}
-
-extension AAWheelRPM: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [location.rawValue] + rpm.bytes
+        self.rpm = rpm
     }
 }

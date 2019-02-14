@@ -39,3 +39,7 @@ public enum AALocation: UInt8 {
     case hatch      = 0x04
     case all        = 0x05
 }
+
+extension AALocation: AABytesConvertable {
+    
+}

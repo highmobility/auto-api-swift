@@ -48,27 +48,23 @@ public struct AAClimateWeekdayTime {
     }
 }
 
-extension AAClimateWeekdayTime: AAItem {
+extension AAClimateWeekdayTime: AABytesConvertable {
 
-    static var size: Int = 3
+    public var bytes: [UInt8] {
+        return weekday.bytes + time.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let weekday = AAWeekday(rawValue: bytes[0]),
-            let time = AATime(bytes.suffix(from: 1)) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 3 else {
+            return nil
+        }
+
+        guard let weekday = AAWeekday(bytes: bytes[0..<1]),
+            let time = AATime(bytes: bytes[1...2]) else {
                 return nil
         }
 
-        self.weekday = weekday
-        self.time = time
-    }
-}
-
-extension AAClimateWeekdayTime: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        let timeBytes = time.propertyValue
-
-        return [weekday.rawValue] + timeBytes
+        self.init(weekday: weekday, time: time)
     }
 }

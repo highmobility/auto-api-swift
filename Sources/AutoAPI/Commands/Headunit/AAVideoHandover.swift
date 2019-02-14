@@ -49,8 +49,7 @@ extension AAVideoHandover: AAMessageTypesGettable {
 public extension AAVideoHandover {
 
     static func videoHandover(url: URL, startingSecond second: UInt16?, screen: AAScreen?) -> [UInt8] {
-        return commandPrefix(for: .handover) + [url.propertyBytes(0x01),
-                                                second?.propertyBytes(0x02),
-                                                screen?.propertyBytes(0x03)].propertiesValuesCombined
+        return commandPrefix(for: .handover)
+            // TODO: + [url.propertyBytes(0x01), second?.propertyBytes(0x02), screen?.propertyBytes(0x03)].propertiesValuesCombined
     }
 }

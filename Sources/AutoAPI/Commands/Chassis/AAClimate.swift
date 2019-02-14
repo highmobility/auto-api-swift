@@ -51,18 +51,18 @@ public struct AAClimate: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        insideTemperature = properties.property(for: \AAClimate.insideTemperature)
-        outsideTemperature = properties.property(for: \AAClimate.outsideTemperature)
-        driverTemperature = properties.property(for: \AAClimate.driverTemperature)
-        passengerTemperature = properties.property(for: \AAClimate.passengerTemperature)
-        hvacState = properties.property(for: \AAClimate.hvacState)
-        defoggingState = properties.property(for: \AAClimate.defoggingState)
-        defrostingState = properties.property(for: \AAClimate.defrostingState)
-        ionisingState = properties.property(for: \AAClimate.ionisingState)
-        defrostingTemperature = properties.property(for: \AAClimate.defrostingTemperature)
+        insideTemperature = properties.property(forIdentifier: 0x01)
+        outsideTemperature = properties.property(forIdentifier: 0x02)
+        driverTemperature = properties.property(forIdentifier: 0x03)
+        passengerTemperature = properties.property(forIdentifier: 0x04)
+        hvacState = properties.property(forIdentifier: 0x05)
+        defoggingState = properties.property(forIdentifier: 0x06)
+        defrostingState = properties.property(forIdentifier: 0x07)
+        ionisingState = properties.property(forIdentifier: 0x08)
+        defrostingTemperature = properties.property(forIdentifier: 0x09)
         /* Level 8 */
-        weekdaysStartingTimes = properties.properties(for: \AAClimate.weekdaysStartingTimes)
-        rearTemperature = properties.property(for: \AAClimate.rearTemperature)
+        weekdaysStartingTimes = properties.allOrNil(forIdentifier: 0x0B)
+        rearTemperature = properties.property(forIdentifier: 0x0C)
 
         // Properties
         self.properties = properties
@@ -89,29 +89,6 @@ extension AAClimate: AAMessageTypesGettable {
     }
 }
 
-extension AAClimate: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AAClimate, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AAClimate.insideTemperature:      return 0x01
-        case \AAClimate.outsideTemperature:     return 0x02
-        case \AAClimate.driverTemperature:      return 0x03
-        case \AAClimate.passengerTemperature:   return 0x04
-        case \AAClimate.hvacState:              return 0x05
-        case \AAClimate.defoggingState:         return 0x06
-        case \AAClimate.defrostingState:        return 0x07
-        case \AAClimate.ionisingState:          return 0x08
-        case \AAClimate.defrostingTemperature:  return 0x09
-            /* Level 8 */
-        case \AAClimate.weekdaysStartingTimes:  return 0x0B
-        case \AAClimate.rearTemperature:        return 0x0C
-
-        default:
-            return nil
-        }
-    }
-}
-
 public extension AAClimate {
 
     static var getClimateState: [UInt8] {
@@ -120,28 +97,32 @@ public extension AAClimate {
 
 
     static func changeStartingTimes(_ times: [AAClimateWeekdayTime]) -> [UInt8] {
-        return commandPrefix(for: .changeStartingTimes) + times.reduceToByteArray { $0.propertyBytes(0x01) }
+        return commandPrefix(for: .changeStartingTimes)
+            // TODO: + times.reduceToByteArray { $0.propertyBytes(0x01) }
     }
 
     static func changeTemperatures(driver: Float?, passenger: Float?, rear: Float?) -> [UInt8] {
-        return commandPrefix(for: .changeTemperatures) + [driver?.propertyBytes(0x01),
-                                                          passenger?.propertyBytes(0x02),
-                                                          rear?.propertyBytes(0x03)].propertiesValuesCombined
+        return commandPrefix(for: .changeTemperatures)
+            // TODO: + [driver?.propertyBytes(0x01), passenger?.propertyBytes(0x02), rear?.propertyBytes(0x03)].propertiesValuesCombined
     }
 
     static func startStopDefogging(_ state: AAActiveState) -> [UInt8] {
-        return commandPrefix(for: .startStopDefogging) + state.propertyBytes(0x01)
+        return commandPrefix(for: .startStopDefogging)
+            // TODO: + state.propertyBytes(0x01)
     }
 
     static func startStopDefrosting(_ state: AAActiveState) -> [UInt8] {
-            return commandPrefix(for: .startStopDefrosting) + state.propertyBytes(0x01)
+            return commandPrefix(for: .startStopDefrosting)
+                // TODO: + state.propertyBytes(0x01)
     }
 
     static func startStopHVAC(_ state: AAActiveState) -> [UInt8] {
-        return commandPrefix(for: .startStopHVAC) + state.propertyBytes(0x01)
+        return commandPrefix(for: .startStopHVAC)
+            // TODO: + state.propertyBytes(0x01)
     }
 
     static func startStopIonising(_ state: AAActiveState) -> [UInt8] {
-        return commandPrefix(for: .startStopIonising) + state.propertyBytes(0x01)
+        return commandPrefix(for: .startStopIonising)
+            // TODO: + state.propertyBytes(0x01)
     }
 }

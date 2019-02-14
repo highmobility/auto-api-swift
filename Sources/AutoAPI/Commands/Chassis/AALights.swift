@@ -28,10 +28,6 @@
 
 import Foundation
 
-#if os(iOS) || os(tvOS)
-    import UIKit
-#endif
-
 
 public struct AALights: AAFullStandardCommand {
 
@@ -52,15 +48,15 @@ public struct AALights: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        frontExterior = properties.property(for: \AALights.frontExterior)
-        rearExteriorState = properties.property(for: \AALights.rearExteriorState)
-        ambientColour = properties.properties(for: \AALights.ambientColour) { $0.colour }?.first
-        reverseState = properties.property(for: \AALights.reverseState)
-        emergencyBrakeState = properties.property(for: \AALights.emergencyBrakeState)
+        frontExterior = properties.property(forIdentifier: 0x01)
+        rearExteriorState = properties.property(forIdentifier: 0x02)
+        ambientColour = properties.property(forIdentifier: 0x04)
+        reverseState = properties.property(forIdentifier: 0x05)
+        emergencyBrakeState = properties.property(forIdentifier: 0x06)
         /* Level 9 */
-        fogLights = properties.properties(for: \AALights.fogLights)
-        readingLamps = properties.properties(for: \AALights.readingLamps)
-        interiorLamps = properties.properties(for: \AALights.interiorLamps)
+        fogLights = properties.allOrNil(forIdentifier: 0x07)
+        readingLamps = properties.allOrNil(forIdentifier: 0x08)
+        interiorLamps = properties.allOrNil(forIdentifier: 0x09)
 
         // Properties
         self.properties = properties
@@ -79,26 +75,6 @@ extension AALights: AAMessageTypesGettable {
         case getLightsState = 0x00
         case lightsState    = 0x01
         case controlLights  = 0x12
-    }
-}
-
-extension AALights: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AALights, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AALights.frontExterior:       return 0x01
-        case \AALights.rearExteriorState:   return 0x02
-        case \AALights.ambientColour:       return 0x04
-        case \AALights.reverseState:        return 0x05
-        case \AALights.emergencyBrakeState: return 0x06
-            /* Level 9 */
-        case \AALights.fogLights:       return 0x07
-        case \AALights.readingLamps:    return 0x08
-        case \AALights.interiorLamps:   return 0x09
-
-        default:
-            return nil
-        }
     }
 }
 
@@ -127,28 +103,7 @@ public extension AALights {
                 return []
         }
 
-        return commandPrefix(for: .controlLights) + [frontExterior?.propertyBytes(0x01),
-                                                     rearExterior?.propertyBytes(0x02),
-                                                     interior?.propertyBytes(0x03),
-                                                     ambientColour?.propertyBytes(0x04),
-                                                     fogLights?.reduceToByteArray { $0.propertyBytes(0x07) },
-                                                     readingLamps?.reduceToByteArray { $0.propertyBytes(0x08) },
-                                                     interiorLamps?.reduceToByteArray { $0.propertyBytes(0x09) }].propertiesValuesCombined
-    }
-}
-
-
-private extension Collection where Element == UInt8 {
-
-    var colour: AAColour? {
-        guard count == 3 else {
-            return nil
-        }
-
-        let red = CGFloat(bytes[0]) / 255.0
-        let green = CGFloat(bytes[1]) / 255.0
-        let blue = CGFloat(bytes[2]) / 255.0
-
-        return AAColour(red: red, green: green, blue: blue, alpha: 1.0)
+        return commandPrefix(for: .controlLights)
+            // TODO: + [frontExterior?.propertyBytes(0x01), rearExterior?.propertyBytes(0x02), interior?.propertyBytes(0x03), ambientColour?.propertyBytes(0x04), fogLights?.reduceToByteArray { $0.propertyBytes(0x07) }, readingLamps?.reduceToByteArray { $0.propertyBytes(0x08) }, interiorLamps?.reduceToByteArray { $0.propertyBytes(0x09) }].propertiesValuesCombined
     }
 }

@@ -75,6 +75,6 @@ extension AAActivatedDays: CustomStringConvertible {
     }
 }
 
-extension AAActivatedDays: AAPropertyConvertable {
+extension AAActivatedDays: AABytesConvertable {
 
 }

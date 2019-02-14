@@ -32,8 +32,8 @@ import Foundation
 public struct AARooftopControl: AAFullStandardCommand {
 
     public let convertibleRoofState: AAProperty<AAConvertibleRoofState>?
-    public let dimming: AAProperty<AAPercentageInt>?
-    public let position: AAProperty<AAPercentageInt>?
+    public let dimming: AAProperty<AAPercentage>?
+    public let position: AAProperty<AAPercentage>?
     public let sunroofTiltState: AAProperty<AATiltState>?
     public let sunroofState: AAProperty<AAPositionState>?
 
@@ -45,13 +45,13 @@ public struct AARooftopControl: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        dimming = properties.property(for: \AARooftopControl.dimming)
-        position = properties.property(for: \AARooftopControl.position)
+        dimming = properties.property(forIdentifier: 0x01)
+        position = properties.property(forIdentifier: 0x02)
         /* Level 8 */
-        convertibleRoofState = properties.property(for: \AARooftopControl.convertibleRoofState)
-        sunroofTiltState = properties.property(for: \AARooftopControl.sunroofTiltState)
+        convertibleRoofState = properties.property(forIdentifier: 0x03)
+        sunroofTiltState = properties.property(forIdentifier: 0x04)
         /* Level 9 */
-        sunroofState = properties.property(for: \AARooftopControl.sunroofState)
+        sunroofState = properties.property(forIdentifier: 0x05)
 
         // Properties
         self.properties = properties
@@ -73,38 +73,18 @@ extension AARooftopControl: AAMessageTypesGettable {
     }
 }
 
-extension AARooftopControl: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AARooftopControl, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AARooftopControl.dimming:     return 0x01
-        case \AARooftopControl.position:    return 0x02
-            /* Level 8 */
-        case \AARooftopControl.convertibleRoofState:    return 0x03
-        case \AARooftopControl.sunroofTiltState:        return 0x04
-        case \AARooftopControl.sunroofState:            return 0x05
-
-        default:
-            return nil
-        }
-    }
-}
-
 public extension AARooftopControl {
 
     static var getRooftopState: [UInt8] {
         return commandPrefix(for: .getRooftopState)
     }
 
-    static func controlRooftop(dimming: AAPercentageInt?,
-                               open: AAPercentageInt?,
+    static func controlRooftop(dimming: AAPercentage?,
+                               open: AAPercentage?,
                                convertibleRoof: AAConvertibleRoofState?,
                                sunroofTilt: AATiltState?,
                                sunroofState: AAPositionState?) -> [UInt8] {
-        return commandPrefix(for: .controlRooftop) + [dimming?.propertyBytes(0x01),
-                                                      open?.propertyBytes(0x02),
-                                                      convertibleRoof?.propertyBytes(0x03),
-                                                      sunroofTilt?.propertyBytes(0x04),
-                                                      sunroofState?.propertyBytes(0x05)].propertiesValuesCombined
+        return commandPrefix(for: .controlRooftop)
+        // TODO: + [dimming?.propertyBytes(0x01), open?.propertyBytes(0x02), convertibleRoof?.propertyBytes(0x03), sunroofTilt?.propertyBytes(0x04), sunroofState?.propertyBytes(0x05)].propertiesValuesCombined
     }
 }

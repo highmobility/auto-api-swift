@@ -34,3 +34,7 @@ public enum AAChosenState: UInt8 {
     case notChosen  = 0x00
     case chosen     = 0x01
 }
+
+extension AAChosenState: AABytesConvertable {
+
+}

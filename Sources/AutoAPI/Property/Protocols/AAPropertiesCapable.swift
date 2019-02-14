@@ -32,7 +32,6 @@ import Foundation
 public protocol AAPropertiesCapable {
 
     var carSignature: [UInt8]? { get }
-    var milliseconds: TimeInterval? { get }
     var nonce: [UInt8]? { get }
     var timestamp: Date? { get }
 

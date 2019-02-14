@@ -41,7 +41,7 @@ public struct AAStartStop: AAFullStandardCommand {
 
     init?(properties: AAProperties) {
         // Ordered by the ID
-        activeState = properties.property(for: \AAStartStop.activeState)
+        activeState = properties.property(forIdentifier: 0x01)
 
         // Properties
         self.properties = properties
@@ -63,18 +63,6 @@ extension AAStartStop: AAMessageTypesGettable {
     }
 }
 
-extension AAStartStop: AAPropertyIdentifierGettable {
-
-    static func propertyID<Type>(for keyPath: KeyPath<AAStartStop, Type>) -> AAPropertyIdentifier? {
-        switch keyPath {
-        case \AAStartStop.activeState: return 0x01
-
-        default:
-            return nil
-        }
-    }
-}
-
 public extension AAStartStop {
 
     static var getState: [UInt8] {
@@ -83,6 +71,7 @@ public extension AAStartStop {
 
 
     static func activate(_ state: AAActiveState) -> [UInt8] {
-        return commandPrefix(for: .activate) + state.propertyBytes(0x01)
+        return commandPrefix(for: .activate)
+            // TODO: + state.propertyBytes(0x01)
     }
 }

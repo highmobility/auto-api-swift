@@ -34,3 +34,7 @@ public enum AAConnectionState: UInt8 {
     case disconnected   = 0x00
     case connected      = 0x01
 }
+
+extension AAConnectionState: AABytesConvertable {
+    
+}

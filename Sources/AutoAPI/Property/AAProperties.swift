@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2018 High-Mobility GmbH
+// Copyright (C) 2019 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,120 +22,81 @@
 //  AAProperties.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 24/11/2017.
-//  Copyright © 2018 High Mobility. All rights reserved.
+//  Created by Mikk Rätsep on 12/02/2019.
+//  Copyright © 2019 High Mobility GmbH. All rights reserved.
 //
 
 import Foundation
 
 
-public struct AAProperties: Sequence, AAPropertiesCapable {
+public struct AAProperties: Sequence, IteratorProtocol, AABytesConvertable {
 
     public var carSignature: [UInt8]? {
-        return first(for: 0xA1)?.value
-    }
-
-    public var milliseconds: TimeInterval? {
-        guard let bytes = first(for: 0xA3)?.value else {
-            return nil
-        }
-
-        return TimeInterval(bytes)
+        return universalPropertyBytes(for: .carSignature)
     }
 
     public var nonce: [UInt8]? {
-        return first(for: 0xA0)?.value
+        return universalPropertyBytes(for: .nonce)
     }
 
     public var timestamp: Date? {
-        guard let bytes = first(for: 0xA2)?.value else {
+        return Date(bytes: universalPropertyBytes(for: .timestamp))
+    }
+
+
+    // MARK: AABytesConvertable
+
+    public var bytes: [UInt8]
+
+
+    public init?(bytes: [UInt8]) {
+        self.bytes = bytes
+    }
+
+
+    // MARK: IteratorProtocol
+
+    public mutating func next() -> AABasicProperty? {
+        guard bytes.count >= 3 else {
             return nil
         }
 
-        return Date(bytes)
-    }
+        let size = 3 + UInt16(bytes[1...2]).int
 
-    public var properties: AAProperties {
-        return self
-    }
+        guard bytes.count >= size else {
+            return nil
+        }
 
+        guard let property = AABasicProperty(bytes: bytes[..<size].bytes) else {
+            return nil
+        }
 
-    // MARK: Internal Vars
+        bytes.removeFirst(size)
 
-    let bytes: [UInt8]
-
-
-    // MARK: Sequence
-
-    public typealias Iterator = AAPropertiesIterator
-
-
-    public func makeIterator() -> AAPropertiesIterator {
-        return AAPropertiesIterator(bytes)
-    }
-}
-
-extension AAProperties: AABinaryInitable {
-
-    init<C: Collection>(_ binary: C) where C.Element == UInt8 {
-        bytes = binary.bytes
+        return property
     }
 }
 
 extension AAProperties {
 
-    var propertiesFailures: [AAPropertyFailure]? {
-        return flatMap(for: 0xA5) {  AAPropertyFailure($0.value) }
-    }
-
-    var propertiesTimestamps: [AAPropertyTimestamp]? {
-        return flatMap(for: 0xA4) { AAPropertyTimestamp($0.value) }
-    }
-
-
-    // MARK: Methods
-
-    func filter(for identifier: AAPropertyIdentifier) -> [AABasicProperty] {
-        return filter { $0.identifier == identifier }
-    }
-
-    func filter<Type: AAPropertyIdentifierGettable, ReturnType>(for propertyKeyPath: KeyPath<Type, ReturnType>) -> [AABasicProperty] {
-        guard let identifier = Type.propertyID(for: propertyKeyPath) else {
-            return []
+    func allOrNil<R>(forIdentifier identifier: AAPropertyIdentifier) -> [AAProperty<R>]? {
+        let all = filter {
+            $0.identifer == identifier
+        }.compactMap {
+            return AAProperty<R>(bytes: $0.bytes)
         }
 
-        return filter(for: identifier)
+        return all.isEmpty ? nil : all
     }
 
-
-    func first(for identifier: AAPropertyIdentifier) -> AABasicProperty? {
-        return first(where: { $0.identifier == identifier })
+    func property<R>(forIdentifier identifier: AAPropertyIdentifier) -> AAProperty<R>? {
+        return allOrNil(forIdentifier: identifier)?.first
     }
+}
 
-    func first<Type: AAPropertyIdentifierGettable, ReturnType>(for propertyKeyPath: KeyPath<Type, ReturnType>) -> AABasicProperty? {
-        guard let identifier = Type.propertyID(for: propertyKeyPath) else {
-            return nil
-        }
+private extension AAProperties {
 
-        return first(for: identifier)
-    }
-
-
-    func flatMap<T>(for identifier: AAPropertyIdentifier, transform: (AABasicProperty) throws -> T?) rethrows -> [T]? {
-        let filtered = filter(for: identifier)
-
-        guard filtered.count > 0 else {
-            return nil
-        }
-
-        return try filtered.compactMap(transform)
-    }
-
-    func flatMap<T, Type: AAPropertyIdentifierGettable, ReturnType>(for propertyKeyPath: KeyPath<Type, ReturnType>, transform: (AABasicProperty) throws -> T?) rethrows -> [T]? {
-        guard let identifier = Type.propertyID(for: propertyKeyPath) else {
-            return nil
-        }
-
-        return try flatMap(for: identifier, transform: transform)
+    func universalPropertyBytes(for identifer: AAUniversalPropertyType) -> [UInt8]? {
+        return first { $0.identifer == identifer.rawValue }?.valueBytes
     }
 }

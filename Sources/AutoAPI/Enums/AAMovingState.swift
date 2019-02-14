@@ -34,3 +34,7 @@ public enum AAMovingState: UInt8 {
     case notMoving  = 0x00
     case moving     = 0x01
 }
+
+extension AAMovingState: AABytesConvertable {
+    
+}

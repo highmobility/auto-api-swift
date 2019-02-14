@@ -34,3 +34,7 @@ public enum AAPresenceState: UInt8 {
     case notPresent = 0x00
     case present    = 0x01
 }
+
+extension AAPresenceState: AABytesConvertable {
+    
+}

@@ -34,3 +34,7 @@ public enum AAParkingTicketState: UInt8 {
     case ended      = 0x00
     case started    = 0x01
 }
+
+extension AAParkingTicketState: AABytesConvertable {
+    
+}

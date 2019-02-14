@@ -38,3 +38,7 @@ public enum AAChargingState: UInt8 {
     case chargingPaused     = 0x04
     case chargingError      = 0x05
 }
+
+extension AAChargingState: AABytesConvertable {
+
+}

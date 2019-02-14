@@ -94,6 +94,10 @@ public enum AAZone: RawRepresentable {
     }
 }
 
+extension AAZone: AABytesConvertable {
+
+}
+
 extension AAZone: CustomStringConvertible {
 
     public var description: String {
@@ -104,8 +108,4 @@ extension AAZone: CustomStringConvertible {
             return "unavailable"
         }
     }
-}
-
-extension AAZone: AAPropertyConvertable {
-    
 }

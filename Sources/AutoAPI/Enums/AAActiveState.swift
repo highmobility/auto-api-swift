@@ -39,6 +39,6 @@ public enum AAActiveState: UInt8 {
     static let activate = AAActiveState.active
 }
 
-extension AAActiveState: AAPropertyConvertable {
+extension AAActiveState: AABytesConvertable {
     
 }

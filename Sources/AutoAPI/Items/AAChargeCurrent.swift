@@ -29,39 +29,37 @@
 import Foundation
 
 
-public struct AAChargeCurrent: AAItem {
+public struct AAChargeCurrent {
 
     public let chargeCurrentDC: Float
     public let maximumValue: Float
     public let minimumValue: Float
-
-
-    // MARK: AAItem
-
-    static var size: Int = 12
 }
 
-extension AAChargeCurrent: AABinaryInitable {
+extension AAChargeCurrent: AABytesConvertable {
 
-    init?(bytes: [UInt8]) {
-        chargeCurrentDC = Float(bytes.prefix(upTo: 4))
-        maximumValue = Float(bytes[4..<8])
-        minimumValue = Float(bytes.suffix(from: 8))
-    }
-}
-
-extension AAChargeCurrent: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
+    public var bytes: [UInt8] {
         return chargeCurrentDC.bytes + maximumValue.bytes + minimumValue.bytes
+    }
+
+
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 12 else {
+            return nil
+        }
+
+        guard let charge = Float(bytes: bytes[0...3]),
+            let max = Float(bytes: bytes[4...7]),
+            let min = Float(bytes: bytes[8...11]) else {
+                return nil
+        }
+
+        chargeCurrentDC = charge
+        maximumValue = max
+        minimumValue = min
     }
 }
 
 extension AAChargeCurrent: Equatable {
 
-    public static func ==(lhs: AAChargeCurrent, rhs: AAChargeCurrent) -> Bool {
-        return (lhs.chargeCurrentDC == rhs.chargeCurrentDC) &&
-            (lhs.maximumValue == rhs.maximumValue) &&
-            (lhs.minimumValue == rhs.minimumValue)
-    }
 }

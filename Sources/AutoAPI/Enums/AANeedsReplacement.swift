@@ -40,6 +40,6 @@ public enum AANeedsReplacement: UInt8 {
     public static let replacementNeeded = AANeedsReplacement.yes
 }
 
-extension AANeedsReplacement: AAPropertyConvertable {
+extension AANeedsReplacement: AABytesConvertable {
     
 }

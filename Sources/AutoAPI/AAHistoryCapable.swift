@@ -35,7 +35,7 @@ public protocol AAHistoryCapable: AAIdentifiable, AAPropertiesCapable, AAVehicle
 
 extension AAHistoryCapable {
 
-    func propertyBytes(_ id: AAPropertyIdentifier) -> [UInt8] {
-        return [id, 0x00, 0x02, UInt8((Self.identifier >> 8) & 0xFF), UInt8(Self.identifier & 0xFF)]
-    }
+//    func propertyBytes(_ id: AAPropertyIdentifier) -> [UInt8] {
+//        return [id, 0x00, 0x02, UInt8((Self.identifier >> 8) & 0xFF), UInt8(Self.identifier & 0xFF)]
+//    }
 }

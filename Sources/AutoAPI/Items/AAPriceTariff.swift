@@ -45,12 +45,18 @@ public struct AAPriceTariff {
     }
 }
 
-extension AAPriceTariff: AAItemDynamicSize {
+extension AAPriceTariff: AABytesConvertable {
 
-    static var greaterOrEqualSize: Int = 6
+    public var bytes: [UInt8] {
+        return type.bytes + price.bytes + currency.bytes.count.uint8.bytes + currency.bytes
+    }
     
 
-    init?(bytes: [UInt8]) {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count >= 6 else {
+            return nil
+        }
+
         let currencySize = bytes[5].int
 
         // Check the byte count
@@ -58,29 +64,18 @@ extension AAPriceTariff: AAItemDynamicSize {
             return nil
         }
 
-        guard let type = AAPricingType(rawValue: bytes[0]),
-            let currency = String(bytes: bytes[6 ..< (6 + currencySize)], encoding: .utf8) else {
+        guard let type = AAPricingType(bytes: bytes[0..<1]),
+            let price = Float(bytes: bytes[1...4]),
+            let currency = String(bytes: bytes[6..<(6 + currencySize)]) else {
                 return nil
         }
 
         self.type = type
-        self.price = Float(bytes[1 ... 4])
+        self.price = price
         self.currency = currency
     }
 }
 
 extension AAPriceTariff: Equatable {
 
-    public static func ==(lhs: AAPriceTariff, rhs: AAPriceTariff) -> Bool {
-        return (lhs.type == rhs.type) &&
-            (lhs.currency == rhs.currency) &&
-            (lhs.price == rhs.price)
-    }
-}
-
-extension AAPriceTariff: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [type.rawValue] + price.propertyValue + [currency.propertyValue.count.uint8] + currency.propertyValue
-    }
 }

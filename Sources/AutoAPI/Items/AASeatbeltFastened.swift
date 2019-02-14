@@ -35,25 +35,24 @@ public struct AASeatbeltFastened {
     public let location: AASeatLocation
 }
 
-extension AASeatbeltFastened: AAItem {
+extension AASeatbeltFastened: AABytesConvertable {
 
-    static var size: Int = 2
+    public var bytes: [UInt8] {
+        return location.bytes + fastened.bytes
+    }
 
 
-    init?(bytes: [UInt8]) {
-        guard let location = AASeatLocation(rawValue: bytes[0]),
-            let fastened = AAFastened(rawValue: bytes[1]) else {
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 2 else {
+            return nil
+        }
+        
+        guard let location = AASeatLocation(bytes: bytes[0..<1]),
+            let fastened = AAFastened(bytes: bytes[1..<2]) else {
                 return nil
         }
 
         self.location = location
         self.fastened = fastened
-    }
-}
-
-extension AASeatbeltFastened: AAPropertyConvertable {
-
-    var propertyValue: [UInt8] {
-        return [location.rawValue, fastened.rawValue]
     }
 }
