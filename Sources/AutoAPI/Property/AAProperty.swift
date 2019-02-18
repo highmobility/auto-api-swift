@@ -44,12 +44,33 @@ public class AAProperty<ValueType>: AABasicProperty where ValueType: AABytesConv
 
     init?(identifier: AAPropertyIdentifier, value: ValueType) {
         let dataComponent = AAPropertyComponent(type: .data, value: value.bytes)
-        let size = [(dataComponent.bytes.count >> 8).uint8, dataComponent.bytes.count.uint8]
+        let size = dataComponent.bytes.count.sizeBytes(amount: 2)
 
         super.init(bytes: [identifier] + size + dataComponent.value)
     }
 
     required init?(bytes: [UInt8]) {
         super.init(bytes: bytes)
+    }
+}
+
+extension AAProperty: CustomStringConvertible {
+
+    public var description: String {
+        var description = "\(type(of: self))"
+
+        description += ", id: 0x\(identifier.bytes.hex)"
+        description += ", failure: \(String(describing: failure))"
+        description += ", timestamp: \(String(describing: timestamp))"
+
+        // Done so because "String(describing: value)" still produces an optional here
+        if let value = value {
+            description += ", value: \(String(describing: value))"
+        }
+        else {
+            description += ", value: nil"
+        }
+
+        return description
     }
 }

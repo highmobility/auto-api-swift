@@ -38,9 +38,7 @@ public struct AAPropertyFailure {
 extension AAPropertyFailure: AABytesConvertable {
 
     public var bytes: [UInt8] {
-        return reason.bytes +
-            description.bytes.count.sizeBytes(amount: 2) +
-            description.bytes
+        return reason.bytes + description.bytes.count.sizeBytes(amount: 2) + description.bytes
     }
 
 

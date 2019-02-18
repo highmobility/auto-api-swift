@@ -61,7 +61,11 @@ public struct AAProperties: Sequence, IteratorProtocol, AABytesConvertable {
             return nil
         }
 
-        let size = 3 + UInt16(bytes[1...2]).int
+        guard let propertiesSize = UInt16(bytes: bytes[1...2])?.int else {
+            return nil
+        }
+
+        let size = 3 + propertiesSize
 
         guard bytes.count >= size else {
             return nil
@@ -81,7 +85,7 @@ extension AAProperties {
 
     func allOrNil<R>(forIdentifier identifier: AAPropertyIdentifier) -> [AAProperty<R>]? {
         let all = filter {
-            $0.identifer == identifier
+            $0.identifier == identifier
         }.compactMap {
             return AAProperty<R>(bytes: $0.bytes)
         }
@@ -97,6 +101,6 @@ extension AAProperties {
 private extension AAProperties {
 
     func universalPropertyBytes(for identifer: AAUniversalPropertyType) -> [UInt8]? {
-        return first { $0.identifer == identifer.rawValue }?.valueBytes
+        return first { $0.identifier == identifer.rawValue }?.valueBytes
     }
 }

@@ -29,29 +29,16 @@
 import Foundation
 
 
-public protocol AAMessageTypesGettable {
+public protocol AAMessageTypesGettable where MessageTypes.RawValue == UInt8 {
 
     associatedtype MessageTypes: RawRepresentable & CaseIterable
 }
 
-extension AAMessageTypesGettable where Self.MessageTypes.RawValue == UInt8 {
+extension AAMessageTypesGettable where Self: AAIdentifiable {
 
-    static func commandPrefix(for command: AACommand.Type, messageType: Self.MessageTypes) -> [UInt8] {
-        return commandPrefix(for: command, messageType: messageType, additionalBytes: nil)
-    }
+    static func command(forMessageType messageType: Self.MessageTypes, properties: [AABasicProperty?] = []) -> AACommand {
+        let bytes = Self.identifier.bytes + [messageType.rawValue] + properties.compactMap { $0?.bytes }.flatMap { $0 }
 
-    static func commandPrefix(for command: AACommand.Type, messageType: Self.MessageTypes, additionalBytes bytes: UInt8?...) -> [UInt8] {
-        return command.identifier.bytes + [messageType.rawValue] + bytes.compactMap { $0 }
-    }
-}
-
-extension AAMessageTypesGettable where Self: AAIdentifiable, Self.MessageTypes.RawValue == UInt8 {
-
-    static func commandPrefix(for messageType: Self.MessageTypes) -> [UInt8] {
-        return commandPrefix(for: messageType, additionalBytes: nil)
-    }
-
-    static func commandPrefix(for messageType: Self.MessageTypes, additionalBytes bytes: UInt8?...) -> [UInt8] {
-        return Self.identifier.bytes + [messageType.rawValue] + bytes.compactMap { $0 }
+        return AACommand(bytes: bytes)
     }
 }

@@ -29,6 +29,7 @@
 import Foundation
 
 
+// TODO: Could be more generic with "identifier's associatedType"
 public protocol AAIdentifiable {
 
     static var identifier: AACommandIdentifier { get }

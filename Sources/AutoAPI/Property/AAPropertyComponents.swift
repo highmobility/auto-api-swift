@@ -41,7 +41,11 @@ struct AAPropertyComponents: Sequence, IteratorProtocol {
             return nil
         }
 
-        let size = 3 + UInt16(bytes[1...2]).int
+        guard let componentsSize = UInt16(bytes: bytes[1...2])?.int else {
+            return nil
+        }
+
+        let size = 3 + componentsSize
 
         guard bytes.count >= size else {
             return nil
@@ -59,9 +63,6 @@ struct AAPropertyComponents: Sequence, IteratorProtocol {
 
 extension AAPropertyComponents: AABytesConvertable {
 
-//    public init?(bytes: [UInt8]) {
-//        self.bytes = bytes
-//    }
 }
 
 extension AAPropertyComponents {

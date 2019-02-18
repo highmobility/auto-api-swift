@@ -31,7 +31,7 @@ import Foundation
 
 public class AABasicProperty: AABytesConvertable {
 
-    public var identifer: AAPropertyIdentifier {
+    public var identifier: AAPropertyIdentifier {
         return bytes[0]
     }
 
@@ -61,7 +61,11 @@ public class AABasicProperty: AABytesConvertable {
             return nil
         }
 
-        let size = 3 + UInt16(bytes[1...2]).int
+        guard let propertySize = UInt16(bytes: bytes[1...2])?.int else {
+            return nil
+        }
+
+        let size = 3 + propertySize
 
         guard bytes.count == size else {
             return nil

@@ -64,15 +64,20 @@ extension AAConditionBasedService: AABytesConvertable {
         // Gather some values
         let year = bytes[0].int + 2000
         let month = bytes[1].int
-        let id = UInt16(bytes[2...3])
-        let textSize = UInt16(bytes[5...6]).int
+
+        guard let id = UInt16(bytes: bytes[2...3]),
+            let textSize = UInt16(bytes: bytes[5...6])?.int else {
+                return nil
+        }
 
         // Need to check to prevent a crash
         guard bytes.count >= (8 + textSize) else {
             return nil
         }
 
-        let descSize = UInt16(bytes[(7 + textSize) ... (8 + textSize)]).int
+        guard let descSize = UInt16(bytes: bytes[(7 + textSize) ... (8 + textSize)])?.int else {
+            return nil
+        }
 
         guard let date = DateComponents(calendar: Calendar.current, year: year, month: month).date,
             let status = AADueStatus(rawValue: bytes[4]) else {

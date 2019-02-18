@@ -21,6 +21,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2009F2862219712C00274607 /* AACapability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2009F2852219712C00274607 /* AACapability.swift */; };
+		2009F2882219715600274607 /* AACapabilityClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2009F2872219715600274607 /* AACapabilityClass.swift */; };
+		201B930E221AC52A005A1D96 /* AACommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B930D221AC52A005A1D96 /* AACommand.swift */; };
 		201BFD8921C39D77001E1DC1 /* AAFogLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201BFD8821C39D77001E1DC1 /* AAFogLight.swift */; };
 		201BFD8B21C39DEF001E1DC1 /* AALightLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201BFD8A21C39DEF001E1DC1 /* AALightLocation.swift */; };
 		201BFD8D21C39FB7001E1DC1 /* AAInteriorLamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201BFD8C21C39FB7001E1DC1 /* AAInteriorLamp.swift */; };
@@ -51,8 +54,8 @@
 		205C517D208F451300B55ACE /* CruiseControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517C208F451300B55ACE /* CruiseControlTests.swift */; };
 		205D9EA421B672840082CE1E /* AAGasFlapState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205D9EA321B672840082CE1E /* AAGasFlapState.swift */; };
 		205D9EA621B67C0D0082CE1E /* AAReadingLamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205D9EA521B67C0D0082CE1E /* AAReadingLamp.swift */; };
-		20646B94216B96910000824D /* AAHistoryCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20646B93216B96910000824D /* AAHistoryCapable.swift */; };
-		20646B96216B96CD0000824D /* AAHistoricalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20646B95216B96CD0000824D /* AAHistoricalState.swift */; };
+		206003D52219722800741188 /* AACapabilityValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206003D42219722800741188 /* AACapabilityValue.swift */; };
+		206003D72219781600741188 /* AABytesConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206003D62219781600741188 /* AABytesConvertable.swift */; };
 		207A0AC4218C710B0067923E /* AAWindowOpenPercentage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207A0AC0218C70970067923E /* AAWindowOpenPercentage.swift */; };
 		207A0AC5218C710E0067923E /* AAWindowPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207A0AC2218C71040067923E /* AAWindowPosition.swift */; };
 		20896EE4214799C1003A7A63 /* AAChosenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EE3214799C1003A7A63 /* AAChosenState.swift */; };
@@ -79,7 +82,6 @@
 		20B56EBA218C6B9B006E9946 /* AADoorLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B56EB9218C6B9B006E9946 /* AADoorLock.swift */; };
 		20B56EBC218C6BFC006E9946 /* AASeatPersonDetected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B56EBB218C6BFC006E9946 /* AASeatPersonDetected.swift */; };
 		20B56EBE218C6C1C006E9946 /* AASeatbeltFastened.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B56EBD218C6C1C006E9946 /* AASeatbeltFastened.swift */; };
-		20BB171D2142604100A3FDB5 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BB171B2142603A00A3FDB5 /* Date+Extensions.swift */; };
 		20CDFAA7215264F300402BF6 /* AADetectedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDFAA6215264F300402BF6 /* AADetectedState.swift */; };
 		20CDFAA92152657100402BF6 /* AAFastened.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDFAA82152657100402BF6 /* AAFastened.swift */; };
 		20D2FCC7217874F3005ECE96 /* AADiagnosticTroubleCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D2FCC6217874F3005ECE96 /* AADiagnosticTroubleCode.swift */; };
@@ -115,7 +117,6 @@
 		OBJ_271 /* DoorLocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_179 /* DoorLocksTests.swift */; };
 		OBJ_272 /* DriverFatigueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_180 /* DriverFatigueTests.swift */; };
 		OBJ_273 /* EngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_181 /* EngineTests.swift */; };
-		OBJ_274 /* Sequence+FlatMapFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_183 /* Sequence+FlatMapFirst.swift */; };
 		OBJ_275 /* FailureMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_184 /* FailureMessageTests.swift */; };
 		OBJ_276 /* FirmwareVersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_185 /* FirmwareVersionTests.swift */; };
 		OBJ_277 /* FuelingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_186 /* FuelingTests.swift */; };
@@ -154,7 +155,6 @@
 		OBJ_311 /* HMUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "HMUtilities::HMUtilities::Product" /* HMUtilities.framework */; };
 		OBJ_318 /* AAAutoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* AAAutoAPI.swift */; };
 		OBJ_320 /* AACapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* AACapabilities.swift */; };
-		OBJ_322 /* AACapability.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* AACapability.swift */; };
 		OBJ_323 /* AASDKVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* AASDKVersion.swift */; };
 		OBJ_324 /* AACharging.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* AACharging.swift */; };
 		OBJ_325 /* AAChassisSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* AAChassisSettings.swift */; };
@@ -197,11 +197,6 @@
 		OBJ_362 /* AANaviDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_64 /* AANaviDestination.swift */; };
 		OBJ_363 /* AAVehicleLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_65 /* AAVehicleLocation.swift */; };
 		OBJ_364 /* AAVehicleTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_66 /* AAVehicleTime.swift */; };
-		OBJ_366 /* AACommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_69 /* AACommand.swift */; };
-		OBJ_367 /* AAFullCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_70 /* AAFullCommand.swift */; };
-		OBJ_368 /* AAFullStandardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_71 /* AAFullStandardCommand.swift */; };
-		OBJ_369 /* AAInboundCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_72 /* AAInboundCommand.swift */; };
-		OBJ_370 /* AAOutboundCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_73 /* AAOutboundCommand.swift */; };
 		OBJ_372 /* AAAccelerationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_76 /* AAAccelerationType.swift */; };
 		OBJ_374 /* AAAuthenticationMechanism.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_78 /* AAAuthenticationMechanism.swift */; };
 		OBJ_375 /* AAAxle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_79 /* AAAxle.swift */; };
@@ -235,13 +230,8 @@
 		OBJ_405 /* AAWipersIntensity.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_109 /* AAWipersIntensity.swift */; };
 		OBJ_406 /* AAWipersState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_110 /* AAWipersState.swift */; };
 		OBJ_407 /* AAZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_111 /* AAZone.swift */; };
-		OBJ_412 /* RawRepresentable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_117 /* RawRepresentable+Extensions.swift */; };
-		OBJ_413 /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_118 /* Sequence+Extensions.swift */; };
-		OBJ_414 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_119 /* String+Extensions.swift */; };
 		OBJ_415 /* UInt16+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_120 /* UInt16+Extensions.swift */; };
 		OBJ_417 /* UInt8+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_122 /* UInt8+Extensions.swift */; };
-		OBJ_418 /* UInt8Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_123 /* UInt8Collection+Extensions.swift */; };
-		OBJ_419 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_124 /* URL+Extensions.swift */; };
 		OBJ_420 /* AAIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_125 /* AAIdentifiable.swift */; };
 		OBJ_421 /* AAAcceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_127 /* AAAcceleration.swift */; };
 		OBJ_422 /* AAActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_128 /* AAActionItem.swift */; };
@@ -262,12 +252,9 @@
 		OBJ_442 /* AATire.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_151 /* AATire.swift */; };
 		OBJ_443 /* AAWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_152 /* AAWindow.swift */; };
 		OBJ_445 /* AAMessageTypesGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_154 /* AAMessageTypesGettable.swift */; };
-		OBJ_447 /* AAPropertiesCapable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_157 /* AAPropertiesCapable.swift */; };
-		OBJ_454 /* AAVehicleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_165 /* AAVehicleState.swift */; };
 		OBJ_456 /* AAVehicleStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_167 /* AAVehicleStatus.swift */; };
 		OBJ_458 /* HMUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "HMUtilities::HMUtilities::Product" /* HMUtilities.framework */; };
 		OBJ_464 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_222 /* Bool+Extensions.swift */; };
-		OBJ_465 /* FixedWidthInteger+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_223 /* FixedWidthInteger+Extensions.swift */; };
 		OBJ_466 /* Float+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_224 /* Float+Extensions.swift */; };
 		OBJ_467 /* SignedInteger+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_225 /* SignedInteger+Extensions.swift */; };
 		OBJ_468 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_226 /* String+Extensions.swift */; };
@@ -313,6 +300,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2009F2852219712C00274607 /* AACapability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACapability.swift; sourceTree = "<group>"; };
+		2009F2872219715600274607 /* AACapabilityClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACapabilityClass.swift; sourceTree = "<group>"; };
+		201B930D221AC52A005A1D96 /* AACommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACommand.swift; sourceTree = "<group>"; };
 		201BFD8821C39D77001E1DC1 /* AAFogLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFogLight.swift; sourceTree = "<group>"; };
 		201BFD8A21C39DEF001E1DC1 /* AALightLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALightLocation.swift; sourceTree = "<group>"; };
 		201BFD8C21C39FB7001E1DC1 /* AAInteriorLamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAInteriorLamp.swift; sourceTree = "<group>"; };
@@ -343,8 +333,8 @@
 		205C517C208F451300B55ACE /* CruiseControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruiseControlTests.swift; sourceTree = "<group>"; };
 		205D9EA321B672840082CE1E /* AAGasFlapState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAGasFlapState.swift; sourceTree = "<group>"; };
 		205D9EA521B67C0D0082CE1E /* AAReadingLamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAReadingLamp.swift; sourceTree = "<group>"; };
-		20646B93216B96910000824D /* AAHistoryCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHistoryCapable.swift; sourceTree = "<group>"; };
-		20646B95216B96CD0000824D /* AAHistoricalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHistoricalState.swift; sourceTree = "<group>"; };
+		206003D42219722800741188 /* AACapabilityValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACapabilityValue.swift; sourceTree = "<group>"; };
+		206003D62219781600741188 /* AABytesConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AABytesConvertable.swift; sourceTree = "<group>"; };
 		2065E938220DB25A000F8F29 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		206ED7D02060FD7000D7761E /* UniversalBuildScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = UniversalBuildScript.sh; sourceTree = "<group>"; };
 		206ED7D12060FD7000D7761E /* AppStoreCompatible.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppStoreCompatible.sh; sourceTree = "<group>"; };
@@ -374,7 +364,6 @@
 		20B56EBB218C6BFC006E9946 /* AASeatPersonDetected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASeatPersonDetected.swift; sourceTree = "<group>"; };
 		20B56EBD218C6C1C006E9946 /* AASeatbeltFastened.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASeatbeltFastened.swift; sourceTree = "<group>"; };
 		20B7C958215D1C8F00C9C9A7 /* AATirePressure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATirePressure.swift; sourceTree = "<group>"; };
-		20BB171B2142603A00A3FDB5 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		20CDFAA6215264F300402BF6 /* AADetectedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADetectedState.swift; sourceTree = "<group>"; };
 		20CDFAA82152657100402BF6 /* AAFastened.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFastened.swift; sourceTree = "<group>"; };
 		20D2FCC6217874F3005ECE96 /* AADiagnosticTroubleCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADiagnosticTroubleCode.swift; sourceTree = "<group>"; };
@@ -412,14 +401,9 @@
 		OBJ_109 /* AAWipersIntensity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWipersIntensity.swift; sourceTree = "<group>"; };
 		OBJ_110 /* AAWipersState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWipersState.swift; sourceTree = "<group>"; };
 		OBJ_111 /* AAZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAZone.swift; sourceTree = "<group>"; };
-		OBJ_117 /* RawRepresentable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RawRepresentable+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_118 /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_119 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_12 /* AACapabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACapabilities.swift; sourceTree = "<group>"; };
 		OBJ_120 /* UInt16+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt16+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_122 /* UInt8+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt8+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_123 /* UInt8Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt8Collection+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_124 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_125 /* AAIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAIdentifiable.swift; sourceTree = "<group>"; };
 		OBJ_127 /* AAAcceleration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAAcceleration.swift; sourceTree = "<group>"; };
 		OBJ_128 /* AAActionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAActionItem.swift; sourceTree = "<group>"; };
@@ -431,7 +415,6 @@
 		OBJ_137 /* AAClimateProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAClimateProfile.swift; sourceTree = "<group>"; };
 		OBJ_138 /* AATime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATime.swift; sourceTree = "<group>"; };
 		OBJ_139 /* AAWeekdaysStartingTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWeekdaysStartingTimes.swift; sourceTree = "<group>"; };
-		OBJ_14 /* AACapability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACapability.swift; sourceTree = "<group>"; };
 		OBJ_140 /* AAColour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAColour.swift; sourceTree = "<group>"; };
 		OBJ_141 /* AACoordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACoordinates.swift; sourceTree = "<group>"; };
 		OBJ_142 /* AADoor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADoor.swift; sourceTree = "<group>"; };
@@ -442,8 +425,6 @@
 		OBJ_151 /* AATire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATire.swift; sourceTree = "<group>"; };
 		OBJ_152 /* AAWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWindow.swift; sourceTree = "<group>"; };
 		OBJ_154 /* AAMessageTypesGettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAMessageTypesGettable.swift; sourceTree = "<group>"; };
-		OBJ_157 /* AAPropertiesCapable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertiesCapable.swift; sourceTree = "<group>"; };
-		OBJ_165 /* AAVehicleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAVehicleState.swift; sourceTree = "<group>"; };
 		OBJ_167 /* AAVehicleStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAVehicleStatus.swift; sourceTree = "<group>"; };
 		OBJ_169 /* Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
 		OBJ_170 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -457,7 +438,6 @@
 		OBJ_18 /* AACharging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACharging.swift; sourceTree = "<group>"; };
 		OBJ_180 /* DriverFatigueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverFatigueTests.swift; sourceTree = "<group>"; };
 		OBJ_181 /* EngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineTests.swift; sourceTree = "<group>"; };
-		OBJ_183 /* Sequence+FlatMapFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+FlatMapFirst.swift"; sourceTree = "<group>"; };
 		OBJ_184 /* FailureMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureMessageTests.swift; sourceTree = "<group>"; };
 		OBJ_185 /* FirmwareVersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirmwareVersionTests.swift; sourceTree = "<group>"; };
 		OBJ_186 /* FuelingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelingTests.swift; sourceTree = "<group>"; };
@@ -497,7 +477,6 @@
 		OBJ_217 /* WindscreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindscreenTests.swift; sourceTree = "<group>"; };
 		OBJ_22 /* AAKeyfobPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAKeyfobPosition.swift; sourceTree = "<group>"; };
 		OBJ_222 /* Bool+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_223 /* FixedWidthInteger+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FixedWidthInteger+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_224 /* Float+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_225 /* SignedInteger+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignedInteger+Extensions.swift"; sourceTree = "<group>"; };
 		OBJ_226 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -540,11 +519,6 @@
 		OBJ_64 /* AANaviDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AANaviDestination.swift; sourceTree = "<group>"; };
 		OBJ_65 /* AAVehicleLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAVehicleLocation.swift; sourceTree = "<group>"; };
 		OBJ_66 /* AAVehicleTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAVehicleTime.swift; sourceTree = "<group>"; };
-		OBJ_69 /* AACommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACommand.swift; sourceTree = "<group>"; };
-		OBJ_70 /* AAFullCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFullCommand.swift; sourceTree = "<group>"; };
-		OBJ_71 /* AAFullStandardCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFullStandardCommand.swift; sourceTree = "<group>"; };
-		OBJ_72 /* AAInboundCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAInboundCommand.swift; sourceTree = "<group>"; };
-		OBJ_73 /* AAOutboundCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOutboundCommand.swift; sourceTree = "<group>"; };
 		OBJ_76 /* AAAccelerationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAAccelerationType.swift; sourceTree = "<group>"; };
 		OBJ_78 /* AAAuthenticationMechanism.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAAuthenticationMechanism.swift; sourceTree = "<group>"; };
 		OBJ_79 /* AAAxle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAAxle.swift; sourceTree = "<group>"; };
@@ -607,23 +581,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2029BF312213383F002FAE32 /* Enums */ = {
-			isa = PBXGroup;
-			children = (
-				2029BF232213211D002FAE32 /* AAPropertyComponentType.swift */,
-				2029BF2F221337F8002FAE32 /* AAUniversalPropertyType.swift */,
-			);
-			path = Enums;
-			sourceTree = "<group>";
-		};
-		20646B99216B97B10000824D /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_157 /* AAPropertiesCapable.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		206ED7CF2060FD7000D7761E /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
@@ -642,27 +599,12 @@
 			path = HeavyDuty;
 			sourceTree = "<group>";
 		};
-		OBJ_11 /* Capability */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_12 /* AACapabilities.swift */,
-				OBJ_14 /* AACapability.swift */,
-			);
-			path = Capability;
-			sourceTree = "<group>";
-		};
 		OBJ_112 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				20BB171B2142603A00A3FDB5 /* Date+Extensions.swift */,
 				20A0E4B72215AD0000BE2EDD /* Int+Extensions.swift */,
-				OBJ_117 /* RawRepresentable+Extensions.swift */,
-				OBJ_118 /* Sequence+Extensions.swift */,
-				OBJ_119 /* String+Extensions.swift */,
 				OBJ_122 /* UInt8+Extensions.swift */,
-				OBJ_123 /* UInt8Collection+Extensions.swift */,
 				OBJ_120 /* UInt16+Extensions.swift */,
-				OBJ_124 /* URL+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -672,10 +614,13 @@
 			children = (
 				OBJ_127 /* AAAcceleration.swift */,
 				OBJ_128 /* AAActionItem.swift */,
+				OBJ_136 /* AAActivatedDays.swift */,
 				OBJ_129 /* AABrakeTorqueVectoring.swift */,
 				OBJ_130 /* AAChargeCurrent.swift */,
 				OBJ_131 /* AAChargingTimer.swift */,
 				20F7903621356C54003BDFA2 /* AACheckControlMessage.swift */,
+				OBJ_137 /* AAClimateProfile.swift */,
+				2024BBF32154CFA400AA5261 /* AAClimateSettings.swift */,
 				2024BBFD21553D8A00AA5261 /* AAClimateWeekdayTime.swift */,
 				OBJ_140 /* AAColour.swift */,
 				20F7903821356F54003BDFA2 /* AAConditionBasedService.swift */,
@@ -703,48 +648,37 @@
 				OBJ_151 /* AATire.swift */,
 				20B7C958215D1C8F00C9C9A7 /* AATirePressure.swift */,
 				20B0C144215D1ECE005FA699 /* AATireTemperature.swift */,
+				OBJ_139 /* AAWeekdaysStartingTimes.swift */,
 				20B0C146215D1F23005FA699 /* AAWheelRPM.swift */,
 				OBJ_152 /* AAWindow.swift */,
 				207A0AC2218C71040067923E /* AAWindowPosition.swift */,
 				207A0AC0218C70970067923E /* AAWindowOpenPercentage.swift */,
-				OBJ_135 /* Climate */,
 			);
 			path = Items;
-			sourceTree = "<group>";
-		};
-		OBJ_135 /* Climate */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_136 /* AAActivatedDays.swift */,
-				OBJ_137 /* AAClimateProfile.swift */,
-				2024BBF32154CFA400AA5261 /* AAClimateSettings.swift */,
-				OBJ_139 /* AAWeekdaysStartingTimes.swift */,
-			);
-			path = Climate;
 			sourceTree = "<group>";
 		};
 		OBJ_155 /* Property */ = {
 			isa = PBXGroup;
 			children = (
 				20AF961821BFA5E4002EC106 /* AAPropertyFailure.swift */,
-				20646B99216B97B10000824D /* Protocols */,
 				2029BF2122131EEC002FAE32 /* AAProperties.swift */,
 				2029BF2722132283002FAE32 /* AABasicProperty.swift */,
 				2029BF29221323DA002FAE32 /* AAProperty.swift */,
 				2029BF2522132172002FAE32 /* AAPropertyComponents.swift */,
 				2029BF2B221323FB002FAE32 /* AAPropertyComponent.swift */,
-				2029BF312213383F002FAE32 /* Enums */,
 			);
 			path = Property;
 			sourceTree = "<group>";
 		};
-		OBJ_16 /* Commands */ = {
+		OBJ_16 /* Capabilities */ = {
 			isa = PBXGroup;
 			children = (
+				OBJ_12 /* AACapabilities.swift */,
 				OBJ_41 /* AAFailureMessage.swift */,
 				OBJ_42 /* AAFirmwareVersion.swift */,
 				209462622162489F0009E9AD /* AAHistorical.swift */,
 				2033CAAF219C5222006489F2 /* AAMultiCommand.swift */,
+				OBJ_167 /* AAVehicleStatus.swift */,
 				OBJ_17 /* Chassis */,
 				OBJ_28 /* Diagnostics */,
 				OBJ_33 /* DigitalKey */,
@@ -755,18 +689,8 @@
 				OBJ_54 /* Infrastructure */,
 				OBJ_56 /* Parking */,
 				OBJ_63 /* PointsOfInterest */,
-				OBJ_67 /* Protocols */,
 			);
-			path = Commands;
-			sourceTree = "<group>";
-		};
-		OBJ_164 /* VehicleStatus */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_165 /* AAVehicleState.swift */,
-				OBJ_167 /* AAVehicleStatus.swift */,
-			);
-			path = VehicleStatus;
+			path = Capabilities;
 			sourceTree = "<group>";
 		};
 		OBJ_168 /* AutoAPICLT */ = {
@@ -819,7 +743,6 @@
 				OBJ_179 /* DoorLocksTests.swift */,
 				OBJ_180 /* DriverFatigueTests.swift */,
 				OBJ_181 /* EngineTests.swift */,
-				OBJ_182 /* Extensions */,
 				OBJ_184 /* FailureMessageTests.swift */,
 				OBJ_185 /* FirmwareVersionTests.swift */,
 				OBJ_186 /* FuelingTests.swift */,
@@ -863,14 +786,6 @@
 			path = Tests/AutoAPITests;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_182 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_183 /* Sequence+FlatMapFirst.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		OBJ_219 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
@@ -895,7 +810,6 @@
 				2029BF3422134E7F002FAE32 /* HMBytesConvertable.swift */,
 				2095DD6C20A45B81004DDB6C /* HMDebugTree.swift */,
 				20896EEF2147DEC9003A7A63 /* Double+Extensions.swift */,
-				OBJ_223 /* FixedWidthInteger+Extensions.swift */,
 				OBJ_224 /* Float+Extensions.swift */,
 				OBJ_225 /* SignedInteger+Extensions.swift */,
 				OBJ_226 /* String+Extensions.swift */,
@@ -1019,18 +933,6 @@
 			path = PointsOfInterest;
 			sourceTree = "<group>";
 		};
-		OBJ_67 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_69 /* AACommand.swift */,
-				OBJ_70 /* AAFullCommand.swift */,
-				OBJ_71 /* AAFullStandardCommand.swift */,
-				OBJ_72 /* AAInboundCommand.swift */,
-				OBJ_73 /* AAOutboundCommand.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1089,6 +991,7 @@
 				OBJ_98 /* AAPositionState.swift */,
 				OBJ_99 /* AAPowerTrain.swift */,
 				OBJ_100 /* AAPricingType.swift */,
+				2029BF232213211D002FAE32 /* AAPropertyComponentType.swift */,
 				20AF961A21BFA742002EC106 /* AAPropertyFailureReason.swift */,
 				OBJ_101 /* AAScreen.swift */,
 				OBJ_102 /* AASeatLocation.swift */,
@@ -1097,6 +1000,7 @@
 				20F57D772174C64E0099B921 /* AATiltState.swift */,
 				OBJ_106 /* AATimerType.swift */,
 				20DB154920971B9F00A1658B /* AATimeState.swift */,
+				2029BF2F221337F8002FAE32 /* AAUniversalPropertyType.swift */,
 				2024BBFB21553A3200AA5261 /* AAWeekday.swift */,
 				OBJ_108 /* AAWindscreenDamage.swift */,
 				OBJ_109 /* AAWipersIntensity.swift */,
@@ -1111,18 +1015,19 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_9 /* AAAutoAPI.swift */,
-				20646B95216B96CD0000824D /* AAHistoricalState.swift */,
-				20646B93216B96910000824D /* AAHistoryCapable.swift */,
+				206003D62219781600741188 /* AABytesConvertable.swift */,
+				2009F2852219712C00274607 /* AACapability.swift */,
+				2009F2872219715600274607 /* AACapabilityClass.swift */,
+				206003D42219722800741188 /* AACapabilityValue.swift */,
+				201B930D221AC52A005A1D96 /* AACommand.swift */,
 				OBJ_125 /* AAIdentifiable.swift */,
 				OBJ_154 /* AAMessageTypesGettable.swift */,
 				OBJ_15 /* AASDKVersion.swift */,
-				OBJ_11 /* Capability */,
-				OBJ_16 /* Commands */,
+				OBJ_16 /* Capabilities */,
 				OBJ_75 /* Enums */,
 				OBJ_112 /* Extensions */,
 				OBJ_126 /* Items */,
 				OBJ_155 /* Property */,
-				OBJ_164 /* VehicleStatus */,
 			);
 			name = AutoAPI;
 			path = Sources/AutoAPI;
@@ -1278,7 +1183,6 @@
 				OBJ_271 /* DoorLocksTests.swift in Sources */,
 				OBJ_272 /* DriverFatigueTests.swift in Sources */,
 				OBJ_273 /* EngineTests.swift in Sources */,
-				OBJ_274 /* Sequence+FlatMapFirst.swift in Sources */,
 				OBJ_275 /* FailureMessageTests.swift in Sources */,
 				OBJ_276 /* FirmwareVersionTests.swift in Sources */,
 				OBJ_277 /* FuelingTests.swift in Sources */,
@@ -1327,10 +1231,10 @@
 				OBJ_318 /* AAAutoAPI.swift in Sources */,
 				OBJ_320 /* AACapabilities.swift in Sources */,
 				201BFD8D21C39FB7001E1DC1 /* AAInteriorLamp.swift in Sources */,
+				206003D52219722800741188 /* AACapabilityValue.swift in Sources */,
 				20AF961B21BFA742002EC106 /* AAPropertyFailureReason.swift in Sources */,
 				20DB1548209718DB00A1658B /* AAWorkingState.swift in Sources */,
 				20896EEC2147A024003A7A63 /* AAEnabledState.swift in Sources */,
-				OBJ_322 /* AACapability.swift in Sources */,
 				OBJ_323 /* AASDKVersion.swift in Sources */,
 				OBJ_324 /* AACharging.swift in Sources */,
 				OBJ_325 /* AAChassisSettings.swift in Sources */,
@@ -1369,7 +1273,6 @@
 				OBJ_350 /* AATextInput.swift in Sources */,
 				20896EE4214799C1003A7A63 /* AAChosenState.swift in Sources */,
 				OBJ_351 /* AAVideoHandover.swift in Sources */,
-				20646B94216B96910000824D /* AAHistoryCapable.swift in Sources */,
 				2024BBFE21553D8A00AA5261 /* AAClimateWeekdayTime.swift in Sources */,
 				20DC7514215B5EDE009B2B24 /* AAPluggedInState.swift in Sources */,
 				20F7903F2135732D003BDFA2 /* AADisplayUnit.swift in Sources */,
@@ -1393,18 +1296,12 @@
 				OBJ_362 /* AANaviDestination.swift in Sources */,
 				OBJ_363 /* AAVehicleLocation.swift in Sources */,
 				OBJ_364 /* AAVehicleTime.swift in Sources */,
-				OBJ_366 /* AACommand.swift in Sources */,
-				OBJ_367 /* AAFullCommand.swift in Sources */,
-				OBJ_368 /* AAFullStandardCommand.swift in Sources */,
 				20558BBD216364340067BDD1 /* AAAuthenticationState.swift in Sources */,
-				OBJ_369 /* AAInboundCommand.swift in Sources */,
-				OBJ_370 /* AAOutboundCommand.swift in Sources */,
 				20B56EBE218C6C1C006E9946 /* AASeatbeltFastened.swift in Sources */,
 				OBJ_372 /* AAAccelerationType.swift in Sources */,
 				OBJ_374 /* AAAuthenticationMechanism.swift in Sources */,
 				2033CAB0219C5222006489F2 /* AAMultiCommand.swift in Sources */,
 				OBJ_375 /* AAAxle.swift in Sources */,
-				20646B96216B96CD0000824D /* AAHistoricalState.swift in Sources */,
 				2028370B2150D17E0001724A /* AADepartureTime.swift in Sources */,
 				OBJ_376 /* AAChargeMode.swift in Sources */,
 				20B56EBA218C6B9B006E9946 /* AADoorLock.swift in Sources */,
@@ -1421,9 +1318,9 @@
 				OBJ_386 /* AAKeyfobRelativePosition.swift in Sources */,
 				OBJ_387 /* AAFrontLightState.swift in Sources */,
 				201BFD8B21C39DEF001E1DC1 /* AALightLocation.swift in Sources */,
+				2009F2862219712C00274607 /* AACapability.swift in Sources */,
 				OBJ_388 /* AALockState.swift in Sources */,
 				2029BF2222131EEC002FAE32 /* AAProperties.swift in Sources */,
-				20BB171D2142604100A3FDB5 /* Date+Extensions.swift in Sources */,
 				20DB153B2096F7DA00A1658B /* AAGearbox.swift in Sources */,
 				2093A320213945E1009E43A0 /* AAMobile.swift in Sources */,
 				OBJ_389 /* AANeedsReplacement.swift in Sources */,
@@ -1454,15 +1351,11 @@
 				2093A31E213941E7009E43A0 /* AAAvailability.swift in Sources */,
 				20B56EB8218C6B73006E9946 /* AADoorPosition.swift in Sources */,
 				2029BF2C221323FB002FAE32 /* AAPropertyComponent.swift in Sources */,
-				OBJ_412 /* RawRepresentable+Extensions.swift in Sources */,
-				OBJ_413 /* Sequence+Extensions.swift in Sources */,
-				OBJ_414 /* String+Extensions.swift in Sources */,
+				2009F2882219715600274607 /* AACapabilityClass.swift in Sources */,
 				OBJ_415 /* UInt16+Extensions.swift in Sources */,
 				OBJ_417 /* UInt8+Extensions.swift in Sources */,
-				OBJ_418 /* UInt8Collection+Extensions.swift in Sources */,
 				20F7903D2135713A003BDFA2 /* AAConvertibleRoofState.swift in Sources */,
 				20B56EBC218C6BFC006E9946 /* AASeatPersonDetected.swift in Sources */,
-				OBJ_419 /* URL+Extensions.swift in Sources */,
 				OBJ_420 /* AAIdentifiable.swift in Sources */,
 				OBJ_421 /* AAAcceleration.swift in Sources */,
 				20DB15462097176600A1658B /* AADriverWorkingState.swift in Sources */,
@@ -1475,6 +1368,7 @@
 				2024BBFC21553A3200AA5261 /* AAWeekday.swift in Sources */,
 				OBJ_425 /* AAChargingTimer.swift in Sources */,
 				205C5171208F315D00B55ACE /* AADashboardLightName.swift in Sources */,
+				206003D72219781600741188 /* AABytesConvertable.swift in Sources */,
 				OBJ_427 /* AASpringRateValue.swift in Sources */,
 				OBJ_428 /* AAActivatedDays.swift in Sources */,
 				OBJ_429 /* AAClimateProfile.swift in Sources */,
@@ -1499,13 +1393,12 @@
 				205D9EA621B67C0D0082CE1E /* AAReadingLamp.swift in Sources */,
 				OBJ_443 /* AAWindow.swift in Sources */,
 				20F7903B21356F94003BDFA2 /* AADueStatus.swift in Sources */,
+				201B930E221AC52A005A1D96 /* AACommand.swift in Sources */,
 				OBJ_445 /* AAMessageTypesGettable.swift in Sources */,
-				OBJ_447 /* AAPropertiesCapable.swift in Sources */,
 				20896EE621479A8F003A7A63 /* AAActiveState.swift in Sources */,
 				20F7903921356F54003BDFA2 /* AAConditionBasedService.swift in Sources */,
 				207A0AC4218C710B0067923E /* AAWindowOpenPercentage.swift in Sources */,
 				20B0C147215D1F23005FA699 /* AAWheelRPM.swift in Sources */,
-				OBJ_454 /* AAVehicleState.swift in Sources */,
 				20CDFAA7215264F300402BF6 /* AADetectedState.swift in Sources */,
 				OBJ_456 /* AAVehicleStatus.swift in Sources */,
 				205C516D208F28FF00B55ACE /* AADashboardLight.swift in Sources */,
@@ -1519,7 +1412,6 @@
 				20896EF02147DEC9003A7A63 /* Double+Extensions.swift in Sources */,
 				OBJ_464 /* Bool+Extensions.swift in Sources */,
 				2029BF3522134E7F002FAE32 /* HMBytesConvertable.swift in Sources */,
-				OBJ_465 /* FixedWidthInteger+Extensions.swift in Sources */,
 				OBJ_466 /* Float+Extensions.swift in Sources */,
 				OBJ_467 /* SignedInteger+Extensions.swift in Sources */,
 				2095DD6D20A45B81004DDB6C /* HMDebugTree.swift in Sources */,

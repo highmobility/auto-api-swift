@@ -42,9 +42,7 @@ struct AAPropertyComponent {
     // MARK: Init
 
     init(type: AAPropertyComponentType, value: [UInt8]) {
-        let size = [(value.count >> 8).uint8, value.count.uint8]
-
-        self.bytes = [type.rawValue] + size + value
+        self.bytes = [type.rawValue] + value.count.sizeBytes(amount: 2) + value
         self.type = type
     }
 }
@@ -57,7 +55,11 @@ extension AAPropertyComponent: AABytesConvertable {
             return nil
         }
 
-        let size = 3 + UInt16(bytes[1...2])
+        guard let componentSize = UInt16(bytes: bytes[1...2])?.int else {
+            return nil
+        }
+
+        let size = 3 + componentSize
 
         guard bytes.count == size else {
             return nil

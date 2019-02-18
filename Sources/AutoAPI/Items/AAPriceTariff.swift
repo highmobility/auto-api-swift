@@ -48,7 +48,7 @@ public struct AAPriceTariff {
 extension AAPriceTariff: AABytesConvertable {
 
     public var bytes: [UInt8] {
-        return type.bytes + price.bytes + currency.bytes.count.uint8.bytes + currency.bytes
+        return type.bytes + price.bytes + currency.bytes.count.sizeBytes(amount: 1) + currency.bytes
     }
     
 

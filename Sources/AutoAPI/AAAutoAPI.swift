@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2018 High-Mobility GmbH
+// Copyright (C) 2019 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -27,11 +27,9 @@
 //
 
 import Foundation
-import HMUtilities
 
 
 public typealias AutoAPI = AAAutoAPI
-public typealias AABytesConvertable = HMBytesConvertable
 public typealias AACommandIdentifier = UInt16
 public typealias AANetworkSSID = String
 public typealias AAPercentage = Double
@@ -42,7 +40,7 @@ public typealias AAPropertyIdentifier = UInt8
 
 public struct AAAutoAPI {
 
-    static var commands: [Any] {
+    static var capabilities: [AACapability.Type] {
         return [AABrowser.self,
                 AACapabilities.self,
                 AACharging.self,
@@ -69,6 +67,7 @@ public struct AAAutoAPI {
                 AAMaintenance.self,
                 AAMessaging.self,
                 AAMobile.self,
+                AAMultiCommand.self,
                 AANaviDestination.self,
                 AANotifications.self,
                 AAOffroad.self,
@@ -100,7 +99,9 @@ public struct AAAutoAPI {
 
     // MARK: Type Methods
 
-    public static func parseBinary<C: Collection>(_ binary: C) -> AACommand? where C.Element == UInt8 {
-        return commands.compactMap { $0 as? AABytesConvertable.Type }.flatMapFirst { $0.init(bytes: binary) as? AACommand }
+    public static func parseBinary<C: Collection>(_ binary: C) -> AACapability? where C.Element == UInt8 {
+        let capabilities = AAAutoAPI.capabilities.compactMap { $0 as? AACapabilityClass.Type }
+
+        return capabilities.compactMap { $0.init(bytes: binary.bytes) as? AACapability }.first
     }
 }
