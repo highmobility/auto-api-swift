@@ -46,7 +46,7 @@ public class AAProperty<ValueType>: AABasicProperty where ValueType: AABytesConv
         let dataComponent = AAPropertyComponent(type: .data, value: value.bytes)
         let size = dataComponent.bytes.count.sizeBytes(amount: 2)
 
-        super.init(bytes: [identifier] + size + dataComponent.value)
+        super.init(bytes: [identifier] + size + dataComponent.bytes)
     }
 
     required init?(bytes: [UInt8]) {
