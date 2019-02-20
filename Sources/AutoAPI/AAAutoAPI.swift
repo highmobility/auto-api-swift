@@ -23,7 +23,7 @@
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 23/11/2017.
-//  Copyright © 2018 High Mobility. All rights reserved.
+//  Copyright © 2019 High Mobility GmbH. All rights reserved.
 //
 
 import Foundation
@@ -35,8 +35,6 @@ public typealias AANetworkSSID = String
 public typealias AAPercentage = Double
 public typealias AAPropertyIdentifier = UInt8
 
-
-// TODO: Go over the `Sequence`-d types
 
 public struct AAAutoAPI {
 

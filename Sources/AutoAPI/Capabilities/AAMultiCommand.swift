@@ -23,7 +23,7 @@
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 14/11/2018.
-//  Copyright © 2018 High Mobility. All rights reserved.
+//  Copyright © 2019 High Mobility GmbH. All rights reserved.
 //
 
 import Foundation

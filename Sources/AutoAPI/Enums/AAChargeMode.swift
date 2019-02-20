@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2018 High-Mobility GmbH
+// Copyright (C) 2019 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -12,12 +12,18 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
 //
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see http://www.gnu.org/licenses/.
+//
+// Please inquire about commercial licensing options at
+// licensing@high-mobility.com
+//
 //
 //  AAChargeMode.swift
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 30/01/2018.
-//  Copyright © 2018 High Mobility. All rights reserved.
+//  Copyright © 2019 High Mobility GmbH. All rights reserved.
 //
 
 import Foundation
