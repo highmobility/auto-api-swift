@@ -56,6 +56,14 @@
 		205D9EA621B67C0D0082CE1E /* AAReadingLamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205D9EA521B67C0D0082CE1E /* AAReadingLamp.swift */; };
 		206003D52219722800741188 /* AACapabilityValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206003D42219722800741188 /* AACapabilityValue.swift */; };
 		206003D72219781600741188 /* AABytesConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206003D62219781600741188 /* AABytesConvertable.swift */; };
+		2070E2BC221D85D50050CE86 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2070E2B4221D85D50050CE86 /* String+Extensions.swift */; };
+		2070E2BD221D85D50050CE86 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2070E2B5221D85D50050CE86 /* Bool+Extensions.swift */; };
+		2070E2BE221D85D50050CE86 /* UInt8Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2070E2B6221D85D50050CE86 /* UInt8Collection+Extensions.swift */; };
+		2070E2BF221D85D50050CE86 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2070E2B7221D85D50050CE86 /* URL+Extensions.swift */; };
+		2070E2C0221D85D50050CE86 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2070E2B8221D85D50050CE86 /* Date+Extensions.swift */; };
+		2070E2C1221D85D50050CE86 /* SignedInteger+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2070E2B9221D85D50050CE86 /* SignedInteger+Extensions.swift */; };
+		2070E2C2221D85D50050CE86 /* Float+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2070E2BA221D85D50050CE86 /* Float+Extensions.swift */; };
+		2070E2C3221D85D50050CE86 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2070E2BB221D85D50050CE86 /* Double+Extensions.swift */; };
 		207A0AC4218C710B0067923E /* AAWindowOpenPercentage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207A0AC0218C70970067923E /* AAWindowOpenPercentage.swift */; };
 		207A0AC5218C710E0067923E /* AAWindowPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207A0AC2218C71040067923E /* AAWindowPosition.swift */; };
 		20896EE4214799C1003A7A63 /* AAChosenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EE3214799C1003A7A63 /* AAChosenState.swift */; };
@@ -63,7 +71,6 @@
 		20896EE821479DC5003A7A63 /* AAMovingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EE721479DC5003A7A63 /* AAMovingState.swift */; };
 		20896EEA21479F4A003A7A63 /* AAConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EE921479F4A003A7A63 /* AAConnectionState.swift */; };
 		20896EEC2147A024003A7A63 /* AAEnabledState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EEB2147A024003A7A63 /* AAEnabledState.swift */; };
-		20896EF02147DEC9003A7A63 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EEF2147DEC9003A7A63 /* Double+Extensions.swift */; };
 		208D1C92216B4BCA00ABA70E /* AADriverSeatLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208D1C91216B4BCA00ABA70E /* AADriverSeatLocation.swift */; };
 		209124B42166321800C15CDA /* AAPresenceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209124B32166321800C15CDA /* AAPresenceState.swift */; };
 		2093A31E213941E7009E43A0 /* AAAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093A31D213941E7009E43A0 /* AAAvailability.swift */; };
@@ -253,11 +260,6 @@
 		OBJ_445 /* AAMessageTypesGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_154 /* AAMessageTypesGettable.swift */; };
 		OBJ_456 /* AAVehicleStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_167 /* AAVehicleStatus.swift */; };
 		OBJ_458 /* HMUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "HMUtilities::HMUtilities::Product" /* HMUtilities.framework */; };
-		OBJ_464 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_222 /* Bool+Extensions.swift */; };
-		OBJ_466 /* Float+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_224 /* Float+Extensions.swift */; };
-		OBJ_467 /* SignedInteger+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_225 /* SignedInteger+Extensions.swift */; };
-		OBJ_468 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_226 /* String+Extensions.swift */; };
-		OBJ_469 /* UInt8Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_227 /* UInt8Collection+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -337,6 +339,14 @@
 		2065E938220DB25A000F8F29 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		206ED7D02060FD7000D7761E /* UniversalBuildScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = UniversalBuildScript.sh; sourceTree = "<group>"; };
 		206ED7D12060FD7000D7761E /* AppStoreCompatible.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppStoreCompatible.sh; sourceTree = "<group>"; };
+		2070E2B4221D85D50050CE86 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		2070E2B5221D85D50050CE86 /* Bool+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
+		2070E2B6221D85D50050CE86 /* UInt8Collection+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UInt8Collection+Extensions.swift"; sourceTree = "<group>"; };
+		2070E2B7221D85D50050CE86 /* URL+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
+		2070E2B8221D85D50050CE86 /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		2070E2B9221D85D50050CE86 /* SignedInteger+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SignedInteger+Extensions.swift"; sourceTree = "<group>"; };
+		2070E2BA221D85D50050CE86 /* Float+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Extensions.swift"; sourceTree = "<group>"; };
+		2070E2BB221D85D50050CE86 /* Double+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		207A0AC0218C70970067923E /* AAWindowOpenPercentage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWindowOpenPercentage.swift; sourceTree = "<group>"; };
 		207A0AC2218C71040067923E /* AAWindowPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWindowPosition.swift; sourceTree = "<group>"; };
 		20896EE3214799C1003A7A63 /* AAChosenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChosenState.swift; sourceTree = "<group>"; };
@@ -344,7 +354,6 @@
 		20896EE721479DC5003A7A63 /* AAMovingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAMovingState.swift; sourceTree = "<group>"; };
 		20896EE921479F4A003A7A63 /* AAConnectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAConnectionState.swift; sourceTree = "<group>"; };
 		20896EEB2147A024003A7A63 /* AAEnabledState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAEnabledState.swift; sourceTree = "<group>"; };
-		20896EEF2147DEC9003A7A63 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		208D1C91216B4BCA00ABA70E /* AADriverSeatLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADriverSeatLocation.swift; sourceTree = "<group>"; };
 		209124B32166321800C15CDA /* AAPresenceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPresenceState.swift; sourceTree = "<group>"; };
 		2093A31D213941E7009E43A0 /* AAAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAAvailability.swift; sourceTree = "<group>"; };
@@ -474,12 +483,7 @@
 		OBJ_216 /* WindowsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsTests.swift; sourceTree = "<group>"; };
 		OBJ_217 /* WindscreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindscreenTests.swift; sourceTree = "<group>"; };
 		OBJ_22 /* AAKeyfobPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAKeyfobPosition.swift; sourceTree = "<group>"; };
-		OBJ_222 /* Bool+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_224 /* Float+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_225 /* SignedInteger+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignedInteger+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_226 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_227 /* UInt8Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt8Collection+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_228 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = ".build/checkouts/hm-utilities-swift-1099862621387175478/Package.swift"; sourceTree = "<group>"; };
+		OBJ_228 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = ".build/checkouts/hm-utilities-swift--2916233756553221935/Package.swift"; sourceTree = "<group>"; };
 		OBJ_23 /* AALights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALights.swift; sourceTree = "<group>"; };
 		OBJ_24 /* AARooftopControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AARooftopControl.swift; sourceTree = "<group>"; };
 		OBJ_25 /* AASeats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASeats.swift; sourceTree = "<group>"; };
@@ -586,6 +590,21 @@
 				206ED7D12060FD7000D7761E /* AppStoreCompatible.sh */,
 			);
 			path = Scripts;
+			sourceTree = "<group>";
+		};
+		2070E2B3221D85D50050CE86 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2070E2B4221D85D50050CE86 /* String+Extensions.swift */,
+				2070E2B5221D85D50050CE86 /* Bool+Extensions.swift */,
+				2070E2B6221D85D50050CE86 /* UInt8Collection+Extensions.swift */,
+				2070E2B7221D85D50050CE86 /* URL+Extensions.swift */,
+				2070E2B8221D85D50050CE86 /* Date+Extensions.swift */,
+				2070E2B9221D85D50050CE86 /* SignedInteger+Extensions.swift */,
+				2070E2BA221D85D50050CE86 /* Float+Extensions.swift */,
+				2070E2BB221D85D50050CE86 /* Double+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		20DB153E20970F3700A1658B /* HeavyDuty */ = {
@@ -804,16 +823,11 @@
 		OBJ_221 /* HMUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_222 /* Bool+Extensions.swift */,
 				2029BF3422134E7F002FAE32 /* HMBytesConvertable.swift */,
-				20896EEF2147DEC9003A7A63 /* Double+Extensions.swift */,
-				OBJ_224 /* Float+Extensions.swift */,
-				OBJ_225 /* SignedInteger+Extensions.swift */,
-				OBJ_226 /* String+Extensions.swift */,
-				OBJ_227 /* UInt8Collection+Extensions.swift */,
+				2070E2B3221D85D50050CE86 /* Extensions */,
 			);
 			name = HMUtilities;
-			path = ".build/checkouts/hm-utilities-swift-1099862621387175478/Sources/HMUtilities";
+			path = ".build/checkouts/hm-utilities-swift--2916233756553221935/Sources/HMUtilities";
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_229 /* Products */ = {
@@ -1108,6 +1122,7 @@
 		OBJ_1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = AA;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "High Mobility GmbH";
 				TargetAttributes = {
@@ -1406,13 +1421,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				20896EF02147DEC9003A7A63 /* Double+Extensions.swift in Sources */,
-				OBJ_464 /* Bool+Extensions.swift in Sources */,
+				2070E2BE221D85D50050CE86 /* UInt8Collection+Extensions.swift in Sources */,
+				2070E2BC221D85D50050CE86 /* String+Extensions.swift in Sources */,
+				2070E2C2221D85D50050CE86 /* Float+Extensions.swift in Sources */,
+				2070E2C3221D85D50050CE86 /* Double+Extensions.swift in Sources */,
+				2070E2BF221D85D50050CE86 /* URL+Extensions.swift in Sources */,
+				2070E2C1221D85D50050CE86 /* SignedInteger+Extensions.swift in Sources */,
 				2029BF3522134E7F002FAE32 /* HMBytesConvertable.swift in Sources */,
-				OBJ_466 /* Float+Extensions.swift in Sources */,
-				OBJ_467 /* SignedInteger+Extensions.swift in Sources */,
-				OBJ_468 /* String+Extensions.swift in Sources */,
-				OBJ_469 /* UInt8Collection+Extensions.swift in Sources */,
+				2070E2BD221D85D50050CE86 /* Bool+Extensions.swift in Sources */,
+				2070E2C0221D85D50050CE86 /* Date+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

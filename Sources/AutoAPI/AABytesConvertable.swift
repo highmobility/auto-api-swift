@@ -96,48 +96,12 @@ extension Int64: AABytesConvertable {
 // Others
 extension Date: AABytesConvertable {
 
-    public var bytes: [UInt8] {
-        return UInt64(timeIntervalSince1970 * 1e3).bytes
-    }
-
-
-    public init?(bytes: [UInt8]) {
-        guard bytes.count == 8 else {
-            return nil
-        }
-
-        guard let uint64 = UInt64(bytes: bytes) else {
-            return nil
-        }
-
-        self.init(timeIntervalSince1970: TimeInterval(uint64) * 1e3)
-    }
 }
 
 extension String: AABytesConvertable {
 
-    public var bytes: [UInt8] {
-        return data(using: .utf8)?.bytes ?? []
-    }
-
-
-    public init?(bytes: [UInt8]) {
-        self.init(data: bytes.data, encoding: .utf8)
-    }
 }
 
 extension URL: AABytesConvertable {
-
-    public var bytes: [UInt8] {
-        return absoluteString.data(using: .utf8)?.bytes ?? []
-    }
-
-
-    public init?(bytes: [UInt8]) {
-        guard let string = String(bytes: bytes, encoding: .utf8) else {
-            return nil
-        }
-
-        self.init(string: string)
-    }
+    
 }
