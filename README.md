@@ -15,7 +15,7 @@ For *macOS* and *Linux*, executing `swift build` and using the product is recomm
 
 For *other Apple* platforms, the *universal* framework can be made with `lipo` from *Xcode*'s simulator and device products. When creating a *universal* one, the *module maps* need to be copied as well.  
 
-For details on the API itself, please see the [documentation](https://developers.high-mobility.com/resources/documentation/auto-api/api-structure/tutorial/).
+For details on the API itself, please see the [documentation](https://high-mobility.com/learn/tutorials/getting-started/auto-api-guide/).
 
 ## Parser Usage ##
 
