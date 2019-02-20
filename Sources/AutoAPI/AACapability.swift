@@ -27,8 +27,60 @@
 //
 
 import Foundation
+import HMUtilities
 
 
 public protocol AACapability: AACapabilityClass & AAIdentifiable {
 
+}
+
+extension AACapability {
+
+    public var debugTree: HMDebugTree {
+        return HMDebugTree(self, label: nil, expandProperties: false) { (anything, label, expandProperties) -> HMDebugTree? in
+            switch anything {
+            case let capabilities as AACapabilities:
+                let nodes: [HMDebugTree] = capabilities.capabilities?.compactMap {
+                    guard let capability = $0.value else {
+                        return nil
+                    }
+
+                    let idLeaf: HMDebugTree = .leaf(label: "identifier = " + String(format: "0x%04X", capability.identifier))
+                    let msgTypesLeaf: HMDebugTree = .leaf(label: "supportedMessageTypes = " + capability.supportedMessageTypes.compactMap { String(format: "0x%02X", $0) }.joined(separator: ", "))
+
+                    return .node(label: "\(capability.command)", nodes: [idLeaf, msgTypesLeaf])
+                    } ?? []
+
+                return .node(label: label, nodes: nodes)
+
+            case let colour as AAColour:
+                let values = (colour.red, colour.green, colour.blue)
+
+                if case .node(_, let nodes) = HMDebugTree(values, expandProperties: expandProperties) {
+                    return .node(label: label, nodes: nodes)
+                }
+                else {
+                    return .node(label: label, nodes: [HMDebugTree(values, expandProperties: expandProperties)])
+                }
+
+            case let properties as AAProperties:
+                if expandProperties {
+                    if Array(properties).isEmpty {
+                        return .leaf(label: "properties = []")
+                    }
+                    else {
+                        let nodes = properties.map { HMDebugTree.leaf(label: "\($0)") }
+
+                        return .node(label: label, nodes: nodes)
+                    }
+                }
+                else {
+                    return .leaf(label: "* properties.count = \(Array(properties).count)")
+                }
+
+            default:
+                return nil
+            }
+        }
+    }
 }

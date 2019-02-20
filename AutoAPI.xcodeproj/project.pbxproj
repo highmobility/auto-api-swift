@@ -104,6 +104,7 @@
 		20DB1550209727C700A1658B /* AADirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB154F209727C700A1658B /* AADirection.swift */; };
 		20DB15522097286200A1658B /* TachographTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15512097286200A1658B /* TachographTests.swift */; };
 		20DC7514215B5EDE009B2B24 /* AAPluggedInState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DC7513215B5EDE009B2B24 /* AAPluggedInState.swift */; };
+		20E888C4221DA576004D11EF /* HMDebugTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E888C3221DA576004D11EF /* HMDebugTree.swift */; };
 		20F57D782174C64E0099B921 /* AATiltState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F57D772174C64E0099B921 /* AATiltState.swift */; };
 		20F7903721356C54003BDFA2 /* AACheckControlMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903621356C54003BDFA2 /* AACheckControlMessage.swift */; };
 		20F7903921356F54003BDFA2 /* AAConditionBasedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F7903821356F54003BDFA2 /* AAConditionBasedService.swift */; };
@@ -386,6 +387,7 @@
 		20DB154F209727C700A1658B /* AADirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADirection.swift; sourceTree = "<group>"; };
 		20DB15512097286200A1658B /* TachographTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TachographTests.swift; sourceTree = "<group>"; };
 		20DC7513215B5EDE009B2B24 /* AAPluggedInState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPluggedInState.swift; sourceTree = "<group>"; };
+		20E888C3221DA576004D11EF /* HMDebugTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDebugTree.swift; sourceTree = "<group>"; };
 		20F57D772174C64E0099B921 /* AATiltState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATiltState.swift; sourceTree = "<group>"; };
 		20F7903621356C54003BDFA2 /* AACheckControlMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACheckControlMessage.swift; sourceTree = "<group>"; };
 		20F7903821356F54003BDFA2 /* AAConditionBasedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAConditionBasedService.swift; sourceTree = "<group>"; };
@@ -481,7 +483,7 @@
 		OBJ_216 /* WindowsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsTests.swift; sourceTree = "<group>"; };
 		OBJ_217 /* WindscreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindscreenTests.swift; sourceTree = "<group>"; };
 		OBJ_22 /* AAKeyfobPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAKeyfobPosition.swift; sourceTree = "<group>"; };
-		OBJ_228 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = ".build/checkouts/hm-utilities-swift--2916233756553221935/Package.swift"; sourceTree = "<group>"; };
+		OBJ_228 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = ".build/checkouts/hm-utilities-swift-2741128867275104630/Package.swift"; sourceTree = "<group>"; };
 		OBJ_23 /* AALights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALights.swift; sourceTree = "<group>"; };
 		OBJ_24 /* AARooftopControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AARooftopControl.swift; sourceTree = "<group>"; };
 		OBJ_25 /* AASeats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASeats.swift; sourceTree = "<group>"; };
@@ -821,10 +823,11 @@
 			isa = PBXGroup;
 			children = (
 				2029BF3422134E7F002FAE32 /* HMBytesConvertable.swift */,
+				20E888C3221DA576004D11EF /* HMDebugTree.swift */,
 				2070E2B3221D85D50050CE86 /* Extensions */,
 			);
 			name = HMUtilities;
-			path = ".build/checkouts/hm-utilities-swift--2916233756553221935/Sources/HMUtilities";
+			path = ".build/checkouts/hm-utilities-swift-2741128867275104630/Sources/HMUtilities";
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_229 /* Products */ = {
@@ -1421,6 +1424,7 @@
 				2070E2BC221D85D50050CE86 /* String+Extensions.swift in Sources */,
 				2070E2C2221D85D50050CE86 /* Float+Extensions.swift in Sources */,
 				2070E2C3221D85D50050CE86 /* Double+Extensions.swift in Sources */,
+				20E888C4221DA576004D11EF /* HMDebugTree.swift in Sources */,
 				2070E2BF221D85D50050CE86 /* URL+Extensions.swift in Sources */,
 				2070E2C1221D85D50050CE86 /* SignedInteger+Extensions.swift in Sources */,
 				2029BF3522134E7F002FAE32 /* HMBytesConvertable.swift in Sources */,
