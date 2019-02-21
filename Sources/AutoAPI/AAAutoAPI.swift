@@ -97,7 +97,7 @@ public struct AAAutoAPI {
 
     // MARK: Type Methods
 
-    public static func parseBinary<C: Collection>(_ binary: C) -> AACapability? where C.Element == UInt8 {
+    public static func parseBinary<C>(_ binary: C) -> AACapability? where C: Collection, C.Element == UInt8 {
         let capabilities = AAAutoAPI.capabilities.compactMap { $0 as? AACapabilityClass.Type }
 
         return capabilities.compactMap { $0.init(bytes: binary.bytes) as? AACapability }.first

@@ -37,6 +37,7 @@ public protocol AACapability: AACapabilityClass & AAIdentifiable {
 extension AACapability {
 
     public var debugTree: HMDebugTree {
+        // TODO: This doesn't handle the AAProperty atm
         return HMDebugTree(self, label: nil, expandProperties: false) { (anything, label, expandProperties) -> HMDebugTree? in
             switch anything {
             case let capabilities as AACapabilities:
@@ -48,7 +49,7 @@ extension AACapability {
                     let idLeaf: HMDebugTree = .leaf(label: "identifier = " + String(format: "0x%04X", capability.identifier))
                     let msgTypesLeaf: HMDebugTree = .leaf(label: "supportedMessageTypes = " + capability.supportedMessageTypes.compactMap { String(format: "0x%02X", $0) }.joined(separator: ", "))
 
-                    return .node(label: "\(capability.command)", nodes: [idLeaf, msgTypesLeaf])
+                    return .node(label: "\(capability.capability)", nodes: [idLeaf, msgTypesLeaf])
                     } ?? []
 
                 return .node(label: label, nodes: nodes)

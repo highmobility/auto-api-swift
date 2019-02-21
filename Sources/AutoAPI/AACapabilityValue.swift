@@ -31,11 +31,11 @@ import Foundation
 
 public struct AACapabilityValue {
 
-    public let command: AACapability.Type
+    public let capability: AACapability.Type
     public let supportedMessageTypes: [UInt8]   // TODO: This will become obsolete in L11
 
     public var identifier: AACommandIdentifier {
-        return command.identifier
+        return capability.identifier
     }
 
 
@@ -74,7 +74,7 @@ extension AACapabilityValue: AABytesConvertable {
             return nil
         }
 
-        self.command = command
+        self.capability = command
         self.supportedMessageTypes = bytes[2...].bytes
     }
 }
@@ -83,6 +83,6 @@ extension AACapabilityValue: Equatable {
 
     public static func ==(lhs: AACapabilityValue, rhs: AACapabilityValue) -> Bool {
         // If the command matches, the 'identifier' must be the same
-        return (lhs.command == rhs.command) && (lhs.supportedMessageTypes == rhs.supportedMessageTypes)
+        return (lhs.capability == rhs.capability) && (lhs.supportedMessageTypes == rhs.supportedMessageTypes)
     }
 }
