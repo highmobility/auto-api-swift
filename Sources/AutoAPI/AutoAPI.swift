@@ -59,6 +59,7 @@ public struct AutoAPI {
                 Lights.self,
                 Maintenance.self,
                 Messaging.self,
+                MultiCommand.self,
                 NaviDestination.self,
                 Notifications.self,
                 Offroad.self,

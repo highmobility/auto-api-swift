@@ -49,6 +49,7 @@ XCTMain([
     testCase(LightsTests.allTests),
     testCase(MaintenanceTests.allTests),
     testCase(MessagingTests.allTests),
+    testCase(MultiCommandTests.allTests),
     testCase(NaviDestinationTests.allTests),
     testCase(NotificationsTests.allTests),
     testCase(OffroadTests.allTests),

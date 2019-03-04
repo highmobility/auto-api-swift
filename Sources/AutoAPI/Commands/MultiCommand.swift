@@ -29,8 +29,31 @@
 import Foundation
 
 
-public struct MultiCommand: OutboundCommand {
+public struct MultiCommand: InboundCommand, OutboundCommand {
 
+    public let states: [VehicleState]?
+
+
+    // MARK: InboundCommand
+
+    public let properties: Properties
+
+
+    init?(_ messageType: UInt8, properties: Properties) {
+        guard messageType == MultiCommand.MessageTypes.states.rawValue else {
+            return nil
+        }
+
+        let stateTypes = AutoAPI.commands.compactMap { $0 as? VehicleStateType.Type }
+
+
+        states = properties.flatMap(for: 0x01) { property in
+            stateTypes.flatMapFirst { $0.init(property.value) }
+        }
+
+        // Properties
+        self.properties = properties
+    }
 }
 
 extension MultiCommand: Identifiable {
@@ -42,7 +65,8 @@ extension MultiCommand: MessageTypesGettable {
 
     public enum MessageTypes: UInt8, MessageTypesKind {
 
-        case send = 0x02
+        case states = 0x01
+        case send   = 0x02
 
 
         public static var all: [MultiCommand.MessageTypes] {

@@ -54,7 +54,7 @@ public struct VehicleStatus: InboundCommand {
 
 
     init?(_ messageType: UInt8, properties: Properties) {
-        guard messageType == 0x01 else {
+        guard messageType == VehicleStatus.MessageTypes.vehicleStatus.rawValue else {
             return nil
         }
 

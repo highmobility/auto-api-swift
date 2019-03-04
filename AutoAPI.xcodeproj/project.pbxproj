@@ -34,6 +34,7 @@
 		205C517B208F430100B55ACE /* CruiseControlLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517A208F430100B55ACE /* CruiseControlLimiter.swift */; };
 		205C517D208F451300B55ACE /* CruiseControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C517C208F451300B55ACE /* CruiseControlTests.swift */; };
 		2095DD6D20A45B81004DDB6C /* HMDebugTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2095DD6C20A45B81004DDB6C /* HMDebugTree.swift */; };
+		20AF6F6C222D515D00FA8162 /* MultiCommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AF6F6B222D515D00FA8162 /* MultiCommandTests.swift */; };
 		20DB153B2096F7DA00A1658B /* Gearbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB153A2096F7DA00A1658B /* Gearbox.swift */; };
 		20DB153D209701CE00A1658B /* DoorLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB153C209701CE00A1658B /* DoorLock.swift */; };
 		20DB15402097112D00A1658B /* PowerTakeOff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB153F2097112D00A1658B /* PowerTakeOff.swift */; };
@@ -292,6 +293,7 @@
 		206ED7D02060FD7000D7761E /* UniversalBuildScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = UniversalBuildScript.sh; sourceTree = "<group>"; };
 		206ED7D12060FD7000D7761E /* AppStoreCompatible.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppStoreCompatible.sh; sourceTree = "<group>"; };
 		2095DD6C20A45B81004DDB6C /* HMDebugTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDebugTree.swift; sourceTree = "<group>"; };
+		20AF6F6B222D515D00FA8162 /* MultiCommandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiCommandTests.swift; sourceTree = "<group>"; };
 		20DB153A2096F7DA00A1658B /* Gearbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gearbox.swift; sourceTree = "<group>"; };
 		20DB153C209701CE00A1658B /* DoorLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorLock.swift; sourceTree = "<group>"; };
 		20DB153F2097112D00A1658B /* PowerTakeOff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerTakeOff.swift; sourceTree = "<group>"; };
@@ -747,6 +749,7 @@
 				OBJ_193 /* LightsTests.swift */,
 				OBJ_194 /* MaintenanceTests.swift */,
 				OBJ_195 /* MessagingTests.swift */,
+				20AF6F6B222D515D00FA8162 /* MultiCommandTests.swift */,
 				OBJ_196 /* NaviDestinationTests.swift */,
 				OBJ_197 /* NotificationsTests.swift */,
 				OBJ_198 /* OffroadTests.swift */,
@@ -815,7 +818,7 @@
 				OBJ_227 /* UInt8Collection+Extensions.swift */,
 			);
 			name = HMUtilities;
-			path = ".build/checkouts/hm-utilities-swift-1099862621387175478/Sources/HMUtilities";
+			path = ".build/checkouts/hm-utilities-swift-2741128867275104630/Sources/HMUtilities";
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_229 /* Products */ = {
@@ -1158,6 +1161,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_265 /* BrowserTests.swift in Sources */,
+				20AF6F6C222D515D00FA8162 /* MultiCommandTests.swift in Sources */,
 				OBJ_266 /* CapabilitiesTests.swift in Sources */,
 				OBJ_267 /* ChargingTests.swift in Sources */,
 				OBJ_268 /* ChassisSettingsTests.swift in Sources */,
