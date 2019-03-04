@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2018 High-Mobility GmbH
+// Copyright (C) 2019 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
 //  AutoAPI
 //
 //  Created by Mikk Rätsep on 30/11/2017.
-//  Copyright © 2018 High Mobility. All rights reserved.
+//  Copyright © 2019 High Mobility. All rights reserved.
 //
 
 import Foundation
