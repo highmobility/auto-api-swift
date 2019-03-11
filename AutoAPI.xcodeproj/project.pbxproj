@@ -595,14 +595,14 @@
 		2070E2B3221D85D50050CE86 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				2070E2B4221D85D50050CE86 /* String+Extensions.swift */,
 				2070E2B5221D85D50050CE86 /* Bool+Extensions.swift */,
+				2070E2B8221D85D50050CE86 /* Date+Extensions.swift */,
+				2070E2BB221D85D50050CE86 /* Double+Extensions.swift */,
+				2070E2BA221D85D50050CE86 /* Float+Extensions.swift */,
+				2070E2B9221D85D50050CE86 /* SignedInteger+Extensions.swift */,
+				2070E2B4221D85D50050CE86 /* String+Extensions.swift */,
 				2070E2B6221D85D50050CE86 /* UInt8Collection+Extensions.swift */,
 				2070E2B7221D85D50050CE86 /* URL+Extensions.swift */,
-				2070E2B8221D85D50050CE86 /* Date+Extensions.swift */,
-				2070E2B9221D85D50050CE86 /* SignedInteger+Extensions.swift */,
-				2070E2BA221D85D50050CE86 /* Float+Extensions.swift */,
-				2070E2BB221D85D50050CE86 /* Double+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -656,6 +656,7 @@
 				OBJ_149 /* AAPriceTariff.swift */,
 				205D9EA521B67C0D0082CE1E /* AAReadingLamp.swift */,
 				20D2FCC82179C881005ECE96 /* AAReductionTime.swift */,
+				OBJ_15 /* AASDKVersion.swift */,
 				OBJ_150 /* AASeat.swift */,
 				20B56EBD218C6C1C006E9946 /* AASeatbeltFastened.swift */,
 				20B56EBB218C6BFC006E9946 /* AASeatPersonDetected.swift */,
@@ -676,9 +677,9 @@
 		OBJ_155 /* Property */ = {
 			isa = PBXGroup;
 			children = (
+				2029BF2722132283002FAE32 /* AABasicProperty.swift */,
 				20AF961821BFA5E4002EC106 /* AAPropertyFailure.swift */,
 				2029BF2122131EEC002FAE32 /* AAProperties.swift */,
-				2029BF2722132283002FAE32 /* AABasicProperty.swift */,
 				2029BF29221323DA002FAE32 /* AAProperty.swift */,
 				2029BF2522132172002FAE32 /* AAPropertyComponents.swift */,
 				2029BF2B221323FB002FAE32 /* AAPropertyComponent.swift */,
@@ -1033,7 +1034,6 @@
 				201B930D221AC52A005A1D96 /* AACommand.swift */,
 				OBJ_125 /* AAIdentifiable.swift */,
 				OBJ_154 /* AAMessageTypesGettable.swift */,
-				OBJ_15 /* AASDKVersion.swift */,
 				OBJ_16 /* Capabilities */,
 				OBJ_75 /* Enums */,
 				OBJ_112 /* Extensions */,

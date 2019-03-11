@@ -37,9 +37,51 @@ public protocol AACapability: AACapabilityClass & AAIdentifiable {
 extension AACapability {
 
     public var debugTree: HMDebugTree {
-        // TODO: This doesn't handle the AAProperty atm
         return HMDebugTree(self, label: nil, expandProperties: false) { (anything, label, expandProperties) -> HMDebugTree? in
             switch anything {
+            case let basicProperty as AABasicProperty:
+                var nodes: [HMDebugTree] = []
+
+                // Extract the values
+                let string = "\(basicProperty)".replacingOccurrences(of: "AutoAPI.", with: "")
+
+                guard string.hasPrefix("AAProperty") else {
+                    return nil
+                }
+
+                guard let valueString = string.components(separatedBy: "value: ").last else {
+                    return nil
+                }
+
+                if let value = self.extractValues(from: valueString, label: label) {
+                    nodes.append(value)
+                }
+
+                // Access the other properties
+                if let failure = basicProperty.failure {
+                    nodes.append(.leaf(label: "failure = \(failure)"))
+                }
+
+                if let timestamp = basicProperty.timestamp {
+                    nodes.append(.leaf(label: "timestamp = " + DateFormatter().string(from: timestamp)))
+                }
+
+                // Handle the single-value cases
+                if nodes.count == 0 {
+                    return .leaf(label: label + " = nil")
+                }
+                else if nodes.count == 1 {
+                    if case .node = nodes[0] {
+                        return nodes[0]
+                    }
+                    else {
+                        return .leaf(label: label + " = " + nodes[0].label)
+                    }
+                }
+                else {
+                    return .node(label: label, nodes: nodes)
+                }
+
             case let capabilities as AACapabilities:
                 let nodes: [HMDebugTree] = capabilities.capabilities?.compactMap {
                     guard let capability = $0.value else {
@@ -50,7 +92,7 @@ extension AACapability {
                     let msgTypesLeaf: HMDebugTree = .leaf(label: "supportedMessageTypes = " + capability.supportedMessageTypes.compactMap { String(format: "0x%02X", $0) }.joined(separator: ", "))
 
                     return .node(label: "\(capability.capability)", nodes: [idLeaf, msgTypesLeaf])
-                    } ?? []
+                } ?? []
 
                 return .node(label: label, nodes: nodes)
 
@@ -83,5 +125,79 @@ extension AACapability {
                 return nil
             }
         }
+    }
+
+    private func extractValues(from string: String, label: String) -> HMDebugTree? {
+        guard let firstParenthesis = string.range(of: "(")?.lowerBound else {
+            return .leaf(label: string)
+        }
+
+        var label = label
+        var string = string
+        var subString: String?
+
+        string.removeFirst(firstParenthesis.encodedOffset + 1)
+        string.removeLast()
+
+        // "Clean" the label
+        if label.contains("AAProperty") {
+            if let range = label.range(of: "<.+>", options: .regularExpression) {
+                let start = label.index(range.lowerBound, offsetBy: 3)
+                let end = label.index(range.upperBound, offsetBy: -1)
+
+                label = String(label[start..<end])
+            }
+            else {
+                label = "*"
+            }
+        }
+
+        // Extract the "sub" values
+        if let range = string.range(of: "AA\\w+\\(.+\\)", options: .regularExpression) {
+            subString = String(string[range])
+
+            string.replaceSubrange(range, with: "")
+        }
+
+        // Extract the "normal" values
+        let nodes: [HMDebugTree] = string.components(separatedBy: ",").compactMap {
+            let pieces = $0.components(separatedBy: ":").map { $0.trimmingCharacters(in: .whitespaces) }
+
+            guard pieces.count == 2 else {
+                if $0.hasPrefix(" time: ") {
+                    let formatter = DateFormatter()
+
+                    formatter.dateFormat = "YYYY-MM-dd HH:mm:ss ZZ"
+
+                    guard let date = formatter.date(from: String($0[" time: ".endIndex...])) else {
+                        return nil
+                    }
+
+                    return .leaf(label: "time = \(date)")
+                }
+                else {
+                    return nil
+                }
+            }
+
+            let label = pieces[0]
+            let value = pieces[1]
+
+            if value.isEmpty,
+                let subString = subString,
+                let node = extractValues(from: subString, label: label) {
+                // "sub" value
+                return node
+            }
+            else {
+                // "normal" value
+                let cleanedLabel = label.components(separatedBy: ".").last!
+                let cleanedValue = value.components(separatedBy: ".").last!
+
+                return .leaf(label: cleanedLabel + " = " + cleanedValue)
+            }
+        }
+
+        return .node(label: label, nodes: nodes)
     }
 }

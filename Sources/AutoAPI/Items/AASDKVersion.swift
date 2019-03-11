@@ -19,47 +19,41 @@
 // licensing@high-mobility.com
 //
 //
-//  AAWindowOpenPercentage.swift
-//  AutoAPICLT
+//  AASDKVersion.swift
+//  AutoAPI
 //
-//  Created by Mikk Rätsep on 02/11/2018.
+//  Created by Mikk Rätsep on 28/11/2017.
 //  Copyright © 2019 High Mobility GmbH. All rights reserved.
 //
 
 import Foundation
 
 
-public struct AAWindowOpenPercentage {
+public struct AASDKVersion {
 
-    public let location: AALocation
-    public let percentage: AAPercentage
+    public let major: UInt8
+    public let minor: UInt8
+    public let patch: UInt8
 
-
-    // MARK: Init
-
-    public init(location: AALocation, percentage: AAPercentage) {
-        self.location = location
-        self.percentage = percentage
+    public var string: String {
+        return "\(major).\(minor).\(patch)"
     }
 }
 
-extension AAWindowOpenPercentage: AABytesConvertable {
+extension AASDKVersion: AABytesConvertable {
 
     public var bytes: [UInt8] {
-        return location.bytes + percentage.bytes
+        return [major, minor, patch]
     }
 
 
     public init?(bytes: [UInt8]) {
-        guard bytes.count == 9 else {
+        guard bytes.count == 3 else {
             return nil
         }
 
-        guard let location = AALocation(bytes: bytes[0..<1]),
-            let percentage = AAPercentage(bytes: bytes[1..<9]) else {
-                return nil
-        }
-
-        self.init(location: location, percentage: percentage)
+        major = bytes[0]
+        minor = bytes[1]
+        patch = bytes[2]
     }
 }

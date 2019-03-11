@@ -66,7 +66,7 @@ public extension AADrivingMode {
             }
 
             guard let drivingMode = AADrivingMode(bytes: bytes[0..<1]),
-                let percentage = AAPercentage(bytes: bytes[1...9]) else {
+                let percentage = AAPercentage(bytes: bytes[1..<9]) else {
                     return nil
             }
 
