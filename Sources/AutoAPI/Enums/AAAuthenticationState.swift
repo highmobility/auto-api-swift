@@ -33,6 +33,9 @@ public enum AAAuthenticationState: UInt8 {
 
     case unauthenticated    = 0x00
     case authenticated      = 0x01
+
+
+    public static let expire = AAAuthenticationState.unauthenticated
 }
 
 extension AAAuthenticationState: AABytesConvertable {
