@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  WiFiTests.swift
+//  AAWiFiTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 30/01/2018.
@@ -30,9 +30,10 @@ import AutoAPI
 import XCTest
 
 
-class WiFiTests: XCTestCase {
+class AAWiFiTests: XCTestCase {
 
     static var allTests = [("testConnectToNetwork", testConnectToNetwork),
+                           ("testEnableNetwork", testEnableNetwork),
                            ("testForgetNetwork", testForgetNetwork),
                            ("testGetState", testGetState),
                            ("testState", testState)]
@@ -46,22 +47,43 @@ class WiFiTests: XCTestCase {
             0x02,       // Message Type for Connect to Network
 
             0x03,       // Property Identifier for Network SSID
-            0x00, 0x04, // Property size 4 bytes
+            0x00, 0x07, // Property size 7 bytes
+            0x01,       // Data component
+            0x00, 0x04, // Data component size 4 bytes
             0x48, 0x4f, 0x4d, 0x45, // Network name "HOME"
 
             0x04,       // Property Identifier for Network security
-            0x00, 0x01, // Property size 1 byte
+            0x00, 0x04, // Property size 4 byte
+            0x01,       // Data component
+            0x00, 0x01, // Data component size 1 byte
             0x03,       // WPA2 Personal
 
             0x05,       // Property Identifier for Network password
-            0x00, 0x0A, // Property size 10 bytes
+            0x00, 0x0D, // Property size 13 bytes
+            0x01,       // Data component
+            0x00, 0x0A, // Data component size 10 bytes
             0x5a, 0x57, 0x33, 0x76, 0x41,   //
             0x52, 0x4e, 0x55, 0x42, 0x65    // Netork password "ZW3vARNUBe"
         ]
 
-        let network = AAWiFi.Network(networkSecurity: .WPA2Personal, networkSSID: "HOME", password: "ZW3vARNUBe")
+        let network = AAWiFi.connectToNetwork(ssid: "HOME", security: .WPA2Personal, password: "ZW3vARNUBe")
 
-        XCTAssertEqual(AAWiFi.connectToNetwork(network), bytes)
+        XCTAssertEqual(network.bytes, bytes)
+    }
+
+    func testEnableNetwork() {
+        let bytes: [UInt8] = [
+            0x00, 0x59, // MSB, LSB Message Identifier for Wi-Fi
+            0x04,       // Message Type for Enable/Disable Wi-Fi
+
+            0x04,       // Property Identifier for Enable/Disable WiFi
+            0x00, 0x04, // Property size 4 bytes
+            0x01,       // Data component
+            0x00, 0x01, // Data component size 1 byte
+            0x00        // Disable Wi-Fi
+        ]
+
+        XCTAssertEqual(AAWiFi.enableDisalbe(.disabled).bytes, bytes)
     }
 
     func testForgetNetwork() {
@@ -70,11 +92,13 @@ class WiFiTests: XCTestCase {
             0x03,       // Message Type for Forget Network
 
             0x03,       // Property Identifier for Network SSID
-            0x00, 0x04, // Property size 4 bytes
+            0x00, 0x07, // Property size 7 bytes
+            0x01,       // Data component
+            0x00, 0x04, // Data component size 4 bytes
             0x48, 0x4f, 0x4d, 0x45  // Network name "HOME"
         ]
 
-        XCTAssertEqual(AAWiFi.forgetNetwork("HOME"), bytes)
+        XCTAssertEqual(AAWiFi.forgetNetwork(ssid: "HOME").bytes, bytes)
     }
 
     func testGetState() {
@@ -83,7 +107,7 @@ class WiFiTests: XCTestCase {
             0x00        // Message Type for Get Wi Fi State
         ]
 
-        XCTAssertEqual(AAWiFi.getWifiState, bytes)
+        XCTAssertEqual(AAWiFi.getWifiState.bytes, bytes)
     }
 
     func testState() {
@@ -92,19 +116,27 @@ class WiFiTests: XCTestCase {
             0x01,       // Message Type for Wi Fi State
 
             0x01,       // Property identifier for Wi fi enabled
-            0x00, 0x01, // Property size is 1 bytes
+            0x00, 0x04, // Property size is 4 bytes
+            0x01,       // Data component
+            0x00, 0x01, // Data component size is 1 bytes
             0x01,       // Wi-Fi enabled
 
             0x02,       // Property identifier for Network connected
-            0x00, 0x01, // Property size is 1 bytes
+            0x00, 0x04, // Property size is 4 bytes
+            0x01,       // Data component
+            0x00, 0x01, // Data component size is 1 bytes
             0x01,       // Network connected
 
-            0x03,                   // Property identifier for Network ssid
-            0x00, 0x04,             // Property size is 4 bytes
+            0x03,       // Property identifier for Network ssid
+            0x00, 0x07, // Property size is 7 bytes
+            0x01,       // Data component
+            0x00, 0x04, // Data component size is 4 bytes
             0x48, 0x4f, 0x4d, 0x45, // Network name "HOME"
 
             0x04,       // Property identifier for Network security
-            0x00, 0x01, // Property size is 1 bytes
+            0x00, 0x04, // Property size is 4 bytes
+            0x01,       // Data component
+            0x00, 0x01, // Data component size is 1 bytes
             0x03        // WPA2 Personal
         ]
 
@@ -112,9 +144,9 @@ class WiFiTests: XCTestCase {
             return XCTFail("Parsed value is not WiFi")
         }
 
-        XCTAssertEqual(wifi.isEnabled, true)
-        XCTAssertEqual(wifi.isConnected, true)
-        XCTAssertEqual(wifi.networkSSID, "HOME")
-        XCTAssertEqual(wifi.networkSecurity, .WPA2Personal)
+        XCTAssertEqual(wifi.enabledState?.value, .enabled)
+        XCTAssertEqual(wifi.connectedState?.value, .connected)
+        XCTAssertEqual(wifi.networkSSID?.value, "HOME")
+        XCTAssertEqual(wifi.networkSecurity?.value, .WPA2Personal)
     }
 }

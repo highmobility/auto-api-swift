@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  TextInputTests.swift
+//  AATextInputTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 13/12/2017.
@@ -30,7 +30,7 @@ import AutoAPI
 import XCTest
 
 
-class TextInputTests: XCTestCase {
+class AATextInputTests: XCTestCase {
 
     static var allTests = [("testTextInput", testTextInput)]
 
@@ -42,11 +42,13 @@ class TextInputTests: XCTestCase {
             0x00, 0x44, // MSB, LSB Message Identifier for Text Input
             0x00,       // Message Type for Text Input
 
-            0x01,               // Property Identifier for Text
-            0x00, 0x03,         // Property size is 3 bytes
+            0x01,       // Property Identifier for Text
+            0x00, 0x06, // Property size is 6 bytes
+            0x01,       // Data component
+            0x00, 0x03, // Data component size is 3 bytes
             0x79, 0x65, 0x73    // "yes"
         ]
 
-        XCTAssertEqual(AATextInput.textInput("yes"), bytes)
+        XCTAssertEqual(AATextInput.textInput("yes").bytes, bytes)
     }
 }

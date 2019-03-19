@@ -42,8 +42,8 @@ public class AAMessaging: AACapabilityClass, AACapability {
 
     required init(properties: AAProperties) {
         // Ordered by the ID
-        recipientHandle = properties.property(forIdentifier: 0x01)
-        text = properties.property(forIdentifier: 0x02)
+        text = properties.property(forIdentifier: 0x01)
+        recipientHandle = properties.property(forIdentifier: 0x02)
 
         super.init(properties: properties)
     }

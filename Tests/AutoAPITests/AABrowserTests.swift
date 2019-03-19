@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  GraphicsTests.swift
+//  AABrowserTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 13/12/2017.
@@ -30,29 +30,31 @@ import AutoAPI
 import XCTest
 
 
-class GraphicsTests: XCTestCase {
+class AABrowserTests: XCTestCase {
 
-    static var allTests = [("testDisplayImage", testDisplayImage)]
+    static var allTests = [("testLoadURL", testLoadURL)]
 
 
     // MARK: XCTestCase
 
-    func testDisplayImage() {
+    func testLoadURL() {
         let bytes: [UInt8] = [
-            0x00, 0x51, // MSB, LSB Message Identifier for Graphics
-            0x00,       // Message Type for Display Image
+            0x00, 0x49, // MSB, LSB Message Identifier for Browser
+            0x00,       // Message Type for Load URL
 
-            0x01,       // Property Identifier for Image URL
-            0x00, 0x15, // Property size is 21 bytes
-            0x68, 0x74, 0x74, 0x70, 0x73, 0x3a, 0x2f,   //
-            0x2f, 0x67, 0x6f, 0x6f, 0x2e, 0x67, 0x6c,   //
-            0x2f, 0x56, 0x79, 0x55, 0x31, 0x69, 0x70    // https://goo.gl/VyU1ip
+            0x01,       // Property Identifier for URL
+            0x00, 0x15, // Propery size is 21 bytes
+            0x01,       // Data component
+            0x00, 0x12, // Data component is 18 bytes
+            0x68, 0x74, 0x74, 0x70, 0x73, 0x3a, //
+            0x2f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, //
+            0x6c, 0x65, 0x2e, 0x63, 0x6f, 0x6d  // https://google.com
         ]
 
-        guard let url = URL(string: "https://goo.gl/VyU1ip") else {
+        guard let url = URL(string: "https://google.com") else {
             return XCTFail("Failed to generate a URL")
         }
 
-        XCTAssertEqual(AAGraphics.displayImage(url), bytes)
+        XCTAssertEqual(AABrowser.loadURL(url).bytes, bytes)
     }
 }

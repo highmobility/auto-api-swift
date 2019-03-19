@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  VideoHandoverTests.swift
+//  AAVideoHandoverTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 13/12/2017.
@@ -30,7 +30,7 @@ import AutoAPI
 import XCTest
 
 
-class VideoHandoverTests: XCTestCase {
+class AAVideoHandoverTests: XCTestCase {
 
     static var allTests = [("testVideoHandover", testVideoHandover)]
 
@@ -43,18 +43,24 @@ class VideoHandoverTests: XCTestCase {
             0x00,       // Message Type for Video Handover
 
             0x01,       // Property Identifier for Video URL
-            0x00, 0x2b, // Propert size is 43 bytes
+            0x00, 0x2e, // Property size is 46 bytes
+            0x01,       // Data component
+            0x00, 0x2b, // Data component size is 43 bytes
             0x68, 0x74, 0x74, 0x70, 0x73, 0x3a, 0x2f, 0x2f, 0x77, 0x77, 0x77, 0x2e, 0x79,   //
             0x6f, 0x75, 0x74, 0x75, 0x62, 0x65, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x77, 0x61,   //
             0x74, 0x63, 0x68, 0x3f, 0x76, 0x3d, 0x79, 0x57, 0x56, 0x42, 0x37, 0x55, 0x36,   //
             0x6d, 0x58, 0x32, 0x59, // https://www.youtube.com/watch?v=yWVB7U6mX2Y
 
             0x02,       // Property Identifier for Starting Second
-            0x00, 0x02, // Property size is 2 bytes
+            0x00, 0x05, // Property size is 5 bytes
+            0x01,       // Data component
+            0x00, 0x02, // Data component size is 2 bytes
             0x00, 0x5a, // Start from 1m 30s
 
             0x03,       // Property Identifier for Screen
-            0x00, 0x01, // Property size is 1 byte
+            0x00, 0x04, // Property size is 4 byte
+            0x01,       // Data component
+            0x00, 0x01, // Data component size is 1 byte
             0x00        // Show on front screen
         ]
 
@@ -62,8 +68,8 @@ class VideoHandoverTests: XCTestCase {
             return XCTFail("Failed to generate a URL")
         }
 
-        let details = AAVideoHandover.Details(videoURL: url, startingSecond: 90, screen: .front)
+        let videoHandover = AAVideoHandover.videoHandover(url: url, startingSecond: 90, screen: .front)
 
-        XCTAssertEqual(AAVideoHandover.videoHandover(details), bytes)
+        XCTAssertEqual(videoHandover.bytes, bytes)
     }
 }

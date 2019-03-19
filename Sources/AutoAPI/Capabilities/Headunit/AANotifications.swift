@@ -91,7 +91,7 @@ public extension AANotifications {
 
 
     static func activatedAction(_ action: UInt8) -> AACommand {
-        let properties = [action.property(forIdentifier: 0x01)]
+        let properties = [action.property(forIdentifier: 0x10)]
 
         return command(forMessageType: .action, properties: properties)
     }
