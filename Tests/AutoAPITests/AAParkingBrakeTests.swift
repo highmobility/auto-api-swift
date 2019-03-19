@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  ParkingBrakeTests.swift
+//  AAParkingBrakeTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 07/12/2017.
@@ -30,7 +30,7 @@ import AutoAPI
 import XCTest
 
 
-class ParkingBrakeTests: XCTestCase {
+class AAParkingBrakeTests: XCTestCase {
 
     static var allTests = [("testActivateInactivate", testActivateInactivate),
                            ("testGetState", testGetState),
@@ -42,11 +42,16 @@ class ParkingBrakeTests: XCTestCase {
     func testActivateInactivate() {
         let bytes: [UInt8] = [
             0x00, 0x58, // MSB, LSB Message Identifier for Parking Brake
-            0x02,       // Message Type for Set Parking Brake
+            0x12,       // Message Type for Set Parking Brake
+
+            0x01,       // Property Identifier for Parking brake
+            0x00, 0x04, // Propery size 4 bytes
+            0x01,       // Data component
+            0x00, 0x01, // Data component size 1 byte
             0x00        // Inactivate
         ]
 
-        XCTAssertEqual(AAParkingBrake.activate(false), bytes)
+        XCTAssertEqual(AAParkingBrake.activate(.inactive).bytes, bytes)
     }
 
     func testGetState() {
@@ -55,7 +60,7 @@ class ParkingBrakeTests: XCTestCase {
             0x00        // Message Type for Get Parking Brake State
         ]
 
-        XCTAssertEqual(AAParkingBrake.getParkingBrakeState, bytes)
+        XCTAssertEqual(AAParkingBrake.getBrakeState.bytes, bytes)
     }
 
     func testState() {
@@ -64,7 +69,9 @@ class ParkingBrakeTests: XCTestCase {
             0x01,       // Message Type for Parking Brake State
 
             0x01,       // Property Identifier for Parking Brake
-            0x00, 0x01, // Property size 1 byte
+            0x00, 0x04, // Propery size 4 bytes
+            0x01,       // Data component
+            0x00, 0x01, // Data component size 1 byte
             0x01        // Parking brake active
         ]
 
@@ -72,6 +79,6 @@ class ParkingBrakeTests: XCTestCase {
             return XCTFail("Parsed value is not ParkingBrake")
         }
 
-        XCTAssertEqual(parkingBrake.isActive, true)
+        XCTAssertEqual(parkingBrake.state?.value, .active)
     }
 }

@@ -37,6 +37,12 @@
 		2011963B224137CB00A6737D /* AAPowerTakeOffTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15412097154D00A1658B /* AAPowerTakeOffTests.swift */; };
 		2011963C2241384000A6737D /* AATachographTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15512097286200A1658B /* AATachographTests.swift */; };
 		2011963D224139A500A6737D /* AAHomeChargerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_189 /* AAHomeChargerTests.swift */; };
+		2011963E2241418600A6737D /* AAFuelingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_186 /* AAFuelingTests.swift */; };
+		2011963F2241444300A6737D /* AAParkingBrakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_199 /* AAParkingBrakeTests.swift */; };
+		20119640224144EC00A6737D /* AAParkingTicketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_200 /* AAParkingTicketTests.swift */; };
+		2011964122414ACE00A6737D /* AARemoteControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_202 /* AARemoteControlTests.swift */; };
+		2011964222414C0000A6737D /* AATheftAlarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_206 /* AATheftAlarmTests.swift */; };
+		2011964322414D3000A6737D /* AAValetModeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_208 /* AAValetModeTests.swift */; };
 		201B930E221AC52A005A1D96 /* AACommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B930D221AC52A005A1D96 /* AACommand.swift */; };
 		201BFD8921C39D77001E1DC1 /* AAFogLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201BFD8821C39D77001E1DC1 /* AAFogLight.swift */; };
 		201BFD8B21C39DEF001E1DC1 /* AALightLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201BFD8A21C39DEF001E1DC1 /* AALightLocation.swift */; };
@@ -414,7 +420,7 @@
 		OBJ_181 /* EngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineTests.swift; sourceTree = "<group>"; };
 		OBJ_184 /* FailureMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureMessageTests.swift; sourceTree = "<group>"; };
 		OBJ_185 /* FirmwareVersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirmwareVersionTests.swift; sourceTree = "<group>"; };
-		OBJ_186 /* FuelingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelingTests.swift; sourceTree = "<group>"; };
+		OBJ_186 /* AAFuelingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFuelingTests.swift; sourceTree = "<group>"; };
 		OBJ_187 /* AAGraphicsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAGraphicsTests.swift; sourceTree = "<group>"; };
 		OBJ_188 /* AAHeartRateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHeartRateTests.swift; sourceTree = "<group>"; };
 		OBJ_189 /* AAHomeChargerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHomeChargerTests.swift; sourceTree = "<group>"; };
@@ -428,17 +434,17 @@
 		OBJ_196 /* NaviDestinationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviDestinationTests.swift; sourceTree = "<group>"; };
 		OBJ_197 /* AANotificationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AANotificationsTests.swift; sourceTree = "<group>"; };
 		OBJ_198 /* OffroadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffroadTests.swift; sourceTree = "<group>"; };
-		OBJ_199 /* ParkingBrakeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingBrakeTests.swift; sourceTree = "<group>"; };
+		OBJ_199 /* AAParkingBrakeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAParkingBrakeTests.swift; sourceTree = "<group>"; };
 		OBJ_20 /* AAClimate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAClimate.swift; sourceTree = "<group>"; };
-		OBJ_200 /* ParkingTicketTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTicketTests.swift; sourceTree = "<group>"; };
+		OBJ_200 /* AAParkingTicketTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAParkingTicketTests.swift; sourceTree = "<group>"; };
 		OBJ_201 /* RaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceTests.swift; sourceTree = "<group>"; };
-		OBJ_202 /* RemoteControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlTests.swift; sourceTree = "<group>"; };
+		OBJ_202 /* AARemoteControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AARemoteControlTests.swift; sourceTree = "<group>"; };
 		OBJ_203 /* RooftopControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RooftopControlTests.swift; sourceTree = "<group>"; };
 		OBJ_204 /* SeatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatsTests.swift; sourceTree = "<group>"; };
 		OBJ_205 /* AATextInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATextInputTests.swift; sourceTree = "<group>"; };
-		OBJ_206 /* TheftAlarmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheftAlarmTests.swift; sourceTree = "<group>"; };
+		OBJ_206 /* AATheftAlarmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATheftAlarmTests.swift; sourceTree = "<group>"; };
 		OBJ_207 /* TrunkAccessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrunkAccessTests.swift; sourceTree = "<group>"; };
-		OBJ_208 /* ValetModeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValetModeTests.swift; sourceTree = "<group>"; };
+		OBJ_208 /* AAValetModeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAValetModeTests.swift; sourceTree = "<group>"; };
 		OBJ_209 /* VehicleLocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleLocationTests.swift; sourceTree = "<group>"; };
 		OBJ_21 /* AAHonkHornFlashLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHonkHornFlashLights.swift; sourceTree = "<group>"; };
 		OBJ_210 /* VehicleStatusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleStatusTests.swift; sourceTree = "<group>"; };
@@ -729,7 +735,7 @@
 				OBJ_181 /* EngineTests.swift */,
 				OBJ_184 /* FailureMessageTests.swift */,
 				OBJ_185 /* FirmwareVersionTests.swift */,
-				OBJ_186 /* FuelingTests.swift */,
+				OBJ_186 /* AAFuelingTests.swift */,
 				OBJ_187 /* AAGraphicsTests.swift */,
 				OBJ_188 /* AAHeartRateTests.swift */,
 				OBJ_189 /* AAHomeChargerTests.swift */,
@@ -743,20 +749,20 @@
 				OBJ_196 /* NaviDestinationTests.swift */,
 				OBJ_197 /* AANotificationsTests.swift */,
 				OBJ_198 /* OffroadTests.swift */,
-				OBJ_199 /* ParkingBrakeTests.swift */,
-				OBJ_200 /* ParkingTicketTests.swift */,
+				OBJ_199 /* AAParkingBrakeTests.swift */,
+				OBJ_200 /* AAParkingTicketTests.swift */,
 				20DB15412097154D00A1658B /* AAPowerTakeOffTests.swift */,
 				205C5168208F154900B55ACE /* PropertiesTests.swift */,
 				OBJ_201 /* RaceTests.swift */,
-				OBJ_202 /* RemoteControlTests.swift */,
+				OBJ_202 /* AARemoteControlTests.swift */,
 				OBJ_203 /* RooftopControlTests.swift */,
 				OBJ_204 /* SeatsTests.swift */,
 				205C5176208F3FFD00B55ACE /* StartStopTests.swift */,
 				20DB15512097286200A1658B /* AATachographTests.swift */,
 				OBJ_205 /* AATextInputTests.swift */,
-				OBJ_206 /* TheftAlarmTests.swift */,
+				OBJ_206 /* AATheftAlarmTests.swift */,
 				OBJ_207 /* TrunkAccessTests.swift */,
-				OBJ_208 /* ValetModeTests.swift */,
+				OBJ_208 /* AAValetModeTests.swift */,
 				OBJ_209 /* VehicleLocationTests.swift */,
 				OBJ_210 /* VehicleStatusTests.swift */,
 				OBJ_211 /* VehicleTimeTests.swift */,
@@ -1153,20 +1159,26 @@
 			buildActionMask = 0;
 			files = (
 				2011962F2240E4E600A6737D /* AAGraphicsTests.swift in Sources */,
+				2011963F2241444300A6737D /* AAParkingBrakeTests.swift in Sources */,
 				201196332240F31900A6737D /* AANotificationsTests.swift in Sources */,
 				201196372241357C00A6737D /* AALightConditionsTests.swift in Sources */,
 				OBJ_265 /* AABrowserTests.swift in Sources */,
 				201196302240E5A700A6737D /* AAMessagingTests.swift in Sources */,
+				20119640224144EC00A6737D /* AAParkingTicketTests.swift in Sources */,
+				2011964222414C0000A6737D /* AATheftAlarmTests.swift in Sources */,
 				201196362241332800A6737D /* AAWiFiTests.swift in Sources */,
 				2011963C2241384000A6737D /* AATachographTests.swift in Sources */,
+				2011964322414D3000A6737D /* AAValetModeTests.swift in Sources */,
 				2011963B224137CB00A6737D /* AAPowerTakeOffTests.swift in Sources */,
 				20119639224136E300A6737D /* AADriverFatigueTests.swift in Sources */,
 				201196322240ECFC00A6737D /* AAMobileTests.swift in Sources */,
+				2011963E2241418600A6737D /* AAFuelingTests.swift in Sources */,
 				201196342241320F00A6737D /* AATextInputTests.swift in Sources */,
 				201196382241358000A6737D /* AAWeatherConditionsTests.swift in Sources */,
 				2011963D224139A500A6737D /* AAHomeChargerTests.swift in Sources */,
 				2011963A2241372E00A6737D /* AAHeartRateTests.swift in Sources */,
 				201196352241326200A6737D /* AAVideoHandoverTests.swift in Sources */,
+				2011964122414ACE00A6737D /* AARemoteControlTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

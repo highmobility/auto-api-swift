@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  ValetModeTests.swift
+//  AAValetModeTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 12/12/2017.
@@ -30,7 +30,7 @@ import AutoAPI
 import XCTest
 
 
-class ValetModeTests: XCTestCase {
+class AAValetModeTests: XCTestCase {
 
     static var allTests = [("testActivateValetMode", testActivateValetMode),
                            ("testGetState", testGetState),
@@ -42,11 +42,16 @@ class ValetModeTests: XCTestCase {
     func testActivateValetMode() {
         let bytes: [UInt8] = [
             0x00, 0x28, // MSB, LSB Message Identifier for Valet Mode
-            0x02,       // Message Type for Activate/Deactivate Valet Mode
+            0x12,       // Message Type for Activate/Deactivate Valet Mode
+
+            0x01,       // Property Identifier for Valet mode
+            0x00, 0x04, // Property size 4 bytes
+            0x01,       // Data component
+            0x00, 0x01, // Data component size 1 byte
             0x01        // Activate
         ]
 
-        XCTAssertEqual(AAValetMode.activateValetMode(true), bytes)
+        XCTAssertEqual(AAValetMode.activate(.active).bytes, bytes)
     }
 
     func testGetState() {
@@ -55,7 +60,7 @@ class ValetModeTests: XCTestCase {
             0x00        // Message Type for Get Valet Mode
         ]
 
-        XCTAssertEqual(AAValetMode.getValetMode, bytes)
+        XCTAssertEqual(AAValetMode.getState.bytes, bytes)
     }
 
     func testState() {
@@ -64,7 +69,9 @@ class ValetModeTests: XCTestCase {
             0x01,       // Message Type for Valet Mode
 
             0x01,       // Property Identifier for Valet Mode
-            0x00, 0x01, // Property size is 1 byte
+            0x00, 0x04, // Property size is 4 byte
+            0x01,       // Data component
+            0x00, 0x01, // Data component size is 1 byte
             0x01        // Activated
         ]
 
@@ -72,6 +79,6 @@ class ValetModeTests: XCTestCase {
             return XCTFail("Parsed value is not ValetMode")
         }
 
-        XCTAssertEqual(valetMode.isActive, true)
+        XCTAssertEqual(valetMode.state?.value, .active)
     }
 }

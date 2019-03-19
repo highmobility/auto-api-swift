@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  TheftAlarmTests.swift
+//  AATheftAlarmTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 01/12/2017.
@@ -30,7 +30,7 @@ import AutoAPI
 import XCTest
 
 
-class TheftAlarmTests: XCTestCase {
+class AATheftAlarmTests: XCTestCase {
 
     static var allTests = [("testGetState", testGetState),
                            ("testSetTheftAlarm", testSetTheftAlarm),
@@ -45,18 +45,22 @@ class TheftAlarmTests: XCTestCase {
             0x00        // Message Type for Get Theft Alarm State
         ]
 
-        XCTAssertEqual(AATheftAlarm.getTheftAlarmState, bytes)
+        XCTAssertEqual(AATheftAlarm.getAlarmState.bytes, bytes)
     }
 
     func testSetTheftAlarm() {
         let bytes: [UInt8] = [
             0x00, 0x46, // MSB, LSB Message Identifier for Theft Alarm
-            0x02,       // Message Type for Set Theft Alarm
+            0x12,       // Message Type for Set Theft Alarm
 
-            0x02  // Trigger alarm
+            0x01,       // Property Identifier for Theft alarm
+            0x00, 0x04, // Property size 4 bytes
+            0x01,       // Data component
+            0x00, 0x01, // Data component size 1 byte
+            0x02        // Trigger alarm
         ]
 
-        XCTAssertEqual(AATheftAlarm.setTheftAlarm(.trigger), bytes)
+        XCTAssertEqual(AATheftAlarm.setAlarmState(.triggered).bytes, bytes)
     }
 
     func testState() {
@@ -65,6 +69,8 @@ class TheftAlarmTests: XCTestCase {
             0x01,       // Message Type for Theft Alarm State
 
             0x01,       // Property Identifier for Theft Alarm
+            0x00, 0x04, // Property size 4 bytes
+            0x01,       // Data component
             0x00, 0x01, // Property size 1 byte
             0x01        // Theft alarm armed
         ]
@@ -73,6 +79,6 @@ class TheftAlarmTests: XCTestCase {
             return XCTFail("Parsed value is not TheftAlarm")
         }
 
-        XCTAssertEqual(theftAlarm.state, .armed)
+        XCTAssertEqual(theftAlarm.state?.value, .armed)
     }
 }

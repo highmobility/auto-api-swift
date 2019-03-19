@@ -67,7 +67,7 @@ public extension AAFueling {
     }
 
 
-    static func controlGasFlap(lockState: AALockState? = nil, position: AAPositionState? = nil) -> AACommand {
+    static func controlGasFlap(lockState: AALockState?, position: AAPositionState?) -> AACommand {
         let properties = [lockState?.property(forIdentifier: 0x02),
                           position?.property(forIdentifier: 0x03)]
 
