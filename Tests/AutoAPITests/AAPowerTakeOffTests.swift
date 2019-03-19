@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  PowerTakeOffTests.swift
+//  AAPowerTakeOffTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 30/04/2018.
@@ -30,7 +30,7 @@ import AutoAPI
 import XCTest
 
 
-class PowerTakeOffTests: XCTestCase {
+class AAPowerTakeOffTests: XCTestCase {
     
     static var allTests = [("testActivate", testActivate),
                            ("testGetState", testGetState),
@@ -45,11 +45,13 @@ class PowerTakeOffTests: XCTestCase {
             0x02,       // Message Type for Control Power Take-Off
 
             0x01,       // Property Identifier for Power Take-Off
-            0x00, 0x01, // Property size 1 byte
+            0x00, 0x04, // Property size 4 byte
+            0x01,       // Data component
+            0x00, 0x01, // component size 1 byte
             0x01        // Activate power take-off
         ]
 
-        XCTAssertEqual(AAPowerTakeoff.activatePowerTakeOff(true), bytes)
+        XCTAssertEqual(AAPowerTakeoff.activate(.active).bytes, bytes)
     }
 
     func testGetState() {
@@ -58,7 +60,7 @@ class PowerTakeOffTests: XCTestCase {
             0x00        // Message Type for Get Power Takeoff State
         ]
 
-        XCTAssertEqual(AAPowerTakeoff.getPowerTakeOffState, bytes)
+        XCTAssertEqual(AAPowerTakeoff.getState.bytes, bytes)
     }
 
     func testState() {
@@ -67,11 +69,15 @@ class PowerTakeOffTests: XCTestCase {
             0x01,       // Message Type for Power Takeoff State
 
             0x01,       // Property identifier for Power takeoff
-            0x00, 0x01, // Property size is 1 bytes
+            0x00, 0x04, // Property size is 4 bytes
+            0x01,       // Data component
+            0x00, 0x01, // Data component size is 1 bytes
             0x01,       // Power Take-Off system is active
 
             0x02,       // Property identifier for Power takeoff engaged
-            0x00, 0x01, // Property size is 1 bytes
+            0x00, 0x04, // Property size is 4 bytes
+            0x01,       // Data component
+            0x00, 0x01, // Data component size is 1 bytes
             0x01        // At least one Power Take-Off drive is engaged
         ]
 
@@ -79,7 +85,7 @@ class PowerTakeOffTests: XCTestCase {
             return XCTFail("Parsed value is not PowerTakeOff")
         }
 
-        XCTAssertEqual(powerTakeOff.isActive, true)
-        XCTAssertEqual(powerTakeOff.isEngaged, true)
+        XCTAssertEqual(powerTakeOff.activeState?.value, .active)
+        XCTAssertEqual(powerTakeOff.engagedState?.value, .active)
     }
 }
