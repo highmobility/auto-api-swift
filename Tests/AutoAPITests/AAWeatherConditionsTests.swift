@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  LightConditionsTests.swift
+//  AAWeatherConditionsTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 07/12/2017.
@@ -30,7 +30,7 @@ import AutoAPI
 import XCTest
 
 
-class LightConditionsTests: XCTestCase {
+class AAWeatherConditionsTests: XCTestCase {
 
     static var allTests = [("testGetState", testGetState),
                            ("testState", testState)]
@@ -40,32 +40,29 @@ class LightConditionsTests: XCTestCase {
 
     func testGetState() {
         let bytes: [UInt8] = [
-            0x00, 0x54, // MSB, LSB Message Identifier for Light Conditions
-            0x00        // Message Type for Get Light Conditions
+            0x00, 0x55, // MSB, LSB Message Identifier for Weather Conditions
+            0x00        // Message Type for Get Weather Conditions
         ]
 
-        XCTAssertEqual(AALightConditions.getLightConditions, bytes)
+        XCTAssertEqual(AAWeatherConditions.getConditions.bytes, bytes)
     }
 
     func testState() {
         let bytes: [UInt8] = [
-            0x00, 0x54, // MSB, LSB Message Identifier for Light Conditions
-            0x01,       // Message Type for Light Conditions State
+            0x00, 0x55, // MSB, LSB Message Identifier for Weather Conditions
+            0x01,       // Message Type for Weather Conditions State
 
-            0x01,                   // Property Identifier for Outside light
-            0x00, 0x04,             // Property size 4 bytes
-            0x47, 0xd8, 0xcc, 0x00, // 111_000 lux
-
-            0x02,                   // Property Identifier for Inside light
-            0x00, 0x04,             // Property size 4 bytes
-            0x3e, 0x80, 0x00, 0x00  // 0.25 lux
+            0x01,       // Property Identifier for Rain intensity
+            0x00, 0x0B, // Property size 11 bytes
+            0x01,       // Data component
+            0x00, 0x08, // Data component size 8 bytes
+            0x3F, 0xF0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00  // 100% (maximum rain)
         ]
 
-        guard let lightConditions = AAAutoAPI.parseBinary(bytes) as? AALightConditions else {
-            return XCTFail("Parsed value is not LightConditions")
+        guard let weatherConditions = AAAutoAPI.parseBinary(bytes) as? AAWeatherConditions else {
+            return XCTFail("Parsed value is not WeatherConditions")
         }
 
-        XCTAssertEqual(lightConditions.outsideLight, 111_000)
-        XCTAssertEqual(lightConditions.insideLight, 0.25)
+        XCTAssertEqual(weatherConditions.rainIntensity?.value, 1.0)
     }
 }
