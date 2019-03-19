@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  DriverFatigueTests.swift
+//  AADriverFatigueTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 12/12/2017.
@@ -30,7 +30,7 @@ import AutoAPI
 import XCTest
 
 
-class DriverFatigueTests: XCTestCase {
+class AADriverFatigueTests: XCTestCase {
 
     static var allTests = [("testDetected", testDetected)]
 
@@ -43,7 +43,9 @@ class DriverFatigueTests: XCTestCase {
             0x01,       // Message Type for Driver Fatigue Detected
 
             0x01,       // Property Identifier for Fatigue Level
-            0x00, 0x01, // Propert size is 1 byte
+            0x00, 0x04, // Property size is 4 byte
+            0x01,       // Data component
+            0x00, 0x01, // Data component size is 1 byte
             0x00        // Light fatigue of the driver
         ]
 
@@ -51,6 +53,6 @@ class DriverFatigueTests: XCTestCase {
             return XCTFail("Parsed value is not DriverFatigue")
         }
 
-        XCTAssertEqual(driverFatigue.fatigueLevel, .light)
+        XCTAssertEqual(driverFatigue.fatigueLevel?.value, .light)
     }
 }

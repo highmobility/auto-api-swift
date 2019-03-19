@@ -32,6 +32,8 @@
 		201196362241332800A6737D /* AAWiFiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_215 /* AAWiFiTests.swift */; };
 		201196372241357C00A6737D /* AALightConditionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_192 /* AALightConditionsTests.swift */; };
 		201196382241358000A6737D /* AAWeatherConditionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_214 /* AAWeatherConditionsTests.swift */; };
+		20119639224136E300A6737D /* AADriverFatigueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_180 /* AADriverFatigueTests.swift */; };
+		2011963A2241372E00A6737D /* AAHeartRateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_188 /* AAHeartRateTests.swift */; };
 		201B930E221AC52A005A1D96 /* AACommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201B930D221AC52A005A1D96 /* AACommand.swift */; };
 		201BFD8921C39D77001E1DC1 /* AAFogLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201BFD8821C39D77001E1DC1 /* AAFogLight.swift */; };
 		201BFD8B21C39DEF001E1DC1 /* AALightLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201BFD8A21C39DEF001E1DC1 /* AALightLocation.swift */; };
@@ -405,13 +407,13 @@
 		OBJ_178 /* DiagnosticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsTests.swift; sourceTree = "<group>"; };
 		OBJ_179 /* DoorLocksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorLocksTests.swift; sourceTree = "<group>"; };
 		OBJ_18 /* AACharging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACharging.swift; sourceTree = "<group>"; };
-		OBJ_180 /* DriverFatigueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverFatigueTests.swift; sourceTree = "<group>"; };
+		OBJ_180 /* AADriverFatigueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADriverFatigueTests.swift; sourceTree = "<group>"; };
 		OBJ_181 /* EngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineTests.swift; sourceTree = "<group>"; };
 		OBJ_184 /* FailureMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureMessageTests.swift; sourceTree = "<group>"; };
 		OBJ_185 /* FirmwareVersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirmwareVersionTests.swift; sourceTree = "<group>"; };
 		OBJ_186 /* FuelingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelingTests.swift; sourceTree = "<group>"; };
 		OBJ_187 /* AAGraphicsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAGraphicsTests.swift; sourceTree = "<group>"; };
-		OBJ_188 /* HeartRateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateTests.swift; sourceTree = "<group>"; };
+		OBJ_188 /* AAHeartRateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHeartRateTests.swift; sourceTree = "<group>"; };
 		OBJ_189 /* HomeChargerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChargerTests.swift; sourceTree = "<group>"; };
 		OBJ_19 /* AAChassisSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChassisSettings.swift; sourceTree = "<group>"; };
 		OBJ_190 /* HonkHornFlashLightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HonkHornFlashLightsTests.swift; sourceTree = "<group>"; };
@@ -720,13 +722,13 @@
 				205C516E208F2EF700B55ACE /* DashboardLightsTests.swift */,
 				OBJ_178 /* DiagnosticsTests.swift */,
 				OBJ_179 /* DoorLocksTests.swift */,
-				OBJ_180 /* DriverFatigueTests.swift */,
+				OBJ_180 /* AADriverFatigueTests.swift */,
 				OBJ_181 /* EngineTests.swift */,
 				OBJ_184 /* FailureMessageTests.swift */,
 				OBJ_185 /* FirmwareVersionTests.swift */,
 				OBJ_186 /* FuelingTests.swift */,
 				OBJ_187 /* AAGraphicsTests.swift */,
-				OBJ_188 /* HeartRateTests.swift */,
+				OBJ_188 /* AAHeartRateTests.swift */,
 				OBJ_189 /* HomeChargerTests.swift */,
 				OBJ_190 /* HonkHornFlashLightsTests.swift */,
 				OBJ_191 /* KeyfobPositionTests.swift */,
@@ -1153,9 +1155,11 @@
 				OBJ_265 /* AABrowserTests.swift in Sources */,
 				201196302240E5A700A6737D /* AAMessagingTests.swift in Sources */,
 				201196362241332800A6737D /* AAWiFiTests.swift in Sources */,
+				20119639224136E300A6737D /* AADriverFatigueTests.swift in Sources */,
 				201196322240ECFC00A6737D /* AAMobileTests.swift in Sources */,
 				201196342241320F00A6737D /* AATextInputTests.swift in Sources */,
 				201196382241358000A6737D /* AAWeatherConditionsTests.swift in Sources */,
+				2011963A2241372E00A6737D /* AAHeartRateTests.swift in Sources */,
 				201196352241326200A6737D /* AAVideoHandoverTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

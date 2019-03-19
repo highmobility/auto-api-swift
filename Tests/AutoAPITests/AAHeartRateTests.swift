@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  HeartRateTests.swift
+//  AAHeartRateTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 12/12/2017.
@@ -30,7 +30,7 @@ import AutoAPI
 import XCTest
 
 
-class HeartRateTests: XCTestCase {
+class AAHeartRateTests: XCTestCase {
 
     static var allTests = [("testSendHeartRate", testSendHeartRate)]
 
@@ -40,10 +40,15 @@ class HeartRateTests: XCTestCase {
     func testSendHeartRate() {
         let bytes: [UInt8] = [
             0x00, 0x29, // MSB, LSB Message Identifier for Heart Rate
-            0x02,       // Message Type for Heart Rate
+            0x12,       // Message Type for Heart Rate
+
+            0x01,       // Property Identifier for Heart RAte
+            0x00, 0x04, // Property size 4 bytes
+            0x01,       // Data component
+            0x00, 0x01, // Data component size 1 byte
             0x46        // 70 beats per minute
         ]
 
-        XCTAssertEqual(AAHeartRate.sendHeartRate(70), bytes)
+        XCTAssertEqual(AAHeartRate.sendRate(70).bytes, bytes)
     }
 }
