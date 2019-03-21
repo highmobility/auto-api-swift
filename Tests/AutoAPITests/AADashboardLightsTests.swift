@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  DashboardLightsTests.swift
+//  AADashboardLightsTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 24/04/2018.
@@ -30,7 +30,7 @@ import AutoAPI
 import XCTest
 
 
-class DashboardLightsTests: XCTestCase {
+class AADashboardLightsTests: XCTestCase {
 
     static var allTests = [("testGetState", testGetState),
                            ("testLights", testLights)]
@@ -44,7 +44,7 @@ class DashboardLightsTests: XCTestCase {
             0x00        // Message Type for Get Dashboard Lights
         ]
 
-        XCTAssertEqual(AADashboardLights.getDashboardLights, bytes)
+        XCTAssertEqual(AADashboardLights.getDashboardLights.bytes, bytes)
     }
 
     func testLights() {
@@ -53,55 +53,63 @@ class DashboardLightsTests: XCTestCase {
             0x01,       // Message Type for Dashboard Lights
 
             0x01,       // Property identifier for Dashboard light
-            0x00, 0x02, // Property size is 2 bytes
+            0x00, 0x05, // Property size is 5 bytes
+            0x01,       // Data component
+            0x00, 0x02, // Data component size is 2 bytes
             0x00,       // High beam, main beam
             0x00,       // Inactive
 
             0x01,       // Property identifier for Dashboard light
-            0x00, 0x02, // Property size is 2 bytes
+            0x00, 0x05, // Property size is 5 bytes
+            0x01,       // Data component
+            0x00, 0x02, // Data component size is 2 bytes
             0x02,       // Hazard warning
             0x01,       // Info
 
             0x01,       // Property identifier for Dashboard light
-            0x00, 0x02, // Property size is 2 bytes
+            0x00, 0x05, // Property size is 5 bytes
+            0x01,       // Data component
+            0x00, 0x02, // Data component size is 2 bytes
             0x0F,       // Transmission fluid temperature
             0x03,       // Red
 
             0x01,       // Property identifier for Dashboard light
-            0x00, 0x02, // Property size is 2 bytes
+            0x00, 0x05, // Property size is 5 bytes
+            0x01,       // Data component
+            0x00, 0x02, // Data component size is 2 bytes
             0x15,       // Engine oil level
             0x00        // Inactive
         ]
 
         guard let dashboardLights = AAAutoAPI.parseBinary(bytes) as? AADashboardLights else {
-            return XCTFail("Parsed value is not DashboardLights")
+            return XCTFail("Parsed value is not AADashboardLights")
         }
 
         XCTAssertEqual(dashboardLights.lights?.count, 4)
 
-        if let theLight = dashboardLights.lights?.first(where: { $0.name == .highMainBeam }) {
-            XCTAssertEqual(theLight.state, .inactive)
+        if let theLight = dashboardLights.lights?.first(where: { $0.value?.name == .highMainBeam }) {
+            XCTAssertEqual(theLight.value?.state, .inactive)
         }
         else {
             XCTFail("Lights doesn't contain High Beam, Main Beam")
         }
 
-        if let theLight = dashboardLights.lights?.first(where: { $0.name == .hazardWarning }) {
-            XCTAssertEqual(theLight.state, .info)
+        if let theLight = dashboardLights.lights?.first(where: { $0.value?.name == .hazardWarning }) {
+            XCTAssertEqual(theLight.value?.state, .info)
         }
         else {
             XCTFail("Lights doesn't contain Hazard Warning")
         }
 
-        if let theLight = dashboardLights.lights?.first(where: { $0.name == .transmissionFluidTemperature }) {
-            XCTAssertEqual(theLight.state, .red)
+        if let theLight = dashboardLights.lights?.first(where: { $0.value?.name == .transmissionFluidTemperature }) {
+            XCTAssertEqual(theLight.value?.state, .red)
         }
         else {
             XCTFail("Lights doesn't contain Transmission Fluid Temperature")
         }
 
-        if let theLight = dashboardLights.lights?.first(where: { $0.name == .engineOilLevel }) {
-            XCTAssertEqual(theLight.state, .inactive)
+        if let theLight = dashboardLights.lights?.first(where: { $0.value?.name == .engineOilLevel }) {
+            XCTAssertEqual(theLight.value?.state, .inactive)
         }
         else {
             XCTFail("Lights doesn't contain Engine Oil Level")

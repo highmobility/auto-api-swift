@@ -60,7 +60,7 @@ public class AARace: AACapabilityClass, AACapability {
         // Ordered by the ID
         accelerations = properties.allOrNil(forIdentifier: 0x01)
         understeering = properties.property(forIdentifier: 0x02)
-        oversteering = properties.property(forIdentifier: 0x02)
+        oversteering = properties.property(forIdentifier: 0x03)
         gasPedalPosition = properties.property(forIdentifier: 0x04)
         steeringAngle = properties.property(forIdentifier: 0x05)
         brakePressure = properties.property(forIdentifier: 0x06)

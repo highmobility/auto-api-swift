@@ -51,7 +51,7 @@ extension AACheckControlMessage: AABytesConvertable {
 
 
     public init?(bytes: [UInt8]) {
-        guard bytes.count == 9 else {
+        guard bytes.count >= 9 else {
             return nil
         }
 

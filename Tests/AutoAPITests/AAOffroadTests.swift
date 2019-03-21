@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  OffroadTests.swift
+//  AAOffroadTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 07/12/2017.
@@ -30,7 +30,7 @@ import AutoAPI
 import XCTest
 
 
-class OffroadTests: XCTestCase {
+class AAOffroadTests: XCTestCase {
 
     static var allTests = [("testGetState", testGetState),
                            ("testState", testState)]
@@ -44,7 +44,7 @@ class OffroadTests: XCTestCase {
             0x00        // Message Type for Get Offroad State
         ]
 
-        XCTAssertEqual(AAOffroad.getOffroadState, bytes)
+        XCTAssertEqual(AAOffroad.getOffroadState.bytes, bytes)
     }
 
     func testState() {
@@ -53,19 +53,23 @@ class OffroadTests: XCTestCase {
             0x01,       // Message Type for Offroad State
 
             0x01,       // Property Identifier for Route incline
-            0x00, 0x02, // Property size 2 bytes
+            0x00, 0x05, // Property size 5 bytes
+            0x01,       // Data component
+            0x00, 0x02, // Data component size 2 bytes
             0xFF, 0xF6, // -10 degrees incline
 
             0x02,       // Property Identifier for Wheel suspension
-            0x00, 0x01, // Property size 1 byte
-            0x32        // 50% wheel suspension level
+            0x00, 0x0B, // Property size 11 byte
+            0x01,       // Data component
+            0x00, 0x08, // Data component size 8 byte
+            0x3F, 0xE0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00  // 50% wheel suspension level
         ]
 
         guard let offroad = AAAutoAPI.parseBinary(bytes) as? AAOffroad else {
-            return XCTFail("Parsed value is not Offroad")
+            return XCTFail("Parsed value is not AAOffroad")
         }
 
-        XCTAssertEqual(offroad.routeIncline, -10)
-        XCTAssertEqual(offroad.wheelSuspension, 50)
+        XCTAssertEqual(offroad.routeIncline?.value, -10)
+        XCTAssertEqual(offroad.wheelSuspension?.value, 0.5)
     }
 }
