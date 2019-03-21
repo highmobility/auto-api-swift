@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  VehicleTimeTests.swift
+//  AAVehicleTimeTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 12/12/2017.
@@ -30,7 +30,7 @@ import AutoAPI
 import XCTest
 
 
-class VehicleTimeTests: XCTestCase {
+class AAVehicleTimeTests: XCTestCase {
 
     static var allTests = [("testGetState", testGetState),
                            ("testState", testState)]
@@ -44,7 +44,7 @@ class VehicleTimeTests: XCTestCase {
             0x00        // Message Type for Get Vehicle Time
         ]
 
-        XCTAssertEqual(AAVehicleTime.getVehicleTime, bytes)
+        XCTAssertEqual(AAVehicleTime.getTime.bytes, bytes)
     }
 
     func testState() {
@@ -52,27 +52,17 @@ class VehicleTimeTests: XCTestCase {
             0x00, 0x50, // MSB, LSB Message Identifier for Vehicle Time
             0x01,       // Message Type for Vehicle Time
 
-            0x01,       // Property Identifier for Vehicle Time
-            0x00, 0x08, // Property size is 6 bytes
-            0x11,       // 2017
-            0x01,       // January
-            0x0a,       // the 10th
-            0x10,       // 16h
-            0x20,       // 32min
-            0x33,       // 51sec
-            0xFF, 0x88  // -120 min UTC time offset
+            0x01,       // Property identifier for Vehicle time
+            0x00, 0x0B, // Property size is 11 bytes
+            0x01,       // Data component identifier
+            0x00, 0x08, // Data component size is 8 bytes
+            0x00, 0x00, 0x01, 0x59, 0x99, 0xE5, 0xBF, 0xC0 // 13 January 2017 at 22:14:48 GMT
         ]
 
         guard let vehicleTime = AAAutoAPI.parseBinary(bytes) as? AAVehicleTime else {
             return XCTFail("Parsed value is not VehicleTime")
         }
 
-        XCTAssertEqual(vehicleTime.time?.year, 2017)
-        XCTAssertEqual(vehicleTime.time?.month, 1)
-        XCTAssertEqual(vehicleTime.time?.day, 10)
-        XCTAssertEqual(vehicleTime.time?.hour, 16)
-        XCTAssertEqual(vehicleTime.time?.minute, 32)
-        XCTAssertEqual(vehicleTime.time?.second, 51)
-        XCTAssertEqual(vehicleTime.time?.offset, -120)
+        XCTAssertEqual(vehicleTime.time?.value, Date(timeIntervalSince1970: 1_484_345_688.0))
     }
 }

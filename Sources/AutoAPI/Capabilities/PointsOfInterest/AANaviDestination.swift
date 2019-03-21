@@ -68,7 +68,7 @@ public extension AANaviDestination {
 
 
     static func setDestination(coordinates: AACoordinates, name: String?) -> AACommand {
-        let properties = [coordinates.property(forIdentifier: 0x01),
+        let properties = [coordinates.property(forIdentifier: 0x07),
                           name?.property(forIdentifier: 0x02)]
 
         return command(forMessageType: .setDestination, properties: properties)

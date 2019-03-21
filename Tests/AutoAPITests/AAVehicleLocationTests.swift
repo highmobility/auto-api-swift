@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  VehicleLocationTests.swift
+//  AAVehicleLocationTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 04/12/2017.
@@ -30,7 +30,7 @@ import AutoAPI
 import XCTest
 
 
-class VehicleLocationTests: XCTestCase {
+class AAVehicleLocationTests: XCTestCase {
 
     static var allTests = [("testGetState", testGetState),
                            ("testState", testState)]
@@ -44,7 +44,7 @@ class VehicleLocationTests: XCTestCase {
             0x00        // Message Type for Get Vehicle Location
         ]
 
-        XCTAssertEqual(AAVehicleLocation.getVehicleLocation, bytes)
+        XCTAssertEqual(AAVehicleLocation.getLocation.bytes, bytes)
     }
 
     func testState() {
@@ -52,33 +52,39 @@ class VehicleLocationTests: XCTestCase {
             0x00, 0x30, // MSB, LSB Message Identifier for Vehicle Location
             0x01,       // Message Type for Vehicle Location
 
-            0x01,                   // Property Identifier for Coordinate
-            0x00, 0x08,             // Property size 8 bytes
-            0x42, 0x52, 0x14, 0x7d, // 52.520008 Latitude in IEE 754 format
-            0x41, 0x56, 0x7a, 0xb1, // 13.404954 Longitude in IEE 754 format
+            0x04,       // Property identifier for Coordinates
+            0x00, 0x13, // Property size is 19 bytes
+            0x01,       // Data component identifier
+            0x00, 0x10, // Data component size is 16 bytes
+            0x40, 0x4A, 0x42, 0x8F, 0x9F, 0x44, 0xD4, 0x45, // 52.520008 Latitude in IEE 754 format
+            0x40, 0x2A, 0xCF, 0x56, 0x21, 0x74, 0xC4, 0xCE, // 13.404954 Longitude in IEE 754 format
 
-            0x02,                   // Property Identifier for Heading
-            0x00, 0x04,             // Property size 4 bytes
-            0x42, 0x52, 0x14, 0x7d, // 52.520008 Heading in IEE 754 format
+            0x05,       // Property identifier for Heading
+            0x00, 0x0B, // Property size is 11 bytes
+            0x01,       // Data component identifier
+            0x00, 0x08, // Data component size is 8 bytes
+            0x40, 0x2A, 0xBD, 0x80, 0xC3, 0x08, 0xFE, 0xAC, // 13.370123 Heading
 
-            0x03,                   // Property identifier for Altitude
-            0x00, 0x04,             // Property size is 4 bytes
-            0x43, 0x05, 0x80, 0x00  // 133.5 meters above the WGS 84 reference ellipsoid point
+            0x06,       // Property identifier for Altitude
+            0x00, 0x0B, // Property size is 11 bytes
+            0x01,       // Data component identifier
+            0x00, 0x08, // Data component size is 8 bytes
+            0x40, 0x60, 0xB0, 0x00, 0x00, 0x00, 0x00, 0x00 // 133.5 meters above the WGS 84 reference ellipsoid point
         ]
 
         guard let vehicleLocation = AAAutoAPI.parseBinary(bytes) as? AAVehicleLocation else {
             return XCTFail("Parsed value is not VehicleLocation")
         }
 
-        if let coordinate = vehicleLocation.coordinate {
-            XCTAssertEqual(coordinate.latitude, 52.520008, accuracy: 1e-7)
-            XCTAssertEqual(coordinate.longitude, 13.404954, accuracy: 1e-7)
+        if let coordinates = vehicleLocation.coordinates?.value {
+            XCTAssertEqual(coordinates.latitude, 52.520008, accuracy: 1e-7)
+            XCTAssertEqual(coordinates.longitude, 13.404954, accuracy: 1e-7)
         }
         else {
             XCTFail("Vehicle Location doesn't contain Coordinate")
         }
 
-        XCTAssertEqual(vehicleLocation.heading, 52.520008)
-        XCTAssertEqual(vehicleLocation.altitude, 133.5)
+        XCTAssertEqual(vehicleLocation.heading?.value, 13.370123)
+        XCTAssertEqual(vehicleLocation.altitude?.value, 133.5)
     }
 }
