@@ -66,7 +66,7 @@ class AALightConditionsTests: XCTestCase {
         ]
 
         guard let lightConditions = AAAutoAPI.parseBinary(bytes) as? AALightConditions else {
-            return XCTFail("Parsed value is not LightConditions")
+            return XCTFail("Parsed value is not AALightConditions")
         }
 
         XCTAssertEqual(lightConditions.outsideLight?.value, 111_000)

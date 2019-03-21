@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  StartStopTests.swift
+//  AAStartStopTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 24/04/2018.
@@ -30,7 +30,7 @@ import AutoAPI
 import XCTest
 
 
-class StartStopTests: XCTestCase {
+class AAStartStopTests: XCTestCase {
     
     static var allTests = [("testActivate", testActivate),
                            ("testGetState", testGetState),
@@ -42,14 +42,16 @@ class StartStopTests: XCTestCase {
     func testActivate() {
         let bytes: [UInt8] = [
             0x00, 0x63, // MSB, LSB Message Identifier for Start-Stop
-            0x02, // Message Type for Activate/Deactivate Start-Stop
+            0x12, // Message Type for Activate/Deactivate Start-Stop
 
             0x01,       // Property Identifier for Start-Stop
-            0x00, 0x01, // Property size 1 byte
+            0x00, 0x04, // Property size 4 byte
+            0x01,       // Data component
+            0x00, 0x01, // Data component size 1 byte
             0x00        // Deactivate
         ]
 
-        XCTAssertEqual(AAStartStop.activateStartStop(false), bytes)
+        XCTAssertEqual(AAStartStop.activate(.inactive).bytes, bytes)
     }
 
     func testGetState() {
@@ -58,7 +60,7 @@ class StartStopTests: XCTestCase {
             0x00        // Message Type for Get Start Stop State
         ]
 
-        XCTAssertEqual(AAStartStop.getStartStopState, bytes)
+        XCTAssertEqual(AAStartStop.getState.bytes, bytes)
     }
 
     func testState() {
@@ -67,7 +69,9 @@ class StartStopTests: XCTestCase {
             0x01,       // Message Type for Start Stop State
 
             0x01,       // Property identifier for Start stop
-            0x00, 0x01, // Property size is 1 bytes
+            0x00, 0x04, // Property size 4 byte
+            0x01,       // Data component
+            0x00, 0x01, // Data component size 1 byte
             0x01        // Automatic engine start-stop system active
         ]
 
@@ -75,6 +79,6 @@ class StartStopTests: XCTestCase {
             return XCTFail("Parsed value is not StartStop")
         }
 
-        XCTAssertEqual(startStop.isActive, true)
+        XCTAssertEqual(startStop.activeState?.value, .active)
     }
 }

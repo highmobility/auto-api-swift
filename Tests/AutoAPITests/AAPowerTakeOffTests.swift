@@ -82,7 +82,7 @@ class AAPowerTakeOffTests: XCTestCase {
         ]
 
         guard let powerTakeOff = AAAutoAPI.parseBinary(bytes) as? AAPowerTakeoff else {
-            return XCTFail("Parsed value is not PowerTakeOff")
+            return XCTFail("Parsed value is not AAPowerTakeOff")
         }
 
         XCTAssertEqual(powerTakeOff.activeState?.value, .active)

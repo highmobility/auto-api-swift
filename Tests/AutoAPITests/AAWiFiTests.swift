@@ -141,7 +141,7 @@ class AAWiFiTests: XCTestCase {
         ]
 
         guard let wifi = AAAutoAPI.parseBinary(bytes) as? AAWiFi else {
-            return XCTFail("Parsed value is not WiFi")
+            return XCTFail("Parsed value is not AAWiFi")
         }
 
         XCTAssertEqual(wifi.enabledState?.value, .enabled)

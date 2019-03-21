@@ -76,7 +76,7 @@ class AAParkingBrakeTests: XCTestCase {
         ]
 
         guard let parkingBrake = AAAutoAPI.parseBinary(bytes) as? AAParkingBrake else {
-            return XCTFail("Parsed value is not ParkingBrake")
+            return XCTFail("Parsed value is not AAParkingBrake")
         }
 
         XCTAssertEqual(parkingBrake.state?.value, .active)

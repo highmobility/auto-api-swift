@@ -76,7 +76,7 @@ class AATheftAlarmTests: XCTestCase {
         ]
 
         guard let theftAlarm = AAAutoAPI.parseBinary(bytes) as? AATheftAlarm else {
-            return XCTFail("Parsed value is not TheftAlarm")
+            return XCTFail("Parsed value is not AATheftAlarm")
         }
 
         XCTAssertEqual(theftAlarm.state?.value, .armed)

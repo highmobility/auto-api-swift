@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  TrunkAccessTests.swift
+//  AATrunkAccessTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 27/11/2017.
@@ -30,14 +30,35 @@ import AutoAPI
 import XCTest
 
 
-class TrunkAccessTests: XCTestCase {
+class AATrunkAccessTests: XCTestCase {
 
-    static var allTests = [("testGetState", testGetState),
-                           ("testOpenClose", testOpenClose),
+    static var allTests = [("testControl", testControl),
+                           ("testGetState", testGetState),
                            ("testState", testState)]
 
 
     // MARK: XCTestCase
+
+    func testControl() {
+        let bytes: [UInt8] = [
+            0x00, 0x21, // MSB, LSB Message Identifier for Trunk Access
+            0x12,       // Message Type for Open/Close Trunk
+
+            0x01,       // Property Identifier for Lock
+            0x00, 0x04, // Property size 4 byte
+            0x01,       // Data component
+            0x00, 0x01, // Data component size 1 byte
+            0x00,       // Unlock
+
+            0x02,       // Property Identifier for Position
+            0x00, 0x04, // Property size 4 byte
+            0x01,       // Data component
+            0x00, 0x01, // Data component size 1 byte
+            0x01        // Open
+        ]
+
+        XCTAssertEqual(AATrunkAccess.controlTrunk(.unlocked, changePosition: .open).bytes, bytes)
+    }
 
     func testGetState() {
         let bytes: [UInt8] = [
@@ -45,26 +66,7 @@ class TrunkAccessTests: XCTestCase {
             0x00        // Message Type for Get Trunk State
         ]
 
-        XCTAssertEqual(AATrunkAccess.getTrunkState, bytes)
-    }
-
-    func testOpenClose() {
-        let bytes: [UInt8] = [
-            0x00, 0x21, // MSB, LSB Message Identifier for Trunk Access
-            0x02,       // Message Type for Open/Close Trunk
-
-            0x01,       // Property Identifier for Lock
-            0x00, 0x01, // Property size 1 byte
-            0x00,       // Unlock
-
-            0x02,       // Property Identifier for Position
-            0x00, 0x01, // Property size 1 byte
-            0x01        // Open
-        ]
-
-        let settings = AATrunkAccess.Settings(lock: .unlock, position: .open)
-
-        XCTAssertEqual(AATrunkAccess.openClose(settings), bytes)
+        XCTAssertEqual(AATrunkAccess.getState.bytes, bytes)
     }
 
     func testState() {
@@ -73,11 +75,15 @@ class TrunkAccessTests: XCTestCase {
             0x01,       // Message Type for Trunk State
 
             0x01,       // Property Identifier for Lock
-            0x00, 0x01, // Property size 1 byte
+            0x00, 0x04, // Property size 4 byte
+            0x01,       // Data component
+            0x00, 0x01, // Data component size 1 byte
             0x00,       // Unlocked
 
             0x02,       // Property Identifier for Position
-            0x00, 0x01, // Property size 1 byte
+            0x00, 0x04, // Property size 4 byte
+            0x01,       // Data component
+            0x00, 0x01, // Data component size 1 byte
             0x01        // Open
         ]
 
@@ -85,7 +91,7 @@ class TrunkAccessTests: XCTestCase {
             return XCTFail("Parsed value is not TrunkAccess")
         }
 
-        XCTAssertEqual(trunkAccess.lock, .unlocked)
-        XCTAssertEqual(trunkAccess.position, .open)
+        XCTAssertEqual(trunkAccess.lock?.value, .unlocked)
+        XCTAssertEqual(trunkAccess.position?.value, .open)
     }
 }

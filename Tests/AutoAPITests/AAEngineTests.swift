@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  EngineTests.swift
+//  AAEngineTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 28/11/2017.
@@ -30,7 +30,7 @@ import AutoAPI
 import XCTest
 
 
-class EngineTests: XCTestCase {
+class AAEngineTests: XCTestCase {
 
     static var allTests = [("testGetState", testGetState),
                            ("testState", testState),
@@ -45,7 +45,7 @@ class EngineTests: XCTestCase {
             0x00        // Message Type for Get Ignition State
         ]
 
-        XCTAssertEqual(AAEngine.getIgnitionState, bytes)
+        XCTAssertEqual(AAEngine.getEngineState.bytes, bytes)
     }
 
     func testState() {
@@ -54,29 +54,38 @@ class EngineTests: XCTestCase {
             0x01,       // Message Type for Ignition State
 
             0x01,       // Property identifier for Ignition
-            0x00, 0x01, // Property size is 1 bytes
+            0x00, 0x04, // Property size is 4 bytes
+            0x01,       // Data component
+            0x00, 0x01, // Data component size is 1 bytes
             0x01,       // Engine ignition is ON
 
             0x02,       // Property identifier for Accessories ignition
-            0x00, 0x01, // Property size is 1 bytes
+            0x00, 0x04, // Property size is 4 bytes
+            0x01,       // Data component
+            0x00, 0x01, // Data component size is 1 bytes
             0x01        // Ignition state is powering on accessories such as radio
         ]
 
         guard let engine = AAAutoAPI.parseBinary(bytes) as? AAEngine else {
-            return XCTFail("Parsed value is not Engine")
+            return XCTFail("Parsed value is not AAEngine")
         }
 
-        XCTAssertEqual(engine.isIgnitionOn, true)
-        XCTAssertEqual(engine.areAccessoriesPowered, true)
+        XCTAssertEqual(engine.ignitionState?.value, .active)
+        XCTAssertEqual(engine.accessoriesPoweredState?.value, .active)
     }
 
     func testTurnEngine() {
         let bytes: [UInt8] = [
             0x00, 0x35, // MSB, LSB Message Identifier for Engine
-            0x02,       // Message Type for Turn Engine On/Off
+            0x12,       // Message Type for Turn Engine On/Off
+
+            0x01,       // Property Identifier for Ignition
+            0x00, 0x04, // Property size is 4 bytes
+            0x01,       // Data component
+            0x00, 0x01, // Data component size is 1 bytes
             0x01        // Engine On
         ]
 
-        XCTAssertEqual(AAEngine.turnIgnitionOn(true), bytes)
+        XCTAssertEqual(AAEngine.turnIgnitionOnOff(.active).bytes, bytes)
     }
 }

@@ -105,7 +105,7 @@ class AARemoteControlTests: XCTestCase {
         ]
 
         guard let remoteControl = AAAutoAPI.parseBinary(bytes) as? AARemoteControl else {
-            return XCTFail("Parsed value is not RemoteControl")
+            return XCTFail("Parsed value is not AARemoteControl")
         }
 
         XCTAssertEqual(remoteControl.controlMode?.value, .started)

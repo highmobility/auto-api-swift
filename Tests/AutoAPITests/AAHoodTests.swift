@@ -19,18 +19,18 @@
 // licensing@high-mobility.com
 //
 //
-//  AAVehicleTimeTests.swift
+//  AAHoodTests.swift
 //  AutoAPITests
 //
-//  Created by Mikk Rätsep on 12/12/2017.
-//  Copyright © 2018 High Mobility. All rights reserved.
+//  Created by Mikk Rätsep on 21/03/2019.
+//  Copyright © 2019 High Mobility GmbH. All rights reserved.
 //
 
 import AutoAPI
 import XCTest
 
 
-class AAVehicleTimeTests: XCTestCase {
+class AAHoodTests: XCTestCase {
 
     static var allTests = [("testGetState", testGetState),
                            ("testState", testState)]
@@ -40,29 +40,29 @@ class AAVehicleTimeTests: XCTestCase {
 
     func testGetState() {
         let bytes: [UInt8] = [
-            0x00, 0x50, // MSB, LSB Message Identifier for Vehicle Time
-            0x00        // Message Type for Get Vehicle Time
+            0x00, 0x67, // MSB, LSB Message Identifier for Hood
+            0x00        // Message Type for Get Hood State
         ]
 
-        XCTAssertEqual(AAVehicleTime.getTime.bytes, bytes)
+        XCTAssertEqual(AAHood.getHoodState.bytes, bytes)
     }
 
     func testState() {
         let bytes: [UInt8] = [
-            0x00, 0x50, // MSB, LSB Message Identifier for Vehicle Time
-            0x01,       // Message Type for Vehicle Time
+            0x00, 0x67, // MSB, LSB Message Identifier for Hood
+            0x01,       // Message Type for Hood State
 
-            0x01,       // Property identifier for Vehicle time
-            0x00, 0x0B, // Property size is 11 bytes
+            0x01,       // Property identifier for Position
+            0x00, 0x04, // Property size is 4 bytes
             0x01,       // Data component identifier
-            0x00, 0x08, // Data component size is 8 bytes
-            0x00, 0x00, 0x01, 0x59, 0x99, 0xE5, 0xBF, 0xC0 // 13 January 2017 at 22:14:48 GMT
+            0x00, 0x01, // Data component size is 1 bytes
+            0x01 // Hood is open
         ]
 
-        guard let vehicleTime = AAAutoAPI.parseBinary(bytes) as? AAVehicleTime else {
-            return XCTFail("Parsed value is not AAVehicleTime")
+        guard let hood = AutoAPI.parseBinary(bytes) as? AAHood else {
+            return XCTFail("Parsed value is not AAHood")
         }
 
-        XCTAssertEqual(vehicleTime.time?.value, Date(timeIntervalSince1970: 1_484_345_688.0))
+        XCTAssertEqual(hood.position?.value, .open)
     }
 }

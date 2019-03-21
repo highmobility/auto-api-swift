@@ -50,7 +50,7 @@ class AADriverFatigueTests: XCTestCase {
         ]
 
         guard let driverFatigue = AAAutoAPI.parseBinary(bytes) as? AADriverFatigue else {
-            return XCTFail("Parsed value is not DriverFatigue")
+            return XCTFail("Parsed value is not AADriverFatigue")
         }
 
         XCTAssertEqual(driverFatigue.fatigueLevel?.value, .light)

@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  WakeUpTests.swift
+//  AAWakeUpTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 29/11/2017.
@@ -30,7 +30,7 @@ import AutoAPI
 import XCTest
 
 
-class WakeUpTests: XCTestCase {
+class AAWakeUpTests: XCTestCase {
 
     static var allTests = [("testWakeUp", testWakeUp)]
 
@@ -43,6 +43,6 @@ class WakeUpTests: XCTestCase {
             0x02        // Message Type for Wake Up
         ]
 
-        XCTAssertEqual(AAWakeUp.wakeUp, bytes)
+        XCTAssertEqual(AAWakeUp.wakeUp.bytes, bytes)
     }
 }

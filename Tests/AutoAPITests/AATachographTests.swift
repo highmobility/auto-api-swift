@@ -124,7 +124,7 @@ class AATachographTests: XCTestCase {
         ]
 
         guard let tachograph = AAAutoAPI.parseBinary(bytes) as? AATachograph else {
-            return XCTFail("Parsed value is not Tachograph")
+            return XCTFail("Parsed value is not AATachograph")
         }
 
         XCTAssertEqual(tachograph.vehicleMotionState?.value, .moving)

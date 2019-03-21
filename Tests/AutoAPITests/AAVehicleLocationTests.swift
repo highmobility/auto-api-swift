@@ -73,7 +73,7 @@ class AAVehicleLocationTests: XCTestCase {
         ]
 
         guard let vehicleLocation = AAAutoAPI.parseBinary(bytes) as? AAVehicleLocation else {
-            return XCTFail("Parsed value is not VehicleLocation")
+            return XCTFail("Parsed value is not AAVehicleLocation")
         }
 
         if let coordinates = vehicleLocation.coordinates?.value {
@@ -81,7 +81,7 @@ class AAVehicleLocationTests: XCTestCase {
             XCTAssertEqual(coordinates.longitude, 13.404954, accuracy: 1e-7)
         }
         else {
-            XCTFail("Vehicle Location doesn't contain Coordinate")
+            XCTFail("Vehicle Location doesn't contain Coordinates")
         }
 
         XCTAssertEqual(vehicleLocation.heading?.value, 13.370123)

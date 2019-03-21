@@ -76,7 +76,7 @@ class AAValetModeTests: XCTestCase {
         ]
 
         guard let valetMode = AAAutoAPI.parseBinary(bytes) as? AAValetMode else {
-            return XCTFail("Parsed value is not ValetMode")
+            return XCTFail("Parsed value is not AAValetMode")
         }
 
         XCTAssertEqual(valetMode.state?.value, .active)

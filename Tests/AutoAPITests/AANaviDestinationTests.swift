@@ -93,7 +93,7 @@ class AANaviDestinationTests: XCTestCase {
         ]
 
         guard let naviDestination = AAAutoAPI.parseBinary(bytes) as? AANaviDestination else {
-            return XCTFail("Parsed value is not NaviDestination")
+            return XCTFail("Parsed value is not AANaviDestination")
         }
 
         if let coordinates = naviDestination.coordinates?.value {

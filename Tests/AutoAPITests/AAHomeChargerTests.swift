@@ -252,7 +252,7 @@ class AAHomeChargerTests: XCTestCase {
         ]
 
         guard let homeCharger = AAAutoAPI.parseBinary(bytes) as? AAHomeCharger else {
-            return XCTFail("Parsed value is not HomeCharger")
+            return XCTFail("Parsed value is not AAHomeCharger")
         }
 
         XCTAssertEqual(homeCharger.chargingState?.value, .chargingComplete)

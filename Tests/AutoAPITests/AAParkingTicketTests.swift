@@ -130,15 +130,13 @@ class AAParkingTicketTests: XCTestCase {
         ]
 
         guard let parkingTicket = AAAutoAPI.parseBinary(bytes) as? AAParkingTicket else {
-            return XCTFail("Parsed value is not ParkingTicket")
+            return XCTFail("Parsed value is not AAParkingTicket")
         }
 
         XCTAssertEqual(parkingTicket.state?.value, .started)
         XCTAssertEqual(parkingTicket.operatorName?.value, "Berlin Parking")
         XCTAssertEqual(parkingTicket.ticketID?.value, "64894233")
-
         XCTAssertEqual(parkingTicket.startTime?.value, Date(timeIntervalSince1970: 1_484_076_862.0))
-
         XCTAssertEqual(parkingTicket.endTime?.value, Date(timeIntervalSince1970: 1_487_664_693.0))
     }
 }

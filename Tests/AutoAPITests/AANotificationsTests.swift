@@ -50,7 +50,7 @@ class AANotificationsTests: XCTestCase {
         ]
 
         guard let notifications = AAAutoAPI.parseBinary(bytes) as? AANotifications else {
-            return XCTFail("Parsed value is not Notifications")
+            return XCTFail("Parsed value is not AANotifications")
         }
 
         XCTAssertTrue(notifications.receivedClearCommand)
@@ -99,7 +99,7 @@ class AANotificationsTests: XCTestCase {
         ]
 
         guard let notifications = AAAutoAPI.parseBinary(bytes) as? AANotifications else {
-            return XCTFail("Parsed value is not Notifications")
+            return XCTFail("Parsed value is not AANotifications")
         }
 
         XCTAssertEqual(notifications.text?.value, "Start navigation?")
@@ -193,7 +193,7 @@ class AANotificationsTests: XCTestCase {
         ]
 
         guard let notifications = AAAutoAPI.parseBinary(bytes) as? AANotifications else {
-            return XCTFail("Parsed value is not Notifications")
+            return XCTFail("Parsed value is not AANotifications")
         }
 
         XCTAssertEqual(notifications.receivedActionID?.value, 0xFE)

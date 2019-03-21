@@ -67,7 +67,7 @@ class AAFuelingTests: XCTestCase {
         ]
 
         guard let fueling = AAAutoAPI.parseBinary(bytes) as? AAFueling else {
-            return XCTFail("Parsed value is not Fueling")
+            return XCTFail("Parsed value is not AAFueling")
         }
 
         XCTAssertEqual(fueling.gasFlapLockState?.value, .locked)
