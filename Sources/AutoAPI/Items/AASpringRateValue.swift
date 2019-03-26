@@ -35,7 +35,9 @@ public struct AASpringRateValue {
     public let value: UInt8
 
 
-    init(axle: AAAxle, value: UInt8) {
+    // MARK: Init
+
+    public init(axle: AAAxle, value: UInt8) {
         self.axle = axle
         self.value = value
     }

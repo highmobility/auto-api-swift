@@ -33,6 +33,14 @@ public struct AAReductionTime {
 
     public let state: AAStartStopState
     public let time: AATime
+
+
+    // MARK: Init
+
+    public init(state: AAStartStopState, time: AATime) {
+        self.state = state
+        self.time = time
+    }
 }
 
 extension AAReductionTime: AABytesConvertable {

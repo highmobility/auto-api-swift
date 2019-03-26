@@ -37,7 +37,7 @@ public struct AAFogLight {
 
     // MARK: Init
 
-    init(location: AALightLocation, state: AAActiveState) {
+    public init(location: AALightLocation, state: AAActiveState) {
         self.location = location
         self.state = state
     }

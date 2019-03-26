@@ -81,7 +81,6 @@ public extension AALights {
 
     static func controlLights(frontExterior: AAFrontLightState? = nil,
                               rearExterior: AAActiveState? = nil,
-                              interior: AAActiveState? = nil,
                               ambientColour: AAColour? = nil,
                               fogLights: [AAFogLight]? = nil,
                               readingLamps: [AAReadingLamp]? = nil,
@@ -89,7 +88,6 @@ public extension AALights {
         // Make sure we have at least 1 value
         guard (frontExterior != nil) ||
             (rearExterior != nil) ||
-            (interior != nil) ||
             (ambientColour != nil) ||
             (fogLights != nil) ||
             (readingLamps != nil) ||
@@ -99,7 +97,6 @@ public extension AALights {
 
         var properties = [frontExterior?.property(forIdentifier: 0x01),
                           rearExterior?.property(forIdentifier: 0x02),
-                          interior?.property(forIdentifier: 0x03),
                           ambientColour?.property(forIdentifier: 0x04)]
 
         properties += fogLights?.map { $0.property(forIdentifier: 0x07) } ?? []

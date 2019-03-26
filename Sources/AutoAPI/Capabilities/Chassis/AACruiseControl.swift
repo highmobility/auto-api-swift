@@ -31,10 +31,10 @@ import Foundation
 
 public class AACruiseControl: AACapabilityClass, AACapability {
 
-    public let state: AAProperty<AAActiveState>?
     public let adaptiveState: AAProperty<AAActiveState>?
     public let adaptiveTargetSpeed: AAProperty<Int16>?
     public let limiter: AAProperty<AACruiseControlLimiter>?
+    public let state: AAProperty<AAActiveState>?
     public let targetSpeed: AAProperty<Int16>?
 
 
@@ -76,7 +76,7 @@ public extension AACruiseControl {
     static func activateCruiseControl(state: AAActiveState, targetSpeed: Int16? = nil) -> AACommand {
         var properties: [AABasicProperty?] = [state.property(forIdentifier: 0x01)]
 
-        if state == .inactive {
+        if state == .active {
             properties += [targetSpeed?.property(forIdentifier: 0x02)]
         }
 

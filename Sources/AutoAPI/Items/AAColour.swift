@@ -34,6 +34,15 @@ public struct AAColour {
     public var red: Double
     public var green: Double
     public var blue: Double
+
+
+    // MARK: Init
+
+    public init(red: Double, green: Double, blue: Double) {
+        self.red = red
+        self.green = green
+        self.blue = blue
+    }
 }
 
 extension AAColour: AABytesConvertable {

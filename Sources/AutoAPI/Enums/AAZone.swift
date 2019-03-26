@@ -109,3 +109,7 @@ extension AAZone: CustomStringConvertible {
         }
     }
 }
+
+extension AAZone: Equatable {
+
+}

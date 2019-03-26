@@ -57,7 +57,7 @@ extension AADepartureTime: AABytesConvertable {
             time = nil
         }
         else {
-            time = AATime(bytes: bytes[2...])
+            time = AATime(bytes: bytes[1...])
         }
     }
 }

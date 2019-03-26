@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  KeyfobPositionTests.swift
+//  AAKeyfobPositionTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 12/12/2017.
@@ -30,7 +30,7 @@ import AutoAPI
 import XCTest
 
 
-class KeyfobPositionTests: XCTestCase {
+class AAKeyfobPositionTests: XCTestCase {
 
     static var allTests = [("testGetState", testGetState),
                            ("testState", testState)]
@@ -44,7 +44,7 @@ class KeyfobPositionTests: XCTestCase {
             0x00        // Message Type for Get Keyfob Position
         ]
 
-        XCTAssertEqual(AAKeyfobPosition.getKeyfobPosition, bytes)
+        XCTAssertEqual(AAKeyfobPosition.getKeyfobPosition.bytes, bytes)
     }
 
     func testState() {
@@ -53,14 +53,16 @@ class KeyfobPositionTests: XCTestCase {
             0x01,       // Message Type for Keyfob Position
 
             0x01,       // Property Identifier for Keyfob Position
-            0x00, 0x01, // Propery size 1 byte
+            0x00, 0x04, // Property size is 4 bytes
+            0x01,       // Data component identifier
+            0x00, 0x01, // Data component size is 1 bytes
             0x05        // Keyfob is positioned inside the car
         ]
 
         guard let keyfobPosition = AAAutoAPI.parseBinary(bytes) as? AAKeyfobPosition else {
-            return XCTFail("Parsed value is not KeyfobPosition")
+            return XCTFail("Parsed value is not AAKeyfobPosition")
         }
 
-        XCTAssertEqual(keyfobPosition.relativePosition, .inside)
+        XCTAssertEqual(keyfobPosition.relativePosition?.value, .inside)
     }
 }

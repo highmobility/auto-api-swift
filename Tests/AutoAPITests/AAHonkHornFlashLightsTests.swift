@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  HonkHornFlashFlightsTests.swift
+//  AAHonkHornFlashLightsTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 12/12/2017.
@@ -30,7 +30,7 @@ import AutoAPI
 import XCTest
 
 
-class HonkHornFlashLightsTests: XCTestCase {
+class AAHonkHornFlashLightsTests: XCTestCase {
 
     static var allTests = [("testActivateEmergencyFlasher", testActivateEmergencyFlasher),
                            ("testGetState", testGetState),
@@ -43,11 +43,16 @@ class HonkHornFlashLightsTests: XCTestCase {
     func testActivateEmergencyFlasher() {
         let bytes: [UInt8] = [
             0x00, 0x26, // MSB, LSB Message Identifier for Honk Horns & Flash Lights
-            0x03,       // Message Type for Emergency Flasher
+            0x13,       // Message Type for Emergency Flasher
+
+            0x01,       // Propery Identifier for Emergency flasher
+            0x00, 0x04, // Property size is 4 bytes
+            0x01,       // Data component identifier
+            0x00, 0x01, // Data component size is 1 bytes
             0x01        // Activate
         ]
 
-        XCTAssertEqual(AAHonkHornFlashFlights.activateEmergencyFlasher(true), bytes)
+        XCTAssertEqual(AAHonkHornFlashLights.activateEmergencyFlasher(.active).bytes, bytes)
     }
 
     func testGetState() {
@@ -56,26 +61,29 @@ class HonkHornFlashLightsTests: XCTestCase {
             0x00        // Message Type for Get Flashers State
         ]
 
-        XCTAssertEqual(AAHonkHornFlashFlights.getFlasherState, bytes)
+        XCTAssertEqual(AAHonkHornFlashLights.getFlasherState.bytes, bytes)
     }
 
     func testHonkHornFlashLights() {
         let bytes: [UInt8] = [
             0x00, 0x26, // MSB, LSB Message Identifier for Honk Horns & Flash Lights
-            0x02,       // Message Type for Honk Horn & Flash Lights
+            0x12,       // Message Type for Honk Horn & Flash Lights
 
             0x01,       // Propery Identifier for Honk Horn
-            0x00, 0x01, // Property size is 1 byte
+            0x00, 0x04, // Property size is 4 bytes
+            0x01,       // Data component identifier
+            0x00, 0x01, // Data component size is 1 bytes
             0x00,       // Do not Honk
 
             0x02,       // Propery Identifier for Flash Lights
-            0x00, 0x01, // Propery size is 1 byte
+            0x00, 0x04, // Property size is 4 bytes
+            0x01,       // Data component identifier
+            0x00, 0x01, // Data component size is 1 bytes
             0x03        // Flash 3 times
         ]
 
-        let settings = AAHonkHornFlashFlights.Settings(honkHornSeconds: 0, flashLightsTimes: 3)
-
-        XCTAssertEqual(AAHonkHornFlashFlights.honkHornFlashLights(settings), bytes)
+        XCTAssertEqual(AAHonkHornFlashLights.honkHorn(seconds: 0, flashLightsXTimes: 3)?.bytes, bytes)
+        XCTAssertNil(AAHonkHornFlashLights.honkHorn(seconds: nil, flashLightsXTimes: nil), "Honk Horn Flash Lights needs at least 1 input")
     }
 
     func testState() {
@@ -83,15 +91,17 @@ class HonkHornFlashLightsTests: XCTestCase {
             0x00, 0x26, // MSB, LSB Message Identifier for Honk Horns & Flash Lights
             0x01,       // Message Type for Flashers State
 
-            0x01,       // Property Identifier for Flashers State
-            0x00, 0x01, // Property size is 1 byte
+            0x01,       // Property identifier for Flashers
+            0x00, 0x04, // Property size is 4 bytes
+            0x01,       // Data component identifier
+            0x00, 0x01, // Data component size is 1 bytes
             0x02        // Left flasher active
         ]
 
-        guard let honkHornFlashLights = AAAutoAPI.parseBinary(bytes) as? AAHonkHornFlashFlights else {
-            return XCTFail("Parsed value is not HonkHornFlashFlights")
+        guard let honkHornFlashLights = AAAutoAPI.parseBinary(bytes) as? AAHonkHornFlashLights else {
+            return XCTFail("Parsed value is not AAHonkHornFlashLights")
         }
 
-        XCTAssertEqual(honkHornFlashLights.flasherState, .leftFlasherActive)
+        XCTAssertEqual(honkHornFlashLights.flasherState?.value, .leftFlasherActive)
     }
 }

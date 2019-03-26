@@ -31,7 +31,7 @@ import Foundation
 
 public class AAChassisSettings: AACapabilityClass, AACapability {
 
-    public let currentChassisPosition: AAProperty<UInt8>?
+    public let currentChassisPosition: AAProperty<Int8>?
     public let currentSpringRates: [AAProperty<AASpringRateValue>]?
     public let drivingMode: AAProperty<AADrivingMode>?
     public let maximumChassisPosition: AAProperty<Int8>?
@@ -82,7 +82,7 @@ public extension AAChassisSettings {
     }
 
 
-    static func setChassisPosition(_ position: UInt8) -> AACommand {
+    static func setChassisPosition(_ position: Int8) -> AACommand {
         let properties = [position.property(forIdentifier: 0x01)]
 
         return command(forMessageType: .setChassisPosition, properties: properties)
