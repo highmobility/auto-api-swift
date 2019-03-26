@@ -68,9 +68,8 @@ extension AAHistorical: AAMessageTypesGettable {
 
 public extension AAHistorical {
 
-    static func getHistoricalStates(for capability: AACapability, startDate: Date, endDate: Date) -> AACommand {
-        let capability = capability as? AACapabilityClass
-        let properties = [capability?.property(forIdentifier: 0x01),
+    static func getHistoricalStates(for capability: AACapability.Type, startDate: Date, endDate: Date) -> AACommand {
+        let properties = [capability.identifier.property(forIdentifier: 0x01),
                           startDate.property(forIdentifier: 0x02),
                           endDate.property(forIdentifier: 0x03)]
 

@@ -19,7 +19,7 @@
 // licensing@high-mobility.com
 //
 //
-//  FailureMessageTests.swift
+//  AAFailureMessageTests.swift
 //  AutoAPITests
 //
 //  Created by Mikk Rätsep on 28/11/2017.
@@ -30,7 +30,7 @@ import AutoAPI
 import XCTest
 
 
-class FailureMessageTests: XCTestCase {
+class AAFailureMessageTests: XCTestCase {
 
     static var allTests = [("testFailure", testFailure)]
 
@@ -42,30 +42,38 @@ class FailureMessageTests: XCTestCase {
             0x00, 0x02, // MSB, LSB Message Identifier for Failure Message
             0x01,       // Message Type for Failure
 
-            0x01, // Property identifier for Failed message identifier
-            0x00, 0x02, // Property size is 2 bytes
+            0x01,       // Property identifier for Failed message identifier
+            0x00, 0x05, // Property size is 5 bytes
+            0x01,       // Data component identifier
+            0x00, 0x02, // Data component size is 2 bytes
             0x00, 0x21, // MSB, LSB Message Identifier for Trunk State
 
-            0x02, // Property identifier for Failed message type
-            0x00, 0x01, // Property size is 1 bytes
+            0x02,       // Property identifier for Failed message type
+            0x00, 0x04, // Property size is 4 bytes
+            0x01,       // Data component identifier
+            0x00, 0x01, // Data component size is 1 bytes
             0x00,       // Get Trunk State Message Type
 
-            0x03, // Property identifier for Failure reason
-            0x00, 0x01, // Property size is 1 bytes
+            0x03,       // Property identifier for Failure reason
+            0x00, 0x04, // Property size is 4 bytes
+            0x01,       // Data component identifier
+            0x00, 0x01, // Data component size is 1 bytes
             0x01,       // Unauthorised
 
-            0x04, // Property identifier for Failure description
-            0x00, 0x09, // Property size is 9 bytes
-            0x54, 0x72, 0x79, 0x20, 0x61, 0x67, 0x61, 0x69, 0x6e // Try again
+            0x04,       // Property identifier for Failure description
+            0x00, 0x0C, // Property size is 12 bytes
+            0x01,       // Data component identifier
+            0x00, 0x09, // Data component size is 9 bytes
+            0x54, 0x72, 0x79, 0x20, 0x61, 0x67, 0x61, 0x69, 0x6E    // Try again
         ]
 
         guard let failureMessage = AAAutoAPI.parseBinary(bytes) as? AAFailureMessage else {
-            return XCTFail("Parsed value is not FailureMessage")
+            return XCTFail("Parsed value is not AAFailureMessage")
         }
 
-        XCTAssertEqual(failureMessage.failedMessageIdentifier, AATrunkAccess.identifier)
-        XCTAssertEqual(failureMessage.failedMessageType, AATrunkAccess.MessageTypes.getTrunkState.rawValue)
-        XCTAssertEqual(failureMessage.failureReason, .unauthorised)
-        XCTAssertEqual(failureMessage.failureDescription, "Try again")
+        XCTAssertEqual(failureMessage.messageIdentifier?.value, AATrunkAccess.identifier)
+        XCTAssertEqual(failureMessage.messageType?.value, AATrunkAccess.MessageTypes.getState.rawValue)
+        XCTAssertEqual(failureMessage.reason?.value, .unauthorised)
+        XCTAssertEqual(failureMessage.description?.value, "Try again")
     }
 }
