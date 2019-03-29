@@ -40,17 +40,13 @@ public class AAHistorical: AACapabilityClass, AACapability {
 
 
     required init(properties: AAProperties) {
-        let capabilities = AAAutoAPI.capabilities.compactMap { $0 as? AACapabilityClass.Type }
-
         /* Level 8 */
         states = properties.filter {
             $0.identifier == 0x01
         }.compactMap {
             $0.valueBytes
-        }.compactMap { bytes in
-            capabilities.compactMap {
-                $0.init(bytes: bytes) as? AACapability
-            }.first
+        }.compactMap {
+            AAAutoAPI.parseBinary($0)
         }
 
         super.init(properties: properties)

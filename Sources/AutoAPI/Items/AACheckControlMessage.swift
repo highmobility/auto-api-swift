@@ -35,6 +35,16 @@ public struct AACheckControlMessage {
     public let remainingMinutes: UInt32
     public let status: String
     public let text: String
+
+
+    // MARK: Init
+
+    init(id: UInt16, remainingMinutes: UInt32, status: String, text: String) {
+        self.id = id
+        self.remainingMinutes = remainingMinutes
+        self.status = status
+        self.text = text
+    }
 }
 
 extension AACheckControlMessage: AABytesConvertable {
@@ -55,12 +65,11 @@ extension AACheckControlMessage: AABytesConvertable {
             return nil
         }
 
-        guard let textSize = UInt16(bytes: bytes[6...7])?.int else {
-            return nil
-        }
+        // UInt16 initialiser can't create an invalid value with 2 bytes
+        let textSize = UInt16(bytes: bytes[6...7])!.int
 
         // Need to check to prevent a crash
-        guard bytes.count >= (8 + textSize) else {
+        guard bytes.count > (8 + textSize) else {
             return nil
         }
 

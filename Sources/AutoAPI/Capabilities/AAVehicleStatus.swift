@@ -58,8 +58,6 @@ public class AAVehicleStatus: AACapabilityClass, AACapability {
 
 
     required init(properties: AAProperties) {
-        let capabilities = AAAutoAPI.capabilities.compactMap { $0 as? AACapabilityClass.Type }
-
         // Ordered by the ID
         vin = properties.property(forIdentifier: 0x01)
         powerTrain = properties.property(forIdentifier: 0x02)
@@ -87,10 +85,8 @@ public class AAVehicleStatus: AACapabilityClass, AACapability {
             $0.identifier == 0x99
         }.compactMap {
             $0.valueBytes
-        }.compactMap { bytes in
-            capabilities.compactMap {
-                $0.init(bytes: bytes) as? AACapability
-            }.first
+        }.compactMap {
+            AAAutoAPI.parseBinary($0)
         }
 
         super.init(properties: properties)

@@ -33,6 +33,14 @@ public struct AAAcceleration {
 
     public let type: AAAccelerationType
     public let value: Float
+
+
+    // MARK: Init
+
+    init(type: AAAccelerationType, value: Float) {
+        self.type = type
+        self.value = value
+    }
 }
 
 extension AAAcceleration: AABytesConvertable {

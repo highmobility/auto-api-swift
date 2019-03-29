@@ -33,6 +33,14 @@ public struct AABrakeTorqueVectoring {
 
     public let axle: AAAxle
     public let state: AAActiveState
+
+
+    // MARK: Init
+
+    init(axle: AAAxle, state: AAActiveState) {
+        self.axle = axle
+        self.state = state
+    }
 }
 
 extension AABrakeTorqueVectoring: AABytesConvertable {

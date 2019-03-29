@@ -136,7 +136,7 @@ extension AACapability {
         var string = string
         var subString: String?
 
-        string.removeFirst(firstParenthesis.encodedOffset + 1)
+        string.removeFirst(firstParenthesis.utf16Offset(in: string) + 1)
         string.removeLast()
 
         // "Clean" the label

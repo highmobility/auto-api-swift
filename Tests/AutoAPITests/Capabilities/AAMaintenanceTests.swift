@@ -98,19 +98,19 @@ class AAMaintenanceTests: XCTestCase {
             0x00, 0x0B, // Property size is 11 bytes
             0x01,       // Data component identifier
             0x00, 0x08, // Data component size is 8 bytes
-            0x00, 0x00, 0x01, 0x59, 0xB8, 0xCB, 0xE7, 0xC0, // 19 January 2017 at 22:14:48 GMT      - 1 484 864 088
+            0x00, 0x00, 0x01, 0x59, 0xB8, 0xCB, 0xE7, 0xC0, // 19 January 2017 at 22:14:48 GMT
 
             0x09,       // Property identifier for Teleservice battery call date
             0x00, 0x0B, // Property size is 11 bytes
             0x01,       // Data component identifier
             0x00, 0x08, // Data component size is 8 bytes
-            0x00, 0x00, 0x01, 0x5B, 0x78, 0xD5, 0x2B, 0xC0, // 16 April 2017 at 22:14:48 GMT        - 1 492 380 888
+            0x00, 0x00, 0x01, 0x5B, 0x78, 0xD5, 0x2B, 0xC0, // 16 April 2017 at 22:14:48 GMT
 
             0x0A,       // Property identifier for Next inspection date
             0x00, 0x0B, // Property size is 11 bytes
             0x01,       // Data component identifier
             0x00, 0x08, // Data component size is 8 bytes
-            0x00, 0x00, 0x01, 0x62, 0xCF, 0x72, 0xD4, 0x80, // 16 April 2018 at 17:13:52 GMT        - 1 523 898 832
+            0x00, 0x00, 0x01, 0x62, 0xCF, 0x72, 0xD4, 0x80, // 16 April 2018 at 17:13:52 GMT
 
             0x0B,       // Property identifier for Condition based services
             0x00, 0x43, // Property size is 67 bytes
@@ -151,7 +151,7 @@ class AAMaintenanceTests: XCTestCase {
             0x00, 0x0B, // Property size is 11 bytes
             0x01,       // Data component identifier
             0x00, 0x08, // Data component size is 8 bytes
-            0x00, 0x00, 0x01, 0x69, 0x7C, 0xC6, 0x33, 0xB0  // 14 March 2019 at 15:15:58 GMT        - 1 552 576 558
+            0x00, 0x00, 0x01, 0x69, 0x7C, 0xC6, 0x33, 0xB0  // 14 March 2019 at 15:15:58 GMT
         ]
 
         guard let maintenance = AAAutoAPI.parseBinary(bytes) as? AAMaintenance else {

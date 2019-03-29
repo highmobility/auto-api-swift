@@ -35,6 +35,8 @@ public struct AAActionItem {
     public let name: String
 
 
+    // MARK: Init
+
     public init(identifier: UInt8, name: String) {
         self.identifier = identifier
         self.name = name

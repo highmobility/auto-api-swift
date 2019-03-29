@@ -97,8 +97,8 @@ public extension AANotifications {
     }
 
     static func received(text: String, actionItems items: [AAActionItem]?) -> AACommand {
-        let properties = [text.property(forIdentifier: 0x01)] + (items?.map { $0.property(forIdentifier: 0x02) } ?? [])
+        let properties: [AABasicProperty?] = items?.map { $0.property(forIdentifier: 0x02) } ?? []
 
-        return command(forMessageType: .notification, properties: properties)
+        return command(forMessageType: .notification, properties: [text.property(forIdentifier: 0x01)] + properties)
     }
 }
