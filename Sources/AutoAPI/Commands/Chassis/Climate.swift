@@ -98,7 +98,7 @@ extension Climate: MessageTypesGettable {
 
 public extension Climate {
 
-    public struct Settings {
+    struct Settings {
         public let climateProfile: ClimateProfile?
         public let driverTemp: Float?
         public let passengerTemp: Float?
