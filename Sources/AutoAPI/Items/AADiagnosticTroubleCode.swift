@@ -61,7 +61,7 @@ extension AADiagnosticTroubleCode: AABytesConvertable {
         let idSize = bytes[1].int
 
         // Need to check to prevent a crash
-        guard bytes.count >= (2 + idSize) else {
+        guard bytes.count > (2 + idSize) else {
             return nil
         }
 

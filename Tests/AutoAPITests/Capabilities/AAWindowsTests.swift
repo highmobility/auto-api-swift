@@ -68,6 +68,11 @@ class AAWindowsTests: XCTestCase {
             0x3F, 0xC7, 0x0A, 0x3D, 0x70, 0xA3, 0xD7, 0x0A, // Window 18% open
         ]
 
+        let open1 = AAWindowOpenPercentage(location: .rearRight, percentage: 0.56)
+        let open2 = AAWindowOpenPercentage(location: .rearLeft, percentage: 0.18)
+
+        XCTAssertEqual(AAWindows.controlWindows(openPercentages: [open1, open2], positions: nil).bytes, bytes1)
+
         let bytes2: [UInt8] = [
             0x00, 0x45, // MSB, LSB Message Identifier for Windows
             0x12,       // Message Type for Control Windows
@@ -75,7 +80,7 @@ class AAWindowsTests: XCTestCase {
             0x02,       // Property Identifier for Window positions
             0x00, 0x05, // Property size is 5 bytes
             0x01,       // Data component identifier
-            0x00, 0x02, // Data component size is 2 bytes0x00, 0x02, // Property size 2 bytes
+            0x00, 0x02, // Data component size is 2 bytes
             0x00,       // Front left window
             0x01,       // To be opened
 
@@ -86,13 +91,10 @@ class AAWindowsTests: XCTestCase {
             0x01,       // Front right window
             0x01        // To be opened
         ]
-
-        let open1 = AAWindowOpenPercentage(location: .rearRight, percentage: 0.56)
-        let open2 = AAWindowOpenPercentage(location: .rearLeft, percentage: 0.18)
+        
         let position1 = AAWindowPosition(location: .frontLeft, position: .open)
         let position2 = AAWindowPosition(location: .frontRight, position: .open)
 
-        XCTAssertEqual(AAWindows.controlWindows(openPercentages: [open1, open2], positions: nil).bytes, bytes1)
         XCTAssertEqual(AAWindows.controlWindows(openPercentages: nil, positions: [position1, position2]).bytes, bytes2)
     }
 

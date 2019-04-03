@@ -96,9 +96,6 @@ class AADoorLocksTests: XCTestCase {
             0x01,   // Front Right door
             0x01,   // Outside locked
 
-
-
-
             0x04,       // Property identifier for Positions
             0x00, 0x05, // Property size is 5 bytes
             0x01,       // Data component identifier

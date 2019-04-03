@@ -67,11 +67,12 @@ extension AACoordinates: AABytesConvertable {
             return nil
         }
 
-        guard let latitudeBytes = Double(bytes: bytes[0...7]),
-            let longitudeBytes = Double(bytes: bytes[8...15]) else {
+        guard let latitude = Double(bytes: bytes[0...7]),
+            let longitude = Double(bytes: bytes[8...15]),
+            latitude.isNormal, longitude.isNormal else {
                 return nil
         }
 
-        self.init(latitude: Double(latitudeBytes), longitude: Double(longitudeBytes))
+        self.init(latitude: latitude, longitude: longitude)
     }
 }

@@ -38,7 +38,7 @@ public struct AADepartureTime {
 extension AADepartureTime: AABytesConvertable {
 
     public var bytes: [UInt8] {
-        return state.bytes + (time?.bytes ?? [])
+        return state.bytes + (time?.bytes ?? [0xFF, 0xFF])
     }
 
 

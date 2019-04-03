@@ -44,7 +44,8 @@ extension AAConditionBasedService: AABytesConvertable {
         let components = Calendar.current.dateComponents([.year, .month], from: date)
 
         guard let year = components.year,
-            let month = components.month else {
+            let month = components.month,
+            year >= 2000 else {
                 return []
         }
 
@@ -65,19 +66,17 @@ extension AAConditionBasedService: AABytesConvertable {
         let year = bytes[0].int + 2000
         let month = bytes[1].int
 
-        guard let id = UInt16(bytes: bytes[2...3]),
-            let textSize = UInt16(bytes: bytes[5...6])?.int else {
-                return nil
-        }
+        // UInt16 initialiser can't create an invalid value with 2 bytes
+        let id = UInt16(bytes: bytes[2...3])!
+        let textSize = UInt16(bytes: bytes[5...6])!.int
 
         // Need to check to prevent a crash
         guard bytes.count >= (8 + textSize) else {
             return nil
         }
 
-        guard let descSize = UInt16(bytes: bytes[(7 + textSize) ... (8 + textSize)])?.int else {
-            return nil
-        }
+        // UInt16 initialiser can't create an invalid value with 2 bytes
+        let descSize = UInt16(bytes: bytes[(7 + textSize) ... (8 + textSize)])!.int
 
         guard let date = DateComponents(calendar: Calendar.current, year: year, month: month).date,
             let status = AADueStatus(rawValue: bytes[4]) else {
