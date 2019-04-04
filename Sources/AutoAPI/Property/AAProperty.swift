@@ -60,8 +60,22 @@ extension AAProperty: CustomStringConvertible {
         var description = "\(type(of: self))"
 
         description += ", id: 0x\(identifier.bytes.hex)"
-        description += ", failure: \(String(describing: failure))"
-        description += ", timestamp: \(String(describing: timestamp))"
+
+        // Done so because "String(describing: value)" still produces an optional here
+        if let failure = failure {
+            description += ", failure: \(String(describing: failure))"
+        }
+        else {
+            description += ", failure: nil"
+        }
+
+        // Done so because "String(describing: value)" still produces an optional here
+        if let timestamp = timestamp {
+            description += ", timestamp: \(String(describing: timestamp))"
+        }
+        else {
+            description += ", timestamp: nil"
+        }
 
         // Done so because "String(describing: value)" still produces an optional here
         if let value = value {

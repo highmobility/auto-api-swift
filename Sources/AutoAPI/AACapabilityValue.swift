@@ -66,9 +66,8 @@ extension AACapabilityValue: AABytesConvertable {
             return nil
         }
 
-        guard let identifier = AACommandIdentifier(bytes: bytes.prefix(2)) else {
-            return nil
-        }
+        // UInt16 initialiser can't create an invalid value with 2 bytes
+        let identifier = AACommandIdentifier(bytes: bytes.prefix(2))!
 
         guard let command = AAAutoAPI.capabilities.first(where: { $0.identifier == identifier }) else {
             return nil

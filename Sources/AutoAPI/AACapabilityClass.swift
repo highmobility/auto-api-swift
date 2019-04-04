@@ -53,7 +53,9 @@ public class AACapabilityClass: AABytesConvertable {
          Workaround for the "inheritance-disablity"... (probably not the best solution).
          */
         guard let capability = self as? AACapability else {
-            fatalError("The class needs to implement AACapability protocol.")
+            print("Do not use this class directly! The subclass needs to implement AACapability protocol.")
+
+            return []
         }
 
         // TODO: Uses the default incoming Message Type – will become obsolete in L11
@@ -66,17 +68,13 @@ public class AACapabilityClass: AABytesConvertable {
             return nil
         }
 
-        guard let identifier = AACommandIdentifier(bytes: bytes[0...1]) else {
-            return nil
-        }
+        // UInt16 initialiser can't create an invalid value with 2 bytes
+        let identifier = AACommandIdentifier(bytes: bytes[0...1])!
 
         // TODO: Uses the default incoming Message Type – will become obsolete in L11
-        guard bytes[2] == 0x01 else {
-            return nil
-        }
-
-        guard let properties = AAProperties(bytes: bytes[3...]) else {
-            return nil
+        guard bytes[2] == 0x01,
+            let properties = AAProperties(bytes: bytes[3...]) else {
+                return nil
         }
 
         self.init(properties: properties)
@@ -84,8 +82,10 @@ public class AACapabilityClass: AABytesConvertable {
         /*
          Workaround for the "inheritance-disablity"... (probably not the best solution).
          */
-        guard let capability = self as? AACapability  else {
-            fatalError("The class needs to implement AACapability protocol.")
+        guard let capability = self as? AACapability else {
+            print("Do not use this class directly! The subclass needs to implement AACapability protocol.")
+
+            return nil
         }
 
         guard identifier == type(of: capability).identifier else {

@@ -55,10 +55,8 @@ extension AAPropertyComponent: AABytesConvertable {
             return nil
         }
 
-        guard let componentSize = UInt16(bytes: bytes[1...2])?.int else {
-            return nil
-        }
-
+        // UInt16 initialiser can't create an invalid value with 2 bytes
+        let componentSize = UInt16(bytes: bytes[1...2])!.int
         let size = 3 + componentSize
 
         guard bytes.count == size else {

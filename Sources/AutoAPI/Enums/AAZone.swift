@@ -44,7 +44,7 @@ public enum AAZone: RawRepresentable {
 
     public var horisontal: UInt8 {
         switch self {
-        case .unavailable:          return 0
+        case .unavailable:         return 0
         case .matrix(let value):   return (value & 0xF0) >> 4
         }
     }
@@ -101,11 +101,12 @@ extension AAZone: AABytesConvertable {
 extension AAZone: CustomStringConvertible {
 
     public var description: String {
-        if case .matrix(let value) = self {
-            return String(format: "%1X", ((value & 0xF0) >> 4)) + "x" + String(format: "%1X", (value & 0x0F))
-        }
-        else {
+        switch self {
+        case .unavailable:
             return "unavailable"
+
+        case .matrix(let value):
+            return String(format: "%1X", ((value & 0xF0) >> 4)) + "x" + String(format: "%1X", (value & 0x0F))
         }
     }
 }

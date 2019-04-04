@@ -19,53 +19,40 @@
 // licensing@high-mobility.com
 //
 //
-//  AAPropertyComponents.swift
+//  AADrivingModeEnergyConsumption.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 12/02/2019.
+//  Created by Mikk Rätsep on 04/04/2019.
 //  Copyright © 2019 High Mobility GmbH. All rights reserved.
 //
 
 import Foundation
 
 
-struct AAPropertyComponents: Sequence, IteratorProtocol {
+public struct AADrivingModeEnergyConsumption {
 
-    public var bytes: [UInt8]
+    public let mode: AADrivingMode
+    public let consumption: Float
+}
 
+extension AADrivingModeEnergyConsumption: AABytesConvertable {
 
-    // MARK: IteratorProtocol
-
-    mutating func next() -> AAPropertyComponent? {
-        guard bytes.count >= 3 else {
-            return nil
-        }
-
-        // UInt16 initialiser can't create an invalid value with 2 bytes
-        let componentsSize = UInt16(bytes: bytes[1...2])!.int
-        let size = 3 + componentsSize
-
-        guard bytes.count >= size else {
-            return nil
-        }
-
-        guard let component = AAPropertyComponent(bytes: bytes[..<size].bytes) else {
-            return nil
-        }
-
-        bytes.removeFirst(size)
-
-        return component
+    public var bytes: [UInt8] {
+        return mode.bytes + consumption.bytes
     }
-}
 
-extension AAPropertyComponents: AABytesConvertable {
 
-}
+    public init?(bytes: [UInt8]) {
+        guard bytes.count == 5 else {
+            return nil
+        }
 
-extension AAPropertyComponents {
+        guard let drivingMode = AADrivingMode(bytes: bytes[0..<1]),
+            let value = Float(bytes: bytes[1...4]) else {
+                return nil
+        }
 
-    func component(for type: AAPropertyComponentType) -> AAPropertyComponent? {
-        return first { $0.type == type }
+        mode = drivingMode
+        consumption = value
     }
 }

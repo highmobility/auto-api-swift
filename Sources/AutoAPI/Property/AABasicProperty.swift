@@ -61,18 +61,13 @@ public class AABasicProperty: AABytesConvertable {
             return nil
         }
 
-        guard let propertySize = UInt16(bytes: bytes[1...2])?.int else {
-            return nil
-        }
-
+        // UInt16 initialiser can't create an invalid value with 2 bytes
+        let propertySize = UInt16(bytes: bytes[1...2])!.int
         let size = 3 + propertySize
 
-        guard bytes.count == size else {
-            return nil
-        }
-
-        guard let components = AAPropertyComponents(bytes: bytes[3..<size]) else {
-            return nil
+        guard bytes.count == size,
+            let components = AAPropertyComponents(bytes: bytes[3..<size]) else {
+                return nil
         }
 
         // Set the required and pre-computed values

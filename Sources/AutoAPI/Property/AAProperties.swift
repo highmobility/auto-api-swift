@@ -61,18 +61,13 @@ public struct AAProperties: Sequence, IteratorProtocol, AABytesConvertable {
             return nil
         }
 
-        guard let propertiesSize = UInt16(bytes: bytes[1...2])?.int else {
-            return nil
-        }
+        // UInt16 initialiser can't create an invalid value with 2 bytes
+        let propertySize = UInt16(bytes: bytes[1...2])!.int
+        let size = 3 + propertySize
 
-        let size = 3 + propertiesSize
-
-        guard bytes.count >= size else {
-            return nil
-        }
-
-        guard let property = AABasicProperty(bytes: bytes[..<size].bytes) else {
-            return nil
+        guard bytes.count >= size,
+            let property = AABasicProperty(bytes: bytes[..<size]) else {
+                return nil
         }
 
         bytes.removeFirst(size)

@@ -49,6 +49,16 @@
 		201BFD8D21C39FB7001E1DC1 /* AAInteriorLamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201BFD8C21C39FB7001E1DC1 /* AAInteriorLamp.swift */; };
 		2024BBFC21553A3200AA5261 /* AAWeekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2024BBFB21553A3200AA5261 /* AAWeekday.swift */; };
 		2024BBFE21553D8A00AA5261 /* AAClimateWeekdayTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2024BBFD21553D8A00AA5261 /* AAClimateWeekdayTime.swift */; };
+		202701CC22563C6100868E1E /* AAPropertyFailureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202701CB22563C6100868E1E /* AAPropertyFailureTests.swift */; };
+		202701CE22563EAD00868E1E /* AAPropertyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202701CD22563EAD00868E1E /* AAPropertyTests.swift */; };
+		202701D02256455800868E1E /* AAPropertyComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202701CF2256455800868E1E /* AAPropertyComponentTests.swift */; };
+		202701D22256482800868E1E /* AABasicPropertyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202701D12256482800868E1E /* AABasicPropertyTests.swift */; };
+		202701D422564BB000868E1E /* AADrivingModeActivationPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202701D322564BB000868E1E /* AADrivingModeActivationPeriod.swift */; };
+		202701D622564C1C00868E1E /* AADrivingModeEnergyConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202701D522564C1C00868E1E /* AADrivingModeEnergyConsumption.swift */; };
+		202701D822564C7400868E1E /* AADrivingModeActivationPeriodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202701D722564C7400868E1E /* AADrivingModeActivationPeriodTests.swift */; };
+		202701DA22564D0400868E1E /* AADrivingModeEnergyConsumptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202701D922564D0400868E1E /* AADrivingModeEnergyConsumptionTests.swift */; };
+		202701DC2256517400868E1E /* AAZoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202701DB2256517400868E1E /* AAZoneTests.swift */; };
+		202701DE225653D000868E1E /* ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202701DD225653D000868E1E /* ExtensionsTests.swift */; };
 		2028370B2150D17E0001724A /* AADepartureTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2028370A2150D17E0001724A /* AADepartureTime.swift */; };
 		2029BF2222131EEC002FAE32 /* AAProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2029BF2122131EEC002FAE32 /* AAProperties.swift */; };
 		2029BF242213211D002FAE32 /* AAPropertyComponentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2029BF232213211D002FAE32 /* AAPropertyComponentType.swift */; };
@@ -144,6 +154,8 @@
 		20B56EBA218C6B9B006E9946 /* AADoorLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B56EB9218C6B9B006E9946 /* AADoorLock.swift */; };
 		20B56EBC218C6BFC006E9946 /* AASeatPersonDetected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B56EBB218C6BFC006E9946 /* AASeatPersonDetected.swift */; };
 		20B56EBE218C6C1C006E9946 /* AASeatbeltFastened.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B56EBD218C6C1C006E9946 /* AASeatbeltFastened.swift */; };
+		20C16520225604FF008FFB4B /* AACapabilityValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C1651F225604FF008FFB4B /* AACapabilityValueTests.swift */; };
+		20C16522225607FF008FFB4B /* AACapabilityClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C16521225607FF008FFB4B /* AACapabilityClassTests.swift */; };
 		20CDFAA7215264F300402BF6 /* AADetectedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDFAA6215264F300402BF6 /* AADetectedState.swift */; };
 		20CDFAA92152657100402BF6 /* AAFastened.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDFAA82152657100402BF6 /* AAFastened.swift */; };
 		20D2FCC7217874F3005ECE96 /* AADiagnosticTroubleCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D2FCC6217874F3005ECE96 /* AADiagnosticTroubleCode.swift */; };
@@ -339,6 +351,16 @@
 		201BFD8C21C39FB7001E1DC1 /* AAInteriorLamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAInteriorLamp.swift; sourceTree = "<group>"; };
 		2024BBFB21553A3200AA5261 /* AAWeekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWeekday.swift; sourceTree = "<group>"; };
 		2024BBFD21553D8A00AA5261 /* AAClimateWeekdayTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAClimateWeekdayTime.swift; sourceTree = "<group>"; };
+		202701CB22563C6100868E1E /* AAPropertyFailureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertyFailureTests.swift; sourceTree = "<group>"; };
+		202701CD22563EAD00868E1E /* AAPropertyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertyTests.swift; sourceTree = "<group>"; };
+		202701CF2256455800868E1E /* AAPropertyComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertyComponentTests.swift; sourceTree = "<group>"; };
+		202701D12256482800868E1E /* AABasicPropertyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AABasicPropertyTests.swift; sourceTree = "<group>"; };
+		202701D322564BB000868E1E /* AADrivingModeActivationPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADrivingModeActivationPeriod.swift; sourceTree = "<group>"; };
+		202701D522564C1C00868E1E /* AADrivingModeEnergyConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADrivingModeEnergyConsumption.swift; sourceTree = "<group>"; };
+		202701D722564C7400868E1E /* AADrivingModeActivationPeriodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADrivingModeActivationPeriodTests.swift; sourceTree = "<group>"; };
+		202701D922564D0400868E1E /* AADrivingModeEnergyConsumptionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADrivingModeEnergyConsumptionTests.swift; sourceTree = "<group>"; };
+		202701DB2256517400868E1E /* AAZoneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAZoneTests.swift; sourceTree = "<group>"; };
+		202701DD225653D000868E1E /* ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsTests.swift; sourceTree = "<group>"; };
 		2028370A2150D17E0001724A /* AADepartureTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADepartureTime.swift; sourceTree = "<group>"; };
 		2029BF2122131EEC002FAE32 /* AAProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAProperties.swift; sourceTree = "<group>"; };
 		2029BF232213211D002FAE32 /* AAPropertyComponentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertyComponentType.swift; sourceTree = "<group>"; };
@@ -427,6 +449,8 @@
 		20B56EBB218C6BFC006E9946 /* AASeatPersonDetected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASeatPersonDetected.swift; sourceTree = "<group>"; };
 		20B56EBD218C6C1C006E9946 /* AASeatbeltFastened.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASeatbeltFastened.swift; sourceTree = "<group>"; };
 		20B7C958215D1C8F00C9C9A7 /* AATirePressure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATirePressure.swift; sourceTree = "<group>"; };
+		20C1651F225604FF008FFB4B /* AACapabilityValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACapabilityValueTests.swift; sourceTree = "<group>"; };
+		20C16521225607FF008FFB4B /* AACapabilityClassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACapabilityClassTests.swift; sourceTree = "<group>"; };
 		20CDFAA6215264F300402BF6 /* AADetectedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADetectedState.swift; sourceTree = "<group>"; };
 		20CDFAA82152657100402BF6 /* AAFastened.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAFastened.swift; sourceTree = "<group>"; };
 		20D2FCC6217874F3005ECE96 /* AADiagnosticTroubleCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADiagnosticTroubleCode.swift; sourceTree = "<group>"; };
@@ -665,6 +689,21 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		20C1651E225604A3008FFB4B /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				202701D12256482800868E1E /* AABasicPropertyTests.swift */,
+				20C1651F225604FF008FFB4B /* AACapabilityValueTests.swift */,
+				20C16521225607FF008FFB4B /* AACapabilityClassTests.swift */,
+				202701CB22563C6100868E1E /* AAPropertyFailureTests.swift */,
+				202701CD22563EAD00868E1E /* AAPropertyTests.swift */,
+				202701CF2256455800868E1E /* AAPropertyComponentTests.swift */,
+				202701DB2256517400868E1E /* AAZoneTests.swift */,
+				202701DD225653D000868E1E /* ExtensionsTests.swift */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
 		20D87832224A641A00CCF1BC /* Capabilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -746,6 +785,8 @@
 				205C0E4E2254F78800E63733 /* AADriverCardTests.swift */,
 				205C0E502254F83500E63733 /* AADriverTimeStateTests.swift */,
 				205C0E522254F8D500E63733 /* AADriverWorkingStateTests.swift */,
+				202701D722564C7400868E1E /* AADrivingModeActivationPeriodTests.swift */,
+				202701D922564D0400868E1E /* AADrivingModeEnergyConsumptionTests.swift */,
 				205C0E542254F98400E63733 /* AAFogLightTests.swift */,
 				205C0E562254FA2500E63733 /* AAInteriorLampTests.swift */,
 				205C0E582254FABD00E63733 /* AAPriceTariffTests.swift */,
@@ -805,6 +846,8 @@
 				20DB154D2097265400A1658B /* AADriverCard.swift */,
 				20DB154B20971CD700A1658B /* AADriverTimeState.swift */,
 				20DB15452097176600A1658B /* AADriverWorkingState.swift */,
+				202701D322564BB000868E1E /* AADrivingModeActivationPeriod.swift */,
+				202701D522564C1C00868E1E /* AADrivingModeEnergyConsumption.swift */,
 				201BFD8821C39D77001E1DC1 /* AAFogLight.swift */,
 				201BFD8C21C39FB7001E1DC1 /* AAInteriorLamp.swift */,
 				OBJ_149 /* AAPriceTariff.swift */,
@@ -831,8 +874,8 @@
 				20AF961821BFA5E4002EC106 /* AAPropertyFailure.swift */,
 				2029BF2122131EEC002FAE32 /* AAProperties.swift */,
 				2029BF29221323DA002FAE32 /* AAProperty.swift */,
-				2029BF2522132172002FAE32 /* AAPropertyComponents.swift */,
 				2029BF2B221323FB002FAE32 /* AAPropertyComponent.swift */,
+				2029BF2522132172002FAE32 /* AAPropertyComponents.swift */,
 			);
 			path = Property;
 			sourceTree = "<group>";
@@ -901,6 +944,7 @@
 			children = (
 				20D87832224A641A00CCF1BC /* Capabilities */,
 				20D87833224A646200CCF1BC /* Items */,
+				20C1651E225604A3008FFB4B /* Others */,
 			);
 			name = AutoAPITests;
 			path = Tests/AutoAPITests;
@@ -1316,16 +1360,19 @@
 				20D8782C224A564100CCF1BC /* AAFirmwareVersionTests.swift in Sources */,
 				201196302240E5A700A6737D /* AAMessagingTests.swift in Sources */,
 				20119640224144EC00A6737D /* AAParkingTicketTests.swift in Sources */,
+				202701DE225653D000868E1E /* ExtensionsTests.swift in Sources */,
 				2011964222414C0000A6737D /* AATheftAlarmTests.swift in Sources */,
 				201196362241332800A6737D /* AAWiFiTests.swift in Sources */,
 				205C0E432254E5AA00E63733 /* AACoordinatesTests.swift in Sources */,
 				205C0E512254F83500E63733 /* AADriverTimeStateTests.swift in Sources */,
 				205C0E4F2254F78800E63733 /* AADriverCardTests.swift in Sources */,
+				202701CE22563EAD00868E1E /* AAPropertyTests.swift in Sources */,
 				2011963C2241384000A6737D /* AATachographTests.swift in Sources */,
 				20D87825224A43E900CCF1BC /* AALightsTests.swift in Sources */,
 				206E1FE42243920400CB636D /* AAWakeUpTests.swift in Sources */,
 				205C0E552254F98400E63733 /* AAFogLightTests.swift in Sources */,
 				20474E362254BF1D002C87F9 /* AAColourTests.swift in Sources */,
+				202701DC2256517400868E1E /* AAZoneTests.swift in Sources */,
 				20D87829224A4ECA00CCF1BC /* AAWindscreenTests.swift in Sources */,
 				20D8783B224A6F5100CCF1BC /* AABrakeTorqueVectoringTests.swift in Sources */,
 				205C0E692254FFE800E63733 /* AATirePressureTests.swift in Sources */,
@@ -1335,12 +1382,16 @@
 				205C0E592254FABD00E63733 /* AAPriceTariffTests.swift in Sources */,
 				205C0E5D2254FC0F00E63733 /* AAReductionTimeTests.swift in Sources */,
 				206E1FDD2243817800CB636D /* AAVehicleTimeTests.swift in Sources */,
+				202701D02256455800868E1E /* AAPropertyComponentTests.swift in Sources */,
 				20D87826224A492000CCF1BC /* AARooftopControlTests.swift in Sources */,
 				206E1FE2224390E300CB636D /* AAStartStopTests.swift in Sources */,
 				20D87835224A647900CCF1BC /* AAAccelerationTests.swift in Sources */,
+				202701CC22563C6100868E1E /* AAPropertyFailureTests.swift in Sources */,
+				202701D822564C7400868E1E /* AADrivingModeActivationPeriodTests.swift in Sources */,
 				2011963B224137CB00A6737D /* AAPowerTakeOffTests.swift in Sources */,
 				20119639224136E300A6737D /* AADriverFatigueTests.swift in Sources */,
 				206E1FDE2243821900CB636D /* AADoorLocksTests.swift in Sources */,
+				20C16522225607FF008FFB4B /* AACapabilityClassTests.swift in Sources */,
 				206E1FE82243B42100CB636D /* AAOffroadTests.swift in Sources */,
 				205C0E672254FF5300E63733 /* AATimeTests.swift in Sources */,
 				205C0E492254F45200E63733 /* AADiagnosticTroubleCodeTests.swift in Sources */,
@@ -1350,6 +1401,7 @@
 				205C0E6D2255010700E63733 /* AAWheelRPMTests.swift in Sources */,
 				20D87822224A419800CCF1BC /* AACruiseControlTests.swift in Sources */,
 				205C0E5B2254FB9600E63733 /* AAReadingLampTests.swift in Sources */,
+				202701D22256482800868E1E /* AABasicPropertyTests.swift in Sources */,
 				20D87837224A6A0400CCF1BC /* AAActionItemTests.swift in Sources */,
 				20D87831224A606500CCF1BC /* AAMultiCommandTests.swift in Sources */,
 				2011963E2241418600A6737D /* AAFuelingTests.swift in Sources */,
@@ -1367,9 +1419,11 @@
 				20DAE346224A790900AF7798 /* AAClimateWeekdayTimeTests.swift in Sources */,
 				206E1FDB22437E1D00CB636D /* AANaviDestinationTests.swift in Sources */,
 				201196382241358000A6737D /* AAWeatherConditionsTests.swift in Sources */,
+				20C16520225604FF008FFB4B /* AACapabilityValueTests.swift in Sources */,
 				205C0E4B2254F64800E63733 /* AADoorLockTests.swift in Sources */,
 				205C0E6B2255008400E63733 /* AATireTemperatureTests.swift in Sources */,
 				205C0E412254E09200E63733 /* AAConditionBasedServiceTests.swift in Sources */,
+				202701DA22564D0400868E1E /* AADrivingModeEnergyConsumptionTests.swift in Sources */,
 				2011963D224139A500A6737D /* AAHomeChargerTests.swift in Sources */,
 				205C0E612254FD7600E63733 /* AASeatbeltFastenedTests.swift in Sources */,
 				205C0E532254F8D500E63733 /* AADriverWorkingStateTests.swift in Sources */,
@@ -1515,9 +1569,11 @@
 				2029BF2C221323FB002FAE32 /* AAPropertyComponent.swift in Sources */,
 				2009F2882219715600274607 /* AACapabilityClass.swift in Sources */,
 				OBJ_415 /* UInt16+Extensions.swift in Sources */,
+				202701D422564BB000868E1E /* AADrivingModeActivationPeriod.swift in Sources */,
 				OBJ_417 /* UInt8+Extensions.swift in Sources */,
 				20F7903D2135713A003BDFA2 /* AAConvertibleRoofState.swift in Sources */,
 				20B56EBC218C6BFC006E9946 /* AASeatPersonDetected.swift in Sources */,
+				202701D622564C1C00868E1E /* AADrivingModeEnergyConsumption.swift in Sources */,
 				OBJ_420 /* AAIdentifiable.swift in Sources */,
 				OBJ_421 /* AAAcceleration.swift in Sources */,
 				20DB15462097176600A1658B /* AADriverWorkingState.swift in Sources */,

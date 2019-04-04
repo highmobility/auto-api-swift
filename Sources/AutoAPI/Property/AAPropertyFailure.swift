@@ -47,9 +47,8 @@ extension AAPropertyFailure: AABytesConvertable {
             return nil
         }
 
-        guard let descriptionSize = Int(bytes: bytes[1...2]) else {
-            return nil
-        }
+        // Int initialiser can't create an invalid value with 2 bytes
+        let descriptionSize = Int(bytes: bytes[1...2])!
 
         guard bytes.count == (3 + descriptionSize) else {
             return nil
@@ -62,5 +61,12 @@ extension AAPropertyFailure: AABytesConvertable {
 
         self.reason = reason
         self.description = description
+    }
+}
+
+extension AAPropertyFailure: Equatable {
+
+    public static func ==(lhs: AAPropertyFailure, rhs: AAPropertyFailure) -> Bool {
+        return lhs.bytes == rhs.bytes
     }
 }

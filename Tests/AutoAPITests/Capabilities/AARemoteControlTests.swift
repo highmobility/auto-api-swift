@@ -34,9 +34,8 @@ class AARemoteControlTests: XCTestCase {
 
     static var allTests = [("testControlCommand", testControlCommand),
                            ("testGetState", testGetState),
-                           ("testStartControlMode", testStartControlMode),
-                           ("testState", testState),
-                           ("testStopControlMode", testStopControlMode)]
+                           ("testStartControlMode", testStartStopControlMode),
+                           ("testState", testState)]
 
 
     // MARK: XCTestCase
@@ -71,8 +70,9 @@ class AARemoteControlTests: XCTestCase {
         XCTAssertEqual(AARemoteControl.getControlState.bytes, bytes)
     }
 
-    func testStartControlMode() {
-        let bytes: [UInt8] = [
+    func testStartStopControlMode() {
+        // Start
+        let bytes1: [UInt8] = [
             0x00, 0x27, // MSB, LSB Message Identifier for Remote Control
             0x12,       // Message Type for Start-Stop Control Mode
 
@@ -83,7 +83,24 @@ class AARemoteControlTests: XCTestCase {
             0x00        // Start Control
         ]
 
-        XCTAssertEqual(AARemoteControl.startStopControl(.start)?.bytes, bytes)
+        XCTAssertEqual(AARemoteControl.startStopControl(.start)?.bytes, bytes1)
+
+        // Stop
+        let bytes2: [UInt8] = [
+            0x00, 0x27, // MSB, LSB Message Identifier for Remote Control
+            0x12,       // Message Type for Start-Stop Control Mode
+
+            0x01,       // Property Identifier for Start-Stop Control Mode
+            0x00, 0x04, // Property size 4 bytes
+            0x01,       // Data component
+            0x00, 0x01, // Data component size 1 byte
+            0x01        // Stop Control
+        ]
+
+        XCTAssertEqual(AARemoteControl.startStopControl(.stop)?.bytes, bytes2)
+
+        // Failure
+        XCTAssertNil(AARemoteControl.startStopControl(.reset))
     }
 
     func testState() {
@@ -110,20 +127,5 @@ class AARemoteControlTests: XCTestCase {
 
         XCTAssertEqual(remoteControl.controlMode?.value, .started)
         XCTAssertEqual(remoteControl.angle?.value, 50)
-    }
-
-    func testStopControlMode() {
-        let bytes: [UInt8] = [
-            0x00, 0x27, // MSB, LSB Message Identifier for Remote Control
-            0x12,       // Message Type for Start-Stop Control Mode
-
-            0x01,       // Property Identifier for Start-Stop Control Mode
-            0x00, 0x04, // Property size 4 bytes
-            0x01,       // Data component
-            0x00, 0x01, // Data component size 1 byte
-            0x01        // Stop Control
-        ]
-
-        XCTAssertEqual(AARemoteControl.startStopControl(.stop)?.bytes, bytes)
     }
 }

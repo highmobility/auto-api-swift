@@ -47,17 +47,15 @@ public class AANotifications: AACapabilityClass, AACapability {
             return nil
         }
 
-        guard let identifier = AACommandIdentifier(bytes: bytes[0...1]) else {
-            return nil
-        }
+        // UInt16 initialiser can't create an invalid value with 2 bytes
+        let identifier = AACommandIdentifier(bytes: bytes[0...1])!
 
         guard identifier == AANotifications.identifier else {
             return nil
         }
 
-        guard let properties = AAProperties(bytes: bytes.dropFirst(3)) else {
-            return nil
-        }
+        // Can't fail
+        let properties = AAProperties(bytes: bytes.dropFirst(3))!
 
         self.init(properties: properties)
     }

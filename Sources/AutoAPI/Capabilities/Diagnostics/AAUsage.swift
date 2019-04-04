@@ -36,8 +36,8 @@ public class AAUsage: AACapabilityClass, AACapability {
     public let averageWeeklyDistance: AAProperty<UInt16>?
     public let averageWeeklyDistanceLongTerm: AAProperty<UInt16>?
     public let currentFuelConsumption: AAProperty<Float>?
-    public let drivingModeActivationPeriods: [AAProperty<AADrivingMode.ActivationPeriod>]?
-    public let drivingModeEnergyConsumptions: [AAProperty<AADrivingMode.EnergyConsumption>]?
+    public let drivingModeActivationPeriods: [AAProperty<AADrivingModeActivationPeriod>]?
+    public let drivingModeEnergyConsumptions: [AAProperty<AADrivingModeEnergyConsumption>]?
     public let drivingStyleEvalution: AAProperty<AAPercentage>?
     public let lastTripAverageEnergyRecuperation: AAProperty<Float>?
     public let lastTripBatteryRemaining: AAProperty<AAPercentage>?
