@@ -10,7 +10,7 @@ let package = Package(
         .library(name: "AutoAPI", targets: ["AutoAPI"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/highmobility/hm-utilities-swift", .upToNextMinor(from: "1.3.0")),
+        .package(url: "https://github.com/highmobility/hm-utilities-swift", .upToNextMinor(from: "1.4.0")),
     ],
     targets: [
         .target(name: "AutoAPI", dependencies: ["HMUtilities"]),

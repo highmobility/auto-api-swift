@@ -50,7 +50,7 @@ public class AAHomeCharger: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0060
+    public static var identifier: AACapabilityIdentifier = 0x0060
 
 
     required init(properties: AAProperties) {

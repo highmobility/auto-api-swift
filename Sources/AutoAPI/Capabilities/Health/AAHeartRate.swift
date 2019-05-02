@@ -31,7 +31,7 @@ import Foundation
 
 public class AAHeartRate: AACapabilityClass, AACapability {
 
-    public static var identifier: AACommandIdentifier = 0x0029
+    public static var identifier: AACapabilityIdentifier = 0x0029
 }
 
 extension AAHeartRate: AAMessageTypesGettable {

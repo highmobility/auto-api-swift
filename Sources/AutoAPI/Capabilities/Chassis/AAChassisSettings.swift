@@ -43,7 +43,7 @@ public class AAChassisSettings: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0053
+    public static var identifier: AACapabilityIdentifier = 0x0053
 
 
     required init(properties: AAProperties) {

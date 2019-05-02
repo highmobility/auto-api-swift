@@ -37,7 +37,7 @@ public class AAOffroad: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0052
+    public static var identifier: AACapabilityIdentifier = 0x0052
 
 
     required init(properties: AAProperties) {

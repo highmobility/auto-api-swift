@@ -40,7 +40,7 @@ public class AACruiseControl: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0062
+    public static var identifier: AACapabilityIdentifier = 0x0062
 
 
     required init(properties: AAProperties) {

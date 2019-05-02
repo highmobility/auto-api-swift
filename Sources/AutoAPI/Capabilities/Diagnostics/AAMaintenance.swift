@@ -50,7 +50,7 @@ public class AAMaintenance: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0034
+    public static var identifier: AACapabilityIdentifier = 0x0034
 
 
     required init(properties: AAProperties) {

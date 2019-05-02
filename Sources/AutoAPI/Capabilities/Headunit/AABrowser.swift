@@ -32,7 +32,7 @@ import Foundation
 
 public class AABrowser: AACapabilityClass, AACapability {
 
-    public static var identifier: AACommandIdentifier = 0x0049
+    public static var identifier: AACapabilityIdentifier = 0x0049
 }
 
 extension AABrowser: AAMessageTypesGettable {

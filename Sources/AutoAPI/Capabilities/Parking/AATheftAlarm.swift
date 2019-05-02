@@ -36,7 +36,7 @@ public class AATheftAlarm: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0046
+    public static var identifier: AACapabilityIdentifier = 0x0046
 
 
     required init(properties: AAProperties) {

@@ -38,7 +38,7 @@ public class AAEngine: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0035
+    public static var identifier: AACapabilityIdentifier = 0x0035
 
 
     required init(properties: AAProperties) {

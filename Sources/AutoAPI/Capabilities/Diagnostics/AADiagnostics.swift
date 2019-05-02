@@ -66,7 +66,7 @@ public class AADiagnostics: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0033
+    public static var identifier: AACapabilityIdentifier = 0x0033
 
 
     required init(properties: AAProperties) {

@@ -50,7 +50,7 @@ public class AAUsage: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0068
+    public static var identifier: AACapabilityIdentifier = 0x0068
 
 
     required init(properties: AAProperties) {

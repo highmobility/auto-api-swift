@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2018 High-Mobility GmbH
+// Copyright (C) 2019 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -106,7 +106,7 @@ class AAHomeChargerTests: XCTestCase {
             0x00, 0x07, // Property size 7 bytes
             0x01,       // Data component
             0x00, 0x04, // Data component size 4 byte
-            0x3f, 0x00, 0x00, 0x00  // Charger current (DC) 0.5
+            0x3F, 0x00, 0x00, 0x00  // Charger current (DC) 0.5
         ]
 
         XCTAssertEqual(AAHomeCharger.setChargingCurrent(0.5).bytes, bytes)
@@ -251,8 +251,14 @@ class AAHomeChargerTests: XCTestCase {
             0x52, 0x69, 0x70, 0x70, 0x6C, 0x65  // Ripple
         ]
 
-        guard let homeCharger = AAAutoAPI.parseBinary(bytes) as? AAHomeCharger else {
-            return XCTFail("Parsed value is not AAHomeCharger")
+        var homeCharger: AAHomeCharger!
+
+        measure {
+            guard let parsed = AAAutoAPI.parseBinary(bytes) as? AAHomeCharger else {
+                return XCTFail("Parsed value is not AAHomeCharger")
+            }
+
+            homeCharger = parsed
         }
 
         XCTAssertEqual(homeCharger.chargingState?.value, .chargingComplete)

@@ -37,7 +37,7 @@ public class AANaviDestination: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0031
+    public static var identifier: AACapabilityIdentifier = 0x0031
 
 
     required init(properties: AAProperties) {

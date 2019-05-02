@@ -1,6 +1,6 @@
 //
 // AutoAPITests
-// Copyright (C) 2018 High-Mobility GmbH
+// Copyright (C) 2019 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -64,7 +64,7 @@ class AANaviDestinationTests: XCTestCase {
             0x00, 0x09, // Property size is 9 bytes
             0x01,       // Data component identifier
             0x00, 0x06, // Data component size is 6 bytes
-            0x42, 0x65, 0x72, 0x6C, 0x69, 0x6E // Berlin
+            0x42, 0x65, 0x72, 0x6C, 0x69, 0x6E, // Berlin
         ]
 
         let coordinates = AACoordinates(latitude: 52.520008, longitude: 13.404954)
@@ -89,7 +89,7 @@ class AANaviDestinationTests: XCTestCase {
             0x00, 0x09, // Property size is 9 bytes
             0x01,       // Data component identifier
             0x00, 0x06, // Data component size is 6 bytes
-            0x42, 0x65, 0x72, 0x6C, 0x69, 0x6E // Berlin
+            0x42, 0x65, 0x72, 0x6C, 0x69, 0x6E, // Berlin
         ]
 
         guard let naviDestination = AAAutoAPI.parseBinary(bytes) as? AANaviDestination else {

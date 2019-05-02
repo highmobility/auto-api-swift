@@ -31,7 +31,7 @@ import Foundation
 
 public class AAWakeUp: AACapabilityClass, AACapability {
 
-    public static var identifier: AACommandIdentifier = 0x0022
+    public static var identifier: AACapabilityIdentifier = 0x0022
 }
 
 extension AAWakeUp: AAMessageTypesGettable {

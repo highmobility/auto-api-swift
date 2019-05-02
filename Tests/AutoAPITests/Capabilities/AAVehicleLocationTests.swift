@@ -1,6 +1,6 @@
 //
 // AutoAPITests
-// Copyright (C) 2018 High-Mobility GmbH
+// Copyright (C) 2019 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -69,7 +69,7 @@ class AAVehicleLocationTests: XCTestCase {
             0x00, 0x0B, // Property size is 11 bytes
             0x01,       // Data component identifier
             0x00, 0x08, // Data component size is 8 bytes
-            0x40, 0x60, 0xB0, 0x00, 0x00, 0x00, 0x00, 0x00 // 133.5 meters above the WGS 84 reference ellipsoid point
+            0x40, 0x60, 0xB0, 0x00, 0x00, 0x00, 0x00, 0x00, // 133.5 meters above the WGS 84 reference ellipsoid point
         ]
 
         guard let vehicleLocation = AAAutoAPI.parseBinary(bytes) as? AAVehicleLocation else {

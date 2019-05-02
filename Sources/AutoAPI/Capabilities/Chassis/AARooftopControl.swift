@@ -40,7 +40,7 @@ public class AARooftopControl: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0025
+    public static var identifier: AACapabilityIdentifier = 0x0025
 
 
     required init(properties: AAProperties) {

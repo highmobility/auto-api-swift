@@ -69,7 +69,7 @@ public class AACapabilityClass: AABytesConvertable {
         }
 
         // UInt16 initialiser can't create an invalid value with 2 bytes
-        let identifier = AACommandIdentifier(bytes: bytes[0...1])!
+        let identifier = AACapabilityIdentifier(bytes: bytes[0...1])!
 
         // TODO: Uses the default incoming Message Type – will become obsolete in L11
         guard bytes[2] == 0x01,

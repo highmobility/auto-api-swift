@@ -1,6 +1,6 @@
 //
 // AutoAPITests
-// Copyright (C) 2018 High-Mobility GmbH
+// Copyright (C) 2019 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -154,8 +154,14 @@ class AAMaintenanceTests: XCTestCase {
             0x00, 0x00, 0x01, 0x69, 0x7C, 0xC6, 0x33, 0xB0  // 14 March 2019 at 15:15:58 GMT
         ]
 
-        guard let maintenance = AAAutoAPI.parseBinary(bytes) as? AAMaintenance else {
-            return XCTFail("Parsed value is not AAMaintenance")
+        var maintenance: AAMaintenance!
+
+        measure {
+            guard let parsed = AAAutoAPI.parseBinary(bytes) as? AAMaintenance else {
+                return XCTFail("Parsed value is not AAMaintenance")
+            }
+
+            maintenance = parsed
         }
 
         XCTAssertEqual(maintenance.daysToNextService?.value, 501)

@@ -36,7 +36,7 @@ public class AAWeatherConditions: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0055
+    public static var identifier: AACapabilityIdentifier = 0x0055
 
 
     required init(properties: AAProperties) {

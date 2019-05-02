@@ -30,7 +30,7 @@ import Foundation
 
 
 public typealias AutoAPI = AAAutoAPI
-public typealias AACommandIdentifier = UInt16
+public typealias AACapabilityIdentifier = UInt16
 public typealias AANetworkSSID = String
 public typealias AAPercentage = Double
 public typealias AAPropertyIdentifier = UInt8
@@ -38,66 +38,73 @@ public typealias AAPropertyIdentifier = UInt8
 
 public struct AAAutoAPI {
 
-    static var capabilities: [AACapability.Type] {
-        return [AABrowser.self,
-                AACapabilities.self,
-                AACharging.self,
-                AAChassisSettings.self,
-                AAClimate.self,
-                AACruiseControl.self,
-                AADashboardLights.self,
-                AADiagnostics.self,
-                AADoorLocks.self,
-                AADriverFatigue.self,
-                AAEngine.self,
-                AAFailureMessage.self,
-                AAFirmwareVersion.self,
-                AAFueling.self,
-                AAGraphics.self,
-                AAHeartRate.self,
-                AAHistorical.self,
-                AAHomeCharger.self,
-                AAHonkHornFlashLights.self,
-                AAHood.self,
-                AAKeyfobPosition.self,
-                AALightConditions.self,
-                AALights.self,
-                AAMaintenance.self,
-                AAMessaging.self,
-                AAMobile.self,
-                AAMultiCommand.self,
-                AANaviDestination.self,
-                AANotifications.self,
-                AAOffroad.self,
-                AAParkingBrake.self,
-                AAParkingTicket.self,
-                AAPowerTakeoff.self,
-                AARace.self,
-                AARemoteControl.self,
-                AARooftopControl.self,
-                AASeats.self,
-                AAStartStop.self,
-                AATachograph.self,
-                AATextInput.self,
-                AATheftAlarm.self,
-                AATrunkAccess.self,
-                AAUsage.self,
-                AAValetMode.self,
-                AAVehicleLocation.self,
-                AAVehicleStatus.self,
-                AAVehicleTime.self,
-                AAVideoHandover.self,
-                AAWakeUp.self,
-                AAWeatherConditions.self,
-                AAWiFi.self,
-                AAWindows.self,
-                AAWindscreen.self]
-    }
+    static let capabilities: [AACapability.Type] = [AABrowser.self,
+                                                    AACapabilities.self,
+                                                    AACharging.self,
+                                                    AAChassisSettings.self,
+                                                    AAClimate.self,
+                                                    AACruiseControl.self,
+                                                    AADashboardLights.self,
+                                                    AADiagnostics.self,
+                                                    AADoorLocks.self,
+                                                    AADriverFatigue.self,
+                                                    AAEngine.self,
+                                                    AAFailureMessage.self,
+                                                    AAFirmwareVersion.self,
+                                                    AAFueling.self,
+                                                    AAGraphics.self,
+                                                    AAHeartRate.self,
+                                                    AAHistorical.self,
+                                                    AAHomeCharger.self,
+                                                    AAHonkHornFlashLights.self,
+                                                    AAHood.self,
+                                                    AAKeyfobPosition.self,
+                                                    AALightConditions.self,
+                                                    AALights.self,
+                                                    AAMaintenance.self,
+                                                    AAMessaging.self,
+                                                    AAMobile.self,
+                                                    AAMultiCommand.self,
+                                                    AANaviDestination.self,
+                                                    AANotifications.self,
+                                                    AAOffroad.self,
+                                                    AAParkingBrake.self,
+                                                    AAParkingTicket.self,
+                                                    AAPowerTakeoff.self,
+                                                    AARace.self,
+                                                    AARemoteControl.self,
+                                                    AARooftopControl.self,
+                                                    AASeats.self,
+                                                    AAStartStop.self,
+                                                    AATachograph.self,
+                                                    AATextInput.self,
+                                                    AATheftAlarm.self,
+                                                    AATrunkAccess.self,
+                                                    AAUsage.self,
+                                                    AAValetMode.self,
+                                                    AAVehicleLocation.self,
+                                                    AAVehicleStatus.self,
+                                                    AAVehicleTime.self,
+                                                    AAVideoHandover.self,
+                                                    AAWakeUp.self,
+                                                    AAWeatherConditions.self,
+                                                    AAWiFi.self,
+                                                    AAWindows.self,
+                                                    AAWindscreen.self]
 
 
     // MARK: Type Methods
 
     public static func parseBinary<C>(_ binary: C) -> AACapability? where C: Collection, C.Element == UInt8 {
-        return AAAutoAPI.capabilities.compactMap { $0.init(bytes: binary.bytes) }.first
+        guard binary.count >= 2 else {
+            return nil
+        }
+
+        let bytes = Array(binary)
+
+        // UInt16 initialiser can't create an invalid value with 2 bytes
+        let capabilityIdentifier = AACapabilityIdentifier(bytes: bytes.prefix(2))!
+
+        return capabilities.first { $0.identifier == capabilityIdentifier }?.init(bytes: bytes)
     }
 }

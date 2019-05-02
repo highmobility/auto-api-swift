@@ -31,7 +31,7 @@ import Foundation
 
 public class AATextInput: AACapabilityClass, AACapability {
 
-    public static var identifier: AACommandIdentifier = 0x0044
+    public static var identifier: AACapabilityIdentifier = 0x0044
 }
 
 extension AATextInput: AAMessageTypesGettable {

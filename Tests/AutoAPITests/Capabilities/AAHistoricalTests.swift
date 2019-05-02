@@ -1,6 +1,6 @@
 //
 // AutoAPITests
-// Copyright (C) 2018 High-Mobility GmbH
+// Copyright (C) 2019 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -71,7 +71,7 @@ class AAHistoricalTests: XCTestCase {
     func testState() {
         let bytes: [UInt8] = [
             0x00, 0x12, // MSB, LSB Message Identifier for Historical
-            0x01,           // Message Type for Historical States
+            0x01,       // Message Type for Historical States
 
             0x01,       // Property Identifier for States
             0x00, 0x1C, // Property size 28 bytes

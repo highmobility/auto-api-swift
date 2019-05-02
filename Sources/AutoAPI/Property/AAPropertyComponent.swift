@@ -35,7 +35,7 @@ struct AAPropertyComponent {
     let type: AAPropertyComponentType
 
     var value: [UInt8] {
-        return bytes[3...].bytes
+        return Array(bytes[3...])
     }
 
 

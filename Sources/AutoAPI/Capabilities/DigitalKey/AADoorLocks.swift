@@ -38,7 +38,7 @@ public class AADoorLocks: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0020
+    public static var identifier: AACapabilityIdentifier = 0x0020
 
 
     required init(properties: AAProperties) {

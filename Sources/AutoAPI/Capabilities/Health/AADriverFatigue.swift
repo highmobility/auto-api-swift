@@ -36,7 +36,7 @@ public class AADriverFatigue: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0041
+    public static var identifier: AACapabilityIdentifier = 0x0041
 
 
     required init(properties: AAProperties) {

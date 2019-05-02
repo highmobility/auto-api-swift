@@ -37,7 +37,7 @@ public class AAPowerTakeoff: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0065
+    public static var identifier: AACapabilityIdentifier = 0x0065
 
 
     required init(properties: AAProperties) {

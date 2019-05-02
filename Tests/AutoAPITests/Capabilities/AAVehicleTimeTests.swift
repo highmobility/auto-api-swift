@@ -1,6 +1,6 @@
 //
 // AutoAPITests
-// Copyright (C) 2018 High-Mobility GmbH
+// Copyright (C) 2019 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -56,7 +56,7 @@ class AAVehicleTimeTests: XCTestCase {
             0x00, 0x0B, // Property size is 11 bytes
             0x01,       // Data component identifier
             0x00, 0x08, // Data component size is 8 bytes
-            0x00, 0x00, 0x01, 0x59, 0x99, 0xE5, 0xBF, 0xC0 // 13 January 2017 at 22:14:48 GMT
+            0x00, 0x00, 0x01, 0x59, 0x99, 0xE5, 0xBF, 0xC0, // 13 January 2017 at 22:14:48 GMT
         ]
 
         guard let vehicleTime = AAAutoAPI.parseBinary(bytes) as? AAVehicleTime else {

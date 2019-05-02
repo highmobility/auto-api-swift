@@ -36,7 +36,7 @@ public class AAValetMode: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0028
+    public static var identifier: AACapabilityIdentifier = 0x0028
 
 
     required init(properties: AAProperties) {

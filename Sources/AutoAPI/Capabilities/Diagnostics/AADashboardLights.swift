@@ -36,7 +36,7 @@ public class AADashboardLights: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0061
+    public static var identifier: AACapabilityIdentifier = 0x0061
 
 
     required init(properties: AAProperties) {

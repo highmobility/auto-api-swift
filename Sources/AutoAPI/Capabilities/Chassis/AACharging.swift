@@ -55,7 +55,7 @@ public class AACharging: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0023
+    public static var identifier: AACapabilityIdentifier = 0x0023
 
 
     required init(properties: AAProperties) {

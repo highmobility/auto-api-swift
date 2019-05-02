@@ -27,7 +27,6 @@
 //
 
 import Foundation
-import HMUtilities
 
 
 public class AAMultiCommand: AACapabilityClass, AACapability {
@@ -37,18 +36,12 @@ public class AAMultiCommand: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0013
+    public static var identifier: AACapabilityIdentifier = 0x0013
 
 
     required init(properties: AAProperties) {
         /* Level 9 */
-        states = properties.filter {
-            $0.identifier == 0x01
-        }.compactMap {
-            $0.valueBytes
-        }.compactMap {
-            AAAutoAPI.parseBinary($0)
-        }
+        states = properties.states(forIdentifier: 0x01)
 
         super.init(properties: properties)
     }

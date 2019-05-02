@@ -37,7 +37,7 @@ public class AARemoteControl: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0027
+    public static var identifier: AACapabilityIdentifier = 0x0027
 
 
     required init(properties: AAProperties) {

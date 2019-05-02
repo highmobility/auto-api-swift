@@ -40,7 +40,7 @@ public class AAParkingTicket: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0047
+    public static var identifier: AACapabilityIdentifier = 0x0047
 
 
     required init(properties: AAProperties) {

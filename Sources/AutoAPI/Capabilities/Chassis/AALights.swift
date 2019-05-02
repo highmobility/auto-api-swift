@@ -43,7 +43,7 @@ public class AALights: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0036
+    public static var identifier: AACapabilityIdentifier = 0x0036
 
 
     required init(properties: AAProperties) {

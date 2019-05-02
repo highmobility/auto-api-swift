@@ -1,6 +1,6 @@
 //
 // AutoAPITests
-// Copyright (C) 2018 High-Mobility GmbH
+// Copyright (C) 2019 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -174,8 +174,14 @@ class AACapabilitiesTests: XCTestCase {
             0x12        // Set Navi Destination
         ]
 
-        guard let capabilities = AAAutoAPI.parseBinary(bytes) as? AACapabilities else {
-            return XCTFail("Parsed value is not AACapabilities")
+        var capabilities: AACapabilities!
+
+        measure {
+            guard let parsed = AAAutoAPI.parseBinary(bytes) as? AACapabilities else {
+                return XCTFail("Parsed value is not AACapabilities")
+            }
+
+            capabilities = parsed
         }
 
         let all = capabilities.capabilities

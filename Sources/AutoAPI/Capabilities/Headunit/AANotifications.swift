@@ -39,7 +39,7 @@ public class AANotifications: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0038
+    public static var identifier: AACapabilityIdentifier = 0x0038
 
 
     public required convenience init?(bytes: [UInt8]) {
@@ -48,7 +48,7 @@ public class AANotifications: AACapabilityClass, AACapability {
         }
 
         // UInt16 initialiser can't create an invalid value with 2 bytes
-        let identifier = AACommandIdentifier(bytes: bytes[0...1])!
+        let identifier = AACapabilityIdentifier(bytes: bytes[0...1])!
 
         guard identifier == AANotifications.identifier else {
             return nil

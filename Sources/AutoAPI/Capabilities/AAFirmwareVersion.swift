@@ -38,7 +38,7 @@ public class AAFirmwareVersion: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0003
+    public static var identifier: AACapabilityIdentifier = 0x0003
 
 
     required init(properties: AAProperties) {

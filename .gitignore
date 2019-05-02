@@ -51,12 +51,14 @@ DerivedData/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
+xcbaselines/
 
 ## Other
 *.moved-aside
 *.xcuserstate
 *.xccheckout
 *.xcscmblueprint
+*.xcbaseline
 
 ## Obj-C/Swift specific
 *.hmap

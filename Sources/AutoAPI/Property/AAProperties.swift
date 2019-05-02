@@ -82,14 +82,28 @@ extension AAProperties {
         let all = filter {
             $0.identifier == identifier
         }.compactMap {
-            return AAProperty<R>(bytes: $0.bytes)
+            AAProperty<R>(bytes: $0.bytes)
         }
 
         return all.isEmpty ? nil : all
     }
 
     func property<R>(forIdentifier identifier: AAPropertyIdentifier) -> AAProperty<R>? {
-        return allOrNil(forIdentifier: identifier)?.first
+        guard let bytes = first(where: { $0.identifier == identifier })?.bytes else {
+            return nil
+        }
+
+        return AAProperty<R>(bytes: bytes)
+    }
+
+    func states(forIdentifier identifier: AAPropertyIdentifier) -> [AACapability] {
+        return filter {
+            $0.identifier == identifier
+        }.compactMap {
+            $0.valueBytes
+        }.compactMap {
+            AutoAPI.parseBinary($0)
+        }
     }
 }
 

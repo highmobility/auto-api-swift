@@ -1,6 +1,6 @@
 //
 // AutoAPITests
-// Copyright (C) 2018 High-Mobility GmbH
+// Copyright (C) 2019 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -310,8 +310,14 @@ class AAChargingTests: XCTestCase {
             0x01        // The vehicle is charging
         ]
 
-        guard let charging = AAAutoAPI.parseBinary(bytes) as? AACharging else {
-            return XCTFail("Parsed value is not AACharging")
+        var charging: AACharging!
+
+        measure {
+            guard let parsed = AAAutoAPI.parseBinary(bytes) as? AACharging else {
+                return XCTFail("Parsed value is not AACharging")
+            }
+
+            charging = parsed
         }
 
         XCTAssertEqual(charging.estimatedRange?.value, 432)

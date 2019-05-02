@@ -31,7 +31,7 @@ import Foundation
 
 public class AAGraphics: AACapabilityClass, AACapability {
 
-    public static var identifier: AACommandIdentifier = 0x0051
+    public static var identifier: AACapabilityIdentifier = 0x0051
 }
 
 extension AAGraphics: AAMessageTypesGettable {

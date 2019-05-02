@@ -36,7 +36,7 @@ public class AAVehicleTime: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0050
+    public static var identifier: AACapabilityIdentifier = 0x0050
 
 
     required init(properties: AAProperties) {

@@ -1,6 +1,6 @@
 //
 // AutoAPITests
-// Copyright (C) 2018 High-Mobility GmbH
+// Copyright (C) 2019 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -159,8 +159,14 @@ class AAUsageTests: XCTestCase {
             0x40, 0xF0, 0x00, 0x00  // Current fuel consumption is 7.5l / 100km
         ]
 
-        guard let usage = AutoAPI.parseBinary(bytes) as? AAUsage else {
-            return XCTFail("Parsed value is not AAUsage")
+        var usage: AAUsage!
+
+        measure {
+            guard let parsed = AutoAPI.parseBinary(bytes) as? AAUsage else {
+                return XCTFail("Parsed value is not AAUsage")
+            }
+
+            usage = parsed
         }
 
         XCTAssertEqual(usage.averageWeeklyDistance?.value, 666)

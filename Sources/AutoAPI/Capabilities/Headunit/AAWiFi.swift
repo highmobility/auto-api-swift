@@ -39,7 +39,7 @@ public class AAWiFi: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0059
+    public static var identifier: AACapabilityIdentifier = 0x0059
 
 
     required init(properties: AAProperties) {

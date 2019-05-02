@@ -32,14 +32,14 @@ import Foundation
 public class AAFailureMessage: AACapabilityClass, AACapability {
 
     public let description: AAProperty<String>?
-    public let messageIdentifier: AAProperty<AACommandIdentifier>?
+    public let messageIdentifier: AAProperty<AACapabilityIdentifier>?
     public let messageType: AAProperty<UInt8>?
     public let reason: AAProperty<AAFailureReason>?
 
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0002
+    public static var identifier: AACapabilityIdentifier = 0x0002
 
 
     required init(properties: AAProperties) {

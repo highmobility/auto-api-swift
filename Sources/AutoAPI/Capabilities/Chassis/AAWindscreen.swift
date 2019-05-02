@@ -47,7 +47,7 @@ public class AAWindscreen: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0042
+    public static var identifier: AACapabilityIdentifier = 0x0042
 
 
     required init(properties: AAProperties) {

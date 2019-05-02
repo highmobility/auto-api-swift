@@ -37,7 +37,7 @@ public class AATrunkAccess: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0021
+    public static var identifier: AACapabilityIdentifier = 0x0021
 
 
     required init(properties: AAProperties) {

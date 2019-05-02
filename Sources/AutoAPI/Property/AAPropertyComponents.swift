@@ -49,7 +49,7 @@ struct AAPropertyComponents: Sequence, IteratorProtocol {
             return nil
         }
 
-        guard let component = AAPropertyComponent(bytes: bytes[..<size].bytes) else {
+        guard let component = AAPropertyComponent(bytes: bytes[..<size]) else {
             return nil
         }
 

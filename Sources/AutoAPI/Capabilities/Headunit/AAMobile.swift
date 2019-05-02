@@ -36,7 +36,7 @@ public class AAMobile: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0066
+    public static var identifier: AACapabilityIdentifier = 0x0066
 
 
     required init(properties: AAProperties) {

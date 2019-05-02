@@ -1,6 +1,6 @@
 //
 // AutoAPITests
-// Copyright (C) 2018 High-Mobility GmbH
+// Copyright (C) 2019 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -224,7 +224,7 @@ class AALightsTests: XCTestCase {
             0x01,       // Data component identifier
             0x00, 0x02, // Data component size is 2 bytes
             0x01,       // Rear interior light
-            0x00,       // Light is inactive
+            0x00        // Light is inactive
         ]
 
         guard let lights = AAAutoAPI.parseBinary(bytes) as? AALights else {

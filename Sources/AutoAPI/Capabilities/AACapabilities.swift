@@ -36,7 +36,7 @@ public class AACapabilities: AACapabilityClass, AACapability  {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0010
+    public static var identifier: AACapabilityIdentifier = 0x0010
 
 
     required init(properties: AAProperties) {
@@ -64,7 +64,7 @@ public extension AACapabilities {
     }
 
 
-    static func getCapability(_ commandID: AACommandIdentifier) -> AACommand {
+    static func getCapability(_ commandID: AACapabilityIdentifier) -> AACommand {
         let properties = [commandID.property(forIdentifier: 0x01)]
 
         return command(forMessageType: .getCapability, properties: properties)

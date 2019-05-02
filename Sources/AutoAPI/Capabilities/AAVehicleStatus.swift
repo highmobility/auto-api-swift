@@ -54,7 +54,7 @@ public class AAVehicleStatus: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0011
+    public static var identifier: AACapabilityIdentifier = 0x0011
 
 
     required init(properties: AAProperties) {
@@ -81,13 +81,7 @@ public class AAVehicleStatus: AACapabilityClass, AACapability {
         brand = properties.property(forIdentifier: 0x12)
 
         /* Special */
-        states = properties.filter {
-            $0.identifier == 0x99
-        }.compactMap {
-            $0.valueBytes
-        }.compactMap {
-            AAAutoAPI.parseBinary($0)
-        }
+        states = properties.states(forIdentifier: 0x99)
 
         super.init(properties: properties)
     }

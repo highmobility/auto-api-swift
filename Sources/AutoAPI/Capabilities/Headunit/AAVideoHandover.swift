@@ -31,7 +31,7 @@ import Foundation
 
 public class AAVideoHandover: AACapabilityClass, AACapability {
 
-    public static var identifier: AACommandIdentifier = 0x0043
+    public static var identifier: AACapabilityIdentifier = 0x0043
 }
 
 extension AAVideoHandover: AAMessageTypesGettable {

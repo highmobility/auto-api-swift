@@ -36,7 +36,6 @@ public protocol AACapability: AACapabilityClass & AAIdentifiable {
 
 extension AACapability {
 
-    #if PRODUCTION
     public var debugTree: HMDebugTree {
         return HMDebugTree(self, label: nil, expandProperties: false) { (anything, label, expandProperties) -> HMDebugTree? in
             switch anything {
@@ -201,5 +200,4 @@ extension AACapability {
 
         return .node(label: label, nodes: nodes)
     }
-    #endif
 }

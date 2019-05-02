@@ -37,7 +37,7 @@ public class AASeats: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0056
+    public static var identifier: AACapabilityIdentifier = 0x0056
 
 
     required init(properties: AAProperties) {

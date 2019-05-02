@@ -36,7 +36,7 @@ public class AAHonkHornFlashLights: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0026
+    public static var identifier: AACapabilityIdentifier = 0x0026
 
 
     required init(properties: AAProperties) {

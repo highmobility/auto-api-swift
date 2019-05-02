@@ -37,7 +37,7 @@ public class AAFueling: AACapabilityClass, AACapability {
 
     // MARK: AACapability
 
-    public static var identifier: AACommandIdentifier = 0x0040
+    public static var identifier: AACapabilityIdentifier = 0x0040
 
 
     required init(properties: AAProperties) {

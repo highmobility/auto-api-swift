@@ -34,7 +34,7 @@ public struct AACapabilityValue {
     public let capability: AACapability.Type
     public let supportedMessageTypes: [UInt8]   // TODO: This will become obsolete in L11
 
-    public var identifier: AACommandIdentifier {
+    public var identifier: AACapabilityIdentifier {
         return capability.identifier
     }
 
@@ -67,14 +67,14 @@ extension AACapabilityValue: AABytesConvertable {
         }
 
         // UInt16 initialiser can't create an invalid value with 2 bytes
-        let identifier = AACommandIdentifier(bytes: bytes.prefix(2))!
+        let identifier = AACapabilityIdentifier(bytes: bytes.prefix(2))!
 
         guard let command = AAAutoAPI.capabilities.first(where: { $0.identifier == identifier }) else {
             return nil
         }
 
         self.capability = command
-        self.supportedMessageTypes = bytes[2...].bytes
+        self.supportedMessageTypes = Array(bytes[2...])
     }
 }
 
