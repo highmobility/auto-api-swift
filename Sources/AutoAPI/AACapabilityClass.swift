@@ -64,15 +64,8 @@ public class AACapabilityClass: AABytesConvertable {
 
 
     required public convenience init?(bytes: [UInt8]) {
-        guard bytes.count >= 3 else {
-            return nil
-        }
-
-        // UInt16 initialiser can't create an invalid value with 2 bytes
-        let identifier = AACapabilityIdentifier(bytes: bytes[0...1])!
-
-        // TODO: Uses the default incoming Message Type – will become obsolete in L11
-        guard bytes[2] == 0x01,
+        guard bytes.count >= 3,
+            bytes[2] == 0x01,   // TODO: Uses the default incoming Message Type – will become obsolete in L11
             let properties = AAProperties(bytes: bytes[3...]) else {
                 return nil
         }
@@ -87,6 +80,9 @@ public class AACapabilityClass: AABytesConvertable {
 
             return nil
         }
+
+        // UInt16 initialiser can't create an invalid value with 2 bytes
+        let identifier = AACapabilityIdentifier(bytes: bytes[0...1])!
 
         guard identifier == type(of: capability).identifier else {
             return nil

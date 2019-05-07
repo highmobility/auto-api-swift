@@ -100,7 +100,15 @@ public struct AAAutoAPI {
             return nil
         }
 
-        let bytes = Array(binary)
+        // For 1-3ms gain...
+        let bytes: [UInt8]
+
+        if let bytesArray = binary as? [UInt8] {
+            bytes = bytesArray
+        }
+        else {
+            bytes = Array(binary)
+        }
 
         // UInt16 initialiser can't create an invalid value with 2 bytes
         let capabilityIdentifier = AACapabilityIdentifier(bytes: bytes.prefix(2))!

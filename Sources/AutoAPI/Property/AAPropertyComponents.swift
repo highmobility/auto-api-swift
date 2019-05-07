@@ -45,12 +45,9 @@ struct AAPropertyComponents: Sequence, IteratorProtocol {
         let componentsSize = UInt16(bytes: bytes[1...2])!.int
         let size = 3 + componentsSize
 
-        guard bytes.count >= size else {
-            return nil
-        }
-
-        guard let component = AAPropertyComponent(bytes: bytes[..<size]) else {
-            return nil
+        guard bytes.count >= size,
+            let component = AAPropertyComponent(bytes: bytes[..<size]) else {
+                return nil
         }
 
         bytes.removeFirst(size)

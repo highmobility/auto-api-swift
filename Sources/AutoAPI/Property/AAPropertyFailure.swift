@@ -47,8 +47,8 @@ extension AAPropertyFailure: AABytesConvertable {
             return nil
         }
 
-        // Int initialiser can't create an invalid value with 2 bytes
-        let descriptionSize = Int(bytes: bytes[1...2])!
+        // UInt16 initialiser can't create an invalid value with 2 bytes
+        let descriptionSize = UInt16(bytes: bytes[1...2])!.int
 
         guard bytes.count == (3 + descriptionSize) else {
             return nil

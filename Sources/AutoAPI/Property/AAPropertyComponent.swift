@@ -59,12 +59,9 @@ extension AAPropertyComponent: AABytesConvertable {
         let componentSize = UInt16(bytes: bytes[1...2])!.int
         let size = 3 + componentSize
 
-        guard bytes.count == size else {
-            return nil
-        }
-
-        guard let type = AAPropertyComponentType(rawValue: bytes[0]) else {
-            return nil
+        guard bytes.count == size,
+            let type = AAPropertyComponentType(rawValue: bytes[0]) else {
+                return nil
         }
 
         self.bytes = bytes
