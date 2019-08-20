@@ -14,7 +14,6 @@ let package = Package(
     ],
     targets: [
         .target(name: "AutoAPI", dependencies: ["HMUtilities"]),
-        .target(name: "AutoAPICLT", dependencies: ["AutoAPI"]),
         .testTarget(name: "AutoAPITests", dependencies: ["AutoAPI"]),
     ]
 )
