@@ -253,7 +253,7 @@
 		20DB15512097286200A1658B /* TachographTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TachographTests.swift; sourceTree = "<group>"; };
 		20F805C8219C15980046C110 /* MultiCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiCommand.swift; sourceTree = "<group>"; };
 		"AutoAPI::AutoAPI::Product" /* AutoAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AutoAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"AutoAPI::AutoAPITests::Product" /* AutoAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = AutoAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"AutoAPI::AutoAPITests::Product" /* AutoAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; name = AutoAPITests.xctest; path = .xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* BinaryInitable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryInitable.swift; sourceTree = "<group>"; };
 		OBJ_100 /* PricingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingType.swift; sourceTree = "<group>"; };
 		OBJ_101 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
@@ -1303,6 +1303,7 @@
 				INFOPLIST_FILE = AutoAPI.xcodeproj/AutoAPI_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MARKETING_VERSION = 7.3.5;
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.high-mobility.autoapi";
@@ -1328,6 +1329,7 @@
 				INFOPLIST_FILE = AutoAPI.xcodeproj/AutoAPI_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MARKETING_VERSION = 7.3.5;
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.high-mobility.autoapi";
