@@ -3,6 +3,7 @@
 
 Package.resolved
 *.framework
+.swiftpm
 
 ### macOS ###
 *.DS_Store
