@@ -328,6 +328,7 @@
 		202701DB2256517400868E1E /* AAZoneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAZoneTests.swift; sourceTree = "<group>"; };
 		202701DD225653D000868E1E /* ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsTests.swift; sourceTree = "<group>"; };
 		2028370A2150D17E0001724A /* AADepartureTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADepartureTime.swift; sourceTree = "<group>"; };
+		202919092330FE6F007503ED /* XCFrameworkBuilder.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = XCFrameworkBuilder.sh; sourceTree = "<group>"; };
 		2029BF2122131EEC002FAE32 /* AAProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAProperties.swift; sourceTree = "<group>"; };
 		2029BF232213211D002FAE32 /* AAPropertyComponentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertyComponentType.swift; sourceTree = "<group>"; };
 		2029BF2522132172002FAE32 /* AAPropertyComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPropertyComponents.swift; sourceTree = "<group>"; };
@@ -382,8 +383,6 @@
 		2065E938220DB25A000F8F29 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		206E1FE022438F7300CB636D /* AAHoodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAHoodTests.swift; sourceTree = "<group>"; };
 		206E1FEA2243B78200CB636D /* AAUsageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAUsageTests.swift; sourceTree = "<group>"; };
-		206ED7D02060FD7000D7761E /* UniversalBuildScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = UniversalBuildScript.sh; sourceTree = "<group>"; };
-		206ED7D12060FD7000D7761E /* AppStoreCompatible.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppStoreCompatible.sh; sourceTree = "<group>"; };
 		207A0AC0218C70970067923E /* AAWindowOpenPercentage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWindowOpenPercentage.swift; sourceTree = "<group>"; };
 		207A0AC2218C71040067923E /* AAWindowPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAWindowPosition.swift; sourceTree = "<group>"; };
 		20896EE3214799C1003A7A63 /* AAChosenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChosenState.swift; sourceTree = "<group>"; };
@@ -627,8 +626,7 @@
 		206ED7CF2060FD7000D7761E /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
-				206ED7D02060FD7000D7761E /* UniversalBuildScript.sh */,
-				206ED7D12060FD7000D7761E /* AppStoreCompatible.sh */,
+				202919092330FE6F007503ED /* XCFrameworkBuilder.sh */,
 			);
 			path = Scripts;
 			sourceTree = "<group>";
@@ -1664,11 +1662,12 @@
 		OBJ_315 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = AutoAPI.xcodeproj/AutoAPI_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MARKETING_VERSION = 10.0.7;
+				MARKETING_VERSION = 10.0.8;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.high-mobility.autoapi";
 				SWIFT_VERSION = 5.0;
@@ -1678,11 +1677,12 @@
 		OBJ_316 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				ENABLE_TESTABILITY = NO;
 				INFOPLIST_FILE = AutoAPI.xcodeproj/AutoAPI_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MARKETING_VERSION = 10.0.7;
+				MARKETING_VERSION = 10.0.8;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.high-mobility.autoapi";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;

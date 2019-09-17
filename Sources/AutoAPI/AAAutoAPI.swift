@@ -29,7 +29,6 @@
 import Foundation
 
 
-public typealias AutoAPI = AAAutoAPI
 public typealias AACapabilityIdentifier = UInt16
 public typealias AANetworkSSID = String
 public typealias AAPercentage = Double

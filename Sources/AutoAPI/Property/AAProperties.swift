@@ -102,7 +102,7 @@ extension AAProperties {
         }.compactMap {
             $0.valueBytes
         }.compactMap {
-            AutoAPI.parseBinary($0)
+            AAAutoAPI.parseBinary($0)
         }
     }
 }
