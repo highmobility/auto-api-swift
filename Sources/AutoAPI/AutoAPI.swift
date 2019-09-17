@@ -33,7 +33,7 @@ import HMUtilities
 public typealias PercentageInt = UInt8
 
 
-public struct AutoAPI {
+public struct AAAutoAPI {
 
     static var commands: [Any] {
         return [Browser.self,

@@ -44,7 +44,7 @@ public struct Capabilities: InboundCommand, Sequence  {
             return nil
         }
 
-        let commandTypes = AutoAPI.commands.compactMap { $0 as? Command.Type }
+        let commandTypes = AAAutoAPI.commands.compactMap { $0 as? Command.Type }
 
         // Ordered by the ID
         capabilities = properties.filter(for: 0x01).compactMap { property in

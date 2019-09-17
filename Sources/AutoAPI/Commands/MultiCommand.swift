@@ -44,7 +44,7 @@ public struct MultiCommand: InboundCommand, OutboundCommand {
             return nil
         }
 
-        let stateTypes = AutoAPI.commands.compactMap { $0 as? VehicleStateType.Type }
+        let stateTypes = AAAutoAPI.commands.compactMap { $0 as? VehicleStateType.Type }
 
 
         states = properties.flatMap(for: 0x01) { property in
