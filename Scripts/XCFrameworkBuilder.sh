@@ -64,7 +64,7 @@ xcodebuild archive \
     -destination "generic/platform=iOS" \
     SKIP_INSTALL=NO \
     BUILD_LIBRARIES_FOR_DISTRIBUTION=YES \
-#    -quiet
+    -quiet
 
 # Archive for simulator
 echo "Archiving simulator..."
@@ -74,10 +74,10 @@ xcodebuild archive \
     -archivePath "${BUILD_DIR_iphonesimulator}/${NAME}.xcarchive" \
     -derivedDataPath "${BUILD_DIR_iphonesimulator}/Derived Data" \
     -sdk iphonesimulator \
-    -destination "generic/platform=iOS Simulator"
+    -destination "generic/platform=iOS Simulator" \
     SKIP_INSTALL=NO \
     BUILD_LIBRARIES_FOR_DISTRIBUTION=YES \
-#    -quiet
+    -quiet
 
 # Build xcframework with two archives
 echo "Creating XCFramework..."
