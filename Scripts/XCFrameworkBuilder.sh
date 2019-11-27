@@ -64,6 +64,7 @@ xcodebuild archive \
     -destination "generic/platform=iOS" \
     SKIP_INSTALL=NO \
     BUILD_LIBRARIES_FOR_DISTRIBUTION=YES \
+    BUILD_LIBRARY_FOR_DISTRIBUTION=YES \
     -quiet
 
 # Archive for simulator
@@ -77,6 +78,7 @@ xcodebuild archive \
     -destination "generic/platform=iOS Simulator" \
     SKIP_INSTALL=NO \
     BUILD_LIBRARIES_FOR_DISTRIBUTION=YES \
+    BUILD_LIBRARY_FOR_DISTRIBUTION=YES \
     -quiet
 
 # Build xcframework with two archives
