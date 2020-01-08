@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2019 High-Mobility GmbH
+// Copyright (C) 2020 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,51 +22,73 @@
 //  AAValetMode.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 12/12/2017.
-//  Copyright © 2019 High Mobility GmbH. All rights reserved.
+//  Created by Mikk Rätsep on 08/01/2020.
+//  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
 import Foundation
+import HMUtilities
 
 
-public class AAValetMode: AACapabilityClass, AACapability {
+public class AAValetMode: AACapability {
 
-    public let state: AAProperty<AAActiveState>?
-
-
-    // MARK: AACapability
-
-    public static var identifier: AACapabilityIdentifier = 0x0028
-
-
-    required init(properties: AAProperties) {
-        // Ordered by the ID
-        state = properties.property(forIdentifier: 0x01)
-
-        super.init(properties: properties)
-    }
-}
-
-extension AAValetMode: AAMessageTypesGettable {
-
-    public enum MessageTypes: UInt8, CaseIterable {
-
-        case getState   = 0x00
-        case state      = 0x01
-        case activate   = 0x12
-    }
-}
-
-public extension AAValetMode {
-
-    static var getState: AACommand {
-        return command(forMessageType: .getState)
+    /// Property Identifiers for `AAValetMode` capability.
+    public enum PropertyIdentifier: UInt8, CaseIterable {
+        case status = 0x01
     }
 
 
-    static func activate(_ state: AAActiveState) -> AACommand {
-        let properties = [state.property(forIdentifier: 0x01)]
+    // MARK: Properties
+    
+    /// Status
+    ///
+    /// - returns: `AAActiveState` wrapped in `AAProperty<AAActiveState>`
+    public var status: AAProperty<AAActiveState>? {
+        properties.property(forID: PropertyIdentifier.status)
+    }
 
-        return command(forMessageType: .activate, properties: properties)
+
+    // MARK: AAIdentifiable
+    
+    /// Capability's Identifier
+    ///
+    /// - returns: `UInt16` combining the MSB and LSB
+    public override class var identifier: UInt16 {
+        0x0028
+    }
+
+
+    // MARK: Getters
+    
+    /// Bytes for getting the `AAValetMode` state.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *request* the state of `AAValetMode`.
+    ///
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func getValetMode() -> Array<UInt8> {
+        AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.get.rawValue]
+    }
+
+
+    // MARK: Setters
+    
+    /// Bytes for *activate deactivate valet mode* command.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *activate deactivate valet mode* in `AAValetMode`.
+    /// 
+    /// - parameters:
+    ///   - status: status as `AAActiveState`
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func activateDeactivateValetMode(status: AAActiveState) -> Array<UInt8> {
+        return AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.set.rawValue] + AAProperty(identifier: PropertyIdentifier.status, value: status).bytes
+    }
+
+
+    // MARK: AADebugTreeCapable
+    
+    public override var propertyNodes: [HMDebugTree] {
+        [
+            .node(label: "Status", property: status)
+        ]
     }
 }

@@ -22,8 +22,8 @@
 //  Int+Extensions.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 14/02/2019.
-//  Copyright © 2019 High Mobility GmbH. All rights reserved.
+//  Created by Mikk Rätsep on 26/08/2019.
+//  Copyright © 2019 High-Mobility. All rights reserved.
 //
 
 import Foundation

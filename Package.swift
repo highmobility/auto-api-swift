@@ -3,7 +3,6 @@
 
 import PackageDescription
 
-
 let package = Package(
     name: "AutoAPI",
     platforms: [
@@ -15,7 +14,7 @@ let package = Package(
         .library(name: "AutoAPI", targets: ["AutoAPI"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/highmobility/hmutilities-swift", .upToNextMinor(from: "1.4.1")),
+        .package(url: "https://github.com/highmobility/hmutilities-swift", .upToNextMinor(from: "1.4.6")),
     ],
     targets: [
         .target(name: "AutoAPI", dependencies: ["HMUtilities"]),

@@ -22,36 +22,13 @@
 //  UInt8+Extensions.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 24/11/2017.
-//  Copyright © 2019 High Mobility GmbH. All rights reserved.
+//  Created by Mikk Rätsep on 18/09/2019.
+//  Copyright © 2019 High-Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-extension UInt8 {
+extension UInt8: AABytesConvertable {
 
-    var bool: Bool {
-        return self != 0x00
-    }
-
-    var int: Int {
-        return Int(int8)
-    }
-
-    var int8: Int8 {
-        return Int8(bitPattern: self)
-    }
-
-    var int16: Int16 {
-        return Int16(bitPattern: uint16)
-    }
-
-    var uint16: UInt16 {
-        return UInt16(self)
-    }
-
-    var uint32: UInt32 {
-        return UInt32(self)
-    }
 }

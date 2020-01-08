@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2019 High-Mobility GmbH
+// Copyright (C) 2020 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,43 +22,59 @@
 //  AAMobile.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 31/08/2018.
-//  Copyright © 2019 High Mobility GmbH. All rights reserved.
+//  Created by Mikk Rätsep on 08/01/2020.
+//  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
 import Foundation
+import HMUtilities
 
 
-public class AAMobile: AACapabilityClass, AACapability {
+public class AAMobile: AACapability {
 
-    public let connected: AAProperty<AAConnectionState>?
-
-
-    // MARK: AACapability
-
-    public static var identifier: AACapabilityIdentifier = 0x0066
-
-
-    required init(properties: AAProperties) {
-        // Ordered by the ID
-        connected = properties.property(forIdentifier: 0x01)
-
-        super.init(properties: properties)
+    /// Property Identifiers for `AAMobile` capability.
+    public enum PropertyIdentifier: UInt8, CaseIterable {
+        case connection = 0x01
     }
-}
 
-extension AAMobile: AAMessageTypesGettable {
 
-    public enum MessageTypes: UInt8, CaseIterable {
-
-        case getMobileState = 0x00
-        case state          = 0x01
+    // MARK: Properties
+    
+    /// Connection
+    ///
+    /// - returns: `AAConnectionState` wrapped in `AAProperty<AAConnectionState>`
+    public var connection: AAProperty<AAConnectionState>? {
+        properties.property(forID: PropertyIdentifier.connection)
     }
-}
 
-public extension AAMobile {
 
-    static var getConnectionState: AACommand {
-        return command(forMessageType: .getMobileState)
+    // MARK: AAIdentifiable
+    
+    /// Capability's Identifier
+    ///
+    /// - returns: `UInt16` combining the MSB and LSB
+    public override class var identifier: UInt16 {
+        0x0066
+    }
+
+
+    // MARK: Getters
+    
+    /// Bytes for getting the `AAMobile` state.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *request* the state of `AAMobile`.
+    ///
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func getMobileState() -> Array<UInt8> {
+        AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.get.rawValue]
+    }
+
+
+    // MARK: AADebugTreeCapable
+    
+    public override var propertyNodes: [HMDebugTree] {
+        [
+            .node(label: "Connection", property: connection)
+        ]
     }
 }

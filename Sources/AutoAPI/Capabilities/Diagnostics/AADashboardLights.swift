@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2019 High-Mobility GmbH
+// Copyright (C) 2020 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,43 +22,59 @@
 //  AADashboardLights.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 24/04/2018.
-//  Copyright © 2019 High Mobility GmbH. All rights reserved.
+//  Created by Mikk Rätsep on 08/01/2020.
+//  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
 import Foundation
+import HMUtilities
 
 
-public class AADashboardLights: AACapabilityClass, AACapability {
+public class AADashboardLights: AACapability {
 
-    public let lights: [AAProperty<AADashboardLight>]?
-
-
-    // MARK: AACapability
-
-    public static var identifier: AACapabilityIdentifier = 0x0061
-
-
-    required init(properties: AAProperties) {
-        // Ordered by the ID
-        lights = properties.allOrNil(forIdentifier: 0x01)
-
-        super.init(properties: properties)
+    /// Property Identifiers for `AADashboardLights` capability.
+    public enum PropertyIdentifier: UInt8, CaseIterable {
+        case dashboardLights = 0x01
     }
-}
 
-extension AADashboardLights: AAMessageTypesGettable {
 
-    public enum MessageTypes: UInt8, CaseIterable {
-
-        case getDashboardLights = 0x00
-        case dashboardLights    = 0x01
+    // MARK: Properties
+    
+    /// Dashboard lights
+    ///
+    /// - returns: Array of `AADashboardLight`-s wrapped in `[AAProperty<AADashboardLight>]`
+    public var dashboardLights: [AAProperty<AADashboardLight>]? {
+        properties.properties(forID: PropertyIdentifier.dashboardLights)
     }
-}
 
-public extension AADashboardLights {
 
-    static var getDashboardLights: AACommand {
-        return command(forMessageType: .getDashboardLights)
+    // MARK: AAIdentifiable
+    
+    /// Capability's Identifier
+    ///
+    /// - returns: `UInt16` combining the MSB and LSB
+    public override class var identifier: UInt16 {
+        0x0061
+    }
+
+
+    // MARK: Getters
+    
+    /// Bytes for getting the `AADashboardLights` state.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *request* the state of `AADashboardLights`.
+    ///
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func getDashboardLights() -> Array<UInt8> {
+        AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.get.rawValue]
+    }
+
+
+    // MARK: AADebugTreeCapable
+    
+    public override var propertyNodes: [HMDebugTree] {
+        [
+            .node(label: "Dashboard lights", properties: dashboardLights)
+        ]
     }
 }

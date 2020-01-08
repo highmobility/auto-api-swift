@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2019 High-Mobility GmbH
+// Copyright (C) 2020 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,51 +22,81 @@
 //  AATheftAlarm.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 01/12/2017.
-//  Copyright © 2019 High Mobility GmbH. All rights reserved.
+//  Created by Mikk Rätsep on 08/01/2020.
+//  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
 import Foundation
+import HMUtilities
 
 
-public class AATheftAlarm: AACapabilityClass, AACapability {
+public class AATheftAlarm: AACapability {
 
-    public let state: AAProperty<AATheftAlarmState>?
-
-
-    // MARK: AACapability
-
-    public static var identifier: AACapabilityIdentifier = 0x0046
-
-
-    required init(properties: AAProperties) {
-        // Ordered by the ID
-        state = properties.property(forIdentifier: 0x01)
-
-        super.init(properties: properties)
-    }
-}
-
-extension AATheftAlarm: AAMessageTypesGettable {
-
-    public enum MessageTypes: UInt8, CaseIterable {
-
-        case getAlarmState  = 0x00
-        case alarmState     = 0x01
-        case setAlarmState  = 0x12
-    }
-}
-
-public extension AATheftAlarm {
-
-    static var getAlarmState: AACommand {
-        return command(forMessageType: .getAlarmState)
+    /// Status
+    public enum Status: UInt8, AABytesConvertable {
+        case unarmed = 0x00
+        case armed = 0x01
+        case triggered = 0x02
     }
 
+
+    /// Property Identifiers for `AATheftAlarm` capability.
+    public enum PropertyIdentifier: UInt8, CaseIterable {
+        case status = 0x01
+    }
+
+
+    // MARK: Properties
     
-    static func setAlarmState(_ state: AATheftAlarmState) -> AACommand {
-        let properties = [state.property(forIdentifier: 0x01)]
+    /// Status
+    ///
+    /// - returns: `Status` wrapped in `AAProperty<Status>`
+    public var status: AAProperty<Status>? {
+        properties.property(forID: PropertyIdentifier.status)
+    }
 
-        return command(forMessageType: .setAlarmState, properties: properties)
+
+    // MARK: AAIdentifiable
+    
+    /// Capability's Identifier
+    ///
+    /// - returns: `UInt16` combining the MSB and LSB
+    public override class var identifier: UInt16 {
+        0x0046
+    }
+
+
+    // MARK: Getters
+    
+    /// Bytes for getting the `AATheftAlarm` state.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *request* the state of `AATheftAlarm`.
+    ///
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func getTheftAlarmState() -> Array<UInt8> {
+        AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.get.rawValue]
+    }
+
+
+    // MARK: Setters
+    
+    /// Bytes for *set theft alarm* command.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *set theft alarm* in `AATheftAlarm`.
+    /// 
+    /// - parameters:
+    ///   - status: status as `Status`
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func setTheftAlarm(status: Status) -> Array<UInt8> {
+        return AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.set.rawValue] + AAProperty(identifier: PropertyIdentifier.status, value: status).bytes
+    }
+
+
+    // MARK: AADebugTreeCapable
+    
+    public override var propertyNodes: [HMDebugTree] {
+        [
+            .node(label: "Status", property: status)
+        ]
     }
 }

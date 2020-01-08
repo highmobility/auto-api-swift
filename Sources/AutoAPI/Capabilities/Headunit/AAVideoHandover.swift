@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2019 High-Mobility GmbH
+// Copyright (C) 2020 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,33 +22,64 @@
 //  AAVideoHandover.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 13/12/2017.
-//  Copyright © 2019 High Mobility GmbH. All rights reserved.
+//  Created by Mikk Rätsep on 08/01/2020.
+//  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
 import Foundation
+import HMUtilities
 
 
-public class AAVideoHandover: AACapabilityClass, AACapability {
+public class AAVideoHandover: AACapability {
 
-    public static var identifier: AACapabilityIdentifier = 0x0043
-}
-
-extension AAVideoHandover: AAMessageTypesGettable {
-
-    public enum MessageTypes: UInt8, CaseIterable {
-
-        case handover  = 0x00
+    /// Screen
+    public enum Screen: UInt8, AABytesConvertable {
+        case front = 0x00
+        case rear = 0x01
     }
-}
 
-public extension AAVideoHandover {
 
-    static func videoHandover(url: URL, startingSecond second: UInt16?, screen: AAScreen?) -> AACommand {
-        let properties = [url.property(forIdentifier: 0x01),
-                          second?.property(forIdentifier: 0x02),
-                          screen?.property(forIdentifier: 0x03)]
+    /// Property Identifiers for `AAVideoHandover` capability.
+    public enum PropertyIdentifier: UInt8, CaseIterable {
+        case url = 0x01
+        case startingSecond = 0x02
+        case screen = 0x03
+    }
 
-        return command(forMessageType: .handover, properties: properties)
+
+    // MARK: AAIdentifiable
+    
+    /// Capability's Identifier
+    ///
+    /// - returns: `UInt16` combining the MSB and LSB
+    public override class var identifier: UInt16 {
+        0x0043
+    }
+
+
+    // MARK: Setters
+    
+    /// Bytes for *video handover* command.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *video handover* in `AAVideoHandover`.
+    /// 
+    /// - parameters:
+    ///   - url: URL string as `String`
+    ///   - startingSecond: starting second as `UInt16`
+    ///   - screen: screen as `Screen`
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func videoHandover(url: String, startingSecond: UInt16?, screen: Screen?) -> Array<UInt8> {
+        let props1 = AAProperty(identifier: PropertyIdentifier.url, value: url).bytes + AAProperty(identifier: PropertyIdentifier.startingSecond, value: startingSecond).bytes + AAProperty(identifier: PropertyIdentifier.screen, value: screen).bytes
+    
+        return AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.set.rawValue] + props1
+    }
+
+
+    // MARK: AADebugTreeCapable
+    
+    public override var propertyNodes: [HMDebugTree] {
+        [
+    
+        ]
     }
 }

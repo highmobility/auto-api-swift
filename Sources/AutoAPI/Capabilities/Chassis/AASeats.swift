@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2019 High-Mobility GmbH
+// Copyright (C) 2020 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,46 +22,79 @@
 //  AASeats.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 07/12/2017.
-//  Copyright © 2019 High Mobility GmbH. All rights reserved.
+//  Created by Mikk Rätsep on 08/01/2020.
+//  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
 import Foundation
+import HMUtilities
 
 
-public class AASeats: AACapabilityClass, AACapability {
+public class AASeats: AACapability {
 
-    public let personsDetected: [AAProperty<AASeatPersonDetected>]?
-    public let seatbeltsFastened: [AAProperty<AASeatbeltFastened>]?
-
-
-    // MARK: AACapability
-
-    public static var identifier: AACapabilityIdentifier = 0x0056
-
-
-    required init(properties: AAProperties) {
-        // Ordered by the ID
-        /* Level 8 */
-        personsDetected = properties.allOrNil(forIdentifier: 0x02)
-        seatbeltsFastened = properties.allOrNil(forIdentifier: 0x03)
-
-        super.init(properties: properties)
+    /// Property Identifiers for `AASeats` capability.
+    public enum PropertyIdentifier: UInt8, CaseIterable {
+        case personsDetected = 0x02
+        case seatbeltsState = 0x03
     }
-}
 
-extension AASeats: AAMessageTypesGettable {
 
-    public enum MessageTypes: UInt8, CaseIterable {
-
-        case getSeatsState  = 0x00
-        case seatsState     = 0x01
+    // MARK: Properties
+    
+    /// Persons detected
+    ///
+    /// - returns: Array of `AAPersonDetected`-s wrapped in `[AAProperty<AAPersonDetected>]`
+    public var personsDetected: [AAProperty<AAPersonDetected>]? {
+        properties.properties(forID: PropertyIdentifier.personsDetected)
     }
-}
+    
+    /// Seatbelts state
+    ///
+    /// - returns: Array of `AASeatbeltState`-s wrapped in `[AAProperty<AASeatbeltState>]`
+    public var seatbeltsState: [AAProperty<AASeatbeltState>]? {
+        properties.properties(forID: PropertyIdentifier.seatbeltsState)
+    }
 
-public extension AASeats {
 
-    static var getSeatsState: AACommand {
-        return command(forMessageType: .getSeatsState)
+    // MARK: AAIdentifiable
+    
+    /// Capability's Identifier
+    ///
+    /// - returns: `UInt16` combining the MSB and LSB
+    public override class var identifier: UInt16 {
+        0x0056
+    }
+
+
+    // MARK: Getters
+    
+    /// Bytes for getting the `AASeats` state.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *request* the state of `AASeats`.
+    ///
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func getSeatsState() -> Array<UInt8> {
+        AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.get.rawValue]
+    }
+    
+    /// Bytes for getting the `AASeats` state's **specific** properties.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *request* **specific** state properties of `AASeats`.
+    ///
+    /// - parameters:
+    ///   - propertyIDs: Array of requested property identifiers
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func getSeatsProperties(propertyIDs: PropertyIdentifier...) -> Array<UInt8> {
+        AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.get.rawValue] + propertyIDs.map { $0.rawValue }
+    }
+
+
+    // MARK: AADebugTreeCapable
+    
+    public override var propertyNodes: [HMDebugTree] {
+        [
+            .node(label: "Persons detected", properties: personsDetected),
+            .node(label: "Seatbelts state", properties: seatbeltsState)
+        ]
     }
 }

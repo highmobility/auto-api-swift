@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2019 High-Mobility GmbH
+// Copyright (C) 2020 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,108 +22,282 @@
 //  AAHomeCharger.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 30/01/2018.
-//  Copyright © 2019 High Mobility GmbH. All rights reserved.
+//  Created by Mikk Rätsep on 08/01/2020.
+//  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
 import Foundation
+import HMUtilities
 
 
-public class AAHomeCharger: AACapabilityClass, AACapability {
+public class AAHomeCharger: AACapability {
 
-    public let authenticationMechanism: AAProperty<AAAuthenticationMechanism>?
-    public let authenticationState: AAProperty<AAAuthenticationState>?
-    public let chargeCurrentDC: AAProperty<Float>?
-    public let chargingPower: AAProperty<Float>?
-    public let chargingState: AAProperty<AAChargingState>?
-    public let hotspotState: AAProperty<AAActiveState>?
-    public let coordinates: AAProperty<AACoordinates>?
-    public let maximumChargeCurrent: AAProperty<Float>?
-    public let minimumChargeCurrent: AAProperty<Float>?
-    public let plugType: AAProperty<AAPlugType>?
-    public let priceTariffs: [AAProperty<AAPriceTariff>]?
-    public let solarChargingState: AAProperty<AAActiveState>?
-    public let wifiHotspotPassword: AAProperty<String>?
-    public let wifiHotspotSecurity: AAProperty<AANetworkSecurity>?
-    public let wifiHotspotSSID: AAProperty<String>?
-
-
-    // MARK: AACapability
-
-    public static var identifier: AACapabilityIdentifier = 0x0060
-
-
-    required init(properties: AAProperties) {
-        // Ordered by the ID
-        chargingState = properties.property(forIdentifier: 0x01)
-        authenticationMechanism = properties.property(forIdentifier: 0x02)
-        plugType = properties.property(forIdentifier: 0x03)
-        chargingPower = properties.property(forIdentifier: 0x04)
-        solarChargingState = properties.property(forIdentifier: 0x05)
-        hotspotState = properties.property(forIdentifier: 0x08)
-        wifiHotspotSSID = properties.property(forIdentifier: 0x09)
-        wifiHotspotSecurity = properties.property(forIdentifier: 0x0A)
-        wifiHotspotPassword = properties.property(forIdentifier: 0x0B)
-        /* Level 8 */
-        authenticationState = properties.property(forIdentifier: 0x0D)
-        chargeCurrentDC = properties.property(forIdentifier: 0x0E)
-        maximumChargeCurrent = properties.property(forIdentifier: 0x0F)
-        minimumChargeCurrent = properties.property(forIdentifier: 0x10)
-        coordinates = properties.property(forIdentifier: 0x11)
-        priceTariffs = properties.allOrNil(forIdentifier: 0x12)
-
-        super.init(properties: properties)
+    /// Authentication mechanism
+    public enum AuthenticationMechanism: UInt8, AABytesConvertable {
+        case pin = 0x00
+        case app = 0x01
     }
-}
-
-extension AAHomeCharger: AAMessageTypesGettable {
-
-    public enum MessageTypes: UInt8, CaseIterable {
-
-        case getChargerState        = 0x00
-        case chargerState           = 0x01
-        case setChargingCurrent     = 0x12
-        case setPriceTariffs        = 0x13
-        case activateSolarCharging  = 0x14
-        case enableWifiHotspot      = 0x15
-        case authenticateExpire     = 0x16
+    
+    /// Authentication state
+    public enum AuthenticationState: UInt8, AABytesConvertable {
+        case unauthenticated = 0x00
+        case authenticated = 0x01
     }
-}
-
-public extension AAHomeCharger {
-
-    static var getChargerState: AACommand {
-        return command(forMessageType: .getChargerState)
+    
+    /// Charging status
+    public enum ChargingStatus: UInt8, AABytesConvertable {
+        case disconnected = 0x00
+        case pluggedIn = 0x01
+        case charging = 0x02
+    }
+    
+    /// Plug type
+    public enum PlugType: UInt8, AABytesConvertable {
+        case type1 = 0x00
+        case type2 = 0x01
+        case ccs = 0x02
+        case chademo = 0x03
     }
 
 
-    static func activateSolarCharging(_ state: AAActiveState) -> AACommand {
-        let properties = [state.property(forIdentifier: 0x01)]
-
-        return command(forMessageType: .activateSolarCharging, properties: properties)
+    /// Property Identifiers for `AAHomeCharger` capability.
+    public enum PropertyIdentifier: UInt8, CaseIterable {
+        case chargingStatus = 0x01
+        case authenticationMechanism = 0x02
+        case plugType = 0x03
+        case chargingPowerKW = 0x04
+        case solarCharging = 0x05
+        case wifiHotspotEnabled = 0x08
+        case wifiHotspotSSID = 0x09
+        case wiFiHotspotSecurity = 0x0a
+        case wiFiHotspotPassword = 0x0b
+        case authenticationState = 0x0d
+        case chargeCurrentDC = 0x0e
+        case maximumChargeCurrent = 0x0f
+        case minimumChargeCurrent = 0x10
+        case coordinates = 0x11
+        case priceTariffs = 0x12
     }
 
-    static func enableWifiHotspot(_ enable: AAEnabledState) -> AACommand {
-        let properties = [enable.property(forIdentifier: 0x01)]
 
-        return command(forMessageType: .enableWifiHotspot, properties: properties)
+    // MARK: Properties
+    
+    /// Authentication mechanism
+    ///
+    /// - returns: `AuthenticationMechanism` wrapped in `AAProperty<AuthenticationMechanism>`
+    public var authenticationMechanism: AAProperty<AuthenticationMechanism>? {
+        properties.property(forID: PropertyIdentifier.authenticationMechanism)
+    }
+    
+    /// Authentication state
+    ///
+    /// - returns: `AuthenticationState` wrapped in `AAProperty<AuthenticationState>`
+    public var authenticationState: AAProperty<AuthenticationState>? {
+        properties.property(forID: PropertyIdentifier.authenticationState)
+    }
+    
+    /// The charge direct current
+    ///
+    /// - returns: `Float` wrapped in `AAProperty<Float>`
+    public var chargeCurrentDC: AAProperty<Float>? {
+        properties.property(forID: PropertyIdentifier.chargeCurrentDC)
+    }
+    
+    /// Charging power in kW
+    ///
+    /// - returns: `Float` wrapped in `AAProperty<Float>`
+    public var chargingPowerKW: AAProperty<Float>? {
+        properties.property(forID: PropertyIdentifier.chargingPowerKW)
+    }
+    
+    /// Charging status
+    ///
+    /// - returns: `ChargingStatus` wrapped in `AAProperty<ChargingStatus>`
+    public var chargingStatus: AAProperty<ChargingStatus>? {
+        properties.property(forID: PropertyIdentifier.chargingStatus)
+    }
+    
+    /// Coordinates
+    ///
+    /// - returns: `AACoordinates` wrapped in `AAProperty<AACoordinates>`
+    public var coordinates: AAProperty<AACoordinates>? {
+        properties.property(forID: PropertyIdentifier.coordinates)
+    }
+    
+    /// The maximum possible charge current
+    ///
+    /// - returns: `Float` wrapped in `AAProperty<Float>`
+    public var maximumChargeCurrent: AAProperty<Float>? {
+        properties.property(forID: PropertyIdentifier.maximumChargeCurrent)
+    }
+    
+    /// The minimal possible charge current
+    ///
+    /// - returns: `Float` wrapped in `AAProperty<Float>`
+    public var minimumChargeCurrent: AAProperty<Float>? {
+        properties.property(forID: PropertyIdentifier.minimumChargeCurrent)
+    }
+    
+    /// Plug type
+    ///
+    /// - returns: `PlugType` wrapped in `AAProperty<PlugType>`
+    public var plugType: AAProperty<PlugType>? {
+        properties.property(forID: PropertyIdentifier.plugType)
+    }
+    
+    /// Price tariffs
+    ///
+    /// - returns: Array of `AAPriceTariff`-s wrapped in `[AAProperty<AAPriceTariff>]`
+    public var priceTariffs: [AAProperty<AAPriceTariff>]? {
+        properties.properties(forID: PropertyIdentifier.priceTariffs)
+    }
+    
+    /// Solar charging
+    ///
+    /// - returns: `AAActiveState` wrapped in `AAProperty<AAActiveState>`
+    public var solarCharging: AAProperty<AAActiveState>? {
+        properties.property(forID: PropertyIdentifier.solarCharging)
+    }
+    
+    /// The Wi-Fi Hotspot password
+    ///
+    /// - returns: `String` wrapped in `AAProperty<String>`
+    public var wiFiHotspotPassword: AAProperty<String>? {
+        properties.property(forID: PropertyIdentifier.wiFiHotspotPassword)
+    }
+    
+    /// Wi fi hotspot security
+    ///
+    /// - returns: `AANetworkSecurity` wrapped in `AAProperty<AANetworkSecurity>`
+    public var wiFiHotspotSecurity: AAProperty<AANetworkSecurity>? {
+        properties.property(forID: PropertyIdentifier.wiFiHotspotSecurity)
+    }
+    
+    /// Wi fi hotspot enabled
+    ///
+    /// - returns: `AAEnabledState` wrapped in `AAProperty<AAEnabledState>`
+    public var wifiHotspotEnabled: AAProperty<AAEnabledState>? {
+        properties.property(forID: PropertyIdentifier.wifiHotspotEnabled)
+    }
+    
+    /// The Wi-Fi Hotspot SSID
+    ///
+    /// - returns: `String` wrapped in `AAProperty<String>`
+    public var wifiHotspotSSID: AAProperty<String>? {
+        properties.property(forID: PropertyIdentifier.wifiHotspotSSID)
     }
 
-    static func setAuthenticationState(_ state: AAAuthenticationState) -> AACommand {
-        let properties = [state.property(forIdentifier: 0x01)]
 
-        return command(forMessageType: .authenticateExpire, properties: properties)
+    // MARK: AAIdentifiable
+    
+    /// Capability's Identifier
+    ///
+    /// - returns: `UInt16` combining the MSB and LSB
+    public override class var identifier: UInt16 {
+        0x0060
     }
 
-    static func setChargingCurrent(_ current: Float) -> AACommand {
-        let properties = [current.property(forIdentifier: 0x01)]
 
-        return command(forMessageType: .setChargingCurrent, properties: properties)
+    // MARK: Getters
+    
+    /// Bytes for getting the `AAHomeCharger` state.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *request* the state of `AAHomeCharger`.
+    ///
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func getHomeChargerState() -> Array<UInt8> {
+        AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.get.rawValue]
+    }
+    
+    /// Bytes for getting the `AAHomeCharger` state's **specific** properties.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *request* **specific** state properties of `AAHomeCharger`.
+    ///
+    /// - parameters:
+    ///   - propertyIDs: Array of requested property identifiers
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func getHomeChargerProperties(propertyIDs: PropertyIdentifier...) -> Array<UInt8> {
+        AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.get.rawValue] + propertyIDs.map { $0.rawValue }
     }
 
-    static func setPriceTariffs(_ tariffs: [AAPriceTariff]) -> AACommand {
-        let properties = tariffs.map { $0.property(forIdentifier: 0x0C) }
 
-        return command(forMessageType: .setPriceTariffs, properties: properties)
+    // MARK: Setters
+    
+    /// Bytes for *set charge current* command.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *set charge current* in `AAHomeCharger`.
+    /// 
+    /// - parameters:
+    ///   - chargeCurrentDC: The charge direct current as `Float`
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func setChargeCurrent(chargeCurrentDC: Float) -> Array<UInt8> {
+        return AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.set.rawValue] + AAProperty(identifier: PropertyIdentifier.chargeCurrentDC, value: chargeCurrentDC).bytes
+    }
+    
+    /// Bytes for *set price tariffs* command.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *set price tariffs* in `AAHomeCharger`.
+    /// 
+    /// - parameters:
+    ///   - priceTariffs: price tariffs as `[AAPriceTariff]`
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func setPriceTariffs(priceTariffs: [AAPriceTariff]) -> Array<UInt8> {
+        return AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.set.rawValue] + AAProperty.multiple(identifier: PropertyIdentifier.priceTariffs, values: priceTariffs).flatMap { $0.bytes }
+    }
+    
+    /// Bytes for *activate deactivate solar charging* command.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *activate deactivate solar charging* in `AAHomeCharger`.
+    /// 
+    /// - parameters:
+    ///   - solarCharging: solar charging as `AAActiveState`
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func activateDeactivateSolarCharging(solarCharging: AAActiveState) -> Array<UInt8> {
+        return AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.set.rawValue] + AAProperty(identifier: PropertyIdentifier.solarCharging, value: solarCharging).bytes
+    }
+    
+    /// Bytes for *enable disable wi fi hotspot* command.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *enable disable wi fi hotspot* in `AAHomeCharger`.
+    /// 
+    /// - parameters:
+    ///   - wifiHotspotEnabled: wi fi hotspot enabled as `AAEnabledState`
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func enableDisableWiFiHotspot(wifiHotspotEnabled: AAEnabledState) -> Array<UInt8> {
+        return AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.set.rawValue] + AAProperty(identifier: PropertyIdentifier.wifiHotspotEnabled, value: wifiHotspotEnabled).bytes
+    }
+    
+    /// Bytes for *authenticate expire* command.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *authenticate expire* in `AAHomeCharger`.
+    /// 
+    /// - parameters:
+    ///   - authenticationState: authentication state as `AuthenticationState`
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func authenticateExpire(authenticationState: AuthenticationState) -> Array<UInt8> {
+        return AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.set.rawValue] + AAProperty(identifier: PropertyIdentifier.authenticationState, value: authenticationState).bytes
+    }
+
+
+    // MARK: AADebugTreeCapable
+    
+    public override var propertyNodes: [HMDebugTree] {
+        [
+            .node(label: "Authentication mechanism", property: authenticationMechanism),
+            .node(label: "Authentication state", property: authenticationState),
+            .node(label: "Charge current (DC)", property: chargeCurrentDC),
+            .node(label: "Charging Power (kW)", property: chargingPowerKW),
+            .node(label: "Charging status", property: chargingStatus),
+            .node(label: "Coordinates", property: coordinates),
+            .node(label: "Maximum charge current", property: maximumChargeCurrent),
+            .node(label: "Minimum charge current", property: minimumChargeCurrent),
+            .node(label: "Plug type", property: plugType),
+            .node(label: "Price tariffs", properties: priceTariffs),
+            .node(label: "Solar charging", property: solarCharging),
+            .node(label: "Wi-Fi hotspot password", property: wiFiHotspotPassword),
+            .node(label: "Wi-Fi hotspot security", property: wiFiHotspotSecurity),
+            .node(label: "Wi-Fi hotspot enabled", property: wifiHotspotEnabled),
+            .node(label: "Wi-Fi hotspot SSID", property: wifiHotspotSSID)
+        ]
     }
 }

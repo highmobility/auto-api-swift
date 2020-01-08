@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2019 High-Mobility GmbH
+// Copyright (C) 2020 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,57 +22,100 @@
 //  AAWindows.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 01/12/2017.
-//  Copyright © 2019 High Mobility GmbH. All rights reserved.
+//  Created by Mikk Rätsep on 08/01/2020.
+//  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
 import Foundation
+import HMUtilities
 
 
-public class AAWindows: AACapabilityClass, AACapability {
+public class AAWindows: AACapability {
 
-    public let openPercentages: [AAProperty<AAWindowOpenPercentage>]?
-    public let positions: [AAProperty<AAWindowPosition>]?
-
-
-    // MARK: AACapability
-
-    public static var identifier: AACapabilityIdentifier = 0x0045
-
-
-    required init(properties: AAProperties) {
-        // Ordered by the ID
-        /* Level 8 */
-        openPercentages = properties.allOrNil(forIdentifier: 0x02)
-        positions = properties.allOrNil(forIdentifier: 0x03)
-
-        super.init(properties: properties)
-    }
-}
-
-extension AAWindows: AAMessageTypesGettable {
-
-    public enum MessageTypes: UInt8, CaseIterable {
-
-        case getWindowsState    = 0x00
-        case windowsState       = 0x01
-        case control            = 0x12
-    }
-}
-
-public extension AAWindows {
-
-    static var getWindowsState: AACommand {
-        return command(forMessageType: .getWindowsState)
+    /// Property Identifiers for `AAWindows` capability.
+    public enum PropertyIdentifier: UInt8, CaseIterable {
+        case openPercentages = 0x02
+        case positions = 0x03
     }
 
 
-    static func controlWindows(openPercentages: [AAWindowOpenPercentage]?, positions: [AAWindowPosition]?) -> AACommand {
-        var properties: [AABasicProperty?] = []
+    // MARK: Properties
+    
+    /// Open percentages
+    ///
+    /// - returns: Array of `AAWindowOpenPercentage`-s wrapped in `[AAProperty<AAWindowOpenPercentage>]`
+    public var openPercentages: [AAProperty<AAWindowOpenPercentage>]? {
+        properties.properties(forID: PropertyIdentifier.openPercentages)
+    }
+    
+    /// Positions
+    ///
+    /// - returns: Array of `AAWindowPosition`-s wrapped in `[AAProperty<AAWindowPosition>]`
+    public var positions: [AAProperty<AAWindowPosition>]? {
+        properties.properties(forID: PropertyIdentifier.positions)
+    }
 
-        properties += openPercentages?.map { $0.property(forIdentifier: 0x01 )} ?? []
-        properties += positions?.map { $0.property(forIdentifier: 0x02) } ?? []
 
-        return command(forMessageType: .control, properties: properties)
+    // MARK: AAIdentifiable
+    
+    /// Capability's Identifier
+    ///
+    /// - returns: `UInt16` combining the MSB and LSB
+    public override class var identifier: UInt16 {
+        0x0045
+    }
+
+
+    // MARK: Getters
+    
+    /// Bytes for getting the `AAWindows` state.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *request* the state of `AAWindows`.
+    ///
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func getWindows() -> Array<UInt8> {
+        AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.get.rawValue]
+    }
+    
+    /// Bytes for getting the `AAWindows` state's **specific** properties.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *request* **specific** state properties of `AAWindows`.
+    ///
+    /// - parameters:
+    ///   - propertyIDs: Array of requested property identifiers
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func getWindowsProperties(propertyIDs: PropertyIdentifier...) -> Array<UInt8> {
+        AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.get.rawValue] + propertyIDs.map { $0.rawValue }
+    }
+
+
+    // MARK: Setters
+    
+    /// Bytes for *control windows* command.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *control windows* in `AAWindows`.
+    /// 
+    /// - parameters:
+    ///   - openPercentages: open percentages as `[AAWindowOpenPercentage]`
+    ///   - positions: positions as `[AAWindowPosition]`
+    /// - returns: Command's bytes as `Array<UInt8>?`
+    public static func controlWindows(openPercentages: [AAWindowOpenPercentage]?, positions: [AAWindowPosition]?) -> Array<UInt8>? {
+        guard (openPercentages != nil || positions != nil) else {
+            return nil
+        }
+    
+        let props1 = AAProperty.multiple(identifier: PropertyIdentifier.openPercentages, values: openPercentages).flatMap { $0.bytes } + AAProperty.multiple(identifier: PropertyIdentifier.positions, values: positions).flatMap { $0.bytes }
+    
+        return AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.set.rawValue] + props1
+    }
+
+
+    // MARK: AADebugTreeCapable
+    
+    public override var propertyNodes: [HMDebugTree] {
+        [
+            .node(label: "Open percentages", properties: openPercentages),
+            .node(label: "Positions", properties: positions)
+        ]
     }
 }

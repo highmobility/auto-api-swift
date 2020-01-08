@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2019 High-Mobility GmbH
+// Copyright (C) 2020 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,31 +22,51 @@
 //  AATextInput.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 13/12/2017.
-//  Copyright © 2019 High Mobility GmbH. All rights reserved.
+//  Created by Mikk Rätsep on 08/01/2020.
+//  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
 import Foundation
+import HMUtilities
 
 
-public class AATextInput: AACapabilityClass, AACapability {
+public class AATextInput: AACapability {
 
-    public static var identifier: AACapabilityIdentifier = 0x0044
-}
-
-extension AATextInput: AAMessageTypesGettable {
-
-    public enum MessageTypes: UInt8, CaseIterable {
-
-        case input  = 0x00
+    /// Property Identifiers for `AATextInput` capability.
+    public enum PropertyIdentifier: UInt8, CaseIterable {
+        case text = 0x01
     }
-}
 
-public extension AATextInput {
 
-    static func textInput(_ text: String) -> AACommand {
-        let properties = [text.property(forIdentifier: 0x01)]
+    // MARK: AAIdentifiable
+    
+    /// Capability's Identifier
+    ///
+    /// - returns: `UInt16` combining the MSB and LSB
+    public override class var identifier: UInt16 {
+        0x0044
+    }
 
-        return command(forMessageType: .input, properties: properties)
+
+    // MARK: Setters
+    
+    /// Bytes for *text input* command.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *text input* in `AATextInput`.
+    /// 
+    /// - parameters:
+    ///   - text: The text as `String`
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func textInput(text: String) -> Array<UInt8> {
+        return AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.set.rawValue] + AAProperty(identifier: PropertyIdentifier.text, value: text).bytes
+    }
+
+
+    // MARK: AADebugTreeCapable
+    
+    public override var propertyNodes: [HMDebugTree] {
+        [
+    
+        ]
     }
 }

@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2019 High-Mobility GmbH
+// Copyright (C) 2020 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,45 +22,79 @@
 //  AAOffroad.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 06/12/2017.
-//  Copyright © 2019 High Mobility GmbH. All rights reserved.
+//  Created by Mikk Rätsep on 08/01/2020.
+//  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
 import Foundation
+import HMUtilities
 
 
-public class AAOffroad: AACapabilityClass, AACapability {
+public class AAOffroad: AACapability {
 
-    public let routeIncline: AAProperty<Int16>?
-    public let wheelSuspension: AAProperty<AAPercentage>?
-
-
-    // MARK: AACapability
-
-    public static var identifier: AACapabilityIdentifier = 0x0052
-
-
-    required init(properties: AAProperties) {
-        // Ordered by the ID
-        routeIncline = properties.property(forIdentifier: 0x01)
-        wheelSuspension = properties.property(forIdentifier: 0x02)
-
-        super.init(properties: properties)
+    /// Property Identifiers for `AAOffroad` capability.
+    public enum PropertyIdentifier: UInt8, CaseIterable {
+        case routeIncline = 0x01
+        case wheelSuspension = 0x02
     }
-}
 
-extension AAOffroad: AAMessageTypesGettable {
 
-    public enum MessageTypes: UInt8, CaseIterable {
-
-        case getOffroadState    = 0x00
-        case offroadState       = 0x01
+    // MARK: Properties
+    
+    /// The route elevation incline in degrees, which is a negative number for decline
+    ///
+    /// - returns: `Int16` wrapped in `AAProperty<Int16>`
+    public var routeIncline: AAProperty<Int16>? {
+        properties.property(forID: PropertyIdentifier.routeIncline)
     }
-}
+    
+    /// The wheel suspension level percentage, whereas 0.0 is no suspension and 1.0 maximum suspension
+    ///
+    /// - returns: `AAPercentage` wrapped in `AAProperty<AAPercentage>`
+    public var wheelSuspension: AAProperty<AAPercentage>? {
+        properties.property(forID: PropertyIdentifier.wheelSuspension)
+    }
 
-public extension AAOffroad {
 
-    static var getOffroadState: AACommand {
-        return command(forMessageType: .getOffroadState)
+    // MARK: AAIdentifiable
+    
+    /// Capability's Identifier
+    ///
+    /// - returns: `UInt16` combining the MSB and LSB
+    public override class var identifier: UInt16 {
+        0x0052
+    }
+
+
+    // MARK: Getters
+    
+    /// Bytes for getting the `AAOffroad` state.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *request* the state of `AAOffroad`.
+    ///
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func getOffroadState() -> Array<UInt8> {
+        AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.get.rawValue]
+    }
+    
+    /// Bytes for getting the `AAOffroad` state's **specific** properties.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *request* **specific** state properties of `AAOffroad`.
+    ///
+    /// - parameters:
+    ///   - propertyIDs: Array of requested property identifiers
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func getOffroadProperties(propertyIDs: PropertyIdentifier...) -> Array<UInt8> {
+        AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.get.rawValue] + propertyIDs.map { $0.rawValue }
+    }
+
+
+    // MARK: AADebugTreeCapable
+    
+    public override var propertyNodes: [HMDebugTree] {
+        [
+            .node(label: "Route incline", property: routeIncline),
+            .node(label: "Wheel suspension", property: wheelSuspension)
+        ]
     }
 }

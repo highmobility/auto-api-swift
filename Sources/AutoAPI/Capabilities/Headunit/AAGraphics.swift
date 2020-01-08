@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2019 High-Mobility GmbH
+// Copyright (C) 2020 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,31 +22,51 @@
 //  AAGraphics.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 13/12/2017.
-//  Copyright © 2019 High Mobility GmbH. All rights reserved.
+//  Created by Mikk Rätsep on 08/01/2020.
+//  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
 import Foundation
+import HMUtilities
 
 
-public class AAGraphics: AACapabilityClass, AACapability {
+public class AAGraphics: AACapability {
 
-    public static var identifier: AACapabilityIdentifier = 0x0051
-}
-
-extension AAGraphics: AAMessageTypesGettable {
-
-    public enum MessageTypes: UInt8, CaseIterable {
-
-        case displayImage = 0x00
+    /// Property Identifiers for `AAGraphics` capability.
+    public enum PropertyIdentifier: UInt8, CaseIterable {
+        case imageURL = 0x01
     }
-}
 
-public extension AAGraphics {
 
-    static func displayImage(_ url: URL) -> AACommand {
-        let properties = [url.property(forIdentifier: 0x01)]
+    // MARK: AAIdentifiable
+    
+    /// Capability's Identifier
+    ///
+    /// - returns: `UInt16` combining the MSB and LSB
+    public override class var identifier: UInt16 {
+        0x0051
+    }
 
-        return command(forMessageType: .displayImage, properties: properties)
+
+    // MARK: Setters
+    
+    /// Bytes for *display image* command.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *display image* in `AAGraphics`.
+    /// 
+    /// - parameters:
+    ///   - imageURL: The image URL as `String`
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func displayImage(imageURL: String) -> Array<UInt8> {
+        return AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.set.rawValue] + AAProperty(identifier: PropertyIdentifier.imageURL, value: imageURL).bytes
+    }
+
+
+    // MARK: AADebugTreeCapable
+    
+    public override var propertyNodes: [HMDebugTree] {
+        [
+    
+        ]
     }
 }

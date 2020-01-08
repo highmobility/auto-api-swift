@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2019 High-Mobility GmbH
+// Copyright (C) 2020 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,35 +22,68 @@
 //  AADriverFatigue.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 12/12/2017.
-//  Copyright © 2019 High Mobility GmbH. All rights reserved.
+//  Created by Mikk Rätsep on 08/01/2020.
+//  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
 import Foundation
+import HMUtilities
 
 
-public class AADriverFatigue: AACapabilityClass, AACapability {
+public class AADriverFatigue: AACapability {
 
-    public let fatigueLevel: AAProperty<AAFatigueLevel>?
-
-
-    // MARK: AACapability
-
-    public static var identifier: AACapabilityIdentifier = 0x0041
-
-
-    required init(properties: AAProperties) {
-        // Ordered by the ID
-        fatigueLevel = properties.property(forIdentifier: 0x01)
-
-        super.init(properties: properties)
+    /// Detected fatigue level
+    public enum DetectedFatigueLevel: UInt8, AABytesConvertable {
+        case light = 0x00
+        case pauseRecommended = 0x01
+        case actionNeeded = 0x02
+        case carReadyToTakeOver = 0x03
     }
-}
 
-extension AADriverFatigue: AAMessageTypesGettable {
 
-    public enum MessageTypes: UInt8, CaseIterable {
+    /// Property Identifiers for `AADriverFatigue` capability.
+    public enum PropertyIdentifier: UInt8, CaseIterable {
+        case detectedFatigueLevel = 0x01
+    }
 
-        case fatigueDetected  = 0x01
+
+    // MARK: Properties
+    
+    /// Detected fatigue level
+    ///
+    /// - returns: `DetectedFatigueLevel` wrapped in `AAProperty<DetectedFatigueLevel>`
+    public var detectedFatigueLevel: AAProperty<DetectedFatigueLevel>? {
+        properties.property(forID: PropertyIdentifier.detectedFatigueLevel)
+    }
+
+
+    // MARK: AAIdentifiable
+    
+    /// Capability's Identifier
+    ///
+    /// - returns: `UInt16` combining the MSB and LSB
+    public override class var identifier: UInt16 {
+        0x0041
+    }
+
+
+    // MARK: Getters
+    
+    /// Bytes for getting the `AADriverFatigue` state.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *request* the state of `AADriverFatigue`.
+    ///
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func getDriverFatigueState() -> Array<UInt8> {
+        AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.get.rawValue]
+    }
+
+
+    // MARK: AADebugTreeCapable
+    
+    public override var propertyNodes: [HMDebugTree] {
+        [
+            .node(label: "Detected fatigue level", property: detectedFatigueLevel)
+        ]
     }
 }

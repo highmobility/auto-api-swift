@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2019 High-Mobility GmbH
+// Copyright (C) 2020 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,55 +22,100 @@
 //  AAFueling.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 12/12/2017.
-//  Copyright © 2019 High Mobility GmbH. All rights reserved.
+//  Created by Mikk Rätsep on 08/01/2020.
+//  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
 import Foundation
+import HMUtilities
 
 
-public class AAFueling: AACapabilityClass, AACapability {
+public class AAFueling: AACapability {
 
-    public let gasFlapLockState: AAProperty<AALockState>?
-    public let gasFlapPosition: AAProperty<AAPositionState>?
-
-
-    // MARK: AACapability
-
-    public static var identifier: AACapabilityIdentifier = 0x0040
-
-
-    required init(properties: AAProperties) {
-        // Ordered by the ID
-        /* Level 9 */
-        gasFlapLockState = properties.property(forIdentifier: 0x02)
-        gasFlapPosition = properties.property(forIdentifier: 0x03)
-
-        super.init(properties: properties)
-    }
-}
-
-extension AAFueling: AAMessageTypesGettable {
-
-    public enum MessageTypes: UInt8, CaseIterable {
-
-        case getGasFlapState    = 0x00
-        case gasFlapState       = 0x01
-        case opencloseGasFlap   = 0x12
-    }
-}
-
-public extension AAFueling {
-
-    static var getGasFlapState: AACommand {
-        return command(forMessageType: .getGasFlapState)
+    /// Property Identifiers for `AAFueling` capability.
+    public enum PropertyIdentifier: UInt8, CaseIterable {
+        case gasFlapLock = 0x02
+        case gasFlapPosition = 0x03
     }
 
 
-    static func controlGasFlap(lockState: AALockState?, position: AAPositionState?) -> AACommand {
-        let properties = [lockState?.property(forIdentifier: 0x02),
-                          position?.property(forIdentifier: 0x03)]
+    // MARK: Properties
+    
+    /// Gas flap lock
+    ///
+    /// - returns: `AALockState` wrapped in `AAProperty<AALockState>`
+    public var gasFlapLock: AAProperty<AALockState>? {
+        properties.property(forID: PropertyIdentifier.gasFlapLock)
+    }
+    
+    /// Gas flap position
+    ///
+    /// - returns: `AAPosition` wrapped in `AAProperty<AAPosition>`
+    public var gasFlapPosition: AAProperty<AAPosition>? {
+        properties.property(forID: PropertyIdentifier.gasFlapPosition)
+    }
 
-        return command(forMessageType: .opencloseGasFlap, properties: properties)
+
+    // MARK: AAIdentifiable
+    
+    /// Capability's Identifier
+    ///
+    /// - returns: `UInt16` combining the MSB and LSB
+    public override class var identifier: UInt16 {
+        0x0040
+    }
+
+
+    // MARK: Getters
+    
+    /// Bytes for getting the `AAFueling` state.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *request* the state of `AAFueling`.
+    ///
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func getGasFlapState() -> Array<UInt8> {
+        AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.get.rawValue]
+    }
+    
+    /// Bytes for getting the `AAFueling` state's **specific** properties.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *request* **specific** state properties of `AAFueling`.
+    ///
+    /// - parameters:
+    ///   - propertyIDs: Array of requested property identifiers
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func getGasFlapStateProperties(propertyIDs: PropertyIdentifier...) -> Array<UInt8> {
+        AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.get.rawValue] + propertyIDs.map { $0.rawValue }
+    }
+
+
+    // MARK: Setters
+    
+    /// Bytes for *control gas flap* command.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *control gas flap* in `AAFueling`.
+    /// 
+    /// - parameters:
+    ///   - gasFlapLock: gas flap lock as `AALockState`
+    ///   - gasFlapPosition: gas flap position as `AAPosition`
+    /// - returns: Command's bytes as `Array<UInt8>?`
+    public static func controlGasFlap(gasFlapLock: AALockState?, gasFlapPosition: AAPosition?) -> Array<UInt8>? {
+        guard (gasFlapLock != nil || gasFlapPosition != nil) else {
+            return nil
+        }
+    
+        let props1 = AAProperty(identifier: PropertyIdentifier.gasFlapLock, value: gasFlapLock).bytes + AAProperty(identifier: PropertyIdentifier.gasFlapPosition, value: gasFlapPosition).bytes
+    
+        return AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.set.rawValue] + props1
+    }
+
+
+    // MARK: AADebugTreeCapable
+    
+    public override var propertyNodes: [HMDebugTree] {
+        [
+            .node(label: "Gas flap lock", property: gasFlapLock),
+            .node(label: "Gas flap position", property: gasFlapPosition)
+        ]
     }
 }

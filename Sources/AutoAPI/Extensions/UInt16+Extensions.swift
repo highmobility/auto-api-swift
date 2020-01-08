@@ -22,16 +22,20 @@
 //  UInt16+Extensions.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 24/11/2017.
-//  Copyright © 2019 High Mobility GmbH. All rights reserved.
+//  Created by Mikk Rätsep on 26/08/2019.
+//  Copyright © 2019 High-Mobility. All rights reserved.
 //
 
 import Foundation
 
 
-extension UInt16 {
+extension UInt16: AABytesConvertable {
+
+    var hexString: String {
+        String(format: "0x%04X", self)
+    }
 
     var int: Int {
-        return Int(self)
+        Int(self)
     }
 }

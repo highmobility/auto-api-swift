@@ -1,6 +1,6 @@
 //
 // AutoAPI
-// Copyright (C) 2019 High-Mobility GmbH
+// Copyright (C) 2020 High-Mobility GmbH
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,32 +22,51 @@
 //  AABrowser.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 13/12/2017.
-//  Copyright © 2019 High Mobility GmbH. All rights reserved.
+//  Created by Mikk Rätsep on 08/01/2020.
+//  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
 import Foundation
+import HMUtilities
 
 
+public class AABrowser: AACapability {
 
-public class AABrowser: AACapabilityClass, AACapability {
-
-    public static var identifier: AACapabilityIdentifier = 0x0049
-}
-
-extension AABrowser: AAMessageTypesGettable {
-
-    public enum MessageTypes: UInt8, CaseIterable {
-
-        case loadURL = 0x00
+    /// Property Identifiers for `AABrowser` capability.
+    public enum PropertyIdentifier: UInt8, CaseIterable {
+        case url = 0x01
     }
-}
 
-public extension AABrowser {
 
-    static func loadURL(_ url: URL) -> AACommand {
-        let propertise = [url.property(forIdentifier: 0x01)]
+    // MARK: AAIdentifiable
+    
+    /// Capability's Identifier
+    ///
+    /// - returns: `UInt16` combining the MSB and LSB
+    public override class var identifier: UInt16 {
+        0x0049
+    }
 
-        return command(forMessageType: .loadURL, properties: propertise)
+
+    // MARK: Setters
+    
+    /// Bytes for *load url* command.
+    ///
+    /// These bytes should be sent to a receiving vehicle (device) to *load url* in `AABrowser`.
+    /// 
+    /// - parameters:
+    ///   - url: The URL as `String`
+    /// - returns: Command's bytes as `Array<UInt8>`
+    public static func loadUrl(url: String) -> Array<UInt8> {
+        return AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.set.rawValue] + AAProperty(identifier: PropertyIdentifier.url, value: url).bytes
+    }
+
+
+    // MARK: AADebugTreeCapable
+    
+    public override var propertyNodes: [HMDebugTree] {
+        [
+    
+        ]
     }
 }
