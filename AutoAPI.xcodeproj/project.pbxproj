@@ -54,7 +54,6 @@
 		2029BF2A221323DA002FAE32 /* AAProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2029BF29221323DA002FAE32 /* AAProperty.swift */; };
 		2029BF2C221323FB002FAE32 /* AAPropertyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2029BF2B221323FB002FAE32 /* AAPropertyComponent.swift */; };
 		2029BF30221337F8002FAE32 /* AAUniversalPropertyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2029BF2F221337F8002FAE32 /* AAUniversalPropertyType.swift */; };
-		202DC859230D4BDA008F2FAA /* HMUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 202DC858230D4BDA008F2FAA /* HMUtilities */; };
 		2033CAB0219C5222006489F2 /* AAMultiCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2033CAAF219C5222006489F2 /* AAMultiCommand.swift */; };
 		20474E362254BF1D002C87F9 /* AAColourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20474E352254BF1D002C87F9 /* AAColourTests.swift */; };
 		2047A87722786DF900846A65 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2047A87622786DF900846A65 /* main.swift */; };
@@ -111,6 +110,7 @@
 		206E1FE82243B42100CB636D /* AAOffroadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_198 /* AAOffroadTests.swift */; };
 		206E1FE92243B49900CB636D /* AARaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_201 /* AARaceTests.swift */; };
 		206E1FEB2243B78200CB636D /* AAUsageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206E1FEA2243B78200CB636D /* AAUsageTests.swift */; };
+		206F957E23C5F7C600D714AE /* HMUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 206F957D23C5F7C600D714AE /* HMUtilities */; };
 		207A0AC4218C710B0067923E /* AAWindowOpenPercentage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207A0AC0218C70970067923E /* AAWindowOpenPercentage.swift */; };
 		207A0AC5218C710E0067923E /* AAWindowPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207A0AC2218C71040067923E /* AAWindowPosition.swift */; };
 		20896EE4214799C1003A7A63 /* AAChosenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20896EE3214799C1003A7A63 /* AAChosenState.swift */; };
@@ -601,7 +601,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				202DC859230D4BDA008F2FAA /* HMUtilities in Frameworks */,
+				206F957E23C5F7C600D714AE /* HMUtilities in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1129,7 +1129,7 @@
 			);
 			name = AutoAPI;
 			packageProductDependencies = (
-				202DC858230D4BDA008F2FAA /* HMUtilities */,
+				206F957D23C5F7C600D714AE /* HMUtilities */,
 			);
 			productName = AutoAPI;
 			productReference = "AutoAPI::AutoAPI::Product" /* AutoAPI.framework */;
@@ -1186,7 +1186,7 @@
 			);
 			mainGroup = OBJ_5;
 			packageReferences = (
-				202DC857230D4BDA008F2FAA /* XCRemoteSwiftPackageReference "hm-utilities-swift" */,
+				206F957C23C5F7C600D714AE /* XCRemoteSwiftPackageReference "hmutilities-swift" */,
 			);
 			productRefGroup = OBJ_229 /* Products */;
 			projectDirPath = "";
@@ -1664,10 +1664,11 @@
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
+				CURRENT_PROJECT_VERSION = "$(MARKETING_VERSION)";
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = AutoAPI.xcodeproj/AutoAPI_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MARKETING_VERSION = 10.0.9;
+				MARKETING_VERSION = 10.0.10;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.high-mobility.autoapi";
 				SWIFT_VERSION = 5.0;
@@ -1679,10 +1680,11 @@
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
+				CURRENT_PROJECT_VERSION = "$(MARKETING_VERSION)";
 				ENABLE_TESTABILITY = NO;
 				INFOPLIST_FILE = AutoAPI.xcodeproj/AutoAPI_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MARKETING_VERSION = 10.0.9;
+				MARKETING_VERSION = 10.0.10;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.high-mobility.autoapi";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
@@ -1783,20 +1785,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		202DC857230D4BDA008F2FAA /* XCRemoteSwiftPackageReference "hm-utilities-swift" */ = {
+		206F957C23C5F7C600D714AE /* XCRemoteSwiftPackageReference "hmutilities-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:highmobility/hm-utilities-swift.git";
+			repositoryURL = "git@github.com:highmobility/hmutilities-swift.git";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 1.4.1;
+				minimumVersion = 1.4.6;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		202DC858230D4BDA008F2FAA /* HMUtilities */ = {
+		206F957D23C5F7C600D714AE /* HMUtilities */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 202DC857230D4BDA008F2FAA /* XCRemoteSwiftPackageReference "hm-utilities-swift" */;
+			package = 206F957C23C5F7C600D714AE /* XCRemoteSwiftPackageReference "hmutilities-swift" */;
 			productName = HMUtilities;
 		};
 /* End XCSwiftPackageProductDependency section */

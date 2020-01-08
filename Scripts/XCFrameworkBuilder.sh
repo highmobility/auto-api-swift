@@ -43,10 +43,17 @@ BUILD_DIR_iphonesimulator="${BUILD_DIR}/iphonesimulator"
 FINAL_OUTPUT="${SRCROOT}/${NAME}.xcframework"
 XCFRAMEWORK_OUTPUT="${BUILD_DIR}/${NAME}.xcframework"
 
+TARGETS=( "iphoneos" "iphonesimulator" )
+SYMBOLS_DIR="${SRCROOT}/symbols"
+
+
 # Remove the "old" build dir
 echo "Cleaning previous build products..."
 rm -rf $BUILD_DIR
 mkdir $BUILD_DIR
+
+# And the symbols dir
+rm -rf $SYMBOLS_DIR
 
 
 ######################
@@ -64,7 +71,6 @@ xcodebuild archive \
     -destination "generic/platform=iOS" \
     SKIP_INSTALL=NO \
     BUILD_LIBRARIES_FOR_DISTRIBUTION=YES \
-    BUILD_LIBRARY_FOR_DISTRIBUTION=YES \
     -quiet
 
 # Archive for simulator
@@ -78,7 +84,6 @@ xcodebuild archive \
     -destination "generic/platform=iOS Simulator" \
     SKIP_INSTALL=NO \
     BUILD_LIBRARIES_FOR_DISTRIBUTION=YES \
-    BUILD_LIBRARY_FOR_DISTRIBUTION=YES \
     -quiet
 
 # Build xcframework with two archives
@@ -100,15 +105,17 @@ cp -f -R "${XCFRAMEWORK_OUTPUT}" "${FINAL_OUTPUT}"
 
 
 ######################
-# "Fix" the CFBundleVersion being missing
+# Hold on to files
 ######################
 
-echo "Updating .plists..."
-for PLIST in $(ls -d "${FINAL_OUTPUT}"/*/"${NAME}".framework/Info.plist)
-do
-    VERSION=$(/usr/libexec/PlistBuddy -c "print :CFBundleShortVersionString" $PLIST)
+echo "Copying dSYM files..."
+mkdir $SYMBOLS_DIR
 
-    (/usr/libexec/PlistBuddy -c "add :CFBundleVersion string ${VERSION}" $PLIST)
+for target in "${TARGETS[@]}"
+do
+    mkdir "${SYMBOLS_DIR}/${target}"
+
+    cp -f -R "${BUILD_DIR}/${target}/Derived Data/Build/Intermediates.noindex/ArchiveIntermediates/${NAME}/BuildProductsPath/Release-${target}/${NAME}.framework.dSYM" "${SYMBOLS_DIR}/${target}/${NAME}.framework.dSYM"
 done
 
 
