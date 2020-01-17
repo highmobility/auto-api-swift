@@ -41,7 +41,7 @@ AutoAPI Swift SDK requires Xcode 11.0 or later and is compatible with apps targe
 
 ## Getting started
 
-Get started by reading the [AutoAPI guide](https://high-mobility.com/learn/tutorials/getting-started/auto-api-guide/) in high-mobility.com.  
+Get started by reading the [iOS AutoAPI guide](https://high-mobility.com/learn/documentation/mobile-sdks/ios/autoapi/) in high-mobility.com.  
 
 Check out the [spec](https://github.com/highmobility/auto-api/tree/master/SPEC.md) for more details on the structure and logic, or some other libs generatated on that spec: [Android](https://github.com/highmobility/hm-java-auto-api), [Elixir](https://github.com/highmobility/hm-auto-api-elixir).  
 
