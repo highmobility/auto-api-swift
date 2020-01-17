@@ -1,28 +1,31 @@
 //
-// AutoAPI
-// Copyright (C) 2020 High-Mobility GmbH
+//  The MIT License
 //
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+//  Copyright (c) 2014- High-Mobility GmbH (https://high-mobility.com)
 //
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
 //
-// You should have received a copy of the GNU General Public License
-// along with this program. If not, see http://www.gnu.org/licenses/.
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
 //
-// Please inquire about commercial licensing options at
-// licensing@high-mobility.com
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
 //
 //
 //  AAParkingTicket.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 08/01/2020.
+//  Created by Mikk Rätsep on 13/01/2020.
 //  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
@@ -36,6 +39,9 @@ public class AAParkingTicket: AACapability {
     public enum Status: UInt8, AABytesConvertable {
         case ended = 0x00
         case started = 0x01
+    
+        static let end = Self.ended
+        static let start = Self.started
     }
 
 
@@ -132,7 +138,7 @@ public class AAParkingTicket: AACapability {
     ///   - operatorName: Operator name as `String`
     ///   - ticketEndTime: Milliseconds since UNIX Epoch time as `Date`
     /// - returns: Command's bytes as `Array<UInt8>`
-    public static func startParking(operatorTicketID: String, ticketStartTime: Date, operatorName: String?, ticketEndTime: Date?) -> Array<UInt8> {
+    public static func startParking(operatorTicketID: String, ticketStartTime: Date, operatorName: String? = nil, ticketEndTime: Date? = nil) -> Array<UInt8> {
         let props1 = AAProperty(identifier: PropertyIdentifier.operatorTicketID, value: operatorTicketID).bytes + AAProperty(identifier: PropertyIdentifier.ticketStartTime, value: ticketStartTime).bytes + AAProperty(identifier: PropertyIdentifier.operatorName, value: operatorName).bytes
         let props2 = AAProperty(identifier: PropertyIdentifier.ticketEndTime, value: ticketEndTime).bytes + AAProperty(identifier: PropertyIdentifier.status, value: Status(bytes: [0x01])).bytes
     

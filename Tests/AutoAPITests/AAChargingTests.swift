@@ -1,28 +1,31 @@
 //
-// AutoAPI
-// Copyright (C) 2020 High-Mobility GmbH
+//  The MIT License
 //
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+//  Copyright (c) 2014- High-Mobility GmbH (https://high-mobility.com)
 //
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
 //
-// You should have received a copy of the GNU General Public License
-// along with this program. If not, see http://www.gnu.org/licenses/.
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
 //
-// Please inquire about commercial licensing options at
-// licensing@high-mobility.com
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
 //
 //
 //  AAChargingTest.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 08/01/2020.
+//  Created by Mikk Rätsep on 13/01/2020.
 //  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
@@ -34,24 +37,14 @@ class AAChargingTest: XCTestCase {
 
     // MARK: State Properties
 
-    func testEstimatedRange() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x02, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0xb0]
+    func testChargingWindowChosen() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x10, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
     
         guard let capability = AAAutoAPI.parseBinary(bytes) as? AACharging else {
             return XCTFail("Could not parse bytes as AACharging")
         }
     
-        XCTAssertEqual(capability.estimatedRange?.value, 432)
-    }
-
-    func testTimeToCompleteCharge() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x09, 0x00, 0x04, 0x01, 0x00, 0x01, 0x3c]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AACharging else {
-            return XCTFail("Could not parse bytes as AACharging")
-        }
-    
-        XCTAssertEqual(capability.timeToCompleteCharge?.value, 60)
+        XCTAssertEqual(capability.chargingWindowChosen?.value, .notChosen)
     }
 
     func testPlugType() {
@@ -64,14 +57,14 @@ class AAChargingTest: XCTestCase {
         XCTAssertEqual(capability.plugType?.value, .type2)
     }
 
-    func testChargingWindowChosen() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x10, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
+    func testPluggedIn() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x16, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
     
         guard let capability = AAAutoAPI.parseBinary(bytes) as? AACharging else {
             return XCTFail("Could not parse bytes as AACharging")
         }
     
-        XCTAssertEqual(capability.chargingWindowChosen?.value, .notChosen)
+        XCTAssertEqual(capability.pluggedIn?.value, .pluggedIn)
     }
 
     func testDepartureTimes() {
@@ -89,41 +82,6 @@ class AAChargingTest: XCTestCase {
         XCTAssertTrue(departureTimes.contains { $0 == AADepartureTime(state: .inactive, time: AATime(hour: 11, minute: 51)) })
     }
 
-    func testMaxChargingCurrent() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x0e, 0x00, 0x07, 0x01, 0x00, 0x04, 0x41, 0xc8, 0x00, 0x00]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AACharging else {
-            return XCTFail("Could not parse bytes as AACharging")
-        }
-    
-        XCTAssertEqual(capability.maxChargingCurrent?.value, 25.0)
-    }
-
-    func testChargeLimit() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x08, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xec, 0xcc, 0xcc, 0xcc, 0xcc, 0xcc, 0xcd]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AACharging else {
-            return XCTFail("Could not parse bytes as AACharging")
-        }
-    
-        XCTAssertEqual(capability.chargeLimit?.value, 0.9)
-    }
-
-    func testReductionTimes() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x13, 0x00, 0x06, 0x01, 0x00, 0x03, 0x00, 0x11, 0x21, 0x13, 0x00, 0x06, 0x01, 0x00, 0x03, 0x01, 0x0c, 0x34]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AACharging else {
-            return XCTFail("Could not parse bytes as AACharging")
-        }
-    
-        guard let reductionTimes = capability.reductionTimes?.compactMap({ $0.value }) else {
-            return XCTFail("Could not extract .reductionTimes values")
-        }
-    
-        XCTAssertTrue(reductionTimes.contains { $0 == AAReductionTime(startStop: .start, time: AATime(hour: 17, minute: 33)) })
-        XCTAssertTrue(reductionTimes.contains { $0 == AAReductionTime(startStop: .stop, time: AATime(hour: 12, minute: 52)) })
-    }
-
     func testBatteryCurrentAC() {
         let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x04, 0x00, 0x07, 0x01, 0x00, 0x04, 0xbf, 0x19, 0x99, 0x9a]
     
@@ -134,34 +92,14 @@ class AAChargingTest: XCTestCase {
         XCTAssertEqual(capability.batteryCurrentAC?.value, -0.6)
     }
 
-    func testBatteryTemperature() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x14, 0x00, 0x07, 0x01, 0x00, 0x04, 0x42, 0x19, 0x99, 0x9a]
+    func testTimeToCompleteCharge() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x09, 0x00, 0x04, 0x01, 0x00, 0x01, 0x3c]
     
         guard let capability = AAAutoAPI.parseBinary(bytes) as? AACharging else {
             return XCTFail("Could not parse bytes as AACharging")
         }
     
-        XCTAssertEqual(capability.batteryTemperature?.value, 38.4)
-    }
-
-    func testBatteryLevel() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x03, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xe0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AACharging else {
-            return XCTFail("Could not parse bytes as AACharging")
-        }
-    
-        XCTAssertEqual(capability.batteryLevel?.value, 0.5)
-    }
-
-    func testChargerVoltageAC() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x06, 0x00, 0x07, 0x01, 0x00, 0x04, 0x43, 0xc8, 0x00, 0x00]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AACharging else {
-            return XCTFail("Could not parse bytes as AACharging")
-        }
-    
-        XCTAssertEqual(capability.chargerVoltageAC?.value, 400)
+        XCTAssertEqual(capability.timeToCompleteCharge?.value, 60)
     }
 
     func testStatus() {
@@ -184,6 +122,36 @@ class AAChargingTest: XCTestCase {
         XCTAssertEqual(capability.batteryCurrentDC?.value, -0.6)
     }
 
+    func testChargerVoltageAC() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x06, 0x00, 0x07, 0x01, 0x00, 0x04, 0x43, 0xc8, 0x00, 0x00]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AACharging else {
+            return XCTFail("Could not parse bytes as AACharging")
+        }
+    
+        XCTAssertEqual(capability.chargerVoltageAC?.value, 400)
+    }
+
+    func testChargingRateKW() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x0a, 0x00, 0x07, 0x01, 0x00, 0x04, 0x40, 0x60, 0x00, 0x00]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AACharging else {
+            return XCTFail("Could not parse bytes as AACharging")
+        }
+    
+        XCTAssertEqual(capability.chargingRateKW?.value, 3.5)
+    }
+
+    func testChargeMode() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x0c, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AACharging else {
+            return XCTFail("Could not parse bytes as AACharging")
+        }
+    
+        XCTAssertEqual(capability.chargeMode?.value, .timerBased)
+    }
+
     func testTimers() {
         let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x15, 0x00, 0x0c, 0x01, 0x00, 0x09, 0x00, 0x00, 0x00, 0x01, 0x59, 0x89, 0x38, 0xe7, 0x88, 0x15, 0x00, 0x0c, 0x01, 0x00, 0x09, 0x01, 0x00, 0x00, 0x01, 0x59, 0x89, 0x3c, 0x91, 0x08, 0x15, 0x00, 0x0c, 0x01, 0x00, 0x09, 0x02, 0x00, 0x00, 0x01, 0x59, 0x89, 0x3c, 0x91, 0x08]
     
@@ -200,14 +168,59 @@ class AAChargingTest: XCTestCase {
         XCTAssertTrue(timers.contains { $0 == AATimer(timerType: .departureDate, date: DateFormatter.hmFormatter.date(from: "2017-01-10T16:36:05.000Z")!) })
     }
 
-    func testPluggedIn() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x16, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+    func testBatteryTemperature() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x14, 0x00, 0x07, 0x01, 0x00, 0x04, 0x42, 0x19, 0x99, 0x9a]
     
         guard let capability = AAAutoAPI.parseBinary(bytes) as? AACharging else {
             return XCTFail("Could not parse bytes as AACharging")
         }
     
-        XCTAssertEqual(capability.pluggedIn?.value, .pluggedIn)
+        XCTAssertEqual(capability.batteryTemperature?.value, 38.4)
+    }
+
+    func testBatteryLevel() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x03, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xe0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AACharging else {
+            return XCTFail("Could not parse bytes as AACharging")
+        }
+    
+        XCTAssertEqual(capability.batteryLevel?.value, 0.5)
+    }
+
+    func testEstimatedRange() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x02, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0xb0]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AACharging else {
+            return XCTFail("Could not parse bytes as AACharging")
+        }
+    
+        XCTAssertEqual(capability.estimatedRange?.value, 432)
+    }
+
+    func testMaxChargingCurrent() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x0e, 0x00, 0x07, 0x01, 0x00, 0x04, 0x41, 0xc8, 0x00, 0x00]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AACharging else {
+            return XCTFail("Could not parse bytes as AACharging")
+        }
+    
+        XCTAssertEqual(capability.maxChargingCurrent?.value, 25.0)
+    }
+
+    func testReductionTimes() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x13, 0x00, 0x06, 0x01, 0x00, 0x03, 0x00, 0x11, 0x21, 0x13, 0x00, 0x06, 0x01, 0x00, 0x03, 0x01, 0x0c, 0x34]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AACharging else {
+            return XCTFail("Could not parse bytes as AACharging")
+        }
+    
+        guard let reductionTimes = capability.reductionTimes?.compactMap({ $0.value }) else {
+            return XCTFail("Could not extract .reductionTimes values")
+        }
+    
+        XCTAssertTrue(reductionTimes.contains { $0 == AAReductionTime(startStop: .start, time: AATime(hour: 17, minute: 33)) })
+        XCTAssertTrue(reductionTimes.contains { $0 == AAReductionTime(startStop: .stop, time: AATime(hour: 12, minute: 52)) })
     }
 
     func testChargerVoltageDC() {
@@ -220,16 +233,6 @@ class AAChargingTest: XCTestCase {
         XCTAssertEqual(capability.chargerVoltageDC?.value, 400)
     }
 
-    func testChargingRateKW() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x0a, 0x00, 0x07, 0x01, 0x00, 0x04, 0x40, 0x60, 0x00, 0x00]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AACharging else {
-            return XCTFail("Could not parse bytes as AACharging")
-        }
-    
-        XCTAssertEqual(capability.chargingRateKW?.value, 3.5)
-    }
-
     func testChargePortState() {
         let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x0b, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
     
@@ -240,14 +243,14 @@ class AAChargingTest: XCTestCase {
         XCTAssertEqual(capability.chargePortState?.value, .open)
     }
 
-    func testChargeMode() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x0c, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+    func testChargeLimit() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x23, 0x01, 0x08, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xec, 0xcc, 0xcc, 0xcc, 0xcc, 0xcc, 0xcd]
     
         guard let capability = AAAutoAPI.parseBinary(bytes) as? AACharging else {
             return XCTFail("Could not parse bytes as AACharging")
         }
     
-        XCTAssertEqual(capability.chargeMode?.value, .timerBased)
+        XCTAssertEqual(capability.chargeLimit?.value, 0.9)
     }
 
     

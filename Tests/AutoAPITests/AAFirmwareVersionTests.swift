@@ -1,28 +1,31 @@
 //
-// AutoAPI
-// Copyright (C) 2020 High-Mobility GmbH
+//  The MIT License
 //
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+//  Copyright (c) 2014- High-Mobility GmbH (https://high-mobility.com)
 //
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
 //
-// You should have received a copy of the GNU General Public License
-// along with this program. If not, see http://www.gnu.org/licenses/.
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
 //
-// Please inquire about commercial licensing options at
-// licensing@high-mobility.com
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
 //
 //
 //  AAFirmwareVersionTest.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 08/01/2020.
+//  Created by Mikk Rätsep on 13/01/2020.
 //  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
@@ -34,14 +37,14 @@ class AAFirmwareVersionTest: XCTestCase {
 
     // MARK: State Properties
 
-    func testHmKitBuildName() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x03, 0x01, 0x02, 0x00, 0x0f, 0x01, 0x00, 0x0c, 0x62, 0x74, 0x73, 0x74, 0x61, 0x63, 0x6b, 0x2d, 0x75, 0x61, 0x72, 0x74]
+    func testHmKitVersion() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x03, 0x01, 0x01, 0x00, 0x06, 0x01, 0x00, 0x03, 0x01, 0x0f, 0x21]
     
         guard let capability = AAAutoAPI.parseBinary(bytes) as? AAFirmwareVersion else {
             return XCTFail("Could not parse bytes as AAFirmwareVersion")
         }
     
-        XCTAssertEqual(capability.hmKitBuildName?.value, "btstack-uart")
+        XCTAssertEqual(capability.hmKitVersion?.value, AAHMKitVersion(major: 1, minor: 15, patch: 33))
     }
 
     func testApplicationVersion() {
@@ -54,14 +57,14 @@ class AAFirmwareVersionTest: XCTestCase {
         XCTAssertEqual(capability.applicationVersion?.value, "v1.5-prod")
     }
 
-    func testHmKitVersion() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x03, 0x01, 0x01, 0x00, 0x06, 0x01, 0x00, 0x03, 0x01, 0x0f, 0x21]
+    func testHmKitBuildName() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x03, 0x01, 0x02, 0x00, 0x0f, 0x01, 0x00, 0x0c, 0x62, 0x74, 0x73, 0x74, 0x61, 0x63, 0x6b, 0x2d, 0x75, 0x61, 0x72, 0x74]
     
         guard let capability = AAAutoAPI.parseBinary(bytes) as? AAFirmwareVersion else {
             return XCTFail("Could not parse bytes as AAFirmwareVersion")
         }
     
-        XCTAssertEqual(capability.hmKitVersion?.value, AAHMKitVersion(major: 1, minor: 15, patch: 33))
+        XCTAssertEqual(capability.hmKitBuildName?.value, "btstack-uart")
     }
 
     

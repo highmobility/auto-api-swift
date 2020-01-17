@@ -1,28 +1,31 @@
 //
-// AutoAPI
-// Copyright (C) 2020 High-Mobility GmbH
+//  The MIT License
 //
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+//  Copyright (c) 2014- High-Mobility GmbH (https://high-mobility.com)
 //
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
 //
-// You should have received a copy of the GNU General Public License
-// along with this program. If not, see http://www.gnu.org/licenses/.
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
 //
-// Please inquire about commercial licensing options at
-// licensing@high-mobility.com
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
 //
 //
 //  AANotificationsTest.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 08/01/2020.
+//  Created by Mikk Rätsep on 13/01/2020.
 //  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
@@ -33,6 +36,26 @@ import XCTest
 class AANotificationsTest: XCTestCase {
 
     // MARK: State Properties
+
+    func testText() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x38, 0x01, 0x01, 0x00, 0x0e, 0x01, 0x00, 0x0b, 0x4f, 0x70, 0x65, 0x6e, 0x20, 0x47, 0x61, 0x72, 0x61, 0x67, 0x65]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AANotifications else {
+            return XCTFail("Could not parse bytes as AANotifications")
+        }
+    
+        XCTAssertEqual(capability.text?.value, "Open Garage")
+    }
+
+    func testActivatedAction() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x38, 0x01, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x1b]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AANotifications else {
+            return XCTFail("Could not parse bytes as AANotifications")
+        }
+    
+        XCTAssertEqual(capability.activatedAction?.value, 27)
+    }
 
     func testActionItems() {
         let bytes: Array<UInt8> = [0x0b, 0x00, 0x38, 0x01, 0x02, 0x00, 0x0a, 0x01, 0x00, 0x07, 0x1b, 0x00, 0x04, 0x4f, 0x70, 0x65, 0x6e, 0x02, 0x00, 0x0c, 0x01, 0x00, 0x09, 0x1c, 0x00, 0x06, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c]
@@ -47,26 +70,6 @@ class AANotificationsTest: XCTestCase {
     
         XCTAssertTrue(actionItems.contains { $0 == AAActionItem(id: 27, name: "Open") })
         XCTAssertTrue(actionItems.contains { $0 == AAActionItem(id: 28, name: "Cancel") })
-    }
-
-    func testActivatedAction() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x38, 0x01, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x1b]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AANotifications else {
-            return XCTFail("Could not parse bytes as AANotifications")
-        }
-    
-        XCTAssertEqual(capability.activatedAction?.value, 27)
-    }
-
-    func testText() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x38, 0x01, 0x01, 0x00, 0x0e, 0x01, 0x00, 0x0b, 0x4f, 0x70, 0x65, 0x6e, 0x20, 0x47, 0x61, 0x72, 0x61, 0x67, 0x65]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AANotifications else {
-            return XCTFail("Could not parse bytes as AANotifications")
-        }
-    
-        XCTAssertEqual(capability.text?.value, "Open Garage")
     }
 
     func testClear() {

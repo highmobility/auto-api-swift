@@ -1,28 +1,31 @@
 //
-// AutoAPI
-// Copyright (C) 2020 High-Mobility GmbH
+//  The MIT License
 //
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+//  Copyright (c) 2014- High-Mobility GmbH (https://high-mobility.com)
 //
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
 //
-// You should have received a copy of the GNU General Public License
-// along with this program. If not, see http://www.gnu.org/licenses/.
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
 //
-// Please inquire about commercial licensing options at
-// licensing@high-mobility.com
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
 //
 //
 //  AAChassisSettingsTest.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 08/01/2020.
+//  Created by Mikk Rätsep on 13/01/2020.
 //  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
@@ -44,6 +47,36 @@ class AAChassisSettingsTest: XCTestCase {
         XCTAssertEqual(capability.sportChrono?.value, .active)
     }
 
+    func testCurrentChassisPosition() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x53, 0x01, 0x08, 0x00, 0x04, 0x01, 0x00, 0x01, 0x19]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AAChassisSettings else {
+            return XCTFail("Could not parse bytes as AAChassisSettings")
+        }
+    
+        XCTAssertEqual(capability.currentChassisPosition?.value, 25)
+    }
+
+    func testMaximumChassisPosition() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x53, 0x01, 0x09, 0x00, 0x04, 0x01, 0x00, 0x01, 0x37]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AAChassisSettings else {
+            return XCTFail("Could not parse bytes as AAChassisSettings")
+        }
+    
+        XCTAssertEqual(capability.maximumChassisPosition?.value, 55)
+    }
+
+    func testMinimumChassisPosition() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x53, 0x01, 0x0a, 0x00, 0x04, 0x01, 0x00, 0x01, 0xe4]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AAChassisSettings else {
+            return XCTFail("Could not parse bytes as AAChassisSettings")
+        }
+    
+        XCTAssertEqual(capability.minimumChassisPosition?.value, -28)
+    }
+
     func testCurrentSpringRates() {
         let bytes: Array<UInt8> = [0x0b, 0x00, 0x53, 0x01, 0x05, 0x00, 0x05, 0x01, 0x00, 0x02, 0x00, 0x15, 0x05, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0x17]
     
@@ -59,6 +92,21 @@ class AAChassisSettingsTest: XCTestCase {
         XCTAssertTrue(currentSpringRates.contains { $0 == AASpringRate(axle: .rear, springRate: 23) })
     }
 
+    func testMaximumSpringRates() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x53, 0x01, 0x06, 0x00, 0x05, 0x01, 0x00, 0x02, 0x00, 0x25, 0x06, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0x27]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AAChassisSettings else {
+            return XCTFail("Could not parse bytes as AAChassisSettings")
+        }
+    
+        guard let maximumSpringRates = capability.maximumSpringRates?.compactMap({ $0.value }) else {
+            return XCTFail("Could not extract .maximumSpringRates values")
+        }
+    
+        XCTAssertTrue(maximumSpringRates.contains { $0 == AASpringRate(axle: .front, springRate: 37) })
+        XCTAssertTrue(maximumSpringRates.contains { $0 == AASpringRate(axle: .rear, springRate: 39) })
+    }
+
     func testDrivingMode() {
         let bytes: Array<UInt8> = [0x0b, 0x00, 0x53, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
     
@@ -67,26 +115,6 @@ class AAChassisSettingsTest: XCTestCase {
         }
     
         XCTAssertEqual(capability.drivingMode?.value, .eco)
-    }
-
-    func testCurrentChassisPosition() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x53, 0x01, 0x08, 0x00, 0x04, 0x01, 0x00, 0x01, 0x19]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AAChassisSettings else {
-            return XCTFail("Could not parse bytes as AAChassisSettings")
-        }
-    
-        XCTAssertEqual(capability.currentChassisPosition?.value, 25)
-    }
-
-    func testMinimumChassisPosition() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x53, 0x01, 0x0a, 0x00, 0x04, 0x01, 0x00, 0x01, 0xe4]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AAChassisSettings else {
-            return XCTFail("Could not parse bytes as AAChassisSettings")
-        }
-    
-        XCTAssertEqual(capability.minimumChassisPosition?.value, -28)
     }
 
     func testMinimumSpringRates() {
@@ -102,31 +130,6 @@ class AAChassisSettingsTest: XCTestCase {
     
         XCTAssertTrue(minimumSpringRates.contains { $0 == AASpringRate(axle: .front, springRate: 16) })
         XCTAssertTrue(minimumSpringRates.contains { $0 == AASpringRate(axle: .rear, springRate: 18) })
-    }
-
-    func testMaximumChassisPosition() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x53, 0x01, 0x09, 0x00, 0x04, 0x01, 0x00, 0x01, 0x37]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AAChassisSettings else {
-            return XCTFail("Could not parse bytes as AAChassisSettings")
-        }
-    
-        XCTAssertEqual(capability.maximumChassisPosition?.value, 55)
-    }
-
-    func testMaximumSpringRates() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x53, 0x01, 0x06, 0x00, 0x05, 0x01, 0x00, 0x02, 0x00, 0x25, 0x06, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0x27]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AAChassisSettings else {
-            return XCTFail("Could not parse bytes as AAChassisSettings")
-        }
-    
-        guard let maximumSpringRates = capability.maximumSpringRates?.compactMap({ $0.value }) else {
-            return XCTFail("Could not extract .maximumSpringRates values")
-        }
-    
-        XCTAssertTrue(maximumSpringRates.contains { $0 == AASpringRate(axle: .front, springRate: 37) })
-        XCTAssertTrue(maximumSpringRates.contains { $0 == AASpringRate(axle: .rear, springRate: 39) })
     }
 
     

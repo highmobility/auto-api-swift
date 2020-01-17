@@ -1,28 +1,31 @@
 //
-// AutoAPI
-// Copyright (C) 2020 High-Mobility GmbH
+//  The MIT License
 //
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+//  Copyright (c) 2014- High-Mobility GmbH (https://high-mobility.com)
 //
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
 //
-// You should have received a copy of the GNU General Public License
-// along with this program. If not, see http://www.gnu.org/licenses/.
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
 //
-// Please inquire about commercial licensing options at
-// licensing@high-mobility.com
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
 //
 //
 //  AARooftopControlTest.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 08/01/2020.
+//  Created by Mikk Rätsep on 13/01/2020.
 //  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
@@ -33,6 +36,36 @@ import XCTest
 class AARooftopControlTest: XCTestCase {
 
     // MARK: State Properties
+
+    func testPosition() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x25, 0x01, 0x02, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xe0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AARooftopControl else {
+            return XCTFail("Could not parse bytes as AARooftopControl")
+        }
+    
+        XCTAssertEqual(capability.position?.value, 0.5)
+    }
+
+    func testSunroofState() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x25, 0x01, 0x05, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AARooftopControl else {
+            return XCTFail("Could not parse bytes as AARooftopControl")
+        }
+    
+        XCTAssertEqual(capability.sunroofState?.value, .open)
+    }
+
+    func testDimming() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x25, 0x01, 0x01, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xf0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AARooftopControl else {
+            return XCTFail("Could not parse bytes as AARooftopControl")
+        }
+    
+        XCTAssertEqual(capability.dimming?.value, 1.0)
+    }
 
     func testConvertibleRoofState() {
         let bytes: Array<UInt8> = [0x0b, 0x00, 0x25, 0x01, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
@@ -52,36 +85,6 @@ class AARooftopControlTest: XCTestCase {
         }
     
         XCTAssertEqual(capability.sunroofTiltState?.value, .halfTilted)
-    }
-
-    func testSunroofState() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x25, 0x01, 0x05, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AARooftopControl else {
-            return XCTFail("Could not parse bytes as AARooftopControl")
-        }
-    
-        XCTAssertEqual(capability.sunroofState?.value, .open)
-    }
-
-    func testPosition() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x25, 0x01, 0x02, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xe0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AARooftopControl else {
-            return XCTFail("Could not parse bytes as AARooftopControl")
-        }
-    
-        XCTAssertEqual(capability.position?.value, 0.5)
-    }
-
-    func testDimming() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x25, 0x01, 0x01, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xf0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AARooftopControl else {
-            return XCTFail("Could not parse bytes as AARooftopControl")
-        }
-    
-        XCTAssertEqual(capability.dimming?.value, 1.0)
     }
 
     

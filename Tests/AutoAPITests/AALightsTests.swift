@@ -1,28 +1,31 @@
 //
-// AutoAPI
-// Copyright (C) 2020 High-Mobility GmbH
+//  The MIT License
 //
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+//  Copyright (c) 2014- High-Mobility GmbH (https://high-mobility.com)
 //
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
 //
-// You should have received a copy of the GNU General Public License
-// along with this program. If not, see http://www.gnu.org/licenses/.
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
 //
-// Please inquire about commercial licensing options at
-// licensing@high-mobility.com
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
 //
 //
 //  AALightsTest.swift
 //  AutoAPI
 //
-//  Created by Mikk Rätsep on 08/01/2020.
+//  Created by Mikk Rätsep on 13/01/2020.
 //  Copyright © 2020 High-Mobility GmbH. All rights reserved.
 //
 
@@ -34,41 +37,6 @@ class AALightsTest: XCTestCase {
 
     // MARK: State Properties
 
-    func testAmbientLightColour() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x36, 0x01, 0x04, 0x00, 0x06, 0x01, 0x00, 0x03, 0xff, 0x00, 0x00]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AALights else {
-            return XCTFail("Could not parse bytes as AALights")
-        }
-    
-        XCTAssertEqual(capability.ambientLightColour?.value, AARGBColour(red: 255, green: 0, blue: 0))
-    }
-
-    func testInteriorLights() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x36, 0x01, 0x09, 0x00, 0x05, 0x01, 0x00, 0x02, 0x00, 0x00, 0x09, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0x01]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AALights else {
-            return XCTFail("Could not parse bytes as AALights")
-        }
-    
-        guard let interiorLights = capability.interiorLights?.compactMap({ $0.value }) else {
-            return XCTFail("Could not extract .interiorLights values")
-        }
-    
-        XCTAssertTrue(interiorLights.contains { $0 == AALight(location: .front, state: .inactive) })
-        XCTAssertTrue(interiorLights.contains { $0 == AALight(location: .rear, state: .active) })
-    }
-
-    func testFrontExteriorLight() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x36, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x02]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AALights else {
-            return XCTFail("Could not parse bytes as AALights")
-        }
-    
-        XCTAssertEqual(capability.frontExteriorLight?.value, .activeWithFullBeam)
-    }
-
     func testReverseLight() {
         let bytes: Array<UInt8> = [0x0b, 0x00, 0x36, 0x01, 0x05, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
     
@@ -77,41 +45,6 @@ class AALightsTest: XCTestCase {
         }
     
         XCTAssertEqual(capability.reverseLight?.value, .inactive)
-    }
-
-    func testFogLights() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x36, 0x01, 0x07, 0x00, 0x05, 0x01, 0x00, 0x02, 0x00, 0x00, 0x07, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0x01]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AALights else {
-            return XCTFail("Could not parse bytes as AALights")
-        }
-    
-        guard let fogLights = capability.fogLights?.compactMap({ $0.value }) else {
-            return XCTFail("Could not extract .fogLights values")
-        }
-    
-        XCTAssertTrue(fogLights.contains { $0 == AALight(location: .front, state: .inactive) })
-        XCTAssertTrue(fogLights.contains { $0 == AALight(location: .rear, state: .active) })
-    }
-
-    func testEmergencyBrakeLight() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x36, 0x01, 0x06, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AALights else {
-            return XCTFail("Could not parse bytes as AALights")
-        }
-    
-        XCTAssertEqual(capability.emergencyBrakeLight?.value, .inactive)
-    }
-
-    func testRearExteriorLight() {
-        let bytes: Array<UInt8> = [0x0b, 0x00, 0x36, 0x01, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
-    
-        guard let capability = AAAutoAPI.parseBinary(bytes) as? AALights else {
-            return XCTFail("Could not parse bytes as AALights")
-        }
-    
-        XCTAssertEqual(capability.rearExteriorLight?.value, .active)
     }
 
     func testReadingLamps() {
@@ -129,6 +62,76 @@ class AALightsTest: XCTestCase {
         XCTAssertTrue(readingLamps.contains { $0 == AAReadingLamp(location: .frontRight, state: .active) })
         XCTAssertTrue(readingLamps.contains { $0 == AAReadingLamp(location: .rearRight, state: .inactive) })
         XCTAssertTrue(readingLamps.contains { $0 == AAReadingLamp(location: .rearLeft, state: .inactive) })
+    }
+
+    func testRearExteriorLight() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x36, 0x01, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AALights else {
+            return XCTFail("Could not parse bytes as AALights")
+        }
+    
+        XCTAssertEqual(capability.rearExteriorLight?.value, .active)
+    }
+
+    func testFrontExteriorLight() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x36, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x02]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AALights else {
+            return XCTFail("Could not parse bytes as AALights")
+        }
+    
+        XCTAssertEqual(capability.frontExteriorLight?.value, .activeWithFullBeam)
+    }
+
+    func testInteriorLights() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x36, 0x01, 0x09, 0x00, 0x05, 0x01, 0x00, 0x02, 0x00, 0x00, 0x09, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0x01]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AALights else {
+            return XCTFail("Could not parse bytes as AALights")
+        }
+    
+        guard let interiorLights = capability.interiorLights?.compactMap({ $0.value }) else {
+            return XCTFail("Could not extract .interiorLights values")
+        }
+    
+        XCTAssertTrue(interiorLights.contains { $0 == AALight(location: .front, state: .inactive) })
+        XCTAssertTrue(interiorLights.contains { $0 == AALight(location: .rear, state: .active) })
+    }
+
+    func testEmergencyBrakeLight() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x36, 0x01, 0x06, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AALights else {
+            return XCTFail("Could not parse bytes as AALights")
+        }
+    
+        XCTAssertEqual(capability.emergencyBrakeLight?.value, .inactive)
+    }
+
+    func testFogLights() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x36, 0x01, 0x07, 0x00, 0x05, 0x01, 0x00, 0x02, 0x00, 0x00, 0x07, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0x01]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AALights else {
+            return XCTFail("Could not parse bytes as AALights")
+        }
+    
+        guard let fogLights = capability.fogLights?.compactMap({ $0.value }) else {
+            return XCTFail("Could not extract .fogLights values")
+        }
+    
+        XCTAssertTrue(fogLights.contains { $0 == AALight(location: .front, state: .inactive) })
+        XCTAssertTrue(fogLights.contains { $0 == AALight(location: .rear, state: .active) })
+    }
+
+    func testAmbientLightColour() {
+        let bytes: Array<UInt8> = [0x0b, 0x00, 0x36, 0x01, 0x04, 0x00, 0x06, 0x01, 0x00, 0x03, 0xff, 0x00, 0x00]
+    
+        guard let capability = AAAutoAPI.parseBinary(bytes) as? AALights else {
+            return XCTFail("Could not parse bytes as AALights")
+        }
+    
+        XCTAssertEqual(capability.ambientLightColour?.value, AARGBColour(red: 255, green: 0, blue: 0))
     }
 
     

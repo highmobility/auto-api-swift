@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0278FB7E91A7453BDB09D957 /* AAMultiCommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80948A97CD97103485B7871E /* AAMultiCommandTests.swift */; };
-		05FF923606841BADB5836FED /* AAOpaquePropertyCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62DBA940203D0942B3C8C74 /* AAOpaquePropertyCollection+Extensions.swift */; };
 		0692107A420B175C79903B37 /* AARemoteControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C17C78AA72543A8A683EE03 /* AARemoteControl.swift */; };
 		0692C5E23979A4A19B29F9A9 /* AAVehicleStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BCF558507A7EC993D2EE44 /* AAVehicleStatus.swift */; };
 		07FD3C9325BD72277AD3CEFC /* AADoorPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC802B1EFA961315F0662C3 /* AADoorPosition.swift */; };
@@ -35,7 +34,7 @@
 		1FA94F3699797738652D3AB8 /* AAEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF251FF46F90E3B5B802C79 /* AAEngine.swift */; };
 		2047A87722786DF900846A65 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2047A87622786DF900846A65 /* main.swift */; };
 		2047A87C22786E1300846A65 /* AutoAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "AutoAPI::AutoAPI::Product" /* AutoAPI.framework */; };
-		206F958D23C603F700D714AE /* HMUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 206F958C23C603F700D714AE /* HMUtilities */; };
+		206F958A23C6034C00D714AE /* HMUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 206F958923C6034C00D714AE /* HMUtilities */; };
 		21EBD8F5D3D2755B09DB8B67 /* AAPriceTariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948BD1570460EAD7DFB712CD /* AAPriceTariff.swift */; };
 		2300F417A7491FC08C1A0D37 /* AAGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E9F2845A5F88AAA6B29BD6 /* AAGraphics.swift */; };
 		248D74E409885B899AF442E0 /* AAFuelingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD248EAB2E3D3B01844E5C /* AAFuelingTests.swift */; };
@@ -49,6 +48,7 @@
 		2C82E4FE6A1B69C9DA4BEB3B /* AAStartStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EA98506D52E647FA790A1A /* AAStartStop.swift */; };
 		3168005D13B93366CFDF9D9F /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B12C862B410A0944701FF77 /* DateFormatter+Extensions.swift */; };
 		31D80A024912A21CC8EFE909 /* AAParkingTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2966A2CD3BF9FF9E3EFC87 /* AAParkingTicket.swift */; };
+		3259FA33B8AD05508C7FEDF6 /* AAOpaquePropertyCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20143F7596378557439A325C /* AAOpaquePropertyCollection+Extensions.swift */; };
 		3377C05BEDACA5872A717BE4 /* UInt16+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F500926FEE7BD8A5A9D3DDF /* UInt16+Extensions.swift */; };
 		34C4F132F09437C5D9717524 /* AATextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D2DBCDC70214D666D0587 /* AATextInput.swift */; };
 		367777E8C217EF6D2D5DE773 /* AAParkingBrake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4155979F9681F8FA5747735A /* AAParkingBrake.swift */; };
@@ -149,6 +149,7 @@
 		AEEB2DAC3580830AFC69E11C /* AAChassisSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1C03553302187AE2034D87 /* AAChassisSettingsTests.swift */; };
 		B0615BE20A9665771D5DA01D /* AAHomeChargerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F73DEFFAFAA2D95413A5AB /* AAHomeChargerTests.swift */; };
 		B15BB73684AC672824C4CF46 /* AAWindowLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2888ACF2E9B504DFDE9FE8 /* AAWindowLocation.swift */; };
+		B204E972D7636699B1C25EF5 /* AASupportedCapability+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458787FD81AADE95051635B4 /* AASupportedCapability+Extensions.swift */; };
 		B224005A50ADE6436AFC23FB /* AATime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307D0BB51E8383AEE0CB26F3 /* AATime.swift */; };
 		B5204BA24D42759CC128913E /* AADrivingModeEnergyConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669A80BC93BACFFD7A3B4934 /* AADrivingModeEnergyConsumption.swift */; };
 		B5B6FDDE97DC6064D09C93F2 /* AAHistoricalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D8BDFC413A8477654FF76E /* AAHistoricalTests.swift */; };
@@ -256,6 +257,7 @@
 		1D1C03553302187AE2034D87 /* AAChassisSettingsTests.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AAChassisSettingsTests.swift; sourceTree = "<group>"; };
 		1F0EE7CA6846E8C6A7593F68 /* AADrivingModeActivationPeriod.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AADrivingModeActivationPeriod.swift; sourceTree = "<group>"; };
 		1FFEE4EA0BF55309CA3FB1B3 /* AALightConditionsTests.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AALightConditionsTests.swift; sourceTree = "<group>"; };
+		20143F7596378557439A325C /* AAOpaquePropertyCollection+Extensions.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = "AAOpaquePropertyCollection+Extensions.swift"; sourceTree = "<group>"; };
 		2047A87422786DF900846A65 /* AutoAPI Profiler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "AutoAPI Profiler"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2047A87622786DF900846A65 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		2065E938220DB25A000F8F29 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -292,6 +294,7 @@
 		42E21E0BCFD64C96F8E89290 /* AASeatbeltState.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AASeatbeltState.swift; sourceTree = "<group>"; };
 		454DA200A392AA67D47BF313 /* AALightsTests.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AALightsTests.swift; sourceTree = "<group>"; };
 		4561DB5AA57BD3FB0A890298 /* AADashboardLight.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AADashboardLight.swift; sourceTree = "<group>"; };
+		458787FD81AADE95051635B4 /* AASupportedCapability+Extensions.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = "AASupportedCapability+Extensions.swift"; sourceTree = "<group>"; };
 		45DE7577DE4E6F707D6D75BE /* AAValetMode.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AAValetMode.swift; sourceTree = "<group>"; };
 		470EFD3A1826D69F262757A5 /* AANotificationsTests.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AANotificationsTests.swift; sourceTree = "<group>"; };
 		47268711ABA144BD44BF3459 /* AAVideoHandover.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AAVideoHandover.swift; sourceTree = "<group>"; };
@@ -385,7 +388,6 @@
 		B33CEDFEF4011344C4B4421A /* AADriverWorkingState.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AADriverWorkingState.swift; sourceTree = "<group>"; };
 		B37AB73871043E594064B242 /* AAFailureMessage.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AAFailureMessage.swift; sourceTree = "<group>"; };
 		B5BCF558507A7EC993D2EE44 /* AAVehicleStatus.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AAVehicleStatus.swift; sourceTree = "<group>"; };
-		B62DBA940203D0942B3C8C74 /* AAOpaquePropertyCollection+Extensions.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = "AAOpaquePropertyCollection+Extensions.swift"; sourceTree = "<group>"; };
 		B726DCCB3CD7402CD6831AB3 /* AAFluidLevel.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AAFluidLevel.swift; sourceTree = "<group>"; };
 		B73F66478EC7D78C4E8287B8 /* AAOffroad.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AAOffroad.swift; sourceTree = "<group>"; };
 		B9D8BDFC413A8477654FF76E /* AAHistoricalTests.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AAHistoricalTests.swift; sourceTree = "<group>"; };
@@ -457,7 +459,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				206F958D23C603F700D714AE /* HMUtilities in Frameworks */,
+				206F958A23C6034C00D714AE /* HMUtilities in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +506,15 @@
 				206ED7D02060FD7000D7761E /* XCFrameworkBuilder.sh */,
 			);
 			path = Scripts;
+			sourceTree = "<group>";
+		};
+		27290E29F62E83ED829DEE98 /* Custom Types */ = {
+			isa = PBXGroup;
+			children = (
+				20143F7596378557439A325C /* AAOpaquePropertyCollection+Extensions.swift */,
+				458787FD81AADE95051635B4 /* AASupportedCapability+Extensions.swift */,
+			);
+			path = "Custom Types";
 			sourceTree = "<group>";
 		};
 		2930F4BF3F49B8A48AD6520B /* Environment */ = {
@@ -596,8 +607,8 @@
 		85FAED247DE5205AFCB92F5F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				B62DBA940203D0942B3C8C74 /* AAOpaquePropertyCollection+Extensions.swift */,
 				785338F1B81395CE5DF8CC92 /* Array+Extensions.swift */,
+				27290E29F62E83ED829DEE98 /* Custom Types */,
 				5A6A82404FA47D5531EFF3A0 /* Date+Extensions.swift */,
 				4B12C862B410A0944701FF77 /* DateFormatter+Extensions.swift */,
 				16184BBE38EBDA69BECA5419 /* Double+Extensions.swift */,
@@ -881,7 +892,7 @@
 			);
 			name = AutoAPI;
 			packageProductDependencies = (
-				206F958C23C603F700D714AE /* HMUtilities */,
+				206F958923C6034C00D714AE /* HMUtilities */,
 			);
 			productName = AutoAPI;
 			productReference = "AutoAPI::AutoAPI::Product" /* AutoAPI.framework */;
@@ -938,7 +949,7 @@
 			);
 			mainGroup = OBJ_5;
 			packageReferences = (
-				206F958B23C603F700D714AE /* XCRemoteSwiftPackageReference "hmutilities-swift" */,
+				206F958823C6034C00D714AE /* XCRemoteSwiftPackageReference "hmutilities-swift" */,
 			);
 			productRefGroup = OBJ_229 /* Products */;
 			projectDirPath = "";
@@ -1148,8 +1159,9 @@
 				905256EEE808BC851C8DA16A /* AAPropertyIdentifier.swift in Sources */,
 				A7BAAED884871976231A3BD1 /* AAProtocolVersion.swift in Sources */,
 				EBD69452F7201C8D583337D6 /* AAUniversalPropertyType.swift in Sources */,
-				05FF923606841BADB5836FED /* AAOpaquePropertyCollection+Extensions.swift in Sources */,
 				6D128BAA9D875846A99CE3FE /* Array+Extensions.swift in Sources */,
+				3259FA33B8AD05508C7FEDF6 /* AAOpaquePropertyCollection+Extensions.swift in Sources */,
+				B204E972D7636699B1C25EF5 /* AASupportedCapability+Extensions.swift in Sources */,
 				D483C185CCAFD1F804544774 /* Date+Extensions.swift in Sources */,
 				3168005D13B93366CFDF9D9F /* DateFormatter+Extensions.swift in Sources */,
 				E5D260D940A62B7155DA36C1 /* Double+Extensions.swift in Sources */,
@@ -1348,7 +1360,7 @@
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = AutoAPI.xcodeproj/AutoAPI_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MARKETING_VERSION = 11.0.0;
+				MARKETING_VERSION = 11.0.1;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.high-mobility.autoapi";
 				SWIFT_VERSION = 5.0;
@@ -1364,7 +1376,7 @@
 				ENABLE_TESTABILITY = NO;
 				INFOPLIST_FILE = AutoAPI.xcodeproj/AutoAPI_Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MARKETING_VERSION = 11.0.0;
+				MARKETING_VERSION = 11.0.1;
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.high-mobility.autoapi";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
@@ -1465,7 +1477,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		206F958B23C603F700D714AE /* XCRemoteSwiftPackageReference "hmutilities-swift" */ = {
+		206F958823C6034C00D714AE /* XCRemoteSwiftPackageReference "hmutilities-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:highmobility/hmutilities-swift.git";
 			requirement = {
@@ -1476,9 +1488,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		206F958C23C603F700D714AE /* HMUtilities */ = {
+		206F958923C6034C00D714AE /* HMUtilities */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 206F958B23C603F700D714AE /* XCRemoteSwiftPackageReference "hmutilities-swift" */;
+			package = 206F958823C6034C00D714AE /* XCRemoteSwiftPackageReference "hmutilities-swift" */;
 			productName = HMUtilities;
 		};
 /* End XCSwiftPackageProductDependency section */
