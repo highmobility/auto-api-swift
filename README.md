@@ -12,7 +12,7 @@ Table of contents
    * [Getting Started](#getting-started)
       * [Examples](#examples)
    * [Contributing](#contributing)
-   * [Licence](#licence)
+   * [License](#license)
 <!--te-->
 
 
@@ -68,6 +68,6 @@ Releases are done by tagged commits (as required by SPM, please read more about 
 See more in [CONTRIBUTING.md](https://github.com/highmobility/auto-api-swift/tree/master/CONTRIBUTING.md)
 
 
-## Licence
+## License
 
-This repository is using MIT licence. See more in [LICENCE](https://github.com/highmobility/auto-api-swift/blob/master/LICENSE)
+This repository is using MIT license. See more in [LICENSE](https://github.com/highmobility/auto-api-swift/blob/master/LICENSE)
