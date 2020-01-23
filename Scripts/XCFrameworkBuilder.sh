@@ -120,19 +120,6 @@ done
 
 
 ######################
-# "Fix" the CFBundleVersion being missing
-######################
-
-echo "Updating .plists..."
-for PLIST in $(ls -d "${FINAL_OUTPUT}"/*/"${NAME}".framework/Info.plist)
-do
-    VERSION=$(/usr/libexec/PlistBuddy -c "print :CFBundleShortVersionString" $PLIST)
-
-    (/usr/libexec/PlistBuddy -c "add :CFBundleVersion string ${VERSION}" $PLIST)
-done
-
-
-######################
 # Cleanup
 ######################
 

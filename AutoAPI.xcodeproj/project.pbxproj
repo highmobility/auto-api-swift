@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		202919082330F768007503ED /* HMUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 202919072330F768007503ED /* HMUtilities */; };
 		2033CAB4219C56D7006489F2 /* CommandWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2033CAB3219C56D7006489F2 /* CommandWrapper.swift */; };
 		205C5169208F154900B55ACE /* PropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C5168208F154900B55ACE /* PropertiesTests.swift */; };
 		205C516B208F26CE00B55ACE /* DashboardLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205C516A208F26CE00B55ACE /* DashboardLights.swift */; };
@@ -34,6 +33,7 @@
 		20DB1550209727C700A1658B /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB154F209727C700A1658B /* Direction.swift */; };
 		20DB15522097286200A1658B /* TachographTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB15512097286200A1658B /* TachographTests.swift */; };
 		20F805C9219C15980046C110 /* MultiCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F805C8219C15980046C110 /* MultiCommand.swift */; };
+		20FFD4D523D9AF9A00B47EF2 /* HMUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = 20FFD4D423D9AF9A00B47EF2 /* HMUtilities */; };
 		OBJ_265 /* BrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_173 /* BrowserTests.swift */; };
 		OBJ_266 /* CapabilitiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_174 /* CapabilitiesTests.swift */; };
 		OBJ_267 /* ChargingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_175 /* ChargingTests.swift */; };
@@ -445,7 +445,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				202919082330F768007503ED /* HMUtilities in Frameworks */,
+				20FFD4D523D9AF9A00B47EF2 /* HMUtilities in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -906,7 +906,7 @@
 			);
 			name = AutoAPI;
 			packageProductDependencies = (
-				202919072330F768007503ED /* HMUtilities */,
+				20FFD4D423D9AF9A00B47EF2 /* HMUtilities */,
 			);
 			productName = AutoAPI;
 			productReference = "AutoAPI::AutoAPI::Product" /* AutoAPI.framework */;
@@ -956,7 +956,7 @@
 			);
 			mainGroup = OBJ_5;
 			packageReferences = (
-				202919062330F768007503ED /* XCRemoteSwiftPackageReference "hm-utilities-swift" */,
+				20FFD4D323D9AF9A00B47EF2 /* XCRemoteSwiftPackageReference "hmutilities-swift" */,
 			);
 			productRefGroup = OBJ_229 /* Products */;
 			projectDirPath = "";
@@ -1293,6 +1293,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CURRENT_PROJECT_VERSION = "$(MARKETING_VERSION)";
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1302,7 +1303,7 @@
 				INFOPLIST_FILE = AutoAPI.xcodeproj/AutoAPI_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MARKETING_VERSION = 7.3.8;
+				MARKETING_VERSION = 7.3.9;
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.high-mobility.autoapi";
@@ -1320,6 +1321,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CURRENT_PROJECT_VERSION = "$(MARKETING_VERSION)";
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1329,7 +1331,7 @@
 				INFOPLIST_FILE = AutoAPI.xcodeproj/AutoAPI_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
-				MARKETING_VERSION = 7.3.8;
+				MARKETING_VERSION = 7.3.9;
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.high-mobility.autoapi";
@@ -1425,20 +1427,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		202919062330F768007503ED /* XCRemoteSwiftPackageReference "hm-utilities-swift" */ = {
+		20FFD4D323D9AF9A00B47EF2 /* XCRemoteSwiftPackageReference "hmutilities-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:highmobility/hm-utilities-swift.git";
+			repositoryURL = "git@github.com:highmobility/hmutilities-swift.git";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 1.4.1;
+				minimumVersion = 1.4.7;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		202919072330F768007503ED /* HMUtilities */ = {
+		20FFD4D423D9AF9A00B47EF2 /* HMUtilities */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 202919062330F768007503ED /* XCRemoteSwiftPackageReference "hm-utilities-swift" */;
+			package = 20FFD4D323D9AF9A00B47EF2 /* XCRemoteSwiftPackageReference "hmutilities-swift" */;
 			productName = HMUtilities;
 		};
 /* End XCSwiftPackageProductDependency section */
