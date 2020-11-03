@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.2
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -7,17 +7,52 @@ let package = Package(
     name: "AutoAPI",
     platforms: [
         .iOS(.v10),
-        .macOS(.v10_10),
-        .tvOS(.v10)
+        .macOS(.v10_15),
     ],
     products: [
-        .library(name: "AutoAPI", targets: ["AutoAPI"]),
+        // Products define the executables and libraries produced by a package, and make them visible to other packages.
+        .library(name: "AutoAPI",
+                 targets: ["AutoAPI"]
+        ),
+        .library(name: "AutoAPIGraphQL",
+                 targets: ["AutoAPIGraphQL"]
+        ),
     ],
     dependencies: [
-        .package(url: "https://github.com/highmobility/hmutilities-swift", .upToNextMinor(from: "1.4.6")),
+        // Dependencies declare other packages that this package depends on.
+        .package(name: "HMUtilities",
+                 url: "https://github.com/highmobility/hmutilities-swift",
+                 .upToNextMinor(from: "1.4.0")
+        ),
+
+        // For the GraphQL lib
+        .package(url: "https://github.com/vapor/vapor.git",
+                 from: "4.0.0"
+
+        ),
+        .package(name: "GraphQLKit",
+                 url: "https://github.com/maximkrouk/GraphQLKit.git",
+                 from: "1.0.0-beta.2.0"
+        ),
     ],
     targets: [
-        .target(name: "AutoAPI", dependencies: ["HMUtilities"]),
-        .testTarget(name: "AutoAPITests", dependencies: ["AutoAPI"]),
+        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
+        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
+        .target(name: "AutoAPI",
+                dependencies: [
+                    "HMUtilities"
+                ]
+        ),
+        .target(name: "AutoAPIGraphQL",
+                dependencies: [
+                    "AutoAPI",
+                    "HMUtilities",
+                    .product(name: "GraphQLKit", package: "GraphQLKit"),
+                    .product(name: "Vapor", package: "vapor"),
+                ]
+        ),
+        .testTarget(name: "AutoAPITests",
+                    dependencies: ["AutoAPI"]
+        ),
     ]
 )
