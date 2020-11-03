@@ -33,3 +33,10 @@ import HMUtilities
 public protocol AABytesConvertable: HMBytesConvertable {
 
 }
+
+extension AABytesConvertable {
+
+    func property<R>(identifier: R, components: [AAPropertyComponent] = []) -> AAProperty<Self> where R: RawRepresentable, R.RawValue == UInt8 {
+        AAProperty(identifier: identifier, value: self, components: components)
+    }
+}

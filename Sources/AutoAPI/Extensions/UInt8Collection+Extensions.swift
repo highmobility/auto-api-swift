@@ -65,7 +65,7 @@ private extension Collection where Element == UInt8, Index == Int {
         }
 
         // UInt16 initialiser can't create an invalid value with 2 bytes
-        let size = UInt16(bytes: self[idx ... (idx + 1)].bytes)!.int
+        let size = UInt16(bytes: self[idx...(idx + 1)].bytes)!.int
 
         guard count >= (idx + 2 + size) else {
             return nil

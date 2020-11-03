@@ -57,11 +57,12 @@ public class AAProperty<ValueType>: AAOpaqueProperty where ValueType: AABytesCon
         // This will replace the data component
         let dataComponent = AAPropertyComponent(type: .data, value: value.bytes)
         let otherComponentsBytes = components.filter { $0.type != .data }.flatMap { $0.bytes }
-        let size = (dataComponent.bytes + otherComponentsBytes).count.sizeBytes(amount: 2)
+        let componentsBytes = dataComponent.bytes + otherComponentsBytes
+        let size = componentsBytes.count.sizeBytes(amount: 2)
 
         self.value = value
 
-        super.init(bytes: identifier.bytes + size + dataComponent.bytes + otherComponentsBytes)!
+        super.init(bytes: identifier.bytes + size + componentsBytes)!
     }
 
     convenience init<R>(identifier: R, value: ValueType?, components: [AAPropertyComponent] = []) where R: RawRepresentable, R.RawValue == UInt8 {

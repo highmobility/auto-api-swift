@@ -33,7 +33,9 @@ import Foundation
 import HMUtilities
 
 
-public class AADoors: AACapability {
+public class AADoors: AACapability, __PropertyIdentifying {
+
+    // MARK: AAPropertyIdentifying
 
     /// Property Identifiers for `AADoors` capability.
     public enum PropertyIdentifier: UInt8, CaseIterable {
@@ -46,46 +48,31 @@ public class AADoors: AACapability {
 
 
     // MARK: Properties
-    
-    /// Inside lock states for the given doors
-    ///
-    /// - returns: Array of `AALock`-s wrapped in `[AAProperty<AALock>]`
+
     public var insideLocks: [AAProperty<AALock>]? {
-        properties.properties(forID: PropertyIdentifier.insideLocks)
+        properties(forID: .insideLocks)
     }
-    
-    /// Inside locks state for the whole car (combines all specific lock states if available)
-    ///
-    /// - returns: `AALockState` wrapped in `AAProperty<AALockState>`
+
     public var insideLocksState: AAProperty<AALockState>? {
-        properties.property(forID: PropertyIdentifier.insideLocksState)
+        property(forID: .insideLocksState)
     }
-    
-    /// Lock states for the given doors
-    ///
-    /// - returns: Array of `AALock`-s wrapped in `[AAProperty<AALock>]`
+
     public var locks: [AAProperty<AALock>]? {
-        properties.properties(forID: PropertyIdentifier.locks)
+        properties(forID: .locks)
     }
-    
-    /// Locks state for the whole car (combines all specific lock states if available)
-    ///
-    /// - returns: `AALockState` wrapped in `AAProperty<AALockState>`
+
     public var locksState: AAProperty<AALockState>? {
-        properties.property(forID: PropertyIdentifier.locksState)
+        property(forID: .locksState)
     }
-    
-    /// Door positions for the given doors
-    ///
-    /// - returns: Array of `AADoorPosition`-s wrapped in `[AAProperty<AADoorPosition>]`
+
     public var positions: [AAProperty<AADoorPosition>]? {
-        properties.properties(forID: PropertyIdentifier.positions)
+        properties(forID: .positions)
     }
 
 
-    // MARK: AAIdentifiable
-    
-    /// Capability's Identifier
+    // MARK: Identifier
+
+    /// `AADoors` capability's identifier.
     ///
     /// - returns: `UInt16` combining the MSB and LSB
     public override class var identifier: UInt16 {
@@ -94,39 +81,25 @@ public class AADoors: AACapability {
 
 
     // MARK: Getters
-    
-    /// Bytes for getting the `AADoors` state.
-    ///
-    /// These bytes should be sent to a receiving vehicle (device) to *request* the state of `AADoors`.
-    ///
-    /// - returns: Command's bytes as `Array<UInt8>`
-    public static func getDoorsState() -> Array<UInt8> {
-        AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.get.rawValue]
+
+    public static func getDoorsState() -> [UInt8] {
+        AAAutoAPI.protocolVersion.bytes +
+            Self.identifier.bytes +
+            [AACommandType.get.rawValue]
     }
-    
-    /// Bytes for getting the `AADoors` state's **specific** properties.
-    ///
-    /// These bytes should be sent to a receiving vehicle (device) to *request* **specific** state properties of `AADoors`.
-    ///
-    /// - parameters:
-    ///   - propertyIDs: Array of requested property identifiers
-    /// - returns: Command's bytes as `Array<UInt8>`
-    public static func getDoorsProperties(propertyIDs: PropertyIdentifier...) -> Array<UInt8> {
-        AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.get.rawValue] + propertyIDs.map { $0.rawValue }
+
+    public static func getDoorsProperties(propertyIDs: PropertyIdentifier...) -> [UInt8] {
+        getDoorsState() + propertyIDs.map { $0.rawValue }
     }
 
 
     // MARK: Setters
-    
-    /// Bytes for *lock unlock doors* command.
-    ///
-    /// These bytes should be sent to a receiving vehicle (device) to *lock unlock doors* in `AADoors`.
-    /// 
-    /// - parameters:
-    ///   - locksState: Locks state for the whole car (combines all specific lock states if available) as `AALockState`
-    /// - returns: Command's bytes as `Array<UInt8>`
-    public static func lockUnlockDoors(locksState: AALockState) -> Array<UInt8> {
-        return AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.set.rawValue] + AAProperty(identifier: PropertyIdentifier.locksState, value: locksState).bytes
+
+    public static func lockUnlockDoors(locksState: AALockState) -> [UInt8] {
+        AAAutoAPI.protocolVersion.bytes +
+            Self.identifier.bytes +
+            [AACommandType.set.rawValue] +
+            locksState.property(identifier: PropertyIdentifier.locksState).bytes
     }
 
 

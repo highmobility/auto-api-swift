@@ -89,7 +89,6 @@ class AADoorsTest: XCTestCase {
         XCTAssertTrue(positions.contains { $0 == AADoorPosition(location: .frontRight, position: .closed) })
         XCTAssertTrue(positions.contains { $0 == AADoorPosition(location: .rearRight, position: .closed) })
         XCTAssertTrue(positions.contains { $0 == AADoorPosition(location: .rearLeft, position: .closed) })
-        XCTAssertTrue(positions.contains { $0 == AADoorPosition(location: .all, position: .closed) })
     }
 
     func testInsideLocks() {

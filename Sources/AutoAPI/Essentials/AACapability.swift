@@ -30,6 +30,34 @@ import Foundation
 import HMUtilities
 
 
+
+
+protocol __PropertyIdentifying where Self: AACapability {
+
+    associatedtype PropertyIdentifier: RawRepresentable, CaseIterable where PropertyIdentifier.RawValue == UInt8
+
+    var properties: [AAOpaqueProperty] { get }
+
+    func property<B>(forID id: PropertyIdentifier) -> AAProperty<B>? where B: AABytesConvertable
+    func properties<B>(forID id: PropertyIdentifier) -> [AAProperty<B>]? where B: AABytesConvertable
+}
+
+extension __PropertyIdentifying {
+
+    func property<B>(forID id: PropertyIdentifier) -> AAProperty<B>? where B: AABytesConvertable {
+        properties.first { $0.identifier == id.rawValue }?.property()
+    }
+
+    func properties<B>(forID id: PropertyIdentifier) -> [AAProperty<B>]? where B: AABytesConvertable {
+        let properties: [AAProperty<B>] = self.properties.filter { $0.identifier == id.rawValue }.compactMap { $0.property() }
+
+        return properties.isEmpty ? nil : properties
+    }
+}
+
+
+
+
 /// Hello my love.
 ///
 /// This "master"-class shouldn't be used directly.
@@ -63,7 +91,7 @@ public class AACapability: AABytesConvertable, AAIdentifiable, AADebugTreeCapabl
             return nil
         }
 
-        self.properties = bytes.suffix(from: 4).generateProperties()
+        properties = bytes.suffix(from: 4).generateProperties()
     }
 
 

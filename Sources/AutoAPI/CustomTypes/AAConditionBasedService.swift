@@ -73,7 +73,7 @@ public struct AAConditionBasedService: AABytesConvertable, Equatable {
     ///   - description: Description as `String`
     public init(year: UInt16, month: UInt8, id: UInt16, dueStatus: DueStatus, text: String, description: String) {
         var bytes: Array<UInt8> = []
-    
+
         bytes += year.bytes
         bytes += month.bytes
         bytes += id.bytes

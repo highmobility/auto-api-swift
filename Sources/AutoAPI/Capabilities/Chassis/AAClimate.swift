@@ -231,13 +231,20 @@ public class AAClimate: AACapability {
     ///   - rearTemperatureSetting: The rear temperature in celsius as `Float`
     /// - returns: Command's bytes as `Array<UInt8>?`
     public static func setTemperatureSettings(driverTemperatureSetting: Float? = nil, passengerTemperatureSetting: Float? = nil, rearTemperatureSetting: Float? = nil) -> Array<UInt8>? {
-        guard (driverTemperatureSetting != nil || passengerTemperatureSetting != nil || rearTemperatureSetting != nil) else {
+        guard driverTemperatureSetting != nil || passengerTemperatureSetting != nil || rearTemperatureSetting != nil else {
             return nil
         }
-    
-        let props1 = AAProperty(identifier: PropertyIdentifier.driverTemperatureSetting, value: driverTemperatureSetting).bytes + AAProperty(identifier: PropertyIdentifier.passengerTemperatureSetting, value: passengerTemperatureSetting).bytes + AAProperty(identifier: PropertyIdentifier.rearTemperatureSetting, value: rearTemperatureSetting).bytes
-    
-        return AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + [AACommandType.set.rawValue] + props1
+
+        var propertiesBytesArray: [[UInt8]?] = []
+
+        propertiesBytesArray.append(driverTemperatureSetting?.property(identifier: PropertyIdentifier.driverTemperatureSetting).bytes)
+        propertiesBytesArray.append(passengerTemperatureSetting?.property(identifier: PropertyIdentifier.passengerTemperatureSetting).bytes)
+        propertiesBytesArray.append(rearTemperatureSetting?.property(identifier: PropertyIdentifier.rearTemperatureSetting).bytes)
+
+        return AAAutoAPI.protocolVersion.bytes +
+            Self.identifier.bytes +
+            [AACommandType.set.rawValue] +
+            propertiesBytesArray.compactMap { $0 }.flatMap { $0 }
     }
 
 
