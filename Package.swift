@@ -22,17 +22,17 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         .package(name: "HMUtilities",
                  url: "https://github.com/highmobility/hmutilities-swift",
-                 .upToNextMinor(from: "1.4.0")
+                 .upToNextMinor(from: "1.4.7")
         ),
 
         // For the GraphQL lib
         .package(url: "https://github.com/vapor/vapor.git",
-                 from: "4.0.0"
+                 from: "4.3.0"
 
         ),
         .package(name: "GraphQLKit",
-                 url: "https://github.com/maximkrouk/GraphQLKit.git",
-                 from: "1.0.0-beta.2.0"
+                 url: "https://github.com/IThomas/graphql-kit.git",
+                 from: "2.0.0-beta.5"
         ),
     ],
     targets: [
