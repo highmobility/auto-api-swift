@@ -57,11 +57,6 @@ public final class AABrowser: AACapability, AAPropertyIdentifying {
     }
 
 
-    // MARK: Properties
-    
-    
-
-
     // MARK: Setters
     
     /// Load a URL in the headunit browser. A URL shortener can be used in other cases. Note that for the vehicle emulator the URL has to be for a secure site (HTTPS).
@@ -78,14 +73,5 @@ public final class AABrowser: AACapability, AAPropertyIdentifying {
         let propertiesBytes = properties.compactMap { $0 }.sorted { $0.id < $1.id }.flatMap { $0.bytes }
     
         return setterHeader + propertiesBytes
-    }
-
-
-    // MARK: AACapability
-    
-    public required init?(bytes: [UInt8]) {
-        super.init(bytes: bytes)
-    
-    
     }
 }

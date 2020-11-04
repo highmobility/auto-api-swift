@@ -66,11 +66,6 @@ public final class AAVideoHandover: AACapability, AAPropertyIdentifying {
     }
 
 
-    // MARK: Properties
-    
-    
-
-
     // MARK: Setters
     
     /// Hand over a video from smart device to vehicle headunit to be shown in the vehicle display. The emulator supports HTML5 video player formats .mp4 and .webm.
@@ -91,14 +86,5 @@ public final class AAVideoHandover: AACapability, AAPropertyIdentifying {
         let propertiesBytes = properties.compactMap { $0 }.sorted { $0.id < $1.id }.flatMap { $0.bytes }
     
         return setterHeader + propertiesBytes
-    }
-
-
-    // MARK: AACapability
-    
-    public required init?(bytes: [UInt8]) {
-        super.init(bytes: bytes)
-    
-    
     }
 }

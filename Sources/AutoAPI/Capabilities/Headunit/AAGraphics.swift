@@ -57,11 +57,6 @@ public final class AAGraphics: AACapability, AAPropertyIdentifying {
     }
 
 
-    // MARK: Properties
-    
-    
-
-
     // MARK: Setters
     
     /// Display an image in the headunit by providing the image URL.
@@ -78,14 +73,5 @@ public final class AAGraphics: AACapability, AAPropertyIdentifying {
         let propertiesBytes = properties.compactMap { $0 }.sorted { $0.id < $1.id }.flatMap { $0.bytes }
     
         return setterHeader + propertiesBytes
-    }
-
-
-    // MARK: AACapability
-    
-    public required init?(bytes: [UInt8]) {
-        super.init(bytes: bytes)
-    
-    
     }
 }

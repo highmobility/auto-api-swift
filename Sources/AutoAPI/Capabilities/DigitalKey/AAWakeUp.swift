@@ -64,11 +64,6 @@ public final class AAWakeUp: AACapability, AAPropertyIdentifying {
     }
 
 
-    // MARK: Properties
-    
-    
-
-
     // MARK: Setters
     
     /// Wake up the vehicle. This is necessary when the vehicle has fallen asleep, in which case the vehicle responds with the Failure Message to all incoming messages. The vehicle is also waken up by the Lock/Unlock Doors message.
@@ -82,14 +77,5 @@ public final class AAWakeUp: AACapability, AAPropertyIdentifying {
         let propertiesBytes = properties.compactMap { $0 }.sorted { $0.id < $1.id }.flatMap { $0.bytes }
     
         return setterHeader + propertiesBytes
-    }
-
-
-    // MARK: AACapability
-    
-    public required init?(bytes: [UInt8]) {
-        super.init(bytes: bytes)
-    
-    
     }
 }

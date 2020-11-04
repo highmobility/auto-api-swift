@@ -57,11 +57,6 @@ public final class AAHeartRate: AACapability, AAPropertyIdentifying {
     }
 
 
-    // MARK: Properties
-    
-    
-
-
     // MARK: Setters
     
     /// Send the driver heart rate to the vehicle.
@@ -78,14 +73,5 @@ public final class AAHeartRate: AACapability, AAPropertyIdentifying {
         let propertiesBytes = properties.compactMap { $0 }.sorted { $0.id < $1.id }.flatMap { $0.bytes }
     
         return setterHeader + propertiesBytes
-    }
-
-
-    // MARK: AACapability
-    
-    public required init?(bytes: [UInt8]) {
-        super.init(bytes: bytes)
-    
-    
     }
 }
