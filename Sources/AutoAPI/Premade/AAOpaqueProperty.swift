@@ -38,11 +38,11 @@ public class AAOpaqueProperty: Encodable, HMBytesConvertable {
     let components: [AAPropertyComponent]
     
 
-    var id: UInt8 {
+    public var id: UInt8 {
         bytes[0]
     }
 
-    var valueBytes: [UInt8]? {
+    public var valueBytes: [UInt8]? {
         components.first(type: .data)?.value
     }
 
