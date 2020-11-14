@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 /// Weekday enum.
 public enum AAWeekday: UInt8, CaseIterable, Codable, HMBytesConvertable {
     case monday = 0x00

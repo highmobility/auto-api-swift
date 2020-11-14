@@ -32,7 +32,6 @@
 import Foundation
 
 
-
 extension UnitSpeed: AAUnitType {
 
     public static let measurementID: UInt8 = 0x16

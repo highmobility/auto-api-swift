@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 /// Window location enum.
 public enum AAWindowLocation: UInt8, CaseIterable, Codable, HMBytesConvertable {
     case frontLeft = 0x00

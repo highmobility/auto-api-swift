@@ -32,7 +32,6 @@
 import Foundation
 
 
-
 extension UnitPower: AAUnitType {
 
     public static let measurementID: UInt8 = 0x14

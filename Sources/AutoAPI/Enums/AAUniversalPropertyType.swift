@@ -32,7 +32,6 @@
 import Foundation
 
 
-
 public enum AAUniversalPropertyType: UInt8, CaseIterable {
     case nonce = 0xa0
     case vehicleSignature = 0xa1

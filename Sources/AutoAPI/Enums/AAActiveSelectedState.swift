@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 /// Active selected state enum.
 public enum AAActiveSelectedState: UInt8, CaseIterable, Codable, HMBytesConvertable {
     case inactiveSelected = 0x00

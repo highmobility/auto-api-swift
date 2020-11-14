@@ -32,7 +32,6 @@
 import Foundation
 
 
-
 extension UnitAcceleration: AAUnitType {
 
     public static let measurementID: UInt8 = 0x01

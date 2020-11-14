@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 public final class AALight: Codable, HMBytesConvertable {
 
     /// Location longitudinal.

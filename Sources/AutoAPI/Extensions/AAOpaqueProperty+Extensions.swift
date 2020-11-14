@@ -32,7 +32,6 @@
 import Foundation
 
 
-
 public extension AAOpaqueProperty {
 
     /// The main component used to transmit values.

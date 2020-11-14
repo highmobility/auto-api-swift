@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 public final class AADriverCardPresent: Codable, HMBytesConvertable {
 
     /// CardPresent enum.

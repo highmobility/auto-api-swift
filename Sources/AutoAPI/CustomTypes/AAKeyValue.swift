@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 public final class AAKeyValue: Codable, HMBytesConvertable {
 
     /// Key for the value.

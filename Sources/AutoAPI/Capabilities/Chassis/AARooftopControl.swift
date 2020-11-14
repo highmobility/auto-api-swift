@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 public final class AARooftopControl: AACapability, AAPropertyIdentifying {
 
     /// Information about the introduction and last update of this capability.

@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 public final class AASupportedCapability: Codable, HMBytesConvertable {
 
     /// The identifier of the supported capability.

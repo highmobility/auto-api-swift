@@ -32,7 +32,6 @@
 import Foundation
 
 
-
 public extension AACapability {
 
     var nonce: AAProperty<[UInt8]>? {

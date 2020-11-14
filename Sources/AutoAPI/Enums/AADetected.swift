@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 /// Detected enum.
 public enum AADetected: UInt8, CaseIterable, Codable, HMBytesConvertable {
     case notDetected = 0x00

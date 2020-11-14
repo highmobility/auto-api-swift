@@ -32,7 +32,6 @@
 import Foundation
 
 
-
 public extension UnitDuration {
 
     public static let days = UnitDuration(symbol: "hm_d", converter: UnitConverterLinear(coefficient: 86400.0))

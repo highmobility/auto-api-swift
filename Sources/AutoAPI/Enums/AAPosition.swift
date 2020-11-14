@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 /// Position enum.
 public enum AAPosition: UInt8, CaseIterable, Codable, HMBytesConvertable {
     case closed = 0x00

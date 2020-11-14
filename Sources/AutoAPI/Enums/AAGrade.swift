@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 /// Grade enum.
 public enum AAGrade: UInt8, CaseIterable, Codable, HMBytesConvertable {
     case excellent = 0x00

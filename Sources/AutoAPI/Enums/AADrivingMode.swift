@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 /// Driving mode enum.
 public enum AADrivingMode: UInt8, CaseIterable, Codable, HMBytesConvertable {
     case regular = 0x00

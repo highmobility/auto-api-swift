@@ -32,5 +32,4 @@
 import Foundation
 
 
-
 public typealias AACapabilityState = [UInt8]

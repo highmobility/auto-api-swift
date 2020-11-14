@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 public final class AAZone: Codable, HMBytesConvertable {
 
     /// Horizontal component of the matrix.

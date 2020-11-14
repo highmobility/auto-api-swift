@@ -32,7 +32,6 @@
 import Foundation
 
 
-
 public extension UnitFrequency {
 
     public static let timesPerMinute = UnitFrequency(symbol: "hm_tpm", converter: UnitConverterLinear(coefficient: 60.0))

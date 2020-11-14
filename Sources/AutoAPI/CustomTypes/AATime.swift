@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 public final class AATime: Codable, HMBytesConvertable {
 
     /// Value between 0 and 23.

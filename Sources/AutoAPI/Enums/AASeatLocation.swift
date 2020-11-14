@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 /// Seat location enum.
 public enum AASeatLocation: UInt8, CaseIterable, Codable, HMBytesConvertable {
     case frontLeft = 0x00

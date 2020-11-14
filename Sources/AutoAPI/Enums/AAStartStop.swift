@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 /// Start-Stop enum.
 public enum AAStartStop: UInt8, CaseIterable, Codable, HMBytesConvertable {
     case start = 0x00

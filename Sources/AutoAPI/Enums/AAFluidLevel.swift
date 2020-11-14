@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 /// Fluid level enum.
 public enum AAFluidLevel: UInt8, CaseIterable, Codable, HMBytesConvertable {
     case low = 0x00

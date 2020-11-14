@@ -32,7 +32,6 @@
 import Foundation
 
 
-
 extension UnitEnergyEfficiency: AAUnitType {
 
     public static let measurementID: UInt8 = 0x0d

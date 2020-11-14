@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 public final class AAFailure: Codable, HMBytesConvertable {
 
     /// Reason.

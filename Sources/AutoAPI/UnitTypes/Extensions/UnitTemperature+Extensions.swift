@@ -32,7 +32,6 @@
 import Foundation
 
 
-
 extension UnitTemperature: AAUnitType {
 
     public static let measurementID: UInt8 = 0x17

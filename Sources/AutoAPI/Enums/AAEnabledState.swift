@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 /// Enabled state enum.
 public enum AAEnabledState: UInt8, CaseIterable, Codable, HMBytesConvertable {
     case disabled = 0x00

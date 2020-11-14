@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 /// On-Off State enum.
 public enum AAOnOffState: UInt8, CaseIterable, Codable, HMBytesConvertable {
     case off = 0x00

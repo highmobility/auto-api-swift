@@ -32,7 +32,6 @@
 import Foundation
 
 
-
 extension AAAutoAPI {
 
     static let capabilities: [AACapability.Type] = [

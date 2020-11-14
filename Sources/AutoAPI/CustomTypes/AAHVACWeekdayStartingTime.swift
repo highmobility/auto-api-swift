@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 public final class AAHVACWeekdayStartingTime: Codable, HMBytesConvertable {
 
     /// Weekday.

@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 public final class AADistanceOverTime: Codable, HMBytesConvertable {
 
     /// Distance driven.

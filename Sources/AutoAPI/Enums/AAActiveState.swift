@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 /// Active state enum.
 public enum AAActiveState: UInt8, CaseIterable, Codable, HMBytesConvertable {
     case inactive = 0x00

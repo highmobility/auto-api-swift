@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 /// Location wheel enum.
 public enum AALocationWheel: UInt8, CaseIterable, Codable, HMBytesConvertable {
     case frontLeft = 0x00

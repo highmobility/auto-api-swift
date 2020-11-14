@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 public final class AAWindowOpenPercentage: Codable, HMBytesConvertable {
 
     /// Window location.

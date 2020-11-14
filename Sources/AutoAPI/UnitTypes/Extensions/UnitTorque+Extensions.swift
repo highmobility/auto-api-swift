@@ -32,7 +32,6 @@
 import Foundation
 
 
-
 extension UnitTorque: AAUnitType {
 
     public static let measurementID: UInt8 = 0x18

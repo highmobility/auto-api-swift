@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 /// Connection state enum.
 public enum AAConnectionState: UInt8, CaseIterable, Codable, HMBytesConvertable {
     case disconnected = 0x00

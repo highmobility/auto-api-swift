@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 public final class AACheckControlMessage: Codable, HMBytesConvertable {
 
     /// Check Control Message identifier.

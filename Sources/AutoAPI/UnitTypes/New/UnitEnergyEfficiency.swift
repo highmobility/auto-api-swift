@@ -32,7 +32,6 @@
 import Foundation
 
 
-
 public class UnitEnergyEfficiency: Dimension {
 
     public static let kwhPer100Kilometers = UnitEnergyEfficiency(symbol: "hm_kp1k", converter: AAUnitConverterInverse(coefficient: 1.0))

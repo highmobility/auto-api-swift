@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 public final class AAIgnition: AACapability, AAPropertyIdentifying {
 
     /// Information about the introduction and last update of this capability.

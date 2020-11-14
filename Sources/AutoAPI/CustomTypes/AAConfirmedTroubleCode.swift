@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 public final class AAConfirmedTroubleCode: Codable, HMBytesConvertable {
 
     /// Identifier.

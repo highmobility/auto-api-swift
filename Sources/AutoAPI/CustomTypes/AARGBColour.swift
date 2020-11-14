@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 public final class AARGBColour: Codable, HMBytesConvertable {
 
     /// The red component of RGB.

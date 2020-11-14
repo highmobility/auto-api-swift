@@ -32,7 +32,6 @@
 import Foundation
 
 
-
 extension UnitElectricCurrent: AAUnitType {
 
     public static let measurementID: UInt8 = 0x09

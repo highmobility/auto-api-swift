@@ -32,7 +32,6 @@
 import Foundation
 
 
-
 extension UnitAngle: AAUnitType {
 
     public static let measurementID: UInt8 = 0x02

@@ -32,7 +32,6 @@
 import Foundation
 
 
-
 public class UnitTorque: Dimension {
 
     public static let newtonMeters = UnitTorque(symbol: "hm_nm", converter: UnitConverterLinear(coefficient: 1.0))

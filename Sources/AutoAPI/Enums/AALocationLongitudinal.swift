@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 /// Location longitudinal enum.
 public enum AALocationLongitudinal: UInt8, CaseIterable, Codable, HMBytesConvertable {
     case front = 0x00

@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 /// Network security enum.
 public enum AANetworkSecurity: UInt8, CaseIterable, Codable, HMBytesConvertable {
     case none = 0x00

@@ -32,7 +32,6 @@
 import Foundation
 
 
-
 extension UnitFuelEfficiency: AAUnitType {
 
     public static let measurementID: UInt8 = 0x0f

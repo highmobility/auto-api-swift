@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 /// Lock state enum.
 public enum AALockState: UInt8, CaseIterable, Codable, HMBytesConvertable {
     case unlocked = 0x00

@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 public final class AAPersonDetected: Codable, HMBytesConvertable {
 
     /// Seat location.

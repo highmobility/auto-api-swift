@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 /// The vehicle brand.
 public enum AABrand: UInt8, CaseIterable, Codable, HMBytesConvertable {
     case unknown = 0x00

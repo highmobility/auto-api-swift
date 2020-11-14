@@ -32,7 +32,6 @@
 import Foundation
 
 
-
 public class UnitAngularVelocity: Dimension {
 
     public static let revolutionsPerMinute = UnitAngularVelocity(symbol: "hm_rpm", converter: UnitConverterLinear(coefficient: 1.0))

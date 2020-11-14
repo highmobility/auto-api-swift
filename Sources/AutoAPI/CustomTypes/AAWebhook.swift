@@ -33,7 +33,6 @@ import Foundation
 import HMUtilities
 
 
-
 public final class AAWebhook: Codable, HMBytesConvertable {
 
     /// If the specified webhook is available..
