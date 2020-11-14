@@ -46,7 +46,7 @@ final class AACruiseControlTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AACruiseControl`")
         }
         
-        XCTAssertEqual(capability.cruiseControl?.value, .active)
+        XCTAssertEqual(capability.cruiseControl?.value, AAActiveState.active)
     }
     
     func testLimiter() {
@@ -56,7 +56,7 @@ final class AACruiseControlTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AACruiseControl`")
         }
         
-        XCTAssertEqual(capability.limiter?.value, .higherSpeedRequested)
+        XCTAssertEqual(capability.limiter?.value, AACruiseControl.Limiter.higherSpeedRequested)
     }
     
     func testTargetSpeed() {
@@ -76,7 +76,7 @@ final class AACruiseControlTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AACruiseControl`")
         }
         
-        XCTAssertEqual(capability.adaptiveCruiseControl?.value, .inactive)
+        XCTAssertEqual(capability.adaptiveCruiseControl?.value, AAActiveState.inactive)
     }
     
     func testAccTargetSpeed() {
@@ -123,7 +123,7 @@ final class AACruiseControlTests: XCTestCase {
     
     func testActivateDeactivateCruiseControl() {
         let bytes: [UInt8] = [0x0c, 0x00, 0x62, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01, 0x03, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x16, 0x01, 0x40, 0x4e, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00]
-        let setterBytes = AACruiseControl.activateDeactivateCruiseControl(cruiseControl: .active, targetSpeed: Measurement<UnitSpeed>(value: 61.0, unit: .kilometersPerHour))
+        let setterBytes = AACruiseControl.activateDeactivateCruiseControl(cruiseControl: AAActiveState.active, targetSpeed: Measurement<UnitSpeed>(value: 61.0, unit: .kilometersPerHour))
         
         XCTAssertEqual(bytes, setterBytes)
     }

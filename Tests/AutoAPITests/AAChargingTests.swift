@@ -86,7 +86,7 @@ final class AAChargingTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AACharging`")
         }
         
-        XCTAssertEqual(capability.chargePortState?.value, .open)
+        XCTAssertEqual(capability.chargePortState?.value, AAPosition.open)
     }
     
     func testChargeMode() {
@@ -96,7 +96,7 @@ final class AAChargingTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AACharging`")
         }
         
-        XCTAssertEqual(capability.chargeMode?.value, .timerBased)
+        XCTAssertEqual(capability.chargeMode?.value, AACharging.ChargeMode.timerBased)
     }
     
     func testMaxChargingCurrent() {
@@ -116,7 +116,7 @@ final class AAChargingTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AACharging`")
         }
         
-        XCTAssertEqual(capability.plugType?.value, .type2)
+        XCTAssertEqual(capability.plugType?.value, AACharging.PlugType.type2)
     }
     
     func testChargingWindowChosen() {
@@ -126,7 +126,7 @@ final class AAChargingTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AACharging`")
         }
         
-        XCTAssertEqual(capability.chargingWindowChosen?.value, .notChosen)
+        XCTAssertEqual(capability.chargingWindowChosen?.value, AACharging.ChargingWindowChosen.notChosen)
     }
     
     func testDepartureTimes() {
@@ -192,7 +192,7 @@ final class AAChargingTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AACharging`")
         }
         
-        XCTAssertEqual(capability.pluggedIn?.value, .pluggedIn)
+        XCTAssertEqual(capability.pluggedIn?.value, AACharging.PluggedIn.pluggedIn)
     }
     
     func testStatus() {
@@ -202,7 +202,7 @@ final class AAChargingTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AACharging`")
         }
         
-        XCTAssertEqual(capability.status?.value, .charging)
+        XCTAssertEqual(capability.status?.value, AACharging.Status.charging)
     }
     
     func testChargingRate() {
@@ -242,7 +242,7 @@ final class AAChargingTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AACharging`")
         }
         
-        XCTAssertEqual(capability.currentType?.value, .alternatingCurrent)
+        XCTAssertEqual(capability.currentType?.value, AACharging.CurrentType.alternatingCurrent)
     }
     
     func testMaxRange() {
@@ -262,7 +262,7 @@ final class AAChargingTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AACharging`")
         }
         
-        XCTAssertEqual(capability.starterBatteryState?.value, .green)
+        XCTAssertEqual(capability.starterBatteryState?.value, AACharging.StarterBatteryState.green)
     }
     
     func testSmartChargingStatus() {
@@ -272,7 +272,7 @@ final class AAChargingTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AACharging`")
         }
         
-        XCTAssertEqual(capability.smartChargingStatus?.value, .sccIsActive)
+        XCTAssertEqual(capability.smartChargingStatus?.value, AACharging.SmartChargingStatus.sccIsActive)
     }
     
     func testBatteryLevelAtDeparture() {
@@ -292,7 +292,7 @@ final class AAChargingTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AACharging`")
         }
         
-        XCTAssertEqual(capability.preconditioningDepartureStatus?.value, .active)
+        XCTAssertEqual(capability.preconditioningDepartureStatus?.value, AAActiveState.active)
     }
     
     func testPreconditioningImmediateStatus() {
@@ -302,7 +302,7 @@ final class AAChargingTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AACharging`")
         }
         
-        XCTAssertEqual(capability.preconditioningImmediateStatus?.value, .active)
+        XCTAssertEqual(capability.preconditioningImmediateStatus?.value, AAActiveState.active)
     }
     
     func testPreconditioningDepartureEnabled() {
@@ -312,7 +312,7 @@ final class AAChargingTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AACharging`")
         }
         
-        XCTAssertEqual(capability.preconditioningDepartureEnabled?.value, .enabled)
+        XCTAssertEqual(capability.preconditioningDepartureEnabled?.value, AAEnabledState.enabled)
     }
     
     func testPreconditioningError() {
@@ -322,7 +322,7 @@ final class AAChargingTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AACharging`")
         }
         
-        XCTAssertEqual(capability.preconditioningError?.value, .notPossibleLow)
+        XCTAssertEqual(capability.preconditioningError?.value, AACharging.PreconditioningError.notPossibleLow)
     }
 
 
@@ -412,7 +412,7 @@ final class AAChargingTests: XCTestCase {
     
     func testStartStopCharging() {
         let bytes: [UInt8] = [0x0c, 0x00, 0x23, 0x01, 0x17, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
-        let setterBytes = AACharging.startStopCharging(status: .charging)
+        let setterBytes = AACharging.startStopCharging(status: AACharging.Status.charging)
         
         XCTAssertEqual(bytes, setterBytes)
     }
@@ -426,14 +426,14 @@ final class AAChargingTests: XCTestCase {
     
     func testOpenCloseChargingPort() {
         let bytes: [UInt8] = [0x0c, 0x00, 0x23, 0x01, 0x0b, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
-        let setterBytes = AACharging.openCloseChargingPort(chargePortState: .open)
+        let setterBytes = AACharging.openCloseChargingPort(chargePortState: AAPosition.open)
         
         XCTAssertEqual(bytes, setterBytes)
     }
     
     func testSetChargeMode() {
         let bytes: [UInt8] = [0x0c, 0x00, 0x23, 0x01, 0x0c, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
-        let setterBytes = AACharging.setChargeMode(chargeMode: .timerBased)
+        let setterBytes = AACharging.setChargeMode(chargeMode: AACharging.ChargeMode.timerBased)
         
         XCTAssertEqual(bytes, setterBytes)
     }

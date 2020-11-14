@@ -133,7 +133,7 @@ final class AARaceTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AARace`")
         }
         
-        XCTAssertEqual(capability.electronicStabilityProgram?.value, .active)
+        XCTAssertEqual(capability.electronicStabilityProgram?.value, AAActiveState.active)
     }
     
     func testBrakeTorqueVectorings() {
@@ -158,7 +158,7 @@ final class AARaceTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AARace`")
         }
         
-        XCTAssertEqual(capability.gearMode?.value, .drive)
+        XCTAssertEqual(capability.gearMode?.value, AARace.GearMode.drive)
     }
     
     func testSelectedGear() {
@@ -188,7 +188,7 @@ final class AARaceTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AARace`")
         }
         
-        XCTAssertEqual(capability.brakePedalSwitch?.value, .active)
+        XCTAssertEqual(capability.brakePedalSwitch?.value, AAActiveState.active)
     }
     
     func testClutchPedalSwitch() {
@@ -198,7 +198,7 @@ final class AARaceTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AARace`")
         }
         
-        XCTAssertEqual(capability.clutchPedalSwitch?.value, .active)
+        XCTAssertEqual(capability.clutchPedalSwitch?.value, AAActiveState.active)
     }
     
     func testAcceleratorPedalIdleSwitch() {
@@ -208,7 +208,7 @@ final class AARaceTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AARace`")
         }
         
-        XCTAssertEqual(capability.acceleratorPedalIdleSwitch?.value, .active)
+        XCTAssertEqual(capability.acceleratorPedalIdleSwitch?.value, AAActiveState.active)
     }
     
     func testAcceleratorPedalKickdownSwitch() {
@@ -218,7 +218,7 @@ final class AARaceTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AARace`")
         }
         
-        XCTAssertEqual(capability.acceleratorPedalKickdownSwitch?.value, .active)
+        XCTAssertEqual(capability.acceleratorPedalKickdownSwitch?.value, AAActiveState.active)
     }
     
     func testVehicleMoving() {
@@ -228,7 +228,7 @@ final class AARaceTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AARace`")
         }
         
-        XCTAssertEqual(capability.vehicleMoving?.value, .moving)
+        XCTAssertEqual(capability.vehicleMoving?.value, AARace.VehicleMoving.moving)
     }
 
 

@@ -96,7 +96,7 @@ final class AADiagnosticsTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AADiagnostics`")
         }
         
-        XCTAssertEqual(capability.washerFluidLevel?.value, .filled)
+        XCTAssertEqual(capability.washerFluidLevel?.value, AAFluidLevel.filled)
     }
     
     func testBatteryVoltage() {
@@ -156,7 +156,7 @@ final class AADiagnosticsTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AADiagnostics`")
         }
         
-        XCTAssertEqual(capability.antiLockBraking?.value, .active)
+        XCTAssertEqual(capability.antiLockBraking?.value, AAActiveState.active)
     }
     
     func testEngineCoolantTemperature() {
@@ -186,7 +186,7 @@ final class AADiagnosticsTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AADiagnostics`")
         }
         
-        XCTAssertEqual(capability.brakeFluidLevel?.value, .low)
+        XCTAssertEqual(capability.brakeFluidLevel?.value, AAFluidLevel.low)
     }
     
     func testEngineTorque() {
@@ -359,7 +359,7 @@ final class AADiagnosticsTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AADiagnostics`")
         }
         
-        XCTAssertEqual(capability.brakeLiningWearPreWarning?.value, .inactive)
+        XCTAssertEqual(capability.brakeLiningWearPreWarning?.value, AAActiveState.inactive)
     }
     
     func testEngineOilLifeRemaining() {

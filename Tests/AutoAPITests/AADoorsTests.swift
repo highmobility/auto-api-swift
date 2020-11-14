@@ -98,7 +98,7 @@ final class AADoorsTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AADoors`")
         }
         
-        XCTAssertEqual(capability.insideLocksState?.value, .locked)
+        XCTAssertEqual(capability.insideLocksState?.value, AALockState.locked)
     }
     
     func testLocksState() {
@@ -108,7 +108,7 @@ final class AADoorsTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AADoors`")
         }
         
-        XCTAssertEqual(capability.locksState?.value, .unlocked)
+        XCTAssertEqual(capability.locksState?.value, AALockState.unlocked)
     }
 
 
@@ -145,7 +145,7 @@ final class AADoorsTests: XCTestCase {
     
     func testLockUnlockDoors() {
         let bytes: [UInt8] = [0x0c, 0x00, 0x20, 0x01, 0x06, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
-        let setterBytes = AADoors.lockUnlockDoors(locksState: .unlocked)
+        let setterBytes = AADoors.lockUnlockDoors(locksState: AALockState.unlocked)
         
         XCTAssertEqual(bytes, setterBytes)
     }

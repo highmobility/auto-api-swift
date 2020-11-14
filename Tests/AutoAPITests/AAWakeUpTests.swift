@@ -46,7 +46,7 @@ final class AAWakeUpTests: XCTestCase {
             return XCTFail("Could not create a property for `.status`")
         }
         
-        XCTAssertEqual(property.value, .wakeUp)
+        XCTAssertEqual(property.value, AAWakeUp.Status.wakeUp)
     }
 
 

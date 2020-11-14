@@ -46,7 +46,7 @@ final class AAPowerTakeoffTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAPowerTakeoff`")
         }
         
-        XCTAssertEqual(capability.status?.value, .active)
+        XCTAssertEqual(capability.status?.value, AAActiveState.active)
     }
     
     func testEngaged() {
@@ -56,7 +56,7 @@ final class AAPowerTakeoffTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAPowerTakeoff`")
         }
         
-        XCTAssertEqual(capability.engaged?.value, .engaged)
+        XCTAssertEqual(capability.engaged?.value, AAPowerTakeoff.Engaged.engaged)
     }
 
 
@@ -93,7 +93,7 @@ final class AAPowerTakeoffTests: XCTestCase {
     
     func testActivateDeactivatePowerTakeoff() {
         let bytes: [UInt8] = [0x0c, 0x00, 0x65, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
-        let setterBytes = AAPowerTakeoff.activateDeactivatePowerTakeoff(status: .active)
+        let setterBytes = AAPowerTakeoff.activateDeactivatePowerTakeoff(status: AAActiveState.active)
         
         XCTAssertEqual(bytes, setterBytes)
     }

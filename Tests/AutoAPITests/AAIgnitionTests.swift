@@ -46,7 +46,7 @@ final class AAIgnitionTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAIgnition`")
         }
         
-        XCTAssertEqual(capability.status?.value, .off)
+        XCTAssertEqual(capability.status?.value, AAOnOffState.off)
     }
     
     func testAccessoriesStatus() {
@@ -56,7 +56,7 @@ final class AAIgnitionTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAIgnition`")
         }
         
-        XCTAssertEqual(capability.accessoriesStatus?.value, .on)
+        XCTAssertEqual(capability.accessoriesStatus?.value, AAOnOffState.on)
     }
     
     func testState() {
@@ -66,7 +66,7 @@ final class AAIgnitionTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAIgnition`")
         }
         
-        XCTAssertEqual(capability.state?.value, .accessory)
+        XCTAssertEqual(capability.state?.value, AAIgnition.State.accessory)
     }
 
 
@@ -103,7 +103,7 @@ final class AAIgnitionTests: XCTestCase {
     
     func testTurnIgnitionOnOff() {
         let bytes: [UInt8] = [0x0c, 0x00, 0x35, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
-        let setterBytes = AAIgnition.turnIgnitionOnOff(status: .off)
+        let setterBytes = AAIgnition.turnIgnitionOnOff(status: AAOnOffState.off)
         
         XCTAssertEqual(bytes, setterBytes)
     }

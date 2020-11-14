@@ -46,7 +46,7 @@ final class AAHonkHornFlashLightsTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAHonkHornFlashLights`")
         }
         
-        XCTAssertEqual(capability.flashers?.value, .leftFlasherActive)
+        XCTAssertEqual(capability.flashers?.value, AAHonkHornFlashLights.Flashers.leftFlasherActive)
     }
 
 
@@ -79,7 +79,7 @@ final class AAHonkHornFlashLightsTests: XCTestCase {
             return XCTFail("Could not create a property for `.emergencyFlashersState`")
         }
         
-        XCTAssertEqual(property.value, .active)
+        XCTAssertEqual(property.value, AAActiveState.active)
     }
     
     func testHonkTime() {
@@ -119,7 +119,7 @@ final class AAHonkHornFlashLightsTests: XCTestCase {
     
     func testActivateDeactivateEmergencyFlasher() {
         let bytes: [UInt8] = [0x0c, 0x00, 0x26, 0x01, 0x04, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
-        let setterBytes = AAHonkHornFlashLights.activateDeactivateEmergencyFlasher(emergencyFlashersState: .active)
+        let setterBytes = AAHonkHornFlashLights.activateDeactivateEmergencyFlasher(emergencyFlashersState: AAActiveState.active)
         
         XCTAssertEqual(bytes, setterBytes)
     }

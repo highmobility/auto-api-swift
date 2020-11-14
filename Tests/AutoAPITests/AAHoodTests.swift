@@ -46,7 +46,7 @@ final class AAHoodTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAHood`")
         }
         
-        XCTAssertEqual(capability.position?.value, .open)
+        XCTAssertEqual(capability.position?.value, AAHood.Position.open)
     }
 
 

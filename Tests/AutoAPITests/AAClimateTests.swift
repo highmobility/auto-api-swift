@@ -86,7 +86,7 @@ final class AAClimateTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAClimate`")
         }
         
-        XCTAssertEqual(capability.hvacState?.value, .active)
+        XCTAssertEqual(capability.hvacState?.value, AAActiveState.active)
     }
     
     func testDefoggingState() {
@@ -96,7 +96,7 @@ final class AAClimateTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAClimate`")
         }
         
-        XCTAssertEqual(capability.defoggingState?.value, .inactive)
+        XCTAssertEqual(capability.defoggingState?.value, AAActiveState.inactive)
     }
     
     func testDefrostingState() {
@@ -106,7 +106,7 @@ final class AAClimateTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAClimate`")
         }
         
-        XCTAssertEqual(capability.defrostingState?.value, .inactive)
+        XCTAssertEqual(capability.defrostingState?.value, AAActiveState.inactive)
     }
     
     func testIonisingState() {
@@ -116,7 +116,7 @@ final class AAClimateTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAClimate`")
         }
         
-        XCTAssertEqual(capability.ionisingState?.value, .inactive)
+        XCTAssertEqual(capability.ionisingState?.value, AAActiveState.inactive)
     }
     
     func testDefrostingTemperatureSetting() {
@@ -201,28 +201,28 @@ final class AAClimateTests: XCTestCase {
     
     func testStartStopHvac() {
         let bytes: [UInt8] = [0x0c, 0x00, 0x24, 0x01, 0x05, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
-        let setterBytes = AAClimate.startStopHvac(hvacState: .active)
+        let setterBytes = AAClimate.startStopHvac(hvacState: AAActiveState.active)
         
         XCTAssertEqual(bytes, setterBytes)
     }
     
     func testStartStopDefogging() {
         let bytes: [UInt8] = [0x0c, 0x00, 0x24, 0x01, 0x06, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
-        let setterBytes = AAClimate.startStopDefogging(defoggingState: .inactive)
+        let setterBytes = AAClimate.startStopDefogging(defoggingState: AAActiveState.inactive)
         
         XCTAssertEqual(bytes, setterBytes)
     }
     
     func testStartStopDefrosting() {
         let bytes: [UInt8] = [0x0c, 0x00, 0x24, 0x01, 0x07, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
-        let setterBytes = AAClimate.startStopDefrosting(defrostingState: .inactive)
+        let setterBytes = AAClimate.startStopDefrosting(defrostingState: AAActiveState.inactive)
         
         XCTAssertEqual(bytes, setterBytes)
     }
     
     func testStartStopIonising() {
         let bytes: [UInt8] = [0x0c, 0x00, 0x24, 0x01, 0x08, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
-        let setterBytes = AAClimate.startStopIonising(ionisingState: .inactive)
+        let setterBytes = AAClimate.startStopIonising(ionisingState: AAActiveState.inactive)
         
         XCTAssertEqual(bytes, setterBytes)
     }

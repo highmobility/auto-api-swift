@@ -46,7 +46,7 @@ final class AAFuelingTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAFueling`")
         }
         
-        XCTAssertEqual(capability.gasFlapLock?.value, .locked)
+        XCTAssertEqual(capability.gasFlapLock?.value, AALockState.locked)
     }
     
     func testGasFlapPosition() {
@@ -56,7 +56,7 @@ final class AAFuelingTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAFueling`")
         }
         
-        XCTAssertEqual(capability.gasFlapPosition?.value, .closed)
+        XCTAssertEqual(capability.gasFlapPosition?.value, AAPosition.closed)
     }
 
 
@@ -93,7 +93,7 @@ final class AAFuelingTests: XCTestCase {
     
     func testControlGasFlap() {
         let bytes: [UInt8] = [0x0c, 0x00, 0x40, 0x01, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
-        let setterBytes = AAFueling.controlGasFlap(gasFlapLock: .locked, gasFlapPosition: .closed)
+        let setterBytes = AAFueling.controlGasFlap(gasFlapLock: AALockState.locked, gasFlapPosition: AAPosition.closed)
         
         XCTAssertEqual(bytes, setterBytes)
     }

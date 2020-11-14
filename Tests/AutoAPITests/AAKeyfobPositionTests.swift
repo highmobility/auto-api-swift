@@ -46,7 +46,7 @@ final class AAKeyfobPositionTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAKeyfobPosition`")
         }
         
-        XCTAssertEqual(capability.location?.value, .insideCar)
+        XCTAssertEqual(capability.location?.value, AAKeyfobPosition.Location.insideCar)
     }
 
 

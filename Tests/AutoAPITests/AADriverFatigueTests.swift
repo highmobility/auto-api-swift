@@ -46,7 +46,7 @@ final class AADriverFatigueTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AADriverFatigue`")
         }
         
-        XCTAssertEqual(capability.detectedFatigueLevel?.value, .pauseRecommended)
+        XCTAssertEqual(capability.detectedFatigueLevel?.value, AADriverFatigue.DetectedFatigueLevel.pauseRecommended)
     }
 
 

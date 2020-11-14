@@ -46,7 +46,7 @@ final class AATripsTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AATrips`")
         }
         
-        XCTAssertEqual(capability.type?.value, .single)
+        XCTAssertEqual(capability.type?.value, AATrips.TypeOf.single)
     }
     
     func testDriverName() {

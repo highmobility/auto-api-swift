@@ -46,7 +46,7 @@ final class AARemoteControlTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AARemoteControl`")
         }
         
-        XCTAssertEqual(capability.controlMode?.value, .started)
+        XCTAssertEqual(capability.controlMode?.value, AARemoteControl.ControlMode.started)
     }
     
     func testAngle() {

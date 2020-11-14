@@ -46,7 +46,7 @@ final class AAWiFiTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAWiFi`")
         }
         
-        XCTAssertEqual(capability.status?.value, .enabled)
+        XCTAssertEqual(capability.status?.value, AAEnabledState.enabled)
     }
     
     func testNetworkConnected() {
@@ -56,7 +56,7 @@ final class AAWiFiTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAWiFi`")
         }
         
-        XCTAssertEqual(capability.networkConnected?.value, .connected)
+        XCTAssertEqual(capability.networkConnected?.value, AAConnectionState.connected)
     }
     
     func testNetworkSSID() {
@@ -76,7 +76,7 @@ final class AAWiFiTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAWiFi`")
         }
         
-        XCTAssertEqual(capability.networkSecurity?.value, .wpa2Personal)
+        XCTAssertEqual(capability.networkSecurity?.value, AANetworkSecurity.wpa2Personal)
     }
 
 
@@ -126,7 +126,7 @@ final class AAWiFiTests: XCTestCase {
     
     func testConnectToNetwork() {
         let bytes: [UInt8] = [0x0c, 0x00, 0x59, 0x01, 0x03, 0x00, 0x07, 0x01, 0x00, 0x04, 0x48, 0x4f, 0x4d, 0x45, 0x04, 0x00, 0x04, 0x01, 0x00, 0x01, 0x03, 0x05, 0x00, 0x11, 0x01, 0x00, 0x0e, 0x67, 0x72, 0x65, 0x61, 0x74, 0x5f, 0x73, 0x65, 0x63, 0x72, 0x65, 0x74, 0x31, 0x32]
-        let setterBytes = AAWiFi.connectToNetwork(networkSSID: "HOME", networkSecurity: .wpa2Personal, password: "great_secret12")
+        let setterBytes = AAWiFi.connectToNetwork(networkSSID: "HOME", networkSecurity: AANetworkSecurity.wpa2Personal, password: "great_secret12")
         
         XCTAssertEqual(bytes, setterBytes)
     }
@@ -140,7 +140,7 @@ final class AAWiFiTests: XCTestCase {
     
     func testEnableDisableWiFi() {
         let bytes: [UInt8] = [0x0c, 0x00, 0x59, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
-        let setterBytes = AAWiFi.enableDisableWiFi(status: .enabled)
+        let setterBytes = AAWiFi.enableDisableWiFi(status: AAEnabledState.enabled)
         
         XCTAssertEqual(bytes, setterBytes)
     }

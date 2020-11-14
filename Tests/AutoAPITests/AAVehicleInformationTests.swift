@@ -46,7 +46,7 @@ final class AAVehicleInformationTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAVehicleInformation`")
         }
         
-        XCTAssertEqual(capability.powertrain?.value, .allElectric)
+        XCTAssertEqual(capability.powertrain?.value, AAVehicleInformation.Powertrain.allElectric)
     }
     
     func testModelName() {
@@ -156,7 +156,7 @@ final class AAVehicleInformationTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAVehicleInformation`")
         }
         
-        XCTAssertEqual(capability.gearbox?.value, .automatic)
+        XCTAssertEqual(capability.gearbox?.value, AAVehicleInformation.Gearbox.automatic)
     }
     
     func testDisplayUnit() {
@@ -166,7 +166,7 @@ final class AAVehicleInformationTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAVehicleInformation`")
         }
         
-        XCTAssertEqual(capability.displayUnit?.value, .km)
+        XCTAssertEqual(capability.displayUnit?.value, AAVehicleInformation.DisplayUnit.km)
     }
     
     func testDriverSeatLocation() {
@@ -176,7 +176,7 @@ final class AAVehicleInformationTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAVehicleInformation`")
         }
         
-        XCTAssertEqual(capability.driverSeatLocation?.value, .left)
+        XCTAssertEqual(capability.driverSeatLocation?.value, AAVehicleInformation.DriverSeatLocation.left)
     }
     
     func testEquipments() {
@@ -221,7 +221,7 @@ final class AAVehicleInformationTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAVehicleInformation`")
         }
         
-        XCTAssertEqual(capability.timeformat?.value, .twentyFourH)
+        XCTAssertEqual(capability.timeformat?.value, AAVehicleInformation.Timeformat.twentyFourH)
     }
     
     func testDrive() {
@@ -231,7 +231,7 @@ final class AAVehicleInformationTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAVehicleInformation`")
         }
         
-        XCTAssertEqual(capability.drive?.value, .rwd)
+        XCTAssertEqual(capability.drive?.value, AAVehicleInformation.Drive.rwd)
     }
 
 

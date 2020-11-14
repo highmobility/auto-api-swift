@@ -46,7 +46,7 @@ final class AAEngineTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAEngine`")
         }
         
-        XCTAssertEqual(capability.status?.value, .off)
+        XCTAssertEqual(capability.status?.value, AAOnOffState.off)
     }
     
     func testStartStopState() {
@@ -56,7 +56,7 @@ final class AAEngineTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAEngine`")
         }
         
-        XCTAssertEqual(capability.startStopState?.value, .active)
+        XCTAssertEqual(capability.startStopState?.value, AAActiveState.active)
     }
 
 
@@ -93,14 +93,14 @@ final class AAEngineTests: XCTestCase {
     
     func testTurnEngineOnOff() {
         let bytes: [UInt8] = [0x0c, 0x00, 0x69, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
-        let setterBytes = AAEngine.turnEngineOnOff(status: .off)
+        let setterBytes = AAEngine.turnEngineOnOff(status: AAOnOffState.off)
         
         XCTAssertEqual(bytes, setterBytes)
     }
     
     func testActivateDeactivateStartStop() {
         let bytes: [UInt8] = [0x0c, 0x00, 0x69, 0x01, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
-        let setterBytes = AAEngine.activateDeactivateStartStop(startStopState: .active)
+        let setterBytes = AAEngine.activateDeactivateStartStop(startStopState: AAActiveState.active)
         
         XCTAssertEqual(bytes, setterBytes)
     }

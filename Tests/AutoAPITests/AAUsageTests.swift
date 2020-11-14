@@ -225,7 +225,7 @@ final class AAUsageTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAUsage`")
         }
         
-        XCTAssertEqual(capability.rapidAccelerationGrade?.value, .excellent)
+        XCTAssertEqual(capability.rapidAccelerationGrade?.value, AAGrade.excellent)
     }
     
     func testRapidDecelerationGrade() {
@@ -235,7 +235,7 @@ final class AAUsageTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAUsage`")
         }
         
-        XCTAssertEqual(capability.rapidDecelerationGrade?.value, .normal)
+        XCTAssertEqual(capability.rapidDecelerationGrade?.value, AAGrade.normal)
     }
     
     func testLateNightGrade() {
@@ -245,7 +245,7 @@ final class AAUsageTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAUsage`")
         }
         
-        XCTAssertEqual(capability.lateNightGrade?.value, .excellent)
+        XCTAssertEqual(capability.lateNightGrade?.value, AAGrade.excellent)
     }
     
     func testDistanceOverTime() {

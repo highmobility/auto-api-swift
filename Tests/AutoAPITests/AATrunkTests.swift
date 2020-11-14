@@ -46,7 +46,7 @@ final class AATrunkTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AATrunk`")
         }
         
-        XCTAssertEqual(capability.lock?.value, .unlocked)
+        XCTAssertEqual(capability.lock?.value, AALockState.unlocked)
     }
     
     func testPosition() {
@@ -56,7 +56,7 @@ final class AATrunkTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AATrunk`")
         }
         
-        XCTAssertEqual(capability.position?.value, .open)
+        XCTAssertEqual(capability.position?.value, AAPosition.open)
     }
 
 
@@ -93,7 +93,7 @@ final class AATrunkTests: XCTestCase {
     
     func testControlTrunk() {
         let bytes: [UInt8] = [0x0c, 0x00, 0x21, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
-        let setterBytes = AATrunk.controlTrunk(lock: .unlocked, position: .open)
+        let setterBytes = AATrunk.controlTrunk(lock: AALockState.unlocked, position: AAPosition.open)
         
         XCTAssertEqual(bytes, setterBytes)
     }

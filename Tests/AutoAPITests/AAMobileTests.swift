@@ -46,7 +46,7 @@ final class AAMobileTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAMobile`")
         }
         
-        XCTAssertEqual(capability.connection?.value, .connected)
+        XCTAssertEqual(capability.connection?.value, AAConnectionState.connected)
     }
 
 

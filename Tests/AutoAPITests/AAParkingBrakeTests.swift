@@ -46,7 +46,7 @@ final class AAParkingBrakeTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAParkingBrake`")
         }
         
-        XCTAssertEqual(capability.status?.value, .active)
+        XCTAssertEqual(capability.status?.value, AAActiveState.active)
     }
 
 
@@ -69,7 +69,7 @@ final class AAParkingBrakeTests: XCTestCase {
     
     func testSetParkingBrake() {
         let bytes: [UInt8] = [0x0c, 0x00, 0x58, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
-        let setterBytes = AAParkingBrake.setParkingBrake(status: .active)
+        let setterBytes = AAParkingBrake.setParkingBrake(status: AAActiveState.active)
         
         XCTAssertEqual(bytes, setterBytes)
     }

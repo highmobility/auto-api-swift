@@ -46,7 +46,7 @@ final class AAParkingTicketTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAParkingTicket`")
         }
         
-        XCTAssertEqual(capability.status?.value, .ended)
+        XCTAssertEqual(capability.status?.value, AAParkingTicket.Status.ended)
     }
     
     func testOperatorName() {
