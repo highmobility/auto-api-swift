@@ -32,13 +32,18 @@
 import Foundation
 
 
+public extension UnitPressure {
+
+    public static let pascals = UnitPressure(symbol: "hm_p", converter: UnitConverterLinear(coefficient: 1.0))
+}
+
 extension UnitPressure: AAUnitType {
 
     public static let measurementID: UInt8 = 0x15
 
     public static func create(id: UInt8) -> Self? {
         switch id {
-        case 0x00:  return UnitPressure.newtonsPerMetersSquared as? Self
+        case 0x00:  return UnitPressure.pascals as? Self
         case 0x03:  return UnitPressure.kilopascals as? Self
         case 0x05:  return UnitPressure.inchesOfMercury as? Self
         case 0x06:  return UnitPressure.bars as? Self
@@ -53,7 +58,7 @@ extension UnitPressure: AAUnitType {
 
     public var identifiers: [UInt8]? {
         switch self {
-        case .newtonsPerMetersSquared: return [Self.measurementID, 0x00]
+        case .pascals: return [Self.measurementID, 0x00]
         case .kilopascals: return [Self.measurementID, 0x03]
         case .inchesOfMercury: return [Self.measurementID, 0x05]
         case .bars: return [Self.measurementID, 0x06]
