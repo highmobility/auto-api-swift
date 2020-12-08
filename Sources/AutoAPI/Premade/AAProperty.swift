@@ -45,14 +45,19 @@ public class AAProperty<ValueType>: AAOpaqueProperty where ValueType: HMBytesCon
 
 
     init?(id: UInt8, value: ValueType?, components: [AAPropertyComponent] = []) {
-        guard let value = value else {
+        if value == nil && components.isEmpty {
             return nil
         }
 
-        let dataComponent = AAPropertyComponent(type: .data, value: value.bytes)
-        let otherComponents = components.filter { $0.type != .data }
+        var combinedComponents: [AAPropertyComponent] = []
 
-        super.init(id: id, components: [dataComponent] + otherComponents)
+        if let value = value {
+            combinedComponents.append(AAPropertyComponent(type: .data, value: value.bytes))
+        }
+
+        combinedComponents += components.filter { $0.type != .data }
+
+        super.init(id: id, components: combinedComponents)
     }
 
 

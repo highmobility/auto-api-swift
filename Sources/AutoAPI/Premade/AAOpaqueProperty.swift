@@ -48,7 +48,7 @@ public class AAOpaqueProperty: Encodable, HMBytesConvertable {
 
 
     func property<P>() -> AAProperty<P>? where P: HMBytesConvertable {
-        AAProperty(id: id, value: P(bytes: valueBytes))
+        AAProperty(id: id, value: P(bytes: valueBytes), components: components)
     }
 
 
