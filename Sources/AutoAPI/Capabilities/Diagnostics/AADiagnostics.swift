@@ -91,8 +91,8 @@ public final class AADiagnostics: AACapability, AAPropertyIdentifying {
 
     // MARK: Properties
     
-    /// AdBlue level.
-    public var adBlueLevel: AAProperty<Measurement<UnitVolume>>?
+    /// AdBlue level percentage between 0.0-1.0.
+    public var adBlueLevel: AAProperty<AAPercentage>?
     
     /// Anti-lock braking system (ABS) value.
     public var antiLockBraking: AAProperty<AAActiveState>?

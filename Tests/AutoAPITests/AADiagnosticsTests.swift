@@ -110,13 +110,13 @@ final class AADiagnosticsTests: XCTestCase {
     }
     
     func testAdBlueLevel() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x33, 0x01, 0x0c, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x19, 0x02, 0x3f, 0xe1, 0x99, 0x99, 0x99, 0x99, 0x99, 0x9a]
+        let bytes: [UInt8] = [0x0c, 0x00, 0x33, 0x01, 0x0c, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xec, 0xcc, 0xcc, 0xcc, 0xcc, 0xcc, 0xcd]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AADiagnostics else {
             return XCTFail("Could not parse bytes as `AADiagnostics`")
         }
         
-        XCTAssertEqual(capability.adBlueLevel?.value, Measurement<UnitVolume>(value: 0.55, unit: .liters))
+        XCTAssertEqual(capability.adBlueLevel?.value, 0.9)
     }
     
     func testDistanceSinceReset() {
