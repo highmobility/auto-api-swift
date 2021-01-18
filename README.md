@@ -25,13 +25,10 @@ Table of contents
 
 ## Integration
 
-It's **recommended** to use the library through *Swift Package Manager* (SPM), which is now also built-in to Xcode and accessible in `File > Swift Packages > ...` or  going to project settings and selecting `Swift Packages` in the top-center.  
+The library is distributed as a *Swift Package*, allowing it to be used with Xcode's built-in SPM or directly in a `Package.swift`.  
+
+For using the package through Xcode, it can be added in `File > Swift Packages > ...` or going to project settings and selecting `Swift Packages` in the top-center.  
 When targeting a Swift package, the `Package.swift` file must include `.package(url: "https://github.com/highmobility/auto-api-swift", .upToNextMinor(from: "[__version__]")),` under *dependencies*.  
-
-If SPM is not possible, the source can be downloaded directly from Github
-and built into an `.xcframework` using an accompaning script: [XCFrameworkBuilder.sh](https://github.com/highmobility/auto-api-swift/tree/master/Scripts/XCFrameworkBuilder.sh). The created package includes both the simulator and device binaries, which must then be dropped (linked) to the target Xcode project.
-
-Furthermore, when `.xcframework` is also not suitable, the library can be made into a *fat binary* (`.framework`) by running [UniversalBuildScript.sh](https://github.com/highmobility/auto-api-swift/tree/master/Scripts/UniversalBuildScript.sh). This combines both simulator and device slices into one binary, but requires the simulator slice to be removed *before* being able to upload to *App Store Connect* – for this there is a [AppStoreCompatible.sh](https://github.com/highmobility/auto-api-swift/tree/master/Scripts/AppStoreCompatible.sh) script included inside the created `.framework` folder.
 
 
 ## Requirements
