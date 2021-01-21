@@ -36,15 +36,56 @@ import HMUtilities
 public final class AAAddressComponent: Codable, HMBytesConvertable {
 
     /// Component type.
-    public enum TypeOf: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case city = 0x00
-        case country = 0x01
-        case countryShort = 0x02
-        case district = 0x03
-        case postalCode = 0x04
-        case street = 0x05
-        case stateProvince = 0x06
-        case other = 0x07
+    public enum TypeOf: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case city = "city"
+        case country = "country"
+        case countryShort = "countryShort"
+        case district = "district"
+        case postalCode = "postalCode"
+        case street = "street"
+        case stateProvince = "stateProvince"
+        case other = "other"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .city: return 0x00
+            case .country: return 0x01
+            case .countryShort: return 0x02
+            case .district: return 0x03
+            case .postalCode: return 0x04
+            case .street: return 0x05
+            case .stateProvince: return 0x06
+            case .other: return 0x07
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .city
+            case 0x01: self = .country
+            case 0x02: self = .countryShort
+            case 0x03: self = .district
+            case 0x04: self = .postalCode
+            case 0x05: self = .street
+            case 0x06: self = .stateProvince
+            case 0x07: self = .other
+            default: return nil
+            }
+        }
     }
 
 

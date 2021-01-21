@@ -46,56 +46,230 @@ public final class AATheftAlarm: AACapability, AAPropertyIdentifying {
 
 
     /// Position of the last even relative to the vehicle.
-    public enum EventType: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case idle = 0x00
-        case frontLeft = 0x01
-        case frontMiddle = 0x02
-        case frontRight = 0x03
-        case right = 0x04
-        case rearRight = 0x05
-        case rearMiddle = 0x06
-        case rearLeft = 0x07
-        case left = 0x08
-        case unknown = 0x09
+    public enum EventType: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case idle = "idle"
+        case frontLeft = "frontLeft"
+        case frontMiddle = "frontMiddle"
+        case frontRight = "frontRight"
+        case right = "right"
+        case rearRight = "rearRight"
+        case rearMiddle = "rearMiddle"
+        case rearLeft = "rearLeft"
+        case left = "left"
+        case unknown = "unknown"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .idle: return 0x00
+            case .frontLeft: return 0x01
+            case .frontMiddle: return 0x02
+            case .frontRight: return 0x03
+            case .right: return 0x04
+            case .rearRight: return 0x05
+            case .rearMiddle: return 0x06
+            case .rearLeft: return 0x07
+            case .left: return 0x08
+            case .unknown: return 0x09
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .idle
+            case 0x01: self = .frontLeft
+            case 0x02: self = .frontMiddle
+            case 0x03: self = .frontRight
+            case 0x04: self = .right
+            case 0x05: self = .rearRight
+            case 0x06: self = .rearMiddle
+            case 0x07: self = .rearLeft
+            case 0x08: self = .left
+            case 0x09: self = .unknown
+            default: return nil
+            }
+        }
     }
 
     /// Level of impact for the last event.
-    public enum LastEventLevel: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case low = 0x00
-        case medium = 0x01
-        case high = 0x02
+    public enum LastEventLevel: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case low = "low"
+        case medium = "medium"
+        case high = "high"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .low: return 0x00
+            case .medium: return 0x01
+            case .high: return 0x02
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .low
+            case 0x01: self = .medium
+            case 0x02: self = .high
+            default: return nil
+            }
+        }
     }
 
     /// Last warning reason enum.
-    public enum LastWarningReason: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case noAlarm = 0x00
-        case basisAlarm = 0x01
-        case doorFrontLeft = 0x02
-        case doorFrontRight = 0x03
-        case doorRearLeft = 0x04
-        case doorRearRight = 0x05
-        case hood = 0x06
-        case trunk = 0x07
-        case commonAlmIn = 0x08
-        case panic = 0x09
-        case glovebox = 0x0a
-        case centerBox = 0x0b
-        case rearBox = 0x0c
-        case sensorVta = 0x0d
-        case its = 0x0e
-        case itsSlv = 0x0f
-        case tps = 0x10
-        case horn = 0x11
-        case holdCom = 0x12
-        case remote = 0x13
-        case unknown = 0x14
+    public enum LastWarningReason: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case noAlarm = "noAlarm"
+        case basisAlarm = "basisAlarm"
+        case doorFrontLeft = "doorFrontLeft"
+        case doorFrontRight = "doorFrontRight"
+        case doorRearLeft = "doorRearLeft"
+        case doorRearRight = "doorRearRight"
+        case hood = "hood"
+        case trunk = "trunk"
+        case commonAlmIn = "commonAlmIn"
+        case panic = "panic"
+        case glovebox = "glovebox"
+        case centerBox = "centerBox"
+        case rearBox = "rearBox"
+        case sensorVta = "sensorVta"
+        case its = "its"
+        case itsSlv = "itsSlv"
+        case tps = "tps"
+        case horn = "horn"
+        case holdCom = "holdCom"
+        case remote = "remote"
+        case unknown = "unknown"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .noAlarm: return 0x00
+            case .basisAlarm: return 0x01
+            case .doorFrontLeft: return 0x02
+            case .doorFrontRight: return 0x03
+            case .doorRearLeft: return 0x04
+            case .doorRearRight: return 0x05
+            case .hood: return 0x06
+            case .trunk: return 0x07
+            case .commonAlmIn: return 0x08
+            case .panic: return 0x09
+            case .glovebox: return 0x0a
+            case .centerBox: return 0x0b
+            case .rearBox: return 0x0c
+            case .sensorVta: return 0x0d
+            case .its: return 0x0e
+            case .itsSlv: return 0x0f
+            case .tps: return 0x10
+            case .horn: return 0x11
+            case .holdCom: return 0x12
+            case .remote: return 0x13
+            case .unknown: return 0x14
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .noAlarm
+            case 0x01: self = .basisAlarm
+            case 0x02: self = .doorFrontLeft
+            case 0x03: self = .doorFrontRight
+            case 0x04: self = .doorRearLeft
+            case 0x05: self = .doorRearRight
+            case 0x06: self = .hood
+            case 0x07: self = .trunk
+            case 0x08: self = .commonAlmIn
+            case 0x09: self = .panic
+            case 0x0a: self = .glovebox
+            case 0x0b: self = .centerBox
+            case 0x0c: self = .rearBox
+            case 0x0d: self = .sensorVta
+            case 0x0e: self = .its
+            case 0x0f: self = .itsSlv
+            case 0x10: self = .tps
+            case 0x11: self = .horn
+            case 0x12: self = .holdCom
+            case 0x13: self = .remote
+            case 0x14: self = .unknown
+            default: return nil
+            }
+        }
     }
 
     /// Status enum.
-    public enum Status: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case unarmed = 0x00
-        case armed = 0x01
-        case triggered = 0x02
+    public enum Status: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case unarmed = "unarmed"
+        case armed = "armed"
+        case triggered = "triggered"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .unarmed: return 0x00
+            case .armed: return 0x01
+            case .triggered: return 0x02
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .unarmed
+            case 0x01: self = .armed
+            case 0x02: self = .triggered
+            default: return nil
+            }
+        }
     }
 
 

@@ -34,7 +34,36 @@ import HMUtilities
 
 
 /// Fluid level enum.
-public enum AAFluidLevel: UInt8, CaseIterable, Codable, HMBytesConvertable {
-    case low = 0x00
-    case filled = 0x01
+public enum AAFluidLevel: String, CaseIterable, Codable, HMBytesConvertable {
+
+    case low = "low"
+    case filled = "filled"
+
+
+    public var byteValue: UInt8 {
+        switch self {
+        case .low: return 0x00
+        case .filled: return 0x01
+        }
+    }
+
+
+    // MARK: HMBytesConvertable
+
+    public var bytes: [UInt8] {
+        [byteValue]
+    }
+
+
+    public init?(bytes: [UInt8]) {
+        guard let uint8 = UInt8(bytes: bytes) else {
+            return nil
+        }
+
+        switch uint8 {
+        case 0x00: self = .low
+        case 0x01: self = .filled
+        default: return nil
+        }
+    }
 }

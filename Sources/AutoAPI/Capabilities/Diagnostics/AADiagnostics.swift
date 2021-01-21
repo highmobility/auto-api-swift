@@ -163,7 +163,7 @@ public final class AADiagnostics: AACapability, AAPropertyIdentifying {
     /// The fuel volume measured in liters.
     public var fuelVolume: AAProperty<Measurement<UnitVolume>>?
     
-    /// The vehicle odometer value in a given units..
+    /// The vehicle odometer value in a given units.
     public var odometer: AAProperty<Measurement<UnitLength>>?
     
     /// Additional OEM trouble codes.

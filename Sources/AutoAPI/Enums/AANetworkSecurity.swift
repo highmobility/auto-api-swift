@@ -34,9 +34,42 @@ import HMUtilities
 
 
 /// Network security enum.
-public enum AANetworkSecurity: UInt8, CaseIterable, Codable, HMBytesConvertable {
-    case none = 0x00
-    case wep = 0x01
-    case wpa = 0x02
-    case wpa2Personal = 0x03
+public enum AANetworkSecurity: String, CaseIterable, Codable, HMBytesConvertable {
+
+    case none = "none"
+    case wep = "wep"
+    case wpa = "wpa"
+    case wpa2Personal = "wpa2Personal"
+
+
+    public var byteValue: UInt8 {
+        switch self {
+        case .none: return 0x00
+        case .wep: return 0x01
+        case .wpa: return 0x02
+        case .wpa2Personal: return 0x03
+        }
+    }
+
+
+    // MARK: HMBytesConvertable
+
+    public var bytes: [UInt8] {
+        [byteValue]
+    }
+
+
+    public init?(bytes: [UInt8]) {
+        guard let uint8 = UInt8(bytes: bytes) else {
+            return nil
+        }
+
+        switch uint8 {
+        case 0x00: self = .none
+        case 0x01: self = .wep
+        case 0x02: self = .wpa
+        case 0x03: self = .wpa2Personal
+        default: return nil
+        }
+    }
 }

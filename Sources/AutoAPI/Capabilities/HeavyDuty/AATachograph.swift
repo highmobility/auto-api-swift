@@ -46,15 +46,73 @@ public final class AATachograph: AACapability, AAPropertyIdentifying {
 
 
     /// Vehicle direction enum.
-    public enum VehicleDirection: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case forward = 0x00
-        case reverse = 0x01
+    public enum VehicleDirection: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case forward = "forward"
+        case reverse = "reverse"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .forward: return 0x00
+            case .reverse: return 0x01
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .forward
+            case 0x01: self = .reverse
+            default: return nil
+            }
+        }
     }
 
     /// Vehicle overspeed enum.
-    public enum VehicleOverspeed: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case noOverspeed = 0x00
-        case overspeed = 0x01
+    public enum VehicleOverspeed: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case noOverspeed = "noOverspeed"
+        case overspeed = "overspeed"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .noOverspeed: return 0x00
+            case .overspeed: return 0x01
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .noOverspeed
+            case 0x01: self = .overspeed
+            default: return nil
+            }
+        }
     }
 
 

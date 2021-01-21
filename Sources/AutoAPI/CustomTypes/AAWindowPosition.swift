@@ -36,10 +36,41 @@ import HMUtilities
 public final class AAWindowPosition: Codable, HMBytesConvertable {
 
     /// Position enum.
-    public enum Position: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case closed = 0x00
-        case open = 0x01
-        case intermediate = 0x02
+    public enum Position: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case closed = "closed"
+        case open = "open"
+        case intermediate = "intermediate"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .closed: return 0x00
+            case .open: return 0x01
+            case .intermediate: return 0x02
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .closed
+            case 0x01: self = .open
+            case 0x02: self = .intermediate
+            default: return nil
+            }
+        }
     }
 
 

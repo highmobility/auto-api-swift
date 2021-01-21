@@ -46,21 +46,91 @@ public final class AALights: AACapability, AAPropertyIdentifying {
 
 
     /// Front exterior light enum.
-    public enum FrontExteriorLight: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case inactive = 0x00
-        case active = 0x01
-        case activeWithFullBeam = 0x02
-        case drl = 0x03
-        case automatic = 0x04
+    public enum FrontExteriorLight: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case inactive = "inactive"
+        case active = "active"
+        case activeWithFullBeam = "activeWithFullBeam"
+        case drl = "drl"
+        case automatic = "automatic"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .inactive: return 0x00
+            case .active: return 0x01
+            case .activeWithFullBeam: return 0x02
+            case .drl: return 0x03
+            case .automatic: return 0x04
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .inactive
+            case 0x01: self = .active
+            case 0x02: self = .activeWithFullBeam
+            case 0x03: self = .drl
+            case 0x04: self = .automatic
+            default: return nil
+            }
+        }
     }
 
     /// Position of the rotary light switch.
-    public enum SwitchPosition: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case automatic = 0x00
-        case dippedHeadlights = 0x01
-        case parkingLightRight = 0x02
-        case parkingLightLeft = 0x03
-        case sidelights = 0x04
+    public enum SwitchPosition: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case automatic = "automatic"
+        case dippedHeadlights = "dippedHeadlights"
+        case parkingLightRight = "parkingLightRight"
+        case parkingLightLeft = "parkingLightLeft"
+        case sidelights = "sidelights"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .automatic: return 0x00
+            case .dippedHeadlights: return 0x01
+            case .parkingLightRight: return 0x02
+            case .parkingLightLeft: return 0x03
+            case .sidelights: return 0x04
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .automatic
+            case 0x01: self = .dippedHeadlights
+            case 0x02: self = .parkingLightRight
+            case 0x03: self = .parkingLightLeft
+            case 0x04: self = .sidelights
+            default: return nil
+            }
+        }
     }
 
 

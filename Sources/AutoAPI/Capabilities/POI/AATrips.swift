@@ -46,9 +46,38 @@ public final class AATrips: AACapability, AAPropertyIdentifying {
 
 
     /// Type of the trip.
-    public enum TypeOf: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case single = 0x00
-        case multi = 0x01
+    public enum TypeOf: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case single = "single"
+        case multi = "multi"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .single: return 0x00
+            case .multi: return 0x01
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .single
+            case 0x01: self = .multi
+            default: return nil
+            }
+        }
     }
 
 

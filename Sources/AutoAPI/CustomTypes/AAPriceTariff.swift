@@ -36,10 +36,41 @@ import HMUtilities
 public final class AAPriceTariff: Codable, HMBytesConvertable {
 
     /// PricingType enum.
-    public enum PricingType: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case startingFee = 0x00
-        case perMinute = 0x01
-        case perKwh = 0x02
+    public enum PricingType: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case startingFee = "startingFee"
+        case perMinute = "perMinute"
+        case perKwh = "perKwh"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .startingFee: return 0x00
+            case .perMinute: return 0x01
+            case .perKwh: return 0x02
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .startingFee
+            case 0x01: self = .perMinute
+            case 0x02: self = .perKwh
+            default: return nil
+            }
+        }
     }
 
 

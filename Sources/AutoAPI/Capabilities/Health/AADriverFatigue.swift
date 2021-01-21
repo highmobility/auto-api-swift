@@ -46,11 +46,44 @@ public final class AADriverFatigue: AACapability, AAPropertyIdentifying {
 
 
     /// Detected fatigue level enum.
-    public enum DetectedFatigueLevel: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case light = 0x00
-        case pauseRecommended = 0x01
-        case actionNeeded = 0x02
-        case carReadyToTakeOver = 0x03
+    public enum DetectedFatigueLevel: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case light = "light"
+        case pauseRecommended = "pauseRecommended"
+        case actionNeeded = "actionNeeded"
+        case carReadyToTakeOver = "carReadyToTakeOver"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .light: return 0x00
+            case .pauseRecommended: return 0x01
+            case .actionNeeded: return 0x02
+            case .carReadyToTakeOver: return 0x03
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .light
+            case 0x01: self = .pauseRecommended
+            case 0x02: self = .actionNeeded
+            case 0x03: self = .carReadyToTakeOver
+            default: return nil
+            }
+        }
     }
 
 

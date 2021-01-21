@@ -34,7 +34,36 @@ import HMUtilities
 
 
 /// Start-Stop enum.
-public enum AAStartStop: UInt8, CaseIterable, Codable, HMBytesConvertable {
-    case start = 0x00
-    case stop = 0x01
+public enum AAStartStop: String, CaseIterable, Codable, HMBytesConvertable {
+
+    case start = "start"
+    case stop = "stop"
+
+
+    public var byteValue: UInt8 {
+        switch self {
+        case .start: return 0x00
+        case .stop: return 0x01
+        }
+    }
+
+
+    // MARK: HMBytesConvertable
+
+    public var bytes: [UInt8] {
+        [byteValue]
+    }
+
+
+    public init?(bytes: [UInt8]) {
+        guard let uint8 = UInt8(bytes: bytes) else {
+            return nil
+        }
+
+        switch uint8 {
+        case 0x00: self = .start
+        case 0x01: self = .stop
+        default: return nil
+        }
+    }
 }

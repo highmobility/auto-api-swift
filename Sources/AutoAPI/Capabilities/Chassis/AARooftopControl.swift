@@ -46,37 +46,173 @@ public final class AARooftopControl: AACapability, AAPropertyIdentifying {
 
 
     /// Convertible roof state enum.
-    public enum ConvertibleRoofState: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case closed = 0x00
-        case open = 0x01
-        case emergencyLocked = 0x02
-        case closedSecured = 0x03
-        case openSecured = 0x04
-        case hardTopMounted = 0x05
-        case intermediatePosition = 0x06
-        case loadingPosition = 0x07
-        case loadingPositionImmediate = 0x08
+    public enum ConvertibleRoofState: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case closed = "closed"
+        case open = "open"
+        case emergencyLocked = "emergencyLocked"
+        case closedSecured = "closedSecured"
+        case openSecured = "openSecured"
+        case hardTopMounted = "hardTopMounted"
+        case intermediatePosition = "intermediatePosition"
+        case loadingPosition = "loadingPosition"
+        case loadingPositionImmediate = "loadingPositionImmediate"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .closed: return 0x00
+            case .open: return 0x01
+            case .emergencyLocked: return 0x02
+            case .closedSecured: return 0x03
+            case .openSecured: return 0x04
+            case .hardTopMounted: return 0x05
+            case .intermediatePosition: return 0x06
+            case .loadingPosition: return 0x07
+            case .loadingPositionImmediate: return 0x08
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .closed
+            case 0x01: self = .open
+            case 0x02: self = .emergencyLocked
+            case 0x03: self = .closedSecured
+            case 0x04: self = .openSecured
+            case 0x05: self = .hardTopMounted
+            case 0x06: self = .intermediatePosition
+            case 0x07: self = .loadingPosition
+            case 0x08: self = .loadingPositionImmediate
+            default: return nil
+            }
+        }
     }
 
     /// Sunroof event happened in case of rain.
-    public enum SunroofRainEvent: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case noEvent = 0x00
-        case inStrokePositionBecauseOfRain = 0x01
-        case automaticallyInStrokePosition = 0x02
+    public enum SunroofRainEvent: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case noEvent = "noEvent"
+        case inStrokePositionBecauseOfRain = "inStrokePositionBecauseOfRain"
+        case automaticallyInStrokePosition = "automaticallyInStrokePosition"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .noEvent: return 0x00
+            case .inStrokePositionBecauseOfRain: return 0x01
+            case .automaticallyInStrokePosition: return 0x02
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .noEvent
+            case 0x01: self = .inStrokePositionBecauseOfRain
+            case 0x02: self = .automaticallyInStrokePosition
+            default: return nil
+            }
+        }
     }
 
     /// Sunroof state enum.
-    public enum SunroofState: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case closed = 0x00
-        case open = 0x01
-        case intermediate = 0x02
+    public enum SunroofState: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case closed = "closed"
+        case open = "open"
+        case intermediate = "intermediate"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .closed: return 0x00
+            case .open: return 0x01
+            case .intermediate: return 0x02
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .closed
+            case 0x01: self = .open
+            case 0x02: self = .intermediate
+            default: return nil
+            }
+        }
     }
 
     /// Sunroof tilt state enum.
-    public enum SunroofTiltState: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case closed = 0x00
-        case tilted = 0x01
-        case halfTilted = 0x02
+    public enum SunroofTiltState: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case closed = "closed"
+        case tilted = "tilted"
+        case halfTilted = "halfTilted"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .closed: return 0x00
+            case .tilted: return 0x01
+            case .halfTilted: return 0x02
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .closed
+            case 0x01: self = .tilted
+            case 0x02: self = .halfTilted
+            default: return nil
+            }
+        }
     }
 
 

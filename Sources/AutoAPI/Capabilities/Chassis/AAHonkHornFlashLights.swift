@@ -46,11 +46,44 @@ public final class AAHonkHornFlashLights: AACapability, AAPropertyIdentifying {
 
 
     /// Flashers enum.
-    public enum Flashers: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case inactive = 0x00
-        case emergencyFlasherActive = 0x01
-        case leftFlasherActive = 0x02
-        case rightFlasherActive = 0x03
+    public enum Flashers: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case inactive = "inactive"
+        case emergencyFlasherActive = "emergencyFlasherActive"
+        case leftFlasherActive = "leftFlasherActive"
+        case rightFlasherActive = "rightFlasherActive"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .inactive: return 0x00
+            case .emergencyFlasherActive: return 0x01
+            case .leftFlasherActive: return 0x02
+            case .rightFlasherActive: return 0x03
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .inactive
+            case 0x01: self = .emergencyFlasherActive
+            case 0x02: self = .leftFlasherActive
+            case 0x03: self = .rightFlasherActive
+            default: return nil
+            }
+        }
     }
 
 

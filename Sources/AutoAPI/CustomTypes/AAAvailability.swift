@@ -36,20 +36,88 @@ import HMUtilities
 public final class AAAvailability: Codable, HMBytesConvertable {
 
     /// Update rate.
-    public enum UpdateRate: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case tripHigh = 0x00
-        case trip = 0x01
-        case tripStartEnd = 0x02
-        case tripEnd = 0x03
-        case unknown = 0x04
-        case notAvailable = 0x05
-        case onChange = 0x06
+    public enum UpdateRate: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case tripHigh = "tripHigh"
+        case trip = "trip"
+        case tripStartEnd = "tripStartEnd"
+        case tripEnd = "tripEnd"
+        case unknown = "unknown"
+        case notAvailable = "notAvailable"
+        case onChange = "onChange"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .tripHigh: return 0x00
+            case .trip: return 0x01
+            case .tripStartEnd: return 0x02
+            case .tripEnd: return 0x03
+            case .unknown: return 0x04
+            case .notAvailable: return 0x05
+            case .onChange: return 0x06
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .tripHigh
+            case 0x01: self = .trip
+            case 0x02: self = .tripStartEnd
+            case 0x03: self = .tripEnd
+            case 0x04: self = .unknown
+            case 0x05: self = .notAvailable
+            case 0x06: self = .onChange
+            default: return nil
+            }
+        }
     }
 
     /// Rate limit applies per.
-    public enum AppliesPer: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case app = 0x00
-        case vehicle = 0x01
+    public enum AppliesPer: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case app = "app"
+        case vehicle = "vehicle"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .app: return 0x00
+            case .vehicle: return 0x01
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .app
+            case 0x01: self = .vehicle
+            default: return nil
+            }
+        }
     }
 
 

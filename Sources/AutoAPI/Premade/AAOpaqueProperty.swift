@@ -36,7 +36,7 @@ import HMUtilities
 public class AAOpaqueProperty: Encodable, HMBytesConvertable {
 
     let components: [AAPropertyComponent]
-    
+
 
     public var id: UInt8 {
         bytes[0]

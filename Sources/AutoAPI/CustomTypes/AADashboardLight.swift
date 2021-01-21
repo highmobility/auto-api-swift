@@ -36,100 +36,311 @@ import HMUtilities
 public final class AADashboardLight: Codable, HMBytesConvertable {
 
     /// Name enum.
-    public enum Name: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case highBeam = 0x00
-        case lowBeam = 0x01
-        case hazardWarning = 0x02
-        case brakeFailure = 0x03
-        case hatchOpen = 0x04
-        case fuelLevel = 0x05
-        case engineCoolantTemperature = 0x06
-        case batteryChargingCondition = 0x07
-        case engineOil = 0x08
-        case positionLights = 0x09
-        case frontFogLight = 0x0a
-        case rearFogLight = 0x0b
-        case parkHeating = 0x0c
-        case engineIndicator = 0x0d
-        case serviceCall = 0x0e
-        case transmissionFluidTemperature = 0x0f
-        case transmissionFailure = 0x10
-        case antiLockBrakeFailure = 0x11
-        case wornBrakeLinings = 0x12
-        case windscreenWasherFluid = 0x13
-        case tireFailure = 0x14
-        case engineOilLevel = 0x15
-        case engineCoolantLevel = 0x16
-        case steeringFailure = 0x17
-        case escIndication = 0x18
-        case brakeLights = 0x19
-        case adblueLevel = 0x1a
-        case fuelFilterDiffPressure = 0x1b
-        case seatBelt = 0x1c
-        case advancedBraking = 0x1d
-        case acc = 0x1e
-        case trailerConnected = 0x1f
-        case airbag = 0x20
-        case escSwitchedOff = 0x21
-        case laneDepartureWarningOff = 0x22
-        case airFilterMinder = 0x23
-        case airSuspensionRideControlFault = 0x24
-        case allWheelDriveDisabled = 0x25
-        case antiTheft = 0x26
-        case blindSpotDetection = 0x27
-        case chargeSystemFault = 0x28
-        case checkFuelCap = 0x29
-        case checkFuelFillInlet = 0x2a
-        case checkFuelFilter = 0x2b
-        case dcTempWarning = 0x2c
-        case dcWarningStatus = 0x2d
-        case dieselEngineIdleShutdown = 0x2e
-        case dieselEngineWarning = 0x2f
-        case dieselExhaustFluidSystemFault = 0x30
-        case dieselExhaustOverTemp = 0x31
-        case dieselExhaustFluidQuality = 0x32
-        case dieselFilterRegeneration = 0x33
-        case dieselParticulateFilter = 0x34
-        case dieselPreHeat = 0x35
-        case electricTrailerBrakeConnection = 0x36
-        case evBatteryCellMaxVoltWarning = 0x37
-        case evBatteryCellMinVoltWarning = 0x38
-        case evBatteryChargeEnergyStorageWarning = 0x39
-        case evBatteryHighLevelWarning = 0x3a
-        case evBatteryHighTemperatureWarning = 0x3b
-        case evBatteryInsulationResistWarning = 0x3c
-        case evBatteryJumpLevelWarning = 0x3d
-        case evBatteryLowLevelWarning = 0x3e
-        case evBatteryMaxVoltVehEnergyWarning = 0x3f
-        case evBatteryMinVoltVehEnergyWarning = 0x40
-        case evBatteryOverChargeWarning = 0x41
-        case evBatteryPoorCellWarning = 0x42
-        case evBatteryTempDiffWarning = 0x43
-        case forwardCollisionWarning = 0x44
-        case fuelDoorOpen = 0x45
-        case hillDescentControlFault = 0x46
-        case hillStartAssistWarning = 0x47
-        case hvInterlockingStatusWarning = 0x48
-        case lightingSystemFailure = 0x49
-        case malfunctionIndicator = 0x4a
-        case motorControllerTempWarning = 0x4b
-        case parkAidMalfunction = 0x4c
-        case passiveEntryPassiveStart = 0x4d
-        case powertrainMalfunction = 0x4e
-        case restraintsIndicatorWarning = 0x4f
-        case startStopEngineWarning = 0x50
-        case tractionControlDisabled = 0x51
-        case tractionControlActive = 0x52
-        case tractionMotorTempWarning = 0x53
-        case tirePressureMonitorSystemWarning = 0x54
-        case waterInFuel = 0x55
-        case tireWarningFrontRight = 0x56
-        case tireWarningFrontLeft = 0x57
-        case tireWarningRearRight = 0x58
-        case tireWarningRearLeft = 0x59
-        case tireWarningSystemError = 0x5a
-        case batteryLowWarning = 0x5b
-        case brakeFluidWarning = 0x5c
+    public enum Name: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case highBeam = "highBeam"
+        case lowBeam = "lowBeam"
+        case hazardWarning = "hazardWarning"
+        case brakeFailure = "brakeFailure"
+        case hatchOpen = "hatchOpen"
+        case fuelLevel = "fuelLevel"
+        case engineCoolantTemperature = "engineCoolantTemperature"
+        case batteryChargingCondition = "batteryChargingCondition"
+        case engineOil = "engineOil"
+        case positionLights = "positionLights"
+        case frontFogLight = "frontFogLight"
+        case rearFogLight = "rearFogLight"
+        case parkHeating = "parkHeating"
+        case engineIndicator = "engineIndicator"
+        case serviceCall = "serviceCall"
+        case transmissionFluidTemperature = "transmissionFluidTemperature"
+        case transmissionFailure = "transmissionFailure"
+        case antiLockBrakeFailure = "antiLockBrakeFailure"
+        case wornBrakeLinings = "wornBrakeLinings"
+        case windscreenWasherFluid = "windscreenWasherFluid"
+        case tireFailure = "tireFailure"
+        case engineOilLevel = "engineOilLevel"
+        case engineCoolantLevel = "engineCoolantLevel"
+        case steeringFailure = "steeringFailure"
+        case escIndication = "escIndication"
+        case brakeLights = "brakeLights"
+        case adblueLevel = "adblueLevel"
+        case fuelFilterDiffPressure = "fuelFilterDiffPressure"
+        case seatBelt = "seatBelt"
+        case advancedBraking = "advancedBraking"
+        case acc = "acc"
+        case trailerConnected = "trailerConnected"
+        case airbag = "airbag"
+        case escSwitchedOff = "escSwitchedOff"
+        case laneDepartureWarningOff = "laneDepartureWarningOff"
+        case airFilterMinder = "airFilterMinder"
+        case airSuspensionRideControlFault = "airSuspensionRideControlFault"
+        case allWheelDriveDisabled = "allWheelDriveDisabled"
+        case antiTheft = "antiTheft"
+        case blindSpotDetection = "blindSpotDetection"
+        case chargeSystemFault = "chargeSystemFault"
+        case checkFuelCap = "checkFuelCap"
+        case checkFuelFillInlet = "checkFuelFillInlet"
+        case checkFuelFilter = "checkFuelFilter"
+        case dcTempWarning = "dcTempWarning"
+        case dcWarningStatus = "dcWarningStatus"
+        case dieselEngineIdleShutdown = "dieselEngineIdleShutdown"
+        case dieselEngineWarning = "dieselEngineWarning"
+        case dieselExhaustFluidSystemFault = "dieselExhaustFluidSystemFault"
+        case dieselExhaustOverTemp = "dieselExhaustOverTemp"
+        case dieselExhaustFluidQuality = "dieselExhaustFluidQuality"
+        case dieselFilterRegeneration = "dieselFilterRegeneration"
+        case dieselParticulateFilter = "dieselParticulateFilter"
+        case dieselPreHeat = "dieselPreHeat"
+        case electricTrailerBrakeConnection = "electricTrailerBrakeConnection"
+        case evBatteryCellMaxVoltWarning = "evBatteryCellMaxVoltWarning"
+        case evBatteryCellMinVoltWarning = "evBatteryCellMinVoltWarning"
+        case evBatteryChargeEnergyStorageWarning = "evBatteryChargeEnergyStorageWarning"
+        case evBatteryHighLevelWarning = "evBatteryHighLevelWarning"
+        case evBatteryHighTemperatureWarning = "evBatteryHighTemperatureWarning"
+        case evBatteryInsulationResistWarning = "evBatteryInsulationResistWarning"
+        case evBatteryJumpLevelWarning = "evBatteryJumpLevelWarning"
+        case evBatteryLowLevelWarning = "evBatteryLowLevelWarning"
+        case evBatteryMaxVoltVehEnergyWarning = "evBatteryMaxVoltVehEnergyWarning"
+        case evBatteryMinVoltVehEnergyWarning = "evBatteryMinVoltVehEnergyWarning"
+        case evBatteryOverChargeWarning = "evBatteryOverChargeWarning"
+        case evBatteryPoorCellWarning = "evBatteryPoorCellWarning"
+        case evBatteryTempDiffWarning = "evBatteryTempDiffWarning"
+        case forwardCollisionWarning = "forwardCollisionWarning"
+        case fuelDoorOpen = "fuelDoorOpen"
+        case hillDescentControlFault = "hillDescentControlFault"
+        case hillStartAssistWarning = "hillStartAssistWarning"
+        case hvInterlockingStatusWarning = "hvInterlockingStatusWarning"
+        case lightingSystemFailure = "lightingSystemFailure"
+        case malfunctionIndicator = "malfunctionIndicator"
+        case motorControllerTempWarning = "motorControllerTempWarning"
+        case parkAidMalfunction = "parkAidMalfunction"
+        case passiveEntryPassiveStart = "passiveEntryPassiveStart"
+        case powertrainMalfunction = "powertrainMalfunction"
+        case restraintsIndicatorWarning = "restraintsIndicatorWarning"
+        case startStopEngineWarning = "startStopEngineWarning"
+        case tractionControlDisabled = "tractionControlDisabled"
+        case tractionControlActive = "tractionControlActive"
+        case tractionMotorTempWarning = "tractionMotorTempWarning"
+        case tirePressureMonitorSystemWarning = "tirePressureMonitorSystemWarning"
+        case waterInFuel = "waterInFuel"
+        case tireWarningFrontRight = "tireWarningFrontRight"
+        case tireWarningFrontLeft = "tireWarningFrontLeft"
+        case tireWarningRearRight = "tireWarningRearRight"
+        case tireWarningRearLeft = "tireWarningRearLeft"
+        case tireWarningSystemError = "tireWarningSystemError"
+        case batteryLowWarning = "batteryLowWarning"
+        case brakeFluidWarning = "brakeFluidWarning"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .highBeam: return 0x00
+            case .lowBeam: return 0x01
+            case .hazardWarning: return 0x02
+            case .brakeFailure: return 0x03
+            case .hatchOpen: return 0x04
+            case .fuelLevel: return 0x05
+            case .engineCoolantTemperature: return 0x06
+            case .batteryChargingCondition: return 0x07
+            case .engineOil: return 0x08
+            case .positionLights: return 0x09
+            case .frontFogLight: return 0x0a
+            case .rearFogLight: return 0x0b
+            case .parkHeating: return 0x0c
+            case .engineIndicator: return 0x0d
+            case .serviceCall: return 0x0e
+            case .transmissionFluidTemperature: return 0x0f
+            case .transmissionFailure: return 0x10
+            case .antiLockBrakeFailure: return 0x11
+            case .wornBrakeLinings: return 0x12
+            case .windscreenWasherFluid: return 0x13
+            case .tireFailure: return 0x14
+            case .engineOilLevel: return 0x15
+            case .engineCoolantLevel: return 0x16
+            case .steeringFailure: return 0x17
+            case .escIndication: return 0x18
+            case .brakeLights: return 0x19
+            case .adblueLevel: return 0x1a
+            case .fuelFilterDiffPressure: return 0x1b
+            case .seatBelt: return 0x1c
+            case .advancedBraking: return 0x1d
+            case .acc: return 0x1e
+            case .trailerConnected: return 0x1f
+            case .airbag: return 0x20
+            case .escSwitchedOff: return 0x21
+            case .laneDepartureWarningOff: return 0x22
+            case .airFilterMinder: return 0x23
+            case .airSuspensionRideControlFault: return 0x24
+            case .allWheelDriveDisabled: return 0x25
+            case .antiTheft: return 0x26
+            case .blindSpotDetection: return 0x27
+            case .chargeSystemFault: return 0x28
+            case .checkFuelCap: return 0x29
+            case .checkFuelFillInlet: return 0x2a
+            case .checkFuelFilter: return 0x2b
+            case .dcTempWarning: return 0x2c
+            case .dcWarningStatus: return 0x2d
+            case .dieselEngineIdleShutdown: return 0x2e
+            case .dieselEngineWarning: return 0x2f
+            case .dieselExhaustFluidSystemFault: return 0x30
+            case .dieselExhaustOverTemp: return 0x31
+            case .dieselExhaustFluidQuality: return 0x32
+            case .dieselFilterRegeneration: return 0x33
+            case .dieselParticulateFilter: return 0x34
+            case .dieselPreHeat: return 0x35
+            case .electricTrailerBrakeConnection: return 0x36
+            case .evBatteryCellMaxVoltWarning: return 0x37
+            case .evBatteryCellMinVoltWarning: return 0x38
+            case .evBatteryChargeEnergyStorageWarning: return 0x39
+            case .evBatteryHighLevelWarning: return 0x3a
+            case .evBatteryHighTemperatureWarning: return 0x3b
+            case .evBatteryInsulationResistWarning: return 0x3c
+            case .evBatteryJumpLevelWarning: return 0x3d
+            case .evBatteryLowLevelWarning: return 0x3e
+            case .evBatteryMaxVoltVehEnergyWarning: return 0x3f
+            case .evBatteryMinVoltVehEnergyWarning: return 0x40
+            case .evBatteryOverChargeWarning: return 0x41
+            case .evBatteryPoorCellWarning: return 0x42
+            case .evBatteryTempDiffWarning: return 0x43
+            case .forwardCollisionWarning: return 0x44
+            case .fuelDoorOpen: return 0x45
+            case .hillDescentControlFault: return 0x46
+            case .hillStartAssistWarning: return 0x47
+            case .hvInterlockingStatusWarning: return 0x48
+            case .lightingSystemFailure: return 0x49
+            case .malfunctionIndicator: return 0x4a
+            case .motorControllerTempWarning: return 0x4b
+            case .parkAidMalfunction: return 0x4c
+            case .passiveEntryPassiveStart: return 0x4d
+            case .powertrainMalfunction: return 0x4e
+            case .restraintsIndicatorWarning: return 0x4f
+            case .startStopEngineWarning: return 0x50
+            case .tractionControlDisabled: return 0x51
+            case .tractionControlActive: return 0x52
+            case .tractionMotorTempWarning: return 0x53
+            case .tirePressureMonitorSystemWarning: return 0x54
+            case .waterInFuel: return 0x55
+            case .tireWarningFrontRight: return 0x56
+            case .tireWarningFrontLeft: return 0x57
+            case .tireWarningRearRight: return 0x58
+            case .tireWarningRearLeft: return 0x59
+            case .tireWarningSystemError: return 0x5a
+            case .batteryLowWarning: return 0x5b
+            case .brakeFluidWarning: return 0x5c
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .highBeam
+            case 0x01: self = .lowBeam
+            case 0x02: self = .hazardWarning
+            case 0x03: self = .brakeFailure
+            case 0x04: self = .hatchOpen
+            case 0x05: self = .fuelLevel
+            case 0x06: self = .engineCoolantTemperature
+            case 0x07: self = .batteryChargingCondition
+            case 0x08: self = .engineOil
+            case 0x09: self = .positionLights
+            case 0x0a: self = .frontFogLight
+            case 0x0b: self = .rearFogLight
+            case 0x0c: self = .parkHeating
+            case 0x0d: self = .engineIndicator
+            case 0x0e: self = .serviceCall
+            case 0x0f: self = .transmissionFluidTemperature
+            case 0x10: self = .transmissionFailure
+            case 0x11: self = .antiLockBrakeFailure
+            case 0x12: self = .wornBrakeLinings
+            case 0x13: self = .windscreenWasherFluid
+            case 0x14: self = .tireFailure
+            case 0x15: self = .engineOilLevel
+            case 0x16: self = .engineCoolantLevel
+            case 0x17: self = .steeringFailure
+            case 0x18: self = .escIndication
+            case 0x19: self = .brakeLights
+            case 0x1a: self = .adblueLevel
+            case 0x1b: self = .fuelFilterDiffPressure
+            case 0x1c: self = .seatBelt
+            case 0x1d: self = .advancedBraking
+            case 0x1e: self = .acc
+            case 0x1f: self = .trailerConnected
+            case 0x20: self = .airbag
+            case 0x21: self = .escSwitchedOff
+            case 0x22: self = .laneDepartureWarningOff
+            case 0x23: self = .airFilterMinder
+            case 0x24: self = .airSuspensionRideControlFault
+            case 0x25: self = .allWheelDriveDisabled
+            case 0x26: self = .antiTheft
+            case 0x27: self = .blindSpotDetection
+            case 0x28: self = .chargeSystemFault
+            case 0x29: self = .checkFuelCap
+            case 0x2a: self = .checkFuelFillInlet
+            case 0x2b: self = .checkFuelFilter
+            case 0x2c: self = .dcTempWarning
+            case 0x2d: self = .dcWarningStatus
+            case 0x2e: self = .dieselEngineIdleShutdown
+            case 0x2f: self = .dieselEngineWarning
+            case 0x30: self = .dieselExhaustFluidSystemFault
+            case 0x31: self = .dieselExhaustOverTemp
+            case 0x32: self = .dieselExhaustFluidQuality
+            case 0x33: self = .dieselFilterRegeneration
+            case 0x34: self = .dieselParticulateFilter
+            case 0x35: self = .dieselPreHeat
+            case 0x36: self = .electricTrailerBrakeConnection
+            case 0x37: self = .evBatteryCellMaxVoltWarning
+            case 0x38: self = .evBatteryCellMinVoltWarning
+            case 0x39: self = .evBatteryChargeEnergyStorageWarning
+            case 0x3a: self = .evBatteryHighLevelWarning
+            case 0x3b: self = .evBatteryHighTemperatureWarning
+            case 0x3c: self = .evBatteryInsulationResistWarning
+            case 0x3d: self = .evBatteryJumpLevelWarning
+            case 0x3e: self = .evBatteryLowLevelWarning
+            case 0x3f: self = .evBatteryMaxVoltVehEnergyWarning
+            case 0x40: self = .evBatteryMinVoltVehEnergyWarning
+            case 0x41: self = .evBatteryOverChargeWarning
+            case 0x42: self = .evBatteryPoorCellWarning
+            case 0x43: self = .evBatteryTempDiffWarning
+            case 0x44: self = .forwardCollisionWarning
+            case 0x45: self = .fuelDoorOpen
+            case 0x46: self = .hillDescentControlFault
+            case 0x47: self = .hillStartAssistWarning
+            case 0x48: self = .hvInterlockingStatusWarning
+            case 0x49: self = .lightingSystemFailure
+            case 0x4a: self = .malfunctionIndicator
+            case 0x4b: self = .motorControllerTempWarning
+            case 0x4c: self = .parkAidMalfunction
+            case 0x4d: self = .passiveEntryPassiveStart
+            case 0x4e: self = .powertrainMalfunction
+            case 0x4f: self = .restraintsIndicatorWarning
+            case 0x50: self = .startStopEngineWarning
+            case 0x51: self = .tractionControlDisabled
+            case 0x52: self = .tractionControlActive
+            case 0x53: self = .tractionMotorTempWarning
+            case 0x54: self = .tirePressureMonitorSystemWarning
+            case 0x55: self = .waterInFuel
+            case 0x56: self = .tireWarningFrontRight
+            case 0x57: self = .tireWarningFrontLeft
+            case 0x58: self = .tireWarningRearRight
+            case 0x59: self = .tireWarningRearLeft
+            case 0x5a: self = .tireWarningSystemError
+            case 0x5b: self = .batteryLowWarning
+            case 0x5c: self = .brakeFluidWarning
+            default: return nil
+            }
+        }
     }
 
 

@@ -46,47 +46,237 @@ public final class AAVehicleInformation: AACapability, AAPropertyIdentifying {
 
 
     /// Display unit enum.
-    public enum DisplayUnit: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case km = 0x00
-        case miles = 0x01
+    public enum DisplayUnit: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case km = "km"
+        case miles = "miles"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .km: return 0x00
+            case .miles: return 0x01
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .km
+            case 0x01: self = .miles
+            default: return nil
+            }
+        }
     }
 
     /// Wheels driven by the engine.
-    public enum Drive: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case fwd = 0x00
-        case rwd = 0x01
-        case fourWd = 0x02
-        case awd = 0x03
+    public enum Drive: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case fwd = "fwd"
+        case rwd = "rwd"
+        case fourWd = "fourWd"
+        case awd = "awd"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .fwd: return 0x00
+            case .rwd: return 0x01
+            case .fourWd: return 0x02
+            case .awd: return 0x03
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .fwd
+            case 0x01: self = .rwd
+            case 0x02: self = .fourWd
+            case 0x03: self = .awd
+            default: return nil
+            }
+        }
     }
 
     /// Driver seat location enum.
-    public enum DriverSeatLocation: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case left = 0x00
-        case right = 0x01
-        case center = 0x02
+    public enum DriverSeatLocation: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case left = "left"
+        case right = "right"
+        case center = "center"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .left: return 0x00
+            case .right: return 0x01
+            case .center: return 0x02
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .left
+            case 0x01: self = .right
+            case 0x02: self = .center
+            default: return nil
+            }
+        }
     }
 
     /// Gearbox enum.
-    public enum Gearbox: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case manual = 0x00
-        case automatic = 0x01
-        case semiAutomatic = 0x02
+    public enum Gearbox: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case manual = "manual"
+        case automatic = "automatic"
+        case semiAutomatic = "semiAutomatic"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .manual: return 0x00
+            case .automatic: return 0x01
+            case .semiAutomatic: return 0x02
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .manual
+            case 0x01: self = .automatic
+            case 0x02: self = .semiAutomatic
+            default: return nil
+            }
+        }
     }
 
     /// Powertrain enum.
-    public enum Powertrain: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case unknown = 0x00
-        case allElectric = 0x01
-        case combustionEngine = 0x02
-        case phev = 0x03
-        case hydrogen = 0x04
-        case hydrogenHybrid = 0x05
+    public enum Powertrain: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case unknown = "unknown"
+        case allElectric = "allElectric"
+        case combustionEngine = "combustionEngine"
+        case phev = "phev"
+        case hydrogen = "hydrogen"
+        case hydrogenHybrid = "hydrogenHybrid"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .unknown: return 0x00
+            case .allElectric: return 0x01
+            case .combustionEngine: return 0x02
+            case .phev: return 0x03
+            case .hydrogen: return 0x04
+            case .hydrogenHybrid: return 0x05
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .unknown
+            case 0x01: self = .allElectric
+            case 0x02: self = .combustionEngine
+            case 0x03: self = .phev
+            case 0x04: self = .hydrogen
+            case 0x05: self = .hydrogenHybrid
+            default: return nil
+            }
+        }
     }
 
     /// The timeformat on headunit.
-    public enum Timeformat: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case twelveH = 0x00
-        case twentyFourH = 0x01
+    public enum Timeformat: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case twelveH = "twelveH"
+        case twentyFourH = "twentyFourH"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .twelveH: return 0x00
+            case .twentyFourH: return 0x01
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .twelveH
+            case 0x01: self = .twentyFourH
+            default: return nil
+            }
+        }
     }
 
 

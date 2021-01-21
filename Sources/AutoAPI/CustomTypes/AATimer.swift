@@ -36,10 +36,41 @@ import HMUtilities
 public final class AATimer: Codable, HMBytesConvertable {
 
     /// TimerType enum.
-    public enum TimerType: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case preferredStartTime = 0x00
-        case preferredEndTime = 0x01
-        case departureDate = 0x02
+    public enum TimerType: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case preferredStartTime = "preferredStartTime"
+        case preferredEndTime = "preferredEndTime"
+        case departureDate = "departureDate"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .preferredStartTime: return 0x00
+            case .preferredEndTime: return 0x01
+            case .departureDate: return 0x02
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .preferredStartTime
+            case 0x01: self = .preferredEndTime
+            case 0x02: self = .departureDate
+            default: return nil
+            }
+        }
     }
 
 

@@ -36,19 +36,85 @@ import HMUtilities
 public final class AAWebhook: Codable, HMBytesConvertable {
 
     /// If the specified webhook is available..
-    public enum Available: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case unavailable = 0x00
-        case available = 0x01
+    public enum Available: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case unavailable = "unavailable"
+        case available = "available"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .unavailable: return 0x00
+            case .available: return 0x01
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .unavailable
+            case 0x01: self = .available
+            default: return nil
+            }
+        }
     }
 
     /// Event enum.
-    public enum Event: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case ping = 0x00
-        case tripStarted = 0x01
-        case tripEnded = 0x02
-        case vehicleLocationChanged = 0x03
-        case authorizationChanged = 0x04
-        case tirePressureChanged = 0x05
+    public enum Event: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case ping = "ping"
+        case tripStarted = "tripStarted"
+        case tripEnded = "tripEnded"
+        case vehicleLocationChanged = "vehicleLocationChanged"
+        case authorizationChanged = "authorizationChanged"
+        case tirePressureChanged = "tirePressureChanged"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .ping: return 0x00
+            case .tripStarted: return 0x01
+            case .tripEnded: return 0x02
+            case .vehicleLocationChanged: return 0x03
+            case .authorizationChanged: return 0x04
+            case .tirePressureChanged: return 0x05
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .ping
+            case 0x01: self = .tripStarted
+            case 0x02: self = .tripEnded
+            case 0x03: self = .vehicleLocationChanged
+            case 0x04: self = .authorizationChanged
+            case 0x05: self = .tirePressureChanged
+            default: return nil
+            }
+        }
     }
 
 

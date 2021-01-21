@@ -316,13 +316,13 @@ final class AADiagnosticsTests: XCTestCase {
     }
     
     func testOdometer() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x33, 0x01, 0x1f, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x12, 0x05, 0x40, 0x19, 0x99, 0x99, 0x99, 0x99, 0x99, 0x9a]
+        let bytes: [UInt8] = [0x0c, 0x00, 0x33, 0x01, 0x1f, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x12, 0x04, 0x40, 0xa0, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AADiagnostics else {
             return XCTFail("Could not parse bytes as `AADiagnostics`")
         }
         
-        XCTAssertEqual(capability.odometer?.value, Measurement<UnitLength>(value: 6.4, unit: .megameters))
+        XCTAssertEqual(capability.odometer?.value, Measurement<UnitLength>(value: 2050.0, unit: .kilometers))
     }
     
     func testEngineTotalOperatingTime() {

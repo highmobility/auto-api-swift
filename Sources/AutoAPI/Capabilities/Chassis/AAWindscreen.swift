@@ -46,33 +46,161 @@ public final class AAWindscreen: AACapability, AAPropertyIdentifying {
 
 
     /// Windscreen damage enum.
-    public enum WindscreenDamage: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case noImpactDetected = 0x00
-        case impactButNoDamageDetected = 0x01
-        case damageSmallerThan1Inch = 0x02
-        case damageLargerThan1Inch = 0x03
+    public enum WindscreenDamage: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case noImpactDetected = "noImpactDetected"
+        case impactButNoDamageDetected = "impactButNoDamageDetected"
+        case damageSmallerThan1Inch = "damageSmallerThan1Inch"
+        case damageLargerThan1Inch = "damageLargerThan1Inch"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .noImpactDetected: return 0x00
+            case .impactButNoDamageDetected: return 0x01
+            case .damageSmallerThan1Inch: return 0x02
+            case .damageLargerThan1Inch: return 0x03
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .noImpactDetected
+            case 0x01: self = .impactButNoDamageDetected
+            case 0x02: self = .damageSmallerThan1Inch
+            case 0x03: self = .damageLargerThan1Inch
+            default: return nil
+            }
+        }
     }
 
     /// Windscreen needs replacement enum.
-    public enum WindscreenNeedsReplacement: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case unknown = 0x00
-        case noReplacementNeeded = 0x01
-        case replacementNeeded = 0x02
+    public enum WindscreenNeedsReplacement: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case unknown = "unknown"
+        case noReplacementNeeded = "noReplacementNeeded"
+        case replacementNeeded = "replacementNeeded"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .unknown: return 0x00
+            case .noReplacementNeeded: return 0x01
+            case .replacementNeeded: return 0x02
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .unknown
+            case 0x01: self = .noReplacementNeeded
+            case 0x02: self = .replacementNeeded
+            default: return nil
+            }
+        }
     }
 
     /// Wipers intensity enum.
-    public enum WipersIntensity: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case level0 = 0x00
-        case level1 = 0x01
-        case level2 = 0x02
-        case level3 = 0x03
+    public enum WipersIntensity: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case level0 = "level0"
+        case level1 = "level1"
+        case level2 = "level2"
+        case level3 = "level3"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .level0: return 0x00
+            case .level1: return 0x01
+            case .level2: return 0x02
+            case .level3: return 0x03
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .level0
+            case 0x01: self = .level1
+            case 0x02: self = .level2
+            case 0x03: self = .level3
+            default: return nil
+            }
+        }
     }
 
     /// Wipers status enum.
-    public enum WipersStatus: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case inactive = 0x00
-        case active = 0x01
-        case automatic = 0x02
+    public enum WipersStatus: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case inactive = "inactive"
+        case active = "active"
+        case automatic = "automatic"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .inactive: return 0x00
+            case .active: return 0x01
+            case .automatic: return 0x02
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .inactive
+            case 0x01: self = .active
+            case 0x02: self = .automatic
+            default: return nil
+            }
+        }
     }
 
 

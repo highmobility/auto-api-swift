@@ -46,8 +46,35 @@ public final class AANotifications: AACapability, AAPropertyIdentifying {
 
 
     /// Clear enum.
-    public enum Clear: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case clear = 0x00
+    public enum Clear: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case clear = "clear"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .clear: return 0x00
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .clear
+            default: return nil
+            }
+        }
     }
 
 

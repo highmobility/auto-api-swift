@@ -36,29 +36,132 @@ import HMUtilities
 public final class AADieselExhaustFilterStatus: Codable, HMBytesConvertable {
 
     /// Status enum.
-    public enum Status: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case unknown = 0x00
-        case normalOperation = 0x01
-        case overloaded = 0x02
-        case atLimit = 0x03
-        case overLimit = 0x04
+    public enum Status: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case unknown = "unknown"
+        case normalOperation = "normalOperation"
+        case overloaded = "overloaded"
+        case atLimit = "atLimit"
+        case overLimit = "overLimit"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .unknown: return 0x00
+            case .normalOperation: return 0x01
+            case .overloaded: return 0x02
+            case .atLimit: return 0x03
+            case .overLimit: return 0x04
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .unknown
+            case 0x01: self = .normalOperation
+            case 0x02: self = .overloaded
+            case 0x03: self = .atLimit
+            case 0x04: self = .overLimit
+            default: return nil
+            }
+        }
     }
 
     /// Component enum.
-    public enum Component: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case unknown = 0x00
-        case exhaustFilter = 0x01
-        case dieselParticulateFilter = 0x02
-        case overboostCodeRegulator = 0x03
-        case offBoardRegeneration = 0x04
+    public enum Component: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case unknown = "unknown"
+        case exhaustFilter = "exhaustFilter"
+        case dieselParticulateFilter = "dieselParticulateFilter"
+        case overboostCodeRegulator = "overboostCodeRegulator"
+        case offBoardRegeneration = "offBoardRegeneration"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .unknown: return 0x00
+            case .exhaustFilter: return 0x01
+            case .dieselParticulateFilter: return 0x02
+            case .overboostCodeRegulator: return 0x03
+            case .offBoardRegeneration: return 0x04
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .unknown
+            case 0x01: self = .exhaustFilter
+            case 0x02: self = .dieselParticulateFilter
+            case 0x03: self = .overboostCodeRegulator
+            case 0x04: self = .offBoardRegeneration
+            default: return nil
+            }
+        }
     }
 
     /// Cleaning enum.
-    public enum Cleaning: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case unknown = 0x00
-        case inProgress = 0x01
-        case complete = 0x02
-        case interrupted = 0x03
+    public enum Cleaning: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case unknown = "unknown"
+        case inProgress = "inProgress"
+        case complete = "complete"
+        case interrupted = "interrupted"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .unknown: return 0x00
+            case .inProgress: return 0x01
+            case .complete: return 0x02
+            case .interrupted: return 0x03
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .unknown
+            case 0x01: self = .inProgress
+            case 0x02: self = .complete
+            case 0x03: self = .interrupted
+            default: return nil
+            }
+        }
     }
 
 

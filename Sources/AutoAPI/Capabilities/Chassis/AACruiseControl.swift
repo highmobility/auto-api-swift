@@ -46,11 +46,44 @@ public final class AACruiseControl: AACapability, AAPropertyIdentifying {
 
 
     /// Limiter enum.
-    public enum Limiter: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case notSet = 0x00
-        case higherSpeedRequested = 0x01
-        case lowerSpeedRequested = 0x02
-        case speedFixed = 0x03
+    public enum Limiter: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case notSet = "notSet"
+        case higherSpeedRequested = "higherSpeedRequested"
+        case lowerSpeedRequested = "lowerSpeedRequested"
+        case speedFixed = "speedFixed"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .notSet: return 0x00
+            case .higherSpeedRequested: return 0x01
+            case .lowerSpeedRequested: return 0x02
+            case .speedFixed: return 0x03
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .notSet
+            case 0x01: self = .higherSpeedRequested
+            case 0x02: self = .lowerSpeedRequested
+            case 0x03: self = .speedFixed
+            default: return nil
+            }
+        }
     }
 
 

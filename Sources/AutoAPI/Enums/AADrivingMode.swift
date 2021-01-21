@@ -34,11 +34,48 @@ import HMUtilities
 
 
 /// Driving mode enum.
-public enum AADrivingMode: UInt8, CaseIterable, Codable, HMBytesConvertable {
-    case regular = 0x00
-    case eco = 0x01
-    case sport = 0x02
-    case sportPlus = 0x03
-    case ecoplus = 0x04
-    case comfort = 0x05
+public enum AADrivingMode: String, CaseIterable, Codable, HMBytesConvertable {
+
+    case regular = "regular"
+    case eco = "eco"
+    case sport = "sport"
+    case sportPlus = "sportPlus"
+    case ecoplus = "ecoplus"
+    case comfort = "comfort"
+
+
+    public var byteValue: UInt8 {
+        switch self {
+        case .regular: return 0x00
+        case .eco: return 0x01
+        case .sport: return 0x02
+        case .sportPlus: return 0x03
+        case .ecoplus: return 0x04
+        case .comfort: return 0x05
+        }
+    }
+
+
+    // MARK: HMBytesConvertable
+
+    public var bytes: [UInt8] {
+        [byteValue]
+    }
+
+
+    public init?(bytes: [UInt8]) {
+        guard let uint8 = UInt8(bytes: bytes) else {
+            return nil
+        }
+
+        switch uint8 {
+        case 0x00: self = .regular
+        case 0x01: self = .eco
+        case 0x02: self = .sport
+        case 0x03: self = .sportPlus
+        case 0x04: self = .ecoplus
+        case 0x05: self = .comfort
+        default: return nil
+        }
+    }
 }

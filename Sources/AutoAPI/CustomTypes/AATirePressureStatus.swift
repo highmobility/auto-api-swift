@@ -36,10 +36,41 @@ import HMUtilities
 public final class AATirePressureStatus: Codable, HMBytesConvertable {
 
     /// Status enum.
-    public enum Status: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case normal = 0x00
-        case low = 0x01
-        case alert = 0x02
+    public enum Status: String, CaseIterable, Codable, HMBytesConvertable {
+    
+        case normal = "normal"
+        case low = "low"
+        case alert = "alert"
+    
+    
+        public var byteValue: UInt8 {
+            switch self {
+            case .normal: return 0x00
+            case .low: return 0x01
+            case .alert: return 0x02
+            }
+        }
+    
+    
+        // MARK: HMBytesConvertable
+    
+        public var bytes: [UInt8] {
+            [byteValue]
+        }
+    
+    
+        public init?(bytes: [UInt8]) {
+            guard let uint8 = UInt8(bytes: bytes) else {
+                return nil
+            }
+    
+            switch uint8 {
+            case 0x00: self = .normal
+            case 0x01: self = .low
+            case 0x02: self = .alert
+            default: return nil
+            }
+        }
     }
 
 
