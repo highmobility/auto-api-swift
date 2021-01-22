@@ -36,12 +36,12 @@ import HMUtilities
 /// Driving mode enum.
 public enum AADrivingMode: String, CaseIterable, Codable, HMBytesConvertable {
 
-    case regular = "regular"
-    case eco = "eco"
-    case sport = "sport"
-    case sportPlus = "sportPlus"
-    case ecoplus = "ecoplus"
-    case comfort = "comfort"
+    case comfort
+    case eco
+    case ecoplus
+    case regular
+    case sport
+    case sportPlus
 
 
     public var byteValue: UInt8 {

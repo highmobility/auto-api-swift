@@ -36,9 +36,9 @@ import HMUtilities
 /// Grade enum.
 public enum AAGrade: String, CaseIterable, Codable, HMBytesConvertable {
 
-    case excellent = "excellent"
-    case normal = "normal"
-    case warning = "warning"
+    case excellent
+    case normal
+    case warning
 
 
     public var byteValue: UInt8 {

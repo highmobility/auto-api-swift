@@ -35,6 +35,9 @@ import HMUtilities
 
 public final class AAKeyfobPosition: AACapability, AAPropertyIdentifying {
 
+    public typealias Location = AAKeyfobPositionLocation
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AAKeyfobPosition` was introduced to the spec.
@@ -42,54 +45,6 @@ public final class AAKeyfobPosition: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AAKeyfobPosition` was last updated.
         public static let updated: UInt8 = 11
-    }
-
-
-    /// Location enum.
-    public enum Location: String, CaseIterable, Codable, HMBytesConvertable {
-    
-        case outOfRange = "outOfRange"
-        case outsideDriverSide = "outsideDriverSide"
-        case outsideInFrontOfCar = "outsideInFrontOfCar"
-        case outsidePassengerSide = "outsidePassengerSide"
-        case outsideBehindCar = "outsideBehindCar"
-        case insideCar = "insideCar"
-    
-    
-        public var byteValue: UInt8 {
-            switch self {
-            case .outOfRange: return 0x00
-            case .outsideDriverSide: return 0x01
-            case .outsideInFrontOfCar: return 0x02
-            case .outsidePassengerSide: return 0x03
-            case .outsideBehindCar: return 0x04
-            case .insideCar: return 0x05
-            }
-        }
-    
-    
-        // MARK: HMBytesConvertable
-    
-        public var bytes: [UInt8] {
-            [byteValue]
-        }
-    
-    
-        public init?(bytes: [UInt8]) {
-            guard let uint8 = UInt8(bytes: bytes) else {
-                return nil
-            }
-    
-            switch uint8 {
-            case 0x00: self = .outOfRange
-            case 0x01: self = .outsideDriverSide
-            case 0x02: self = .outsideInFrontOfCar
-            case 0x03: self = .outsidePassengerSide
-            case 0x04: self = .outsideBehindCar
-            case 0x05: self = .insideCar
-            default: return nil
-            }
-        }
     }
 
 

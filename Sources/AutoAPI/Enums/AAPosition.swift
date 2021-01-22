@@ -36,8 +36,8 @@ import HMUtilities
 /// Position enum.
 public enum AAPosition: String, CaseIterable, Codable, HMBytesConvertable {
 
-    case closed = "closed"
-    case open = "open"
+    case closed
+    case open
 
 
     public var byteValue: UInt8 {

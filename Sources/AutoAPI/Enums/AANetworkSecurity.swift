@@ -36,10 +36,10 @@ import HMUtilities
 /// Network security enum.
 public enum AANetworkSecurity: String, CaseIterable, Codable, HMBytesConvertable {
 
-    case none = "none"
-    case wep = "wep"
-    case wpa = "wpa"
-    case wpa2Personal = "wpa2Personal"
+    case none
+    case wep
+    case wpa
+    case wpa2Personal
 
 
     public var byteValue: UInt8 {

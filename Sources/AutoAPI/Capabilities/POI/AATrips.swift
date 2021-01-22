@@ -35,6 +35,9 @@ import HMUtilities
 
 public final class AATrips: AACapability, AAPropertyIdentifying {
 
+    public typealias TypeOf = AATripsType
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AATrips` was introduced to the spec.
@@ -42,42 +45,6 @@ public final class AATrips: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AATrips` was last updated.
         public static let updated: UInt8 = 12
-    }
-
-
-    /// Type of the trip.
-    public enum TypeOf: String, CaseIterable, Codable, HMBytesConvertable {
-    
-        case single = "single"
-        case multi = "multi"
-    
-    
-        public var byteValue: UInt8 {
-            switch self {
-            case .single: return 0x00
-            case .multi: return 0x01
-            }
-        }
-    
-    
-        // MARK: HMBytesConvertable
-    
-        public var bytes: [UInt8] {
-            [byteValue]
-        }
-    
-    
-        public init?(bytes: [UInt8]) {
-            guard let uint8 = UInt8(bytes: bytes) else {
-                return nil
-            }
-    
-            switch uint8 {
-            case 0x00: self = .single
-            case 0x01: self = .multi
-            default: return nil
-            }
-        }
     }
 
 

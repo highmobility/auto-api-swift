@@ -36,11 +36,11 @@ import HMUtilities
 /// Seat location enum.
 public enum AASeatLocation: String, CaseIterable, Codable, HMBytesConvertable {
 
-    case frontLeft = "frontLeft"
-    case frontRight = "frontRight"
-    case rearRight = "rearRight"
-    case rearLeft = "rearLeft"
-    case rearCenter = "rearCenter"
+    case frontLeft
+    case frontRight
+    case rearCenter
+    case rearLeft
+    case rearRight
 
 
     public var byteValue: UInt8 {

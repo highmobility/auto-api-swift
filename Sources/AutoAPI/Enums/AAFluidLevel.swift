@@ -36,8 +36,8 @@ import HMUtilities
 /// Fluid level enum.
 public enum AAFluidLevel: String, CaseIterable, Codable, HMBytesConvertable {
 
-    case low = "low"
-    case filled = "filled"
+    case filled
+    case low
 
 
     public var byteValue: UInt8 {

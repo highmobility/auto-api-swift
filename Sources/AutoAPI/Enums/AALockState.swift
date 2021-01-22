@@ -36,8 +36,8 @@ import HMUtilities
 /// Lock state enum.
 public enum AALockState: String, CaseIterable, Codable, HMBytesConvertable {
 
-    case unlocked = "unlocked"
-    case locked = "locked"
+    case locked
+    case unlocked
 
 
     public var byteValue: UInt8 {

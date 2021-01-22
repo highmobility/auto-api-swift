@@ -46,7 +46,7 @@ final class AAHonkHornFlashLightsTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAHonkHornFlashLights`")
         }
         
-        XCTAssertEqual(capability.flashers?.value, AAHonkHornFlashLights.Flashers.leftFlasherActive)
+        XCTAssertEqual(capability.flashers?.value, Flashers.leftFlasherActive)
     }
 
 

@@ -36,8 +36,8 @@ import HMUtilities
 /// Active state enum.
 public enum AAActiveState: String, CaseIterable, Codable, HMBytesConvertable {
 
-    case inactive = "inactive"
-    case active = "active"
+    case active
+    case inactive
 
 
     public var byteValue: UInt8 {

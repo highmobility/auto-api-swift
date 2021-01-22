@@ -36,9 +36,9 @@ import HMUtilities
 /// Active selected state enum.
 public enum AAActiveSelectedState: String, CaseIterable, Codable, HMBytesConvertable {
 
-    case inactiveSelected = "inactiveSelected"
-    case inactiveNotSelected = "inactiveNotSelected"
-    case active = "active"
+    case active
+    case inactiveNotSelected
+    case inactiveSelected
 
 
     public var byteValue: UInt8 {

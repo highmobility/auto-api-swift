@@ -35,6 +35,9 @@ import HMUtilities
 
 public final class AANotifications: AACapability, AAPropertyIdentifying {
 
+    public typealias Clear = AANotificationsClear
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AANotifications` was introduced to the spec.
@@ -42,39 +45,6 @@ public final class AANotifications: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AANotifications` was last updated.
         public static let updated: UInt8 = 11
-    }
-
-
-    /// Clear enum.
-    public enum Clear: String, CaseIterable, Codable, HMBytesConvertable {
-    
-        case clear = "clear"
-    
-    
-        public var byteValue: UInt8 {
-            switch self {
-            case .clear: return 0x00
-            }
-        }
-    
-    
-        // MARK: HMBytesConvertable
-    
-        public var bytes: [UInt8] {
-            [byteValue]
-        }
-    
-    
-        public init?(bytes: [UInt8]) {
-            guard let uint8 = UInt8(bytes: bytes) else {
-                return nil
-            }
-    
-            switch uint8 {
-            case 0x00: self = .clear
-            default: return nil
-            }
-        }
     }
 
 

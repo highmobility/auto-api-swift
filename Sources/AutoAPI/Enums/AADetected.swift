@@ -36,8 +36,8 @@ import HMUtilities
 /// Detected enum.
 public enum AADetected: String, CaseIterable, Codable, HMBytesConvertable {
 
-    case notDetected = "notDetected"
-    case detected = "detected"
+    case detected
+    case notDetected
 
 
     public var byteValue: UInt8 {

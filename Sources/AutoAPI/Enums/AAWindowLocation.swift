@@ -36,11 +36,11 @@ import HMUtilities
 /// Window location enum.
 public enum AAWindowLocation: String, CaseIterable, Codable, HMBytesConvertable {
 
-    case frontLeft = "frontLeft"
-    case frontRight = "frontRight"
-    case rearRight = "rearRight"
-    case rearLeft = "rearLeft"
-    case hatch = "hatch"
+    case frontLeft
+    case frontRight
+    case hatch
+    case rearLeft
+    case rearRight
 
 
     public var byteValue: UInt8 {

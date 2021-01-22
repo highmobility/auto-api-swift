@@ -35,6 +35,9 @@ import HMUtilities
 
 public final class AAChassisSettings: AACapability, AAPropertyIdentifying {
 
+    public typealias SportChrono = AAChassisSettingsSportChrono
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AAChassisSettings` was introduced to the spec.
@@ -42,45 +45,6 @@ public final class AAChassisSettings: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AAChassisSettings` was last updated.
         public static let updated: UInt8 = 12
-    }
-
-
-    /// Sport chrono enum.
-    public enum SportChrono: String, CaseIterable, Codable, HMBytesConvertable {
-    
-        case inactive = "inactive"
-        case active = "active"
-        case reset = "reset"
-    
-    
-        public var byteValue: UInt8 {
-            switch self {
-            case .inactive: return 0x00
-            case .active: return 0x01
-            case .reset: return 0x02
-            }
-        }
-    
-    
-        // MARK: HMBytesConvertable
-    
-        public var bytes: [UInt8] {
-            [byteValue]
-        }
-    
-    
-        public init?(bytes: [UInt8]) {
-            guard let uint8 = UInt8(bytes: bytes) else {
-                return nil
-            }
-    
-            switch uint8 {
-            case 0x00: self = .inactive
-            case 0x01: self = .active
-            case 0x02: self = .reset
-            default: return nil
-            }
-        }
     }
 
 

@@ -42,11 +42,11 @@ final class AAWakeUpTests: XCTestCase {
     func testStatus() {
         let bytes: [UInt8] = [0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
         
-        guard let property: AAProperty<AAWakeUp.Status> = AAOpaqueProperty(bytes: bytes)?.property() else {
+        guard let property: AAProperty<Status> = AAOpaqueProperty(bytes: bytes)?.property() else {
             return XCTFail("Could not create a property for `.status`")
         }
         
-        XCTAssertEqual(property.value, AAWakeUp.Status.wakeUp)
+        XCTAssertEqual(property.value, Status.wakeUp)
     }
 
 

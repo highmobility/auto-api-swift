@@ -66,7 +66,7 @@ final class AAIgnitionTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAIgnition`")
         }
         
-        XCTAssertEqual(capability.state?.value, AAIgnition.State.accessory)
+        XCTAssertEqual(capability.state?.value, State.accessory)
     }
 
 

@@ -35,55 +35,7 @@ import HMUtilities
 
 public final class AAFailure: Codable, HMBytesConvertable {
 
-    /// Reason.
-    public enum Reason: String, CaseIterable, Codable, HMBytesConvertable {
-    
-        case rateLimit = "rateLimit"
-        case executionTimeout = "executionTimeout"
-        case formatError = "formatError"
-        case unauthorised = "unauthorised"
-        case unknown = "unknown"
-        case pending = "pending"
-        case oemError = "oemError"
-    
-    
-        public var byteValue: UInt8 {
-            switch self {
-            case .rateLimit: return 0x00
-            case .executionTimeout: return 0x01
-            case .formatError: return 0x02
-            case .unauthorised: return 0x03
-            case .unknown: return 0x04
-            case .pending: return 0x05
-            case .oemError: return 0x06
-            }
-        }
-    
-    
-        // MARK: HMBytesConvertable
-    
-        public var bytes: [UInt8] {
-            [byteValue]
-        }
-    
-    
-        public init?(bytes: [UInt8]) {
-            guard let uint8 = UInt8(bytes: bytes) else {
-                return nil
-            }
-    
-            switch uint8 {
-            case 0x00: self = .rateLimit
-            case 0x01: self = .executionTimeout
-            case 0x02: self = .formatError
-            case 0x03: self = .unauthorised
-            case 0x04: self = .unknown
-            case 0x05: self = .pending
-            case 0x06: self = .oemError
-            default: return nil
-            }
-        }
-    }
+    public typealias Reason = AAFailureReason
 
 
     /// Reason.

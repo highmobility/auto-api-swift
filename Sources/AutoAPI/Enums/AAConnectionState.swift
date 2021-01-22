@@ -36,8 +36,8 @@ import HMUtilities
 /// Connection state enum.
 public enum AAConnectionState: String, CaseIterable, Codable, HMBytesConvertable {
 
-    case disconnected = "disconnected"
-    case connected = "connected"
+    case connected
+    case disconnected
 
 
     public var byteValue: UInt8 {

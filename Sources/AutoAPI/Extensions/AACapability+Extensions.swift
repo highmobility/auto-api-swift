@@ -50,7 +50,7 @@ public extension AACapability {
         properties.property(id: AAUniversalPropertyType.vin)
     }
 
-    var brand: AAProperty<AABrand>? {
-        properties.property(id: AAUniversalPropertyType.brand)
-    }
+//    var brand: AAProperty<Brand>? {
+//        properties.property(id: AAUniversalPropertyType.brand)
+//    }
 }

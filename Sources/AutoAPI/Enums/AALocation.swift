@@ -36,10 +36,10 @@ import HMUtilities
 /// Location enum.
 public enum AALocation: String, CaseIterable, Codable, HMBytesConvertable {
 
-    case frontLeft = "frontLeft"
-    case frontRight = "frontRight"
-    case rearRight = "rearRight"
-    case rearLeft = "rearLeft"
+    case frontLeft
+    case frontRight
+    case rearLeft
+    case rearRight
 
 
     public var byteValue: UInt8 {

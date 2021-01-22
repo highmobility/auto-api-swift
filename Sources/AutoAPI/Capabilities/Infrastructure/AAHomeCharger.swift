@@ -35,6 +35,12 @@ import HMUtilities
 
 public final class AAHomeCharger: AACapability, AAPropertyIdentifying {
 
+    public typealias ChargingStatus = AAHomeChargerChargingStatus
+    public typealias AuthenticationMechanism = AAHomeChargerAuthenticationMechanism
+    public typealias PlugType = AAHomeChargerPlugType
+    public typealias AuthenticationState = AAHomeChargerAuthenticationState
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AAHomeCharger` was introduced to the spec.
@@ -42,156 +48,6 @@ public final class AAHomeCharger: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AAHomeCharger` was last updated.
         public static let updated: UInt8 = 12
-    }
-
-
-    /// Authentication mechanism enum.
-    public enum AuthenticationMechanism: String, CaseIterable, Codable, HMBytesConvertable {
-    
-        case pin = "pin"
-        case app = "app"
-    
-    
-        public var byteValue: UInt8 {
-            switch self {
-            case .pin: return 0x00
-            case .app: return 0x01
-            }
-        }
-    
-    
-        // MARK: HMBytesConvertable
-    
-        public var bytes: [UInt8] {
-            [byteValue]
-        }
-    
-    
-        public init?(bytes: [UInt8]) {
-            guard let uint8 = UInt8(bytes: bytes) else {
-                return nil
-            }
-    
-            switch uint8 {
-            case 0x00: self = .pin
-            case 0x01: self = .app
-            default: return nil
-            }
-        }
-    }
-
-    /// Authentication state enum.
-    public enum AuthenticationState: String, CaseIterable, Codable, HMBytesConvertable {
-    
-        case unauthenticated = "unauthenticated"
-        case authenticated = "authenticated"
-    
-    
-        public var byteValue: UInt8 {
-            switch self {
-            case .unauthenticated: return 0x00
-            case .authenticated: return 0x01
-            }
-        }
-    
-    
-        // MARK: HMBytesConvertable
-    
-        public var bytes: [UInt8] {
-            [byteValue]
-        }
-    
-    
-        public init?(bytes: [UInt8]) {
-            guard let uint8 = UInt8(bytes: bytes) else {
-                return nil
-            }
-    
-            switch uint8 {
-            case 0x00: self = .unauthenticated
-            case 0x01: self = .authenticated
-            default: return nil
-            }
-        }
-    }
-
-    /// Charging status enum.
-    public enum ChargingStatus: String, CaseIterable, Codable, HMBytesConvertable {
-    
-        case disconnected = "disconnected"
-        case pluggedIn = "pluggedIn"
-        case charging = "charging"
-    
-    
-        public var byteValue: UInt8 {
-            switch self {
-            case .disconnected: return 0x00
-            case .pluggedIn: return 0x01
-            case .charging: return 0x02
-            }
-        }
-    
-    
-        // MARK: HMBytesConvertable
-    
-        public var bytes: [UInt8] {
-            [byteValue]
-        }
-    
-    
-        public init?(bytes: [UInt8]) {
-            guard let uint8 = UInt8(bytes: bytes) else {
-                return nil
-            }
-    
-            switch uint8 {
-            case 0x00: self = .disconnected
-            case 0x01: self = .pluggedIn
-            case 0x02: self = .charging
-            default: return nil
-            }
-        }
-    }
-
-    /// Plug type enum.
-    public enum PlugType: String, CaseIterable, Codable, HMBytesConvertable {
-    
-        case type1 = "type1"
-        case type2 = "type2"
-        case ccs = "ccs"
-        case chademo = "chademo"
-    
-    
-        public var byteValue: UInt8 {
-            switch self {
-            case .type1: return 0x00
-            case .type2: return 0x01
-            case .ccs: return 0x02
-            case .chademo: return 0x03
-            }
-        }
-    
-    
-        // MARK: HMBytesConvertable
-    
-        public var bytes: [UInt8] {
-            [byteValue]
-        }
-    
-    
-        public init?(bytes: [UInt8]) {
-            guard let uint8 = UInt8(bytes: bytes) else {
-                return nil
-            }
-    
-            switch uint8 {
-            case 0x00: self = .type1
-            case 0x01: self = .type2
-            case 0x02: self = .ccs
-            case 0x03: self = .chademo
-            default: return nil
-            }
-        }
     }
 
 

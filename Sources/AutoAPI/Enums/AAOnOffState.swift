@@ -36,8 +36,8 @@ import HMUtilities
 /// On-Off State enum.
 public enum AAOnOffState: String, CaseIterable, Codable, HMBytesConvertable {
 
-    case off = "off"
-    case on = "on"
+    case off
+    case on
 
 
     public var byteValue: UInt8 {

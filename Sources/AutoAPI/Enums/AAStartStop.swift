@@ -36,8 +36,8 @@ import HMUtilities
 /// Start-Stop enum.
 public enum AAStartStop: String, CaseIterable, Codable, HMBytesConvertable {
 
-    case start = "start"
-    case stop = "stop"
+    case start
+    case stop
 
 
     public var byteValue: UInt8 {

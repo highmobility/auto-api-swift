@@ -36,12 +36,12 @@ import HMUtilities
 /// Location wheel enum.
 public enum AALocationWheel: String, CaseIterable, Codable, HMBytesConvertable {
 
-    case frontLeft = "frontLeft"
-    case frontRight = "frontRight"
-    case rearRight = "rearRight"
-    case rearLeft = "rearLeft"
-    case rearRightOuter = "rearRightOuter"
-    case rearLeftOuter = "rearLeftOuter"
+    case frontLeft
+    case frontRight
+    case rearLeft
+    case rearLeftOuter
+    case rearRight
+    case rearRightOuter
 
 
     public var byteValue: UInt8 {

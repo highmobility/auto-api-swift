@@ -36,8 +36,8 @@ import HMUtilities
 /// Axle enum.
 public enum AAAxle: String, CaseIterable, Codable, HMBytesConvertable {
 
-    case front = "front"
-    case rear = "rear"
+    case front
+    case rear
 
 
     public var byteValue: UInt8 {

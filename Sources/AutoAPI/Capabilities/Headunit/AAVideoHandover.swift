@@ -35,6 +35,9 @@ import HMUtilities
 
 public final class AAVideoHandover: AACapability, AAPropertyIdentifying {
 
+    public typealias Screen = AAVideoHandoverScreen
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AAVideoHandover` was introduced to the spec.
@@ -42,42 +45,6 @@ public final class AAVideoHandover: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AAVideoHandover` was last updated.
         public static let updated: UInt8 = 12
-    }
-
-
-    /// Screen enum.
-    public enum Screen: String, CaseIterable, Codable, HMBytesConvertable {
-    
-        case front = "front"
-        case rear = "rear"
-    
-    
-        public var byteValue: UInt8 {
-            switch self {
-            case .front: return 0x00
-            case .rear: return 0x01
-            }
-        }
-    
-    
-        // MARK: HMBytesConvertable
-    
-        public var bytes: [UInt8] {
-            [byteValue]
-        }
-    
-    
-        public init?(bytes: [UInt8]) {
-            guard let uint8 = UInt8(bytes: bytes) else {
-                return nil
-            }
-    
-            switch uint8 {
-            case 0x00: self = .front
-            case 0x01: self = .rear
-            default: return nil
-            }
-        }
     }
 
 

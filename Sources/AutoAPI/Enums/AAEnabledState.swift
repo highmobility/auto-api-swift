@@ -36,8 +36,8 @@ import HMUtilities
 /// Enabled state enum.
 public enum AAEnabledState: String, CaseIterable, Codable, HMBytesConvertable {
 
-    case disabled = "disabled"
-    case enabled = "enabled"
+    case disabled
+    case enabled
 
 
     public var byteValue: UInt8 {

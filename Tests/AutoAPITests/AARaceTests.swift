@@ -158,7 +158,7 @@ final class AARaceTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AARace`")
         }
         
-        XCTAssertEqual(capability.gearMode?.value, AARace.GearMode.drive)
+        XCTAssertEqual(capability.gearMode?.value, GearMode.drive)
     }
     
     func testSelectedGear() {
@@ -228,7 +228,7 @@ final class AARaceTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AARace`")
         }
         
-        XCTAssertEqual(capability.vehicleMoving?.value, AARace.VehicleMoving.moving)
+        XCTAssertEqual(capability.vehicleMoving?.value, VehicleMoving.moving)
     }
 
 

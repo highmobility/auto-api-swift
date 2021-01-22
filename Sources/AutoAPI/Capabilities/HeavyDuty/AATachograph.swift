@@ -35,6 +35,10 @@ import HMUtilities
 
 public final class AATachograph: AACapability, AAPropertyIdentifying {
 
+    public typealias VehicleOverspeed = AATachographVehicleOverspeed
+    public typealias VehicleDirection = AATachographVehicleDirection
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AATachograph` was introduced to the spec.
@@ -42,77 +46,6 @@ public final class AATachograph: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AATachograph` was last updated.
         public static let updated: UInt8 = 12
-    }
-
-
-    /// Vehicle direction enum.
-    public enum VehicleDirection: String, CaseIterable, Codable, HMBytesConvertable {
-    
-        case forward = "forward"
-        case reverse = "reverse"
-    
-    
-        public var byteValue: UInt8 {
-            switch self {
-            case .forward: return 0x00
-            case .reverse: return 0x01
-            }
-        }
-    
-    
-        // MARK: HMBytesConvertable
-    
-        public var bytes: [UInt8] {
-            [byteValue]
-        }
-    
-    
-        public init?(bytes: [UInt8]) {
-            guard let uint8 = UInt8(bytes: bytes) else {
-                return nil
-            }
-    
-            switch uint8 {
-            case 0x00: self = .forward
-            case 0x01: self = .reverse
-            default: return nil
-            }
-        }
-    }
-
-    /// Vehicle overspeed enum.
-    public enum VehicleOverspeed: String, CaseIterable, Codable, HMBytesConvertable {
-    
-        case noOverspeed = "noOverspeed"
-        case overspeed = "overspeed"
-    
-    
-        public var byteValue: UInt8 {
-            switch self {
-            case .noOverspeed: return 0x00
-            case .overspeed: return 0x01
-            }
-        }
-    
-    
-        // MARK: HMBytesConvertable
-    
-        public var bytes: [UInt8] {
-            [byteValue]
-        }
-    
-    
-        public init?(bytes: [UInt8]) {
-            guard let uint8 = UInt8(bytes: bytes) else {
-                return nil
-            }
-    
-            switch uint8 {
-            case 0x00: self = .noOverspeed
-            case 0x01: self = .overspeed
-            default: return nil
-            }
-        }
     }
 
 

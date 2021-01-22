@@ -36,14 +36,14 @@ import HMUtilities
 /// Weekday enum.
 public enum AAWeekday: String, CaseIterable, Codable, HMBytesConvertable {
 
-    case monday = "monday"
-    case tuesday = "tuesday"
-    case wednesday = "wednesday"
-    case thursday = "thursday"
-    case friday = "friday"
-    case saturday = "saturday"
-    case sunday = "sunday"
-    case automatic = "automatic"
+    case automatic
+    case friday
+    case monday
+    case saturday
+    case sunday
+    case thursday
+    case tuesday
+    case wednesday
 
 
     public var byteValue: UInt8 {

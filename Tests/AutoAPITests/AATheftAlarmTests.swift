@@ -46,7 +46,7 @@ final class AATheftAlarmTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AATheftAlarm`")
         }
         
-        XCTAssertEqual(capability.status?.value, AATheftAlarm.Status.armed)
+        XCTAssertEqual(capability.status?.value, Status.armed)
     }
     
     func testInteriorProtectionStatus() {
@@ -76,7 +76,7 @@ final class AATheftAlarmTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AATheftAlarm`")
         }
         
-        XCTAssertEqual(capability.lastWarningReason?.value, AATheftAlarm.LastWarningReason.hood)
+        XCTAssertEqual(capability.lastWarningReason?.value, LastWarningReason.hood)
     }
     
     func testLastEvent() {
@@ -97,7 +97,7 @@ final class AATheftAlarmTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AATheftAlarm`")
         }
         
-        XCTAssertEqual(capability.lastEventLevel?.value, AATheftAlarm.LastEventLevel.low)
+        XCTAssertEqual(capability.lastEventLevel?.value, LastEventLevel.low)
     }
     
     func testEventType() {
@@ -107,7 +107,7 @@ final class AATheftAlarmTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AATheftAlarm`")
         }
         
-        XCTAssertEqual(capability.eventType?.value, AATheftAlarm.EventType.rearRight)
+        XCTAssertEqual(capability.eventType?.value, EventType.rearRight)
     }
 
 
@@ -144,7 +144,7 @@ final class AATheftAlarmTests: XCTestCase {
     
     func testSetTheftAlarm() {
         let bytes: [UInt8] = [0x0c, 0x00, 0x46, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
-        let setterBytes = AATheftAlarm.setTheftAlarm(status: AATheftAlarm.Status.armed)
+        let setterBytes = AATheftAlarm.setTheftAlarm(status: Status.armed)
         
         XCTAssertEqual(bytes, setterBytes)
     }
