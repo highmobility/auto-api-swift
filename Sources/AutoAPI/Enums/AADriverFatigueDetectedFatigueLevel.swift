@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Detected fatigue level enum.
+/// Detected fatigue level.
 public enum AADriverFatigueDetectedFatigueLevel: String, CaseIterable, Codable, HMBytesConvertable {
 
     case actionNeeded

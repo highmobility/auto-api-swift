@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Windscreen needs replacement enum.
+/// Windscreen needs replacement.
 public enum AAWindscreenWindscreenNeedsReplacement: String, CaseIterable, Codable, HMBytesConvertable {
 
     case noReplacementNeeded

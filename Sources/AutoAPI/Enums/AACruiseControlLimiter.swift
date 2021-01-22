@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Limiter enum.
+/// Limiter.
 public enum AACruiseControlLimiter: String, CaseIterable, Codable, HMBytesConvertable {
 
     case higherSpeedRequested

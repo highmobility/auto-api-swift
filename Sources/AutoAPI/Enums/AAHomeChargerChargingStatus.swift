@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Charging status enum.
+/// Charging status.
 public enum AAHomeChargerChargingStatus: String, CaseIterable, Codable, HMBytesConvertable {
 
     case charging

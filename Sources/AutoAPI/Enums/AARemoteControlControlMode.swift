@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Control mode enum.
+/// Control mode.
 public enum AARemoteControlControlMode: String, CaseIterable, Codable, HMBytesConvertable {
 
     case aborted

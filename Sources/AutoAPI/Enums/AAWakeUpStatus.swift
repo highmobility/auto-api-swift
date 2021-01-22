@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Status enum.
+/// Status.
 public enum AAWakeUpStatus: String, CaseIterable, Codable, HMBytesConvertable {
 
     case sleep

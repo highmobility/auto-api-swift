@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Flashers enum.
+/// Flashers.
 public enum AAHonkHornFlashLightsFlashers: String, CaseIterable, Codable, HMBytesConvertable {
 
     case emergencyFlasherActive

@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Location enum.
+/// Location.
 public enum AAKeyfobPositionLocation: String, CaseIterable, Codable, HMBytesConvertable {
 
     case insideCar

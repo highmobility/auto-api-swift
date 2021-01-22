@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Wipers status enum.
+/// Wipers status.
 public enum AAWindscreenWipersStatus: String, CaseIterable, Codable, HMBytesConvertable {
 
     case active

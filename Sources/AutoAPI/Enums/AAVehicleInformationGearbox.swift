@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Gearbox enum.
+/// Gearbox.
 public enum AAVehicleInformationGearbox: String, CaseIterable, Codable, HMBytesConvertable {
 
     case automatic

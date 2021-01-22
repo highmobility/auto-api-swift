@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Failure reason enum.
+/// Failure reason.
 public enum AAFailureMessageFailureReason: String, CaseIterable, Codable, HMBytesConvertable {
 
     case executionTimeout

@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Vehicle moving enum.
+/// Vehicle moving.
 public enum AARaceVehicleMoving: String, CaseIterable, Codable, HMBytesConvertable {
 
     case moving

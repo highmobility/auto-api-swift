@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Front exterior light enum.
+/// Front exterior light.
 public enum AALightsFrontExteriorLight: String, CaseIterable, Codable, HMBytesConvertable {
 
     case active

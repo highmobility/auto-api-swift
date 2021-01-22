@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Status enum.
+/// Status.
 public enum AAParkingTicketStatus: String, CaseIterable, Codable, HMBytesConvertable {
 
     case ended

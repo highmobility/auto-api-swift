@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Status enum.
+/// Status.
 public enum AATheftAlarmStatus: String, CaseIterable, Codable, HMBytesConvertable {
 
     case armed

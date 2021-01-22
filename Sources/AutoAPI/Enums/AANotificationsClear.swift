@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Clear enum.
+/// Clear.
 public enum AANotificationsClear: String, CaseIterable, Codable, HMBytesConvertable {
 
     case clear

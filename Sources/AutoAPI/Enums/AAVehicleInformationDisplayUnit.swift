@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Display unit enum.
+/// Display unit.
 public enum AAVehicleInformationDisplayUnit: String, CaseIterable, Codable, HMBytesConvertable {
 
     case km

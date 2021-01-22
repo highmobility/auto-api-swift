@@ -34,6 +34,9 @@ import Foundation
 
 public extension AACapability {
 
+    typealias Brand = AABrand
+
+
     var nonce: AAProperty<[UInt8]>? {
         properties.property(id: AAUniversalPropertyType.nonce)
     }
@@ -50,7 +53,7 @@ public extension AACapability {
         properties.property(id: AAUniversalPropertyType.vin)
     }
 
-//    var brand: AAProperty<Brand>? {
-//        properties.property(id: AAUniversalPropertyType.brand)
-//    }
+    var brand: AAProperty<Brand>? {
+        properties.property(id: AAUniversalPropertyType.brand)
+    }
 }

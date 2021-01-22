@@ -34,11 +34,11 @@ import Foundation
 
 public extension UnitDuration {
 
-    public static let days = UnitDuration(symbol: "hm_d", converter: UnitConverterLinear(coefficient: 86400.0))
+    static let days = UnitDuration(symbol: "hm_d", converter: UnitConverterLinear(coefficient: 86400.0))
 
-    public static let weeks = UnitDuration(symbol: "hm_w", converter: UnitConverterLinear(coefficient: 604800.0))
+    static let weeks = UnitDuration(symbol: "hm_w", converter: UnitConverterLinear(coefficient: 604800.0))
 
-    public static let months = UnitDuration(symbol: "hm_m", converter: UnitConverterLinear(coefficient: 2629800.0))
+    static let months = UnitDuration(symbol: "hm_m", converter: UnitConverterLinear(coefficient: 2629800.0))
 }
 
 extension UnitDuration: AAUnitType {

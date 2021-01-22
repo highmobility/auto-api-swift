@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Powertrain enum.
+/// Powertrain.
 public enum AAVehicleInformationPowertrain: String, CaseIterable, Codable, HMBytesConvertable {
 
     case allElectric
