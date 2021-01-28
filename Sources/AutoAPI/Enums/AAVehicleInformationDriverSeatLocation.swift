@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Driver seat location.
+/// Driver seat location enum.
 public enum AAVehicleInformationDriverSeatLocation: String, CaseIterable, Codable, HMBytesConvertable {
 
     case center

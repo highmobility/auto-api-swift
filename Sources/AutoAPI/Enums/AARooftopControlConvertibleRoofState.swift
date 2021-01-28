@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Convertible roof state.
+/// Convertible roof state enum.
 public enum AARooftopControlConvertibleRoofState: String, CaseIterable, Codable, HMBytesConvertable {
 
     case closed

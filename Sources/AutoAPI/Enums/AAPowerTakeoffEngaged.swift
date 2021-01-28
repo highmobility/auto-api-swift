@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Engaged.
+/// Engaged enum.
 public enum AAPowerTakeoffEngaged: String, CaseIterable, Codable, HMBytesConvertable {
 
     case engaged

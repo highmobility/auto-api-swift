@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Gear mode.
+/// Gear mode enum.
 public enum AARaceGearMode: String, CaseIterable, Codable, HMBytesConvertable {
 
     case drive

@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// System.
+/// System enum.
 public enum AATroubleCodeSystem: String, CaseIterable, Codable, HMBytesConvertable {
 
     case body

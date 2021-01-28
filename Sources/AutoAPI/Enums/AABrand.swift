@@ -44,7 +44,7 @@ public enum AABrand: String, CaseIterable, Codable, HMBytesConvertable {
     case cadillac
     case chevrolet
     case chrysler
-    case citroën
+    case citroen
     case cupra
     case dacia
     case dodge
@@ -72,13 +72,13 @@ public enum AABrand: String, CaseIterable, Codable, HMBytesConvertable {
     case porsche
     case renault
     case seat
+    case skoda
     case smart
     case subaru
     case toyota
     case unknown
     case volkswagen
     case volvo
-    case škoda
 
 
     public var byteValue: UInt8 {
@@ -92,7 +92,7 @@ public enum AABrand: String, CaseIterable, Codable, HMBytesConvertable {
         case .cadillac: return 0x06
         case .chevrolet: return 0x07
         case .chrysler: return 0x08
-        case .citroën: return 0x09
+        case .citroen: return 0x09
         case .cupra: return 0x0a
         case .dacia: return 0x0b
         case .dodge: return 0x0c
@@ -119,7 +119,7 @@ public enum AABrand: String, CaseIterable, Codable, HMBytesConvertable {
         case .porsche: return 0x21
         case .renault: return 0x22
         case .seat: return 0x23
-        case .škoda: return 0x24
+        case .skoda: return 0x24
         case .smart: return 0x25
         case .subaru: return 0x26
         case .toyota: return 0x27
@@ -152,7 +152,7 @@ public enum AABrand: String, CaseIterable, Codable, HMBytesConvertable {
         case 0x06: self = .cadillac
         case 0x07: self = .chevrolet
         case 0x08: self = .chrysler
-        case 0x09: self = .citroën
+        case 0x09: self = .citroen
         case 0x0a: self = .cupra
         case 0x0b: self = .dacia
         case 0x0c: self = .dodge
@@ -179,7 +179,7 @@ public enum AABrand: String, CaseIterable, Codable, HMBytesConvertable {
         case 0x21: self = .porsche
         case 0x22: self = .renault
         case 0x23: self = .seat
-        case 0x24: self = .škoda
+        case 0x24: self = .skoda
         case 0x25: self = .smart
         case 0x26: self = .subaru
         case 0x27: self = .toyota

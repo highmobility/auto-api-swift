@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Update rate.
+/// Update rate enum.
 public enum AAAvailabilityUpdateRate: String, CaseIterable, Codable, HMBytesConvertable {
 
     case notAvailable

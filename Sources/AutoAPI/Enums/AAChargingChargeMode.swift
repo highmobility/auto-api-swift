@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Charge mode.
+/// Charge mode enum.
 public enum AAChargingChargeMode: String, CaseIterable, Codable, HMBytesConvertable {
 
     case immediate

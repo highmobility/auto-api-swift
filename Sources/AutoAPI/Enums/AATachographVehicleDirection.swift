@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Vehicle direction.
+/// Vehicle direction enum.
 public enum AATachographVehicleDirection: String, CaseIterable, Codable, HMBytesConvertable {
 
     case forward

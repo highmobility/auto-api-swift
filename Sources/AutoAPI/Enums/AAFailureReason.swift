@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Reason.
+/// Reason enum.
 public enum AAFailureReason: String, CaseIterable, Codable, HMBytesConvertable {
 
     case executionTimeout

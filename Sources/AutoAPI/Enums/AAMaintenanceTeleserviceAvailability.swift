@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Teleservice availability.
+/// Teleservice availability enum.
 public enum AAMaintenanceTeleserviceAvailability: String, CaseIterable, Codable, HMBytesConvertable {
 
     case error

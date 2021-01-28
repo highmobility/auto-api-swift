@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Windscreen damage.
+/// Windscreen damage enum.
 public enum AAWindscreenWindscreenDamage: String, CaseIterable, Codable, HMBytesConvertable {
 
     case damageLargerThan1Inch

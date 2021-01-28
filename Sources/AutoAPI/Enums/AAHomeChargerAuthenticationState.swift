@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Authentication state.
+/// Authentication state enum.
 public enum AAHomeChargerAuthenticationState: String, CaseIterable, Codable, HMBytesConvertable {
 
     case authenticated

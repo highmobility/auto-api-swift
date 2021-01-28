@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Wipers intensity.
+/// Wipers intensity enum.
 public enum AAWindscreenWipersIntensity: String, CaseIterable, Codable, HMBytesConvertable {
 
     case level0

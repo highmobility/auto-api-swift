@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Plugged in.
+/// Plugged in enum.
 public enum AAChargingPluggedIn: String, CaseIterable, Codable, HMBytesConvertable {
 
     case disconnected

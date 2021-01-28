@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Vehicle overspeed.
+/// Vehicle overspeed enum.
 public enum AATachographVehicleOverspeed: String, CaseIterable, Codable, HMBytesConvertable {
 
     case noOverspeed

@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Position.
+/// Position enum.
 public enum AAHoodPosition: String, CaseIterable, Codable, HMBytesConvertable {
 
     case closed

@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Plug type.
+/// Plug type enum.
 public enum AAHomeChargerPlugType: String, CaseIterable, Codable, HMBytesConvertable {
 
     case ccs

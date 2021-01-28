@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Sport chrono.
+/// Sport chrono enum.
 public enum AAChassisSettingsSportChrono: String, CaseIterable, Codable, HMBytesConvertable {
 
     case active

@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Sunroof tilt state.
+/// Sunroof tilt state enum.
 public enum AARooftopControlSunroofTiltState: String, CaseIterable, Codable, HMBytesConvertable {
 
     case closed

@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Screen.
+/// Screen enum.
 public enum AAVideoHandoverScreen: String, CaseIterable, Codable, HMBytesConvertable {
 
     case front

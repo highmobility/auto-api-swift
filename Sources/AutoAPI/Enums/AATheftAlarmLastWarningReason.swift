@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Last warning reason.
+/// Last warning reason enum.
 public enum AATheftAlarmLastWarningReason: String, CaseIterable, Codable, HMBytesConvertable {
 
     case basisAlarm

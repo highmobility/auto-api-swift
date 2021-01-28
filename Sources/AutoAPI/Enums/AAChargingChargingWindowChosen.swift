@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// Charging window chosen.
+/// Charging window chosen enum.
 public enum AAChargingChargingWindowChosen: String, CaseIterable, Codable, HMBytesConvertable {
 
     case chosen
