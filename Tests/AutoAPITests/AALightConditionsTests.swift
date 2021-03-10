@@ -40,7 +40,7 @@ final class AALightConditionsTests: XCTestCase {
     // MARK: State Properties
     
     func testOutsideLight() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x54, 0x01, 0x01, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x11, 0x00, 0x40, 0xfb, 0x19, 0x80, 0x00, 0x00, 0x00, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x54, 0x01, 0x01, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x11, 0x00, 0x40, 0xfb, 0x19, 0x80, 0x00, 0x00, 0x00, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AALightConditions else {
             return XCTFail("Could not parse bytes as `AALightConditions`")
@@ -50,7 +50,7 @@ final class AALightConditionsTests: XCTestCase {
     }
     
     func testInsideLight() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x54, 0x01, 0x02, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x11, 0x00, 0x3f, 0xd0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x54, 0x01, 0x02, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x11, 0x00, 0x3f, 0xd0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AALightConditions else {
             return XCTFail("Could not parse bytes as `AALightConditions`")
@@ -63,26 +63,26 @@ final class AALightConditionsTests: XCTestCase {
     // MARK: Getters
     
     func testGetLightConditions() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x54, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x54, 0x00]
         
         XCTAssertEqual(bytes, AALightConditions.getLightConditions())
     }
     
     func testGetLightConditionsAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x54, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x54, 0x02]
         
         XCTAssertEqual(bytes, AALightConditions.getLightConditionsAvailability())
     }
     
     func testGetLightConditionsProperties() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x54, 0x00, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x54, 0x00, 0x01]
         let getterBytes = AALightConditions.getLightConditionsProperties(ids: .outsideLight)
         
         XCTAssertEqual(bytes, getterBytes)
     }
     
     func testGetLightConditionsPropertiesAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x54, 0x02, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x54, 0x02, 0x01]
         let getterBytes = AALightConditions.getLightConditionsPropertiesAvailability(ids: .outsideLight)
         
         XCTAssertEqual(bytes, getterBytes)

@@ -42,6 +42,7 @@ public enum AALocationWheel: String, CaseIterable, Codable, HMBytesConvertable {
     case rearLeftOuter
     case rearRight
     case rearRightOuter
+    case spare
 
 
     public var byteValue: UInt8 {
@@ -52,6 +53,7 @@ public enum AALocationWheel: String, CaseIterable, Codable, HMBytesConvertable {
         case .rearLeft: return 0x03
         case .rearRightOuter: return 0x04
         case .rearLeftOuter: return 0x05
+        case .spare: return 0x06
         }
     }
 
@@ -75,6 +77,7 @@ public enum AALocationWheel: String, CaseIterable, Codable, HMBytesConvertable {
         case 0x03: self = .rearLeft
         case 0x04: self = .rearRightOuter
         case 0x05: self = .rearLeftOuter
+        case 0x06: self = .spare
         default: return nil
         }
     }

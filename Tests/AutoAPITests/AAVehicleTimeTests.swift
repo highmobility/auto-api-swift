@@ -40,7 +40,7 @@ final class AAVehicleTimeTests: XCTestCase {
     // MARK: State Properties
     
     func testVehicleTime() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x50, 0x01, 0x01, 0x00, 0x05, 0x01, 0x00, 0x02, 0x13, 0x37]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x50, 0x01, 0x01, 0x00, 0x05, 0x01, 0x00, 0x02, 0x13, 0x37]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAVehicleTime else {
             return XCTFail("Could not parse bytes as `AAVehicleTime`")
@@ -53,13 +53,13 @@ final class AAVehicleTimeTests: XCTestCase {
     // MARK: Getters
     
     func testGetVehicleTime() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x50, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x50, 0x00]
         
         XCTAssertEqual(bytes, AAVehicleTime.getVehicleTime())
     }
     
     func testGetVehicleTimeAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x50, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x50, 0x02]
         
         XCTAssertEqual(bytes, AAVehicleTime.getVehicleTimeAvailability())
     }

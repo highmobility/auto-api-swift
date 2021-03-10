@@ -40,26 +40,26 @@ final class AADriverFatigueTests: XCTestCase {
     // MARK: State Properties
     
     func testDetectedFatigueLevel() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x41, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x41, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AADriverFatigue else {
             return XCTFail("Could not parse bytes as `AADriverFatigue`")
         }
         
-        XCTAssertEqual(capability.detectedFatigueLevel?.value, DetectedFatigueLevel.pauseRecommended)
+        XCTAssertEqual(capability.detectedFatigueLevel?.value, AADriverFatigueDetectedFatigueLevel.pauseRecommended)
     }
 
 
     // MARK: Getters
     
     func testGetDriverFatigueState() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x41, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x41, 0x00]
         
         XCTAssertEqual(bytes, AADriverFatigue.getDriverFatigueState())
     }
     
     func testGetDriverFatigueStateAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x41, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x41, 0x02]
         
         XCTAssertEqual(bytes, AADriverFatigue.getDriverFatigueStateAvailability())
     }

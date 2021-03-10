@@ -36,22 +36,21 @@ import HMUtilities
 public final class AAWebhook: Codable, HMBytesConvertable {
 
     public typealias Available = AAWebhookAvailable
-    public typealias Event = AAWebhookEvent
 
 
     /// If the specified webhook is available..
     public var available: Available
 
-    /// Event.
-    public var event: Event
+    /// Triggered event.
+    public var event: AAEvent
 
 
     /// Initialise `AAWebhook` with arguments.
     ///
     /// - parameters:
     ///     - available: If the specified webhook is available..
-    ///     - event: Event.
-    public init(available: Available, event: Event) {
+    ///     - event: Triggered event.
+    public init(available: Available, event: AAEvent) {
         self.bytes = [available.bytes, event.bytes].flatMap { $0 }
         self.available = available
         self.event = event
@@ -73,7 +72,7 @@ public final class AAWebhook: Codable, HMBytesConvertable {
         }
     
         guard let available = Available(bytes: bytes[0..<1].bytes),
-    		  let event = Event(bytes: bytes[1..<2].bytes) else {
+    		  let event = AAEvent(bytes: bytes[1..<2].bytes) else {
             return nil
         }
     

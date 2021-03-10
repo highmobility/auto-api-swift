@@ -65,7 +65,7 @@ public final class AAMultiCommand: AACapability, AAPropertyIdentifying {
 
     // MARK: Setters
     
-    /// Send mutliple commands at once.
+    /// Send multiple commands at once.
     /// 
     /// - parameters:
     ///     - multiCommands: The outgoing commands.

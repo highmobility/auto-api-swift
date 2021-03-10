@@ -40,7 +40,7 @@ final class AAParkingBrakeTests: XCTestCase {
     // MARK: State Properties
     
     func testStatus() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x58, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x58, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAParkingBrake else {
             return XCTFail("Could not parse bytes as `AAParkingBrake`")
@@ -53,13 +53,13 @@ final class AAParkingBrakeTests: XCTestCase {
     // MARK: Getters
     
     func testGetParkingBrakeState() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x58, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x58, 0x00]
         
         XCTAssertEqual(bytes, AAParkingBrake.getParkingBrakeState())
     }
     
     func testGetParkingBrakeStateAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x58, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x58, 0x02]
         
         XCTAssertEqual(bytes, AAParkingBrake.getParkingBrakeStateAvailability())
     }
@@ -68,7 +68,7 @@ final class AAParkingBrakeTests: XCTestCase {
     // MARK: Setters
     
     func testSetParkingBrake() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x58, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x58, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         let setterBytes = AAParkingBrake.setParkingBrake(status: AAActiveState.active)
         
         XCTAssertEqual(bytes, setterBytes)

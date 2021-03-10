@@ -92,7 +92,7 @@ extension Array where Element == UInt8 {
 }
 
 
-extension Array: HMBytesConvertable where Element: HMBytesConvertable {
+extension Array: HMBytesConvertable where Element == UInt8 {
 
     public var bytes: [UInt8] {
         flatMap(\.bytes)
@@ -100,6 +100,6 @@ extension Array: HMBytesConvertable where Element: HMBytesConvertable {
 
 
     public init?(bytes: [UInt8]) {
-        return nil
+        self = Array(bytes)
     }
 }

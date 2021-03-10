@@ -35,7 +35,6 @@ import HMUtilities
 
 public final class AAVehicleInformation: AACapability, AAPropertyIdentifying {
 
-    public typealias Powertrain = AAVehicleInformationPowertrain
     public typealias Gearbox = AAVehicleInformationGearbox
     public typealias DisplayUnit = AAVehicleInformationDisplayUnit
     public typealias DriverSeatLocation = AAVehicleInformationDriverSeatLocation
@@ -49,7 +48,7 @@ public final class AAVehicleInformation: AACapability, AAPropertyIdentifying {
         public static let intro: UInt8 = 12
     
         /// Level (version) of *AutoAPI* when `AAVehicleInformation` was last updated.
-        public static let updated: UInt8 = 12
+        public static let updated: UInt8 = 13
     }
 
 
@@ -79,6 +78,7 @@ public final class AAVehicleInformation: AACapability, AAPropertyIdentifying {
         case language = 0x14
         case timeformat = 0x15
         case drive = 0x16
+        case powertrainSecondary = 0x17
     }
 
 
@@ -132,8 +132,11 @@ public final class AAVehicleInformation: AACapability, AAPropertyIdentifying {
     /// The power of the vehicle.
     public var power: AAProperty<Measurement<UnitPower>>?
     
-    /// Powertrain value.
-    public var powertrain: AAProperty<Powertrain>?
+    /// Type of the (primary) powertrain.
+    public var powertrain: AAProperty<AAEngineType>?
+    
+    /// Powertrain secondary value.
+    public var powertrainSecondary: AAProperty<AAEngineType>?
     
     /// The sales designation of the model.
     public var salesDesignation: AAProperty<String>?
@@ -194,6 +197,7 @@ public final class AAVehicleInformation: AACapability, AAPropertyIdentifying {
         numberOfSeats = extract(property: .numberOfSeats)
         power = extract(property: .power)
         powertrain = extract(property: .powertrain)
+        powertrainSecondary = extract(property: .powertrainSecondary)
         salesDesignation = extract(property: .salesDesignation)
         timeformat = extract(property: .timeformat)
     }

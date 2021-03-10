@@ -41,7 +41,7 @@ public final class AATrunk: AACapability, AAPropertyIdentifying {
         public static let intro: UInt8 = 1
     
         /// Level (version) of *AutoAPI* when `AATrunk` was last updated.
-        public static let updated: UInt8 = 11
+        public static let updated: UInt8 = 13
     }
 
 
@@ -54,6 +54,7 @@ public final class AATrunk: AACapability, AAPropertyIdentifying {
     public enum PropertyIdentifier: UInt8, CaseIterable {
         case lock = 0x01
         case position = 0x02
+        case lockSafety = 0x03
     }
 
 
@@ -61,6 +62,9 @@ public final class AATrunk: AACapability, AAPropertyIdentifying {
     
     /// Lock value.
     public var lock: AAProperty<AALockState>?
+    
+    /// Indicates the safe-state of the trunk..
+    public var lockSafety: AAProperty<AALockSafety>?
     
     /// Position value.
     public var position: AAProperty<AAPosition>?
@@ -130,6 +134,7 @@ public final class AATrunk: AACapability, AAPropertyIdentifying {
         super.init(bytes: bytes)
     
         lock = extract(property: .lock)
+        lockSafety = extract(property: .lockSafety)
         position = extract(property: .position)
     }
 }

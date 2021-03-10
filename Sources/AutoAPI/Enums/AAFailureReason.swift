@@ -40,6 +40,7 @@ public enum AAFailureReason: String, CaseIterable, Codable, HMBytesConvertable {
     case formatError
     case oemError
     case pending
+    case privacyModeActive
     case rateLimit
     case unauthorised
     case unknown
@@ -54,6 +55,7 @@ public enum AAFailureReason: String, CaseIterable, Codable, HMBytesConvertable {
         case .unknown: return 0x04
         case .pending: return 0x05
         case .oemError: return 0x06
+        case .privacyModeActive: return 0x07
         }
     }
 
@@ -78,6 +80,7 @@ public enum AAFailureReason: String, CaseIterable, Codable, HMBytesConvertable {
         case 0x04: self = .unknown
         case 0x05: self = .pending
         case 0x06: self = .oemError
+        case 0x07: self = .privacyModeActive
         default: return nil
         }
     }
