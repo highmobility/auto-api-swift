@@ -35,6 +35,10 @@ import HMUtilities
 
 public final class AARace: AACapability, AAPropertyIdentifying {
 
+    public typealias GearMode = AARaceGearMode
+    public typealias VehicleMoving = AARaceVehicleMoving
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AARace` was introduced to the spec.
@@ -42,24 +46,6 @@ public final class AARace: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AARace` was last updated.
         public static let updated: UInt8 = 12
-    }
-
-
-    /// Gear mode enum.
-    public enum GearMode: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case manual = 0x00
-        case park = 0x01
-        case reverse = 0x02
-        case neutral = 0x03
-        case drive = 0x04
-        case lowGear = 0x05
-        case sport = 0x06
-    }
-
-    /// Vehicle moving enum.
-    public enum VehicleMoving: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case notMoving = 0x00
-        case moving = 0x01
     }
 
 

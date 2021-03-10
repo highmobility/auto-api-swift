@@ -35,6 +35,17 @@ import HMUtilities
 
 public final class AACharging: AACapability, AAPropertyIdentifying {
 
+    public typealias ChargeMode = AAChargingChargeMode
+    public typealias PlugType = AAChargingPlugType
+    public typealias ChargingWindowChosen = AAChargingChargingWindowChosen
+    public typealias PluggedIn = AAChargingPluggedIn
+    public typealias Status = AAChargingStatus
+    public typealias CurrentType = AAChargingCurrentType
+    public typealias StarterBatteryState = AAChargingStarterBatteryState
+    public typealias SmartChargingStatus = AAChargingSmartChargingStatus
+    public typealias PreconditioningError = AAChargingPreconditioningError
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AACharging` was introduced to the spec.
@@ -42,78 +53,6 @@ public final class AACharging: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AACharging` was last updated.
         public static let updated: UInt8 = 12
-    }
-
-
-    /// Charge mode enum.
-    public enum ChargeMode: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case immediate = 0x00
-        case timerBased = 0x01
-        case inductive = 0x02
-    }
-
-    /// Charging window chosen enum.
-    public enum ChargingWindowChosen: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case notChosen = 0x00
-        case chosen = 0x01
-    }
-
-    /// Type of current in use.
-    public enum CurrentType: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case alternatingCurrent = 0x00
-        case directCurrent = 0x01
-    }
-
-    /// Plug type enum.
-    public enum PlugType: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case type1 = 0x00
-        case type2 = 0x01
-        case ccs = 0x02
-        case chademo = 0x03
-    }
-
-    /// Plugged in enum.
-    public enum PluggedIn: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case disconnected = 0x00
-        case pluggedIn = 0x01
-    }
-
-    /// Preconditioning error if one is encountered.
-    public enum PreconditioningError: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case noChange = 0x00
-        case notPossibleLow = 0x01
-        case notPossibleFinished = 0x02
-        case availableAfterEngineRestart = 0x03
-        case generalError = 0x04
-    }
-
-    /// Status of optimized/intelligent charging.
-    public enum SmartChargingStatus: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case wallboxIsActive = 0x00
-        case sccIsActive = 0x01
-        case peakSettingActive = 0x02
-    }
-
-    /// State of the starter battery.
-    public enum StarterBatteryState: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case red = 0x00
-        case yellow = 0x01
-        case green = 0x02
-    }
-
-    /// Status enum.
-    public enum Status: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case notCharging = 0x00
-        case charging = 0x01
-        case chargingComplete = 0x02
-        case initialising = 0x03
-        case chargingPaused = 0x04
-        case chargingError = 0x05
-        case cableUnplugged = 0x06
-        case slowCharging = 0x07
-        case fastCharging = 0x08
-        case discharging = 0x09
-        case foreignObjectDetected = 0x0a
     }
 
 

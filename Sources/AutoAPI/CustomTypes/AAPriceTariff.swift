@@ -35,12 +35,7 @@ import HMUtilities
 
 public final class AAPriceTariff: Codable, HMBytesConvertable {
 
-    /// PricingType enum.
-    public enum PricingType: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case startingFee = 0x00
-        case perMinute = 0x01
-        case perKwh = 0x02
-    }
+    public typealias PricingType = AAPriceTariffPricingType
 
 
     /// PricingType.

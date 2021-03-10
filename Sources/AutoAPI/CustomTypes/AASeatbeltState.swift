@@ -35,11 +35,7 @@ import HMUtilities
 
 public final class AASeatbeltState: Codable, HMBytesConvertable {
 
-    /// FastenedState enum.
-    public enum FastenedState: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case notFastened = 0x00
-        case fastened = 0x01
-    }
+    public typealias FastenedState = AASeatbeltStateFastenedState
 
 
     /// Seat location.

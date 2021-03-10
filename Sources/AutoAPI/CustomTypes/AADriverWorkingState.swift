@@ -35,13 +35,7 @@ import HMUtilities
 
 public final class AADriverWorkingState: Codable, HMBytesConvertable {
 
-    /// WorkingState enum.
-    public enum WorkingState: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case resting = 0x00
-        case driverAvailable = 0x01
-        case working = 0x02
-        case driving = 0x03
-    }
+    public typealias WorkingState = AADriverWorkingStateWorkingState
 
 
     /// The driver number.

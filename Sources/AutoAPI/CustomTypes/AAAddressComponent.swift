@@ -35,17 +35,7 @@ import HMUtilities
 
 public final class AAAddressComponent: Codable, HMBytesConvertable {
 
-    /// Component type.
-    public enum TypeOf: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case city = 0x00
-        case country = 0x01
-        case countryShort = 0x02
-        case district = 0x03
-        case postalCode = 0x04
-        case street = 0x05
-        case stateProvince = 0x06
-        case other = 0x07
-    }
+    public typealias TypeOf = AAAddressComponentType
 
 
     /// Component type.

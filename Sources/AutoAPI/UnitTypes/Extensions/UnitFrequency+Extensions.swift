@@ -34,11 +34,11 @@ import Foundation
 
 public extension UnitFrequency {
 
-    public static let timesPerMinute = UnitFrequency(symbol: "hm_tpm", converter: UnitConverterLinear(coefficient: 60.0))
+    static let timesPerMinute = UnitFrequency(symbol: "hm_tpm", converter: UnitConverterLinear(coefficient: 60.0))
 
-    public static let timesPerHour = UnitFrequency(symbol: "hm_tph", converter: UnitConverterLinear(coefficient: 3600.0))
+    static let timesPerHour = UnitFrequency(symbol: "hm_tph", converter: UnitConverterLinear(coefficient: 3600.0))
 
-    public static let timesPerDay = UnitFrequency(symbol: "hm_tpd", converter: UnitConverterLinear(coefficient: 86400.0))
+    static let timesPerDay = UnitFrequency(symbol: "hm_tpd", converter: UnitConverterLinear(coefficient: 86400.0))
 }
 
 extension UnitFrequency: AAUnitType {

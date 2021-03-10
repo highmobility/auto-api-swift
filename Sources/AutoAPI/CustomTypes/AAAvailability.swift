@@ -35,22 +35,8 @@ import HMUtilities
 
 public final class AAAvailability: Codable, HMBytesConvertable {
 
-    /// Update rate.
-    public enum UpdateRate: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case tripHigh = 0x00
-        case trip = 0x01
-        case tripStartEnd = 0x02
-        case tripEnd = 0x03
-        case unknown = 0x04
-        case notAvailable = 0x05
-        case onChange = 0x06
-    }
-
-    /// Rate limit applies per.
-    public enum AppliesPer: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case app = 0x00
-        case vehicle = 0x01
-    }
+    public typealias UpdateRate = AAAvailabilityUpdateRate
+    public typealias AppliesPer = AAAvailabilityAppliesPer
 
 
     /// Update rate.

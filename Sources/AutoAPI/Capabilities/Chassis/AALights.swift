@@ -35,6 +35,11 @@ import HMUtilities
 
 public final class AALights: AACapability, AAPropertyIdentifying {
 
+    public typealias FrontExteriorLight = AALightsFrontExteriorLight
+    public typealias SwitchPosition = AALightsSwitchPosition
+    public typealias ParkingLightStatus = AALightsParkingLightStatus
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AALights` was introduced to the spec.
@@ -42,25 +47,6 @@ public final class AALights: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AALights` was last updated.
         public static let updated: UInt8 = 12
-    }
-
-
-    /// Front exterior light enum.
-    public enum FrontExteriorLight: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case inactive = 0x00
-        case active = 0x01
-        case activeWithFullBeam = 0x02
-        case drl = 0x03
-        case automatic = 0x04
-    }
-
-    /// Position of the rotary light switch.
-    public enum SwitchPosition: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case automatic = 0x00
-        case dippedHeadlights = 0x01
-        case parkingLightRight = 0x02
-        case parkingLightLeft = 0x03
-        case sidelights = 0x04
     }
 
 
@@ -80,6 +66,7 @@ public final class AALights: AACapability, AAPropertyIdentifying {
         case readingLamps = 0x08
         case interiorLights = 0x09
         case switchPosition = 0x0a
+        case parkingLightStatus = 0x0b
     }
 
 
@@ -99,6 +86,9 @@ public final class AALights: AACapability, AAPropertyIdentifying {
     
     /// Interior lights value.
     public var interiorLights: [AAProperty<AALight>]?
+    
+    /// Indicates the status of the parking light..
+    public var parkingLightStatus: AAProperty<ParkingLightStatus>?
     
     /// Reading lamps value.
     public var readingLamps: [AAProperty<AAReadingLamp>]?
@@ -189,6 +179,7 @@ public final class AALights: AACapability, AAPropertyIdentifying {
         fogLights = extract(properties: .fogLights)
         frontExteriorLight = extract(property: .frontExteriorLight)
         interiorLights = extract(properties: .interiorLights)
+        parkingLightStatus = extract(property: .parkingLightStatus)
         readingLamps = extract(properties: .readingLamps)
         rearExteriorLight = extract(property: .rearExteriorLight)
         reverseLight = extract(property: .reverseLight)

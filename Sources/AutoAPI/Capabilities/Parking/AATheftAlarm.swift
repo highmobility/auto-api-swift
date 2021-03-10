@@ -35,6 +35,12 @@ import HMUtilities
 
 public final class AATheftAlarm: AACapability, AAPropertyIdentifying {
 
+    public typealias Status = AATheftAlarmStatus
+    public typealias LastWarningReason = AATheftAlarmLastWarningReason
+    public typealias LastEventLevel = AATheftAlarmLastEventLevel
+    public typealias EventType = AATheftAlarmEventType
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AATheftAlarm` was introduced to the spec.
@@ -42,60 +48,6 @@ public final class AATheftAlarm: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AATheftAlarm` was last updated.
         public static let updated: UInt8 = 12
-    }
-
-
-    /// Position of the last even relative to the vehicle.
-    public enum EventType: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case idle = 0x00
-        case frontLeft = 0x01
-        case frontMiddle = 0x02
-        case frontRight = 0x03
-        case right = 0x04
-        case rearRight = 0x05
-        case rearMiddle = 0x06
-        case rearLeft = 0x07
-        case left = 0x08
-        case unknown = 0x09
-    }
-
-    /// Level of impact for the last event.
-    public enum LastEventLevel: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case low = 0x00
-        case medium = 0x01
-        case high = 0x02
-    }
-
-    /// Last warning reason enum.
-    public enum LastWarningReason: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case noAlarm = 0x00
-        case basisAlarm = 0x01
-        case doorFrontLeft = 0x02
-        case doorFrontRight = 0x03
-        case doorRearLeft = 0x04
-        case doorRearRight = 0x05
-        case hood = 0x06
-        case trunk = 0x07
-        case commonAlmIn = 0x08
-        case panic = 0x09
-        case glovebox = 0x0a
-        case centerBox = 0x0b
-        case rearBox = 0x0c
-        case sensorVta = 0x0d
-        case its = 0x0e
-        case itsSlv = 0x0f
-        case tps = 0x10
-        case horn = 0x11
-        case holdCom = 0x12
-        case remote = 0x13
-        case unknown = 0x14
-    }
-
-    /// Status enum.
-    public enum Status: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case unarmed = 0x00
-        case armed = 0x01
-        case triggered = 0x02
     }
 
 

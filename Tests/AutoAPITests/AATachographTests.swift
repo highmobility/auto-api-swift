@@ -40,7 +40,7 @@ final class AATachographTests: XCTestCase {
     // MARK: State Properties
     
     func testDriversWorkingStates() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x64, 0x01, 0x01, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0x02, 0x01, 0x00, 0x05, 0x01, 0x00, 0x02, 0x02, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x64, 0x01, 0x01, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0x02, 0x01, 0x00, 0x05, 0x01, 0x00, 0x02, 0x02, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AATachograph else {
             return XCTFail("Could not parse bytes as `AATachograph`")
@@ -55,7 +55,7 @@ final class AATachographTests: XCTestCase {
     }
     
     func testDriversTimeStates() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x64, 0x01, 0x02, 0x00, 0x05, 0x01, 0x00, 0x02, 0x03, 0x02, 0x02, 0x00, 0x05, 0x01, 0x00, 0x02, 0x04, 0x05]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x64, 0x01, 0x02, 0x00, 0x05, 0x01, 0x00, 0x02, 0x03, 0x02, 0x02, 0x00, 0x05, 0x01, 0x00, 0x02, 0x04, 0x05]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AATachograph else {
             return XCTFail("Could not parse bytes as `AATachograph`")
@@ -70,7 +70,7 @@ final class AATachographTests: XCTestCase {
     }
     
     func testDriversCardsPresent() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x64, 0x01, 0x03, 0x00, 0x05, 0x01, 0x00, 0x02, 0x06, 0x01, 0x03, 0x00, 0x05, 0x01, 0x00, 0x02, 0x07, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x64, 0x01, 0x03, 0x00, 0x05, 0x01, 0x00, 0x02, 0x06, 0x01, 0x03, 0x00, 0x05, 0x01, 0x00, 0x02, 0x07, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AATachograph else {
             return XCTFail("Could not parse bytes as `AATachograph`")
@@ -85,7 +85,7 @@ final class AATachographTests: XCTestCase {
     }
     
     func testVehicleMotion() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x64, 0x01, 0x04, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x64, 0x01, 0x04, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AATachograph else {
             return XCTFail("Could not parse bytes as `AATachograph`")
@@ -95,27 +95,27 @@ final class AATachographTests: XCTestCase {
     }
     
     func testVehicleOverspeed() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x64, 0x01, 0x05, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x64, 0x01, 0x05, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AATachograph else {
             return XCTFail("Could not parse bytes as `AATachograph`")
         }
         
-        XCTAssertEqual(capability.vehicleOverspeed?.value, AATachograph.VehicleOverspeed.noOverspeed)
+        XCTAssertEqual(capability.vehicleOverspeed?.value, VehicleOverspeed.noOverspeed)
     }
     
     func testVehicleDirection() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x64, 0x01, 0x06, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x64, 0x01, 0x06, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AATachograph else {
             return XCTFail("Could not parse bytes as `AATachograph`")
         }
         
-        XCTAssertEqual(capability.vehicleDirection?.value, AATachograph.VehicleDirection.forward)
+        XCTAssertEqual(capability.vehicleDirection?.value, VehicleDirection.forward)
     }
     
     func testVehicleSpeed() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x64, 0x01, 0x07, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x16, 0x01, 0x40, 0x54, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x64, 0x01, 0x07, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x16, 0x01, 0x40, 0x54, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AATachograph else {
             return XCTFail("Could not parse bytes as `AATachograph`")
@@ -128,26 +128,26 @@ final class AATachographTests: XCTestCase {
     // MARK: Getters
     
     func testGetTachographState() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x64, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x64, 0x00]
         
         XCTAssertEqual(bytes, AATachograph.getTachographState())
     }
     
     func testGetTachographStateAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x64, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x64, 0x02]
         
         XCTAssertEqual(bytes, AATachograph.getTachographStateAvailability())
     }
     
     func testGetTachographStateProperties() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x64, 0x00, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x64, 0x00, 0x01]
         let getterBytes = AATachograph.getTachographStateProperties(ids: .driversWorkingStates)
         
         XCTAssertEqual(bytes, getterBytes)
     }
     
     func testGetTachographStatePropertiesAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x64, 0x02, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x64, 0x02, 0x01]
         let getterBytes = AATachograph.getTachographStatePropertiesAvailability(ids: .driversWorkingStates)
         
         XCTAssertEqual(bytes, getterBytes)

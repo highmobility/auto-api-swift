@@ -35,16 +35,7 @@ import HMUtilities
 
 public final class AADriverTimeState: Codable, HMBytesConvertable {
 
-    /// TimeState enum.
-    public enum TimeState: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case normal = 0x00
-        case fifteenMinBeforeFour = 0x01
-        case fourReached = 0x02
-        case fifteenMinBeforeNine = 0x03
-        case nineReached = 0x04
-        case fifteenMinBeforeSixteen = 0x05
-        case sixteenReached = 0x06
-    }
+    public typealias TimeState = AADriverTimeStateTimeState
 
 
     /// The driver number.

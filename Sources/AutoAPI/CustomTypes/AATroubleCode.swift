@@ -35,14 +35,7 @@ import HMUtilities
 
 public final class AATroubleCode: Codable, HMBytesConvertable {
 
-    /// System.
-    public enum System: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case unknown = 0x00
-        case body = 0x01
-        case chassis = 0x02
-        case powertrain = 0x03
-        case network = 0x04
-    }
+    public typealias System = AATroubleCodeSystem
 
 
     /// Number of occurrences.

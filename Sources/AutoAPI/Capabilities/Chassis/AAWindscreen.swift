@@ -35,6 +35,12 @@ import HMUtilities
 
 public final class AAWindscreen: AACapability, AAPropertyIdentifying {
 
+    public typealias WipersStatus = AAWindscreenWipersStatus
+    public typealias WipersIntensity = AAWindscreenWipersIntensity
+    public typealias WindscreenDamage = AAWindscreenWindscreenDamage
+    public typealias WindscreenNeedsReplacement = AAWindscreenWindscreenNeedsReplacement
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AAWindscreen` was introduced to the spec.
@@ -42,37 +48,6 @@ public final class AAWindscreen: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AAWindscreen` was last updated.
         public static let updated: UInt8 = 11
-    }
-
-
-    /// Windscreen damage enum.
-    public enum WindscreenDamage: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case noImpactDetected = 0x00
-        case impactButNoDamageDetected = 0x01
-        case damageSmallerThan1Inch = 0x02
-        case damageLargerThan1Inch = 0x03
-    }
-
-    /// Windscreen needs replacement enum.
-    public enum WindscreenNeedsReplacement: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case unknown = 0x00
-        case noReplacementNeeded = 0x01
-        case replacementNeeded = 0x02
-    }
-
-    /// Wipers intensity enum.
-    public enum WipersIntensity: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case level0 = 0x00
-        case level1 = 0x01
-        case level2 = 0x02
-        case level3 = 0x03
-    }
-
-    /// Wipers status enum.
-    public enum WipersStatus: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case inactive = 0x00
-        case active = 0x01
-        case automatic = 0x02
     }
 
 

@@ -40,7 +40,7 @@ final class AACruiseControlTests: XCTestCase {
     // MARK: State Properties
     
     func testCruiseControl() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x62, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x62, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AACruiseControl else {
             return XCTFail("Could not parse bytes as `AACruiseControl`")
@@ -50,17 +50,17 @@ final class AACruiseControlTests: XCTestCase {
     }
     
     func testLimiter() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x62, 0x01, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x62, 0x01, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AACruiseControl else {
             return XCTFail("Could not parse bytes as `AACruiseControl`")
         }
         
-        XCTAssertEqual(capability.limiter?.value, AACruiseControl.Limiter.higherSpeedRequested)
+        XCTAssertEqual(capability.limiter?.value, Limiter.higherSpeedRequested)
     }
     
     func testTargetSpeed() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x62, 0x01, 0x03, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x16, 0x01, 0x40, 0x4e, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x62, 0x01, 0x03, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x16, 0x01, 0x40, 0x4e, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AACruiseControl else {
             return XCTFail("Could not parse bytes as `AACruiseControl`")
@@ -70,7 +70,7 @@ final class AACruiseControlTests: XCTestCase {
     }
     
     func testAdaptiveCruiseControl() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x62, 0x01, 0x04, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x62, 0x01, 0x04, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AACruiseControl else {
             return XCTFail("Could not parse bytes as `AACruiseControl`")
@@ -80,7 +80,7 @@ final class AACruiseControlTests: XCTestCase {
     }
     
     func testAccTargetSpeed() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x62, 0x01, 0x05, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x16, 0x01, 0x40, 0x50, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x62, 0x01, 0x05, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x16, 0x01, 0x40, 0x50, 0xc0, 0x00, 0x00, 0x00, 0x00, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AACruiseControl else {
             return XCTFail("Could not parse bytes as `AACruiseControl`")
@@ -93,26 +93,26 @@ final class AACruiseControlTests: XCTestCase {
     // MARK: Getters
     
     func testGetCruiseControlState() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x62, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x62, 0x00]
         
         XCTAssertEqual(bytes, AACruiseControl.getCruiseControlState())
     }
     
     func testGetCruiseControlStateAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x62, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x62, 0x02]
         
         XCTAssertEqual(bytes, AACruiseControl.getCruiseControlStateAvailability())
     }
     
     func testGetCruiseControlStateProperties() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x62, 0x00, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x62, 0x00, 0x01]
         let getterBytes = AACruiseControl.getCruiseControlStateProperties(ids: .cruiseControl)
         
         XCTAssertEqual(bytes, getterBytes)
     }
     
     func testGetCruiseControlStatePropertiesAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x62, 0x02, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x62, 0x02, 0x01]
         let getterBytes = AACruiseControl.getCruiseControlStatePropertiesAvailability(ids: .cruiseControl)
         
         XCTAssertEqual(bytes, getterBytes)
@@ -122,7 +122,7 @@ final class AACruiseControlTests: XCTestCase {
     // MARK: Setters
     
     func testActivateDeactivateCruiseControl() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x62, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01, 0x03, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x16, 0x01, 0x40, 0x4e, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x62, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01, 0x03, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x16, 0x01, 0x40, 0x4e, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00]
         let setterBytes = AACruiseControl.activateDeactivateCruiseControl(cruiseControl: AAActiveState.active, targetSpeed: Measurement<UnitSpeed>(value: 61.0, unit: .kilometersPerHour))
         
         XCTAssertEqual(bytes, setterBytes)

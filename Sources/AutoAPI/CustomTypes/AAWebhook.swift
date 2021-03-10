@@ -35,36 +35,22 @@ import HMUtilities
 
 public final class AAWebhook: Codable, HMBytesConvertable {
 
-    /// If the specified webhook is available..
-    public enum Available: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case unavailable = 0x00
-        case available = 0x01
-    }
-
-    /// Event enum.
-    public enum Event: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case ping = 0x00
-        case tripStarted = 0x01
-        case tripEnded = 0x02
-        case vehicleLocationChanged = 0x03
-        case authorizationChanged = 0x04
-        case tirePressureChanged = 0x05
-    }
+    public typealias Available = AAWebhookAvailable
 
 
     /// If the specified webhook is available..
     public var available: Available
 
-    /// Event.
-    public var event: Event
+    /// Triggered event.
+    public var event: AAEvent
 
 
     /// Initialise `AAWebhook` with arguments.
     ///
     /// - parameters:
     ///     - available: If the specified webhook is available..
-    ///     - event: Event.
-    public init(available: Available, event: Event) {
+    ///     - event: Triggered event.
+    public init(available: Available, event: AAEvent) {
         self.bytes = [available.bytes, event.bytes].flatMap { $0 }
         self.available = available
         self.event = event
@@ -86,7 +72,7 @@ public final class AAWebhook: Codable, HMBytesConvertable {
         }
     
         guard let available = Available(bytes: bytes[0..<1].bytes),
-    		  let event = Event(bytes: bytes[1..<2].bytes) else {
+    		  let event = AAEvent(bytes: bytes[1..<2].bytes) else {
             return nil
         }
     

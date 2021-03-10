@@ -35,6 +35,12 @@ import HMUtilities
 
 public final class AAHomeCharger: AACapability, AAPropertyIdentifying {
 
+    public typealias ChargingStatus = AAHomeChargerChargingStatus
+    public typealias AuthenticationMechanism = AAHomeChargerAuthenticationMechanism
+    public typealias PlugType = AAHomeChargerPlugType
+    public typealias AuthenticationState = AAHomeChargerAuthenticationState
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AAHomeCharger` was introduced to the spec.
@@ -42,34 +48,6 @@ public final class AAHomeCharger: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AAHomeCharger` was last updated.
         public static let updated: UInt8 = 12
-    }
-
-
-    /// Authentication mechanism enum.
-    public enum AuthenticationMechanism: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case pin = 0x00
-        case app = 0x01
-    }
-
-    /// Authentication state enum.
-    public enum AuthenticationState: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case unauthenticated = 0x00
-        case authenticated = 0x01
-    }
-
-    /// Charging status enum.
-    public enum ChargingStatus: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case disconnected = 0x00
-        case pluggedIn = 0x01
-        case charging = 0x02
-    }
-
-    /// Plug type enum.
-    public enum PlugType: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case type1 = 0x00
-        case type2 = 0x01
-        case ccs = 0x02
-        case chademo = 0x03
     }
 
 

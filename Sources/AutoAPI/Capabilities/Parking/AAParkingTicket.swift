@@ -35,6 +35,9 @@ import HMUtilities
 
 public final class AAParkingTicket: AACapability, AAPropertyIdentifying {
 
+    public typealias Status = AAParkingTicketStatus
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AAParkingTicket` was introduced to the spec.
@@ -42,13 +45,6 @@ public final class AAParkingTicket: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AAParkingTicket` was last updated.
         public static let updated: UInt8 = 11
-    }
-
-
-    /// Status enum.
-    public enum Status: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case ended = 0x00
-        case started = 0x01
     }
 
 

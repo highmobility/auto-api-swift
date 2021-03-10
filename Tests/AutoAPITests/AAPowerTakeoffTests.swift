@@ -40,7 +40,7 @@ final class AAPowerTakeoffTests: XCTestCase {
     // MARK: State Properties
     
     func testStatus() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x65, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x65, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAPowerTakeoff else {
             return XCTFail("Could not parse bytes as `AAPowerTakeoff`")
@@ -50,39 +50,39 @@ final class AAPowerTakeoffTests: XCTestCase {
     }
     
     func testEngaged() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x65, 0x01, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x65, 0x01, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAPowerTakeoff else {
             return XCTFail("Could not parse bytes as `AAPowerTakeoff`")
         }
         
-        XCTAssertEqual(capability.engaged?.value, AAPowerTakeoff.Engaged.engaged)
+        XCTAssertEqual(capability.engaged?.value, Engaged.engaged)
     }
 
 
     // MARK: Getters
     
     func testGetPowerTakeoffState() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x65, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x65, 0x00]
         
         XCTAssertEqual(bytes, AAPowerTakeoff.getPowerTakeoffState())
     }
     
     func testGetPowerTakeoffStateAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x65, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x65, 0x02]
         
         XCTAssertEqual(bytes, AAPowerTakeoff.getPowerTakeoffStateAvailability())
     }
     
     func testGetPowerTakeoffStateProperties() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x65, 0x00, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x65, 0x00, 0x01]
         let getterBytes = AAPowerTakeoff.getPowerTakeoffStateProperties(ids: .status)
         
         XCTAssertEqual(bytes, getterBytes)
     }
     
     func testGetPowerTakeoffStatePropertiesAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x65, 0x02, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x65, 0x02, 0x01]
         let getterBytes = AAPowerTakeoff.getPowerTakeoffStatePropertiesAvailability(ids: .status)
         
         XCTAssertEqual(bytes, getterBytes)
@@ -92,7 +92,7 @@ final class AAPowerTakeoffTests: XCTestCase {
     // MARK: Setters
     
     func testActivateDeactivatePowerTakeoff() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x65, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x65, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         let setterBytes = AAPowerTakeoff.activateDeactivatePowerTakeoff(status: AAActiveState.active)
         
         XCTAssertEqual(bytes, setterBytes)

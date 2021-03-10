@@ -35,12 +35,7 @@ import HMUtilities
 
 public final class AAConditionBasedService: Codable, HMBytesConvertable {
 
-    /// DueStatus enum.
-    public enum DueStatus: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case ok = 0x00
-        case pending = 0x01
-        case overdue = 0x02
-    }
+    public typealias DueStatus = AAConditionBasedServiceDueStatus
 
 
     /// The year.

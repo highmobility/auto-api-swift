@@ -40,7 +40,7 @@ final class AAVehicleLocationTests: XCTestCase {
     // MARK: State Properties
     
     func testCoordinates() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x30, 0x01, 0x04, 0x00, 0x13, 0x01, 0x00, 0x10, 0x40, 0x4a, 0x42, 0x8f, 0x9f, 0x44, 0xd4, 0x45, 0x40, 0x2a, 0xcf, 0x56, 0x21, 0x74, 0xc4, 0xce]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x30, 0x01, 0x04, 0x00, 0x13, 0x01, 0x00, 0x10, 0x40, 0x4a, 0x42, 0x8f, 0x9f, 0x44, 0xd4, 0x45, 0x40, 0x2a, 0xcf, 0x56, 0x21, 0x74, 0xc4, 0xce]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAVehicleLocation else {
             return XCTFail("Could not parse bytes as `AAVehicleLocation`")
@@ -50,7 +50,7 @@ final class AAVehicleLocationTests: XCTestCase {
     }
     
     func testHeading() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x30, 0x01, 0x05, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x02, 0x00, 0x40, 0x2a, 0xbd, 0x80, 0xc3, 0x08, 0xfe, 0xac]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x30, 0x01, 0x05, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x02, 0x00, 0x40, 0x2a, 0xbd, 0x80, 0xc3, 0x08, 0xfe, 0xac]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAVehicleLocation else {
             return XCTFail("Could not parse bytes as `AAVehicleLocation`")
@@ -60,7 +60,7 @@ final class AAVehicleLocationTests: XCTestCase {
     }
     
     func testAltitude() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x30, 0x01, 0x06, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x12, 0x00, 0x40, 0x60, 0xb0, 0x00, 0x00, 0x00, 0x00, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x30, 0x01, 0x06, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x12, 0x00, 0x40, 0x60, 0xb0, 0x00, 0x00, 0x00, 0x00, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAVehicleLocation else {
             return XCTFail("Could not parse bytes as `AAVehicleLocation`")
@@ -70,7 +70,7 @@ final class AAVehicleLocationTests: XCTestCase {
     }
     
     func testPrecision() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x30, 0x01, 0x07, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x12, 0x00, 0x40, 0x7f, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x30, 0x01, 0x07, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x12, 0x00, 0x40, 0x7f, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAVehicleLocation else {
             return XCTFail("Could not parse bytes as `AAVehicleLocation`")
@@ -78,31 +78,51 @@ final class AAVehicleLocationTests: XCTestCase {
         
         XCTAssertEqual(capability.precision?.value, Measurement<UnitLength>(value: 500.0, unit: .meters))
     }
+    
+    func testGpsSource() {
+        let bytes: [UInt8] = [0x0d, 0x00, 0x30, 0x01, 0x08, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        
+        guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAVehicleLocation else {
+            return XCTFail("Could not parse bytes as `AAVehicleLocation`")
+        }
+        
+        XCTAssertEqual(capability.gpsSource?.value, GpsSource.real)
+    }
+    
+    func testGpsSignalStrength() {
+        let bytes: [UInt8] = [0x0d, 0x00, 0x30, 0x01, 0x09, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xe9, 0x99, 0x99, 0x99, 0x99, 0x99, 0x9a]
+        
+        guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAVehicleLocation else {
+            return XCTFail("Could not parse bytes as `AAVehicleLocation`")
+        }
+        
+        XCTAssertEqual(capability.gpsSignalStrength?.value, 0.8)
+    }
 
 
     // MARK: Getters
     
     func testGetVehicleLocation() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x30, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x30, 0x00]
         
         XCTAssertEqual(bytes, AAVehicleLocation.getVehicleLocation())
     }
     
     func testGetVehicleLocationAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x30, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x30, 0x02]
         
         XCTAssertEqual(bytes, AAVehicleLocation.getVehicleLocationAvailability())
     }
     
     func testGetVehicleLocationProperties() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x30, 0x00, 0x04]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x30, 0x00, 0x04]
         let getterBytes = AAVehicleLocation.getVehicleLocationProperties(ids: .coordinates)
         
         XCTAssertEqual(bytes, getterBytes)
     }
     
     func testGetVehicleLocationPropertiesAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x30, 0x02, 0x04]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x30, 0x02, 0x04]
         let getterBytes = AAVehicleLocation.getVehicleLocationPropertiesAvailability(ids: .coordinates)
         
         XCTAssertEqual(bytes, getterBytes)
@@ -120,5 +140,7 @@ final class AAVehicleLocationTests: XCTestCase {
         XCTAssertEqual(AAVehicleLocation.PropertyIdentifier.heading.rawValue, 0x05)
         XCTAssertEqual(AAVehicleLocation.PropertyIdentifier.altitude.rawValue, 0x06)
         XCTAssertEqual(AAVehicleLocation.PropertyIdentifier.precision.rawValue, 0x07)
+        XCTAssertEqual(AAVehicleLocation.PropertyIdentifier.gpsSource.rawValue, 0x08)
+        XCTAssertEqual(AAVehicleLocation.PropertyIdentifier.gpsSignalStrength.rawValue, 0x09)
     }
 }

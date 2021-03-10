@@ -35,6 +35,9 @@ import HMUtilities
 
 public final class AACruiseControl: AACapability, AAPropertyIdentifying {
 
+    public typealias Limiter = AACruiseControlLimiter
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AACruiseControl` was introduced to the spec.
@@ -42,15 +45,6 @@ public final class AACruiseControl: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AACruiseControl` was last updated.
         public static let updated: UInt8 = 12
-    }
-
-
-    /// Limiter enum.
-    public enum Limiter: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case notSet = 0x00
-        case higherSpeedRequested = 0x01
-        case lowerSpeedRequested = 0x02
-        case speedFixed = 0x03
     }
 
 

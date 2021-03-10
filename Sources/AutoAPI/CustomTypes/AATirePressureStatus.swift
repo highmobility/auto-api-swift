@@ -35,12 +35,7 @@ import HMUtilities
 
 public final class AATirePressureStatus: Codable, HMBytesConvertable {
 
-    /// Status enum.
-    public enum Status: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case normal = 0x00
-        case low = 0x01
-        case alert = 0x02
-    }
+    public typealias Status = AATirePressureStatusStatus
 
 
     /// Location wheel.

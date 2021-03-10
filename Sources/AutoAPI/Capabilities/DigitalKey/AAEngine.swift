@@ -54,12 +54,16 @@ public final class AAEngine: AACapability, AAPropertyIdentifying {
     public enum PropertyIdentifier: UInt8, CaseIterable {
         case status = 0x01
         case startStopState = 0x02
+        case startStopEnabled = 0x03
     }
 
 
     // MARK: Properties
     
-    /// Start stop state value.
+    /// Indicates if the automatic start-stop system is enabled or not.
+    public var startStopEnabled: AAProperty<AAEnabledState>?
+    
+    /// Indicates wheter the start-stop system is currently active or not.
     public var startStopState: AAProperty<AAActiveState>?
     
     /// Status value.
@@ -124,13 +128,13 @@ public final class AAEngine: AACapability, AAPropertyIdentifying {
     /// Activate or deactivate the Start-Stop system of the engine. When activated, this will automatically shut down and restart the internal combustion engine when the vehicle is stopped.
     /// 
     /// - parameters:
-    ///     - startStopState: Start stop state value.
+    ///     - startStopEnabled: Indicates if the automatic start-stop system is enabled or not.
     ///
     /// - returns: Command as `[UInt8]` to send to the vehicle.
-    public static func activateDeactivateStartStop(startStopState: AAActiveState) -> [UInt8] {
+    public static func enableDisableStartStop(startStopEnabled: AAEnabledState) -> [UInt8] {
         var properties: [AAOpaqueProperty?] = []
     
-        properties.append(AAProperty(id: PropertyIdentifier.startStopState, value: startStopState))
+        properties.append(AAProperty(id: PropertyIdentifier.startStopEnabled, value: startStopEnabled))
     
         let propertiesBytes = properties.compactMap { $0 }.sorted { $0.id < $1.id }.flatMap { $0.bytes }
     
@@ -143,6 +147,7 @@ public final class AAEngine: AACapability, AAPropertyIdentifying {
     public required init?(bytes: [UInt8]) {
         super.init(bytes: bytes)
     
+        startStopEnabled = extract(property: .startStopEnabled)
         startStopState = extract(property: .startStopState)
         status = extract(property: .status)
     }

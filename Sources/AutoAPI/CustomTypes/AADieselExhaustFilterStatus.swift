@@ -35,31 +35,9 @@ import HMUtilities
 
 public final class AADieselExhaustFilterStatus: Codable, HMBytesConvertable {
 
-    /// Status enum.
-    public enum Status: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case unknown = 0x00
-        case normalOperation = 0x01
-        case overloaded = 0x02
-        case atLimit = 0x03
-        case overLimit = 0x04
-    }
-
-    /// Component enum.
-    public enum Component: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case unknown = 0x00
-        case exhaustFilter = 0x01
-        case dieselParticulateFilter = 0x02
-        case overboostCodeRegulator = 0x03
-        case offBoardRegeneration = 0x04
-    }
-
-    /// Cleaning enum.
-    public enum Cleaning: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case unknown = 0x00
-        case inProgress = 0x01
-        case complete = 0x02
-        case interrupted = 0x03
-    }
+    public typealias Status = AADieselExhaustFilterStatusStatus
+    public typealias Component = AADieselExhaustFilterStatusComponent
+    public typealias Cleaning = AADieselExhaustFilterStatusCleaning
 
 
     /// Status.

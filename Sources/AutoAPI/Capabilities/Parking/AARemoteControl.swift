@@ -35,6 +35,9 @@ import HMUtilities
 
 public final class AARemoteControl: AACapability, AAPropertyIdentifying {
 
+    public typealias ControlMode = AARemoteControlControlMode
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AARemoteControl` was introduced to the spec.
@@ -42,17 +45,6 @@ public final class AARemoteControl: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AARemoteControl` was last updated.
         public static let updated: UInt8 = 12
-    }
-
-
-    /// Control mode enum.
-    public enum ControlMode: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case unavailable = 0x00
-        case available = 0x01
-        case started = 0x02
-        case failedToStart = 0x03
-        case aborted = 0x04
-        case ended = 0x05
     }
 
 

@@ -35,11 +35,7 @@ import HMUtilities
 
 public final class AADriverCardPresent: Codable, HMBytesConvertable {
 
-    /// CardPresent enum.
-    public enum CardPresent: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case notPresent = 0x00
-        case present = 0x01
-    }
+    public typealias CardPresent = AADriverCardPresentCardPresent
 
 
     /// The driver number.

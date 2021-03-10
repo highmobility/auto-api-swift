@@ -40,28 +40,62 @@ final class AAHoodTests: XCTestCase {
     // MARK: State Properties
     
     func testPosition() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x67, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x67, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAHood else {
             return XCTFail("Could not parse bytes as `AAHood`")
         }
         
-        XCTAssertEqual(capability.position?.value, AAHood.Position.open)
+        XCTAssertEqual(capability.position?.value, Position.open)
+    }
+    
+    func testLock() {
+        let bytes: [UInt8] = [0x0d, 0x00, 0x67, 0x01, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        
+        guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAHood else {
+            return XCTFail("Could not parse bytes as `AAHood`")
+        }
+        
+        XCTAssertEqual(capability.lock?.value, AALockState.locked)
+    }
+    
+    func testLockSafety() {
+        let bytes: [UInt8] = [0x0d, 0x00, 0x67, 0x01, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
+        
+        guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAHood else {
+            return XCTFail("Could not parse bytes as `AAHood`")
+        }
+        
+        XCTAssertEqual(capability.lockSafety?.value, AALockSafety.safe)
     }
 
 
     // MARK: Getters
     
     func testGetHoodState() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x67, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x67, 0x00]
         
         XCTAssertEqual(bytes, AAHood.getHoodState())
     }
     
     func testGetHoodStateAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x67, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x67, 0x02]
         
         XCTAssertEqual(bytes, AAHood.getHoodStateAvailability())
+    }
+    
+    func testGetHoodStateProperties() {
+        let bytes: [UInt8] = [0x0d, 0x00, 0x67, 0x00, 0x01]
+        let getterBytes = AAHood.getHoodStateProperties(ids: .position)
+        
+        XCTAssertEqual(bytes, getterBytes)
+    }
+    
+    func testGetHoodStatePropertiesAvailability() {
+        let bytes: [UInt8] = [0x0d, 0x00, 0x67, 0x02, 0x01]
+        let getterBytes = AAHood.getHoodStatePropertiesAvailability(ids: .position)
+        
+        XCTAssertEqual(bytes, getterBytes)
     }
 
 
@@ -73,5 +107,7 @@ final class AAHoodTests: XCTestCase {
     
     func testPropeertyIdentifiers() {
         XCTAssertEqual(AAHood.PropertyIdentifier.position.rawValue, 0x01)
+        XCTAssertEqual(AAHood.PropertyIdentifier.lock.rawValue, 0x02)
+        XCTAssertEqual(AAHood.PropertyIdentifier.lockSafety.rawValue, 0x03)
     }
 }

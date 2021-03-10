@@ -40,7 +40,7 @@ final class AAMobileTests: XCTestCase {
     // MARK: State Properties
     
     func testConnection() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x66, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x66, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAMobile else {
             return XCTFail("Could not parse bytes as `AAMobile`")
@@ -53,13 +53,13 @@ final class AAMobileTests: XCTestCase {
     // MARK: Getters
     
     func testGetMobileState() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x66, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x66, 0x00]
         
         XCTAssertEqual(bytes, AAMobile.getMobileState())
     }
     
     func testGetMobileStateAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x66, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x66, 0x02]
         
         XCTAssertEqual(bytes, AAMobile.getMobileStateAvailability())
     }

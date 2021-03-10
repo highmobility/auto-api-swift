@@ -35,6 +35,9 @@ import HMUtilities
 
 public final class AAFailureMessage: AACapability, AAPropertyIdentifying {
 
+    public typealias FailureReason = AAFailureMessageFailureReason
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AAFailureMessage` was introduced to the spec.
@@ -42,20 +45,6 @@ public final class AAFailureMessage: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AAFailureMessage` was last updated.
         public static let updated: UInt8 = 11
-    }
-
-
-    /// Failure reason enum.
-    public enum FailureReason: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case unsupportedCapability = 0x00
-        case unauthorised = 0x01
-        case incorrectState = 0x02
-        case executionTimeout = 0x03
-        case vehicleAsleep = 0x04
-        case invalidCommand = 0x05
-        case pending = 0x06
-        case rateLimit = 0x07
-        case oemError = 0x08
     }
 
 

@@ -35,12 +35,7 @@ import HMUtilities
 
 public final class AAWindowPosition: Codable, HMBytesConvertable {
 
-    /// Position enum.
-    public enum Position: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case closed = 0x00
-        case open = 0x01
-        case intermediate = 0x02
-    }
+    public typealias Position = AAWindowPositionPosition
 
 
     /// Window location.

@@ -35,6 +35,9 @@ import HMUtilities
 
 public final class AAChassisSettings: AACapability, AAPropertyIdentifying {
 
+    public typealias SportChrono = AAChassisSettingsSportChrono
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AAChassisSettings` was introduced to the spec.
@@ -42,14 +45,6 @@ public final class AAChassisSettings: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AAChassisSettings` was last updated.
         public static let updated: UInt8 = 12
-    }
-
-
-    /// Sport chrono enum.
-    public enum SportChrono: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case inactive = 0x00
-        case active = 0x01
-        case reset = 0x02
     }
 
 

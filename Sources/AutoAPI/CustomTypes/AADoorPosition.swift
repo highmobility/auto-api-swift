@@ -35,14 +35,7 @@ import HMUtilities
 
 public final class AADoorPosition: Codable, HMBytesConvertable {
 
-    /// Location enum.
-    public enum Location: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case frontLeft = 0x00
-        case frontRight = 0x01
-        case rearRight = 0x02
-        case rearLeft = 0x03
-        case all = 0x05
-    }
+    public typealias Location = AADoorPositionLocation
 
 
     /// Location.

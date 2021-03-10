@@ -35,6 +35,12 @@ import HMUtilities
 
 public final class AARooftopControl: AACapability, AAPropertyIdentifying {
 
+    public typealias ConvertibleRoofState = AARooftopControlConvertibleRoofState
+    public typealias SunroofTiltState = AARooftopControlSunroofTiltState
+    public typealias SunroofState = AARooftopControlSunroofState
+    public typealias SunroofRainEvent = AARooftopControlSunroofRainEvent
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AARooftopControl` was introduced to the spec.
@@ -42,41 +48,6 @@ public final class AARooftopControl: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AARooftopControl` was last updated.
         public static let updated: UInt8 = 12
-    }
-
-
-    /// Convertible roof state enum.
-    public enum ConvertibleRoofState: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case closed = 0x00
-        case open = 0x01
-        case emergencyLocked = 0x02
-        case closedSecured = 0x03
-        case openSecured = 0x04
-        case hardTopMounted = 0x05
-        case intermediatePosition = 0x06
-        case loadingPosition = 0x07
-        case loadingPositionImmediate = 0x08
-    }
-
-    /// Sunroof event happened in case of rain.
-    public enum SunroofRainEvent: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case noEvent = 0x00
-        case inStrokePositionBecauseOfRain = 0x01
-        case automaticallyInStrokePosition = 0x02
-    }
-
-    /// Sunroof state enum.
-    public enum SunroofState: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case closed = 0x00
-        case open = 0x01
-        case intermediate = 0x02
-    }
-
-    /// Sunroof tilt state enum.
-    public enum SunroofTiltState: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case closed = 0x00
-        case tilted = 0x01
-        case halfTilted = 0x02
     }
 
 

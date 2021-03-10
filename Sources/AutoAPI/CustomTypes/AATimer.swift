@@ -35,12 +35,7 @@ import HMUtilities
 
 public final class AATimer: Codable, HMBytesConvertable {
 
-    /// TimerType enum.
-    public enum TimerType: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case preferredStartTime = 0x00
-        case preferredEndTime = 0x01
-        case departureDate = 0x02
-    }
+    public typealias TimerType = AATimerTimerType
 
 
     /// TimerType.

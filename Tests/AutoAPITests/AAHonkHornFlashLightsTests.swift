@@ -40,13 +40,13 @@ final class AAHonkHornFlashLightsTests: XCTestCase {
     // MARK: State Properties
     
     func testFlashers() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x26, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x26, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x02]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAHonkHornFlashLights else {
             return XCTFail("Could not parse bytes as `AAHonkHornFlashLights`")
         }
         
-        XCTAssertEqual(capability.flashers?.value, AAHonkHornFlashLights.Flashers.leftFlasherActive)
+        XCTAssertEqual(capability.flashers?.value, Flashers.leftFlasherActive)
     }
 
 
@@ -96,13 +96,13 @@ final class AAHonkHornFlashLightsTests: XCTestCase {
     // MARK: Getters
     
     func testGetFlashersState() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x26, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x26, 0x00]
         
         XCTAssertEqual(bytes, AAHonkHornFlashLights.getFlashersState())
     }
     
     func testGetFlashersStateAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x26, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x26, 0x02]
         
         XCTAssertEqual(bytes, AAHonkHornFlashLights.getFlashersStateAvailability())
     }
@@ -111,14 +111,14 @@ final class AAHonkHornFlashLightsTests: XCTestCase {
     // MARK: Setters
     
     func testHonkFlash() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x26, 0x01, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x05, 0x05, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x07, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x26, 0x01, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x05, 0x05, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x07, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
         let setterBytes = AAHonkHornFlashLights.honkFlash(flashTimes: 5, honkTime: Measurement<UnitDuration>(value: 2.0, unit: .seconds))
         
         XCTAssertEqual(bytes, setterBytes)
     }
     
     func testActivateDeactivateEmergencyFlasher() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x26, 0x01, 0x04, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x26, 0x01, 0x04, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         let setterBytes = AAHonkHornFlashLights.activateDeactivateEmergencyFlasher(emergencyFlashersState: AAActiveState.active)
         
         XCTAssertEqual(bytes, setterBytes)

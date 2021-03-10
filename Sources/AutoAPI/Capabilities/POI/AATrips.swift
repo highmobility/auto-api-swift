@@ -35,20 +35,18 @@ import HMUtilities
 
 public final class AATrips: AACapability, AAPropertyIdentifying {
 
+    public typealias TypeOf = AATripsType
+    public typealias Event = AATripsEvent
+    public typealias EcoLevel = AATripsEcoLevel
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AATrips` was introduced to the spec.
         public static let intro: UInt8 = 12
     
         /// Level (version) of *AutoAPI* when `AATrips` was last updated.
-        public static let updated: UInt8 = 12
-    }
-
-
-    /// Type of the trip.
-    public enum TypeOf: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case single = 0x00
-        case multi = 0x01
+        public static let updated: UInt8 = 13
     }
 
 
@@ -74,6 +72,12 @@ public final class AATrips: AACapability, AAPropertyIdentifying {
         case distance = 0x0d
         case startAddressComponents = 0x0e
         case endAddressComponents = 0x0f
+        case event = 0x10
+        case ecoLevel = 0x11
+        case thresholds = 0x12
+        case totalFuelConsumption = 0x13
+        case totalIdleFuelConsumption = 0x14
+        case maximumSpeed = 0x15
     }
 
 
@@ -91,6 +95,9 @@ public final class AATrips: AACapability, AAPropertyIdentifying {
     /// Name of the driver of the trip.
     public var driverName: AAProperty<String>?
     
+    /// Eco level value.
+    public var ecoLevel: AAProperty<EcoLevel>?
+    
     /// End address of the trip.
     public var endAddress: AAProperty<String>?
     
@@ -105,6 +112,12 @@ public final class AATrips: AACapability, AAPropertyIdentifying {
     
     /// End time of the trip.
     public var endTime: AAProperty<Date>?
+    
+    /// Event value.
+    public var event: AAProperty<Event>?
+    
+    /// Maximum speed recorded since the last igntion on..
+    public var maximumSpeed: AAProperty<Measurement<UnitSpeed>>?
     
     /// Start address of the trip.
     public var startAddress: AAProperty<String>?
@@ -121,6 +134,15 @@ public final class AATrips: AACapability, AAPropertyIdentifying {
     /// Start time of the trip.
     public var startTime: AAProperty<Date>?
     
+    /// Eco driving thresholds.
+    public var thresholds: [AAProperty<AAEcoDrivingThreshold>]?
+    
+    /// Total fuel consumption during the trip.
+    public var totalFuelConsumption: AAProperty<Measurement<UnitVolume>>?
+    
+    /// Fuel consumed while idle since the last ignition on..
+    public var totalIdleFuelConsumption: AAProperty<Measurement<UnitVolume>>?
+    
     /// Type of the trip.
     public var type: AAProperty<TypeOf>?
 
@@ -134,16 +156,22 @@ public final class AATrips: AACapability, AAPropertyIdentifying {
         description = extract(property: .description)
         distance = extract(property: .distance)
         driverName = extract(property: .driverName)
+        ecoLevel = extract(property: .ecoLevel)
         endAddress = extract(property: .endAddress)
         endAddressComponents = extract(properties: .endAddressComponents)
         endCoordinates = extract(property: .endCoordinates)
         endOdometer = extract(property: .endOdometer)
         endTime = extract(property: .endTime)
+        event = extract(property: .event)
+        maximumSpeed = extract(property: .maximumSpeed)
         startAddress = extract(property: .startAddress)
         startAddressComponents = extract(properties: .startAddressComponents)
         startCoordinates = extract(property: .startCoordinates)
         startOdometer = extract(property: .startOdometer)
         startTime = extract(property: .startTime)
+        thresholds = extract(properties: .thresholds)
+        totalFuelConsumption = extract(property: .totalFuelConsumption)
+        totalIdleFuelConsumption = extract(property: .totalIdleFuelConsumption)
         type = extract(property: .type)
     }
 }

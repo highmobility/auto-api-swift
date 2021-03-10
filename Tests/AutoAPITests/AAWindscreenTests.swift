@@ -40,37 +40,37 @@ final class AAWindscreenTests: XCTestCase {
     // MARK: State Properties
     
     func testWipersStatus() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x42, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x42, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x02]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAWindscreen else {
             return XCTFail("Could not parse bytes as `AAWindscreen`")
         }
         
-        XCTAssertEqual(capability.wipersStatus?.value, AAWindscreen.WipersStatus.automatic)
+        XCTAssertEqual(capability.wipersStatus?.value, WipersStatus.automatic)
     }
     
     func testWipersIntensity() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x42, 0x01, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x03]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x42, 0x01, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x03]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAWindscreen else {
             return XCTFail("Could not parse bytes as `AAWindscreen`")
         }
         
-        XCTAssertEqual(capability.wipersIntensity?.value, AAWindscreen.WipersIntensity.level3)
+        XCTAssertEqual(capability.wipersIntensity?.value, WipersIntensity.level3)
     }
     
     func testWindscreenDamage() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x42, 0x01, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x42, 0x01, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAWindscreen else {
             return XCTFail("Could not parse bytes as `AAWindscreen`")
         }
         
-        XCTAssertEqual(capability.windscreenDamage?.value, AAWindscreen.WindscreenDamage.impactButNoDamageDetected)
+        XCTAssertEqual(capability.windscreenDamage?.value, WindscreenDamage.impactButNoDamageDetected)
     }
     
     func testWindscreenZoneMatrix() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x42, 0x01, 0x04, 0x00, 0x05, 0x01, 0x00, 0x02, 0x04, 0x03]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x42, 0x01, 0x04, 0x00, 0x05, 0x01, 0x00, 0x02, 0x04, 0x03]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAWindscreen else {
             return XCTFail("Could not parse bytes as `AAWindscreen`")
@@ -80,7 +80,7 @@ final class AAWindscreenTests: XCTestCase {
     }
     
     func testWindscreenDamageZone() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x42, 0x01, 0x05, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x42, 0x01, 0x05, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0x02]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAWindscreen else {
             return XCTFail("Could not parse bytes as `AAWindscreen`")
@@ -90,17 +90,17 @@ final class AAWindscreenTests: XCTestCase {
     }
     
     func testWindscreenNeedsReplacement() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x42, 0x01, 0x06, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x42, 0x01, 0x06, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAWindscreen else {
             return XCTFail("Could not parse bytes as `AAWindscreen`")
         }
         
-        XCTAssertEqual(capability.windscreenNeedsReplacement?.value, AAWindscreen.WindscreenNeedsReplacement.noReplacementNeeded)
+        XCTAssertEqual(capability.windscreenNeedsReplacement?.value, WindscreenNeedsReplacement.noReplacementNeeded)
     }
     
     func testWindscreenDamageConfidence() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x42, 0x01, 0x07, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xee, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x42, 0x01, 0x07, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xee, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAWindscreen else {
             return XCTFail("Could not parse bytes as `AAWindscreen`")
@@ -110,7 +110,7 @@ final class AAWindscreenTests: XCTestCase {
     }
     
     func testWindscreenDamageDetectionTime() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x42, 0x01, 0x08, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x00, 0x00, 0x01, 0x59, 0x89, 0x38, 0xe7, 0x88]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x42, 0x01, 0x08, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x00, 0x00, 0x01, 0x59, 0x89, 0x38, 0xe7, 0x88]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAWindscreen else {
             return XCTFail("Could not parse bytes as `AAWindscreen`")
@@ -124,26 +124,26 @@ final class AAWindscreenTests: XCTestCase {
     // MARK: Getters
     
     func testGetWindscreenState() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x42, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x42, 0x00]
         
         XCTAssertEqual(bytes, AAWindscreen.getWindscreenState())
     }
     
     func testGetWindscreenStateAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x42, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x42, 0x02]
         
         XCTAssertEqual(bytes, AAWindscreen.getWindscreenStateAvailability())
     }
     
     func testGetWindscreenStateProperties() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x42, 0x00, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x42, 0x00, 0x01]
         let getterBytes = AAWindscreen.getWindscreenStateProperties(ids: .wipersStatus)
         
         XCTAssertEqual(bytes, getterBytes)
     }
     
     func testGetWindscreenStatePropertiesAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x42, 0x02, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x42, 0x02, 0x01]
         let getterBytes = AAWindscreen.getWindscreenStatePropertiesAvailability(ids: .wipersStatus)
         
         XCTAssertEqual(bytes, getterBytes)
@@ -153,22 +153,22 @@ final class AAWindscreenTests: XCTestCase {
     // MARK: Setters
     
     func testSetWindscreenDamage() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x42, 0x01, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01, 0x05, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0x02]
-        let setterBytes = AAWindscreen.setWindscreenDamage(windscreenDamage: AAWindscreen.WindscreenDamage.impactButNoDamageDetected, windscreenDamageZone: AAZone(horizontal: 1, vertical: 2))
+        let bytes: [UInt8] = [0x0d, 0x00, 0x42, 0x01, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01, 0x05, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0x02]
+        let setterBytes = AAWindscreen.setWindscreenDamage(windscreenDamage: WindscreenDamage.impactButNoDamageDetected, windscreenDamageZone: AAZone(horizontal: 1, vertical: 2))
         
         XCTAssertEqual(bytes, setterBytes)
     }
     
     func testSetWindscreenReplacementNeeded() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x42, 0x01, 0x06, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
-        let setterBytes = AAWindscreen.setWindscreenReplacementNeeded(windscreenNeedsReplacement: AAWindscreen.WindscreenNeedsReplacement.noReplacementNeeded)
+        let bytes: [UInt8] = [0x0d, 0x00, 0x42, 0x01, 0x06, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let setterBytes = AAWindscreen.setWindscreenReplacementNeeded(windscreenNeedsReplacement: WindscreenNeedsReplacement.noReplacementNeeded)
         
         XCTAssertEqual(bytes, setterBytes)
     }
     
     func testControlWipers() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x42, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x02, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x03]
-        let setterBytes = AAWindscreen.controlWipers(wipersIntensity: AAWindscreen.WipersIntensity.level3, wipersStatus: AAWindscreen.WipersStatus.automatic)
+        let bytes: [UInt8] = [0x0d, 0x00, 0x42, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x02, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x03]
+        let setterBytes = AAWindscreen.controlWipers(wipersIntensity: WipersIntensity.level3, wipersStatus: WipersStatus.automatic)
         
         XCTAssertEqual(bytes, setterBytes)
     }

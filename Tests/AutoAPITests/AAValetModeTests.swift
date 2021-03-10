@@ -40,7 +40,7 @@ final class AAValetModeTests: XCTestCase {
     // MARK: State Properties
     
     func testStatus() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x28, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x28, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAValetMode else {
             return XCTFail("Could not parse bytes as `AAValetMode`")
@@ -53,13 +53,13 @@ final class AAValetModeTests: XCTestCase {
     // MARK: Getters
     
     func testGetValetMode() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x28, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x28, 0x00]
         
         XCTAssertEqual(bytes, AAValetMode.getValetMode())
     }
     
     func testGetValetModeAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x28, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x28, 0x02]
         
         XCTAssertEqual(bytes, AAValetMode.getValetModeAvailability())
     }
@@ -68,7 +68,7 @@ final class AAValetModeTests: XCTestCase {
     // MARK: Setters
     
     func testActivateDeactivateValetMode() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x28, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x28, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         let setterBytes = AAValetMode.activateDeactivateValetMode(status: AAActiveState.active)
         
         XCTAssertEqual(bytes, setterBytes)

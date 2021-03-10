@@ -35,6 +35,10 @@ import HMUtilities
 
 public final class AATachograph: AACapability, AAPropertyIdentifying {
 
+    public typealias VehicleOverspeed = AATachographVehicleOverspeed
+    public typealias VehicleDirection = AATachographVehicleDirection
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AATachograph` was introduced to the spec.
@@ -42,19 +46,6 @@ public final class AATachograph: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AATachograph` was last updated.
         public static let updated: UInt8 = 12
-    }
-
-
-    /// Vehicle direction enum.
-    public enum VehicleDirection: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case forward = 0x00
-        case reverse = 0x01
-    }
-
-    /// Vehicle overspeed enum.
-    public enum VehicleOverspeed: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case noOverspeed = 0x00
-        case overspeed = 0x01
     }
 
 

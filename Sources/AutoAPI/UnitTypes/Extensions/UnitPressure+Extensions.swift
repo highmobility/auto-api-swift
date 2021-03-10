@@ -34,7 +34,7 @@ import Foundation
 
 public extension UnitPressure {
 
-    public static let pascals = UnitPressure(symbol: "hm_p", converter: UnitConverterLinear(coefficient: 1.0))
+    static let pascals = UnitPressure(symbol: "hm_p", converter: UnitConverterLinear(coefficient: 1.0))
 }
 
 extension UnitPressure: AAUnitType {

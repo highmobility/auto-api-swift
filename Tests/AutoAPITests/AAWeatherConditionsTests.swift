@@ -40,7 +40,7 @@ final class AAWeatherConditionsTests: XCTestCase {
     // MARK: State Properties
     
     func testRainIntensity() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x55, 0x01, 0x01, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xf0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x55, 0x01, 0x01, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xf0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAWeatherConditions else {
             return XCTFail("Could not parse bytes as `AAWeatherConditions`")
@@ -53,13 +53,13 @@ final class AAWeatherConditionsTests: XCTestCase {
     // MARK: Getters
     
     func testGetWeatherConditions() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x55, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x55, 0x00]
         
         XCTAssertEqual(bytes, AAWeatherConditions.getWeatherConditions())
     }
     
     func testGetWeatherConditionsAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x55, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x55, 0x02]
         
         XCTAssertEqual(bytes, AAWeatherConditions.getWeatherConditionsAvailability())
     }

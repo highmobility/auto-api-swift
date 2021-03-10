@@ -35,6 +35,9 @@ import HMUtilities
 
 public final class AAHonkHornFlashLights: AACapability, AAPropertyIdentifying {
 
+    public typealias Flashers = AAHonkHornFlashLightsFlashers
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AAHonkHornFlashLights` was introduced to the spec.
@@ -42,15 +45,6 @@ public final class AAHonkHornFlashLights: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AAHonkHornFlashLights` was last updated.
         public static let updated: UInt8 = 12
-    }
-
-
-    /// Flashers enum.
-    public enum Flashers: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case inactive = 0x00
-        case emergencyFlasherActive = 0x01
-        case leftFlasherActive = 0x02
-        case rightFlasherActive = 0x03
     }
 
 

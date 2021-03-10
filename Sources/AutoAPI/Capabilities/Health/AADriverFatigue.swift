@@ -35,6 +35,9 @@ import HMUtilities
 
 public final class AADriverFatigue: AACapability, AAPropertyIdentifying {
 
+    public typealias DetectedFatigueLevel = AADriverFatigueDetectedFatigueLevel
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AADriverFatigue` was introduced to the spec.
@@ -42,15 +45,6 @@ public final class AADriverFatigue: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AADriverFatigue` was last updated.
         public static let updated: UInt8 = 11
-    }
-
-
-    /// Detected fatigue level enum.
-    public enum DetectedFatigueLevel: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case light = 0x00
-        case pauseRecommended = 0x01
-        case actionNeeded = 0x02
-        case carReadyToTakeOver = 0x03
     }
 
 

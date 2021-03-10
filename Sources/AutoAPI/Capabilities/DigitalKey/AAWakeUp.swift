@@ -35,6 +35,9 @@ import HMUtilities
 
 public final class AAWakeUp: AACapability, AAPropertyIdentifying {
 
+    public typealias Status = AAWakeUpStatus
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AAWakeUp` was introduced to the spec.
@@ -42,13 +45,6 @@ public final class AAWakeUp: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AAWakeUp` was last updated.
         public static let updated: UInt8 = 11
-    }
-
-
-    /// Status enum.
-    public enum Status: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case wakeUp = 0x00
-        case sleep = 0x01
     }
 
 

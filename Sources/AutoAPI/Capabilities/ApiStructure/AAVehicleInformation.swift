@@ -35,58 +35,20 @@ import HMUtilities
 
 public final class AAVehicleInformation: AACapability, AAPropertyIdentifying {
 
+    public typealias Gearbox = AAVehicleInformationGearbox
+    public typealias DisplayUnit = AAVehicleInformationDisplayUnit
+    public typealias DriverSeatLocation = AAVehicleInformationDriverSeatLocation
+    public typealias Timeformat = AAVehicleInformationTimeformat
+    public typealias Drive = AAVehicleInformationDrive
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AAVehicleInformation` was introduced to the spec.
         public static let intro: UInt8 = 12
     
         /// Level (version) of *AutoAPI* when `AAVehicleInformation` was last updated.
-        public static let updated: UInt8 = 12
-    }
-
-
-    /// Display unit enum.
-    public enum DisplayUnit: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case km = 0x00
-        case miles = 0x01
-    }
-
-    /// Wheels driven by the engine.
-    public enum Drive: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case fwd = 0x00
-        case rwd = 0x01
-        case fourWd = 0x02
-        case awd = 0x03
-    }
-
-    /// Driver seat location enum.
-    public enum DriverSeatLocation: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case left = 0x00
-        case right = 0x01
-        case center = 0x02
-    }
-
-    /// Gearbox enum.
-    public enum Gearbox: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case manual = 0x00
-        case automatic = 0x01
-        case semiAutomatic = 0x02
-    }
-
-    /// Powertrain enum.
-    public enum Powertrain: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case unknown = 0x00
-        case allElectric = 0x01
-        case combustionEngine = 0x02
-        case phev = 0x03
-        case hydrogen = 0x04
-        case hydrogenHybrid = 0x05
-    }
-
-    /// The timeformat on headunit.
-    public enum Timeformat: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case twelveH = 0x00
-        case twentyFourH = 0x01
+        public static let updated: UInt8 = 13
     }
 
 
@@ -116,6 +78,7 @@ public final class AAVehicleInformation: AACapability, AAPropertyIdentifying {
         case language = 0x14
         case timeformat = 0x15
         case drive = 0x16
+        case powertrainSecondary = 0x17
     }
 
 
@@ -169,8 +132,11 @@ public final class AAVehicleInformation: AACapability, AAPropertyIdentifying {
     /// The power of the vehicle.
     public var power: AAProperty<Measurement<UnitPower>>?
     
-    /// Powertrain value.
-    public var powertrain: AAProperty<Powertrain>?
+    /// Type of the (primary) powertrain.
+    public var powertrain: AAProperty<AAEngineType>?
+    
+    /// Powertrain secondary value.
+    public var powertrainSecondary: AAProperty<AAEngineType>?
     
     /// The sales designation of the model.
     public var salesDesignation: AAProperty<String>?
@@ -231,6 +197,7 @@ public final class AAVehicleInformation: AACapability, AAPropertyIdentifying {
         numberOfSeats = extract(property: .numberOfSeats)
         power = extract(property: .power)
         powertrain = extract(property: .powertrain)
+        powertrainSecondary = extract(property: .powertrainSecondary)
         salesDesignation = extract(property: .salesDesignation)
         timeformat = extract(property: .timeformat)
     }

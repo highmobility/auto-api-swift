@@ -35,6 +35,9 @@ import HMUtilities
 
 public final class AAPowerTakeoff: AACapability, AAPropertyIdentifying {
 
+    public typealias Engaged = AAPowerTakeoffEngaged
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AAPowerTakeoff` was introduced to the spec.
@@ -42,13 +45,6 @@ public final class AAPowerTakeoff: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AAPowerTakeoff` was last updated.
         public static let updated: UInt8 = 11
-    }
-
-
-    /// Engaged enum.
-    public enum Engaged: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case notEngaged = 0x00
-        case engaged = 0x01
     }
 
 

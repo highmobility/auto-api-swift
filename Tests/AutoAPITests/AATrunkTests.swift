@@ -40,7 +40,7 @@ final class AATrunkTests: XCTestCase {
     // MARK: State Properties
     
     func testLock() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x21, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x21, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AATrunk else {
             return XCTFail("Could not parse bytes as `AATrunk`")
@@ -50,7 +50,7 @@ final class AATrunkTests: XCTestCase {
     }
     
     func testPosition() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x21, 0x01, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x21, 0x01, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AATrunk else {
             return XCTFail("Could not parse bytes as `AATrunk`")
@@ -58,31 +58,41 @@ final class AATrunkTests: XCTestCase {
         
         XCTAssertEqual(capability.position?.value, AAPosition.open)
     }
+    
+    func testLockSafety() {
+        let bytes: [UInt8] = [0x0d, 0x00, 0x21, 0x01, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
+        
+        guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AATrunk else {
+            return XCTFail("Could not parse bytes as `AATrunk`")
+        }
+        
+        XCTAssertEqual(capability.lockSafety?.value, AALockSafety.safe)
+    }
 
 
     // MARK: Getters
     
     func testGetTrunkState() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x21, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x21, 0x00]
         
         XCTAssertEqual(bytes, AATrunk.getTrunkState())
     }
     
     func testGetTrunkStateAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x21, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x21, 0x02]
         
         XCTAssertEqual(bytes, AATrunk.getTrunkStateAvailability())
     }
     
     func testGetTrunkStateProperties() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x21, 0x00, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x21, 0x00, 0x01]
         let getterBytes = AATrunk.getTrunkStateProperties(ids: .lock)
         
         XCTAssertEqual(bytes, getterBytes)
     }
     
     func testGetTrunkStatePropertiesAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x21, 0x02, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x21, 0x02, 0x01]
         let getterBytes = AATrunk.getTrunkStatePropertiesAvailability(ids: .lock)
         
         XCTAssertEqual(bytes, getterBytes)
@@ -92,7 +102,7 @@ final class AATrunkTests: XCTestCase {
     // MARK: Setters
     
     func testControlTrunk() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x21, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x21, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         let setterBytes = AATrunk.controlTrunk(lock: AALockState.unlocked, position: AAPosition.open)
         
         XCTAssertEqual(bytes, setterBytes)
@@ -108,5 +118,6 @@ final class AATrunkTests: XCTestCase {
     func testPropeertyIdentifiers() {
         XCTAssertEqual(AATrunk.PropertyIdentifier.lock.rawValue, 0x01)
         XCTAssertEqual(AATrunk.PropertyIdentifier.position.rawValue, 0x02)
+        XCTAssertEqual(AATrunk.PropertyIdentifier.lockSafety.rawValue, 0x03)
     }
 }

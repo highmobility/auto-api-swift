@@ -35,11 +35,14 @@ import Foundation
 extension AAAutoAPI {
 
     static let capabilities: [AACapability.Type] = [
-            AABrowser.self,
+            AAAdas.self,
+		    AABrowser.self,
 		    AACapabilities.self,
 		    AACharging.self,
+		    AAChargingSession.self,
 		    AAChassisSettings.self,
 		    AAClimate.self,
+		    AACrash.self,
 		    AACruiseControl.self,
 		    AADashboardLights.self,
 		    AADiagnostics.self,
@@ -93,5 +96,5 @@ extension AAAutoAPI {
     ]
 
 
-    static let protocolVersion: UInt8 = 0x0c
+    static let protocolVersion: UInt8 = 0x0d
 }

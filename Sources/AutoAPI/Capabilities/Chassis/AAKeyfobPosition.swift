@@ -35,6 +35,9 @@ import HMUtilities
 
 public final class AAKeyfobPosition: AACapability, AAPropertyIdentifying {
 
+    public typealias Location = AAKeyfobPositionLocation
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AAKeyfobPosition` was introduced to the spec.
@@ -42,17 +45,6 @@ public final class AAKeyfobPosition: AACapability, AAPropertyIdentifying {
     
         /// Level (version) of *AutoAPI* when `AAKeyfobPosition` was last updated.
         public static let updated: UInt8 = 11
-    }
-
-
-    /// Location enum.
-    public enum Location: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case outOfRange = 0x00
-        case outsideDriverSide = 0x01
-        case outsideInFrontOfCar = 0x02
-        case outsidePassengerSide = 0x03
-        case outsideBehindCar = 0x04
-        case insideCar = 0x05
     }
 
 

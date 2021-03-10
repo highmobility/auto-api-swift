@@ -40,7 +40,7 @@ final class AAOffroadTests: XCTestCase {
     // MARK: State Properties
     
     func testRouteIncline() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x52, 0x01, 0x01, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x02, 0x00, 0x40, 0x24, 0x33, 0x33, 0x33, 0x33, 0x33, 0x33]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x52, 0x01, 0x01, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x02, 0x00, 0x40, 0x24, 0x33, 0x33, 0x33, 0x33, 0x33, 0x33]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAOffroad else {
             return XCTFail("Could not parse bytes as `AAOffroad`")
@@ -50,7 +50,7 @@ final class AAOffroadTests: XCTestCase {
     }
     
     func testWheelSuspension() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x52, 0x01, 0x02, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xe0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x52, 0x01, 0x02, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xe0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAOffroad else {
             return XCTFail("Could not parse bytes as `AAOffroad`")
@@ -63,26 +63,26 @@ final class AAOffroadTests: XCTestCase {
     // MARK: Getters
     
     func testGetOffroadState() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x52, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x52, 0x00]
         
         XCTAssertEqual(bytes, AAOffroad.getOffroadState())
     }
     
     func testGetOffroadStateAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x52, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x52, 0x02]
         
         XCTAssertEqual(bytes, AAOffroad.getOffroadStateAvailability())
     }
     
     func testGetOffroadStateProperties() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x52, 0x00, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x52, 0x00, 0x01]
         let getterBytes = AAOffroad.getOffroadStateProperties(ids: .routeIncline)
         
         XCTAssertEqual(bytes, getterBytes)
     }
     
     func testGetOffroadStatePropertiesAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x52, 0x02, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x52, 0x02, 0x01]
         let getterBytes = AAOffroad.getOffroadStatePropertiesAvailability(ids: .routeIncline)
         
         XCTAssertEqual(bytes, getterBytes)

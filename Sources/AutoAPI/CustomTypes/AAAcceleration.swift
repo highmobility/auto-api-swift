@@ -35,13 +35,7 @@ import HMUtilities
 
 public final class AAAcceleration: Codable, HMBytesConvertable {
 
-    /// Direction enum.
-    public enum Direction: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case longitudinal = 0x00
-        case lateral = 0x01
-        case frontLateral = 0x02
-        case rearLateral = 0x03
-    }
+    public typealias Direction = AAAccelerationDirection
 
 
     /// Direction.

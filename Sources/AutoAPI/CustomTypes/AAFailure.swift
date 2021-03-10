@@ -35,16 +35,7 @@ import HMUtilities
 
 public final class AAFailure: Codable, HMBytesConvertable {
 
-    /// Reason.
-    public enum Reason: UInt8, CaseIterable, Codable, HMBytesConvertable {
-        case rateLimit = 0x00
-        case executionTimeout = 0x01
-        case formatError = 0x02
-        case unauthorised = 0x03
-        case unknown = 0x04
-        case pending = 0x05
-        case oemError = 0x06
-    }
+    public typealias Reason = AAFailureReason
 
 
     /// Reason.
