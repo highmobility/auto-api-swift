@@ -44,7 +44,7 @@ public final class AAMaintenance: AACapability, AAPropertyIdentifying {
         public static let intro: UInt8 = 3
     
         /// Level (version) of *AutoAPI* when `AAMaintenance` was last updated.
-        public static let updated: UInt8 = 12
+        public static let updated: UInt8 = 13
     }
 
 
@@ -68,6 +68,8 @@ public final class AAMaintenance: AACapability, AAPropertyIdentifying {
         case distanceToNextService = 0x0e
         case timeToExhaustInspection = 0x0f
         case lastECall = 0x10
+        case distanceToNextOilService = 0x11
+        case timeToNextOilService = 0x12
     }
 
 
@@ -84,6 +86,9 @@ public final class AAMaintenance: AACapability, AAPropertyIdentifying {
     
     /// Condition based services value.
     public var conditionBasedServices: [AAProperty<AAConditionBasedService>]?
+    
+    /// Indicates the remaining distance until the next oil service; if this limit was exceeded, this value indicates the distance that has been driven since then..
+    public var distanceToNextOilService: AAProperty<Measurement<UnitLength>>?
     
     /// The distance until next servicing of the vehicle.
     public var distanceToNextService: AAProperty<Measurement<UnitLength>>?
@@ -108,6 +113,9 @@ public final class AAMaintenance: AACapability, AAPropertyIdentifying {
     
     /// Time until exhaust inspection.
     public var timeToExhaustInspection: AAProperty<Measurement<UnitDuration>>?
+    
+    /// Indicates the time remaining until the next oil service; if this limit was exceeded, this value indicates the time that has passed since then..
+    public var timeToNextOilService: AAProperty<Measurement<UnitDuration>>?
     
     /// Time until next servicing of the vehicle.
     public var timeToNextService: AAProperty<Measurement<UnitDuration>>?
@@ -185,6 +193,7 @@ public final class AAMaintenance: AACapability, AAPropertyIdentifying {
         brakeFluidChangeDate = extract(property: .brakeFluidChangeDate)
         cbsReportsCount = extract(property: .cbsReportsCount)
         conditionBasedServices = extract(properties: .conditionBasedServices)
+        distanceToNextOilService = extract(property: .distanceToNextOilService)
         distanceToNextService = extract(property: .distanceToNextService)
         lastECall = extract(property: .lastECall)
         nextInspectionDate = extract(property: .nextInspectionDate)
@@ -193,6 +202,7 @@ public final class AAMaintenance: AACapability, AAPropertyIdentifying {
         teleserviceAvailability = extract(property: .teleserviceAvailability)
         teleserviceBatteryCallDate = extract(property: .teleserviceBatteryCallDate)
         timeToExhaustInspection = extract(property: .timeToExhaustInspection)
+        timeToNextOilService = extract(property: .timeToNextOilService)
         timeToNextService = extract(property: .timeToNextService)
     }
 }

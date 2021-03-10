@@ -33,7 +33,7 @@ import Foundation
 import HMUtilities
 
 
-/// State enum.
+/// Ignition state enum.
 public enum AAIgnitionState: String, CaseIterable, Codable, HMBytesConvertable {
 
     case accessory

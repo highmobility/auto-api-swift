@@ -40,7 +40,7 @@ final class AARooftopControlTests: XCTestCase {
     // MARK: State Properties
     
     func testDimming() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x25, 0x01, 0x01, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xf0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x25, 0x01, 0x01, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xf0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AARooftopControl else {
             return XCTFail("Could not parse bytes as `AARooftopControl`")
@@ -50,7 +50,7 @@ final class AARooftopControlTests: XCTestCase {
     }
     
     func testPosition() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x25, 0x01, 0x02, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xe0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x25, 0x01, 0x02, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xe0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AARooftopControl else {
             return XCTFail("Could not parse bytes as `AARooftopControl`")
@@ -60,69 +60,69 @@ final class AARooftopControlTests: XCTestCase {
     }
     
     func testConvertibleRoofState() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x25, 0x01, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x25, 0x01, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AARooftopControl else {
             return XCTFail("Could not parse bytes as `AARooftopControl`")
         }
         
-        XCTAssertEqual(capability.convertibleRoofState?.value, ConvertibleRoofState.open)
+        XCTAssertEqual(capability.convertibleRoofState?.value, AARooftopControlConvertibleRoofState.open)
     }
     
     func testSunroofTiltState() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x25, 0x01, 0x04, 0x00, 0x04, 0x01, 0x00, 0x01, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x25, 0x01, 0x04, 0x00, 0x04, 0x01, 0x00, 0x01, 0x02]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AARooftopControl else {
             return XCTFail("Could not parse bytes as `AARooftopControl`")
         }
         
-        XCTAssertEqual(capability.sunroofTiltState?.value, SunroofTiltState.halfTilted)
+        XCTAssertEqual(capability.sunroofTiltState?.value, AARooftopControlSunroofTiltState.halfTilted)
     }
     
     func testSunroofState() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x25, 0x01, 0x05, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x25, 0x01, 0x05, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AARooftopControl else {
             return XCTFail("Could not parse bytes as `AARooftopControl`")
         }
         
-        XCTAssertEqual(capability.sunroofState?.value, SunroofState.open)
+        XCTAssertEqual(capability.sunroofState?.value, AARooftopControlSunroofState.open)
     }
     
     func testSunroofRainEvent() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x25, 0x01, 0x06, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x25, 0x01, 0x06, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AARooftopControl else {
             return XCTFail("Could not parse bytes as `AARooftopControl`")
         }
         
-        XCTAssertEqual(capability.sunroofRainEvent?.value, SunroofRainEvent.noEvent)
+        XCTAssertEqual(capability.sunroofRainEvent?.value, AARooftopControlSunroofRainEvent.noEvent)
     }
 
 
     // MARK: Getters
     
     func testGetRooftopState() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x25, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x25, 0x00]
         
         XCTAssertEqual(bytes, AARooftopControl.getRooftopState())
     }
     
     func testGetRooftopStateAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x25, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x25, 0x02]
         
         XCTAssertEqual(bytes, AARooftopControl.getRooftopStateAvailability())
     }
     
     func testGetRooftopStateProperties() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x25, 0x00, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x25, 0x00, 0x01]
         let getterBytes = AARooftopControl.getRooftopStateProperties(ids: .dimming)
         
         XCTAssertEqual(bytes, getterBytes)
     }
     
     func testGetRooftopStatePropertiesAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x25, 0x02, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x25, 0x02, 0x01]
         let getterBytes = AARooftopControl.getRooftopStatePropertiesAvailability(ids: .dimming)
         
         XCTAssertEqual(bytes, getterBytes)
@@ -132,8 +132,8 @@ final class AARooftopControlTests: XCTestCase {
     // MARK: Setters
     
     func testControlRooftop() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x25, 0x01, 0x01, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xf0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xe0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01, 0x04, 0x00, 0x04, 0x01, 0x00, 0x01, 0x02, 0x05, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
-        let setterBytes = AARooftopControl.controlRooftop(convertibleRoofState: ConvertibleRoofState.open, dimming: 1.0, position: 0.5, sunroofState: SunroofState.open, sunroofTiltState: SunroofTiltState.halfTilted)
+        let bytes: [UInt8] = [0x0d, 0x00, 0x25, 0x01, 0x01, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xf0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x3f, 0xe0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01, 0x04, 0x00, 0x04, 0x01, 0x00, 0x01, 0x02, 0x05, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let setterBytes = AARooftopControl.controlRooftop(convertibleRoofState: AARooftopControlConvertibleRoofState.open, dimming: 1.0, position: 0.5, sunroofState: AARooftopControlSunroofState.open, sunroofTiltState: AARooftopControlSunroofTiltState.halfTilted)
         
         XCTAssertEqual(bytes, setterBytes)
     }

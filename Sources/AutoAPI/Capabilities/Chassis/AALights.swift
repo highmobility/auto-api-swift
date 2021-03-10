@@ -37,6 +37,7 @@ public final class AALights: AACapability, AAPropertyIdentifying {
 
     public typealias FrontExteriorLight = AALightsFrontExteriorLight
     public typealias SwitchPosition = AALightsSwitchPosition
+    public typealias ParkingLightStatus = AALightsParkingLightStatus
 
 
     /// Information about the introduction and last update of this capability.
@@ -65,6 +66,7 @@ public final class AALights: AACapability, AAPropertyIdentifying {
         case readingLamps = 0x08
         case interiorLights = 0x09
         case switchPosition = 0x0a
+        case parkingLightStatus = 0x0b
     }
 
 
@@ -84,6 +86,9 @@ public final class AALights: AACapability, AAPropertyIdentifying {
     
     /// Interior lights value.
     public var interiorLights: [AAProperty<AALight>]?
+    
+    /// Indicates the status of the parking light..
+    public var parkingLightStatus: AAProperty<ParkingLightStatus>?
     
     /// Reading lamps value.
     public var readingLamps: [AAProperty<AAReadingLamp>]?
@@ -174,6 +179,7 @@ public final class AALights: AACapability, AAPropertyIdentifying {
         fogLights = extract(properties: .fogLights)
         frontExteriorLight = extract(property: .frontExteriorLight)
         interiorLights = extract(properties: .interiorLights)
+        parkingLightStatus = extract(property: .parkingLightStatus)
         readingLamps = extract(properties: .readingLamps)
         rearExteriorLight = extract(property: .rearExteriorLight)
         reverseLight = extract(property: .reverseLight)

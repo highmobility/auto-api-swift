@@ -78,7 +78,7 @@ public enum AABrand: String, CaseIterable, Codable, HMBytesConvertable {
     case toyota
     case unknown
     case volkswagen
-    case volvo
+    case volvoCars
 
 
     public var byteValue: UInt8 {
@@ -124,7 +124,7 @@ public enum AABrand: String, CaseIterable, Codable, HMBytesConvertable {
         case .subaru: return 0x26
         case .toyota: return 0x27
         case .volkswagen: return 0x28
-        case .volvo: return 0x29
+        case .volvoCars: return 0x29
         case .emulator: return 0x2a
         }
     }
@@ -184,7 +184,7 @@ public enum AABrand: String, CaseIterable, Codable, HMBytesConvertable {
         case 0x26: self = .subaru
         case 0x27: self = .toyota
         case 0x28: self = .volkswagen
-        case 0x29: self = .volvo
+        case 0x29: self = .volvoCars
         case 0x2a: self = .emulator
         default: return nil
         }

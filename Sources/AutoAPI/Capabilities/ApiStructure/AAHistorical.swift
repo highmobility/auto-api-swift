@@ -105,6 +105,25 @@ public final class AAHistorical: AACapability, AAPropertyIdentifying {
     
         return setterHeader + propertiesBytes
     }
+    
+    /// Request history of charging sessions for the vehicle.
+    /// 
+    /// - parameters:
+    ///     - startDate: Start date for historical data query.
+    ///     - endDate: End date for historical data query.
+    ///
+    /// - returns: Command as `[UInt8]` to send to the vehicle.
+    public static func getChargingSessions(endDate: Date? = nil, startDate: Date? = nil) -> [UInt8] {
+        var properties: [AAOpaqueProperty?] = []
+    
+        properties.append(AAProperty(id: PropertyIdentifier.startDate, value: startDate))
+        properties.append(AAProperty(id: PropertyIdentifier.endDate, value: endDate))
+        properties.append(AAProperty(id: PropertyIdentifier.capabilityID.rawValue, value: UInt16(bytes: [0x00, 0x6d])))
+    
+        let propertiesBytes = properties.compactMap { $0 }.sorted { $0.id < $1.id }.flatMap { $0.bytes }
+    
+        return setterHeader + propertiesBytes
+    }
 
 
     // MARK: AACapability

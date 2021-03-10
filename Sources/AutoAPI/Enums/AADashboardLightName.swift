@@ -37,16 +37,27 @@ import HMUtilities
 public enum AADashboardLightName: String, CaseIterable, Codable, HMBytesConvertable {
 
     case acc
+    case activeHoodFault
+    case activeSpoilerFault
     case adblueLevel
+    case adjustTirePressure
     case advancedBraking
     case airFilterMinder
     case airSuspensionRideControlFault
     case airbag
     case allWheelDriveDisabled
     case antiLockBrakeFailure
+    case antiPollutionFailureEngineStartImpossible
+    case antiPollutionSystemFailure
+    case antiReverseSystemFailing
     case antiTheft
+    case autoParkingBrake
+    case automaticBrakingDeactive
+    case automaticBrakingSystemFault
+    case automaticLightsSettingsFailure
     case batteryChargingCondition
     case batteryLowWarning
+    case batterySecondaryLow
     case blindSpotDetection
     case brakeFailure
     case brakeFluidWarning
@@ -55,6 +66,8 @@ public enum AADashboardLightName: String, CaseIterable, Codable, HMBytesConverta
     case checkFuelCap
     case checkFuelFillInlet
     case checkFuelFilter
+    case checkReversingLamp
+    case crossingLineSystemAlertFailure
     case dcTempWarning
     case dcWarningStatus
     case dieselEngineIdleShutdown
@@ -65,14 +78,32 @@ public enum AADashboardLightName: String, CaseIterable, Codable, HMBytesConverta
     case dieselFilterRegeneration
     case dieselParticulateFilter
     case dieselPreHeat
+    case dippedBeamHeadlampsFrontLeftFailure
+    case dippedBeamHeadlampsFrontRightFailure
+    case directionalHeadlampsFailure
+    case directionalLightFailure
+    case doorFrontLeftOpen
+    case doorFrontLeftOpenHighSpeed
+    case doorFrontRightOpen
+    case doorFrontRightOpenHighSpeed
+    case doorRearLeftOpen
+    case doorRearLeftOpenHighSpeed
+    case doorRearRightOpen
+    case doorRearRightOpenHighSpeed
+    case dsgFailing
+    case electricModeNotAvailable
     case electricTrailerBrakeConnection
+    case electronicLockFailure
+    case engineControlSystemFailure
     case engineCoolantLevel
     case engineCoolantTemperature
     case engineIndicator
     case engineOil
     case engineOilLevel
+    case engineOilPressureAlert
     case escIndication
     case escSwitchedOff
+    case espFailure
     case evBatteryCellMaxVoltWarning
     case evBatteryCellMinVoltWarning
     case evBatteryChargeEnergyStorageWarning
@@ -86,6 +117,13 @@ public enum AADashboardLightName: String, CaseIterable, Codable, HMBytesConverta
     case evBatteryOverChargeWarning
     case evBatteryPoorCellWarning
     case evBatteryTempDiffWarning
+    case excessiveOilTemperature
+    case fogLightFrontFault
+    case fogLightFrontLeftFailure
+    case fogLightFrontRightFailure
+    case fogLightRearFault
+    case fogLightRearLeftFailure
+    case fogLightRearRightFailure
     case forwardCollisionWarning
     case frontFogLight
     case fuelDoorOpen
@@ -93,28 +131,85 @@ public enum AADashboardLightName: String, CaseIterable, Codable, HMBytesConverta
     case fuelLevel
     case hatchOpen
     case hazardWarning
+    case headlightsLeftFailure
+    case headlightsRightFailure
     case highBeam
     case hillDescentControlFault
     case hillStartAssistWarning
     case hvInterlockingStatusWarning
+    case hybridSystemFault
+    case hybridSystemFaultRepairedVehicle
+    case hydraulicPressureOrBrakeFuildInsufficient
+    case inspectionWarning
+    case keyfobBatteryAlarm
+    case laneDepartureFault
     case laneDepartureWarningOff
     case lightingSystemFailure
+    case limitedVisibilityAidsCamera
     case lowBeam
+    case maintenanceDateExceeded
+    case maintenanceOdometerExceeded
     case malfunctionIndicator
     case motorControllerTempWarning
+    case oilChangeWarning
+    case otherFailingSystem
     case parkAidMalfunction
     case parkHeating
+    case parkingBrakeControlFailing
+    case parkingSpaceMeasuringSystemFailure
     case passiveEntryPassiveStart
+    case placeGearToParking
     case positionLights
+    case powerSteeringAssitanceFailure
+    case powerSteeringFailure
     case powertrainMalfunction
+    case preheatingDeactivatedBatterySetTheClock
+    case preheatingDeactivatedBatteryTooLow
+    case preheatingDeactivatedFuelLevelTooLow
     case rearFogLight
     case restraintsIndicatorWarning
+    case retractableRoofMechanismFault
+    case reverseLightLeftFailure
+    case reverseLightRightFailure
+    case riskOfIce
+    case roofOperationImpossibleApplyParkingBreak
+    case roofOperationImpossibleApplyStartEngine
+    case roofOperationImpossibleTemperatureTooHigh
+    case screenRearOpen
     case seatBelt
+    case seatbeltPassengerFrontRightUnbuckled
+    case seatbeltPassengerRearCenterUnbuckled
+    case seatbeltPassengerRearLeftUnbuckled
+    case seatbeltPassengerRearRightUnbuckled
     case serviceCall
+    case shockSensorFailing
+    case sideLightsFrontLeftFailure
+    case sideLightsFrontRightFailure
+    case sideLightsRearLeftFailure
+    case sideLightsRearRightFailure
+    case spareWheelFitterDrivingAidsDeactivated
+    case speedControlFailure
     case startStopEngineWarning
     case steeringFailure
+    case steeringLockAlert
+    case stopLightLeftFailure
+    case stopLightRightFailure
+    case suspensionFailure
+    case suspensionFailureReduceSpeed
+    case suspensionFaultLimitedTo90Kmh
     case tireFailure
+    case tireFrontLeftFlat
+    case tireFrontLeftNotMonitored
+    case tireFrontRightFlat
+    case tireFrontRightNotMonitored
+    case tirePressureLow
     case tirePressureMonitorSystemWarning
+    case tirePressureSensorFailure
+    case tireRearLeftFlat
+    case tireRearLeftNotMonitored
+    case tireRearRightFlat
+    case tireRearRightNotMonitored
+    case tireUnderInflation
     case tireWarningFrontLeft
     case tireWarningFrontRight
     case tireWarningRearLeft
@@ -126,7 +221,15 @@ public enum AADashboardLightName: String, CaseIterable, Codable, HMBytesConverta
     case trailerConnected
     case transmissionFailure
     case transmissionFluidTemperature
+    case trunkOpen
+    case trunkOpenHighSpeed
+    case trunkWindowOpen
+    case turnSignalFrontLeftFailure
+    case turnSignalFrontRightFailure
+    case turnSignalRearLeftFailure
+    case turnSignalRearRightFailure
     case waterInFuel
+    case wheelPressureFault
     case windscreenWasherFluid
     case wornBrakeLinings
 
@@ -226,6 +329,109 @@ public enum AADashboardLightName: String, CaseIterable, Codable, HMBytesConverta
         case .tireWarningSystemError: return 0x5a
         case .batteryLowWarning: return 0x5b
         case .brakeFluidWarning: return 0x5c
+        case .activeHoodFault: return 0x5d
+        case .activeSpoilerFault: return 0x5e
+        case .adjustTirePressure: return 0x5f
+        case .steeringLockAlert: return 0x60
+        case .antiPollutionFailureEngineStartImpossible: return 0x61
+        case .antiPollutionSystemFailure: return 0x62
+        case .antiReverseSystemFailing: return 0x63
+        case .autoParkingBrake: return 0x64
+        case .automaticBrakingDeactive: return 0x65
+        case .automaticBrakingSystemFault: return 0x66
+        case .automaticLightsSettingsFailure: return 0x67
+        case .keyfobBatteryAlarm: return 0x68
+        case .trunkOpen: return 0x69
+        case .checkReversingLamp: return 0x6a
+        case .crossingLineSystemAlertFailure: return 0x6b
+        case .dippedBeamHeadlampsFrontLeftFailure: return 0x6c
+        case .dippedBeamHeadlampsFrontRightFailure: return 0x6d
+        case .directionalHeadlampsFailure: return 0x6e
+        case .directionalLightFailure: return 0x6f
+        case .dsgFailing: return 0x70
+        case .electricModeNotAvailable: return 0x71
+        case .electronicLockFailure: return 0x72
+        case .engineControlSystemFailure: return 0x73
+        case .engineOilPressureAlert: return 0x74
+        case .espFailure: return 0x75
+        case .excessiveOilTemperature: return 0x76
+        case .tireFrontLeftFlat: return 0x77
+        case .tireFrontRightFlat: return 0x78
+        case .tireRearLeftFlat: return 0x79
+        case .tireRearRightFlat: return 0x7a
+        case .fogLightFrontLeftFailure: return 0x7b
+        case .fogLightFrontRightFailure: return 0x7c
+        case .fogLightRearLeftFailure: return 0x7d
+        case .fogLightRearRightFailure: return 0x7e
+        case .fogLightFrontFault: return 0x7f
+        case .doorFrontLeftOpen: return 0x80
+        case .doorFrontLeftOpenHighSpeed: return 0x81
+        case .tireFrontLeftNotMonitored: return 0x82
+        case .doorFrontRightOpen: return 0x83
+        case .doorFrontRightOpenHighSpeed: return 0x84
+        case .tireFrontRightNotMonitored: return 0x85
+        case .headlightsLeftFailure: return 0x86
+        case .headlightsRightFailure: return 0x87
+        case .hybridSystemFault: return 0x88
+        case .hybridSystemFaultRepairedVehicle: return 0x89
+        case .hydraulicPressureOrBrakeFuildInsufficient: return 0x8a
+        case .laneDepartureFault: return 0x8b
+        case .limitedVisibilityAidsCamera: return 0x8c
+        case .tirePressureLow: return 0x8d
+        case .maintenanceDateExceeded: return 0x8e
+        case .maintenanceOdometerExceeded: return 0x8f
+        case .otherFailingSystem: return 0x90
+        case .parkingBrakeControlFailing: return 0x91
+        case .parkingSpaceMeasuringSystemFailure: return 0x92
+        case .placeGearToParking: return 0x93
+        case .powerSteeringAssitanceFailure: return 0x94
+        case .powerSteeringFailure: return 0x95
+        case .preheatingDeactivatedBatteryTooLow: return 0x96
+        case .preheatingDeactivatedFuelLevelTooLow: return 0x97
+        case .preheatingDeactivatedBatterySetTheClock: return 0x98
+        case .fogLightRearFault: return 0x99
+        case .doorRearLeftOpen: return 0x9a
+        case .doorRearLeftOpenHighSpeed: return 0x9b
+        case .tireRearLeftNotMonitored: return 0x9c
+        case .doorRearRightOpen: return 0x9d
+        case .doorRearRightOpenHighSpeed: return 0x9e
+        case .tireRearRightNotMonitored: return 0x9f
+        case .screenRearOpen: return 0xa0
+        case .retractableRoofMechanismFault: return 0xa1
+        case .reverseLightLeftFailure: return 0xa2
+        case .reverseLightRightFailure: return 0xa3
+        case .riskOfIce: return 0xa4
+        case .roofOperationImpossibleApplyParkingBreak: return 0xa5
+        case .roofOperationImpossibleApplyStartEngine: return 0xa6
+        case .roofOperationImpossibleTemperatureTooHigh: return 0xa7
+        case .seatbeltPassengerFrontRightUnbuckled: return 0xa8
+        case .seatbeltPassengerRearLeftUnbuckled: return 0xa9
+        case .seatbeltPassengerRearCenterUnbuckled: return 0xaa
+        case .seatbeltPassengerRearRightUnbuckled: return 0xab
+        case .batterySecondaryLow: return 0xac
+        case .shockSensorFailing: return 0xad
+        case .sideLightsFrontLeftFailure: return 0xae
+        case .sideLightsFrontRightFailure: return 0xaf
+        case .sideLightsRearLeftFailure: return 0xb0
+        case .sideLightsRearRightFailure: return 0xb1
+        case .spareWheelFitterDrivingAidsDeactivated: return 0xb2
+        case .speedControlFailure: return 0xb3
+        case .stopLightLeftFailure: return 0xb4
+        case .stopLightRightFailure: return 0xb5
+        case .suspensionFailure: return 0xb6
+        case .suspensionFailureReduceSpeed: return 0xb7
+        case .suspensionFaultLimitedTo90Kmh: return 0xb8
+        case .tirePressureSensorFailure: return 0xb9
+        case .trunkOpenHighSpeed: return 0xba
+        case .trunkWindowOpen: return 0xbb
+        case .turnSignalFrontLeftFailure: return 0xbc
+        case .turnSignalFrontRightFailure: return 0xbd
+        case .turnSignalRearLeftFailure: return 0xbe
+        case .turnSignalRearRightFailure: return 0xbf
+        case .tireUnderInflation: return 0xc0
+        case .wheelPressureFault: return 0xc1
+        case .oilChangeWarning: return 0xc2
+        case .inspectionWarning: return 0xc3
         }
     }
 
@@ -336,6 +542,109 @@ public enum AADashboardLightName: String, CaseIterable, Codable, HMBytesConverta
         case 0x5a: self = .tireWarningSystemError
         case 0x5b: self = .batteryLowWarning
         case 0x5c: self = .brakeFluidWarning
+        case 0x5d: self = .activeHoodFault
+        case 0x5e: self = .activeSpoilerFault
+        case 0x5f: self = .adjustTirePressure
+        case 0x60: self = .steeringLockAlert
+        case 0x61: self = .antiPollutionFailureEngineStartImpossible
+        case 0x62: self = .antiPollutionSystemFailure
+        case 0x63: self = .antiReverseSystemFailing
+        case 0x64: self = .autoParkingBrake
+        case 0x65: self = .automaticBrakingDeactive
+        case 0x66: self = .automaticBrakingSystemFault
+        case 0x67: self = .automaticLightsSettingsFailure
+        case 0x68: self = .keyfobBatteryAlarm
+        case 0x69: self = .trunkOpen
+        case 0x6a: self = .checkReversingLamp
+        case 0x6b: self = .crossingLineSystemAlertFailure
+        case 0x6c: self = .dippedBeamHeadlampsFrontLeftFailure
+        case 0x6d: self = .dippedBeamHeadlampsFrontRightFailure
+        case 0x6e: self = .directionalHeadlampsFailure
+        case 0x6f: self = .directionalLightFailure
+        case 0x70: self = .dsgFailing
+        case 0x71: self = .electricModeNotAvailable
+        case 0x72: self = .electronicLockFailure
+        case 0x73: self = .engineControlSystemFailure
+        case 0x74: self = .engineOilPressureAlert
+        case 0x75: self = .espFailure
+        case 0x76: self = .excessiveOilTemperature
+        case 0x77: self = .tireFrontLeftFlat
+        case 0x78: self = .tireFrontRightFlat
+        case 0x79: self = .tireRearLeftFlat
+        case 0x7a: self = .tireRearRightFlat
+        case 0x7b: self = .fogLightFrontLeftFailure
+        case 0x7c: self = .fogLightFrontRightFailure
+        case 0x7d: self = .fogLightRearLeftFailure
+        case 0x7e: self = .fogLightRearRightFailure
+        case 0x7f: self = .fogLightFrontFault
+        case 0x80: self = .doorFrontLeftOpen
+        case 0x81: self = .doorFrontLeftOpenHighSpeed
+        case 0x82: self = .tireFrontLeftNotMonitored
+        case 0x83: self = .doorFrontRightOpen
+        case 0x84: self = .doorFrontRightOpenHighSpeed
+        case 0x85: self = .tireFrontRightNotMonitored
+        case 0x86: self = .headlightsLeftFailure
+        case 0x87: self = .headlightsRightFailure
+        case 0x88: self = .hybridSystemFault
+        case 0x89: self = .hybridSystemFaultRepairedVehicle
+        case 0x8a: self = .hydraulicPressureOrBrakeFuildInsufficient
+        case 0x8b: self = .laneDepartureFault
+        case 0x8c: self = .limitedVisibilityAidsCamera
+        case 0x8d: self = .tirePressureLow
+        case 0x8e: self = .maintenanceDateExceeded
+        case 0x8f: self = .maintenanceOdometerExceeded
+        case 0x90: self = .otherFailingSystem
+        case 0x91: self = .parkingBrakeControlFailing
+        case 0x92: self = .parkingSpaceMeasuringSystemFailure
+        case 0x93: self = .placeGearToParking
+        case 0x94: self = .powerSteeringAssitanceFailure
+        case 0x95: self = .powerSteeringFailure
+        case 0x96: self = .preheatingDeactivatedBatteryTooLow
+        case 0x97: self = .preheatingDeactivatedFuelLevelTooLow
+        case 0x98: self = .preheatingDeactivatedBatterySetTheClock
+        case 0x99: self = .fogLightRearFault
+        case 0x9a: self = .doorRearLeftOpen
+        case 0x9b: self = .doorRearLeftOpenHighSpeed
+        case 0x9c: self = .tireRearLeftNotMonitored
+        case 0x9d: self = .doorRearRightOpen
+        case 0x9e: self = .doorRearRightOpenHighSpeed
+        case 0x9f: self = .tireRearRightNotMonitored
+        case 0xa0: self = .screenRearOpen
+        case 0xa1: self = .retractableRoofMechanismFault
+        case 0xa2: self = .reverseLightLeftFailure
+        case 0xa3: self = .reverseLightRightFailure
+        case 0xa4: self = .riskOfIce
+        case 0xa5: self = .roofOperationImpossibleApplyParkingBreak
+        case 0xa6: self = .roofOperationImpossibleApplyStartEngine
+        case 0xa7: self = .roofOperationImpossibleTemperatureTooHigh
+        case 0xa8: self = .seatbeltPassengerFrontRightUnbuckled
+        case 0xa9: self = .seatbeltPassengerRearLeftUnbuckled
+        case 0xaa: self = .seatbeltPassengerRearCenterUnbuckled
+        case 0xab: self = .seatbeltPassengerRearRightUnbuckled
+        case 0xac: self = .batterySecondaryLow
+        case 0xad: self = .shockSensorFailing
+        case 0xae: self = .sideLightsFrontLeftFailure
+        case 0xaf: self = .sideLightsFrontRightFailure
+        case 0xb0: self = .sideLightsRearLeftFailure
+        case 0xb1: self = .sideLightsRearRightFailure
+        case 0xb2: self = .spareWheelFitterDrivingAidsDeactivated
+        case 0xb3: self = .speedControlFailure
+        case 0xb4: self = .stopLightLeftFailure
+        case 0xb5: self = .stopLightRightFailure
+        case 0xb6: self = .suspensionFailure
+        case 0xb7: self = .suspensionFailureReduceSpeed
+        case 0xb8: self = .suspensionFaultLimitedTo90Kmh
+        case 0xb9: self = .tirePressureSensorFailure
+        case 0xba: self = .trunkOpenHighSpeed
+        case 0xbb: self = .trunkWindowOpen
+        case 0xbc: self = .turnSignalFrontLeftFailure
+        case 0xbd: self = .turnSignalFrontRightFailure
+        case 0xbe: self = .turnSignalRearLeftFailure
+        case 0xbf: self = .turnSignalRearRightFailure
+        case 0xc0: self = .tireUnderInflation
+        case 0xc1: self = .wheelPressureFault
+        case 0xc2: self = .oilChangeWarning
+        case 0xc3: self = .inspectionWarning
         default: return nil
         }
     }

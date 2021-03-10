@@ -35,13 +35,18 @@ import HMUtilities
 
 public final class AADiagnostics: AACapability, AAPropertyIdentifying {
 
+    public typealias FuelLevelAccuracy = AADiagnosticsFuelLevelAccuracy
+    public typealias EngineOilPressureLevel = AADiagnosticsEngineOilPressureLevel
+    public typealias LowVoltageBatteryChargeLevel = AADiagnosticsLowVoltageBatteryChargeLevel
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AADiagnostics` was introduced to the spec.
         public static let intro: UInt8 = 3
     
         /// Level (version) of *AutoAPI* when `AADiagnostics` was last updated.
-        public static let updated: UInt8 = 12
+        public static let updated: UInt8 = 13
     }
 
 
@@ -86,6 +91,19 @@ public final class AADiagnostics: AACapability, AAPropertyIdentifying {
         case dieselParticulateFilterSootLevel = 0x26
         case confirmedTroubleCodes = 0x27
         case dieselExhaustFilterStatus = 0x28
+        case engineTotalIdleOperatingTime = 0x2a
+        case engineOilAmount = 0x2b
+        case engineOilLevel = 0x2c
+        case estimatedSecondaryPowertrainRange = 0x2d
+        case fuelLevelAccuracy = 0x2e
+        case tirePressuresTargets = 0x2f
+        case tirePressuresDifferences = 0x30
+        case backupBatteryRemainingTime = 0x31
+        case engineCoolantFluidLevel = 0x32
+        case engineOilFluidLevel = 0x33
+        case engineOilPressureLevel = 0x34
+        case engineTimeToNextService = 0x35
+        case lowVoltageBatteryChargeLevel = 0x36
     }
 
 
@@ -96,6 +114,9 @@ public final class AADiagnostics: AACapability, AAPropertyIdentifying {
     
     /// Anti-lock braking system (ABS) value.
     public var antiLockBraking: AAProperty<AAActiveState>?
+    
+    /// Remaining time the backup battery can work..
+    public var backupBatteryRemainingTime: AAProperty<Measurement<UnitDuration>>?
     
     /// Battery level in %, value between 0.0 and 1.0.
     public var batteryLevel: AAProperty<AAPercentage>?
@@ -116,7 +137,7 @@ public final class AADiagnostics: AACapability, AAPropertyIdentifying {
     public var confirmedTroubleCodes: [AAProperty<AAConfirmedTroubleCode>]?
     
     /// Diesel exhaust filter status value.
-    public var dieselExhaustFilterStatus: AAProperty<AADieselExhaustFilterStatus>?
+    public var dieselExhaustFilterStatus: [AAProperty<AADieselExhaustFilterStatus>]?
     
     /// Distance remaining until diesel exhaust fluid is empty.
     public var dieselExhaustFluidRange: AAProperty<Measurement<UnitLength>>?
@@ -130,20 +151,38 @@ public final class AADiagnostics: AACapability, AAPropertyIdentifying {
     /// The distance driven since trip start.
     public var distanceSinceStart: AAProperty<Measurement<UnitLength>>?
     
+    /// Engine coolant fluid level.
+    public var engineCoolantFluidLevel: AAProperty<AAFluidLevel>?
+    
     /// Engine coolant temperature.
     public var engineCoolantTemperature: AAProperty<Measurement<UnitTemperature>>?
     
     /// Current engine load percentage between 0.0-1.0.
     public var engineLoad: AAProperty<AAPercentage>?
     
+    /// The current estimated oil tank liquid fill..
+    public var engineOilAmount: AAProperty<Measurement<UnitVolume>>?
+    
+    /// Engine oil fluid level.
+    public var engineOilFluidLevel: AAProperty<AAFluidLevel>?
+    
+    /// The current estimated oil tank liquid fill in percentage..
+    public var engineOilLevel: AAProperty<AAPercentage>?
+    
     /// Remaining life of engine oil which decreases over time.
     public var engineOilLifeRemaining: AAProperty<AAPercentage>?
+    
+    /// Engine oil pressure level.
+    public var engineOilPressureLevel: AAProperty<EngineOilPressureLevel>?
     
     /// Engine oil temperature.
     public var engineOilTemperature: AAProperty<Measurement<UnitTemperature>>?
     
     /// Engine RPM (revolutions per minute).
     public var engineRPM: AAProperty<Measurement<UnitAngularVelocity>>?
+    
+    /// Engine time until next service of the vehicle.
+    public var engineTimeToNextService: AAProperty<Measurement<UnitDuration>>?
     
     /// Current engine torque percentage between 0.0-1.0.
     public var engineTorque: AAProperty<AAPercentage>?
@@ -152,16 +191,28 @@ public final class AADiagnostics: AACapability, AAPropertyIdentifying {
     public var engineTotalFuelConsumption: AAProperty<Measurement<UnitVolume>>?
     
     /// The accumulated time of engine operation.
+    public var engineTotalIdleOperatingTime: AAProperty<Measurement<UnitDuration>>?
+    
+    /// The accumulated time of engine operation.
     public var engineTotalOperatingTime: AAProperty<Measurement<UnitDuration>>?
     
     /// Estimated range (with combustion engine).
     public var estimatedRange: AAProperty<Measurement<UnitLength>>?
     
+    /// Estimated secondary powertrain range.
+    public var estimatedSecondaryPowertrainRange: AAProperty<Measurement<UnitLength>>?
+    
     /// Fuel level percentage between 0.0-1.0.
     public var fuelLevel: AAProperty<AAPercentage>?
     
+    /// This value includes the information, if the fuel level has been calculated or measured..
+    public var fuelLevelAccuracy: AAProperty<FuelLevelAccuracy>?
+    
     /// The fuel volume measured in liters.
     public var fuelVolume: AAProperty<Measurement<UnitVolume>>?
+    
+    /// Indicates if the charge level of the low voltage battery is too low to use other systems.
+    public var lowVoltageBatteryChargeLevel: AAProperty<LowVoltageBatteryChargeLevel>?
     
     /// The vehicle odometer value in a given units.
     public var odometer: AAProperty<Measurement<UnitLength>>?
@@ -177,6 +228,12 @@ public final class AADiagnostics: AACapability, AAPropertyIdentifying {
     
     /// Tire pressures value.
     public var tirePressures: [AAProperty<AATirePressure>]?
+    
+    /// Tire pressures difference from the target pressure..
+    public var tirePressuresDifferences: [AAProperty<AATirePressure>]?
+    
+    /// Target tire pressures for the vehicle..
+    public var tirePressuresTargets: [AAProperty<AATirePressure>]?
     
     /// Tire temperatures value.
     public var tireTemperatures: [AAProperty<AATireTemperature>]?
@@ -264,33 +321,46 @@ public final class AADiagnostics: AACapability, AAPropertyIdentifying {
     
         adBlueLevel = extract(property: .adBlueLevel)
         antiLockBraking = extract(property: .antiLockBraking)
+        backupBatteryRemainingTime = extract(property: .backupBatteryRemainingTime)
         batteryLevel = extract(property: .batteryLevel)
         batteryVoltage = extract(property: .batteryVoltage)
         brakeFluidLevel = extract(property: .brakeFluidLevel)
         brakeLiningWearPreWarning = extract(property: .brakeLiningWearPreWarning)
         checkControlMessages = extract(properties: .checkControlMessages)
         confirmedTroubleCodes = extract(properties: .confirmedTroubleCodes)
-        dieselExhaustFilterStatus = extract(property: .dieselExhaustFilterStatus)
+        dieselExhaustFilterStatus = extract(properties: .dieselExhaustFilterStatus)
         dieselExhaustFluidRange = extract(property: .dieselExhaustFluidRange)
         dieselParticulateFilterSootLevel = extract(property: .dieselParticulateFilterSootLevel)
         distanceSinceReset = extract(property: .distanceSinceReset)
         distanceSinceStart = extract(property: .distanceSinceStart)
+        engineCoolantFluidLevel = extract(property: .engineCoolantFluidLevel)
         engineCoolantTemperature = extract(property: .engineCoolantTemperature)
         engineLoad = extract(property: .engineLoad)
+        engineOilAmount = extract(property: .engineOilAmount)
+        engineOilFluidLevel = extract(property: .engineOilFluidLevel)
+        engineOilLevel = extract(property: .engineOilLevel)
         engineOilLifeRemaining = extract(property: .engineOilLifeRemaining)
+        engineOilPressureLevel = extract(property: .engineOilPressureLevel)
         engineOilTemperature = extract(property: .engineOilTemperature)
         engineRPM = extract(property: .engineRPM)
+        engineTimeToNextService = extract(property: .engineTimeToNextService)
         engineTorque = extract(property: .engineTorque)
         engineTotalFuelConsumption = extract(property: .engineTotalFuelConsumption)
+        engineTotalIdleOperatingTime = extract(property: .engineTotalIdleOperatingTime)
         engineTotalOperatingTime = extract(property: .engineTotalOperatingTime)
         estimatedRange = extract(property: .estimatedRange)
+        estimatedSecondaryPowertrainRange = extract(property: .estimatedSecondaryPowertrainRange)
         fuelLevel = extract(property: .fuelLevel)
+        fuelLevelAccuracy = extract(property: .fuelLevelAccuracy)
         fuelVolume = extract(property: .fuelVolume)
+        lowVoltageBatteryChargeLevel = extract(property: .lowVoltageBatteryChargeLevel)
         odometer = extract(property: .odometer)
         oemTroubleCodeValues = extract(properties: .oemTroubleCodeValues)
         speed = extract(property: .speed)
         tirePressureStatuses = extract(properties: .tirePressureStatuses)
         tirePressures = extract(properties: .tirePressures)
+        tirePressuresDifferences = extract(properties: .tirePressuresDifferences)
+        tirePressuresTargets = extract(properties: .tirePressuresTargets)
         tireTemperatures = extract(properties: .tireTemperatures)
         troubleCodes = extract(properties: .troubleCodes)
         washerFluidLevel = extract(property: .washerFluidLevel)

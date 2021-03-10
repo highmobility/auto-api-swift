@@ -41,7 +41,7 @@ public final class AAUsage: AACapability, AAPropertyIdentifying {
         public static let intro: UInt8 = 8
     
         /// Level (version) of *AutoAPI* when `AAUsage` was last updated.
-        public static let updated: UInt8 = 12
+        public static let updated: UInt8 = 13
     }
 
 
@@ -90,6 +90,7 @@ public final class AAUsage: AACapability, AAPropertyIdentifying {
         case ecoScoreFreeWheel = 0x25
         case ecoScoreConstant = 0x26
         case ecoScoreBonusRange = 0x27
+        case tripMeters = 0x28
     }
 
 
@@ -209,6 +210,9 @@ public final class AAUsage: AACapability, AAPropertyIdentifying {
     /// Safety driving score as percentage.
     public var safetyDrivingScore: AAProperty<AAPercentage>?
     
+    /// Independent meter that can be reset at any time by the driver.
+    public var tripMeters: [AAProperty<AATripMeter>]?
+    
     // Deprecated
     
     /// Mileage after the last trip.
@@ -300,5 +304,6 @@ public final class AAUsage: AACapability, AAPropertyIdentifying {
         rapidAccelerationGrade = extract(property: .rapidAccelerationGrade)
         rapidDecelerationGrade = extract(property: .rapidDecelerationGrade)
         safetyDrivingScore = extract(property: .safetyDrivingScore)
+        tripMeters = extract(properties: .tripMeters)
     }
 }

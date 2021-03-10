@@ -40,26 +40,26 @@ final class AAKeyfobPositionTests: XCTestCase {
     // MARK: State Properties
     
     func testLocation() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x48, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x05]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x48, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x05]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAKeyfobPosition else {
             return XCTFail("Could not parse bytes as `AAKeyfobPosition`")
         }
         
-        XCTAssertEqual(capability.location?.value, Location.insideCar)
+        XCTAssertEqual(capability.location?.value, AAKeyfobPositionLocation.insideCar)
     }
 
 
     // MARK: Getters
     
     func testGetKeyfobPosition() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x48, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x48, 0x00]
         
         XCTAssertEqual(bytes, AAKeyfobPosition.getKeyfobPosition())
     }
     
     func testGetKeyfobPositionAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x48, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x48, 0x02]
         
         XCTAssertEqual(bytes, AAKeyfobPosition.getKeyfobPositionAvailability())
     }

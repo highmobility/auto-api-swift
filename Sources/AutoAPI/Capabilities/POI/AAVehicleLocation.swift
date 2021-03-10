@@ -35,13 +35,16 @@ import HMUtilities
 
 public final class AAVehicleLocation: AACapability, AAPropertyIdentifying {
 
+    public typealias GpsSource = AAVehicleLocationGpsSource
+
+
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AAVehicleLocation` was introduced to the spec.
         public static let intro: UInt8 = 2
     
         /// Level (version) of *AutoAPI* when `AAVehicleLocation` was last updated.
-        public static let updated: UInt8 = 12
+        public static let updated: UInt8 = 13
     }
 
 
@@ -56,6 +59,8 @@ public final class AAVehicleLocation: AACapability, AAPropertyIdentifying {
         case heading = 0x05
         case altitude = 0x06
         case precision = 0x07
+        case gpsSource = 0x08
+        case gpsSignalStrength = 0x09
     }
 
 
@@ -66,6 +71,12 @@ public final class AAVehicleLocation: AACapability, AAPropertyIdentifying {
     
     /// Coordinates value.
     public var coordinates: AAProperty<AACoordinates>?
+    
+    /// GPS signal strength percentage between 0.0-1.0.
+    public var gpsSignalStrength: AAProperty<AAPercentage>?
+    
+    /// Type of GPS source.
+    public var gpsSource: AAProperty<GpsSource>?
     
     /// Heading angle.
     public var heading: AAProperty<Measurement<UnitAngle>>?
@@ -118,6 +129,8 @@ public final class AAVehicleLocation: AACapability, AAPropertyIdentifying {
     
         altitude = extract(property: .altitude)
         coordinates = extract(property: .coordinates)
+        gpsSignalStrength = extract(property: .gpsSignalStrength)
+        gpsSource = extract(property: .gpsSource)
         heading = extract(property: .heading)
         precision = extract(property: .precision)
     }

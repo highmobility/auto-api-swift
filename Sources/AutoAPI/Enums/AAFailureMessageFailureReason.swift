@@ -41,6 +41,7 @@ public enum AAFailureMessageFailureReason: String, CaseIterable, Codable, HMByte
     case invalidCommand
     case oemError
     case pending
+    case privacyModeActive
     case rateLimit
     case unauthorised
     case unsupportedCapability
@@ -58,6 +59,7 @@ public enum AAFailureMessageFailureReason: String, CaseIterable, Codable, HMByte
         case .pending: return 0x06
         case .rateLimit: return 0x07
         case .oemError: return 0x08
+        case .privacyModeActive: return 0x09
         }
     }
 
@@ -84,6 +86,7 @@ public enum AAFailureMessageFailureReason: String, CaseIterable, Codable, HMByte
         case 0x06: self = .pending
         case 0x07: self = .rateLimit
         case 0x08: self = .oemError
+        case 0x09: self = .privacyModeActive
         default: return nil
         }
     }

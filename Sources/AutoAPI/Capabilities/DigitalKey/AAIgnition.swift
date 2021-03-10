@@ -35,9 +35,6 @@ import HMUtilities
 
 public final class AAIgnition: AACapability, AAPropertyIdentifying {
 
-    public typealias State = AAIgnitionState
-
-
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
         /// Level (version) of *AutoAPI* when `AAIgnition` was introduced to the spec.
@@ -55,22 +52,32 @@ public final class AAIgnition: AACapability, AAPropertyIdentifying {
 
     /// Property identifiers for `AAIgnition`.
     public enum PropertyIdentifier: UInt8, CaseIterable {
-        case status = 0x01
-        case accessoriesStatus = 0x02
         case state = 0x03
     }
 
 
     // MARK: Properties
     
-    /// Accessories status value.
-    public var accessoriesStatus: AAProperty<AAOnOffState>?
-    
     /// State value.
-    public var state: AAProperty<State>?
+    public var state: AAProperty<AAIgnitionState>?
+    
+    // Deprecated
+    
+    /// Accessories status value.
+    ///
+    /// - warning: This property is deprecated in favour of *state*.
+    @available(*, deprecated, renamed: "state", message: "combined with 'status'")
+    public var accessoriesStatus: AAProperty<AAIgnitionState>? {
+        state
+    }
     
     /// Status value.
-    public var status: AAProperty<AAOnOffState>?
+    ///
+    /// - warning: This property is deprecated in favour of *state*.
+    @available(*, deprecated, renamed: "state", message: "combined with 'accessories_status'")
+    public var status: AAProperty<AAIgnitionState>? {
+        state
+    }
 
 
     // MARK: Getters
@@ -82,31 +89,11 @@ public final class AAIgnition: AACapability, AAPropertyIdentifying {
         AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + AACommandType.get.rawValue.bytes
     }
     
-    /// Get `AAIgnition` state's specific properties.
-    ///
-    /// - parameters:
-    ///     - ids: List of property identifiers to request.
-    ///
-    /// - returns: The request as `[UInt8]` to send to the vehicle.
-    public static func getIgnitionStateProperties(ids: PropertyIdentifier...) -> [UInt8] {
-        getIgnitionState() + ids.map { $0.rawValue }
-    }
-    
     /// Get `AAIgnition` state properties availability.
     ///
     /// - returns: The request as `[UInt8]` to send to the vehicle.
     public static func getIgnitionStateAvailability() -> [UInt8] {
         AAAutoAPI.protocolVersion.bytes + Self.identifier.bytes + AACommandType.availability.rawValue.bytes
-    }
-    
-    /// Get `AAIgnition` state's specific properties' availability.
-    ///
-    /// - parameters:
-    ///     - ids: List of property identifiers to request availability for.
-    ///
-    /// - returns: The request as `[UInt8]` to send to the vehicle.
-    public static func getIgnitionStatePropertiesAvailability(ids: PropertyIdentifier...) -> [UInt8] {
-        getIgnitionStateAvailability() + ids.map { $0.rawValue }
     }
 
 
@@ -115,13 +102,13 @@ public final class AAIgnition: AACapability, AAPropertyIdentifying {
     /// Attempt to turn the vehicle engine ignition on or off. When the engine ignition is on, it is possible for the driver to turn on the engine and drive the vehicle.
     /// 
     /// - parameters:
-    ///     - status: Status value.
+    ///     - state: State value.
     ///
     /// - returns: Command as `[UInt8]` to send to the vehicle.
-    public static func turnIgnitionOnOff(status: AAOnOffState) -> [UInt8] {
+    public static func turnIgnitionOnOff(state: AAIgnitionState) -> [UInt8] {
         var properties: [AAOpaqueProperty?] = []
     
-        properties.append(AAProperty(id: PropertyIdentifier.status, value: status))
+        properties.append(AAProperty(id: PropertyIdentifier.state, value: state))
     
         let propertiesBytes = properties.compactMap { $0 }.sorted { $0.id < $1.id }.flatMap { $0.bytes }
     
@@ -134,8 +121,6 @@ public final class AAIgnition: AACapability, AAPropertyIdentifying {
     public required init?(bytes: [UInt8]) {
         super.init(bytes: bytes)
     
-        accessoriesStatus = extract(property: .accessoriesStatus)
         state = extract(property: .state)
-        status = extract(property: .status)
     }
 }

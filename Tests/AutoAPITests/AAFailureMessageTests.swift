@@ -40,7 +40,7 @@ final class AAFailureMessageTests: XCTestCase {
     // MARK: State Properties
     
     func testFailedMessageID() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x02, 0x01, 0x01, 0x00, 0x05, 0x01, 0x00, 0x02, 0x00, 0x21]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x02, 0x01, 0x01, 0x00, 0x05, 0x01, 0x00, 0x02, 0x00, 0x21]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAFailureMessage else {
             return XCTFail("Could not parse bytes as `AAFailureMessage`")
@@ -50,7 +50,7 @@ final class AAFailureMessageTests: XCTestCase {
     }
     
     func testFailedMessageType() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x02, 0x01, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x02, 0x01, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAFailureMessage else {
             return XCTFail("Could not parse bytes as `AAFailureMessage`")
@@ -60,17 +60,17 @@ final class AAFailureMessageTests: XCTestCase {
     }
     
     func testFailureReason() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x02, 0x01, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x02, 0x01, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAFailureMessage else {
             return XCTFail("Could not parse bytes as `AAFailureMessage`")
         }
         
-        XCTAssertEqual(capability.failureReason?.value, FailureReason.unauthorised)
+        XCTAssertEqual(capability.failureReason?.value, AAFailureMessageFailureReason.unauthorised)
     }
     
     func testFailureDescription() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x02, 0x01, 0x04, 0x00, 0x0c, 0x01, 0x00, 0x09, 0x54, 0x72, 0x79, 0x20, 0x61, 0x67, 0x61, 0x69, 0x6e]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x02, 0x01, 0x04, 0x00, 0x0c, 0x01, 0x00, 0x09, 0x54, 0x72, 0x79, 0x20, 0x61, 0x67, 0x61, 0x69, 0x6e]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAFailureMessage else {
             return XCTFail("Could not parse bytes as `AAFailureMessage`")
@@ -80,7 +80,7 @@ final class AAFailureMessageTests: XCTestCase {
     }
     
     func testFailedPropertyIDs() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x02, 0x01, 0x05, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x02, 0x01, 0x05, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0x02]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAFailureMessage else {
             return XCTFail("Could not parse bytes as `AAFailureMessage`")

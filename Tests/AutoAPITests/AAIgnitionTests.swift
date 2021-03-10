@@ -39,71 +39,60 @@ final class AAIgnitionTests: XCTestCase {
 
     // MARK: State Properties
     
-    func testStatus() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x35, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
+    func testState() {
+        let bytes: [UInt8] = [0x0d, 0x00, 0x35, 0x01, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x02]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAIgnition else {
             return XCTFail("Could not parse bytes as `AAIgnition`")
         }
         
-        XCTAssertEqual(capability.status?.value, AAOnOffState.off)
+        XCTAssertEqual(capability.state?.value, AAIgnitionState.accessory)
+    }
+
+
+    // MARK: Non-state or Deprecated Properties
+    
+    func testStatus() {
+        let bytes: [UInt8] = [0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        
+        guard let property: AAProperty<AAIgnitionState> = AAOpaqueProperty(bytes: bytes)?.property() else {
+            return XCTFail("Could not create a property for `.status`")
+        }
+        
+        XCTAssertEqual(property.value, AAIgnitionState.off)
     }
     
     func testAccessoriesStatus() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x35, 0x01, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
+        let bytes: [UInt8] = [0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x03]
         
-        guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAIgnition else {
-            return XCTFail("Could not parse bytes as `AAIgnition`")
+        guard let property: AAProperty<AAIgnitionState> = AAOpaqueProperty(bytes: bytes)?.property() else {
+            return XCTFail("Could not create a property for `.accessoriesStatus`")
         }
         
-        XCTAssertEqual(capability.accessoriesStatus?.value, AAOnOffState.on)
-    }
-    
-    func testState() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x35, 0x01, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x02]
-        
-        guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAIgnition else {
-            return XCTFail("Could not parse bytes as `AAIgnition`")
-        }
-        
-        XCTAssertEqual(capability.state?.value, State.accessory)
+        XCTAssertEqual(property.value, AAIgnitionState.on)
     }
 
 
     // MARK: Getters
     
     func testGetIgnitionState() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x35, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x35, 0x00]
         
         XCTAssertEqual(bytes, AAIgnition.getIgnitionState())
     }
     
     func testGetIgnitionStateAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x35, 0x02]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x35, 0x02]
         
         XCTAssertEqual(bytes, AAIgnition.getIgnitionStateAvailability())
-    }
-    
-    func testGetIgnitionStateProperties() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x35, 0x00, 0x01]
-        let getterBytes = AAIgnition.getIgnitionStateProperties(ids: .status)
-        
-        XCTAssertEqual(bytes, getterBytes)
-    }
-    
-    func testGetIgnitionStatePropertiesAvailability() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x35, 0x02, 0x01]
-        let getterBytes = AAIgnition.getIgnitionStatePropertiesAvailability(ids: .status)
-        
-        XCTAssertEqual(bytes, getterBytes)
     }
 
 
     // MARK: Setters
     
     func testTurnIgnitionOnOff() {
-        let bytes: [UInt8] = [0x0c, 0x00, 0x35, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
-        let setterBytes = AAIgnition.turnIgnitionOnOff(status: AAOnOffState.off)
+        let bytes: [UInt8] = [0x0d, 0x00, 0x35, 0x01, 0x03, 0x00, 0x04, 0x01, 0x00, 0x01, 0x02]
+        let setterBytes = AAIgnition.turnIgnitionOnOff(state: AAIgnitionState.accessory)
         
         XCTAssertEqual(bytes, setterBytes)
     }
@@ -116,8 +105,6 @@ final class AAIgnitionTests: XCTestCase {
     }
     
     func testPropeertyIdentifiers() {
-        XCTAssertEqual(AAIgnition.PropertyIdentifier.status.rawValue, 0x01)
-        XCTAssertEqual(AAIgnition.PropertyIdentifier.accessoriesStatus.rawValue, 0x02)
         XCTAssertEqual(AAIgnition.PropertyIdentifier.state.rawValue, 0x03)
     }
 }
