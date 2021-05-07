@@ -156,7 +156,7 @@ final class AAVehicleInformationTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAVehicleInformation`")
         }
         
-        XCTAssertEqual(capability.gearbox?.value, Gearbox.automatic)
+        XCTAssertEqual(capability.gearbox?.value, AAVehicleInformationGearbox.automatic)
     }
     
     func testDisplayUnit() {
@@ -166,7 +166,7 @@ final class AAVehicleInformationTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAVehicleInformation`")
         }
         
-        XCTAssertEqual(capability.displayUnit?.value, DisplayUnit.km)
+        XCTAssertEqual(capability.displayUnit?.value, AAVehicleInformationDisplayUnit.km)
     }
     
     func testDriverSeatLocation() {
@@ -176,7 +176,7 @@ final class AAVehicleInformationTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAVehicleInformation`")
         }
         
-        XCTAssertEqual(capability.driverSeatLocation?.value, DriverSeatLocation.left)
+        XCTAssertEqual(capability.driverSeatLocation?.value, AAVehicleInformationDriverSeatLocation.left)
     }
     
     func testEquipments() {
@@ -221,7 +221,7 @@ final class AAVehicleInformationTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAVehicleInformation`")
         }
         
-        XCTAssertEqual(capability.timeformat?.value, Timeformat.twentyFourH)
+        XCTAssertEqual(capability.timeformat?.value, AAVehicleInformationTimeformat.twentyFourH)
     }
     
     func testDrive() {
@@ -231,7 +231,7 @@ final class AAVehicleInformationTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAVehicleInformation`")
         }
         
-        XCTAssertEqual(capability.drive?.value, Drive.rwd)
+        XCTAssertEqual(capability.drive?.value, AAVehicleInformationDrive.rwd)
     }
     
     func testPowertrainSecondary() {

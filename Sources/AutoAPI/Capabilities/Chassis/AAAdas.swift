@@ -35,7 +35,7 @@ import HMUtilities
 
 public final class AAAdas: AACapability, AAPropertyIdentifying {
 
-    public typealias Blind_spot_warning_system_coverage = AAAdasBlind_spot_warning_system_coverage
+    public typealias BlindSpotWarningSystemCoverage = AAAdasBlindSpotWarningSystemCoverage
 
 
     /// Information about the introduction and last update of this capability.
@@ -59,7 +59,7 @@ public final class AAAdas: AACapability, AAPropertyIdentifying {
         case alertnessSystemStatus = 0x02
         case forwardCollisionWarningSystem = 0x03
         case blindSpotWarningState = 0x04
-        case blind_spot_warning_system_coverage = 0x05
+        case blindSpotWarningSystemCoverage = 0x05
         case rearCrossWarningSystem = 0x06
         case automatedParkingBrake = 0x07
         case laneKeepAssistSystem = 0x08
@@ -84,7 +84,7 @@ public final class AAAdas: AACapability, AAPropertyIdentifying {
     public var blindSpotWarningSystem: AAProperty<AAOnOffState>?
     
     /// Blind spot warning system coverage..
-    public var blind_spot_warning_system_coverage: AAProperty<Blind_spot_warning_system_coverage>?
+    public var blindSpotWarningSystemCoverage: AAProperty<BlindSpotWarningSystemCoverage>?
     
     /// Indicates whether the forward collision warning system is active or inactive..
     public var forwardCollisionWarningSystem: AAProperty<AAActiveState>?
@@ -93,10 +93,10 @@ public final class AAAdas: AACapability, AAPropertyIdentifying {
     public var laneKeepAssistSystem: AAProperty<AAOnOffState>?
     
     /// Lane keeping assist state indicating the vehicle is actively controlling the wheels..
-    public var laneKeepAssistsStates: AAProperty<AALaneKeepAssistState>?
+    public var laneKeepAssistsStates: [AAProperty<AALaneKeepAssistState>]?
     
     /// If the alarm is active and the driver has muted or not park assists..
-    public var parkAssists: AAProperty<AAParkAssist>?
+    public var parkAssists: [AAProperty<AAParkAssist>]?
     
     /// Indicates whether the rear cross warning system is active or not..
     public var rearCrossWarningSystem: AAProperty<AAActiveState>?
@@ -151,11 +151,11 @@ public final class AAAdas: AACapability, AAPropertyIdentifying {
         automatedParkingBrake = extract(property: .automatedParkingBrake)
         blindSpotWarningState = extract(property: .blindSpotWarningState)
         blindSpotWarningSystem = extract(property: .blindSpotWarningSystem)
-        blind_spot_warning_system_coverage = extract(property: .blind_spot_warning_system_coverage)
+        blindSpotWarningSystemCoverage = extract(property: .blindSpotWarningSystemCoverage)
         forwardCollisionWarningSystem = extract(property: .forwardCollisionWarningSystem)
         laneKeepAssistSystem = extract(property: .laneKeepAssistSystem)
-        laneKeepAssistsStates = extract(property: .laneKeepAssistsStates)
-        parkAssists = extract(property: .parkAssists)
+        laneKeepAssistsStates = extract(properties: .laneKeepAssistsStates)
+        parkAssists = extract(properties: .parkAssists)
         rearCrossWarningSystem = extract(property: .rearCrossWarningSystem)
         status = extract(property: .status)
     }

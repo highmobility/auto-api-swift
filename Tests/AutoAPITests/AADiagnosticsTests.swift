@@ -435,11 +435,15 @@ final class AADiagnosticsTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AADiagnostics`")
         }
         
-        XCTAssertEqual(capability.dieselExhaustFilterStatus?.value?.bytes, AADieselExhaustFilterStatus(status: .unknown, component: .exhaustFilter, cleaning: .unknown).bytes)
-        XCTAssertEqual(capability.dieselExhaustFilterStatus?.value?.bytes, AADieselExhaustFilterStatus(status: .normalOperation, component: .exhaustFilter, cleaning: .unknown).bytes)
-        XCTAssertEqual(capability.dieselExhaustFilterStatus?.value?.bytes, AADieselExhaustFilterStatus(status: .overloaded, component: .exhaustFilter, cleaning: .unknown).bytes)
-        XCTAssertEqual(capability.dieselExhaustFilterStatus?.value?.bytes, AADieselExhaustFilterStatus(status: .atLimit, component: .exhaustFilter, cleaning: .unknown).bytes)
-        XCTAssertEqual(capability.dieselExhaustFilterStatus?.value?.bytes, AADieselExhaustFilterStatus(status: .overLimit, component: .exhaustFilter, cleaning: .unknown).bytes)
+        guard let dieselExhaustFilterStatus = capability.dieselExhaustFilterStatus?.compactMap({ $0.value }) else {
+            return XCTFail("Could not get `.dieselExhaustFilterStatus` values from `AADiagnostics` capability")
+        }
+        
+        XCTAssertTrue(dieselExhaustFilterStatus.contains { $0.bytes == AADieselExhaustFilterStatus(status: .unknown, component: .exhaustFilter, cleaning: .unknown).bytes })
+        XCTAssertTrue(dieselExhaustFilterStatus.contains { $0.bytes == AADieselExhaustFilterStatus(status: .normalOperation, component: .exhaustFilter, cleaning: .unknown).bytes })
+        XCTAssertTrue(dieselExhaustFilterStatus.contains { $0.bytes == AADieselExhaustFilterStatus(status: .overloaded, component: .exhaustFilter, cleaning: .unknown).bytes })
+        XCTAssertTrue(dieselExhaustFilterStatus.contains { $0.bytes == AADieselExhaustFilterStatus(status: .atLimit, component: .exhaustFilter, cleaning: .unknown).bytes })
+        XCTAssertTrue(dieselExhaustFilterStatus.contains { $0.bytes == AADieselExhaustFilterStatus(status: .overLimit, component: .exhaustFilter, cleaning: .unknown).bytes })
     }
     
     func testEngineTotalIdleOperatingTime() {
@@ -483,13 +487,13 @@ final class AADiagnosticsTests: XCTestCase {
     }
     
     func testFuelLevelAccuracy() {
-        let bytes: [UInt8] = [0x0d, 0x00, 0x33, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x33, 0x01, 0x2e, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AADiagnostics else {
             return XCTFail("Could not parse bytes as `AADiagnostics`")
         }
         
-        
+        XCTAssertEqual(capability.fuelLevelAccuracy?.value, AADiagnosticsFuelLevelAccuracy.measured)
     }
     
     func testTirePressuresTargets() {
@@ -513,7 +517,7 @@ final class AADiagnosticsTests: XCTestCase {
     }
     
     func testTirePressuresDifferences() {
-        let bytes: [UInt8] = [0x0d, 0x00, 0x33, 0x01, 0x30, 0x00, 0x0e, 0x01, 0x00, 0x0b, 0x00, 0x15, 0x06, 0x3f, 0xb9, 0x99, 0x99, 0x99, 0x99, 0x99, 0x9a, 0x30, 0x00, 0x0e, 0x01, 0x00, 0x0b, 0x01, 0x15, 0x06, 0x3f, 0xb9, 0x99, 0x99, 0x99, 0x99, 0x99, 0x9a, 0x30, 0x00, 0x0e, 0x01, 0x00, 0x0b, 0x02, 0x15, 0x06, 0x3f, 0xb9, 0x99, 0x99, 0x99, 0x99, 0x99, 0x9a, 0x30, 0x00, 0x0e, 0x01, 0x00, 0x0b, 0x03, 0x15, 0x06, 0x3f, 0xb9, 0x99, 0x99, 0x99, 0x99, 0x99, 0x9a, 0x30, 0x00, 0x0e, 0x01, 0x00, 0x0b, 0x04, 0x15, 0x06, 0x3f, 0xb9, 0x99, 0x99, 0x99, 0x99, 0x99, 0x9a, 0x30, 0x00, 0x0e, 0x01, 0x00, 0x0b, 0x05, 0x15, 0x06, 0x3f, 0xb9, 0x99, 0x99, 0x99, 0x99, 0x99, 0x9a, 0x30, 0x00, 0x0e, 0x01, 0x00, 0x0b, 0x61, 0x50, 0x63, 0xfb, 0x99, 0x99, 0x99, 0x99, 0x99, 0x99, 0x0a]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x33, 0x01, 0x30, 0x00, 0x0e, 0x01, 0x00, 0x0b, 0x00, 0x15, 0x06, 0x3f, 0xb9, 0x99, 0x99, 0x99, 0x99, 0x99, 0x9a, 0x30, 0x00, 0x0e, 0x01, 0x00, 0x0b, 0x01, 0x15, 0x06, 0x3f, 0xb9, 0x99, 0x99, 0x99, 0x99, 0x99, 0x9a, 0x30, 0x00, 0x0e, 0x01, 0x00, 0x0b, 0x02, 0x15, 0x06, 0x3f, 0xb9, 0x99, 0x99, 0x99, 0x99, 0x99, 0x9a, 0x30, 0x00, 0x0e, 0x01, 0x00, 0x0b, 0x03, 0x15, 0x06, 0x3f, 0xb9, 0x99, 0x99, 0x99, 0x99, 0x99, 0x9a, 0x30, 0x00, 0x0e, 0x01, 0x00, 0x0b, 0x04, 0x15, 0x06, 0x3f, 0xb9, 0x99, 0x99, 0x99, 0x99, 0x99, 0x9a, 0x30, 0x00, 0x0e, 0x01, 0x00, 0x0b, 0x05, 0x15, 0x06, 0x3f, 0xb9, 0x99, 0x99, 0x99, 0x99, 0x99, 0x9a, 0x30, 0x00, 0x0e, 0x01, 0x00, 0x0b, 0x06, 0x15, 0x06, 0x3f, 0xb9, 0x99, 0x99, 0x99, 0x99, 0x99, 0x9a]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AADiagnostics else {
             return XCTFail("Could not parse bytes as `AADiagnostics`")
@@ -569,7 +573,7 @@ final class AADiagnosticsTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AADiagnostics`")
         }
         
-        XCTAssertEqual(capability.engineOilPressureLevel?.value, EngineOilPressureLevel.normal)
+        XCTAssertEqual(capability.engineOilPressureLevel?.value, AADiagnosticsEngineOilPressureLevel.normal)
     }
     
     func testEngineTimeToNextService() {
@@ -589,7 +593,7 @@ final class AADiagnosticsTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AADiagnostics`")
         }
         
-        XCTAssertEqual(capability.lowVoltageBatteryChargeLevel?.value, LowVoltageBatteryChargeLevel.ok)
+        XCTAssertEqual(capability.lowVoltageBatteryChargeLevel?.value, AADiagnosticsLowVoltageBatteryChargeLevel.ok)
     }
 
 

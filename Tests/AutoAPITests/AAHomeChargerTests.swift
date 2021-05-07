@@ -46,7 +46,7 @@ final class AAHomeChargerTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAHomeCharger`")
         }
         
-        XCTAssertEqual(capability.chargingStatus?.value, ChargingStatus.charging)
+        XCTAssertEqual(capability.chargingStatus?.value, AAHomeChargerChargingStatus.charging)
     }
     
     func testAuthenticationMechanism() {
@@ -56,7 +56,7 @@ final class AAHomeChargerTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAHomeCharger`")
         }
         
-        XCTAssertEqual(capability.authenticationMechanism?.value, AuthenticationMechanism.app)
+        XCTAssertEqual(capability.authenticationMechanism?.value, AAHomeChargerAuthenticationMechanism.app)
     }
     
     func testPlugType() {
@@ -66,7 +66,7 @@ final class AAHomeChargerTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAHomeCharger`")
         }
         
-        XCTAssertEqual(capability.plugType?.value, PlugType.type2)
+        XCTAssertEqual(capability.plugType?.value, AAHomeChargerPlugType.type2)
     }
     
     func testSolarCharging() {
@@ -126,7 +126,7 @@ final class AAHomeChargerTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAHomeCharger`")
         }
         
-        XCTAssertEqual(capability.authenticationState?.value, AuthenticationState.authenticated)
+        XCTAssertEqual(capability.authenticationState?.value, AAHomeChargerAuthenticationState.authenticated)
     }
     
     func testChargeCurrent() {
@@ -270,7 +270,7 @@ final class AAHomeChargerTests: XCTestCase {
     
     func testAuthenticateExpire() {
         let bytes: [UInt8] = [0x0d, 0x00, 0x60, 0x01, 0x0d, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
-        let setterBytes = AAHomeCharger.authenticateExpire(authenticationState: AuthenticationState.authenticated)
+        let setterBytes = AAHomeCharger.authenticateExpire(authenticationState: AAHomeChargerAuthenticationState.authenticated)
         
         XCTAssertEqual(bytes, setterBytes)
     }

@@ -56,7 +56,7 @@ final class AAChassisSettingsTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAChassisSettings`")
         }
         
-        XCTAssertEqual(capability.sportChrono?.value, SportChrono.active)
+        XCTAssertEqual(capability.sportChrono?.value, AAChassisSettingsSportChrono.active)
     }
     
     func testCurrentSpringRates() {
@@ -175,7 +175,7 @@ final class AAChassisSettingsTests: XCTestCase {
     
     func testStartStopSportsChrono() {
         let bytes: [UInt8] = [0x0d, 0x00, 0x53, 0x01, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01]
-        let setterBytes = AAChassisSettings.startStopSportsChrono(sportChrono: SportChrono.active)
+        let setterBytes = AAChassisSettings.startStopSportsChrono(sportChrono: AAChassisSettingsSportChrono.active)
         
         XCTAssertEqual(bytes, setterBytes)
     }

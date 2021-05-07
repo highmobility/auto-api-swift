@@ -79,14 +79,14 @@ final class AAAdasTests: XCTestCase {
         XCTAssertEqual(capability.blindSpotWarningState?.value, AAActiveState.active)
     }
     
-    func testBlind_spot_warning_system_coverage() {
+    func testBlindSpotWarningSystemCoverage() {
         let bytes: [UInt8] = [0x0d, 0x00, 0x6c, 0x01, 0x05, 0x00, 0x04, 0x01, 0x00, 0x01, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAAdas else {
             return XCTFail("Could not parse bytes as `AAAdas`")
         }
         
-        XCTAssertEqual(capability.blind_spot_warning_system_coverage?.value, Blind_spot_warning_system_coverage.regular)
+        XCTAssertEqual(capability.blindSpotWarningSystemCoverage?.value, AAAdasBlindSpotWarningSystemCoverage.regular)
     }
     
     func testRearCrossWarningSystem() {
@@ -120,14 +120,18 @@ final class AAAdasTests: XCTestCase {
     }
     
     func testLaneKeepAssistsStates() {
-        let bytes: [UInt8] = [0x0d, 0x00, 0x6c, 0x01, 0x09, 0x00, 0x05, 0x01, 0x00, 0x02, 0x00, 0x00, 0x09, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0x10]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x6c, 0x01, 0x09, 0x00, 0x05, 0x01, 0x00, 0x02, 0x00, 0x00, 0x09, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0x01]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AAAdas else {
             return XCTFail("Could not parse bytes as `AAAdas`")
         }
         
-        XCTAssertEqual(capability.laneKeepAssistsStates?.value?.bytes, AALaneKeepAssistState(location: .left, state: .inactive).bytes)
-        XCTAssertEqual(capability.laneKeepAssistsStates?.value?.bytes, AALaneKeepAssistState(location: .right, state: .active).bytes)
+        guard let laneKeepAssistsStates = capability.laneKeepAssistsStates?.compactMap({ $0.value }) else {
+            return XCTFail("Could not get `.laneKeepAssistsStates` values from `AAAdas` capability")
+        }
+        
+        XCTAssertTrue(laneKeepAssistsStates.contains { $0.bytes == AALaneKeepAssistState(location: .left, state: .inactive).bytes })
+        XCTAssertTrue(laneKeepAssistsStates.contains { $0.bytes == AALaneKeepAssistState(location: .right, state: .active).bytes })
     }
     
     func testParkAssists() {
@@ -137,8 +141,12 @@ final class AAAdasTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAAdas`")
         }
         
-        XCTAssertEqual(capability.parkAssists?.value?.bytes, AAParkAssist(location: .front, alarm: .inactive, muted: .notMuted).bytes)
-        XCTAssertEqual(capability.parkAssists?.value?.bytes, AAParkAssist(location: .rear, alarm: .active, muted: .notMuted).bytes)
+        guard let parkAssists = capability.parkAssists?.compactMap({ $0.value }) else {
+            return XCTFail("Could not get `.parkAssists` values from `AAAdas` capability")
+        }
+        
+        XCTAssertTrue(parkAssists.contains { $0.bytes == AAParkAssist(location: .front, alarm: .inactive, muted: .notMuted).bytes })
+        XCTAssertTrue(parkAssists.contains { $0.bytes == AAParkAssist(location: .rear, alarm: .active, muted: .notMuted).bytes })
     }
     
     func testBlindSpotWarningSystem() {
@@ -192,7 +200,7 @@ final class AAAdasTests: XCTestCase {
         XCTAssertEqual(AAAdas.PropertyIdentifier.alertnessSystemStatus.rawValue, 0x02)
         XCTAssertEqual(AAAdas.PropertyIdentifier.forwardCollisionWarningSystem.rawValue, 0x03)
         XCTAssertEqual(AAAdas.PropertyIdentifier.blindSpotWarningState.rawValue, 0x04)
-        XCTAssertEqual(AAAdas.PropertyIdentifier.blind_spot_warning_system_coverage.rawValue, 0x05)
+        XCTAssertEqual(AAAdas.PropertyIdentifier.blindSpotWarningSystemCoverage.rawValue, 0x05)
         XCTAssertEqual(AAAdas.PropertyIdentifier.rearCrossWarningSystem.rawValue, 0x06)
         XCTAssertEqual(AAAdas.PropertyIdentifier.automatedParkingBrake.rawValue, 0x07)
         XCTAssertEqual(AAAdas.PropertyIdentifier.laneKeepAssistSystem.rawValue, 0x08)

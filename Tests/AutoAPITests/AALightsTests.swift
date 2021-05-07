@@ -46,7 +46,7 @@ final class AALightsTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AALights`")
         }
         
-        XCTAssertEqual(capability.frontExteriorLight?.value, FrontExteriorLight.activeWithFullBeam)
+        XCTAssertEqual(capability.frontExteriorLight?.value, AALightsFrontExteriorLight.activeWithFullBeam)
     }
     
     func testRearExteriorLight() {
@@ -143,7 +143,7 @@ final class AALightsTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AALights`")
         }
         
-        XCTAssertEqual(capability.switchPosition?.value, SwitchPosition.parkingLightRight)
+        XCTAssertEqual(capability.switchPosition?.value, AALightsSwitchPosition.parkingLightRight)
     }
     
     func testParkingLightStatus() {
@@ -153,7 +153,7 @@ final class AALightsTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AALights`")
         }
         
-        XCTAssertEqual(capability.parkingLightStatus?.value, ParkingLightStatus.both)
+        XCTAssertEqual(capability.parkingLightStatus?.value, AALightsParkingLightStatus.both)
     }
 
 
@@ -190,7 +190,7 @@ final class AALightsTests: XCTestCase {
     
     func testControlLights() {
         let bytes: [UInt8] = [0x0d, 0x00, 0x36, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x02, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x01, 0x04, 0x00, 0x06, 0x01, 0x00, 0x03, 0xff, 0x00, 0x00, 0x07, 0x00, 0x05, 0x01, 0x00, 0x02, 0x00, 0x00, 0x07, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0x01, 0x08, 0x00, 0x05, 0x01, 0x00, 0x02, 0x00, 0x01, 0x08, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0x01, 0x08, 0x00, 0x05, 0x01, 0x00, 0x02, 0x02, 0x00, 0x08, 0x00, 0x05, 0x01, 0x00, 0x02, 0x03, 0x00, 0x09, 0x00, 0x05, 0x01, 0x00, 0x02, 0x00, 0x00, 0x09, 0x00, 0x05, 0x01, 0x00, 0x02, 0x01, 0x01]
-        let setterBytes = AALights.controlLights(ambientLightColour: AARGBColour(red: 255, green: 0, blue: 0), fogLights: [AALight(location: .front, state: .inactive), AALight(location: .rear, state: .active)], frontExteriorLight: FrontExteriorLight.activeWithFullBeam, interiorLights: [AALight(location: .front, state: .inactive), AALight(location: .rear, state: .active)], readingLamps: [AAReadingLamp(location: .frontLeft, state: .active), AAReadingLamp(location: .frontRight, state: .active), AAReadingLamp(location: .rearRight, state: .inactive), AAReadingLamp(location: .rearLeft, state: .inactive)], rearExteriorLight: AAActiveState.active)
+        let setterBytes = AALights.controlLights(ambientLightColour: AARGBColour(red: 255, green: 0, blue: 0), fogLights: [AALight(location: .front, state: .inactive), AALight(location: .rear, state: .active)], frontExteriorLight: AALightsFrontExteriorLight.activeWithFullBeam, interiorLights: [AALight(location: .front, state: .inactive), AALight(location: .rear, state: .active)], readingLamps: [AAReadingLamp(location: .frontLeft, state: .active), AAReadingLamp(location: .frontRight, state: .active), AAReadingLamp(location: .rearRight, state: .inactive), AAReadingLamp(location: .rearLeft, state: .inactive)], rearExteriorLight: AAActiveState.active)
         
         XCTAssertEqual(bytes, setterBytes)
     }

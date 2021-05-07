@@ -66,7 +66,7 @@ final class AAFailureMessageTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAFailureMessage`")
         }
         
-        XCTAssertEqual(capability.failureReason?.value, FailureReason.unauthorised)
+        XCTAssertEqual(capability.failureReason?.value, AAFailureMessageFailureReason.unauthorised)
     }
     
     func testFailureDescription() {

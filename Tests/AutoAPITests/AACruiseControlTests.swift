@@ -56,7 +56,7 @@ final class AACruiseControlTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AACruiseControl`")
         }
         
-        XCTAssertEqual(capability.limiter?.value, Limiter.higherSpeedRequested)
+        XCTAssertEqual(capability.limiter?.value, AACruiseControlLimiter.higherSpeedRequested)
     }
     
     func testTargetSpeed() {

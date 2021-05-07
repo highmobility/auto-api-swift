@@ -42,6 +42,8 @@ public enum AAEvent: String, CaseIterable, Codable, HMBytesConvertable {
     case breakdownReported
     case dashboardLightsChanged
     case emergencyReported
+    case engineChanged
+    case fleetClearanceChanged
     case harshAccelerationPedalPositionTriggered
     case harshAccelerationTriggered
     case harshBrakingTriggered
@@ -76,6 +78,8 @@ public enum AAEvent: String, CaseIterable, Codable, HMBytesConvertable {
         case .emergencyReported: return 0x0f
         case .breakdownReported: return 0x10
         case .batteryGuardWarning: return 0x11
+        case .engineChanged: return 0x12
+        case .fleetClearanceChanged: return 0x13
         }
     }
 
@@ -111,6 +115,8 @@ public enum AAEvent: String, CaseIterable, Codable, HMBytesConvertable {
         case 0x0f: self = .emergencyReported
         case 0x10: self = .breakdownReported
         case 0x11: self = .batteryGuardWarning
+        case 0x12: self = .engineChanged
+        case 0x13: self = .fleetClearanceChanged
         default: return nil
         }
     }

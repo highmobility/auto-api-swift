@@ -86,7 +86,7 @@ final class AAVehicleLocationTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAVehicleLocation`")
         }
         
-        XCTAssertEqual(capability.gpsSource?.value, GpsSource.real)
+        XCTAssertEqual(capability.gpsSource?.value, AAVehicleLocationGpsSource.real)
     }
     
     func testGpsSignalStrength() {

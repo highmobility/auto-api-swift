@@ -62,7 +62,7 @@ final class AACrashTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AACrash`")
         }
         
-        XCTAssertEqual(capability.type?.value, TypeOf.nonPedestrian)
+        XCTAssertEqual(capability.type?.value, AACrashType.nonPedestrian)
     }
     
     func testTippedState() {
@@ -72,7 +72,7 @@ final class AACrashTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AACrash`")
         }
         
-        XCTAssertEqual(capability.tippedState?.value, TippedState.notTipped)
+        XCTAssertEqual(capability.tippedState?.value, AACrashTippedState.notTipped)
     }
     
     func testAutomaticECall() {
@@ -96,13 +96,13 @@ final class AACrashTests: XCTestCase {
     }
     
     func testImpactZone() {
-        let bytes: [UInt8] = [0x0d, 0x00, 0x6b, 0x01]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x6b, 0x01, 0x06, 0x00, 0x04, 0x01, 0x00, 0x01, 0x07]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AACrash else {
             return XCTFail("Could not parse bytes as `AACrash`")
         }
         
-        
+        XCTAssertEqual(capability.impactZone?.value, AACrashImpactZone.frontDriverSide)
     }
 
 

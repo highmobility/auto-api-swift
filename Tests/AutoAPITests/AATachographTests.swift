@@ -101,7 +101,7 @@ final class AATachographTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AATachograph`")
         }
         
-        XCTAssertEqual(capability.vehicleOverspeed?.value, VehicleOverspeed.noOverspeed)
+        XCTAssertEqual(capability.vehicleOverspeed?.value, AATachographVehicleOverspeed.noOverspeed)
     }
     
     func testVehicleDirection() {
@@ -111,7 +111,7 @@ final class AATachographTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AATachograph`")
         }
         
-        XCTAssertEqual(capability.vehicleDirection?.value, VehicleDirection.forward)
+        XCTAssertEqual(capability.vehicleDirection?.value, AATachographVehicleDirection.forward)
     }
     
     func testVehicleSpeed() {

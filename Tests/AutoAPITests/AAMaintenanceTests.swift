@@ -56,7 +56,7 @@ final class AAMaintenanceTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAMaintenance`")
         }
         
-        XCTAssertEqual(capability.teleserviceAvailability?.value, TeleserviceAvailability.successful)
+        XCTAssertEqual(capability.teleserviceAvailability?.value, AAMaintenanceTeleserviceAvailability.successful)
     }
     
     func testServiceDistanceThreshold() {

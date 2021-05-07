@@ -46,7 +46,7 @@ final class AATripsTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AATrips`")
         }
         
-        XCTAssertEqual(capability.type?.value, TypeOf.single)
+        XCTAssertEqual(capability.type?.value, AATripsType.single)
     }
     
     func testDriverName() {
@@ -220,7 +220,7 @@ final class AATripsTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AATrips`")
         }
         
-        XCTAssertEqual(capability.event?.value, Event.harshAcceleration)
+        XCTAssertEqual(capability.event?.value, AATripsEvent.harshAcceleration)
     }
     
     func testEcoLevel() {
@@ -230,11 +230,11 @@ final class AATripsTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AATrips`")
         }
         
-        XCTAssertEqual(capability.ecoLevel?.value, EcoLevel.high)
+        XCTAssertEqual(capability.ecoLevel?.value, AATripsEcoLevel.high)
     }
     
     func testThresholds() {
-        let bytes: [UInt8] = [0x0d, 0x00, 0x6a, 0x01, 0x12, 0x00, 0x0c, 0x01, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
+        let bytes: [UInt8] = [0x0d, 0x00, 0x6a, 0x01, 0x12, 0x00, 0x0c, 0x01, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x12, 0x00, 0x0c, 0x01, 0x00, 0x09, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
         
         guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AATrips else {
             return XCTFail("Could not parse bytes as `AATrips`")
@@ -244,7 +244,8 @@ final class AATripsTests: XCTestCase {
             return XCTFail("Could not get `.thresholds` values from `AATrips` capability")
         }
         
-        XCTAssertTrue(thresholds.contains { $0.bytes == AAEcoDrivingThreshold(type: .0, value: 0.0).bytes })
+        XCTAssertTrue(thresholds.contains { $0.bytes == AAEcoDrivingThreshold(type: .zero, value: 0.0).bytes })
+        XCTAssertTrue(thresholds.contains { $0.bytes == AAEcoDrivingThreshold(type: .one, value: 0.0).bytes })
     }
     
     func testTotalFuelConsumption() {

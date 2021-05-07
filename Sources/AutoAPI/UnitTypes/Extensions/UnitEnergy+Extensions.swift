@@ -32,6 +32,11 @@
 import Foundation
 
 
+public extension UnitEnergy {
+
+    static let wattHours = UnitEnergy(symbol: "hm_wh", converter: UnitConverterLinear(coefficient: 3600.0))
+}
+
 extension UnitEnergy: AAUnitType {
 
     public static let measurementID: UInt8 = 0x0c
@@ -40,6 +45,7 @@ extension UnitEnergy: AAUnitType {
         switch id {
         case 0x00:  return UnitEnergy.joules as? Self
         case 0x01:  return UnitEnergy.kilojoules as? Self
+        case 0x03:  return UnitEnergy.wattHours as? Self
         case 0x04:  return UnitEnergy.kilowattHours as? Self
 
         default:    return nil
@@ -51,6 +57,7 @@ extension UnitEnergy: AAUnitType {
         switch self {
         case .joules: return [Self.measurementID, 0x00]
         case .kilojoules: return [Self.measurementID, 0x01]
+        case .wattHours: return [Self.measurementID, 0x03]
         case .kilowattHours: return [Self.measurementID, 0x04]
 
         default: return nil

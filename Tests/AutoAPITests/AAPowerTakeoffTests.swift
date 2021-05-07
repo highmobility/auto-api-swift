@@ -56,7 +56,7 @@ final class AAPowerTakeoffTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AAPowerTakeoff`")
         }
         
-        XCTAssertEqual(capability.engaged?.value, Engaged.engaged)
+        XCTAssertEqual(capability.engaged?.value, AAPowerTakeoffEngaged.engaged)
     }
 
 

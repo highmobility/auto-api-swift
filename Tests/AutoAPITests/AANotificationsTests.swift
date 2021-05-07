@@ -81,7 +81,7 @@ final class AANotificationsTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AANotifications`")
         }
         
-        XCTAssertEqual(capability.clear?.value, Clear.clear)
+        XCTAssertEqual(capability.clear?.value, AANotificationsClear.clear)
     }
 
 

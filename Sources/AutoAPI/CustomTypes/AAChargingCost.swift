@@ -39,13 +39,13 @@ public final class AAChargingCost: Codable, HMBytesConvertable {
     public var currency: String
 
     /// Calculated charging cost.
-    public var calculatedChargingCost: Float
+    public var calculatedChargingCost: Double
 
     /// Calculated savings from charging.
-    public var calculatedSavings: Float
+    public var calculatedSavings: Double
 
     /// Simulated charging costs.
-    public var simulatedImmediateChargingCost: Float
+    public var simulatedImmediateChargingCost: Double
 
 
     /// Initialise `AAChargingCost` with arguments.
@@ -55,7 +55,7 @@ public final class AAChargingCost: Codable, HMBytesConvertable {
     ///     - calculatedChargingCost: Calculated charging cost.
     ///     - calculatedSavings: Calculated savings from charging.
     ///     - simulatedImmediateChargingCost: Simulated charging costs.
-    public init(currency: String, calculatedChargingCost: Float, calculatedSavings: Float, simulatedImmediateChargingCost: Float) {
+    public init(currency: String, calculatedChargingCost: Double, calculatedSavings: Double, simulatedImmediateChargingCost: Double) {
         self.bytes = [currency.bytes.sizeBytes(amount: 2), currency.bytes, calculatedChargingCost.bytes, calculatedSavings.bytes, simulatedImmediateChargingCost.bytes].flatMap { $0 }
         self.currency = currency
         self.calculatedChargingCost = calculatedChargingCost
@@ -74,14 +74,14 @@ public final class AAChargingCost: Codable, HMBytesConvertable {
     /// - parameters:
     ///     - bytes: Bytes array in `[UInt8]`.
     public required init?(bytes: [UInt8]) {
-        guard bytes.count >= 12 else {
+        guard bytes.count >= 24 else {
             return nil
         }
     
         guard let currency = bytes.extract(stringFrom: 0),
-    		  let calculatedChargingCost = Float(bytes: bytes[(2 + currency.bytes.count)..<(6 + currency.bytes.count)].bytes),
-    		  let calculatedSavings = Float(bytes: bytes[(6 + currency.bytes.count)..<(10 + currency.bytes.count)].bytes),
-    		  let simulatedImmediateChargingCost = Float(bytes: bytes[(10 + currency.bytes.count)..<(14 + currency.bytes.count)].bytes) else {
+    		  let calculatedChargingCost = Double(bytes: bytes[(2 + currency.bytes.count)..<(10 + currency.bytes.count)].bytes),
+    		  let calculatedSavings = Double(bytes: bytes[(10 + currency.bytes.count)..<(18 + currency.bytes.count)].bytes),
+    		  let simulatedImmediateChargingCost = Double(bytes: bytes[(18 + currency.bytes.count)..<(26 + currency.bytes.count)].bytes) else {
             return nil
         }
     

@@ -137,7 +137,7 @@ public final class AADiagnostics: AACapability, AAPropertyIdentifying {
     public var confirmedTroubleCodes: [AAProperty<AAConfirmedTroubleCode>]?
     
     /// Diesel exhaust filter status value.
-    public var dieselExhaustFilterStatus: AAProperty<AADieselExhaustFilterStatus>?
+    public var dieselExhaustFilterStatus: [AAProperty<AADieselExhaustFilterStatus>]?
     
     /// Distance remaining until diesel exhaust fluid is empty.
     public var dieselExhaustFluidRange: AAProperty<Measurement<UnitLength>>?
@@ -328,7 +328,7 @@ public final class AADiagnostics: AACapability, AAPropertyIdentifying {
         brakeLiningWearPreWarning = extract(property: .brakeLiningWearPreWarning)
         checkControlMessages = extract(properties: .checkControlMessages)
         confirmedTroubleCodes = extract(properties: .confirmedTroubleCodes)
-        dieselExhaustFilterStatus = extract(property: .dieselExhaustFilterStatus)
+        dieselExhaustFilterStatus = extract(properties: .dieselExhaustFilterStatus)
         dieselExhaustFluidRange = extract(property: .dieselExhaustFluidRange)
         dieselParticulateFilterSootLevel = extract(property: .dieselParticulateFilterSootLevel)
         distanceSinceReset = extract(property: .distanceSinceReset)
