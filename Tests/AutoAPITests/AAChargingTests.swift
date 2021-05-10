@@ -324,6 +324,16 @@ final class AAChargingTests: XCTestCase {
         
         XCTAssertEqual(capability.preconditioningError?.value, AAChargingPreconditioningError.notPossibleLow)
     }
+    
+    func testBatteryCapacity() {
+        let bytes: [UInt8] = [0x0d, 0x00, 0x23, 0x01, 0x24, 0x00, 0x0d, 0x01, 0x00, 0x0a, 0x0c, 0x04, 0x40, 0x51, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00]
+        
+        guard let capability = try? AAAutoAPI.parseBytes(bytes) as? AACharging else {
+            return XCTFail("Could not parse bytes as `AACharging`")
+        }
+        
+        XCTAssertEqual(capability.batteryCapacity?.value, Measurement<UnitEnergy>(value: 70.0, unit: .kilowattHours))
+    }
 
 
     // MARK: Non-state or Deprecated Properties
@@ -487,5 +497,6 @@ final class AAChargingTests: XCTestCase {
         XCTAssertEqual(AACharging.PropertyIdentifier.preconditioningImmediateStatus.rawValue, 0x21)
         XCTAssertEqual(AACharging.PropertyIdentifier.preconditioningDepartureEnabled.rawValue, 0x22)
         XCTAssertEqual(AACharging.PropertyIdentifier.preconditioningError.rawValue, 0x23)
+        XCTAssertEqual(AACharging.PropertyIdentifier.batteryCapacity.rawValue, 0x24)
     }
 }

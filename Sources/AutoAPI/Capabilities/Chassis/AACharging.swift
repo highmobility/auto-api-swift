@@ -90,10 +90,14 @@ public final class AACharging: AACapability, AAPropertyIdentifying {
         case preconditioningImmediateStatus = 0x21
         case preconditioningDepartureEnabled = 0x22
         case preconditioningError = 0x23
+        case batteryCapacity = 0x24
     }
 
 
     // MARK: Properties
+    
+    /// Indicates the battery capacity.
+    public var batteryCapacity: AAProperty<Measurement<UnitEnergy>>?
     
     /// Battery current.
     public var batteryCurrent: AAProperty<Measurement<UnitElectricCurrent>>?
@@ -360,6 +364,7 @@ public final class AACharging: AACapability, AAPropertyIdentifying {
     public required init?(bytes: [UInt8]) {
         super.init(bytes: bytes)
     
+        batteryCapacity = extract(property: .batteryCapacity)
         batteryCurrent = extract(property: .batteryCurrent)
         batteryLevel = extract(property: .batteryLevel)
         batteryLevelAtDeparture = extract(property: .batteryLevelAtDeparture)
