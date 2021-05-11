@@ -1,5 +1,6 @@
 # AutoAPI Swift SDK
 
+![Auto API](https://github.com/highmobility/auto-api/blob/master/assets/autoapi-header.png?raw=true)
 The AutoAPI Swift SDK purpose is to help developers serialise [AutoAPI](https://high-mobility.com/learn/tutorials/getting-started/auto-api-guide/) data in Swift, so they wouldn't have to worry about parsing and generating the bytes themselves.
 The SDK is generated based on the AutoAPI [spec](https://github.com/highmobility/auto-api).
 
