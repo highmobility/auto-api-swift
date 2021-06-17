@@ -42,6 +42,18 @@ public struct YearTime: Item, Equatable {
 
     public var offset: Int16
 
+    public var date: Date? {
+        DateComponents(calendar: .current,
+                       timeZone: TimeZone(secondsFromGMT: Int(offset)),
+                       year: Int(year),
+                       month: Int(month),
+                       day: Int(day),
+                       hour: Int(hour),
+                       minute: Int(minute),
+                       second: Int(second)
+        ).date
+    }
+
 
     // MARK: Type Vars
 
@@ -76,6 +88,18 @@ extension YearTime: BinaryInitable {
         minute = bytes[4]
         second = bytes[5]
         offset = Int16(bytes.suffix(2))
+    }
+}
+
+extension YearTime: Comparable {
+
+    public static func < (lhs: YearTime, rhs: YearTime) -> Bool {
+        guard let lhsDate = lhs.date,
+              let rhsDate = rhs.date else {
+            return false
+        }
+
+        return lhsDate < rhsDate
     }
 }
 
