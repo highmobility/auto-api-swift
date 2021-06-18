@@ -86,7 +86,7 @@ class NaviDestinationTests: XCTestCase {
             0x42, 0x65, 0x72, 0x6c, 0x69, 0x6e  // Berlin
         ]
 
-        guard let naviDestination = AutoAPI.parseBinary(bytes) as? NaviDestination else {
+        guard let naviDestination = AAAutoAPI.parseBinary(bytes) as? NaviDestination else {
             return XCTFail("Parsed value is not NaviDestination")
         }
 

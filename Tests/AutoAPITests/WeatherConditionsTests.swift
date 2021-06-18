@@ -59,7 +59,7 @@ class WeatherConditionsTests: XCTestCase {
             0x64        // 100% (maximum rain)
         ]
 
-        guard let weatherConditions = AutoAPI.parseBinary(bytes) as? WeatherConditions else {
+        guard let weatherConditions = AAAutoAPI.parseBinary(bytes) as? WeatherConditions else {
             return XCTFail("Parsed value is not WeatherConditions")
         }
 

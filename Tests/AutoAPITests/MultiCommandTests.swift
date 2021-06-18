@@ -65,7 +65,7 @@ class MultiCommandTests: XCTestCase {
              0x01        // Vehicle is armed
         ]
 
-        guard let multiStates = AutoAPI.parseBinary(bytes) as? MultiCommand else {
+        guard let multiStates = AAAutoAPI.parseBinary(bytes) as? MultiCommand else {
             return XCTFail("Parsed value is not MultiCommand")
         }
 

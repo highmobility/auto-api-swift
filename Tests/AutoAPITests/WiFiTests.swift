@@ -110,7 +110,7 @@ class WiFiTests: XCTestCase {
             0x03        // WPA2 Personal
         ]
 
-        guard let wifi = AutoAPI.parseBinary(bytes) as? WiFi else {
+        guard let wifi = AAAutoAPI.parseBinary(bytes) as? WiFi else {
             return XCTFail("Parsed value is not WiFi")
         }
 

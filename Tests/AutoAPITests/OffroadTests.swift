@@ -63,7 +63,7 @@ class OffroadTests: XCTestCase {
             0x32        // 50% wheel suspension level
         ]
 
-        guard let offroad = AutoAPI.parseBinary(bytes) as? Offroad else {
+        guard let offroad = AAAutoAPI.parseBinary(bytes) as? Offroad else {
             return XCTFail("Parsed value is not Offroad")
         }
 

@@ -183,7 +183,7 @@ class ClimateTests: XCTestCase {
             0x07, 0x1E  // Sunday set to 07:30
         ]
 
-        guard let climate = AutoAPI.parseBinary(bytes) as? Climate else {
+        guard let climate = AAAutoAPI.parseBinary(bytes) as? Climate else {
             return XCTFail("Parsed value is not Climate")
         }
 

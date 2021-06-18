@@ -95,7 +95,7 @@ class CruiseControlTests: XCTestCase {
             0x00, 0x3C  // The Adaptive Cruise Control target speed is set to 60km/h
         ]
 
-        guard let cruiseControl = AutoAPI.parseBinary(bytes) as? CruiseControl else {
+        guard let cruiseControl = AAAutoAPI.parseBinary(bytes) as? CruiseControl else {
             return XCTFail("Parsed value is not CruiseControl")
         }
 

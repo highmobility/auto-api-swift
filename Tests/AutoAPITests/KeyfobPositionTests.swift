@@ -59,7 +59,7 @@ class KeyfobPositionTests: XCTestCase {
             0x05        // Keyfob is positioned inside the car
         ]
 
-        guard let keyfobPosition = AutoAPI.parseBinary(bytes) as? KeyfobPosition else {
+        guard let keyfobPosition = AAAutoAPI.parseBinary(bytes) as? KeyfobPosition else {
             return XCTFail("Parsed value is not KeyfobPosition")
         }
 

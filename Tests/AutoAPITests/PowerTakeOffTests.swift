@@ -77,7 +77,7 @@ class PowerTakeOffTests: XCTestCase {
             0x01        // At least one Power Take-Off drive is engaged
         ]
 
-        guard let powerTakeOff = AutoAPI.parseBinary(bytes) as? PowerTakeOff else {
+        guard let powerTakeOff = AAAutoAPI.parseBinary(bytes) as? PowerTakeOff else {
             return XCTFail("Parsed value is not PowerTakeOff")
         }
 

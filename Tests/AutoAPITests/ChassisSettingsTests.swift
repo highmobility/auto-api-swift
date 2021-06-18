@@ -132,7 +132,7 @@ class ChassisSettingsTests: XCTestCase {
             0xE4        // Minimum possible position is -28mm
         ]
 
-        guard let chassisSettings = AutoAPI.parseBinary(bytes) as? ChassisSettings else {
+        guard let chassisSettings = AAAutoAPI.parseBinary(bytes) as? ChassisSettings else {
             return XCTFail("Parsed value is not ChassisSettings")
         }
 

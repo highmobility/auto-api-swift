@@ -94,7 +94,7 @@ class RemoteControlTests: XCTestCase {
             0x00, 0x32  // Angle 50 degrees
         ]
 
-        guard let remoteControl = AutoAPI.parseBinary(bytes) as? RemoteControl else {
+        guard let remoteControl = AAAutoAPI.parseBinary(bytes) as? RemoteControl else {
             return XCTFail("Parsed value is not RemoteControl")
         }
 

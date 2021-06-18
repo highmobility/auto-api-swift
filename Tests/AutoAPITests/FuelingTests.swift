@@ -58,7 +58,7 @@ class FuelingTests: XCTestCase {
             0x01        // Gas flap open
         ]
 
-        guard let fueling = AutoAPI.parseBinary(bytes) as? Fueling else {
+        guard let fueling = AAAutoAPI.parseBinary(bytes) as? Fueling else {
             return XCTFail("Parsed value is not Fueling")
         }
 

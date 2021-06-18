@@ -111,7 +111,7 @@ class LightsTests: XCTestCase {
             0x00        // Emergency brake lights are inactive
         ]
 
-        guard let lights = AutoAPI.parseBinary(bytes) as? Lights else {
+        guard let lights = AAAutoAPI.parseBinary(bytes) as? Lights else {
             return XCTFail("Parsed value is not Lights")
         }
 

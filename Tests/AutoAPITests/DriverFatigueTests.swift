@@ -49,7 +49,7 @@ class DriverFatigueTests: XCTestCase {
             0x00        // Light fatigue of the driver
         ]
 
-        guard let driverFatigue = AutoAPI.parseBinary(bytes) as? DriverFatigue else {
+        guard let driverFatigue = AAAutoAPI.parseBinary(bytes) as? DriverFatigue else {
             return XCTFail("Parsed value is not DriverFatigue")
         }
 

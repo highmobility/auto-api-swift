@@ -70,7 +70,7 @@ class ValetModeTests: XCTestCase {
             0x01        // Activated
         ]
 
-        guard let valetMode = AutoAPI.parseBinary(bytes) as? ValetMode else {
+        guard let valetMode = AAAutoAPI.parseBinary(bytes) as? ValetMode else {
             return XCTFail("Parsed value is not ValetMode")
         }
 

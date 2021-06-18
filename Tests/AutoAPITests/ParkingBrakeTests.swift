@@ -70,7 +70,7 @@ class ParkingBrakeTests: XCTestCase {
             0x01        // Parking brake active
         ]
 
-        guard let parkingBrake = AutoAPI.parseBinary(bytes) as? ParkingBrake else {
+        guard let parkingBrake = AAAutoAPI.parseBinary(bytes) as? ParkingBrake else {
             return XCTFail("Parsed value is not ParkingBrake")
         }
 

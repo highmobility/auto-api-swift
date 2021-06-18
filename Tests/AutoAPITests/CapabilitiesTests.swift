@@ -149,7 +149,7 @@ class CapabilitiesTests: XCTestCase {
             0x02        // Set Navi Destination
         ]
 
-        guard let capabilities = AutoAPI.parseBinary(bytes) as? Capabilities else {
+        guard let capabilities = AAAutoAPI.parseBinary(bytes) as? Capabilities else {
             return XCTFail("Parsed value is not Capabilities")
         }
 
@@ -259,7 +259,7 @@ class CapabilitiesTests: XCTestCase {
             0x02,       // Supports Open/Close Trunk
         ]
 
-        guard let capabilities = AutoAPI.parseBinary(bytes) as? Capabilities else {
+        guard let capabilities = AAAutoAPI.parseBinary(bytes) as? Capabilities else {
             return XCTFail("Parsed value is not Capabilities")
         }
 

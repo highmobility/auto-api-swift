@@ -69,7 +69,7 @@ class FirmwareVersionTests: XCTestCase {
             0x76, 0x31, 0x2e, 0x35, 0x2d, 0x70, 0x72, 0x6f, 0x64        // "v1.5-prod"
         ]
 
-        guard let firmwareVersion = AutoAPI.parseBinary(bytes) as? FirmwareVersion else {
+        guard let firmwareVersion = AAAutoAPI.parseBinary(bytes) as? FirmwareVersion else {
             return XCTFail("Parsed value is not FirmwareVersion")
         }
 

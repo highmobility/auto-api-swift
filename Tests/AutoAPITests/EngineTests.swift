@@ -64,7 +64,7 @@ class EngineTests: XCTestCase {
             0x01        // Ignition state is powering on accessories such as radio
         ]
 
-        guard let engine = AutoAPI.parseBinary(bytes) as? Engine else {
+        guard let engine = AAAutoAPI.parseBinary(bytes) as? Engine else {
             return XCTFail("Parsed value is not Engine")
         }
 

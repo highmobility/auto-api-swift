@@ -65,7 +65,7 @@ class VehicleTimeTests: XCTestCase {
             0xFF, 0x88  // -120 min UTC time offset
         ]
 
-        guard let vehicleTime = AutoAPI.parseBinary(bytes) as? VehicleTime else {
+        guard let vehicleTime = AAAutoAPI.parseBinary(bytes) as? VehicleTime else {
             return XCTFail("Parsed value is not VehicleTime")
         }
 

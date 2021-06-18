@@ -61,7 +61,7 @@ class FailureMessageTests: XCTestCase {
             0x54, 0x72, 0x79, 0x20, 0x61, 0x67, 0x61, 0x69, 0x6e // Try again
         ]
 
-        guard let failureMessage = AutoAPI.parseBinary(bytes) as? FailureMessage else {
+        guard let failureMessage = AAAutoAPI.parseBinary(bytes) as? FailureMessage else {
             return XCTFail("Parsed value is not FailureMessage")
         }
 

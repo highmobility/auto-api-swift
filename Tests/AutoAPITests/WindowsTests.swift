@@ -98,7 +98,7 @@ class WindowsTests: XCTestCase {
             0x00        // Window closed
         ]
 
-        guard let windows = AutoAPI.parseBinary(bytes) as? Windows else {
+        guard let windows = AAAutoAPI.parseBinary(bytes) as? Windows else {
             return XCTFail("Parsed value is not Windows")
         }
 

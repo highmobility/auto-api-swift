@@ -177,7 +177,7 @@ class HomeChargerTests: XCTestCase {
             0x3e, 0x99, 0x99, 0x9a  // 0.30
         ]
 
-        guard let homeCharger = AutoAPI.parseBinary(bytes) as? HomeCharger else {
+        guard let homeCharger = AAAutoAPI.parseBinary(bytes) as? HomeCharger else {
             return XCTFail("Parsed value is not HomeCharger")
         }
 
