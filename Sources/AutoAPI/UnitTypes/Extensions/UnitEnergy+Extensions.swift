@@ -63,4 +63,15 @@ extension UnitEnergy: AAUnitType {
         default: return nil
         }
     }
+
+    public var name: String? {
+        switch self {
+        case .joules: return "joules"
+        case .kilojoules: return "kilojoules"
+        case .wattHours: return "wattHours"
+        case .kilowattHours: return "kilowattHours"
+
+        default: return nil
+        }
+    }
 }

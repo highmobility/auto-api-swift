@@ -58,4 +58,15 @@ extension UnitSpeed: AAUnitType {
         default: return nil
         }
     }
+
+    public var name: String? {
+        switch self {
+        case .metersPerSecond: return "metersPerSecond"
+        case .kilometersPerHour: return "kilometersPerHour"
+        case .milesPerHour: return "milesPerHour"
+        case .knots: return "knots"
+
+        default: return nil
+        }
+    }
 }

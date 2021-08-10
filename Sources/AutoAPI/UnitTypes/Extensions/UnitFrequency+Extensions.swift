@@ -75,4 +75,19 @@ extension UnitFrequency: AAUnitType {
         default: return nil
         }
     }
+
+    public var name: String? {
+        switch self {
+        case .hertz: return "hertz"
+        case .millihertz: return "millihertz"
+        case .kilohertz: return "kilohertz"
+        case .megahertz: return "megahertz"
+        case .gigahertz: return "gigahertz"
+        case .timesPerMinute: return "timesPerMinute"
+        case .timesPerHour: return "timesPerHour"
+        case .timesPerDay: return "timesPerDay"
+
+        default: return nil
+        }
+    }
 }

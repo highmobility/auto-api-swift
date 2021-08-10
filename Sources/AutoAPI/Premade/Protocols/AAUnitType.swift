@@ -38,6 +38,7 @@ public protocol AAUnitType: Dimension, Codable {
     static func create(id: UInt8) -> Self?
 
     var identifiers: [UInt8]? { get }
+    var name: String? { get }
 }
 
 

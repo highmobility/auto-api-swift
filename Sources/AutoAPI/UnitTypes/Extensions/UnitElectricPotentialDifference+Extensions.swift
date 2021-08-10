@@ -56,4 +56,14 @@ extension UnitElectricPotentialDifference: AAUnitType {
         default: return nil
         }
     }
+
+    public var name: String? {
+        switch self {
+        case .volts: return "volts"
+        case .millivolts: return "millivolts"
+        case .kilovolts: return "kilovolts"
+
+        default: return nil
+        }
+    }
 }

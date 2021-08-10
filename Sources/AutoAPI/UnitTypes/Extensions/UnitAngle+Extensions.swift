@@ -56,4 +56,14 @@ extension UnitAngle: AAUnitType {
         default: return nil
         }
     }
+
+    public var name: String? {
+        switch self {
+        case .degrees: return "degrees"
+        case .radians: return "radians"
+        case .revolutions: return "revolutions"
+
+        default: return nil
+        }
+    }
 }

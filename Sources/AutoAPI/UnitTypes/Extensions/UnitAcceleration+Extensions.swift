@@ -54,4 +54,13 @@ extension UnitAcceleration: AAUnitType {
         default: return nil
         }
     }
+
+    public var name: String? {
+        switch self {
+        case .metersPerSecondSquared: return "metersPerSecondSquared"
+        case .gravity: return "gravity"
+
+        default: return nil
+        }
+    }
 }

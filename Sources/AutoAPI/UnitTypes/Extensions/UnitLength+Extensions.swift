@@ -74,4 +74,23 @@ extension UnitLength: AAUnitType {
         default: return nil
         }
     }
+
+    public var name: String? {
+        switch self {
+        case .meters: return "meters"
+        case .millimeters: return "millimeters"
+        case .centimeters: return "centimeters"
+        case .decimeters: return "decimeters"
+        case .kilometers: return "kilometers"
+        case .megameters: return "megameters"
+        case .inches: return "inches"
+        case .feet: return "feet"
+        case .yards: return "yards"
+        case .miles: return "miles"
+        case .scandinavianMiles: return "scandinavianMiles"
+        case .nauticalMiles: return "nauticalMiles"
+
+        default: return nil
+        }
+    }
 }

@@ -56,4 +56,14 @@ extension UnitTorque: AAUnitType {
         default: return nil
         }
     }
+
+    public var name: String? {
+        switch self {
+        case .newtonMeters: return "newtonMeters"
+        case .newtonMillimeters: return "newtonMillimeters"
+        case .poundFeet: return "poundFeet"
+
+        default: return nil
+        }
+    }
 }

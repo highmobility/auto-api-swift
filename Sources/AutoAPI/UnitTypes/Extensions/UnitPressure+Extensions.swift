@@ -69,4 +69,18 @@ extension UnitPressure: AAUnitType {
         default: return nil
         }
     }
+
+    public var name: String? {
+        switch self {
+        case .pascals: return "pascals"
+        case .kilopascals: return "kilopascals"
+        case .inchesOfMercury: return "inchesOfMercury"
+        case .bars: return "bars"
+        case .millibars: return "millibars"
+        case .millimetersOfMercury: return "millimetersOfMercury"
+        case .poundsForcePerSquareInch: return "poundsForcePerSquareInch"
+
+        default: return nil
+        }
+    }
 }

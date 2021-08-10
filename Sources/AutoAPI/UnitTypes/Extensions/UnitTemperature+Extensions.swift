@@ -56,4 +56,14 @@ extension UnitTemperature: AAUnitType {
         default: return nil
         }
     }
+
+    public var name: String? {
+        switch self {
+        case .kelvin: return "kelvin"
+        case .celsius: return "celsius"
+        case .fahrenheit: return "fahrenheit"
+
+        default: return nil
+        }
+    }
 }

@@ -56,4 +56,14 @@ extension UnitAngularVelocity: AAUnitType {
         default: return nil
         }
     }
+
+    public var name: String? {
+        switch self {
+        case .revolutionsPerMinute: return "revolutionsPerMinute"
+        case .degreesPerSecond: return "degreesPerSecond"
+        case .radiansPerSecond: return "radiansPerSecond"
+
+        default: return nil
+        }
+    }
 }

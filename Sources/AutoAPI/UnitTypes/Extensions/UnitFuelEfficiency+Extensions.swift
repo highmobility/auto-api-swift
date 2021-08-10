@@ -56,4 +56,14 @@ extension UnitFuelEfficiency: AAUnitType {
         default: return nil
         }
     }
+
+    public var name: String? {
+        switch self {
+        case .litersPer100Kilometers: return "litersPer100Kilometers"
+        case .milesPerImperialGallon: return "milesPerImperialGallon"
+        case .milesPerGallon: return "milesPerGallon"
+
+        default: return nil
+        }
+    }
 }

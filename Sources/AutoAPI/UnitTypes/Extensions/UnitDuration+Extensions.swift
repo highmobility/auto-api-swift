@@ -71,4 +71,17 @@ extension UnitDuration: AAUnitType {
         default: return nil
         }
     }
+
+    public var name: String? {
+        switch self {
+        case .seconds: return "seconds"
+        case .minutes: return "minutes"
+        case .hours: return "hours"
+        case .days: return "days"
+        case .weeks: return "weeks"
+        case .months: return "months"
+
+        default: return nil
+        }
+    }
 }

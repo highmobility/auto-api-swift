@@ -41,7 +41,7 @@ public final class AAChargingLocation: Codable, HMBytesConvertable {
     /// Full formatted address.
     public var formattedAddress: String
 
-    /// Streed address component.
+    /// Street address component.
     public var streetAddress: String
 
 
@@ -50,7 +50,7 @@ public final class AAChargingLocation: Codable, HMBytesConvertable {
     /// - parameters:
     ///     - municipality: Municipality component of the address.
     ///     - formattedAddress: Full formatted address.
-    ///     - streetAddress: Streed address component.
+    ///     - streetAddress: Street address component.
     public init(municipality: String, formattedAddress: String, streetAddress: String) {
         self.bytes = [municipality.bytes.sizeBytes(amount: 2), municipality.bytes, formattedAddress.bytes.sizeBytes(amount: 2), formattedAddress.bytes, streetAddress.bytes.sizeBytes(amount: 2), streetAddress.bytes].flatMap { $0 }
         self.municipality = municipality

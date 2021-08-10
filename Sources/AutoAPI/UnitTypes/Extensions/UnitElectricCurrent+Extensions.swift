@@ -56,4 +56,14 @@ extension UnitElectricCurrent: AAUnitType {
         default: return nil
         }
     }
+
+    public var name: String? {
+        switch self {
+        case .amperes: return "amperes"
+        case .milliamperes: return "milliamperes"
+        case .kiloamperes: return "kiloamperes"
+
+        default: return nil
+        }
+    }
 }

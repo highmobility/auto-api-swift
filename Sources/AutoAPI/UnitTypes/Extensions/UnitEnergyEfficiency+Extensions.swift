@@ -54,4 +54,13 @@ extension UnitEnergyEfficiency: AAUnitType {
         default: return nil
         }
     }
+
+    public var name: String? {
+        switch self {
+        case .kwhPer100Kilometers: return "kwhPer100Kilometers"
+        case .milesPerKwh: return "milesPerKwh"
+
+        default: return nil
+        }
+    }
 }

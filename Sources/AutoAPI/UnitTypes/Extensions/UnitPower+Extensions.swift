@@ -60,4 +60,16 @@ extension UnitPower: AAUnitType {
         default: return nil
         }
     }
+
+    public var name: String? {
+        switch self {
+        case .watts: return "watts"
+        case .milliwatts: return "milliwatts"
+        case .kilowatts: return "kilowatts"
+        case .megawatts: return "megawatts"
+        case .horsepower: return "horsepower"
+
+        default: return nil
+        }
+    }
 }

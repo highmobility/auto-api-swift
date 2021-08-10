@@ -52,4 +52,12 @@ extension UnitIlluminance: AAUnitType {
         default: return nil
         }
     }
+
+    public var name: String? {
+        switch self {
+        case .lux: return "lux"
+
+        default: return nil
+        }
+    }
 }

@@ -78,4 +78,25 @@ extension UnitVolume: AAUnitType {
         default: return nil
         }
     }
+
+    public var name: String? {
+        switch self {
+        case .liters: return "liters"
+        case .milliliters: return "milliliters"
+        case .centiliters: return "centiliters"
+        case .deciliters: return "deciliters"
+        case .cubicMillimeters: return "cubicMillimeters"
+        case .cubicCentimeters: return "cubicCentimeters"
+        case .cubicDecimeters: return "cubicDecimeters"
+        case .cubicMeters: return "cubicMeters"
+        case .cubicInches: return "cubicInches"
+        case .cubicFeet: return "cubicFeet"
+        case .fluidOunces: return "fluidOunces"
+        case .gallons: return "gallons"
+        case .imperialFluidOunces: return "imperialFluidOunces"
+        case .imperialGallons: return "imperialGallons"
+
+        default: return nil
+        }
+    }
 }
