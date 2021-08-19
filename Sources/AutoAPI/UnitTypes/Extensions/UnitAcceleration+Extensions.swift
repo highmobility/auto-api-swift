@@ -45,6 +45,15 @@ extension UnitAcceleration: AAUnitType {
         }
     }
 
+    public static func create(name: String) -> Self? {
+        switch name {
+        case "metersPerSecondSquared": return Self.metersPerSecondSquared as? Self
+        case "gravity": return Self.gravity as? Self
+
+        default: return nil
+        }
+    }
+
 
     public var identifiers: [UInt8]? {
         switch self {

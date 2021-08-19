@@ -48,6 +48,18 @@ extension UnitPower: AAUnitType {
         }
     }
 
+    public static func create(name: String) -> Self? {
+        switch name {
+        case "watts": return Self.watts as? Self
+        case "milliwatts": return Self.milliwatts as? Self
+        case "kilowatts": return Self.kilowatts as? Self
+        case "megawatts": return Self.megawatts as? Self
+        case "horsepower": return Self.horsepower as? Self
+
+        default: return nil
+        }
+    }
+
 
     public var identifiers: [UInt8]? {
         switch self {

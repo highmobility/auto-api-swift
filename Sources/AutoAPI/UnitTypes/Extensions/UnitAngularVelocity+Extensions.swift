@@ -46,6 +46,16 @@ extension UnitAngularVelocity: AAUnitType {
         }
     }
 
+    public static func create(name: String) -> Self? {
+        switch name {
+        case "revolutionsPerMinute": return Self.revolutionsPerMinute as? Self
+        case "degreesPerSecond": return Self.degreesPerSecond as? Self
+        case "radiansPerSecond": return Self.radiansPerSecond as? Self
+
+        default: return nil
+        }
+    }
+
 
     public var identifiers: [UInt8]? {
         switch self {

@@ -44,6 +44,14 @@ extension UnitIlluminance: AAUnitType {
         }
     }
 
+    public static func create(name: String) -> Self? {
+        switch name {
+        case "lux": return Self.lux as? Self
+
+        default: return nil
+        }
+    }
+
 
     public var identifiers: [UInt8]? {
         switch self {

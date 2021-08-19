@@ -58,6 +58,19 @@ extension UnitDuration: AAUnitType {
         }
     }
 
+    public static func create(name: String) -> Self? {
+        switch name {
+        case "seconds": return Self.seconds as? Self
+        case "minutes": return Self.minutes as? Self
+        case "hours": return Self.hours as? Self
+        case "days": return Self.days as? Self
+        case "weeks": return Self.weeks as? Self
+        case "months": return Self.months as? Self
+
+        default: return nil
+        }
+    }
+
 
     public var identifiers: [UInt8]? {
         switch self {

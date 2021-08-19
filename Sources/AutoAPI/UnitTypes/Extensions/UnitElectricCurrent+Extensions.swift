@@ -46,6 +46,16 @@ extension UnitElectricCurrent: AAUnitType {
         }
     }
 
+    public static func create(name: String) -> Self? {
+        switch name {
+        case "amperes": return Self.amperes as? Self
+        case "milliamperes": return Self.milliamperes as? Self
+        case "kiloamperes": return Self.kiloamperes as? Self
+
+        default: return nil
+        }
+    }
+
 
     public var identifiers: [UInt8]? {
         switch self {

@@ -46,6 +46,16 @@ extension UnitTemperature: AAUnitType {
         }
     }
 
+    public static func create(name: String) -> Self? {
+        switch name {
+        case "kelvin": return Self.kelvin as? Self
+        case "celsius": return Self.celsius as? Self
+        case "fahrenheit": return Self.fahrenheit as? Self
+
+        default: return nil
+        }
+    }
+
 
     public var identifiers: [UInt8]? {
         switch self {

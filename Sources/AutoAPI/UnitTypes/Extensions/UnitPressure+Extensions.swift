@@ -55,6 +55,20 @@ extension UnitPressure: AAUnitType {
         }
     }
 
+    public static func create(name: String) -> Self? {
+        switch name {
+        case "pascals": return Self.pascals as? Self
+        case "kilopascals": return Self.kilopascals as? Self
+        case "inchesOfMercury": return Self.inchesOfMercury as? Self
+        case "bars": return Self.bars as? Self
+        case "millibars": return Self.millibars as? Self
+        case "millimetersOfMercury": return Self.millimetersOfMercury as? Self
+        case "poundsForcePerSquareInch": return Self.poundsForcePerSquareInch as? Self
+
+        default: return nil
+        }
+    }
+
 
     public var identifiers: [UInt8]? {
         switch self {

@@ -60,6 +60,21 @@ extension UnitFrequency: AAUnitType {
         }
     }
 
+    public static func create(name: String) -> Self? {
+        switch name {
+        case "hertz": return Self.hertz as? Self
+        case "millihertz": return Self.millihertz as? Self
+        case "kilohertz": return Self.kilohertz as? Self
+        case "megahertz": return Self.megahertz as? Self
+        case "gigahertz": return Self.gigahertz as? Self
+        case "timesPerMinute": return Self.timesPerMinute as? Self
+        case "timesPerHour": return Self.timesPerHour as? Self
+        case "timesPerDay": return Self.timesPerDay as? Self
+
+        default: return nil
+        }
+    }
+
 
     public var identifiers: [UInt8]? {
         switch self {

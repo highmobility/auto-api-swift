@@ -52,6 +52,17 @@ extension UnitEnergy: AAUnitType {
         }
     }
 
+    public static func create(name: String) -> Self? {
+        switch name {
+        case "joules": return Self.joules as? Self
+        case "kilojoules": return Self.kilojoules as? Self
+        case "wattHours": return Self.wattHours as? Self
+        case "kilowattHours": return Self.kilowattHours as? Self
+
+        default: return nil
+        }
+    }
+
 
     public var identifiers: [UInt8]? {
         switch self {

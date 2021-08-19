@@ -46,6 +46,16 @@ extension UnitElectricPotentialDifference: AAUnitType {
         }
     }
 
+    public static func create(name: String) -> Self? {
+        switch name {
+        case "volts": return Self.volts as? Self
+        case "millivolts": return Self.millivolts as? Self
+        case "kilovolts": return Self.kilovolts as? Self
+
+        default: return nil
+        }
+    }
+
 
     public var identifiers: [UInt8]? {
         switch self {

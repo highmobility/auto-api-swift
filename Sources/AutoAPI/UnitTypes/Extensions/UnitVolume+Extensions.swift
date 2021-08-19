@@ -57,6 +57,27 @@ extension UnitVolume: AAUnitType {
         }
     }
 
+    public static func create(name: String) -> Self? {
+        switch name {
+        case "liters": return Self.liters as? Self
+        case "milliliters": return Self.milliliters as? Self
+        case "centiliters": return Self.centiliters as? Self
+        case "deciliters": return Self.deciliters as? Self
+        case "cubicMillimeters": return Self.cubicMillimeters as? Self
+        case "cubicCentimeters": return Self.cubicCentimeters as? Self
+        case "cubicDecimeters": return Self.cubicDecimeters as? Self
+        case "cubicMeters": return Self.cubicMeters as? Self
+        case "cubicInches": return Self.cubicInches as? Self
+        case "cubicFeet": return Self.cubicFeet as? Self
+        case "fluidOunces": return Self.fluidOunces as? Self
+        case "gallons": return Self.gallons as? Self
+        case "imperialFluidOunces": return Self.imperialFluidOunces as? Self
+        case "imperialGallons": return Self.imperialGallons as? Self
+
+        default: return nil
+        }
+    }
+
 
     public var identifiers: [UInt8]? {
         switch self {

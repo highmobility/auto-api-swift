@@ -45,6 +45,15 @@ extension UnitEnergyEfficiency: AAUnitType {
         }
     }
 
+    public static func create(name: String) -> Self? {
+        switch name {
+        case "kwhPer100Kilometers": return Self.kwhPer100Kilometers as? Self
+        case "milesPerKwh": return Self.milesPerKwh as? Self
+
+        default: return nil
+        }
+    }
+
 
     public var identifiers: [UInt8]? {
         switch self {

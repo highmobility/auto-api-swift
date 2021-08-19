@@ -47,6 +47,17 @@ extension UnitSpeed: AAUnitType {
         }
     }
 
+    public static func create(name: String) -> Self? {
+        switch name {
+        case "metersPerSecond": return Self.metersPerSecond as? Self
+        case "kilometersPerHour": return Self.kilometersPerHour as? Self
+        case "milesPerHour": return Self.milesPerHour as? Self
+        case "knots": return Self.knots as? Self
+
+        default: return nil
+        }
+    }
+
 
     public var identifiers: [UInt8]? {
         switch self {

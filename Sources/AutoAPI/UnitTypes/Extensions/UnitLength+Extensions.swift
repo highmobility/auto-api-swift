@@ -55,6 +55,25 @@ extension UnitLength: AAUnitType {
         }
     }
 
+    public static func create(name: String) -> Self? {
+        switch name {
+        case "meters": return Self.meters as? Self
+        case "millimeters": return Self.millimeters as? Self
+        case "centimeters": return Self.centimeters as? Self
+        case "decimeters": return Self.decimeters as? Self
+        case "kilometers": return Self.kilometers as? Self
+        case "megameters": return Self.megameters as? Self
+        case "inches": return Self.inches as? Self
+        case "feet": return Self.feet as? Self
+        case "yards": return Self.yards as? Self
+        case "miles": return Self.miles as? Self
+        case "scandinavianMiles": return Self.scandinavianMiles as? Self
+        case "nauticalMiles": return Self.nauticalMiles as? Self
+
+        default: return nil
+        }
+    }
+
 
     public var identifiers: [UInt8]? {
         switch self {

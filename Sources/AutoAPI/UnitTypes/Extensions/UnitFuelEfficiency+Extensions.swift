@@ -46,6 +46,16 @@ extension UnitFuelEfficiency: AAUnitType {
         }
     }
 
+    public static func create(name: String) -> Self? {
+        switch name {
+        case "litersPer100Kilometers": return Self.litersPer100Kilometers as? Self
+        case "milesPerImperialGallon": return Self.milesPerImperialGallon as? Self
+        case "milesPerGallon": return Self.milesPerGallon as? Self
+
+        default: return nil
+        }
+    }
+
 
     public var identifiers: [UInt8]? {
         switch self {

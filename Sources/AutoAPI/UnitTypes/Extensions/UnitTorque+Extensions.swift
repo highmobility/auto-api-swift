@@ -46,6 +46,16 @@ extension UnitTorque: AAUnitType {
         }
     }
 
+    public static func create(name: String) -> Self? {
+        switch name {
+        case "newtonMeters": return Self.newtonMeters as? Self
+        case "newtonMillimeters": return Self.newtonMillimeters as? Self
+        case "poundFeet": return Self.poundFeet as? Self
+
+        default: return nil
+        }
+    }
+
 
     public var identifiers: [UInt8]? {
         switch self {

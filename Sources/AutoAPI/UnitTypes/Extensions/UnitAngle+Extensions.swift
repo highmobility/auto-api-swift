@@ -46,6 +46,16 @@ extension UnitAngle: AAUnitType {
         }
     }
 
+    public static func create(name: String) -> Self? {
+        switch name {
+        case "degrees": return Self.degrees as? Self
+        case "radians": return Self.radians as? Self
+        case "revolutions": return Self.revolutions as? Self
+
+        default: return nil
+        }
+    }
+
 
     public var identifiers: [UInt8]? {
         switch self {
