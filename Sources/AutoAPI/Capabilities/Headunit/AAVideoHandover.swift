@@ -71,7 +71,7 @@ public final class AAVideoHandover: AACapability, AAPropertyIdentifying {
     ///     - startingTime: Start the video from the given time.
     ///
     /// - returns: Command as `[UInt8]` to send to the vehicle.
-    public static func videoHandover(screen: Screen? = nil, startingTime: Measurement<UnitDuration>? = nil, url: String) -> [UInt8] {
+    public static func videoHandover(url: String, screen: Screen? = nil, startingTime: Measurement<UnitDuration>? = nil) -> [UInt8] {
         var properties: [AAOpaqueProperty?] = []
     
         properties.append(AAProperty(id: PropertyIdentifier.url, value: url))

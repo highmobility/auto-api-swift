@@ -86,7 +86,7 @@ public final class AANotifications: AACapability, AAPropertyIdentifying {
     ///     - actionItems: Action items value.
     ///
     /// - returns: Command as `[UInt8]` to send to the vehicle.
-    public static func notification(actionItems: [AAActionItem]? = nil, text: String) -> [UInt8] {
+    public static func notification(text: String, actionItems: [AAActionItem]? = nil) -> [UInt8] {
         var properties: [AAOpaqueProperty?] = []
     
         properties.append(AAProperty(id: PropertyIdentifier.text, value: text))

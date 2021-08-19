@@ -129,7 +129,7 @@ public final class AAParkingTicket: AACapability, AAPropertyIdentifying {
     ///     - ticketEndTime: Parking ticket end time.
     ///
     /// - returns: Command as `[UInt8]` to send to the vehicle.
-    public static func startParking(operatorName: String? = nil, operatorTicketID: String, ticketEndTime: Date? = nil, ticketStartTime: Date) -> [UInt8] {
+    public static func startParking(operatorName: String? = nil, operatorTicketID: String, ticketStartTime: Date, ticketEndTime: Date? = nil) -> [UInt8] {
         var properties: [AAOpaqueProperty?] = []
     
         properties.append(AAProperty(id: PropertyIdentifier.operatorName, value: operatorName))

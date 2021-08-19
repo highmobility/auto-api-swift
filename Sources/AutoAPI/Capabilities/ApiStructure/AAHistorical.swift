@@ -75,7 +75,7 @@ public final class AAHistorical: AACapability, AAPropertyIdentifying {
     ///     - endDate: End date for historical data query.
     ///
     /// - returns: Command as `[UInt8]` to send to the vehicle.
-    public static func requestStates(capabilityID: UInt16, endDate: Date? = nil, startDate: Date? = nil) -> [UInt8] {
+    public static func requestStates(capabilityID: UInt16, startDate: Date? = nil, endDate: Date? = nil) -> [UInt8] {
         var properties: [AAOpaqueProperty?] = []
     
         properties.append(AAProperty(id: PropertyIdentifier.capabilityID, value: capabilityID))
@@ -94,7 +94,7 @@ public final class AAHistorical: AACapability, AAPropertyIdentifying {
     ///     - endDate: End date for historical data query.
     ///
     /// - returns: Command as `[UInt8]` to send to the vehicle.
-    public static func getTrips(endDate: Date? = nil, startDate: Date? = nil) -> [UInt8] {
+    public static func getTrips(startDate: Date? = nil, endDate: Date? = nil) -> [UInt8] {
         var properties: [AAOpaqueProperty?] = []
     
         properties.append(AAProperty(id: PropertyIdentifier.startDate, value: startDate))
@@ -113,7 +113,7 @@ public final class AAHistorical: AACapability, AAPropertyIdentifying {
     ///     - endDate: End date for historical data query.
     ///
     /// - returns: Command as `[UInt8]` to send to the vehicle.
-    public static func getChargingSessions(endDate: Date? = nil, startDate: Date? = nil) -> [UInt8] {
+    public static func getChargingSessions(startDate: Date? = nil, endDate: Date? = nil) -> [UInt8] {
         var properties: [AAOpaqueProperty?] = []
     
         properties.append(AAProperty(id: PropertyIdentifier.startDate, value: startDate))

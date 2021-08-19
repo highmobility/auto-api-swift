@@ -137,7 +137,7 @@ public final class AARooftopControl: AACapability, AAPropertyIdentifying {
     ///     - sunroofState: Sunroof state value.
     ///
     /// - returns: Command as `[UInt8]` to send to the vehicle.
-    public static func controlRooftop(convertibleRoofState: ConvertibleRoofState? = nil, dimming: AAPercentage? = nil, position: AAPercentage? = nil, sunroofState: SunroofState? = nil, sunroofTiltState: SunroofTiltState? = nil) -> [UInt8] {
+    public static func controlRooftop(dimming: AAPercentage? = nil, position: AAPercentage? = nil, convertibleRoofState: ConvertibleRoofState? = nil, sunroofTiltState: SunroofTiltState? = nil, sunroofState: SunroofState? = nil) -> [UInt8] {
         var properties: [AAOpaqueProperty?] = []
     
         properties.append(AAProperty(id: PropertyIdentifier.dimming, value: dimming))

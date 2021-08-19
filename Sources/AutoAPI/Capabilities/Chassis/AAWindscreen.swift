@@ -176,7 +176,7 @@ public final class AAWindscreen: AACapability, AAPropertyIdentifying {
     ///     - wipersIntensity: Wipers intensity value.
     ///
     /// - returns: Command as `[UInt8]` to send to the vehicle.
-    public static func controlWipers(wipersIntensity: WipersIntensity? = nil, wipersStatus: WipersStatus) -> [UInt8] {
+    public static func controlWipers(wipersStatus: WipersStatus, wipersIntensity: WipersIntensity? = nil) -> [UInt8] {
         var properties: [AAOpaqueProperty?] = []
     
         properties.append(AAProperty(id: PropertyIdentifier.wipersStatus, value: wipersStatus))

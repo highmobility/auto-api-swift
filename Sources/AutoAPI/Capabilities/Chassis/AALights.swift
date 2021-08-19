@@ -153,7 +153,7 @@ public final class AALights: AACapability, AAPropertyIdentifying {
     ///     - interiorLights: Interior lights value.
     ///
     /// - returns: Command as `[UInt8]` to send to the vehicle.
-    public static func controlLights(ambientLightColour: AARGBColour? = nil, fogLights: [AALight]? = nil, frontExteriorLight: FrontExteriorLight? = nil, interiorLights: [AALight]? = nil, readingLamps: [AAReadingLamp]? = nil, rearExteriorLight: AAActiveState? = nil) -> [UInt8] {
+    public static func controlLights(frontExteriorLight: FrontExteriorLight? = nil, rearExteriorLight: AAActiveState? = nil, ambientLightColour: AARGBColour? = nil, fogLights: [AALight]? = nil, readingLamps: [AAReadingLamp]? = nil, interiorLights: [AALight]? = nil) -> [UInt8] {
         var properties: [AAOpaqueProperty?] = []
     
         properties.append(AAProperty(id: PropertyIdentifier.frontExteriorLight, value: frontExteriorLight))

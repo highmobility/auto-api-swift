@@ -75,7 +75,7 @@ public final class AAMessaging: AACapability, AAPropertyIdentifying {
     ///     - handle: The optional handle of message.
     ///
     /// - returns: Command as `[UInt8]` to send to the vehicle.
-    public static func messageReceived(handle: String? = nil, text: String) -> [UInt8] {
+    public static func messageReceived(text: String, handle: String? = nil) -> [UInt8] {
         var properties: [AAOpaqueProperty?] = []
     
         properties.append(AAProperty(id: PropertyIdentifier.text, value: text))
