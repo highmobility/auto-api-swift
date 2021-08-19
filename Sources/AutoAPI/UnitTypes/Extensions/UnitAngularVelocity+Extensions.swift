@@ -36,6 +36,7 @@ extension UnitAngularVelocity: AAUnitType {
 
     public static let measurementID: UInt8 = 0x03
 
+
     public static func create(id: UInt8) -> Self? {
         switch id {
         case 0x00:  return UnitAngularVelocity.revolutionsPerMinute as? Self

@@ -36,6 +36,7 @@ extension UnitFuelEfficiency: AAUnitType {
 
     public static let measurementID: UInt8 = 0x0f
 
+
     public static func create(id: UInt8) -> Self? {
         switch id {
         case 0x00:  return UnitFuelEfficiency.litersPer100Kilometers as? Self

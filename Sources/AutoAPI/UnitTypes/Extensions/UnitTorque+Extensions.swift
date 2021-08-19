@@ -36,6 +36,7 @@ extension UnitTorque: AAUnitType {
 
     public static let measurementID: UInt8 = 0x18
 
+
     public static func create(id: UInt8) -> Self? {
         switch id {
         case 0x00:  return UnitTorque.newtonMeters as? Self
