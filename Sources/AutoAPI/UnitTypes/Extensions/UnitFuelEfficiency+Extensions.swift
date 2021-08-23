@@ -34,6 +34,13 @@ import Foundation
 
 extension UnitFuelEfficiency: AAUnitType {
 
+    public enum FuelEfficiencyUnit: String, Codable {
+        case litersPer100Kilometers
+        case milesPerImperialGallon
+        case milesPerGallon
+    }
+
+
     public static let measurementID: UInt8 = 0x0f
 
 
@@ -47,13 +54,11 @@ extension UnitFuelEfficiency: AAUnitType {
         }
     }
 
-    public static func create(name: String) -> Self? {
-        switch name {
-        case "litersPer100Kilometers": return Self.litersPer100Kilometers as? Self
-        case "milesPerImperialGallon": return Self.milesPerImperialGallon as? Self
-        case "milesPerGallon": return Self.milesPerGallon as? Self
-
-        default: return nil
+    public static func create(unit: FuelEfficiencyUnit) -> UnitFuelEfficiency {
+        switch unit {
+        case .litersPer100Kilometers: return Self.litersPer100Kilometers
+        case .milesPerImperialGallon: return Self.milesPerImperialGallon
+        case .milesPerGallon: return Self.milesPerGallon
         }
     }
 
@@ -68,11 +73,11 @@ extension UnitFuelEfficiency: AAUnitType {
         }
     }
 
-    public var name: String? {
+    public var unit: FuelEfficiencyUnit? {
         switch self {
-        case .litersPer100Kilometers: return "litersPer100Kilometers"
-        case .milesPerImperialGallon: return "milesPerImperialGallon"
-        case .milesPerGallon: return "milesPerGallon"
+        case .litersPer100Kilometers: return .litersPer100Kilometers
+        case .milesPerImperialGallon: return .milesPerImperialGallon
+        case .milesPerGallon: return .milesPerGallon
 
         default: return nil
         }

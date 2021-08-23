@@ -43,6 +43,18 @@ public extension UnitFrequency {
 
 extension UnitFrequency: AAUnitType {
 
+    public enum FrequencyUnit: String, Codable {
+        case hertz
+        case millihertz
+        case kilohertz
+        case megahertz
+        case gigahertz
+        case timesPerMinute
+        case timesPerHour
+        case timesPerDay
+    }
+
+
     public static let measurementID: UInt8 = 0x0e
 
 
@@ -61,18 +73,16 @@ extension UnitFrequency: AAUnitType {
         }
     }
 
-    public static func create(name: String) -> Self? {
-        switch name {
-        case "hertz": return Self.hertz as? Self
-        case "millihertz": return Self.millihertz as? Self
-        case "kilohertz": return Self.kilohertz as? Self
-        case "megahertz": return Self.megahertz as? Self
-        case "gigahertz": return Self.gigahertz as? Self
-        case "timesPerMinute": return Self.timesPerMinute as? Self
-        case "timesPerHour": return Self.timesPerHour as? Self
-        case "timesPerDay": return Self.timesPerDay as? Self
-
-        default: return nil
+    public static func create(unit: FrequencyUnit) -> UnitFrequency {
+        switch unit {
+        case .hertz: return Self.hertz
+        case .millihertz: return Self.millihertz
+        case .kilohertz: return Self.kilohertz
+        case .megahertz: return Self.megahertz
+        case .gigahertz: return Self.gigahertz
+        case .timesPerMinute: return Self.timesPerMinute
+        case .timesPerHour: return Self.timesPerHour
+        case .timesPerDay: return Self.timesPerDay
         }
     }
 
@@ -92,16 +102,16 @@ extension UnitFrequency: AAUnitType {
         }
     }
 
-    public var name: String? {
+    public var unit: FrequencyUnit? {
         switch self {
-        case .hertz: return "hertz"
-        case .millihertz: return "millihertz"
-        case .kilohertz: return "kilohertz"
-        case .megahertz: return "megahertz"
-        case .gigahertz: return "gigahertz"
-        case .timesPerMinute: return "timesPerMinute"
-        case .timesPerHour: return "timesPerHour"
-        case .timesPerDay: return "timesPerDay"
+        case .hertz: return .hertz
+        case .millihertz: return .millihertz
+        case .kilohertz: return .kilohertz
+        case .megahertz: return .megahertz
+        case .gigahertz: return .gigahertz
+        case .timesPerMinute: return .timesPerMinute
+        case .timesPerHour: return .timesPerHour
+        case .timesPerDay: return .timesPerDay
 
         default: return nil
         }

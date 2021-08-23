@@ -34,6 +34,22 @@ import Foundation
 
 extension UnitLength: AAUnitType {
 
+    public enum LengthUnit: String, Codable {
+        case meters
+        case millimeters
+        case centimeters
+        case decimeters
+        case kilometers
+        case megameters
+        case inches
+        case feet
+        case yards
+        case miles
+        case scandinavianMiles
+        case nauticalMiles
+    }
+
+
     public static let measurementID: UInt8 = 0x12
 
 
@@ -56,22 +72,20 @@ extension UnitLength: AAUnitType {
         }
     }
 
-    public static func create(name: String) -> Self? {
-        switch name {
-        case "meters": return Self.meters as? Self
-        case "millimeters": return Self.millimeters as? Self
-        case "centimeters": return Self.centimeters as? Self
-        case "decimeters": return Self.decimeters as? Self
-        case "kilometers": return Self.kilometers as? Self
-        case "megameters": return Self.megameters as? Self
-        case "inches": return Self.inches as? Self
-        case "feet": return Self.feet as? Self
-        case "yards": return Self.yards as? Self
-        case "miles": return Self.miles as? Self
-        case "scandinavianMiles": return Self.scandinavianMiles as? Self
-        case "nauticalMiles": return Self.nauticalMiles as? Self
-
-        default: return nil
+    public static func create(unit: LengthUnit) -> UnitLength {
+        switch unit {
+        case .meters: return Self.meters
+        case .millimeters: return Self.millimeters
+        case .centimeters: return Self.centimeters
+        case .decimeters: return Self.decimeters
+        case .kilometers: return Self.kilometers
+        case .megameters: return Self.megameters
+        case .inches: return Self.inches
+        case .feet: return Self.feet
+        case .yards: return Self.yards
+        case .miles: return Self.miles
+        case .scandinavianMiles: return Self.scandinavianMiles
+        case .nauticalMiles: return Self.nauticalMiles
         }
     }
 
@@ -95,20 +109,20 @@ extension UnitLength: AAUnitType {
         }
     }
 
-    public var name: String? {
+    public var unit: LengthUnit? {
         switch self {
-        case .meters: return "meters"
-        case .millimeters: return "millimeters"
-        case .centimeters: return "centimeters"
-        case .decimeters: return "decimeters"
-        case .kilometers: return "kilometers"
-        case .megameters: return "megameters"
-        case .inches: return "inches"
-        case .feet: return "feet"
-        case .yards: return "yards"
-        case .miles: return "miles"
-        case .scandinavianMiles: return "scandinavianMiles"
-        case .nauticalMiles: return "nauticalMiles"
+        case .meters: return .meters
+        case .millimeters: return .millimeters
+        case .centimeters: return .centimeters
+        case .decimeters: return .decimeters
+        case .kilometers: return .kilometers
+        case .megameters: return .megameters
+        case .inches: return .inches
+        case .feet: return .feet
+        case .yards: return .yards
+        case .miles: return .miles
+        case .scandinavianMiles: return .scandinavianMiles
+        case .nauticalMiles: return .nauticalMiles
 
         default: return nil
         }

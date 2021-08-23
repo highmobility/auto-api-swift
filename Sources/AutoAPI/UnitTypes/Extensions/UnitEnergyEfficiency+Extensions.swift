@@ -34,6 +34,12 @@ import Foundation
 
 extension UnitEnergyEfficiency: AAUnitType {
 
+    public enum EnergyEfficiencyUnit: String, Codable {
+        case kwhPer100Kilometers
+        case milesPerKwh
+    }
+
+
     public static let measurementID: UInt8 = 0x0d
 
 
@@ -46,12 +52,10 @@ extension UnitEnergyEfficiency: AAUnitType {
         }
     }
 
-    public static func create(name: String) -> Self? {
-        switch name {
-        case "kwhPer100Kilometers": return Self.kwhPer100Kilometers as? Self
-        case "milesPerKwh": return Self.milesPerKwh as? Self
-
-        default: return nil
+    public static func create(unit: EnergyEfficiencyUnit) -> UnitEnergyEfficiency {
+        switch unit {
+        case .kwhPer100Kilometers: return Self.kwhPer100Kilometers
+        case .milesPerKwh: return Self.milesPerKwh
         }
     }
 
@@ -65,10 +69,10 @@ extension UnitEnergyEfficiency: AAUnitType {
         }
     }
 
-    public var name: String? {
+    public var unit: EnergyEfficiencyUnit? {
         switch self {
-        case .kwhPer100Kilometers: return "kwhPer100Kilometers"
-        case .milesPerKwh: return "milesPerKwh"
+        case .kwhPer100Kilometers: return .kwhPer100Kilometers
+        case .milesPerKwh: return .milesPerKwh
 
         default: return nil
         }

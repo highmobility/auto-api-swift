@@ -34,6 +34,11 @@ import Foundation
 
 extension UnitIlluminance: AAUnitType {
 
+    public enum IlluminanceUnit: String, Codable {
+        case lux
+    }
+
+
     public static let measurementID: UInt8 = 0x11
 
 
@@ -45,11 +50,9 @@ extension UnitIlluminance: AAUnitType {
         }
     }
 
-    public static func create(name: String) -> Self? {
-        switch name {
-        case "lux": return Self.lux as? Self
-
-        default: return nil
+    public static func create(unit: IlluminanceUnit) -> UnitIlluminance {
+        switch unit {
+        case .lux: return Self.lux
         }
     }
 
@@ -62,9 +65,9 @@ extension UnitIlluminance: AAUnitType {
         }
     }
 
-    public var name: String? {
+    public var unit: IlluminanceUnit? {
         switch self {
-        case .lux: return "lux"
+        case .lux: return .lux
 
         default: return nil
         }

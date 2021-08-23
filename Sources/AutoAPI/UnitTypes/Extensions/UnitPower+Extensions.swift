@@ -34,6 +34,15 @@ import Foundation
 
 extension UnitPower: AAUnitType {
 
+    public enum PowerUnit: String, Codable {
+        case watts
+        case milliwatts
+        case kilowatts
+        case megawatts
+        case horsepower
+    }
+
+
     public static let measurementID: UInt8 = 0x14
 
 
@@ -49,15 +58,13 @@ extension UnitPower: AAUnitType {
         }
     }
 
-    public static func create(name: String) -> Self? {
-        switch name {
-        case "watts": return Self.watts as? Self
-        case "milliwatts": return Self.milliwatts as? Self
-        case "kilowatts": return Self.kilowatts as? Self
-        case "megawatts": return Self.megawatts as? Self
-        case "horsepower": return Self.horsepower as? Self
-
-        default: return nil
+    public static func create(unit: PowerUnit) -> UnitPower {
+        switch unit {
+        case .watts: return Self.watts
+        case .milliwatts: return Self.milliwatts
+        case .kilowatts: return Self.kilowatts
+        case .megawatts: return Self.megawatts
+        case .horsepower: return Self.horsepower
         }
     }
 
@@ -74,13 +81,13 @@ extension UnitPower: AAUnitType {
         }
     }
 
-    public var name: String? {
+    public var unit: PowerUnit? {
         switch self {
-        case .watts: return "watts"
-        case .milliwatts: return "milliwatts"
-        case .kilowatts: return "kilowatts"
-        case .megawatts: return "megawatts"
-        case .horsepower: return "horsepower"
+        case .watts: return .watts
+        case .milliwatts: return .milliwatts
+        case .kilowatts: return .kilowatts
+        case .megawatts: return .megawatts
+        case .horsepower: return .horsepower
 
         default: return nil
         }

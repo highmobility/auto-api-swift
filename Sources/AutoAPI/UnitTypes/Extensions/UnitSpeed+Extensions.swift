@@ -34,6 +34,14 @@ import Foundation
 
 extension UnitSpeed: AAUnitType {
 
+    public enum SpeedUnit: String, Codable {
+        case metersPerSecond
+        case kilometersPerHour
+        case milesPerHour
+        case knots
+    }
+
+
     public static let measurementID: UInt8 = 0x16
 
 
@@ -48,14 +56,12 @@ extension UnitSpeed: AAUnitType {
         }
     }
 
-    public static func create(name: String) -> Self? {
-        switch name {
-        case "metersPerSecond": return Self.metersPerSecond as? Self
-        case "kilometersPerHour": return Self.kilometersPerHour as? Self
-        case "milesPerHour": return Self.milesPerHour as? Self
-        case "knots": return Self.knots as? Self
-
-        default: return nil
+    public static func create(unit: SpeedUnit) -> UnitSpeed {
+        switch unit {
+        case .metersPerSecond: return Self.metersPerSecond
+        case .kilometersPerHour: return Self.kilometersPerHour
+        case .milesPerHour: return Self.milesPerHour
+        case .knots: return Self.knots
         }
     }
 
@@ -71,12 +77,12 @@ extension UnitSpeed: AAUnitType {
         }
     }
 
-    public var name: String? {
+    public var unit: SpeedUnit? {
         switch self {
-        case .metersPerSecond: return "metersPerSecond"
-        case .kilometersPerHour: return "kilometersPerHour"
-        case .milesPerHour: return "milesPerHour"
-        case .knots: return "knots"
+        case .metersPerSecond: return .metersPerSecond
+        case .kilometersPerHour: return .kilometersPerHour
+        case .milesPerHour: return .milesPerHour
+        case .knots: return .knots
 
         default: return nil
         }

@@ -43,6 +43,16 @@ public extension UnitDuration {
 
 extension UnitDuration: AAUnitType {
 
+    public enum DurationUnit: String, Codable {
+        case seconds
+        case minutes
+        case hours
+        case days
+        case weeks
+        case months
+    }
+
+
     public static let measurementID: UInt8 = 0x07
 
 
@@ -59,16 +69,14 @@ extension UnitDuration: AAUnitType {
         }
     }
 
-    public static func create(name: String) -> Self? {
-        switch name {
-        case "seconds": return Self.seconds as? Self
-        case "minutes": return Self.minutes as? Self
-        case "hours": return Self.hours as? Self
-        case "days": return Self.days as? Self
-        case "weeks": return Self.weeks as? Self
-        case "months": return Self.months as? Self
-
-        default: return nil
+    public static func create(unit: DurationUnit) -> UnitDuration {
+        switch unit {
+        case .seconds: return Self.seconds
+        case .minutes: return Self.minutes
+        case .hours: return Self.hours
+        case .days: return Self.days
+        case .weeks: return Self.weeks
+        case .months: return Self.months
         }
     }
 
@@ -86,14 +94,14 @@ extension UnitDuration: AAUnitType {
         }
     }
 
-    public var name: String? {
+    public var unit: DurationUnit? {
         switch self {
-        case .seconds: return "seconds"
-        case .minutes: return "minutes"
-        case .hours: return "hours"
-        case .days: return "days"
-        case .weeks: return "weeks"
-        case .months: return "months"
+        case .seconds: return .seconds
+        case .minutes: return .minutes
+        case .hours: return .hours
+        case .days: return .days
+        case .weeks: return .weeks
+        case .months: return .months
 
         default: return nil
         }

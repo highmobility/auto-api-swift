@@ -34,6 +34,13 @@ import Foundation
 
 extension UnitElectricCurrent: AAUnitType {
 
+    public enum ElectricCurrentUnit: String, Codable {
+        case amperes
+        case milliamperes
+        case kiloamperes
+    }
+
+
     public static let measurementID: UInt8 = 0x09
 
 
@@ -47,13 +54,11 @@ extension UnitElectricCurrent: AAUnitType {
         }
     }
 
-    public static func create(name: String) -> Self? {
-        switch name {
-        case "amperes": return Self.amperes as? Self
-        case "milliamperes": return Self.milliamperes as? Self
-        case "kiloamperes": return Self.kiloamperes as? Self
-
-        default: return nil
+    public static func create(unit: ElectricCurrentUnit) -> UnitElectricCurrent {
+        switch unit {
+        case .amperes: return Self.amperes
+        case .milliamperes: return Self.milliamperes
+        case .kiloamperes: return Self.kiloamperes
         }
     }
 
@@ -68,11 +73,11 @@ extension UnitElectricCurrent: AAUnitType {
         }
     }
 
-    public var name: String? {
+    public var unit: ElectricCurrentUnit? {
         switch self {
-        case .amperes: return "amperes"
-        case .milliamperes: return "milliamperes"
-        case .kiloamperes: return "kiloamperes"
+        case .amperes: return .amperes
+        case .milliamperes: return .milliamperes
+        case .kiloamperes: return .kiloamperes
 
         default: return nil
         }

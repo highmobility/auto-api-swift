@@ -39,6 +39,14 @@ public extension UnitEnergy {
 
 extension UnitEnergy: AAUnitType {
 
+    public enum EnergyUnit: String, Codable {
+        case joules
+        case kilojoules
+        case wattHours
+        case kilowattHours
+    }
+
+
     public static let measurementID: UInt8 = 0x0c
 
 
@@ -53,14 +61,12 @@ extension UnitEnergy: AAUnitType {
         }
     }
 
-    public static func create(name: String) -> Self? {
-        switch name {
-        case "joules": return Self.joules as? Self
-        case "kilojoules": return Self.kilojoules as? Self
-        case "wattHours": return Self.wattHours as? Self
-        case "kilowattHours": return Self.kilowattHours as? Self
-
-        default: return nil
+    public static func create(unit: EnergyUnit) -> UnitEnergy {
+        switch unit {
+        case .joules: return Self.joules
+        case .kilojoules: return Self.kilojoules
+        case .wattHours: return Self.wattHours
+        case .kilowattHours: return Self.kilowattHours
         }
     }
 
@@ -76,12 +82,12 @@ extension UnitEnergy: AAUnitType {
         }
     }
 
-    public var name: String? {
+    public var unit: EnergyUnit? {
         switch self {
-        case .joules: return "joules"
-        case .kilojoules: return "kilojoules"
-        case .wattHours: return "wattHours"
-        case .kilowattHours: return "kilowattHours"
+        case .joules: return .joules
+        case .kilojoules: return .kilojoules
+        case .wattHours: return .wattHours
+        case .kilowattHours: return .kilowattHours
 
         default: return nil
         }

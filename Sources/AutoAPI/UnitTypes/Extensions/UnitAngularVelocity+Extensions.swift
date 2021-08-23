@@ -34,6 +34,13 @@ import Foundation
 
 extension UnitAngularVelocity: AAUnitType {
 
+    public enum AngularVelocityUnit: String, Codable {
+        case revolutionsPerMinute
+        case degreesPerSecond
+        case radiansPerSecond
+    }
+
+
     public static let measurementID: UInt8 = 0x03
 
 
@@ -47,13 +54,11 @@ extension UnitAngularVelocity: AAUnitType {
         }
     }
 
-    public static func create(name: String) -> Self? {
-        switch name {
-        case "revolutionsPerMinute": return Self.revolutionsPerMinute as? Self
-        case "degreesPerSecond": return Self.degreesPerSecond as? Self
-        case "radiansPerSecond": return Self.radiansPerSecond as? Self
-
-        default: return nil
+    public static func create(unit: AngularVelocityUnit) -> UnitAngularVelocity {
+        switch unit {
+        case .revolutionsPerMinute: return Self.revolutionsPerMinute
+        case .degreesPerSecond: return Self.degreesPerSecond
+        case .radiansPerSecond: return Self.radiansPerSecond
         }
     }
 
@@ -68,11 +73,11 @@ extension UnitAngularVelocity: AAUnitType {
         }
     }
 
-    public var name: String? {
+    public var unit: AngularVelocityUnit? {
         switch self {
-        case .revolutionsPerMinute: return "revolutionsPerMinute"
-        case .degreesPerSecond: return "degreesPerSecond"
-        case .radiansPerSecond: return "radiansPerSecond"
+        case .revolutionsPerMinute: return .revolutionsPerMinute
+        case .degreesPerSecond: return .degreesPerSecond
+        case .radiansPerSecond: return .radiansPerSecond
 
         default: return nil
         }

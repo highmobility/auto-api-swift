@@ -34,6 +34,12 @@ import Foundation
 
 extension UnitAcceleration: AAUnitType {
 
+    public enum AccelerationUnit: String, Codable {
+        case metersPerSecondSquared
+        case gravity
+    }
+
+
     public static let measurementID: UInt8 = 0x01
 
 
@@ -46,12 +52,10 @@ extension UnitAcceleration: AAUnitType {
         }
     }
 
-    public static func create(name: String) -> Self? {
-        switch name {
-        case "metersPerSecondSquared": return Self.metersPerSecondSquared as? Self
-        case "gravity": return Self.gravity as? Self
-
-        default: return nil
+    public static func create(unit: AccelerationUnit) -> UnitAcceleration {
+        switch unit {
+        case .metersPerSecondSquared: return Self.metersPerSecondSquared
+        case .gravity: return Self.gravity
         }
     }
 
@@ -65,10 +69,10 @@ extension UnitAcceleration: AAUnitType {
         }
     }
 
-    public var name: String? {
+    public var unit: AccelerationUnit? {
         switch self {
-        case .metersPerSecondSquared: return "metersPerSecondSquared"
-        case .gravity: return "gravity"
+        case .metersPerSecondSquared: return .metersPerSecondSquared
+        case .gravity: return .gravity
 
         default: return nil
         }

@@ -39,6 +39,17 @@ public extension UnitPressure {
 
 extension UnitPressure: AAUnitType {
 
+    public enum PressureUnit: String, Codable {
+        case pascals
+        case kilopascals
+        case inchesOfMercury
+        case bars
+        case millibars
+        case millimetersOfMercury
+        case poundsForcePerSquareInch
+    }
+
+
     public static let measurementID: UInt8 = 0x15
 
 
@@ -56,17 +67,15 @@ extension UnitPressure: AAUnitType {
         }
     }
 
-    public static func create(name: String) -> Self? {
-        switch name {
-        case "pascals": return Self.pascals as? Self
-        case "kilopascals": return Self.kilopascals as? Self
-        case "inchesOfMercury": return Self.inchesOfMercury as? Self
-        case "bars": return Self.bars as? Self
-        case "millibars": return Self.millibars as? Self
-        case "millimetersOfMercury": return Self.millimetersOfMercury as? Self
-        case "poundsForcePerSquareInch": return Self.poundsForcePerSquareInch as? Self
-
-        default: return nil
+    public static func create(unit: PressureUnit) -> UnitPressure {
+        switch unit {
+        case .pascals: return Self.pascals
+        case .kilopascals: return Self.kilopascals
+        case .inchesOfMercury: return Self.inchesOfMercury
+        case .bars: return Self.bars
+        case .millibars: return Self.millibars
+        case .millimetersOfMercury: return Self.millimetersOfMercury
+        case .poundsForcePerSquareInch: return Self.poundsForcePerSquareInch
         }
     }
 
@@ -85,15 +94,15 @@ extension UnitPressure: AAUnitType {
         }
     }
 
-    public var name: String? {
+    public var unit: PressureUnit? {
         switch self {
-        case .pascals: return "pascals"
-        case .kilopascals: return "kilopascals"
-        case .inchesOfMercury: return "inchesOfMercury"
-        case .bars: return "bars"
-        case .millibars: return "millibars"
-        case .millimetersOfMercury: return "millimetersOfMercury"
-        case .poundsForcePerSquareInch: return "poundsForcePerSquareInch"
+        case .pascals: return .pascals
+        case .kilopascals: return .kilopascals
+        case .inchesOfMercury: return .inchesOfMercury
+        case .bars: return .bars
+        case .millibars: return .millibars
+        case .millimetersOfMercury: return .millimetersOfMercury
+        case .poundsForcePerSquareInch: return .poundsForcePerSquareInch
 
         default: return nil
         }

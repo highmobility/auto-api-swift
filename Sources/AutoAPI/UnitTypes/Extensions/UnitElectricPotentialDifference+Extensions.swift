@@ -34,6 +34,13 @@ import Foundation
 
 extension UnitElectricPotentialDifference: AAUnitType {
 
+    public enum ElectricPotentialDifferenceUnit: String, Codable {
+        case volts
+        case millivolts
+        case kilovolts
+    }
+
+
     public static let measurementID: UInt8 = 0x0a
 
 
@@ -47,13 +54,11 @@ extension UnitElectricPotentialDifference: AAUnitType {
         }
     }
 
-    public static func create(name: String) -> Self? {
-        switch name {
-        case "volts": return Self.volts as? Self
-        case "millivolts": return Self.millivolts as? Self
-        case "kilovolts": return Self.kilovolts as? Self
-
-        default: return nil
+    public static func create(unit: ElectricPotentialDifferenceUnit) -> UnitElectricPotentialDifference {
+        switch unit {
+        case .volts: return Self.volts
+        case .millivolts: return Self.millivolts
+        case .kilovolts: return Self.kilovolts
         }
     }
 
@@ -68,11 +73,11 @@ extension UnitElectricPotentialDifference: AAUnitType {
         }
     }
 
-    public var name: String? {
+    public var unit: ElectricPotentialDifferenceUnit? {
         switch self {
-        case .volts: return "volts"
-        case .millivolts: return "millivolts"
-        case .kilovolts: return "kilovolts"
+        case .volts: return .volts
+        case .millivolts: return .millivolts
+        case .kilovolts: return .kilovolts
 
         default: return nil
         }

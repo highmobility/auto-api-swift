@@ -34,6 +34,13 @@ import Foundation
 
 extension UnitAngle: AAUnitType {
 
+    public enum AngleUnit: String, Codable {
+        case degrees
+        case radians
+        case revolutions
+    }
+
+
     public static let measurementID: UInt8 = 0x02
 
 
@@ -47,13 +54,11 @@ extension UnitAngle: AAUnitType {
         }
     }
 
-    public static func create(name: String) -> Self? {
-        switch name {
-        case "degrees": return Self.degrees as? Self
-        case "radians": return Self.radians as? Self
-        case "revolutions": return Self.revolutions as? Self
-
-        default: return nil
+    public static func create(unit: AngleUnit) -> UnitAngle {
+        switch unit {
+        case .degrees: return Self.degrees
+        case .radians: return Self.radians
+        case .revolutions: return Self.revolutions
         }
     }
 
@@ -68,11 +73,11 @@ extension UnitAngle: AAUnitType {
         }
     }
 
-    public var name: String? {
+    public var unit: AngleUnit? {
         switch self {
-        case .degrees: return "degrees"
-        case .radians: return "radians"
-        case .revolutions: return "revolutions"
+        case .degrees: return .degrees
+        case .radians: return .radians
+        case .revolutions: return .revolutions
 
         default: return nil
         }

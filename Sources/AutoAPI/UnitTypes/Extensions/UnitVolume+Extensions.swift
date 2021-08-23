@@ -34,6 +34,24 @@ import Foundation
 
 extension UnitVolume: AAUnitType {
 
+    public enum VolumeUnit: String, Codable {
+        case liters
+        case milliliters
+        case centiliters
+        case deciliters
+        case cubicMillimeters
+        case cubicCentimeters
+        case cubicDecimeters
+        case cubicMeters
+        case cubicInches
+        case cubicFeet
+        case fluidOunces
+        case gallons
+        case imperialFluidOunces
+        case imperialGallons
+    }
+
+
     public static let measurementID: UInt8 = 0x19
 
 
@@ -58,24 +76,22 @@ extension UnitVolume: AAUnitType {
         }
     }
 
-    public static func create(name: String) -> Self? {
-        switch name {
-        case "liters": return Self.liters as? Self
-        case "milliliters": return Self.milliliters as? Self
-        case "centiliters": return Self.centiliters as? Self
-        case "deciliters": return Self.deciliters as? Self
-        case "cubicMillimeters": return Self.cubicMillimeters as? Self
-        case "cubicCentimeters": return Self.cubicCentimeters as? Self
-        case "cubicDecimeters": return Self.cubicDecimeters as? Self
-        case "cubicMeters": return Self.cubicMeters as? Self
-        case "cubicInches": return Self.cubicInches as? Self
-        case "cubicFeet": return Self.cubicFeet as? Self
-        case "fluidOunces": return Self.fluidOunces as? Self
-        case "gallons": return Self.gallons as? Self
-        case "imperialFluidOunces": return Self.imperialFluidOunces as? Self
-        case "imperialGallons": return Self.imperialGallons as? Self
-
-        default: return nil
+    public static func create(unit: VolumeUnit) -> UnitVolume {
+        switch unit {
+        case .liters: return Self.liters
+        case .milliliters: return Self.milliliters
+        case .centiliters: return Self.centiliters
+        case .deciliters: return Self.deciliters
+        case .cubicMillimeters: return Self.cubicMillimeters
+        case .cubicCentimeters: return Self.cubicCentimeters
+        case .cubicDecimeters: return Self.cubicDecimeters
+        case .cubicMeters: return Self.cubicMeters
+        case .cubicInches: return Self.cubicInches
+        case .cubicFeet: return Self.cubicFeet
+        case .fluidOunces: return Self.fluidOunces
+        case .gallons: return Self.gallons
+        case .imperialFluidOunces: return Self.imperialFluidOunces
+        case .imperialGallons: return Self.imperialGallons
         }
     }
 
@@ -101,22 +117,22 @@ extension UnitVolume: AAUnitType {
         }
     }
 
-    public var name: String? {
+    public var unit: VolumeUnit? {
         switch self {
-        case .liters: return "liters"
-        case .milliliters: return "milliliters"
-        case .centiliters: return "centiliters"
-        case .deciliters: return "deciliters"
-        case .cubicMillimeters: return "cubicMillimeters"
-        case .cubicCentimeters: return "cubicCentimeters"
-        case .cubicDecimeters: return "cubicDecimeters"
-        case .cubicMeters: return "cubicMeters"
-        case .cubicInches: return "cubicInches"
-        case .cubicFeet: return "cubicFeet"
-        case .fluidOunces: return "fluidOunces"
-        case .gallons: return "gallons"
-        case .imperialFluidOunces: return "imperialFluidOunces"
-        case .imperialGallons: return "imperialGallons"
+        case .liters: return .liters
+        case .milliliters: return .milliliters
+        case .centiliters: return .centiliters
+        case .deciliters: return .deciliters
+        case .cubicMillimeters: return .cubicMillimeters
+        case .cubicCentimeters: return .cubicCentimeters
+        case .cubicDecimeters: return .cubicDecimeters
+        case .cubicMeters: return .cubicMeters
+        case .cubicInches: return .cubicInches
+        case .cubicFeet: return .cubicFeet
+        case .fluidOunces: return .fluidOunces
+        case .gallons: return .gallons
+        case .imperialFluidOunces: return .imperialFluidOunces
+        case .imperialGallons: return .imperialGallons
 
         default: return nil
         }

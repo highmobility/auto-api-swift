@@ -34,6 +34,13 @@ import Foundation
 
 extension UnitTemperature: AAUnitType {
 
+    public enum TemperatureUnit: String, Codable {
+        case kelvin
+        case celsius
+        case fahrenheit
+    }
+
+
     public static let measurementID: UInt8 = 0x17
 
 
@@ -47,13 +54,11 @@ extension UnitTemperature: AAUnitType {
         }
     }
 
-    public static func create(name: String) -> Self? {
-        switch name {
-        case "kelvin": return Self.kelvin as? Self
-        case "celsius": return Self.celsius as? Self
-        case "fahrenheit": return Self.fahrenheit as? Self
-
-        default: return nil
+    public static func create(unit: TemperatureUnit) -> UnitTemperature {
+        switch unit {
+        case .kelvin: return Self.kelvin
+        case .celsius: return Self.celsius
+        case .fahrenheit: return Self.fahrenheit
         }
     }
 
@@ -68,11 +73,11 @@ extension UnitTemperature: AAUnitType {
         }
     }
 
-    public var name: String? {
+    public var unit: TemperatureUnit? {
         switch self {
-        case .kelvin: return "kelvin"
-        case .celsius: return "celsius"
-        case .fahrenheit: return "fahrenheit"
+        case .kelvin: return .kelvin
+        case .celsius: return .celsius
+        case .fahrenheit: return .fahrenheit
 
         default: return nil
         }

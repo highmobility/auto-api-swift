@@ -34,6 +34,13 @@ import Foundation
 
 extension UnitTorque: AAUnitType {
 
+    public enum TorqueUnit: String, Codable {
+        case newtonMeters
+        case newtonMillimeters
+        case poundFeet
+    }
+
+
     public static let measurementID: UInt8 = 0x18
 
 
@@ -47,13 +54,11 @@ extension UnitTorque: AAUnitType {
         }
     }
 
-    public static func create(name: String) -> Self? {
-        switch name {
-        case "newtonMeters": return Self.newtonMeters as? Self
-        case "newtonMillimeters": return Self.newtonMillimeters as? Self
-        case "poundFeet": return Self.poundFeet as? Self
-
-        default: return nil
+    public static func create(unit: TorqueUnit) -> UnitTorque {
+        switch unit {
+        case .newtonMeters: return Self.newtonMeters
+        case .newtonMillimeters: return Self.newtonMillimeters
+        case .poundFeet: return Self.poundFeet
         }
     }
 
@@ -68,11 +73,11 @@ extension UnitTorque: AAUnitType {
         }
     }
 
-    public var name: String? {
+    public var unit: TorqueUnit? {
         switch self {
-        case .newtonMeters: return "newtonMeters"
-        case .newtonMillimeters: return "newtonMillimeters"
-        case .poundFeet: return "poundFeet"
+        case .newtonMeters: return .newtonMeters
+        case .newtonMillimeters: return .newtonMillimeters
+        case .poundFeet: return .poundFeet
 
         default: return nil
         }
