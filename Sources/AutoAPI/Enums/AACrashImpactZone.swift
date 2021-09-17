@@ -38,7 +38,7 @@ public enum AACrashImpactZone: String, CaseIterable, Codable, HMBytesConvertable
 
     case frontDriverSide
     case frontPassengerSide
-    case predestrianProtection
+    case pedestrianProtection
     case rearDriverSide
     case rearPassengerSide
     case rollover
@@ -48,7 +48,7 @@ public enum AACrashImpactZone: String, CaseIterable, Codable, HMBytesConvertable
 
     public var byteValue: UInt8 {
         switch self {
-        case .predestrianProtection: return 0x00
+        case .pedestrianProtection: return 0x00
         case .rollover: return 0x01
         case .rearPassengerSide: return 0x02
         case .rearDriverSide: return 0x03
@@ -73,7 +73,7 @@ public enum AACrashImpactZone: String, CaseIterable, Codable, HMBytesConvertable
         }
 
         switch uint8 {
-        case 0x00: self = .predestrianProtection
+        case 0x00: self = .pedestrianProtection
         case 0x01: self = .rollover
         case 0x02: self = .rearPassengerSide
         case 0x03: self = .rearDriverSide

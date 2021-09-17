@@ -81,6 +81,7 @@ extension AAAutoAPI {
 		    AATheftAlarm.self,
 		    AATrips.self,
 		    AATrunk.self,
+		    AAUniversal.self,
 		    AAUsage.self,
 		    AAValetMode.self,
 		    AAVehicleInformation.self,

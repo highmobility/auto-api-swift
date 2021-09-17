@@ -96,21 +96,21 @@ final class AAHistoricalTests: XCTestCase {
     
     func testRequestStates() {
         let bytes: [UInt8] = [0x0d, 0x00, 0x12, 0x01, 0x02, 0x00, 0x05, 0x01, 0x00, 0x02, 0x00, 0x60, 0x03, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x00, 0x00, 0x01, 0x6d, 0xa6, 0x52, 0x43, 0x00, 0x04, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x00, 0x00, 0x01, 0x6d, 0x71, 0xe2, 0xc4, 0xf0]
-        let setterBytes = AAHistorical.requestStates(capabilityID: 96, endDate: DateFormatter.hmFormatter.date(from: "2019-09-27T08:42:30.000Z")!, startDate: DateFormatter.hmFormatter.date(from: "2019-10-07T13:04:32.000Z")!)
+        let setterBytes = AAHistorical.requestStates(capabilityID: 96, startDate: DateFormatter.hmFormatter.date(from: "2019-10-07T13:04:32.000Z")!, endDate: DateFormatter.hmFormatter.date(from: "2019-09-27T08:42:30.000Z")!)
         
         XCTAssertEqual(bytes, setterBytes)
     }
     
     func testGetTrips() {
         let bytes: [UInt8] = [0x0d, 0x00, 0x12, 0x01, 0x02, 0x00, 0x05, 0x01, 0x00, 0x02, 0x00, 0x6a, 0x03, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x00, 0x00, 0x01, 0x6d, 0xa6, 0x52, 0x43, 0x00, 0x04, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x00, 0x00, 0x01, 0x6d, 0x71, 0xe2, 0xc4, 0xf0]
-        let setterBytes = AAHistorical.getTrips(endDate: DateFormatter.hmFormatter.date(from: "2019-09-27T08:42:30.000Z")!, startDate: DateFormatter.hmFormatter.date(from: "2019-10-07T13:04:32.000Z")!)
+        let setterBytes = AAHistorical.getTrips(startDate: DateFormatter.hmFormatter.date(from: "2019-10-07T13:04:32.000Z")!, endDate: DateFormatter.hmFormatter.date(from: "2019-09-27T08:42:30.000Z")!)
         
         XCTAssertEqual(bytes, setterBytes)
     }
     
     func testGetChargingSessions() {
         let bytes: [UInt8] = [0x0d, 0x00, 0x12, 0x01, 0x02, 0x00, 0x05, 0x01, 0x00, 0x02, 0x00, 0x6d, 0x03, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x00, 0x00, 0x01, 0x6d, 0xa6, 0x52, 0x43, 0x00, 0x04, 0x00, 0x0b, 0x01, 0x00, 0x08, 0x00, 0x00, 0x01, 0x6d, 0x71, 0xe2, 0xc4, 0xf0]
-        let setterBytes = AAHistorical.getChargingSessions(endDate: DateFormatter.hmFormatter.date(from: "2019-09-27T08:42:30.000Z")!, startDate: DateFormatter.hmFormatter.date(from: "2019-10-07T13:04:32.000Z")!)
+        let setterBytes = AAHistorical.getChargingSessions(startDate: DateFormatter.hmFormatter.date(from: "2019-10-07T13:04:32.000Z")!, endDate: DateFormatter.hmFormatter.date(from: "2019-09-27T08:42:30.000Z")!)
         
         XCTAssertEqual(bytes, setterBytes)
     }
