@@ -32,8 +32,7 @@
 import Foundation
 
 
-enum AAError: Error {
-
+public enum AAError: Error {
     case invalidVersion
     case insufficientBytes
 }
