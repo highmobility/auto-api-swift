@@ -168,7 +168,7 @@ final class AAWindscreenTests: XCTestCase {
     
     func testControlWipers() {
         let bytes: [UInt8] = [0x0d, 0x00, 0x42, 0x01, 0x01, 0x00, 0x04, 0x01, 0x00, 0x01, 0x02, 0x02, 0x00, 0x04, 0x01, 0x00, 0x01, 0x03]
-        let setterBytes = AAWindscreen.controlWipers(wipersIntensity: AAWindscreenWipersIntensity.level3, wipersStatus: AAWindscreenWipersStatus.automatic)
+        let setterBytes = AAWindscreen.controlWipers(wipersStatus: AAWindscreenWipersStatus.automatic, wipersIntensity: AAWindscreenWipersIntensity.level3)
         
         XCTAssertEqual(bytes, setterBytes)
     }

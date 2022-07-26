@@ -102,7 +102,7 @@ final class AACrashTests: XCTestCase {
             return XCTFail("Could not parse bytes as `AACrash`")
         }
         
-        XCTAssertEqual(capability.impactZone?.value, AACrashImpactZone.frontDriverSide)
+        XCTAssertEqual(capability.impactZone?.first?.value, AACrashImpactZone.frontDriverSide)
     }
 
 

@@ -140,14 +140,14 @@ final class AAClimateTests: XCTestCase {
             return XCTFail("Could not get `.hvacWeekdayStartingTimes` values from `AAClimate` capability")
         }
         
-        XCTAssertTrue(hvacWeekdayStartingTimes.contains { $0.bytes == AAHVACWeekdayStartingTime(weekday: .monday, time: AATime(hour: 16, minute: 0)).bytes })
-        XCTAssertTrue(hvacWeekdayStartingTimes.contains { $0.bytes == AAHVACWeekdayStartingTime(weekday: .tuesday, time: AATime(hour: 16, minute: 0)).bytes })
-        XCTAssertTrue(hvacWeekdayStartingTimes.contains { $0.bytes == AAHVACWeekdayStartingTime(weekday: .wednesday, time: AATime(hour: 16, minute: 0)).bytes })
-        XCTAssertTrue(hvacWeekdayStartingTimes.contains { $0.bytes == AAHVACWeekdayStartingTime(weekday: .thursday, time: AATime(hour: 16, minute: 0)).bytes })
-        XCTAssertTrue(hvacWeekdayStartingTimes.contains { $0.bytes == AAHVACWeekdayStartingTime(weekday: .friday, time: AATime(hour: 16, minute: 0)).bytes })
-        XCTAssertTrue(hvacWeekdayStartingTimes.contains { $0.bytes == AAHVACWeekdayStartingTime(weekday: .saturday, time: AATime(hour: 18, minute: 30)).bytes })
-        XCTAssertTrue(hvacWeekdayStartingTimes.contains { $0.bytes == AAHVACWeekdayStartingTime(weekday: .sunday, time: AATime(hour: 19, minute: 31)).bytes })
-        XCTAssertTrue(hvacWeekdayStartingTimes.contains { $0.bytes == AAHVACWeekdayStartingTime(weekday: .automatic, time: AATime(hour: 16, minute: 0)).bytes })
+        XCTAssertTrue(hvacWeekdayStartingTimes.contains { $0.bytes == AAWeekdayTime(weekday: .monday, time: AATime(hour: 16, minute: 0)).bytes })
+        XCTAssertTrue(hvacWeekdayStartingTimes.contains { $0.bytes == AAWeekdayTime(weekday: .tuesday, time: AATime(hour: 16, minute: 0)).bytes })
+        XCTAssertTrue(hvacWeekdayStartingTimes.contains { $0.bytes == AAWeekdayTime(weekday: .wednesday, time: AATime(hour: 16, minute: 0)).bytes })
+        XCTAssertTrue(hvacWeekdayStartingTimes.contains { $0.bytes == AAWeekdayTime(weekday: .thursday, time: AATime(hour: 16, minute: 0)).bytes })
+        XCTAssertTrue(hvacWeekdayStartingTimes.contains { $0.bytes == AAWeekdayTime(weekday: .friday, time: AATime(hour: 16, minute: 0)).bytes })
+        XCTAssertTrue(hvacWeekdayStartingTimes.contains { $0.bytes == AAWeekdayTime(weekday: .saturday, time: AATime(hour: 18, minute: 30)).bytes })
+        XCTAssertTrue(hvacWeekdayStartingTimes.contains { $0.bytes == AAWeekdayTime(weekday: .sunday, time: AATime(hour: 19, minute: 31)).bytes })
+        XCTAssertTrue(hvacWeekdayStartingTimes.contains { $0.bytes == AAWeekdayTime(weekday: .automatic, time: AATime(hour: 16, minute: 0)).bytes })
     }
     
     func testRearTemperatureSetting() {
@@ -194,7 +194,7 @@ final class AAClimateTests: XCTestCase {
     
     func testChangeStartingTimes() {
         let bytes: [UInt8] = [0x0d, 0x00, 0x24, 0x01, 0x0b, 0x00, 0x06, 0x01, 0x00, 0x03, 0x00, 0x10, 0x00, 0x0b, 0x00, 0x06, 0x01, 0x00, 0x03, 0x01, 0x10, 0x00, 0x0b, 0x00, 0x06, 0x01, 0x00, 0x03, 0x02, 0x10, 0x00, 0x0b, 0x00, 0x06, 0x01, 0x00, 0x03, 0x03, 0x10, 0x00, 0x0b, 0x00, 0x06, 0x01, 0x00, 0x03, 0x04, 0x10, 0x00, 0x0b, 0x00, 0x06, 0x01, 0x00, 0x03, 0x05, 0x12, 0x1e, 0x0b, 0x00, 0x06, 0x01, 0x00, 0x03, 0x06, 0x13, 0x1f, 0x0b, 0x00, 0x06, 0x01, 0x00, 0x03, 0x07, 0x10, 0x00]
-        let setterBytes = AAClimate.changeStartingTimes(hvacWeekdayStartingTimes: [AAHVACWeekdayStartingTime(weekday: .monday, time: AATime(hour: 16, minute: 0)), AAHVACWeekdayStartingTime(weekday: .tuesday, time: AATime(hour: 16, minute: 0)), AAHVACWeekdayStartingTime(weekday: .wednesday, time: AATime(hour: 16, minute: 0)), AAHVACWeekdayStartingTime(weekday: .thursday, time: AATime(hour: 16, minute: 0)), AAHVACWeekdayStartingTime(weekday: .friday, time: AATime(hour: 16, minute: 0)), AAHVACWeekdayStartingTime(weekday: .saturday, time: AATime(hour: 18, minute: 30)), AAHVACWeekdayStartingTime(weekday: .sunday, time: AATime(hour: 19, minute: 31)), AAHVACWeekdayStartingTime(weekday: .automatic, time: AATime(hour: 16, minute: 0))])
+        let setterBytes = AAClimate.changeStartingTimes(hvacWeekdayStartingTimes: [AAWeekdayTime(weekday: .monday, time: AATime(hour: 16, minute: 0)), AAWeekdayTime(weekday: .tuesday, time: AATime(hour: 16, minute: 0)), AAWeekdayTime(weekday: .wednesday, time: AATime(hour: 16, minute: 0)), AAWeekdayTime(weekday: .thursday, time: AATime(hour: 16, minute: 0)), AAWeekdayTime(weekday: .friday, time: AATime(hour: 16, minute: 0)), AAWeekdayTime(weekday: .saturday, time: AATime(hour: 18, minute: 30)), AAWeekdayTime(weekday: .sunday, time: AATime(hour: 19, minute: 31)), AAWeekdayTime(weekday: .automatic, time: AATime(hour: 16, minute: 0))])
         
         XCTAssertEqual(bytes, setterBytes)
     }

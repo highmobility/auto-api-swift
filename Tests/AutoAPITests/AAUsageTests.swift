@@ -94,7 +94,7 @@ final class AAUsageTests: XCTestCase {
         XCTAssertTrue(drivingModesActivationPeriods.contains { $0.bytes == AADrivingModeActivationPeriod(drivingMode: .eco, period: 0.3).bytes })
         XCTAssertTrue(drivingModesActivationPeriods.contains { $0.bytes == AADrivingModeActivationPeriod(drivingMode: .sport, period: 0.1).bytes })
         XCTAssertTrue(drivingModesActivationPeriods.contains { $0.bytes == AADrivingModeActivationPeriod(drivingMode: .sportPlus, period: 0.1).bytes })
-        XCTAssertTrue(drivingModesActivationPeriods.contains { $0.bytes == AADrivingModeActivationPeriod(drivingMode: .ecoplus, period: 0.3).bytes })
+        XCTAssertTrue(drivingModesActivationPeriods.contains { $0.bytes == AADrivingModeActivationPeriod(drivingMode: .ecoPlus, period: 0.3).bytes })
         XCTAssertTrue(drivingModesActivationPeriods.contains { $0.bytes == AADrivingModeActivationPeriod(drivingMode: .comfort, period: 0.0).bytes })
     }
     
@@ -113,7 +113,7 @@ final class AAUsageTests: XCTestCase {
         XCTAssertTrue(drivingModesEnergyConsumptions.contains { $0.bytes == AADrivingModeEnergyConsumption(drivingMode: .eco, consumption: Measurement<UnitEnergy>(value: 33.2, unit: UnitEnergy.kilowattHours)).bytes })
         XCTAssertTrue(drivingModesEnergyConsumptions.contains { $0.bytes == AADrivingModeEnergyConsumption(drivingMode: .sport, consumption: Measurement<UnitEnergy>(value: 54.3, unit: UnitEnergy.kilowattHours)).bytes })
         XCTAssertTrue(drivingModesEnergyConsumptions.contains { $0.bytes == AADrivingModeEnergyConsumption(drivingMode: .sportPlus, consumption: Measurement<UnitEnergy>(value: 64.8, unit: UnitEnergy.kilowattHours)).bytes })
-        XCTAssertTrue(drivingModesEnergyConsumptions.contains { $0.bytes == AADrivingModeEnergyConsumption(drivingMode: .ecoplus, consumption: Measurement<UnitEnergy>(value: 18.0, unit: UnitEnergy.kilowattHours)).bytes })
+        XCTAssertTrue(drivingModesEnergyConsumptions.contains { $0.bytes == AADrivingModeEnergyConsumption(drivingMode: .ecoPlus, consumption: Measurement<UnitEnergy>(value: 18.0, unit: UnitEnergy.kilowattHours)).bytes })
         XCTAssertTrue(drivingModesEnergyConsumptions.contains { $0.bytes == AADrivingModeEnergyConsumption(drivingMode: .comfort, consumption: Measurement<UnitEnergy>(value: 33.7, unit: UnitEnergy.kilowattHours)).bytes })
     }
     
