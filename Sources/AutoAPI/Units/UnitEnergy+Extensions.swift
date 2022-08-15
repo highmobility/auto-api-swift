@@ -2,7 +2,7 @@ import Foundation
 
 public extension UnitEnergy {
     static let wattHours = UnitEnergy(symbol: "hm_wh", converter: UnitConverterLinear(coefficient: 3600.0))
-    static let ampereHours = UnitEnergy(symbol: "hm_ah", converter: UnitConverterLinear(coefficient: 3.6))
+    static let ampereHours = UnitEnergy(symbol: "hm_ah", converter: UnitConverterLinear(coefficient: 3600.0))
 }
 
 extension UnitEnergy: AAUnitType {

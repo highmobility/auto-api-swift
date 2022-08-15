@@ -8,6 +8,7 @@ public enum AAChargingStatus: String, CaseIterable, Codable, HMBytesConvertable 
     case chargingComplete
     case chargingError
     case chargingPaused
+    case conditioning
     case discharging
     case fastCharging
     case foreignObjectDetected
@@ -28,6 +29,7 @@ public enum AAChargingStatus: String, CaseIterable, Codable, HMBytesConvertable 
         case .fastCharging: return 0x08
         case .discharging: return 0x09
         case .foreignObjectDetected: return 0x0a
+        case .conditioning: return 0x0b
         }
     }
 
@@ -53,6 +55,7 @@ public enum AAChargingStatus: String, CaseIterable, Codable, HMBytesConvertable 
         case 0x08: self = .fastCharging
         case 0x09: self = .discharging
         case 0x0a: self = .foreignObjectDetected
+        case 0x0b: self = .conditioning
         default: return nil
         }
     }
