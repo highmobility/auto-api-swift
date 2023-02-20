@@ -39,11 +39,15 @@ public final class AARace: AACapability, AAPropertyIdentifying {
         case acceleratorPedalKickdownSwitch = 0x11
         case vehicleMoving = 0x12
         case drivetrainState = 0x13
+        case acceleratorDurations = 0x14
     }
 
     // MARK: Properties
     /// Accelerations value.
     public var accelerations: [AAProperty<AAAcceleration>]?
+    
+    /// Duration during which the accelerator pedal has been pressed more than the given percentage..
+    public var acceleratorDurations: [AAProperty<AAAcceleratorDuration>]?
     
     /// Accelerator pedal idle switch value.
     public var acceleratorPedalIdleSwitch: AAProperty<AAActiveState>?
@@ -139,6 +143,7 @@ public final class AARace: AACapability, AAPropertyIdentifying {
         super.init(bytes: bytes)
     
         accelerations = extract(properties: .accelerations)
+        acceleratorDurations = extract(properties: .acceleratorDurations)
         acceleratorPedalIdleSwitch = extract(property: .acceleratorPedalIdleSwitch)
         acceleratorPedalKickdownSwitch = extract(property: .acceleratorPedalKickdownSwitch)
         brakePedalPosition = extract(property: .brakePedalPosition)

@@ -14,6 +14,7 @@ extension UnitDuration: AAUnitType {
         case days
         case weeks
         case months
+        case milliseconds
     }
 
     public static let measurementID: UInt8 = 0x07
@@ -26,6 +27,7 @@ extension UnitDuration: AAUnitType {
         case 0x03:  return UnitDuration.days as? Self
         case 0x04:  return UnitDuration.weeks as? Self
         case 0x05:  return UnitDuration.months as? Self
+        case 0x06:  return UnitDuration.milliseconds as? Self
         default:    return nil
         }
     }
@@ -38,6 +40,7 @@ extension UnitDuration: AAUnitType {
         case .days: return Self.days
         case .weeks: return Self.weeks
         case .months: return Self.months
+        case .milliseconds: return Self.milliseconds
         }
     }
 
@@ -49,6 +52,7 @@ extension UnitDuration: AAUnitType {
         case .days: return [Self.measurementID, 0x03]
         case .weeks: return [Self.measurementID, 0x04]
         case .months: return [Self.measurementID, 0x05]
+        case .milliseconds: return [Self.measurementID, 0x06]
         default: return nil
         }
     }
@@ -61,6 +65,7 @@ extension UnitDuration: AAUnitType {
         case .days: return .days
         case .weeks: return .weeks
         case .months: return .months
+        case .milliseconds: return .milliseconds
         default: return nil
         }
     }

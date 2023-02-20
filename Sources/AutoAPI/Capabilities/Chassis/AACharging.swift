@@ -20,6 +20,7 @@ public final class AACharging: AACapability, AAPropertyIdentifying {
     public typealias BatteryTemperatureControlDemand = AAChargingBatteryTemperatureControlDemand
     public typealias BatteryStatus = AAChargingBatteryStatus
     public typealias BatteryLed = AAChargingBatteryLed
+    public typealias BatteryChargeType = AAChargingBatteryChargeType
 
     /// Information about the introduction and last update of this capability.
     public enum API: AAAPICurrent {
@@ -92,6 +93,9 @@ public final class AACharging: AACapability, AAPropertyIdentifying {
         case batteryLed = 0x40
         case batteryCoolingTemperature = 0x41
         case batteryTemperatureExtremes = 0x42
+        case drivingModePHEV = 0x43
+        case batteryChargeType = 0x44
+        case distanceToCompleteCharge = 0x45
     }
 
     // MARK: Properties
@@ -103,6 +107,9 @@ public final class AACharging: AACapability, AAPropertyIdentifying {
     
     /// Indicates the battery capacity.
     public var batteryCapacity: AAProperty<Measurement<UnitEnergy>>?
+    
+    /// Battery charge type..
+    public var batteryChargeType: AAProperty<BatteryChargeType>?
     
     /// Battery cooling temperature..
     public var batteryCoolingTemperature: AAProperty<Measurement<UnitTemperature>>?
@@ -190,6 +197,12 @@ public final class AACharging: AACapability, AAPropertyIdentifying {
     
     /// Departure times value.
     public var departureTimes: [AAProperty<AADepartureTime>]?
+    
+    /// Distance until charging completed.
+    public var distanceToCompleteCharge: AAProperty<Measurement<UnitLength>>?
+    
+    /// Indicates the current driving mode for Plug-In Hybrid Vehicle..
+    public var drivingModePHEV: AAProperty<AADrivingModePHEV>?
     
     /// Estimated range.
     public var estimatedRange: AAProperty<Measurement<UnitLength>>?
@@ -452,6 +465,7 @@ public final class AACharging: AACapability, AAPropertyIdentifying {
         acousticLimit = extract(property: .acousticLimit)
         auxiliaryPower = extract(property: .auxiliaryPower)
         batteryCapacity = extract(property: .batteryCapacity)
+        batteryChargeType = extract(property: .batteryChargeType)
         batteryCoolingTemperature = extract(property: .batteryCoolingTemperature)
         batteryCurrent = extract(property: .batteryCurrent)
         batteryEnergy = extract(property: .batteryEnergy)
@@ -481,6 +495,8 @@ public final class AACharging: AACapability, AAPropertyIdentifying {
         currentType = extract(property: .currentType)
         departureTimeDisplay = extract(property: .departureTimeDisplay)
         departureTimes = extract(properties: .departureTimes)
+        distanceToCompleteCharge = extract(property: .distanceToCompleteCharge)
+        drivingModePHEV = extract(property: .drivingModePHEV)
         estimatedRange = extract(property: .estimatedRange)
         estimatedRangeTarget = extract(property: .estimatedRangeTarget)
         flapLockStatus = extract(property: .flapLockStatus)

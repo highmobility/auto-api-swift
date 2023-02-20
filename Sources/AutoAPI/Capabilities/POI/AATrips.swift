@@ -43,11 +43,15 @@ public final class AATrips: AACapability, AAPropertyIdentifying {
         case totalIdleFuelConsumption = 0x14
         case maximumSpeed = 0x15
         case roadType = 0x16
+        case brakingCount = 0x17
     }
 
     // MARK: Properties
     /// Average fuel consumption during the trip.
     public var averageFuelConsumption: AAProperty<Measurement<UnitFuelEfficiency>>?
+    
+    /// Number of times the brakes were applied during the trip..
+    public var brakingCount: AAProperty<UInt16>?
     
     /// Description of the trip.
     public var description: AAProperty<String>?
@@ -117,6 +121,7 @@ public final class AATrips: AACapability, AAPropertyIdentifying {
         super.init(bytes: bytes)
     
         averageFuelConsumption = extract(property: .averageFuelConsumption)
+        brakingCount = extract(property: .brakingCount)
         description = extract(property: .description)
         distance = extract(property: .distance)
         driverName = extract(property: .driverName)
