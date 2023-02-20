@@ -43,6 +43,7 @@ public enum AADashboardLightName: String, CaseIterable, Codable, HMBytesConverta
     case dieselExhaustFluidSystemFault
     case dieselExhaustOverTemp
     case dieselFilterRegeneration
+    case dieselOilFilterWaterPresence
     case dieselParticulateFilter
     case dieselPreHeat
     case dippedBeamHeadlampsFrontLeftFailure
@@ -64,6 +65,7 @@ public enum AADashboardLightName: String, CaseIterable, Codable, HMBytesConverta
     case engineControlSystemFailure
     case engineCoolantLevel
     case engineCoolantTemperature
+    case engineDragTorqueControlFailure
     case engineIndicator
     case engineOil
     case engineOilLevel
@@ -398,6 +400,8 @@ public enum AADashboardLightName: String, CaseIterable, Codable, HMBytesConverta
         case .wheelPressureFault: return 0xc1
         case .oilChangeWarning: return 0xc2
         case .inspectionWarning: return 0xc3
+        case .dieselOilFilterWaterPresence: return 0xc4
+        case .engineDragTorqueControlFailure: return 0xc5
         }
     }
 
@@ -608,6 +612,8 @@ public enum AADashboardLightName: String, CaseIterable, Codable, HMBytesConverta
         case 0xc1: self = .wheelPressureFault
         case 0xc2: self = .oilChangeWarning
         case 0xc3: self = .inspectionWarning
+        case 0xc4: self = .dieselOilFilterWaterPresence
+        case 0xc5: self = .engineDragTorqueControlFailure
         default: return nil
         }
     }

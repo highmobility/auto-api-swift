@@ -3,6 +3,7 @@ import HMUtilities
 
 /// Event enum.
 public enum AATripsEvent: String, CaseIterable, Codable, HMBytesConvertable {
+    case emergencyBraking
     case harshAcceleration
     case harshBraking
     case idlingEngineOn
@@ -18,6 +19,7 @@ public enum AATripsEvent: String, CaseIterable, Codable, HMBytesConvertable {
         case .overRpm: return 0x03
         case .overspeed: return 0x04
         case .idlingEngineOn: return 0x05
+        case .emergencyBraking: return 0x06
         }
     }
 
@@ -38,6 +40,7 @@ public enum AATripsEvent: String, CaseIterable, Codable, HMBytesConvertable {
         case 0x03: self = .overRpm
         case 0x04: self = .overspeed
         case 0x05: self = .idlingEngineOn
+        case 0x06: self = .emergencyBraking
         default: return nil
         }
     }

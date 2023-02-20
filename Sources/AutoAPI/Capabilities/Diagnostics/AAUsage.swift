@@ -59,9 +59,13 @@ public final class AAUsage: AACapability, AAPropertyIdentifying {
         case brakingEvaluation = 0x2a
         case averageSpeed = 0x2b
         case recuperationPower = 0x2c
+        case accelerationDurations = 0x2d
     }
 
     // MARK: Properties
+    /// Durations of normal or other accelerations..
+    public var accelerationDurations: [AAProperty<AAAccelerationDuration>]?
+    
     /// Acceleration evaluation percentage.
     public var accelerationEvaluation: AAProperty<AAPercentage>?
     
@@ -237,6 +241,7 @@ public final class AAUsage: AACapability, AAPropertyIdentifying {
     public required init?(bytes: [UInt8]) {
         super.init(bytes: bytes)
     
+        accelerationDurations = extract(properties: .accelerationDurations)
         accelerationEvaluation = extract(property: .accelerationEvaluation)
         averageFuelConsumption = extract(property: .averageFuelConsumption)
         averageSpeed = extract(property: .averageSpeed)

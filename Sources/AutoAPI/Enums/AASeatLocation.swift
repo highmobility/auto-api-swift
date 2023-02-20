@@ -3,8 +3,10 @@ import HMUtilities
 
 /// Seat location enum.
 public enum AASeatLocation: String, CaseIterable, Codable, HMBytesConvertable {
+    case driver
     case frontLeft
     case frontRight
+    case passenger
     case rearCenter
     case rearLeft
     case rearRight
@@ -16,6 +18,8 @@ public enum AASeatLocation: String, CaseIterable, Codable, HMBytesConvertable {
         case .rearRight: return 0x02
         case .rearLeft: return 0x03
         case .rearCenter: return 0x04
+        case .driver: return 0x05
+        case .passenger: return 0x06
         }
     }
 
@@ -35,6 +39,8 @@ public enum AASeatLocation: String, CaseIterable, Codable, HMBytesConvertable {
         case 0x02: self = .rearRight
         case 0x03: self = .rearLeft
         case 0x04: self = .rearCenter
+        case 0x05: self = .driver
+        case 0x06: self = .passenger
         default: return nil
         }
     }

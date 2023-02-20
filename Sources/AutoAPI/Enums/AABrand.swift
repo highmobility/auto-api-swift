@@ -16,7 +16,6 @@ public enum AABrand: String, CaseIterable, Codable, HMBytesConvertable {
     case dacia
     case dodge
     case ds
-    case emulator
     case fiat
     case ford
     case honda
@@ -38,6 +37,7 @@ public enum AABrand: String, CaseIterable, Codable, HMBytesConvertable {
     case peugeot
     case porsche
     case renault
+    case sandbox
     case seat
     case skoda
     case smart
@@ -91,7 +91,7 @@ public enum AABrand: String, CaseIterable, Codable, HMBytesConvertable {
         case .toyota: return 0x27
         case .volkswagen: return 0x28
         case .volvoCars: return 0x29
-        case .emulator: return 0x2a
+        case .sandbox: return 0x2a
         }
     }
 
@@ -148,7 +148,7 @@ public enum AABrand: String, CaseIterable, Codable, HMBytesConvertable {
         case 0x27: self = .toyota
         case 0x28: self = .volkswagen
         case 0x29: self = .volvoCars
-        case 0x2a: self = .emulator
+        case 0x2a: self = .sandbox
         default: return nil
         }
     }

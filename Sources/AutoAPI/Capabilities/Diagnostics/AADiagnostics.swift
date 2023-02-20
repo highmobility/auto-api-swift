@@ -68,6 +68,7 @@ public final class AADiagnostics: AACapability, AAPropertyIdentifying {
         case engineTimeToNextService = 0x35
         case lowVoltageBatteryChargeLevel = 0x36
         case engineOilServiceStatus = 0x37
+        case passengerAirbagStatus = 0x38
     }
 
     // MARK: Properties
@@ -184,6 +185,9 @@ public final class AADiagnostics: AACapability, AAPropertyIdentifying {
     
     /// Additional OEM trouble codes.
     public var oemTroubleCodeValues: [AAProperty<AAOemTroubleCodeValue>]?
+    
+    /// Passenger airbag is activated or not.
+    public var passengerAirbagStatus: AAProperty<AAActiveState>?
     
     /// The vehicle speed.
     public var speed: AAProperty<Measurement<UnitSpeed>>?
@@ -315,6 +319,7 @@ public final class AADiagnostics: AACapability, AAPropertyIdentifying {
         lowVoltageBatteryChargeLevel = extract(property: .lowVoltageBatteryChargeLevel)
         odometer = extract(property: .odometer)
         oemTroubleCodeValues = extract(properties: .oemTroubleCodeValues)
+        passengerAirbagStatus = extract(property: .passengerAirbagStatus)
         speed = extract(property: .speed)
         tirePressureStatuses = extract(properties: .tirePressureStatuses)
         tirePressures = extract(properties: .tirePressures)
